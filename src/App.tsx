@@ -39,6 +39,7 @@ import { DEFAULT_CONFIG, PointCloudField } from './engine/PointCloudField';
 import { PointCloudComponent, PointCloudComponentRef } from './components/PointCloudComponent';
 import { TweakpaneDebug } from './components/TweakpaneDebug';
 import { EditableNumber } from './components/EditableNumber';
+import { CurvedSlider } from './components/CurvedSlider';
 
 interface Preset {
   id: string;
@@ -869,42 +870,42 @@ export default function App() {
 
       {/* 3. Center Screen Pointer Interaction Hint (Hideable) */}
       <div
-        className={`absolute inset-0 pointer-events-none flex flex-col justify-end pb-32 items-center transition-opacity duration-300 ${
-          isUIHidden ? 'opacity-0' : 'opacity-30 hover:opacity-80'
+        className={`absolute inset-0 pointer-events-none flex flex-col justify-end pb-8 items-center transition-opacity duration-300 ${
+          isUIHidden ? 'opacity-0' : 'opacity-25 hover:opacity-75'
         }`}
       >
-        <p className="text-[11px] font-mono tracking-widest uppercase">
+        <p className="text-[10px] font-mono tracking-widest uppercase">
           MOVE CURSOR / DRAG TOUCH TO INJECT FLUID VELOCITY · PRESS 'H' TO TOGGLE CLEAN CANVAS
         </p>
       </div>
 
-      {/* 4. Bottom Control Drawer (Hideable) */}
+      {/* 4. Bottom-Right Control Panel (Hideable, Compact & Corner-Anchored) */}
       <div
         id="bottom-control-drawer"
-        className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 w-[96%] max-w-5xl pointer-events-auto transition-all duration-500 ${
-          isUIHidden ? 'translate-y-36 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'
+        className={`fixed bottom-3 right-3 z-30 w-80 sm:w-[355px] max-w-[calc(100vw-1.5rem)] pointer-events-auto transition-all duration-300 ${
+          isUIHidden ? 'translate-y-40 translate-x-12 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'
         }`}
       >
         <div
-          className={`rounded-2xl border backdrop-blur-xl shadow-2xl transition-all overflow-hidden ${
-            isLight ? 'bg-white/92 border-stone-200/90' : 'bg-zinc-900/92 border-zinc-800/90'
+          className={`rounded-xl border backdrop-blur-xl shadow-2xl transition-all overflow-hidden ${
+            isLight ? 'bg-white/95 border-stone-200 shadow-stone-400/25' : 'bg-zinc-900/95 border-zinc-800 shadow-black/60'
           }`}
         >
-          {/* Drawer Top Navigation Bar */}
+          {/* Panel Top Navigation Bar */}
           <div
-            className={`flex items-center justify-between px-4 py-2.5 border-b gap-2 flex-wrap sm:flex-nowrap ${
-              isLight ? 'border-stone-200' : 'border-zinc-800'
+            className={`flex items-center justify-between px-2.5 py-1.5 border-b gap-1.5 ${
+              isLight ? 'border-stone-200 bg-stone-50/50' : 'border-zinc-800 bg-zinc-950/40'
             }`}
           >
-            {/* Tab Switches */}
-            <div className="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar">
+            {/* Tab Switches (Compact & Scrollable) */}
+            <div className="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar flex-1 mr-1">
               {[
                 { id: 'presets', label: 'Presets', icon: Sparkles },
-                { id: 'relational', label: 'Relational System', icon: Orbit },
-                { id: 'fluid', label: 'Fluid Dynamics', icon: Wind },
+                { id: 'relational', label: 'Relational', icon: Orbit },
+                { id: 'fluid', label: 'Fluid', icon: Wind },
                 { id: 'particle', label: 'Particles', icon: Circle },
                 { id: 'interaction', label: 'Pointer', icon: Compass },
-                { id: 'saved', label: 'Saved States', icon: Bookmark },
+                { id: 'saved', label: 'Saved', icon: Bookmark },
               ].map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -916,31 +917,31 @@ export default function App() {
                       setActiveTab(tab.id as any);
                       setShowControlsDrawer(true);
                     }}
-                    className={`flex items-center gap-1.5 px-3 py-1 text-xs font-mono uppercase rounded-lg whitespace-nowrap transition-all ${
+                    className={`flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono uppercase rounded-md whitespace-nowrap transition-all ${
                       isActive
                         ? isLight
-                          ? 'bg-stone-900 text-white font-medium shadow-xs'
-                          : 'bg-white text-zinc-950 font-medium shadow-xs'
+                          ? 'bg-stone-900 text-white font-semibold shadow-xs'
+                          : 'bg-white text-zinc-950 font-semibold shadow-xs'
                         : isLight
                         ? 'text-stone-600 hover:text-stone-950 hover:bg-stone-100'
                         : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
                     }`}
                   >
-                    <Icon className="w-3 h-3" />
+                    <Icon className="w-2.5 h-2.5" />
                     <span>{tab.label}</span>
                   </button>
                 );
               })}
             </div>
 
-            {/* Auto-Morph Toggle & Expand/Collapse */}
-            <div className="flex items-center gap-2 shrink-0">
+            {/* Quick Actions: Auto-Morph & Collapse Chevron */}
+            <div className="flex items-center gap-1 shrink-0">
               <button
                 id="toggle-auto-morph-btn"
                 onClick={() =>
                   setConfig((prev) => ({ ...prev, autoMorph: !prev.autoMorph }))
                 }
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-mono transition-all ${
+                className={`p-1 px-1.5 rounded-md border text-[10px] font-mono flex items-center gap-1 transition-all ${
                   config.autoMorph
                     ? isLight
                       ? 'bg-stone-900 text-white border-stone-900'
@@ -949,43 +950,41 @@ export default function App() {
                     ? 'border-stone-200 text-stone-600 hover:bg-stone-100'
                     : 'border-zinc-800 text-zinc-400 hover:bg-zinc-800'
                 }`}
-                title={config.autoMorph ? 'Pause Morph Oscillation' : 'Start Auto-Morph'}
+                title={config.autoMorph ? 'Pause Morphing' : 'Start Auto-Morph'}
               >
                 {config.autoMorph ? (
-                  <Pause className="w-3 h-3 text-emerald-400" />
+                  <Pause className="w-2.5 h-2.5 text-emerald-400" />
                 ) : (
-                  <Play className="w-3 h-3" />
+                  <Play className="w-2.5 h-2.5" />
                 )}
-                <span className="text-[11px] hidden md:inline">
-                  {config.autoMorph ? 'Auto-Morphing' : 'Morph Paused'}
-                </span>
+                <span className="text-[9px]">Morph</span>
               </button>
 
-              {/* Drawer Expand/Collapse */}
               <button
                 id="toggle-drawer-btn"
                 onClick={() => setShowControlsDrawer(!showControlsDrawer)}
-                className={`p-1.5 rounded-lg text-xs opacity-70 hover:opacity-100 transition-opacity`}
+                title={showControlsDrawer ? 'Minimize controls' : 'Expand controls'}
+                className={`p-1 rounded-md text-xs opacity-70 hover:opacity-100 transition-opacity`}
               >
                 {showControlsDrawer ? (
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3.5 h-3.5" />
                 ) : (
-                  <ChevronUp className="w-4 h-4" />
+                  <ChevronUp className="w-3.5 h-3.5" />
                 )}
               </button>
             </div>
           </div>
 
-          {/* Quick Glyphs / Word & Special Characters Ribbon */}
+          {/* Quick Glyphs & Symbols Compact Ribbon */}
           <div
-            className={`px-4 py-2 border-b flex flex-wrap items-center justify-between gap-3 text-xs font-mono ${
-              isLight ? 'bg-stone-50/50 border-stone-200' : 'bg-zinc-950/40 border-zinc-800'
+            className={`px-2.5 py-1.5 border-b flex flex-col gap-1.5 text-[10px] font-mono ${
+              isLight ? 'bg-stone-50/40 border-stone-200' : 'bg-zinc-950/30 border-zinc-800'
             }`}
           >
-            {/* Glyph Slots A & B */}
-            <div className="flex items-center gap-2">
-              <span className="opacity-60 text-[11px]">Active Glyphs:</span>
-              <div className="flex items-center gap-1.5">
+            {/* Row 1: Active Glyph Slots & Free Word Baker */}
+            <div className="flex items-center justify-between gap-1.5">
+              <div className="flex items-center gap-1 shrink-0">
+                <span className="opacity-50 text-[9px] uppercase">Glyphs:</span>
                 <input
                   id="glyph-slot-a-input"
                   type="text"
@@ -997,18 +996,16 @@ export default function App() {
                     applyGlyphPair(val, glyphInputB);
                   }}
                   placeholder="A"
-                  title="Glyph / Word A (Click to type or pick a special symbol below)"
-                  className={`w-14 px-2 py-1 text-center font-mono rounded-lg border font-bold text-xs outline-none transition-all ${
-                    focusedGlyphSlot === 'A'
-                      ? 'ring-2 ring-emerald-500'
-                      : ''
+                  title="Glyph / Word A (Click to type or pick a symbol below)"
+                  className={`w-9 px-1 py-0.5 text-center font-mono rounded border font-bold text-[11px] outline-none transition-all ${
+                    focusedGlyphSlot === 'A' ? 'ring-1 ring-emerald-500 border-emerald-500' : ''
                   } ${
                     isLight
                       ? 'bg-white border-stone-300 text-stone-900'
                       : 'bg-zinc-900 border-zinc-700 text-white'
                   }`}
                 />
-                <span className="opacity-50">⇄</span>
+                <span className="opacity-40 text-[9px]">⇄</span>
                 <input
                   id="glyph-slot-b-input"
                   type="text"
@@ -1020,11 +1017,9 @@ export default function App() {
                     applyGlyphPair(glyphInputA, val);
                   }}
                   placeholder="B"
-                  title="Glyph / Word B (Click to type or pick a special symbol below)"
-                  className={`w-14 px-2 py-1 text-center font-mono rounded-lg border font-bold text-xs outline-none transition-all ${
-                    focusedGlyphSlot === 'B'
-                      ? 'ring-2 ring-emerald-500'
-                      : ''
+                  title="Glyph / Word B (Click to type or pick a symbol below)"
+                  className={`w-9 px-1 py-0.5 text-center font-mono rounded border font-bold text-[11px] outline-none transition-all ${
+                    focusedGlyphSlot === 'B' ? 'ring-1 ring-emerald-500 border-emerald-500' : ''
                   } ${
                     isLight
                       ? 'bg-white border-stone-300 text-stone-900'
@@ -1034,14 +1029,14 @@ export default function App() {
               </div>
 
               {/* Free Text Word / Phrase Form */}
-              <form onSubmit={handleBakeFreeText} className="flex items-center gap-1.5 ml-2">
+              <form onSubmit={handleBakeFreeText} className="flex items-center gap-1 flex-1 justify-end">
                 <input
                   id="free-text-input"
                   type="text"
                   value={freeTextWord}
                   onChange={(e) => setFreeTextWord(e.target.value)}
-                  placeholder="Type any word or phrase (e.g. FLUID, VOID, 42)..."
-                  className={`w-40 sm:w-60 px-2.5 py-1 text-xs font-mono rounded-lg border outline-none ${
+                  placeholder="Bake word/phrase..."
+                  className={`w-28 sm:w-32 px-1.5 py-0.5 text-[10px] font-mono rounded border outline-none ${
                     isLight
                       ? 'bg-white border-stone-300 text-stone-900 placeholder:text-stone-400'
                       : 'bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-500'
@@ -1050,7 +1045,7 @@ export default function App() {
                 <button
                   id="bake-free-text-btn"
                   type="submit"
-                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium transition-all ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-mono font-medium transition-all ${
                     isLight
                       ? 'bg-stone-900 text-white hover:bg-black'
                       : 'bg-white text-zinc-950 hover:bg-zinc-200'
@@ -1061,12 +1056,12 @@ export default function App() {
               </form>
             </div>
 
-            {/* Quick Special Characters Palette */}
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-              <span className="opacity-50 text-[10px] uppercase tracking-wider hidden xl:inline">
-                Insert into [{focusedGlyphSlot}]:
+            {/* Row 2: Special Characters Quick Palette */}
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
+              <span className="opacity-40 text-[9px] uppercase tracking-wider shrink-0">
+                [{focusedGlyphSlot}]:
               </span>
-              {['✦', '✧', '★', '∞', 'Ω', '∑', '∫', '⌘', '⌥', '⏣', '☯', '♠', '♥', 'λ', '§'].map(
+              {['✦', '✧', '★', '∞', 'Ω', '∑', '∫', '⌘', '⌥', '⏣', '☯', '♠', 'λ', '§', '¶'].map(
                 (char) => (
                   <button
                     key={char}
@@ -1074,7 +1069,7 @@ export default function App() {
                     type="button"
                     onClick={() => handleInsertChar(char)}
                     title={`Insert "${char}" into Glyph Slot ${focusedGlyphSlot}`}
-                    className={`w-6 h-6 flex items-center justify-center rounded-md border text-xs transition-all hover:scale-110 ${
+                    className={`w-5 h-5 shrink-0 flex items-center justify-center rounded border text-[10px] transition-all hover:scale-110 ${
                       isLight
                         ? 'bg-white border-stone-200 text-stone-800 hover:border-stone-400'
                         : 'bg-zinc-800/80 border-zinc-700 text-zinc-200 hover:border-zinc-500'
@@ -1087,13 +1082,13 @@ export default function App() {
             </div>
           </div>
 
-          {/* Drawer Body (Expandable) */}
+          {/* Drawer Body (Expandable & Highly Compact) */}
           {showControlsDrawer && (
-            <div className="p-4 sm:p-5 max-h-[38vh] overflow-y-auto">
+            <div className="p-2.5 max-h-[34vh] overflow-y-auto">
               {/* Tab 1: Presets Showcase */}
               {activeTab === 'presets' && (
-                <div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-1.5">
                     {PRESETS.map((preset) => {
                       const isSelected = activePreset === preset.id;
                       return (
@@ -1101,7 +1096,7 @@ export default function App() {
                           key={preset.id}
                           id={`preset-card-${preset.id}`}
                           onClick={() => applyPreset(preset)}
-                          className={`text-left p-3 rounded-xl border transition-all ${
+                          className={`text-left p-2 rounded-lg border transition-all ${
                             isSelected
                               ? isLight
                                 ? 'bg-stone-100 border-stone-900/80 ring-1 ring-stone-900/20 shadow-xs'
@@ -1111,15 +1106,15 @@ export default function App() {
                               : 'bg-zinc-950/60 border-zinc-800 hover:bg-zinc-800/80 hover:border-zinc-700'
                           }`}
                         >
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-mono font-bold tracking-tight">
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span className="text-[10px] font-mono font-bold tracking-tight truncate">
                               {preset.name}
                             </span>
                             {isSelected && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 ml-1" />
                             )}
                           </div>
-                          <p className="text-[11px] opacity-70 leading-relaxed line-clamp-2">
+                          <p className="text-[9px] opacity-70 leading-tight line-clamp-1">
                             {preset.description}
                           </p>
                         </button>
@@ -1128,21 +1123,21 @@ export default function App() {
                   </div>
 
                   {/* Special Characters Categories Drawer */}
-                  <div className="mt-4 pt-3 border-t border-inherit">
-                    <span className="text-xs font-mono font-bold block mb-2 opacity-80">
-                      Extended Special Characters Library:
+                  <div className="pt-2 border-t border-inherit">
+                    <span className="text-[9px] font-mono font-bold block mb-1 opacity-70 uppercase tracking-wider">
+                      Extended Characters Library:
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                    <div className="grid grid-cols-2 gap-1.5">
                       {SPECIAL_CHAR_CATEGORIES.map((cat) => (
                         <div
                           key={cat.name}
-                          className={`p-2.5 rounded-xl border ${
+                          className={`p-1.5 rounded-lg border ${
                             isLight
                               ? 'bg-stone-50/70 border-stone-200'
                               : 'bg-zinc-950/50 border-zinc-800'
                           }`}
                         >
-                          <span className="text-[10px] font-mono font-semibold uppercase opacity-60 block mb-1.5">
+                          <span className="text-[8.5px] font-mono font-semibold uppercase opacity-60 block mb-1">
                             {cat.name}
                           </span>
                           <div className="flex flex-wrap gap-1">
@@ -1153,7 +1148,7 @@ export default function App() {
                                 type="button"
                                 onClick={() => handleInsertChar(c)}
                                 title={`Insert "${c}" into Slot ${focusedGlyphSlot}`}
-                                className={`w-7 h-7 flex items-center justify-center rounded-lg border text-xs font-mono transition-all hover:scale-110 ${
+                                className={`w-5 h-5 flex items-center justify-center rounded border text-[10px] font-mono transition-all hover:scale-110 ${
                                   isLight
                                     ? 'bg-white border-stone-200 text-stone-900 hover:border-stone-900'
                                     : 'bg-zinc-900 border-zinc-700 text-white hover:border-white'
@@ -1172,14 +1167,14 @@ export default function App() {
 
               {/* Tab 2: Free Relational System & Attractors */}
               {activeTab === 'relational' && (
-                <div className="space-y-4">
+                <div className="space-y-2">
                   {/* Master Toggle & Mode Picker */}
                   <div
-                    className={`flex flex-wrap items-center justify-between p-3.5 rounded-xl border ${
+                    className={`flex flex-col gap-1.5 p-2 rounded-lg border ${
                       isLight ? 'bg-stone-50 border-stone-200' : 'bg-zinc-950 border-zinc-800'
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-between gap-2">
                       <button
                         id="relational-master-toggle"
                         onClick={() =>
@@ -1191,69 +1186,64 @@ export default function App() {
                             },
                           }))
                         }
-                        className={`px-3.5 py-1.5 text-xs font-mono uppercase rounded-lg border font-bold transition-all flex items-center gap-2 ${
+                        className={`px-2 py-0.5 text-[9.5px] font-mono uppercase rounded border font-bold transition-all flex items-center gap-1.5 ${
                           config.relational?.enabled
-                            ? 'bg-emerald-500 text-black border-emerald-500 shadow-sm'
+                            ? 'bg-emerald-500 text-black border-emerald-500 shadow-xs'
                             : isLight
                             ? 'bg-stone-200 border-stone-300 text-stone-700'
                             : 'bg-zinc-800 border-zinc-700 text-zinc-400'
                         }`}
                       >
-                        <Orbit className="w-3.5 h-3.5" />
-                        {config.relational?.enabled
-                          ? 'Relational Orbits ACTIVE'
-                          : 'Relational Orbits OFF'}
+                        <Orbit className="w-3 h-3" />
+                        {config.relational?.enabled ? 'Relational ON' : 'Relational OFF'}
                       </button>
-                      <p className="text-xs opacity-70 font-mono hidden md:inline">
-                        Simulate non-linear multi-pole Keplerian gravity, figure-8 orbits, and strange chaotic attractors.
-                      </p>
-                    </div>
 
-                    {/* Mode selector */}
-                    <div className="flex items-center gap-1.5 mt-2 sm:mt-0">
-                      {[
-                        { id: 'orbital', label: 'Orbital Gravity' },
-                        { id: 'chaos', label: 'Harmonic Chaos' },
-                        { id: 'nbody', label: 'N-Body Lemniscate' },
-                      ].map((m) => (
-                        <button
-                          key={m.id}
-                          id={`relational-mode-${m.id}`}
-                          onClick={() =>
-                            setConfig((prev) => ({
-                              ...prev,
-                              relational: {
-                                ...prev.relational,
-                                mode: m.id as any,
-                              },
-                            }))
-                          }
-                          className={`px-2.5 py-1 text-xs font-mono uppercase rounded-lg border transition-all ${
-                            config.relational?.mode === m.id
-                              ? isLight
-                                ? 'bg-stone-900 text-white border-stone-900 font-medium'
-                                : 'bg-white text-zinc-950 border-white font-medium'
-                              : isLight
-                              ? 'border-stone-200 text-stone-700 hover:bg-stone-100'
-                              : 'border-zinc-800 text-zinc-300 hover:bg-zinc-800'
-                          }`}
-                        >
-                          {m.label}
-                        </button>
-                      ))}
+                      <div className="flex items-center gap-1">
+                        {[
+                          { id: 'orbital', label: 'Orbital' },
+                          { id: 'chaos', label: 'Chaos' },
+                          { id: 'nbody', label: 'N-Body' },
+                        ].map((m) => (
+                          <button
+                            key={m.id}
+                            id={`relational-mode-${m.id}`}
+                            onClick={() =>
+                              setConfig((prev) => ({
+                                ...prev,
+                                relational: {
+                                  ...prev.relational,
+                                  mode: m.id as any,
+                                },
+                              }))
+                            }
+                            className={`px-1.5 py-0.5 text-[9px] font-mono uppercase rounded border transition-all ${
+                              config.relational?.mode === m.id
+                                ? isLight
+                                  ? 'bg-stone-900 text-white border-stone-900 font-medium'
+                                  : 'bg-white text-zinc-950 border-white font-medium'
+                                : isLight
+                                ? 'border-stone-200 text-stone-700 hover:bg-stone-100'
+                                : 'border-zinc-800 text-zinc-300 hover:bg-zinc-800'
+                            }`}
+                          >
+                            {m.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   {/* Relational Parameters Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 gap-2">
                     {/* Attractor Count */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Attractor Poles</span>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Attractor Poles</span>
                         <EditableNumber
                           value={config.relational?.attractorCount ?? 3}
                           precision={0}
                           isLight={isLight}
+                          className="text-[9.5px]"
                           onChange={(val) =>
                             setConfig((prev) => ({
                               ...prev,
@@ -1287,12 +1277,13 @@ export default function App() {
 
                     {/* Attractor Gravity */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Attractor Gravity</span>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Gravity</span>
                         <EditableNumber
                           value={config.relational?.attractorGravity ?? 1.6}
                           precision={2}
                           isLight={isLight}
+                          className="text-[9.5px]"
                           onChange={(val) =>
                             setConfig((prev) => ({
                               ...prev,
@@ -1323,12 +1314,13 @@ export default function App() {
 
                     {/* Orbit Angular Speed */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Orbit Angular Velocity</span>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Orbit Speed</span>
                         <EditableNumber
                           value={config.relational?.orbitSpeed ?? 0.8}
                           precision={2}
                           isLight={isLight}
+                          className="text-[9.5px]"
                           onChange={(val) =>
                             setConfig((prev) => ({
                               ...prev,
@@ -1359,13 +1351,14 @@ export default function App() {
 
                     {/* Orbit Radius / Distance */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Orbit Separation (px)</span>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Orbit Radius</span>
                         <EditableNumber
                           value={config.relational?.orbitRadius ?? 240}
                           precision={0}
                           unit="px"
                           isLight={isLight}
+                          className="text-[9.5px]"
                           onChange={(val) =>
                             setConfig((prev) => ({
                               ...prev,
@@ -1396,12 +1389,13 @@ export default function App() {
 
                     {/* Relational Spin Torque */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Vortex Swirl Torque</span>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Swirl Torque</span>
                         <EditableNumber
                           value={config.relational?.relationalSpin ?? 1.4}
                           precision={2}
                           isLight={isLight}
+                          className="text-[9.5px]"
                           onChange={(val) =>
                             setConfig((prev) => ({
                               ...prev,
@@ -1432,12 +1426,13 @@ export default function App() {
 
                     {/* Chaos Factor */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Strange Chaos Factor</span>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Chaos Factor</span>
                         <EditableNumber
                           value={config.relational?.chaosFactor ?? 0.2}
                           precision={2}
                           isLight={isLight}
+                          className="text-[9.5px]"
                           onChange={(val) =>
                             setConfig((prev) => ({
                               ...prev,
@@ -1465,57 +1460,22 @@ export default function App() {
                         className="w-full accent-current cursor-pointer"
                       />
                     </div>
-
-                    {/* Harmonic Wander Rate */}
-                    <div>
-                      <div className="flex justify-between text-xs font-mono mb-1.5">
-                        <span>Wander Drift Rate</span>
-                        <EditableNumber
-                          value={config.relational?.wanderSpeed ?? 0.5}
-                          precision={2}
-                          isLight={isLight}
-                          onChange={(val) =>
-                            setConfig((prev) => ({
-                              ...prev,
-                              relational: { ...prev.relational, wanderSpeed: val },
-                            }))
-                          }
-                        />
-                      </div>
-                      <input
-                        id="slider-wander-speed"
-                        type="range"
-                        min={0.0}
-                        max={10.0}
-                        step={0.1}
-                        value={config.relational?.wanderSpeed ?? 0.5}
-                        onChange={(e) =>
-                          setConfig((prev) => ({
-                            ...prev,
-                            relational: {
-                              ...prev.relational,
-                              wanderSpeed: parseFloat(e.target.value),
-                            },
-                          }))
-                        }
-                        className="w-full accent-current cursor-pointer"
-                      />
-                    </div>
                   </div>
                 </div>
               )}
 
               {/* Tab 3: Fluid Dynamics Sliders (Unclamped) */}
               {activeTab === 'fluid' && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 gap-2">
                   {/* Curl Noise Scale */}
                   <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Curl Noise Frequency</span>
+                    <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                      <span className="opacity-80">Curl Frequency</span>
                       <EditableNumber
                         value={config.fluid.curlScale}
                         precision={2}
                         isLight={isLight}
+                        className="text-[9.5px]"
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1543,12 +1503,13 @@ export default function App() {
 
                   {/* Vorticity / Swirl Torque */}
                   <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Swirl Torque (Vorticity)</span>
+                    <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                      <span className="opacity-80">Swirl Torque</span>
                       <EditableNumber
                         value={config.fluid.vortexStrength}
                         precision={2}
                         isLight={isLight}
+                        className="text-[9.5px]"
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1576,12 +1537,13 @@ export default function App() {
 
                   {/* Lateral Dispersion Jet */}
                   <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>O→I Drift Advection</span>
+                    <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                      <span className="opacity-80">Advection Drift</span>
                       <EditableNumber
                         value={config.fluid.dispersion}
                         precision={2}
                         isLight={isLight}
+                        className="text-[9.5px]"
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1609,12 +1571,13 @@ export default function App() {
 
                   {/* Hooke's Return Snap */}
                   <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Shape Spring Snap (k)</span>
+                    <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                      <span className="opacity-80">Spring Snap (k)</span>
                       <EditableNumber
                         value={config.fluid.returnSpeed}
                         precision={2}
                         isLight={isLight}
+                        className="text-[9.5px]"
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1640,47 +1603,15 @@ export default function App() {
                     />
                   </div>
 
-                  {/* Curl Speed */}
-                  <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Curl Evolution Rate</span>
-                      <EditableNumber
-                        value={config.fluid.curlSpeed}
-                        precision={2}
-                        isLight={isLight}
-                        onChange={(val) =>
-                          setConfig((prev) => ({
-                            ...prev,
-                            fluid: { ...prev.fluid, curlSpeed: val },
-                          }))
-                        }
-                      />
-                    </div>
-                    <input
-                      id="slider-curl-speed"
-                      type="range"
-                      min={-5.0}
-                      max={10.0}
-                      step={0.05}
-                      value={config.fluid.curlSpeed}
-                      onChange={(e) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          fluid: { ...prev.fluid, curlSpeed: parseFloat(e.target.value) },
-                        }))
-                      }
-                      className="w-full accent-current cursor-pointer"
-                    />
-                  </div>
-
                   {/* Turbulence */}
                   <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Turbulence Jitter</span>
+                    <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                      <span className="opacity-80">Turbulence</span>
                       <EditableNumber
                         value={config.fluid.turbulence}
                         precision={2}
                         isLight={isLight}
+                        className="text-[9.5px]"
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1708,12 +1639,13 @@ export default function App() {
 
                   {/* Viscosity Damping */}
                   <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Viscosity Damping</span>
+                    <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                      <span className="opacity-80">Viscosity Damping</span>
                       <EditableNumber
                         value={config.fluid.viscosity}
                         precision={3}
                         isLight={isLight}
+                        className="text-[9.5px]"
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1741,18 +1673,36 @@ export default function App() {
                 </div>
               )}
 
-              {/* Tab 4: Particle & Sizing (Unclamped) */}
+              {/* Tab 4: Particle & Sizing (Curved Non-Linear Sliders) */}
               {activeTab === 'particle' && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                  {/* Min Dot Size */}
-                  <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Min Dot Size</span>
-                      <EditableNumber
+                <div className="space-y-2.5">
+                  <div className="grid grid-cols-2 gap-2">
+                    {/* Min Dot Size with curved slider */}
+                    <div>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Min Dot Size</span>
+                        <EditableNumber
+                          value={config.particleSize.min}
+                          precision={2}
+                          unit="px"
+                          isLight={isLight}
+                          className="text-[9.5px]"
+                          onChange={(val) =>
+                            setConfig((prev) => ({
+                              ...prev,
+                              particleSize: { ...prev.particleSize, min: Math.max(0.05, val) },
+                            }))
+                          }
+                        />
+                      </div>
+                      <CurvedSlider
+                        id="slider-min-size"
                         value={config.particleSize.min}
-                        precision={1}
-                        unit="px"
-                        isLight={isLight}
+                        minVal={0.1}
+                        breakpoint={3.0}
+                        maxVal={25.0}
+                        splitPercent={65}
+                        curvePower={2.2}
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1760,33 +1710,39 @@ export default function App() {
                           }))
                         }
                       />
+                      <div className="flex justify-between text-[8px] font-mono opacity-50 mt-0.5">
+                        <span>0.1px</span>
+                        <span className="text-emerald-500/90 font-medium">0–3px refined curve</span>
+                        <span>25px</span>
+                      </div>
                     </div>
-                    <input
-                      id="slider-min-size"
-                      type="range"
-                      min={0.1}
-                      max={25.0}
-                      step={0.1}
-                      value={config.particleSize.min}
-                      onChange={(e) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          particleSize: { ...prev.particleSize, min: parseFloat(e.target.value) },
-                        }))
-                      }
-                      className="w-full accent-current cursor-pointer"
-                    />
-                  </div>
 
-                  {/* Max Dot Size */}
-                  <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Max Dot Size</span>
-                      <EditableNumber
+                    {/* Max Dot Size with curved slider */}
+                    <div>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Max Dot Size</span>
+                        <EditableNumber
+                          value={config.particleSize.max}
+                          precision={2}
+                          unit="px"
+                          isLight={isLight}
+                          className="text-[9.5px]"
+                          onChange={(val) =>
+                            setConfig((prev) => ({
+                              ...prev,
+                              particleSize: { ...prev.particleSize, max: Math.max(0.1, val) },
+                            }))
+                          }
+                        />
+                      </div>
+                      <CurvedSlider
+                        id="slider-max-size"
                         value={config.particleSize.max}
-                        precision={1}
-                        unit="px"
-                        isLight={isLight}
+                        minVal={0.2}
+                        breakpoint={3.2}
+                        maxVal={45.0}
+                        splitPercent={65}
+                        curvePower={2.2}
                         onChange={(val) =>
                           setConfig((prev) => ({
                             ...prev,
@@ -1794,67 +1750,87 @@ export default function App() {
                           }))
                         }
                       />
+                      <div className="flex justify-between text-[8px] font-mono opacity-50 mt-0.5">
+                        <span>0.2px</span>
+                        <span className="text-emerald-500/90 font-medium">0–3.2px refined curve</span>
+                        <span>45px</span>
+                      </div>
                     </div>
-                    <input
-                      id="slider-max-size"
-                      type="range"
-                      min={0.2}
-                      max={50.0}
-                      step={0.2}
-                      value={config.particleSize.max}
-                      onChange={(e) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          particleSize: { ...prev.particleSize, max: parseFloat(e.target.value) },
-                        }))
-                      }
-                      className="w-full accent-current cursor-pointer"
-                    />
                   </div>
 
-                  {/* Morph Cycle */}
-                  <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Morph Cycle</span>
-                      <EditableNumber
+                  {/* Secondary row: Morph duration & quick toggles */}
+                  <div className="grid grid-cols-2 gap-2 pt-1.5 border-t border-inherit">
+                    {/* Morph Duration */}
+                    <div>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Morph Cycle</span>
+                        <EditableNumber
+                          value={config.autoMorphDuration ?? 4.0}
+                          precision={1}
+                          unit="s"
+                          isLight={isLight}
+                          className="text-[9.5px]"
+                          onChange={(val) =>
+                            setConfig((prev) => ({
+                              ...prev,
+                              autoMorphDuration: val,
+                            }))
+                          }
+                        />
+                      </div>
+                      <input
+                        id="slider-morph-duration"
+                        type="range"
+                        min={0.2}
+                        max={30.0}
+                        step={0.2}
                         value={config.autoMorphDuration ?? 4.0}
-                        precision={1}
-                        unit="s"
-                        isLight={isLight}
-                        onChange={(val) =>
+                        onChange={(e) =>
                           setConfig((prev) => ({
                             ...prev,
-                            autoMorphDuration: val,
+                            autoMorphDuration: parseFloat(e.target.value),
                           }))
                         }
+                        className="w-full accent-current cursor-pointer"
                       />
                     </div>
-                    <input
-                      id="slider-morph-duration"
-                      type="range"
-                      min={0.2}
-                      max={30.0}
-                      step={0.2}
-                      value={config.autoMorphDuration ?? 4.0}
-                      onChange={(e) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          autoMorphDuration: parseFloat(e.target.value),
-                        }))
-                      }
-                      className="w-full accent-current cursor-pointer"
-                    />
+
+                    {/* Quick Shape & Style Toggles */}
+                    <div className="flex items-center gap-1 self-end pb-0.5">
+                      <button
+                        type="button"
+                        onClick={toggleStyle}
+                        className={`flex-1 py-1 px-1.5 text-[9px] font-mono uppercase rounded border text-center transition-all ${
+                          isLight
+                            ? 'border-stone-300 text-stone-700 hover:bg-stone-100'
+                            : 'border-zinc-700 text-zinc-300 hover:bg-zinc-800'
+                        }`}
+                      >
+                        {config.style}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={toggleDotShape}
+                        className={`flex-1 py-1 px-1.5 text-[9px] font-mono uppercase rounded border text-center transition-all ${
+                          isLight
+                            ? 'border-stone-300 text-stone-700 hover:bg-stone-100'
+                            : 'border-zinc-700 text-zinc-300 hover:bg-zinc-800'
+                        }`}
+                      >
+                        {config.dotShape}
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
 
-              {/* Tab 5: Pointer Interaction Forces (Unclamped) */}
+              {/* Tab 5: Pointer Interaction Forces */}
               {activeTab === 'interaction' && (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-2">
                   {/* Mode selector */}
                   <div>
-                    <span className="block text-xs font-mono mb-1.5">Interaction Mode</span>
-                    <div className="grid grid-cols-3 gap-1.5">
+                    <span className="block text-[9.5px] font-mono mb-1 opacity-80">Interaction Mode</span>
+                    <div className="grid grid-cols-3 gap-1">
                       {(['repel', 'attract', 'vortex'] as const).map((m) => (
                         <button
                           key={m}
@@ -1865,7 +1841,7 @@ export default function App() {
                               interaction: { ...prev.interaction, mode: m },
                             }))
                           }
-                          className={`py-1.5 text-xs font-mono uppercase rounded-lg border transition-all ${
+                          className={`py-1 text-[9.5px] font-mono uppercase rounded border transition-all ${
                             config.interaction.mode === m
                               ? isLight
                                 ? 'bg-stone-900 text-white border-stone-900 font-medium'
@@ -1881,93 +1857,97 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Interaction Radius */}
-                  <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Influence Radius</span>
-                      <EditableNumber
+                  <div className="grid grid-cols-2 gap-2">
+                    {/* Interaction Radius */}
+                    <div>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Radius</span>
+                        <EditableNumber
+                          value={config.interaction.radius}
+                          precision={0}
+                          unit="px"
+                          isLight={isLight}
+                          className="text-[9.5px]"
+                          onChange={(val) =>
+                            setConfig((prev) => ({
+                              ...prev,
+                              interaction: { ...prev.interaction, radius: Math.round(val) },
+                            }))
+                          }
+                        />
+                      </div>
+                      <input
+                        id="slider-interaction-radius"
+                        type="range"
+                        min={10}
+                        max={1500}
+                        step={10}
                         value={config.interaction.radius}
-                        precision={0}
-                        unit="px"
-                        isLight={isLight}
-                        onChange={(val) =>
+                        onChange={(e) =>
                           setConfig((prev) => ({
                             ...prev,
-                            interaction: { ...prev.interaction, radius: Math.round(val) },
+                            interaction: { ...prev.interaction, radius: parseInt(e.target.value, 10) },
                           }))
                         }
+                        className="w-full accent-current cursor-pointer"
                       />
                     </div>
-                    <input
-                      id="slider-interaction-radius"
-                      type="range"
-                      min={10}
-                      max={1500}
-                      step={10}
-                      value={config.interaction.radius}
-                      onChange={(e) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          interaction: { ...prev.interaction, radius: parseInt(e.target.value, 10) },
-                        }))
-                      }
-                      className="w-full accent-current cursor-pointer"
-                    />
-                  </div>
 
-                  {/* Interaction Strength */}
-                  <div>
-                    <div className="flex justify-between text-xs font-mono mb-1.5">
-                      <span>Force Magnitude</span>
-                      <EditableNumber
+                    {/* Interaction Strength */}
+                    <div>
+                      <div className="flex justify-between items-center text-[9.5px] font-mono mb-0.5">
+                        <span className="opacity-80">Force</span>
+                        <EditableNumber
+                          value={config.interaction.strength}
+                          precision={2}
+                          isLight={isLight}
+                          className="text-[9.5px]"
+                          onChange={(val) =>
+                            setConfig((prev) => ({
+                              ...prev,
+                              interaction: { ...prev.interaction, strength: val },
+                            }))
+                          }
+                        />
+                      </div>
+                      <input
+                        id="slider-interaction-strength"
+                        type="range"
+                        min={-10.0}
+                        max={15.0}
+                        step={0.1}
                         value={config.interaction.strength}
-                        precision={2}
-                        isLight={isLight}
-                        onChange={(val) =>
+                        onChange={(e) =>
                           setConfig((prev) => ({
                             ...prev,
-                            interaction: { ...prev.interaction, strength: val },
+                            interaction: { ...prev.interaction, strength: parseFloat(e.target.value) },
                           }))
                         }
+                        className="w-full accent-current cursor-pointer"
                       />
                     </div>
-                    <input
-                      id="slider-interaction-strength"
-                      type="range"
-                      min={-10.0}
-                      max={15.0}
-                      step={0.1}
-                      value={config.interaction.strength}
-                      onChange={(e) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          interaction: { ...prev.interaction, strength: parseFloat(e.target.value) },
-                        }))
-                      }
-                      className="w-full accent-current cursor-pointer"
-                    />
                   </div>
                 </div>
               )}
 
               {/* Tab 6: Saved Setting States Management */}
               {activeTab === 'saved' && (
-                <div className="space-y-4">
+                <div className="space-y-2">
                   {/* Save current state bar */}
                   <form
                     onSubmit={handleSaveCurrentState}
-                    className={`flex items-center gap-2 p-3 rounded-xl border ${
+                    className={`flex items-center gap-1.5 p-1.5 rounded-lg border ${
                       isLight ? 'bg-stone-50 border-stone-200' : 'bg-zinc-950 border-zinc-800'
                     }`}
                   >
-                    <Save className="w-4 h-4 opacity-60" />
+                    <Save className="w-3.5 h-3.5 opacity-60 shrink-0" />
                     <input
                       id="save-state-name-input"
                       type="text"
-                      placeholder="Name this setting state (e.g. Heavy Swirl & Binary Orbits)..."
+                      placeholder="State name..."
                       value={newSaveName}
                       onChange={(e) => setNewSaveName(e.target.value)}
-                      className={`flex-1 px-3 py-1.5 text-xs font-mono rounded-lg border outline-none ${
+                      className={`flex-1 px-2 py-1 text-[10px] font-mono rounded border outline-none ${
                         isLight
                           ? 'bg-white border-stone-300 text-stone-900'
                           : 'bg-zinc-900 border-zinc-700 text-white'
@@ -1976,80 +1956,74 @@ export default function App() {
                     <button
                       id="save-current-state-btn"
                       type="submit"
-                      className={`px-4 py-1.5 text-xs font-mono uppercase rounded-lg font-medium transition-all ${
+                      className={`px-2 py-1 text-[10px] font-mono uppercase rounded font-medium transition-all shrink-0 ${
                         isLight
                           ? 'bg-stone-900 text-white hover:bg-black'
                           : 'bg-white text-zinc-950 hover:bg-zinc-200'
                       }`}
                     >
-                      Save State
+                      Save
                     </button>
                     <button
                       id="import-json-btn"
                       type="button"
                       onClick={() => setShowImportModal(true)}
-                      className={`px-3 py-1.5 text-xs font-mono uppercase rounded-lg border transition-all ${
+                      className={`p-1 text-[10px] font-mono uppercase rounded border transition-all shrink-0 ${
                         isLight
                           ? 'border-stone-300 hover:bg-stone-100'
                           : 'border-zinc-700 hover:bg-zinc-800'
                       }`}
+                      title="Import JSON"
                     >
-                      <Upload className="w-3.5 h-3.5 inline mr-1" />
-                      Import JSON
+                      <Upload className="w-3.5 h-3.5" />
                     </button>
                   </form>
 
                   {/* List of Saved States */}
                   {savedStates.length === 0 ? (
                     <div
-                      className={`p-6 text-center rounded-xl border text-xs font-mono opacity-60 ${
+                      className={`p-3 text-center rounded-lg border text-[10px] font-mono opacity-60 ${
                         isLight ? 'border-dashed border-stone-300' : 'border-dashed border-zinc-800'
                       }`}
                     >
-                      No saved setting states yet. Adjust your parameters, give it a title, and click "Save State".
+                      No saved states yet. Adjust values, name state, click "Save".
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    <div className="space-y-1.5">
                       {savedStates.map((st) => (
                         <div
                           key={st.id}
-                          className={`p-3.5 rounded-xl border flex flex-col justify-between ${
+                          className={`p-2 rounded-lg border flex items-center justify-between gap-2 ${
                             isLight
                               ? 'bg-stone-50/80 border-stone-200'
                               : 'bg-zinc-950/80 border-zinc-800'
                           }`}
                         >
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="font-mono font-bold text-xs truncate">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1">
+                              <span className="font-mono font-bold text-[10px] truncate">
                                 {st.name}
                               </span>
-                              <span className="text-[10px] font-mono opacity-50">
-                                {new Date(st.timestamp).toLocaleDateString()}
-                              </span>
                             </div>
-                            <div className="flex items-center gap-1.5 flex-wrap text-[10px] font-mono opacity-70 mb-3">
-                              <span className="px-1.5 py-0.5 rounded border border-inherit">
+                            <div className="flex items-center gap-1 text-[8.5px] font-mono opacity-60">
+                              <span>
                                 {Array.isArray(st.config.glyph)
-                                  ? st.config.glyph.join(' ⇄ ')
+                                  ? st.config.glyph.join('⇄')
                                   : st.config.glyph}
                               </span>
-                              <span className="px-1.5 py-0.5 rounded border border-inherit">
-                                {st.config.style}
-                              </span>
+                              <span>·</span>
+                              <span>{st.config.style}</span>
                               {st.config.relational?.enabled && (
-                                <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/30">
-                                  Relational
-                                </span>
+                                <span className="text-emerald-500 font-semibold">· Orbit</span>
                               )}
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between gap-2 pt-2 border-t border-inherit">
+                          <div className="flex items-center gap-1 shrink-0">
                             <button
                               id={`load-state-${st.id}`}
                               onClick={() => handleLoadState(st)}
-                              className={`px-3 py-1 text-xs font-mono uppercase rounded-lg font-medium transition-all ${
+                              className={`px-2 py-0.5 text-[9.5px] font-mono uppercase rounded font-medium transition-all ${
                                 isLight
                                   ? 'bg-stone-900 text-white hover:bg-black'
                                   : 'bg-white text-zinc-950 hover:bg-zinc-200'
@@ -2058,28 +2032,26 @@ export default function App() {
                               Load
                             </button>
 
-                            <div className="flex items-center gap-1">
-                              <button
-                                id={`export-json-${st.id}`}
-                                onClick={() => handleExportStateJson(st)}
-                                title="Copy state configuration as JSON to clipboard"
-                                className="p-1.5 rounded-lg border border-inherit opacity-70 hover:opacity-100 transition-opacity"
-                              >
-                                {copiedNotification === st.id ? (
-                                  <Check className="w-3.5 h-3.5 text-emerald-500" />
-                                ) : (
-                                  <Copy className="w-3.5 h-3.5" />
-                                )}
-                              </button>
-                              <button
-                                id={`delete-state-${st.id}`}
-                                onClick={() => handleDeleteState(st.id, st.name)}
-                                title="Delete saved state"
-                                className="p-1.5 rounded-lg border border-inherit text-red-500 opacity-70 hover:opacity-100 transition-opacity"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" />
-                              </button>
-                            </div>
+                            <button
+                              id={`export-json-${st.id}`}
+                              onClick={() => handleExportStateJson(st)}
+                              title="Copy JSON"
+                              className="p-1 rounded border border-inherit opacity-70 hover:opacity-100 transition-opacity"
+                            >
+                              {copiedNotification === st.id ? (
+                                <Check className="w-3 h-3 text-emerald-500" />
+                              ) : (
+                                <Copy className="w-3 h-3" />
+                              )}
+                            </button>
+                            <button
+                              id={`delete-state-${st.id}`}
+                              onClick={() => handleDeleteState(st.id, st.name)}
+                              title="Delete state"
+                              className="p-1 rounded border border-inherit text-red-500 opacity-70 hover:opacity-100 transition-opacity"
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
                           </div>
                         </div>
                       ))}
