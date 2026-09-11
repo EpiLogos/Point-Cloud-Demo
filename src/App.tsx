@@ -33,13 +33,18 @@ import {
   Orbit,
   Type,
   Maximize2,
+  Link2,
+  Palette,
 } from 'lucide-react';
-import { PointCloudConfig, PointCloudRelationalConfig } from './engine/types';
-import { DEFAULT_CONFIG, PointCloudField } from './engine/PointCloudField';
+import { PointCloudConfig, PointCloudRelationalConfig, ChainTimelineState } from './engine/types';
+import { DEFAULT_CONFIG, PointCloudField, DEFAULT_COLOR_CONFIG } from './engine/PointCloudField';
+import { isLightHex } from './engine/colorPalettes';
 import { PointCloudComponent, PointCloudComponentRef } from './components/PointCloudComponent';
 import { TweakpaneDebug } from './components/TweakpaneDebug';
 import { EditableNumber } from './components/EditableNumber';
 import { CurvedSlider } from './components/CurvedSlider';
+import { ChainingPanel } from './components/ChainingPanel';
+import { ColorSystemPanel } from './components/ColorSystemPanel';
 
 interface Preset {
   id: string;
@@ -333,6 +338,303 @@ const PRESETS: Preset[] = [
       autoMorphDuration: 4.0,
     },
   },
+  {
+    id: 'chain_polygons',
+    name: 'Platonic Polygon Sequence',
+    description: 'Continuous geometric evolution traversing triangle, square, pentagon, hexagon, octagon, and circle',
+    config: {
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.5, max: 3.5 },
+      fluid: {
+        curlScale: 1.6,
+        curlSpeed: 0.9,
+        vortexStrength: 1.8,
+        viscosity: 0.94,
+        returnSpeed: 1.4,
+        turbulence: 1.2,
+        dispersion: 0.8,
+      },
+      interaction: {
+        radius: 200,
+        strength: 1.5,
+        mode: 'vortex',
+      },
+      relational: {
+        enabled: false,
+      },
+      chaining: {
+        enabled: true,
+        chain: ['▲', '■', '⬟', '⬢', '⯎', '◉'],
+        mode: 'loop',
+        stepHoldDuration: 1.2,
+        transitionDuration: 2.2,
+        easing: 'smoothstep',
+        timingJitter: 0.1,
+        disperseImpulse: 0.6,
+        paused: false,
+      },
+      autoMorph: false,
+    },
+  },
+  {
+    id: 'chain_zodiac',
+    name: '12 Zodiac Constellations',
+    description: 'Astronomical transit through the full 12 zodiac symbols with orbital multi-attractor dynamics',
+    config: {
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.2, max: 3.2 },
+      fluid: {
+        curlScale: 1.8,
+        curlSpeed: 1.2,
+        vortexStrength: 2.0,
+        viscosity: 0.95,
+        returnSpeed: 1.5,
+        turbulence: 1.4,
+        dispersion: 0.9,
+      },
+      interaction: {
+        radius: 220,
+        strength: 1.6,
+        mode: 'vortex',
+      },
+      relational: {
+        enabled: true,
+        mode: 'orbital',
+        attractorCount: 3,
+        attractorGravity: 1.4,
+        orbitSpeed: 0.9,
+        orbitRadius: 260,
+        relationalSpin: 1.8,
+        chaosFactor: 0.3,
+        wanderSpeed: 0.8,
+      },
+      chaining: {
+        enabled: true,
+        chain: ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'],
+        mode: 'loop',
+        stepHoldDuration: 1.0,
+        transitionDuration: 2.0,
+        easing: 'kineticSnap',
+        timingJitter: 0.15,
+        disperseImpulse: 0.9,
+        paused: false,
+      },
+      autoMorph: false,
+    },
+  },
+  {
+    id: 'cyberpunk_chroma',
+    name: 'Cyberpunk Neon Wave',
+    description: 'Electric cyan, hot pink and solar amber propagating in diagonal waves with kinetic velocity ignition',
+    config: {
+      glyph: ['Ω', '✦'],
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.5, max: 4.0 },
+      colorMode: 'whiteOnBlack',
+      color: {
+        enabled: true,
+        mode: 'linearGradient',
+        primaryColor: '#00f0ff',
+        secondaryColor: '#ff007f',
+        accentColor: '#ffe600',
+        cycleSpeed: 1.8,
+        waveFrequency: 2.2,
+        angle: 45,
+        fieldCenterOffset: [0, 0],
+        turbulenceModulation: 0.45,
+        speedReactiveIntensity: 1.2,
+        densityWeight: 0.6,
+        hueShiftSpeed: 0.1,
+        contrast: 1.2,
+        paletteId: 'cyberpunk_neon',
+      },
+      fluid: {
+        curlScale: 1.6,
+        curlSpeed: 0.9,
+        vortexStrength: 1.8,
+        viscosity: 0.94,
+        returnSpeed: 1.3,
+        turbulence: 1.2,
+        dispersion: 0.8,
+      },
+      interaction: {
+        radius: 220,
+        strength: 1.6,
+        mode: 'vortex',
+      },
+      relational: {
+        enabled: false,
+      },
+      autoMorph: true,
+      autoMorphDuration: 3.8,
+    },
+  },
+  {
+    id: 'aurora_borealis_spectral',
+    name: 'Aurora Borealis Spectral',
+    description: 'Bioluminescent emerald and cyan curtains rippling with cymatic wave interference across runic chain',
+    config: {
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.2, max: 3.6 },
+      colorMode: 'whiteOnBlack',
+      color: {
+        enabled: true,
+        mode: 'waveInterference',
+        primaryColor: '#00ff87',
+        secondaryColor: '#60efff',
+        accentColor: '#bf55ec',
+        cycleSpeed: 1.4,
+        waveFrequency: 2.6,
+        angle: 120,
+        fieldCenterOffset: [0, -0.2],
+        turbulenceModulation: 0.7,
+        speedReactiveIntensity: 1.5,
+        densityWeight: 0.4,
+        hueShiftSpeed: 0.05,
+        contrast: 1.1,
+        paletteId: 'aurora_borealis',
+      },
+      chaining: {
+        enabled: true,
+        chain: ['᚛', '᚜', 'ᚠ', 'ᚢ', 'ᚦ', 'ᚨ'],
+        mode: 'loop',
+        stepHoldDuration: 1.0,
+        transitionDuration: 2.0,
+        easing: 'smoothstep',
+        timingJitter: 0.1,
+        disperseImpulse: 0.9,
+        paused: false,
+      },
+      fluid: {
+        curlScale: 2.0,
+        curlSpeed: 1.0,
+        vortexStrength: 2.0,
+        viscosity: 0.94,
+        returnSpeed: 1.1,
+        turbulence: 1.4,
+        dispersion: 0.85,
+      },
+      interaction: {
+        radius: 200,
+        strength: 1.4,
+        mode: 'vortex',
+      },
+      relational: {
+        enabled: false,
+      },
+      autoMorph: false,
+    },
+  },
+  {
+    id: 'solar_plasma_thermal',
+    name: 'Solar Corona Thermal',
+    description: 'Incandescent plasma with kinetic velocity ignition and convective rotational sweeps around orbital attractors',
+    config: {
+      glyph: ['☉', '☼'],
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.4, max: 4.2 },
+      colorMode: 'whiteOnBlack',
+      color: {
+        enabled: true,
+        mode: 'velocityThermal',
+        primaryColor: '#ff2200',
+        secondaryColor: '#ff8800',
+        accentColor: '#ffffaa',
+        cycleSpeed: 2.0,
+        waveFrequency: 2.0,
+        angle: 90,
+        fieldCenterOffset: [0, 0],
+        turbulenceModulation: 0.55,
+        speedReactiveIntensity: 2.0,
+        densityWeight: 0.7,
+        hueShiftSpeed: 0.0,
+        contrast: 1.3,
+        paletteId: 'solar_plasma',
+      },
+      fluid: {
+        curlScale: 2.2,
+        curlSpeed: 1.3,
+        vortexStrength: 2.4,
+        viscosity: 0.95,
+        returnSpeed: 1.2,
+        turbulence: 1.8,
+        dispersion: 1.1,
+      },
+      interaction: {
+        radius: 250,
+        strength: 2.0,
+        mode: 'repel',
+      },
+      relational: {
+        enabled: true,
+        mode: 'orbital',
+        attractorCount: 3,
+        attractorGravity: 2.5,
+        orbitSpeed: 1.4,
+        orbitRadius: 260,
+        relationalSpin: 2.0,
+        chaosFactor: 0.3,
+        wanderSpeed: 0.8,
+      },
+      autoMorph: true,
+      autoMorphDuration: 3.5,
+    },
+  },
+  {
+    id: 'editorial_parchment_stipple',
+    name: 'Editorial Parchment & Sumi Ink',
+    description: 'Crisp warm parchment canvas with deep vermilion and sumi ink particles and subtle paper vignette',
+    config: {
+      glyph: ['字', '道'],
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.2, max: 3.8 },
+      colorMode: 'blackOnWhite',
+      backgroundColor: '#f5f0e6',
+      backgroundMode: 'vignette',
+      color: {
+        enabled: true,
+        mode: 'linearGradient',
+        primaryColor: '#c0392b',
+        secondaryColor: '#1c1917',
+        accentColor: '#d35400',
+        cycleSpeed: 0.8,
+        waveFrequency: 1.5,
+        angle: 60,
+        fieldCenterOffset: [0, 0],
+        turbulenceModulation: 0.3,
+        speedReactiveIntensity: 0.6,
+        densityWeight: 0.5,
+        hueShiftSpeed: 0.0,
+        contrast: 1.3,
+        paletteId: 'editorial_vermilion',
+        backgroundColor: '#f5f0e6',
+        backgroundMode: 'vignette',
+        backgroundGlowIntensity: 0.3,
+      },
+      fluid: {
+        curlScale: 1.1,
+        curlSpeed: 0.5,
+        vortexStrength: 1.2,
+        viscosity: 0.95,
+        returnSpeed: 1.4,
+        turbulence: 0.8,
+        dispersion: 0.6,
+      },
+      interaction: {
+        radius: 190,
+        strength: 1.4,
+        mode: 'repel',
+      },
+      autoMorph: true,
+      autoMorphDuration: 3.5,
+    },
+  },
 ];
 
 const GLYPH_PAIRS = [
@@ -392,7 +694,8 @@ export default function App() {
   });
   const [showCodeModal, setShowCodeModal] = useState<boolean>(false);
   const [showControlsDrawer, setShowControlsDrawer] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'presets' | 'relational' | 'fluid' | 'particle' | 'interaction' | 'saved'>('presets');
+  const [activeTab, setActiveTab] = useState<'presets' | 'color' | 'chaining' | 'relational' | 'fluid' | 'particle' | 'interaction' | 'saved'>('presets');
+  const [chainTimelineState, setChainTimelineState] = useState<ChainTimelineState | null>(null);
 
   // Saved States system
   const [savedStates, setSavedStates] = useState<SavedState[]>(() => {
@@ -510,6 +813,10 @@ export default function App() {
         fluid: { ...prev.fluid, ...(parsed.fluid || {}) },
         interaction: { ...prev.interaction, ...(parsed.interaction || {}) },
         relational: { ...prev.relational, ...(parsed.relational || {}) },
+        chaining: {
+          ...(prev.chaining || DEFAULT_CONFIG.chaining!),
+          ...(parsed.chaining || {}),
+        },
       }));
       setShowImportModal(false);
       setImportJsonText('');
@@ -534,15 +841,28 @@ export default function App() {
       fluid: { ...prev.fluid, ...preset.config.fluid },
       interaction: { ...prev.interaction, ...preset.config.interaction },
       relational: { ...prev.relational, ...preset.config.relational },
+      chaining: {
+        ...(prev.chaining || DEFAULT_CONFIG.chaining!),
+        ...(preset.config.chaining || {}),
+      },
     }));
   };
 
   // Toggle color mode
   const toggleColorMode = () => {
-    setConfig((prev) => ({
-      ...prev,
-      colorMode: prev.colorMode === 'blackOnWhite' ? 'whiteOnBlack' : 'blackOnWhite',
-    }));
+    setConfig((prev) => {
+      const nextMode = prev.colorMode === 'blackOnWhite' ? 'whiteOnBlack' : 'blackOnWhite';
+      const nextBg = nextMode === 'blackOnWhite' ? '#fafaf9' : '#09090b';
+      return {
+        ...prev,
+        colorMode: nextMode,
+        backgroundColor: nextBg,
+        color: {
+          ...(prev.color || DEFAULT_COLOR_CONFIG),
+          backgroundColor: nextBg,
+        },
+      };
+    });
   };
 
   // Toggle style
@@ -594,7 +914,12 @@ export default function App() {
     triggerToast(`Baking point cloud glyph for "${text}"`);
   };
 
-  const isLight = config.colorMode === 'blackOnWhite';
+  const activeBgColor =
+    config.backgroundColor ||
+    config.color?.backgroundColor ||
+    (config.colorMode === 'blackOnWhite' ? '#fafaf9' : '#09090b');
+
+  const isLight = isLightHex(activeBgColor);
 
   // Derived glyph display names
   const glyphDisplay = useMemo(() => {
@@ -615,14 +940,19 @@ export default function App() {
         }
       }}
       className={`relative w-screen h-screen overflow-hidden font-sans transition-colors duration-500 select-none ${
-        isLight ? 'bg-[#fafaf9] text-[#1c1917]' : 'bg-[#09090b] text-[#f4f4f5]'
+        isLight ? 'text-[#1c1917]' : 'text-[#f4f4f5]'
       }`}
+      style={{
+        backgroundColor: activeBgColor,
+        transition: 'background-color 0.4s ease-out',
+      }}
     >
       {/* 1. Fullscreen WebGL Point Cloud Engine Canvas */}
       <PointCloudComponent
         ref={compRef}
         {...config}
         onEngineReady={handleEngineReady}
+        onChainUpdate={setChainTimelineState}
         positioning="absolute"
         className="w-full h-full inset-0 z-0"
       />
@@ -754,6 +1084,73 @@ export default function App() {
             </span>
           </button>
 
+          {/* Chaining Mode Active Badge / Quick Toggle */}
+          <button
+            id="quick-toggle-chaining-btn"
+            onClick={() =>
+              setConfig((prev) => ({
+                ...prev,
+                chaining: {
+                  ...(prev.chaining || DEFAULT_CONFIG.chaining!),
+                  enabled: !prev.chaining?.enabled,
+                },
+              }))
+            }
+            title={
+              config.chaining?.enabled
+                ? 'Chaining Mode: ACTIVE (Click to Disable)'
+                : 'Chaining Mode: OFF (Click to Enable multi-glyph sequence chaining)'
+            }
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase rounded-lg border transition-all ${
+              config.chaining?.enabled
+                ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-500 font-semibold shadow-xs'
+                : isLight
+                ? 'bg-white/80 border-stone-200 text-stone-600 hover:bg-stone-100 shadow-xs'
+                : 'bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:bg-zinc-800 shadow-xs'
+            }`}
+          >
+            <Link2 className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">
+              {config.chaining?.enabled ? 'Chaining ON' : 'Chaining'}
+            </span>
+          </button>
+
+          {/* Quick Color System Toggle */}
+          <button
+            id="quick-toggle-color-btn"
+            onClick={() => {
+              const willEnable = !config.color?.enabled;
+              setConfig((prev) => ({
+                ...prev,
+                color: {
+                  ...(prev.color || DEFAULT_COLOR_CONFIG),
+                  enabled: willEnable,
+                },
+              }));
+              if (willEnable) {
+                setActiveTab('color');
+                setShowControlsDrawer(true);
+              }
+            }}
+            title={
+              config.color?.enabled
+                ? 'Color System: ACTIVE (Click to toggle)'
+                : 'Color System: OFF (Click to enable full procedural color field)'
+            }
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase rounded-lg border transition-all ${
+              config.color?.enabled
+                ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-500 font-semibold shadow-xs'
+                : isLight
+                ? 'bg-white/80 border-stone-200 text-stone-600 hover:bg-stone-100 shadow-xs'
+                : 'bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:bg-zinc-800 shadow-xs'
+            }`}
+          >
+            <Palette className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">
+              {config.color?.enabled ? 'Color ON' : 'Color'}
+            </span>
+          </button>
+
           {/* Style Mode Toggle */}
           <button
             id="toggle-style-btn"
@@ -791,7 +1188,7 @@ export default function App() {
           <button
             id="toggle-color-mode-btn"
             onClick={toggleColorMode}
-            title="Toggle Monochrome Color Mode"
+            title={isLight ? 'Switch to Dark Mode (#09090b)' : 'Switch to Light Mode (#fafaf9)'}
             className={`p-2 text-xs rounded-lg border transition-all ${
               isLight
                 ? 'bg-white/80 border-stone-200 text-stone-800 hover:bg-stone-100 shadow-xs backdrop-blur-md'
@@ -799,6 +1196,35 @@ export default function App() {
             }`}
           >
             {isLight ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
+          </button>
+
+          {/* Quick Canvas Atmosphere Indicator & Shortcut */}
+          <button
+            id="quick-canvas-bg-btn"
+            onClick={() => {
+              setActiveTab('color');
+              setShowControlsDrawer(true);
+            }}
+            title={`Canvas Atmosphere: ${activeBgColor} (${config.backgroundMode || 'ambientGlow'}) - Click to customize atmosphere & back-light`}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-mono uppercase rounded-lg border transition-all ${
+              isLight
+                ? 'bg-white/80 border-stone-200 text-stone-700 hover:bg-stone-100 shadow-xs backdrop-blur-md'
+                : 'bg-zinc-900/80 border-zinc-800 text-zinc-300 hover:bg-zinc-800 shadow-xs backdrop-blur-md'
+            }`}
+          >
+            <span
+              className="w-3 h-3 rounded-full border border-black/20 dark:border-white/30 shrink-0 shadow-xs"
+              style={{ backgroundColor: activeBgColor }}
+            />
+            <span className="hidden md:inline text-[10px]">
+              {config.backgroundMode === 'ambientGlow'
+                ? 'Glow'
+                : config.backgroundMode === 'vignette'
+                ? 'Vignette'
+                : config.backgroundMode === 'adaptive'
+                ? 'Adaptive'
+                : 'Solid'}
+            </span>
           </button>
 
           {/* Vortex Dispersion Burst */}
@@ -901,7 +1327,9 @@ export default function App() {
             <div className="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar flex-1 mr-1">
               {[
                 { id: 'presets', label: 'Presets', icon: Sparkles },
-                { id: 'relational', label: 'Relational', icon: Orbit },
+                { id: 'color', label: 'Color', icon: Palette, badge: config.color?.enabled },
+                { id: 'chaining', label: 'Chaining', icon: Link2, badge: config.chaining?.enabled },
+                { id: 'relational', label: 'Relational', icon: Orbit, badge: config.relational?.enabled },
                 { id: 'fluid', label: 'Fluid', icon: Wind },
                 { id: 'particle', label: 'Particles', icon: Circle },
                 { id: 'interaction', label: 'Pointer', icon: Compass },
@@ -929,6 +1357,9 @@ export default function App() {
                   >
                     <Icon className="w-2.5 h-2.5" />
                     <span>{tab.label}</span>
+                    {tab.badge && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block ml-0.5" />
+                    )}
                   </button>
                 );
               })}
@@ -1163,6 +1594,40 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              )}
+
+              {/* Tab: Full Procedural Color System */}
+              {activeTab === 'color' && (
+                <ColorSystemPanel
+                  config={config}
+                  setConfig={setConfig}
+                  isLight={isLight}
+                />
+              )}
+
+              {/* Tab: Chaining Mode & Multi-Glyph Sequence */}
+              {activeTab === 'chaining' && (
+                <ChainingPanel
+                  config={config}
+                  setConfig={setConfig}
+                  timelineState={chainTimelineState}
+                  onJumpToLink={(idx) => compRef.current?.jumpToChainLink(idx)}
+                  onStepChain={(dir) => compRef.current?.stepChain(dir)}
+                  onTogglePause={() => {
+                    const nextPaused = !config.chaining?.paused;
+                    setConfig((prev) => ({
+                      ...prev,
+                      chaining: {
+                        ...(prev.chaining || DEFAULT_CONFIG.chaining!),
+                        paused: nextPaused,
+                      },
+                    }));
+                    compRef.current?.setChainPaused(nextPaused);
+                  }}
+                  onScrubProgress={(p) => compRef.current?.scrubChainProgress(p)}
+                  onTriggerDisperse={(s) => compRef.current?.triggerDisperse(s)}
+                  isLight={isLight}
+                />
               )}
 
               {/* Tab 2: Free Relational System & Attractors */}

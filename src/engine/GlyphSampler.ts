@@ -20,6 +20,14 @@ export const FALLBACK_FONT_STACK =
 export class GlyphSampler {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
+  private targetCache = new Map<
+    string,
+    {
+      data: Float32Array;
+      center: THREE.Vector2;
+      subCenters: THREE.Vector2[];
+    }
+  >();
 
   constructor() {
     this.canvas = document.createElement('canvas');
@@ -30,6 +38,10 @@ export class GlyphSampler {
       throw new Error('Failed to create offscreen 2D canvas context for glyph rasterization');
     }
     this.ctx = context;
+  }
+
+  public clearCache() {
+    this.targetCache.clear();
   }
 
   /**
@@ -189,6 +201,12 @@ export class GlyphSampler {
     center: THREE.Vector2;
     subCenters: THREE.Vector2[];
   } {
+    const cacheKey = `${glyphText}_${particleCount}_${texWidth}_${texHeight}_${style}_${fontFamily}_${fontWeight}_${worldScale}`;
+    const cached = this.targetCache.get(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
     const { imageData, bbox, center, subCenters } = this.rasterizeGlyph(glyphText, fontFamily, fontWeight);
     const w = this.canvas.width;
     const h = this.canvas.height;
@@ -324,7 +342,9 @@ export class GlyphSampler {
       }
     }
 
-    return { data, center, subCenters };
+    const result = { data, center, subCenters };
+    this.targetCache.set(cacheKey, result);
+    return result;
   }
 
   /**
@@ -426,6 +446,7 @@ export class GlyphSampler {
   }
 
   public destroy() {
+    this.targetCache.clear();
     this.canvas.width = 1;
     this.canvas.height = 1;
   }

@@ -16,16 +16,66 @@ uniform float uPixelRatio;
 uniform vec2 uCanvasSize;
 uniform float uTime;
 
+// Color System Uniforms
+uniform float uColorEnabled;       // 0.0 = classic monochrome, 1.0 = procedural color field
+uniform float uColorDistMode;      // 0 = mono, 1 = linear, 2 = radial, 3 = angular, 4 = velocity, 5 = density, 6 = interference, 7 = rainbow
+uniform vec3 uPrimaryColor;
+uniform vec3 uSecondaryColor;
+uniform vec3 uAccentColor;
+uniform float uColorCycleSpeed;
+uniform float uColorWaveFrequency;
+uniform float uColorAngle;         // In radians
+uniform vec2 uColorCenter;
+uniform float uColorTurbulence;
+uniform float uColorSpeedReactive;
+uniform float uColorDensityWeight;
+uniform float uColorHueShift;
+uniform float uColorContrast;
+
 varying vec2 vSimUv;
 varying float vDensity;
 varying float vSpeed;
 varying float vJitter;
+varying vec3 vColor;
 
 // High-speed pseudo-random generator
 float hash(vec2 p) {
   p = fract(p * vec2(123.34, 456.21));
   p += dot(p, p + 45.32);
   return fract(p.x * p.y);
+}
+
+// RGB to HSV conversion for smooth chromatic rotation
+vec3 rgb2hsv(vec3 c) {
+  vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+  vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+  vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+  float d = q.x - min(q.w, q.y);
+  float e = 1.0e-10;
+  return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+// HSV to RGB conversion
+vec3 hsv2rgb(vec3 c) {
+  vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+  vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+  return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+// 3-stop smooth gradient ramp evaluator
+vec3 evalColorRamp(float t, vec3 c1, vec3 c2, vec3 c3, float contrast) {
+  float ct = clamp(t, 0.0, 1.0);
+  if (contrast != 1.0 && contrast > 0.0) {
+    ct = pow(ct, contrast);
+  }
+
+  if (ct < 0.5) {
+    float u = smoothstep(0.0, 0.5, ct);
+    return mix(c1, c3, u);
+  } else {
+    float u = smoothstep(0.5, 1.0, ct);
+    return mix(c3, c2, u);
+  }
 }
 
 void main() {
@@ -37,7 +87,7 @@ void main() {
 
   vec3 pos = posData.xyz;
   float density = posData.w; // 0.0 (scatter perimeter) to 1.0 (dense stroke core)
-  float speed = velData.w;   // local velocity magnitude
+  float speed = velData.w;   // Local velocity magnitude
 
   vDensity = density;
   vSpeed = speed;
@@ -50,26 +100,102 @@ void main() {
   float baseSize;
   if (uStyleMode > 0.5) {
     // Ordered Halftone mode:
-    // Dot radius scales directly with local target darkness/density, creating true raster halftone
     float halftoneT = pow(density, 1.25);
     baseSize = mix(uMinParticleSize * 0.4, uMaxParticleSize, halftoneT);
-
-    // Speed dispersion causes subtle dot disintegration
     baseSize *= clamp(1.0 - speed * 0.0015, 0.35, 1.2);
   } else {
     // Stochastic Stipple mode:
-    // Emulates fine ink-jet / risograph spray with random jittered sizes
     float sizeJitter = mix(0.7, 1.35, rnd);
     float densityWeight = mix(0.5, 1.15, density);
     baseSize = mix(uMinParticleSize, uMaxParticleSize, rnd * 0.8 + density * 0.2) * sizeJitter * densityWeight;
-
-    // Fast moving dispersion particles stretch/shrink into fine aerosol spray
     baseSize = mix(baseSize, uMinParticleSize * 0.8, clamp(speed * 0.002, 0.0, 0.7));
   }
 
-  // Orthographic / view space point size scaling
-  gl_PointSize = max(1.0, baseSize * uPixelRatio);
+  // --- Procedural Field Color Evaluation ---
+  if (uColorEnabled > 0.5) {
+    // Center-offset particle coordinates in glyph space
+    vec2 p = pos.xy - uColorCenter;
 
+    // Organic turbulence modulation: curl noise and local speed swirl the color coordinates
+    if (uColorTurbulence > 0.01) {
+      float warp = ((rnd - 0.5) * 40.0 + speed * 0.1) * uColorTurbulence;
+      p += vec2(sin(pos.y * 0.015 + uTime * 0.8), cos(pos.x * 0.015 + uTime * 0.8)) * warp;
+    }
+
+    vec3 col = uPrimaryColor;
+    int mode = int(uColorDistMode + 0.5);
+
+    if (mode == 0) {
+      // Monochrome Tint
+      col = uPrimaryColor;
+    } else if (mode == 1) {
+      // Linear Planar Wave Gradient
+      vec2 dir = vec2(cos(uColorAngle), sin(uColorAngle));
+      float proj = dot(p, dir);
+      float phase = proj * (uColorWaveFrequency * 0.0035) + uTime * uColorCycleSpeed;
+      float t = 0.5 + 0.5 * sin(phase);
+      col = evalColorRamp(t, uPrimaryColor, uSecondaryColor, uAccentColor, uColorContrast);
+    } else if (mode == 2) {
+      // Concentric Radial Ring Waves
+      float dist = length(p);
+      float phase = dist * (uColorWaveFrequency * 0.0055) - uTime * uColorCycleSpeed;
+      float t = 0.5 + 0.5 * cos(phase);
+      col = evalColorRamp(t, uPrimaryColor, uSecondaryColor, uAccentColor, uColorContrast);
+    } else if (mode == 3) {
+      // Conic Angular Sweep
+      float ang = atan(p.y, p.x);
+      float normAng = (ang / 6.2831853) + 0.5;
+      float phase = fract(normAng * max(1.0, floor(uColorWaveFrequency + 0.5)) + uTime * uColorCycleSpeed * 0.15);
+      col = evalColorRamp(phase, uPrimaryColor, uSecondaryColor, uAccentColor, uColorContrast);
+    } else if (mode == 4) {
+      // Kinetic Velocity Thermal Spectrum
+      float normSpeed = clamp(speed * 0.0035 * (1.0 + uColorSpeedReactive), 0.0, 1.0);
+      float t = pow(normSpeed, max(0.2, 1.2 - uColorSpeedReactive * 0.4));
+      col = evalColorRamp(t, uPrimaryColor, uSecondaryColor, uAccentColor, uColorContrast);
+    } else if (mode == 5) {
+      // Density Core vs Peripheral Spray Depth
+      float t = clamp(density * (1.0 + uColorDensityWeight * 0.5), 0.0, 1.0);
+      col = evalColorRamp(t, uSecondaryColor, uPrimaryColor, uAccentColor, uColorContrast);
+    } else if (mode == 6) {
+      // Dual Orthogonal Standing Wave Cymatic Interference
+      float k = uColorWaveFrequency * 0.004;
+      float w1 = sin((p.x * cos(uColorAngle) + p.y * sin(uColorAngle)) * k + uTime * uColorCycleSpeed);
+      float w2 = cos((-p.x * sin(uColorAngle) + p.y * cos(uColorAngle)) * k + uTime * uColorCycleSpeed * 1.33);
+      float t = 0.5 + 0.25 * w1 + 0.25 * w2;
+      col = evalColorRamp(t, uPrimaryColor, uSecondaryColor, uAccentColor, uColorContrast);
+    } else if (mode == 7) {
+      // Prismatic Rainbow Iridescence
+      float k = uColorWaveFrequency * 0.0028;
+      float phase = fract(dot(p, vec2(cos(uColorAngle), sin(uColorAngle))) * k + uTime * uColorCycleSpeed * 0.25 + density * 0.2);
+      vec3 spectral = hsv2rgb(vec3(phase, 0.88, 0.95));
+      col = mix(spectral, uPrimaryColor, 0.12);
+    }
+
+    // Dynamic Kinetic Velocity Boost
+    if (uColorSpeedReactive > 0.05) {
+      float boost = clamp(speed * 0.002 * uColorSpeedReactive, 0.0, 0.65);
+      col = mix(col, uAccentColor + vec3(0.2), boost);
+    }
+
+    // Density Weighting (stroke core saturation vs mist)
+    if (uColorDensityWeight > 0.05) {
+      col *= mix(0.72, 1.28, pow(density, 0.85) * uColorDensityWeight);
+    }
+
+    // Continuous Temporal Hue Rotation
+    if (abs(uColorHueShift) > 0.001) {
+      vec3 hsv = rgb2hsv(col);
+      hsv.x = fract(hsv.x + uColorHueShift);
+      col = hsv2rgb(hsv);
+    }
+
+    vColor = col;
+  } else {
+    vColor = vec3(1.0);
+  }
+
+  // Orthographic point size scaling
+  gl_PointSize = max(1.0, baseSize * uPixelRatio);
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }
 `;
@@ -78,15 +204,17 @@ export const particleFragmentShader = /* glsl */ `
 precision highp float;
 
 uniform vec3 uParticleColor;
-uniform float uColorMode; // 0 = black on white, 1 = white on black
-uniform float uDotShape;  // 0 = circle, 1 = square
-uniform float uStyleMode; // 0 = stipple, 1 = halftone
+uniform float uColorMode;    // 0 = black on white, 1 = white on black
+uniform float uColorEnabled; // 0 = classic monochrome, 1 = procedural color field
+uniform float uDotShape;     // 0 = circle, 1 = square
+uniform float uStyleMode;    // 0 = stipple, 1 = halftone
 uniform float uContrast;
 
 varying vec2 vSimUv;
 varying float vDensity;
 varying float vSpeed;
 varying float vJitter;
+varying vec3 vColor;
 
 void main() {
   vec2 coord = gl_PointCoord - vec2(0.5);
@@ -96,7 +224,6 @@ void main() {
 
   if (uDotShape < 0.5) {
     // High-contrast anti-aliased circular stipple dot
-    // Uses smoothstep over tight fractional pixel radius for razor-sharp stippling
     float delta = fwidth(dist);
     alpha = 1.0 - smoothstep(0.48 - delta * 1.5, 0.50, dist);
   } else {
@@ -114,10 +241,11 @@ void main() {
   // Subtle ink saturation modulation in core vs outer spray
   float inkAlpha = alpha;
   if (uStyleMode < 0.5) {
-    // Stipple spray has tiny variation in opacity like riso ink absorption
     inkAlpha *= mix(0.85, 1.0, vDensity * 0.5 + vJitter * 0.5);
   }
 
-  gl_FragColor = vec4(uParticleColor, inkAlpha);
+  vec3 finalColor = uColorEnabled > 0.5 ? vColor : uParticleColor;
+
+  gl_FragColor = vec4(finalColor, inkAlpha);
 }
 `;
