@@ -36,15 +36,18 @@ import {
   Link2,
   Palette,
 } from 'lucide-react';
-import { PointCloudConfig, PointCloudRelationalConfig, ChainTimelineState } from './engine/types';
+import { PointCloudConfig, PointCloudRelationalConfig, ChainTimelineState, SpatialChakraTimelineState, CameraOrbState } from './engine/types';
 import { DEFAULT_CONFIG, PointCloudField, DEFAULT_COLOR_CONFIG } from './engine/PointCloudField';
 import { isLightHex } from './engine/colorPalettes';
 import { PointCloudComponent, PointCloudComponentRef } from './components/PointCloudComponent';
+import { CameraOrbControl } from './components/CameraOrbControl';
 import { TweakpaneDebug } from './components/TweakpaneDebug';
 import { EditableNumber } from './components/EditableNumber';
 import { CurvedSlider } from './components/CurvedSlider';
 import { ChainingPanel } from './components/ChainingPanel';
 import { ColorSystemPanel } from './components/ColorSystemPanel';
+import { ChakraPanel } from './components/ChakraPanel';
+import { createDefaultChakraConfig, CANONICAL_CHAKRAS } from './engine/chakraSystem';
 
 interface Preset {
   id: string;
@@ -635,11 +638,97 @@ const PRESETS: Preset[] = [
       autoMorphDuration: 3.5,
     },
   },
+  {
+    id: 'chakral_body_constellation',
+    name: 'Chakral Body — 7 Subtle Centers Constellation',
+    description: 'Spatial constellation of all 7 chakras positioned along the vertical spine with localized attractor vortices and spectral colors',
+    config: {
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.2, max: 3.6 },
+      colorMode: 'whiteOnBlack',
+      fluid: {
+        curlScale: 1.4,
+        curlSpeed: 0.6,
+        vortexStrength: 1.6,
+        viscosity: 0.95,
+        returnSpeed: 1.3,
+        turbulence: 0.9,
+        dispersion: 0.6,
+      },
+      spatialChakra: {
+        enabled: true,
+        playbackMode: 'simultaneousBody',
+        glyphType: 'both',
+        cycleDirection: 'ascent',
+        holdDuration: 1.2,
+        transitionDuration: 2.4,
+        attractorInfluence: 1.8,
+        particlePartitionSpread: 0.9,
+        nodes: CANONICAL_CHAKRAS.map((c) => ({ ...c })),
+      },
+      color: {
+        enabled: true,
+        mode: 'linearGradient',
+        primaryColor: '#ff1744',
+        secondaryColor: '#00e676',
+        accentColor: '#b388ff',
+        cycleSpeed: 0.8,
+        waveFrequency: 1.5,
+        angle: 90,
+        fieldCenterOffset: [0, 0],
+        turbulenceModulation: 0.3,
+        speedReactiveIntensity: 1.0,
+        densityWeight: 0.5,
+        hueShiftSpeed: 0.05,
+        contrast: 1.2,
+        backgroundColor: '#0a0515',
+        backgroundMode: 'ambientGlow',
+        backgroundGlowIntensity: 0.4,
+      },
+      autoMorph: false,
+    },
+  },
+  {
+    id: 'kundalini_spinal_ascent',
+    name: 'Kundalini Ascent — Sequential Spine Transit',
+    description: 'Energetic Kundalini ascent: particles dynamically morph both shape and spatial position climbing from root chakra to crown lotus',
+    config: {
+      style: 'stipple',
+      dotShape: 'circle',
+      particleSize: { min: 1.4, max: 4.0 },
+      fluid: {
+        curlScale: 1.8,
+        curlSpeed: 0.9,
+        vortexStrength: 2.2,
+        viscosity: 0.94,
+        returnSpeed: 1.4,
+        turbulence: 1.2,
+        dispersion: 0.8,
+      },
+      spatialChakra: {
+        enabled: true,
+        playbackMode: 'sequentialMorph',
+        glyphType: 'both',
+        cycleDirection: 'ascent',
+        holdDuration: 1.4,
+        transitionDuration: 2.6,
+        attractorInfluence: 2.2,
+        particlePartitionSpread: 0.85,
+        nodes: CANONICAL_CHAKRAS.map((c) => ({ ...c })),
+      },
+      autoMorph: false,
+    },
+  },
 ];
 
 const GLYPH_PAIRS = [
   { label: 'O ⇄ I', val: ['O', 'I'] },
   { label: '✦ ⇄ ✧', val: ['✦', '✧'] },
+  { label: 'ॐ ⇄ 🪷', val: ['ॐ', '🪷'] },
+  { label: 'लं ⇄ ॐ', val: ['लं', 'ॐ'] },
+  { label: 'यं ⇄ ॐ', val: ['यं', 'ॐ'] },
+  { label: '☸ ⇄ ॐ', val: ['☸', 'ॐ'] },
   { label: '∞ ⇄ 8', val: ['∞', '8'] },
   { label: 'Ω ⇄ A', val: ['Ω', 'A'] },
   { label: '& ⇄ @', val: ['&', '@'] },
@@ -649,6 +738,10 @@ const GLYPH_PAIRS = [
 ];
 
 const SPECIAL_CHAR_CATEGORIES = [
+  {
+    name: 'Chakra & Sacred Mantras',
+    chars: ['ॐ', 'हं', 'यं', 'रं', 'वं', 'लं', '☸', '𑖌𑖼', '🪷', '✡', '🔻', '☽', '■', '👁️', '⚡', '☀️', '🌕', '🌟'],
+  },
   {
     name: 'Cosmic & Occult',
     chars: ['✦', '✧', '★', '✶', '✹', '❂', '☽', '☾', '☉', '☯', '▲', '△', '◊'],
@@ -694,8 +787,10 @@ export default function App() {
   });
   const [showCodeModal, setShowCodeModal] = useState<boolean>(false);
   const [showControlsDrawer, setShowControlsDrawer] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'presets' | 'color' | 'chaining' | 'relational' | 'fluid' | 'particle' | 'interaction' | 'saved'>('presets');
+  const [activeTab, setActiveTab] = useState<'presets' | 'chakra' | 'color' | 'chaining' | 'relational' | 'fluid' | 'particle' | 'interaction' | 'saved'>('presets');
   const [chainTimelineState, setChainTimelineState] = useState<ChainTimelineState | null>(null);
+  const [chakraTimelineState, setChakraTimelineState] = useState<SpatialChakraTimelineState | null>(null);
+  const [cameraState, setCameraState] = useState<CameraOrbState | null>(null);
 
   // Saved States system
   const [savedStates, setSavedStates] = useState<SavedState[]>(() => {
@@ -953,9 +1048,24 @@ export default function App() {
         {...config}
         onEngineReady={handleEngineReady}
         onChainUpdate={setChainTimelineState}
+        onChakraUpdate={setChakraTimelineState}
+        onCameraChange={setCameraState}
         positioning="absolute"
         className="w-full h-full inset-0 z-0"
       />
+
+      {/* 3D Camera Gimbal & Orbit Control */}
+      {config.spatialChakra?.enabled && (
+        <CameraOrbControl
+          cameraState={cameraState}
+          onSetOrbit={(pitch, yaw) => compRef.current?.setCameraOrbit(pitch, yaw)}
+          onSetPan={(panX, panY) => compRef.current?.setCameraPan(panX, panY)}
+          onSetZoom={(zoom) => compRef.current?.setCameraZoom(zoom)}
+          onReset={(preset) => compRef.current?.resetCamera(preset)}
+          isLight={isLight}
+          isUIHidden={isUIHidden}
+        />
+      )}
 
       {/* Discreet Toast Notification */}
       {showToast && (
@@ -1112,6 +1222,42 @@ export default function App() {
             <Link2 className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">
               {config.chaining?.enabled ? 'Chaining ON' : 'Chaining'}
+            </span>
+          </button>
+
+          {/* Quick Chakra Body Toggle */}
+          <button
+            id="quick-toggle-chakra-btn"
+            onClick={() => {
+              const willEnable = !config.spatialChakra?.enabled;
+              setConfig((prev) => ({
+                ...prev,
+                spatialChakra: {
+                  ...(prev.spatialChakra || createDefaultChakraConfig()),
+                  enabled: willEnable,
+                },
+              }));
+              if (willEnable) {
+                setActiveTab('chakra');
+                setShowControlsDrawer(true);
+              }
+            }}
+            title={
+              config.spatialChakra?.enabled
+                ? 'Chakral Body System: ACTIVE (Click to Disable)'
+                : 'Chakral Body System: OFF (Click to Enable 7-Center Spatial Morphing)'
+            }
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono uppercase rounded-lg border transition-all ${
+              config.spatialChakra?.enabled
+                ? 'bg-purple-500/20 border-purple-500/60 text-purple-400 font-semibold shadow-xs'
+                : isLight
+                ? 'bg-white/80 border-stone-200 text-stone-600 hover:bg-stone-100 shadow-xs'
+                : 'bg-zinc-900/80 border-zinc-800 text-zinc-400 hover:bg-zinc-800 shadow-xs'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <span className="hidden sm:inline">
+              {config.spatialChakra?.enabled ? 'Chakra ON' : 'Chakra'}
             </span>
           </button>
 
@@ -1327,6 +1473,7 @@ export default function App() {
             <div className="flex items-center gap-1 overflow-x-auto py-0.5 no-scrollbar flex-1 mr-1">
               {[
                 { id: 'presets', label: 'Presets', icon: Sparkles },
+                { id: 'chakra', label: 'Chakra', icon: Flame, badge: config.spatialChakra?.enabled },
                 { id: 'color', label: 'Color', icon: Palette, badge: config.color?.enabled },
                 { id: 'chaining', label: 'Chaining', icon: Link2, badge: config.chaining?.enabled },
                 { id: 'relational', label: 'Relational', icon: Orbit, badge: config.relational?.enabled },
@@ -1594,6 +1741,18 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              )}
+
+              {/* Tab: Spatial Chakral Body & Kundalini Transit */}
+              {activeTab === 'chakra' && (
+                <ChakraPanel
+                  config={config}
+                  setConfig={setConfig}
+                  timelineState={chakraTimelineState}
+                  onJumpToNode={(idx) => compRef.current?.jumpToChakraNode(idx)}
+                  onStepNode={(dir) => compRef.current?.stepChakra(dir)}
+                  isLight={isLight}
+                />
               )}
 
               {/* Tab: Full Procedural Color System */}

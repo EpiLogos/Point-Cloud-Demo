@@ -15,6 +15,7 @@ uniform float uStyleMode; // 0 = stipple, 1 = halftone
 uniform float uPixelRatio;
 uniform vec2 uCanvasSize;
 uniform float uTime;
+uniform float uColorMode; // 0 = black on white (light), 1 = white on black (dark)
 
 // Color System Uniforms
 uniform float uColorEnabled;       // 0.0 = classic monochrome, 1.0 = procedural color field
@@ -31,6 +32,11 @@ uniform float uColorSpeedReactive;
 uniform float uColorDensityWeight;
 uniform float uColorHueShift;
 uniform float uColorContrast;
+
+// Spatial Chakra Body System Uniforms
+uniform float uChakraMode;         // 0.0 = off, 1.0 = sequential Kundalini, 2.0 = simultaneous constellation
+uniform int uChakraNodeCount;      // Number of active placed nodes (up to 10)
+uniform vec3 uChakraColors[10];    // Signature color per placed chakra node
 
 varying vec2 vSimUv;
 varying float vDensity;
@@ -190,6 +196,29 @@ void main() {
     }
 
     vColor = col;
+  } else if (uChakraMode > 1.5) {
+    // Simultaneous Chakra Constellation Body: Radiant sacred yantra illumination
+    baseSize *= 1.05;
+    int nodeIdx = int(clamp(floor(uv.y * float(uChakraNodeCount)), 0.0, float(uChakraNodeCount - 1)));
+    vec3 chakraCol = uChakraColors[nodeIdx];
+    float chakraPulse = 1.05 + 0.18 * sin(uTime * 2.8 + float(nodeIdx) * 0.9);
+
+    if (uColorMode > 0.5) {
+      // Dark canvas: vibrant, hyper-saturated neon glow with crystalline highlight
+      vec3 brightCore = chakraCol * 1.35 + vec3(0.12);
+      vColor = mix(chakraCol * 1.15, brightCore, density * 0.55) * chakraPulse;
+    } else {
+      // Light canvas: saturated deep rich jewel tones for crisp contrast
+      vColor = mix(chakraCol * 0.85, chakraCol, density * 0.45);
+    }
+  } else if (uChakraMode > 0.5) {
+    // Sequential Kundalini Morph: Direct vibrant chakra transition color
+    if (uColorMode > 0.5) {
+      vec3 brightCore = uPrimaryColor * 1.35 + vec3(0.12);
+      vColor = mix(uPrimaryColor * 1.15, brightCore, density * 0.55) * 1.12;
+    } else {
+      vColor = mix(uPrimaryColor * 0.85, uPrimaryColor, density * 0.45);
+    }
   } else {
     vColor = vec3(1.0);
   }
@@ -206,6 +235,7 @@ precision highp float;
 uniform vec3 uParticleColor;
 uniform float uColorMode;    // 0 = black on white, 1 = white on black
 uniform float uColorEnabled; // 0 = classic monochrome, 1 = procedural color field
+uniform float uChakraMode;   // 0 = off, >0 = chakra chromatic illumination
 uniform float uDotShape;     // 0 = circle, 1 = square
 uniform float uStyleMode;    // 0 = stipple, 1 = halftone
 uniform float uContrast;
@@ -244,7 +274,7 @@ void main() {
     inkAlpha *= mix(0.85, 1.0, vDensity * 0.5 + vJitter * 0.5);
   }
 
-  vec3 finalColor = uColorEnabled > 0.5 ? vColor : uParticleColor;
+  vec3 finalColor = (uColorEnabled > 0.5 || uChakraMode > 0.5) ? vColor : uParticleColor;
 
   gl_FragColor = vec4(finalColor, inkAlpha);
 }

@@ -192,9 +192,48 @@ export const GLYPH_CATEGORIES: GlyphCategory[] = [
       { char: '¶', name: 'Pilcrow', category: 'greek' },
     ],
   },
+  {
+    id: 'chakras',
+    name: 'Chakras & Sacred Bija Syllables',
+    description: 'Canonical Sanskrit seed mantras and tantric sacred symbols for the 7 primary subtle centers',
+    items: [
+      { char: 'ॐ', name: 'AUM / Crown & Ajna Cosmic Monad', category: 'chakras' },
+      { char: 'हं', name: 'HAM / Vishuddha Throat Mantra', category: 'chakras' },
+      { char: 'यं', name: 'YAM / Anahata Heart Mantra', category: 'chakras' },
+      { char: 'रं', name: 'RAM / Manipura Solar Plexus Mantra', category: 'chakras' },
+      { char: 'वं', name: 'VAM / Svadhisthana Sacral Mantra', category: 'chakras' },
+      { char: 'लं', name: 'LAM / Muladhara Root Mantra', category: 'chakras' },
+      { char: '☸', name: 'Dharmachakra / 1000-Petal Sahasrara Wheel', category: 'chakras' },
+      { char: '🪷', name: 'Lotus of the Heart (Padma)', category: 'chakras' },
+      { char: '✡', name: 'Anahata Star Hexagram (Air Yantra)', category: 'chakras' },
+      { char: '🔻', name: 'Manipura Downward Fire Triangle', category: 'chakras' },
+      { char: '☽', name: 'Svadhisthana Crescent Moon (Water)', category: 'chakras' },
+      { char: '■', name: 'Muladhara Golden Earth Square', category: 'chakras' },
+      { char: '👁️', name: 'Ajna Divine Third Eye of Wisdom', category: 'chakras' },
+      { char: '⚡', name: 'Kundalini Awakening Surge', category: 'chakras' },
+    ],
+  },
 ];
 
 export const CHAIN_PRESETS: ChainPreset[] = [
+  {
+    id: 'chakra_kundalini_ascent',
+    name: 'Kundalini Chakra Ascent (Root ➔ Crown)',
+    description: 'Energetic spinal transit from Muladhara (लं) up through all 7 centers to Sahasrara (ॐ)',
+    chain: ['लं', 'वं', 'रं', 'यं', 'हं', 'ॐ', '☸'],
+    recommendedHold: 1.2,
+    recommendedTransition: 2.4,
+    recommendedEasing: 'smoothstep',
+  },
+  {
+    id: 'chakra_sacred_yantras',
+    name: 'Sacred Chakra Yantra Geometry',
+    description: 'Geometric yantra progression: Square (Earth) ➔ Crescent ➔ Triangle (Fire) ➔ Hexagram (Air) ➔ Circle (Ether) ➔ Two Petals ➔ Lotus',
+    chain: ['■', '☽', '🔻', '✡', '◯', '◉', '☸'],
+    recommendedHold: 1.0,
+    recommendedTransition: 2.2,
+    recommendedEasing: 'kineticSnap',
+  },
   {
     id: 'platonic_polygons',
     name: 'Platonic Polygon Progression',

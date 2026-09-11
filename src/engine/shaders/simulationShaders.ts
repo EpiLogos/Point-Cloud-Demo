@@ -20,6 +20,8 @@ precision highp float;
 uniform sampler2D uPositionTexture;
 uniform sampler2D uVelocityTexture;
 uniform float uDelta;
+uniform float uChakraMode;
+uniform float uChakraPlane;
 
 varying vec2 vUv;
 
@@ -33,8 +35,11 @@ void main() {
   // Integrate position
   pos += vel * uDelta;
 
-  // Mild z-plane dampening to preserve typography clarity in the view plane
-  pos.z *= 0.98;
+  // Mild z-plane dampening only in 2D planar mode to preserve typography clarity
+  // In 3D horizontal chakra mode, Z is the horizontal depth coordinate, so do NOT squash Z
+  if (uChakraMode < 0.5 || uChakraPlane > 0.5) {
+    pos.z *= 0.98;
+  }
 
   gl_FragColor = vec4(pos, posData.w); // posData.w holds density/particle metadata
 }
@@ -68,11 +73,19 @@ uniform float uStyleMode; // 0 = stipple, 1 = halftone
 // Free Relational System & Multi-Attractor Orbits
 uniform float uRelationalEnabled;
 uniform int uAttractorCount;
-uniform vec4 uAttractors[6];      // xyz = center coords, w = relative mass
-uniform float uAttractorSpin[6];  // angular momentum/vorticity per pole
+uniform vec4 uAttractors[10];      // xyz = center coords, w = relative mass
+uniform float uAttractorSpin[10];  // angular momentum/vorticity per pole
 uniform float uRelationalGravity; // gravitational pull strength
 uniform float uRelationalSpin;    // orbital tangential swirl force
 uniform float uChaosFactor;       // strange attractor turbulence
+
+// Dedicated Per-Chakra Multi-Vortex Geometry System
+uniform float uChakraMode;         // 0.0 = off, 1.0 = sequential Kundalini, 2.0 = simultaneous constellation
+uniform int uChakraNodeCount;      // count of active chakra nodes
+uniform vec4 uChakraCenters[10];   // xyz = individual center coordinate, w = node scale
+uniform float uChakraSpins[10];    // individual angular momentum per chakra
+uniform float uChakraPlane;        // 0.0 = horizontal (X-Z plane), 1.0 = vertical (X-Y plane)
+uniform float uChakraVortexStrength; // individual vortex strength multiplier
 
 // Interaction properties
 uniform vec2 uPointerPos;
@@ -114,13 +127,50 @@ void main() {
   vec3 fCurl = curl * (uTurbulence * 85.0 * curlFalloff);
 
   // --- 3. Vorticity & Orbital Swirl Vector ---
-  // Pulls boundary particles in an orbital motion, bridging shapes (e.g. O to I)
-  vec2 rVort = pos.xy - uVortexCenter;
-  float rLen = length(rVort);
-  vec2 vTangent = vec2(-rVort.y, rVort.x) / (rLen + 25.0);
-  float vortRadius = 450.0;
-  float vortFactor = exp(- (rLen * rLen) / (2.0 * vortRadius * vortRadius));
-  vec3 fVortex = vec3(vTangent * (uVortexStrength * 160.0 * vortFactor), 0.0);
+  vec3 fVortex = vec3(0.0);
+
+  if (uChakraMode > 0.5) {
+    // Dedicated Per-Chakra Individual Vortex Center (each geometry has its own vortex center)
+    vec3 cPos;
+    float cSpin;
+    if (uChakraMode > 1.5) {
+      int nodeIdx = int(clamp(floor(vUv.y * float(uChakraNodeCount)), 0.0, float(uChakraNodeCount - 1)));
+      cPos = uChakraCenters[nodeIdx].xyz;
+      cSpin = uChakraSpins[nodeIdx];
+    } else {
+      cPos = mix(uChakraCenters[0].xyz, uChakraCenters[1].xyz, clamp(uMorphProgress, 0.0, 1.0));
+      cSpin = uChakraSpins[0];
+    }
+
+    vec3 toCenter = pos - cPos;
+    float vortexPower = (uChakraVortexStrength > 0.001 ? uChakraVortexStrength : uVortexStrength);
+    float vortRadius = 180.0;
+
+    if (uChakraPlane < 0.5) {
+      // Horizontal Transverse Plane (X-Z plane with Y as vertical spinal axis)
+      // Flat when seen horizontally, with active horizontal swirl around central Bindu
+      float rDist = length(toCenter.xz);
+      vec3 vTan = vec3(-toCenter.z, 0.0, toCenter.x) / (rDist + 15.0);
+      float vortFactor = exp(- (rDist * rDist) / (2.0 * vortRadius * vortRadius));
+      vec3 fInward = -vec3(toCenter.x, 0.0, toCenter.z) / (rDist + 35.0);
+      fVortex = (vTan * (cSpin * 220.0) + fInward * 30.0) * (vortexPower * vortFactor);
+    } else {
+      // Vertical Coronal Plane (X-Y plane with Z normal)
+      float rDist = length(toCenter.xy);
+      vec3 vTan = vec3(-toCenter.y, toCenter.x, 0.0) / (rDist + 15.0);
+      float vortFactor = exp(- (rDist * rDist) / (2.0 * vortRadius * vortRadius));
+      vec3 fInward = -vec3(toCenter.x, toCenter.y, 0.0) / (rDist + 35.0);
+      fVortex = (vTan * (cSpin * 220.0) + fInward * 30.0) * (vortexPower * vortFactor);
+    }
+  } else {
+    // Standard single global vortex for general text/symbols
+    vec2 rVort = pos.xy - uVortexCenter;
+    float rLen = length(rVort);
+    vec2 vTangent = vec2(-rVort.y, rVort.x) / (rLen + 25.0);
+    float vortRadius = 450.0;
+    float vortFactor = exp(- (rLen * rLen) / (2.0 * vortRadius * vortRadius));
+    fVortex = vec3(vTangent * (uVortexStrength * 160.0 * vortFactor), 0.0);
+  }
 
   // --- 4. Inter-Glyph Directional Dispersion ---
   vec3 fDisperse = vec3(0.0);
@@ -136,7 +186,7 @@ void main() {
   // --- 5. Free Relational System: Multi-Attractor Gravity & Orbital Whirlpools ---
   vec3 fRelational = vec3(0.0);
   if (uRelationalEnabled > 0.5) {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 10; i++) {
       if (i >= uAttractorCount) break;
       vec3 aPos = uAttractors[i].xyz;
       float aMass = uAttractors[i].w;

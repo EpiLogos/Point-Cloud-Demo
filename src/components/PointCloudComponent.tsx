@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, useRef, useImperativeHandle, forwardRef, useMemo } from 'react';
-import { PointCloudConfig, ChainTimelineState, BackgroundAtmosphereMode } from '../engine/types';
+import { PointCloudConfig, ChainTimelineState, BackgroundAtmosphereMode, SpatialChakraTimelineState, CameraOrbState } from '../engine/types';
 import { PointCloudField, DEFAULT_CONFIG } from '../engine/PointCloudField';
 import { computeBackgroundCSS } from '../engine/colorPalettes';
 
@@ -16,6 +16,8 @@ export interface PointCloudComponentProps extends Partial<PointCloudConfig> {
   backgroundGlowIntensity?: number;
   onEngineReady?: (engine: PointCloudField) => void;
   onChainUpdate?: (state: ChainTimelineState) => void;
+  onChakraUpdate?: (state: SpatialChakraTimelineState) => void;
+  onCameraChange?: (state: CameraOrbState) => void;
 }
 
 export interface PointCloudComponentRef {
@@ -26,6 +28,13 @@ export interface PointCloudComponentRef {
   stepChain: (direction: 1 | -1) => void;
   setChainPaused: (paused: boolean) => void;
   scrubChainProgress: (progress: number) => void;
+  jumpToChakraNode: (index: number) => void;
+  stepChakra: (direction: 1 | -1) => void;
+  setCameraOrbit: (pitch: number, yaw: number) => void;
+  setCameraPan: (panX: number, panY: number) => void;
+  setCameraZoom: (zoom: number) => void;
+  resetCamera: (preset?: 'perspective' | 'flat' | 'top') => void;
+  getCameraState: () => CameraOrbState | null;
 }
 
 export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloudComponentProps>(
@@ -38,6 +47,8 @@ export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloud
       styleObj,
       onEngineReady,
       onChainUpdate,
+      onChakraUpdate,
+      onCameraChange,
       positioning = 'absolute',
       ...configOverrides
     } = props;
@@ -62,6 +73,27 @@ export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloud
       scrubChainProgress: (progress: number) => {
         engineRef.current?.scrubChainProgress(progress);
       },
+      jumpToChakraNode: (index: number) => {
+        engineRef.current?.jumpToChakraNode(index);
+      },
+      stepChakra: (direction: 1 | -1) => {
+        engineRef.current?.stepChakra(direction);
+      },
+      setCameraOrbit: (pitch: number, yaw: number) => {
+        engineRef.current?.setCameraOrbit(pitch, yaw);
+      },
+      setCameraPan: (panX: number, panY: number) => {
+        engineRef.current?.setCameraPan(panX, panY);
+      },
+      setCameraZoom: (zoom: number) => {
+        engineRef.current?.setCameraZoom(zoom);
+      },
+      resetCamera: (preset?: 'perspective' | 'flat' | 'top') => {
+        engineRef.current?.resetCamera(preset);
+      },
+      getCameraState: () => {
+        return engineRef.current ? engineRef.current.getCameraState() : null;
+      },
     }));
 
     useEffect(() => {
@@ -79,6 +111,12 @@ export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloud
       }
       if (onChainUpdate) {
         engine.setOnChainUpdate(onChainUpdate);
+      }
+      if (onChakraUpdate) {
+        engine.setOnChakraUpdate(onChakraUpdate);
+      }
+      if (onCameraChange) {
+        engine.setOnCameraChange(onCameraChange);
       }
 
       // ResizeObserver to handle fluid container resizing
@@ -103,6 +141,20 @@ export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloud
         engineRef.current.setOnChainUpdate(onChainUpdate);
       }
     }, [onChainUpdate]);
+
+    // Update onChakraUpdate listener if it changes
+    useEffect(() => {
+      if (engineRef.current && onChakraUpdate) {
+        engineRef.current.setOnChakraUpdate(onChakraUpdate);
+      }
+    }, [onChakraUpdate]);
+
+    // Update onCameraChange listener if it changes
+    useEffect(() => {
+      if (engineRef.current && onCameraChange) {
+        engineRef.current.setOnCameraChange(onCameraChange);
+      }
+    }, [onCameraChange]);
 
     // Reactively update config when props change without tearing down the WebGL context
     useEffect(() => {
@@ -169,6 +221,7 @@ export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloud
       props.backgroundGlowIntensity,
       props.autoMorph,
       props.autoMorphDuration,
+      JSON.stringify(props.spatialChakra),
     ]);
 
     const positionClass =

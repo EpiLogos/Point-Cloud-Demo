@@ -90,6 +90,8 @@ export class GPGPUSimulator {
         uPositionTexture: { value: null },
         uVelocityTexture: { value: null },
         uDelta: { value: 0.016 },
+        uChakraMode: { value: 0.0 },
+        uChakraPlane: { value: 0.0 },
       },
       depthTest: false,
       depthWrite: false,
@@ -130,12 +132,37 @@ export class GPGPUSimulator {
             new THREE.Vector4(0, -150, 0, 1.0),
             new THREE.Vector4(100, 100, 0, 1.0),
             new THREE.Vector4(-100, -100, 0, 1.0),
+            new THREE.Vector4(0, 250, 0, 1.0),
+            new THREE.Vector4(0, -250, 0, 1.0),
+            new THREE.Vector4(200, 0, 0, 1.0),
+            new THREE.Vector4(-200, 0, 0, 1.0),
           ],
         },
-        uAttractorSpin: { value: [1.0, -1.0, 1.0, -1.0, 1.0, -1.0] },
+        uAttractorSpin: { value: [1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0] },
         uRelationalGravity: { value: 1.5 },
         uRelationalSpin: { value: 1.2 },
         uChaosFactor: { value: 0.0 },
+
+        // Dedicated Per-Chakra Multi-Vortex System
+        uChakraMode: { value: 0.0 },
+        uChakraNodeCount: { value: 7 },
+        uChakraCenters: {
+          value: [
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+            new THREE.Vector4(0, 0, 0, 1.0),
+          ],
+        },
+        uChakraSpins: { value: [1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0] },
+        uChakraPlane: { value: 0.0 },
+        uChakraVortexStrength: { value: 1.5 },
 
         // Pointer
         uPointerPos: { value: new THREE.Vector2(-99999, -99999) },
@@ -236,6 +263,36 @@ export class GPGPUSimulator {
   }
 
   /**
+   * Updates per-chakra multi-vortex centers, spins, planar orientation, and intensity
+   */
+  public setChakraVortexParams(
+    mode: number,
+    nodeCount: number,
+    centers: THREE.Vector4[],
+    spins: number[],
+    plane: number,
+    vortexStrength: number
+  ) {
+    const vU = this.velMaterial.uniforms;
+    vU.uChakraMode.value = mode;
+    vU.uChakraNodeCount.value = nodeCount;
+    const cU = vU.uChakraCenters.value as THREE.Vector4[];
+    for (let i = 0; i < Math.min(centers.length, cU.length); i++) {
+      cU[i].copy(centers[i]);
+    }
+    const sU = vU.uChakraSpins.value as number[];
+    for (let i = 0; i < Math.min(spins.length, sU.length); i++) {
+      sU[i] = spins[i];
+    }
+    vU.uChakraPlane.value = plane;
+    vU.uChakraVortexStrength.value = vortexStrength;
+
+    const pU = this.posMaterial.uniforms;
+    pU.uChakraMode.value = mode;
+    pU.uChakraPlane.value = plane;
+  }
+
+  /**
    * Advances simulation by dt seconds
    */
   public step(
@@ -266,7 +323,7 @@ export class GPGPUSimulator {
     // Relational system uniforms
     const rel = config.relational;
     vUniforms.uRelationalEnabled.value = rel?.enabled ? 1.0 : 0.0;
-    vUniforms.uAttractorCount.value = Math.max(1, Math.min(6, rel?.attractorCount ?? 2));
+    vUniforms.uAttractorCount.value = Math.max(1, Math.min(10, rel?.attractorCount ?? 2));
     vUniforms.uRelationalGravity.value = rel?.attractorGravity ?? 1.5;
     vUniforms.uRelationalSpin.value = rel?.relationalSpin ?? 1.2;
     vUniforms.uChaosFactor.value = rel?.chaosFactor ?? 0.0;

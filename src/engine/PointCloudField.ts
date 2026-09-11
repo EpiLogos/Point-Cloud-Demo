@@ -15,11 +15,16 @@ import {
   ChainTimelineState,
   ChainTraversalMode,
   ChainEasing,
+  SpatialChakraConfig,
+  SpatialChakraNode,
+  SpatialChakraTimelineState,
+  CameraOrbState,
 } from './types';
 import { GPGPUSimulator } from './GPGPUSimulator';
 import { GlyphSampler, BakeResult } from './GlyphSampler';
 import { particleVertexShader, particleFragmentShader } from './shaders/particleShaders';
 import { isLightHex } from './colorPalettes';
+import { CANONICAL_CHAKRAS } from './chakraSystem';
 
 export function getColorModeIndex(mode?: string): number {
   switch (mode) {
@@ -147,6 +152,30 @@ export class PointCloudField {
   private chainShuffleOrder: number[] = [];
   private onChainUpdateCallback: ((state: ChainTimelineState) => void) | null = null;
 
+  // Spatial Chakra Body State Machine
+  private chakraIndex: number = 6; // Default to Root (Muladhara) at bottom
+  private nextChakraIndex: number = 5; // Svadhisthana
+  private chakraDirection: 1 | -1 = -1; // -1 for ascending (6->0), 1 for descending
+  private chakraPhase: 'hold' | 'transition' = 'hold';
+  private chakraPhaseTimer: number = 0;
+  private currentChakraHoldTime: number = 1.2;
+  private currentChakraTransitionTime: number = 2.4;
+  private onChakraUpdateCallback: ((state: SpatialChakraTimelineState) => void) | null = null;
+
+  // 3D Orbit Camera State (Orb Camera Control)
+  private cameraState: CameraOrbState = {
+    pitch: 0.52, // Default ~30 deg perspective showing horizontal discs stacked along the spine
+    yaw: 0.20,   // ~11 deg azimuth
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+  };
+  private isOrbitDragging: boolean = false;
+  private isPanDragging: boolean = false;
+  private lastDragPointerX: number = 0;
+  private lastDragPointerY: number = 0;
+  private onCameraChangeCallback: ((state: CameraOrbState) => void) | null = null;
+
   // Pointer state
   private pointerPos: THREE.Vector2 = new THREE.Vector2(-99999, -99999);
   private pointerVel: THREE.Vector2 = new THREE.Vector2(0, 0);
@@ -157,11 +186,21 @@ export class PointCloudField {
   private onPointerMoveBound: (e: PointerEvent) => void;
   private onPointerLeaveBound: () => void;
   private onResizeBound: () => void;
+  private onCanvasWheelBound: (e: WheelEvent) => void;
+  private onCanvasPointerDownBound: (e: PointerEvent) => void;
+  private onWindowPointerUpBound: (e: PointerEvent) => void;
+  private onCanvasContextMenuBound: (e: MouseEvent) => void;
 
   constructor(canvas: HTMLCanvasElement, options: Partial<PointCloudConfig> = {}) {
     this.canvas = canvas;
     this.config = this.mergeConfig(DEFAULT_CONFIG, options);
     this.morphProgress = this.config.morphProgress ?? 0.0;
+
+    // Set initial camera perspective based on chakra mode
+    if (!this.config.spatialChakra?.enabled) {
+      this.cameraState.pitch = 0.0;
+      this.cameraState.yaw = 0.0;
+    }
 
     this.clock = new THREE.Clock();
 
@@ -181,24 +220,26 @@ export class PointCloudField {
     const height = this.canvas.clientHeight || window.innerHeight;
     this.renderer.setSize(width, height, false);
 
-    // 2. Initialize Scene and 1:1 Orthographic Camera
+    // 2. Initialize Scene and 3D Orthographic Camera with Orbit transform
     this.scene = new THREE.Scene();
     this.camera = new THREE.OrthographicCamera(
       -width / 2,
       width / 2,
       height / 2,
       -height / 2,
-      0.1,
-      1000
+      -3000,
+      4000
     );
-    this.camera.position.z = 100;
+    this.updateCameraTransform();
 
     // 3. Initialize GPGPU Simulation Engine
     this.simulator = new GPGPUSimulator(this.renderer, this.config.particleCount);
 
     // 4. Initialize Glyph Sampler and Bake Initial Targets
     this.glyphSampler = new GlyphSampler();
-    if (this.config.chaining?.enabled && this.config.chaining.chain.length > 0) {
+    if (this.config.spatialChakra?.enabled) {
+      this.initChakraState();
+    } else if (this.config.chaining?.enabled && this.config.chaining.chain.length > 0) {
       this.initChainingState();
     } else {
       this.bakeAndSeedGlyphs();
@@ -211,10 +252,18 @@ export class PointCloudField {
     this.onPointerMoveBound = this.handlePointerMove.bind(this);
     this.onPointerLeaveBound = this.handlePointerLeave.bind(this);
     this.onResizeBound = this.handleResize.bind(this);
+    this.onCanvasWheelBound = this.handleCanvasWheel.bind(this);
+    this.onCanvasPointerDownBound = this.handleCanvasPointerDown.bind(this);
+    this.onWindowPointerUpBound = this.handleWindowPointerUp.bind(this);
+    this.onCanvasContextMenuBound = (e: MouseEvent) => e.preventDefault();
 
-    window.addEventListener('pointermove', this.onPointerMoveBound, { passive: true });
+    window.addEventListener('pointermove', this.onPointerMoveBound, { passive: false });
     window.addEventListener('pointerleave', this.onPointerLeaveBound, { passive: true });
     window.addEventListener('resize', this.onResizeBound, { passive: true });
+    window.addEventListener('pointerup', this.onWindowPointerUpBound, { passive: true });
+    this.canvas.addEventListener('wheel', this.onCanvasWheelBound, { passive: false });
+    this.canvas.addEventListener('pointerdown', this.onCanvasPointerDownBound, { passive: false });
+    this.canvas.addEventListener('contextmenu', this.onCanvasContextMenuBound);
 
     // 7. Start Simulation & Render Loop
     this.clock.start();
@@ -236,6 +285,14 @@ export class PointCloudField {
           ? [...override.chaining.chain]
           : (base.chaining?.chain ? [...base.chaining.chain] : ['▲', '■', '⬟', '⬢', '⯎', '◉']),
       },
+      spatialChakra: override.spatialChakra !== undefined
+        ? {
+            ...override.spatialChakra,
+            nodes: override.spatialChakra.nodes
+              ? override.spatialChakra.nodes.map((n) => ({ ...n }))
+              : (base.spatialChakra?.nodes ? base.spatialChakra.nodes.map((n) => ({ ...n })) : []),
+          }
+        : base.spatialChakra,
       color: {
         ...(base.color || DEFAULT_COLOR_CONFIG),
         ...(override.color || {}),
@@ -332,6 +389,24 @@ export class PointCloudField {
         uColorDensityWeight: { value: col.densityWeight ?? 0.5 },
         uColorHueShift: { value: 0.0 },
         uColorContrast: { value: col.contrast ?? 1.0 },
+
+        // Spatial Chakra Body System Uniforms
+        uChakraMode: { value: this.config.spatialChakra?.enabled ? (this.config.spatialChakra.playbackMode === 'simultaneousBody' ? 2.0 : 1.0) : 0.0 },
+        uChakraNodeCount: { value: 7 },
+        uChakraColors: {
+          value: [
+            new THREE.Color('#f066ff'),
+            new THREE.Color('#4d88ff'),
+            new THREE.Color('#00f5ff'),
+            new THREE.Color('#00ff88'),
+            new THREE.Color('#ffea00'),
+            new THREE.Color('#ff7c00'),
+            new THREE.Color('#ff1a53'),
+            new THREE.Color('#ffffff'),
+            new THREE.Color('#ffffff'),
+            new THREE.Color('#ffffff'),
+          ],
+        },
       },
       transparent: true,
       depthTest: false,
@@ -344,14 +419,70 @@ export class PointCloudField {
     this.scene.add(this.particlePoints);
   }
 
+  private handleCanvasWheel(e: WheelEvent) {
+    e.preventDefault();
+    const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+    this.setCameraZoom(this.cameraState.zoom * zoomFactor);
+  }
+
+  private handleCanvasPointerDown(e: PointerEvent) {
+    // Right Click or Alt + Left Click -> Orbit Drag
+    if (e.button === 2 || (e.button === 0 && e.altKey)) {
+      this.isOrbitDragging = true;
+      this.lastDragPointerX = e.clientX;
+      this.lastDragPointerY = e.clientY;
+      e.preventDefault();
+    }
+    // Middle Click or Shift + Left Click -> Pan Drag
+    else if (e.button === 1 || (e.button === 0 && e.shiftKey)) {
+      this.isPanDragging = true;
+      this.lastDragPointerX = e.clientX;
+      this.lastDragPointerY = e.clientY;
+      e.preventDefault();
+    }
+  }
+
+  private handleWindowPointerUp() {
+    this.isOrbitDragging = false;
+    this.isPanDragging = false;
+  }
+
   private handlePointerMove(e: PointerEvent) {
+    if (this.isOrbitDragging) {
+      const dx = e.clientX - this.lastDragPointerX;
+      const dy = e.clientY - this.lastDragPointerY;
+      this.lastDragPointerX = e.clientX;
+      this.lastDragPointerY = e.clientY;
+
+      this.setCameraOrbit(
+        this.cameraState.pitch + dy * 0.007,
+        this.cameraState.yaw + dx * 0.007
+      );
+      return;
+    }
+
+    if (this.isPanDragging) {
+      const dx = e.clientX - this.lastDragPointerX;
+      const dy = e.clientY - this.lastDragPointerY;
+      this.lastDragPointerX = e.clientX;
+      this.lastDragPointerY = e.clientY;
+
+      this.setCameraPan(
+        this.cameraState.panX - (dx / this.cameraState.zoom),
+        this.cameraState.panY + (dy / this.cameraState.zoom)
+      );
+      return;
+    }
+
     const rect = this.canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Convert to centered coordinates (0,0 at center, matching orthographic camera)
-    const worldX = x - rect.width / 2;
-    const worldY = -(y - rect.height / 2);
+    // Centered coordinates mapped through camera pan and zoom
+    const rawX = x - rect.width / 2;
+    const rawY = -(y - rect.height / 2);
+    const worldX = rawX / this.cameraState.zoom + this.cameraState.panX;
+    const worldY = rawY / this.cameraState.zoom + this.cameraState.panY;
 
     const now = performance.now();
     const dt = Math.max(0.001, (now - this.lastPointerTime) / 1000);
@@ -375,6 +506,101 @@ export class PointCloudField {
     this.lastPointerPos.set(-99999, -99999);
   }
 
+  public updateCameraTransform() {
+    if (!this.canvas || !this.camera) return;
+    const width = this.canvas.clientWidth || window.innerWidth;
+    const height = this.canvas.clientHeight || window.innerHeight;
+
+    this.camera.left = -width / 2;
+    this.camera.right = width / 2;
+    this.camera.top = height / 2;
+    this.camera.bottom = -height / 2;
+    this.camera.near = -3000;
+    this.camera.far = 4000;
+    this.camera.zoom = this.cameraState.zoom;
+    this.camera.updateProjectionMatrix();
+
+    const D = 800;
+    const { pitch, yaw, panX, panY } = this.cameraState;
+
+    const targetX = panX;
+    const targetY = panY;
+    const targetZ = 0;
+
+    const cosPitch = Math.cos(pitch);
+    const sinPitch = Math.sin(pitch);
+    const sinYaw = Math.sin(yaw);
+    const cosYaw = Math.cos(yaw);
+
+    const camX = targetX + D * cosPitch * sinYaw;
+    const camY = targetY + D * sinPitch;
+    const camZ = targetZ + D * cosPitch * cosYaw;
+
+    this.camera.position.set(camX, camY, camZ);
+
+    if (Math.abs(cosPitch) < 0.01) {
+      this.camera.up.set(0, 0, pitch > 0 ? -1 : 1);
+    } else {
+      this.camera.up.set(0, 1, 0);
+    }
+
+    this.camera.lookAt(targetX, targetY, targetZ);
+  }
+
+  public setCameraOrbit(pitch: number, yaw: number) {
+    this.cameraState.pitch = Math.max(-Math.PI * 0.47, Math.min(Math.PI * 0.47, pitch));
+    this.cameraState.yaw = ((yaw % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+    this.updateCameraTransform();
+    this.emitCameraChange();
+  }
+
+  public setCameraPan(panX: number, panY: number) {
+    this.cameraState.panX = Math.max(-2500, Math.min(2500, panX));
+    this.cameraState.panY = Math.max(-2500, Math.min(2500, panY));
+    this.updateCameraTransform();
+    this.emitCameraChange();
+  }
+
+  public setCameraZoom(zoom: number) {
+    this.cameraState.zoom = Math.max(0.25, Math.min(3.5, zoom));
+    this.updateCameraTransform();
+    this.emitCameraChange();
+  }
+
+  public resetCamera(preset?: 'perspective' | 'flat' | 'top') {
+    if (preset === 'flat') {
+      this.cameraState.pitch = 0;
+      this.cameraState.yaw = 0;
+    } else if (preset === 'top') {
+      this.cameraState.pitch = Math.PI * 0.47;
+      this.cameraState.yaw = 0;
+    } else {
+      // 3D perspective
+      this.cameraState.pitch = this.config.spatialChakra?.enabled ? 0.52 : 0;
+      this.cameraState.yaw = this.config.spatialChakra?.enabled ? 0.20 : 0;
+    }
+    this.cameraState.panX = 0;
+    this.cameraState.panY = 0;
+    this.cameraState.zoom = 1.0;
+    this.updateCameraTransform();
+    this.emitCameraChange();
+  }
+
+  public getCameraState(): CameraOrbState {
+    return { ...this.cameraState };
+  }
+
+  public setOnCameraChange(cb: ((state: CameraOrbState) => void) | null) {
+    this.onCameraChangeCallback = cb;
+    if (cb) cb({ ...this.cameraState });
+  }
+
+  private emitCameraChange() {
+    if (this.onCameraChangeCallback) {
+      this.onCameraChangeCallback({ ...this.cameraState });
+    }
+  }
+
   public resize() {
     this.handleResize();
   }
@@ -388,11 +614,7 @@ export class PointCloudField {
     this.renderer.setPixelRatio(dpr);
     this.renderer.setSize(width, height, false);
 
-    this.camera.left = -width / 2;
-    this.camera.right = width / 2;
-    this.camera.top = height / 2;
-    this.camera.bottom = -height / 2;
-    this.camera.updateProjectionMatrix();
+    this.updateCameraTransform();
 
     if (this.particleMaterial) {
       this.particleMaterial.uniforms.uPixelRatio.value = dpr;
@@ -401,6 +623,8 @@ export class PointCloudField {
   }
 
   public updateConfig(newConfig: Partial<PointCloudConfig>) {
+    const prevChakraEnabled = !!this.config.spatialChakra?.enabled;
+    const prevChakraConfig = JSON.stringify(this.config.spatialChakra);
     const prevChainingEnabled = !!this.config.chaining?.enabled;
     const prevChain = JSON.stringify(this.config.chaining?.chain);
     const prevGlyph = JSON.stringify(this.config.glyph);
@@ -409,6 +633,8 @@ export class PointCloudField {
 
     this.config = this.mergeConfig(this.config, newConfig);
 
+    const nextChakraEnabled = !!this.config.spatialChakra?.enabled;
+    const nextChakraConfig = JSON.stringify(this.config.spatialChakra);
     const nextChainingEnabled = !!this.config.chaining?.enabled;
     const nextChain = JSON.stringify(this.config.chaining?.chain);
     const nextGlyph = JSON.stringify(this.config.glyph);
@@ -417,8 +643,18 @@ export class PointCloudField {
       this.glyphSampler.clearCache();
     }
 
-    if (nextChainingEnabled) {
+    if (nextChakraEnabled) {
       if (
+        !prevChakraEnabled ||
+        prevChakraConfig !== nextChakraConfig ||
+        prevStyle !== this.config.style ||
+        prevFont !== this.config.fontFamily
+      ) {
+        this.initChakraState();
+      }
+    } else if (nextChainingEnabled) {
+      if (
+        prevChakraEnabled ||
         !prevChainingEnabled ||
         prevChain !== nextChain ||
         prevStyle !== this.config.style ||
@@ -429,6 +665,7 @@ export class PointCloudField {
     } else {
       // If returning to non-chaining mode or glyph/style changed, re-bake target textures
       if (
+        prevChakraEnabled ||
         prevChainingEnabled ||
         prevGlyph !== nextGlyph ||
         prevStyle !== this.config.style ||
@@ -454,6 +691,14 @@ export class PointCloudField {
       this.particleMaterial.uniforms.uMaxParticleSize.value = this.config.particleSize.max;
       this.particleMaterial.uniforms.uStyleMode.value = this.config.style === 'halftone' ? 1.0 : 0.0;
       this.particleMaterial.uniforms.uDotShape.value = this.config.dotShape === 'square' ? 1.0 : 0.0;
+
+      // Chakra mode uniform
+      if (this.config.spatialChakra?.enabled) {
+        this.particleMaterial.uniforms.uChakraMode.value =
+          this.config.spatialChakra.playbackMode === 'simultaneousBody' ? 2.0 : 1.0;
+      } else {
+        this.particleMaterial.uniforms.uChakraMode.value = 0.0;
+      }
 
       const col = this.config.color || DEFAULT_COLOR_CONFIG;
       this.particleMaterial.uniforms.uColorEnabled.value = col.enabled ? 1.0 : 0.0;
@@ -499,8 +744,10 @@ export class PointCloudField {
     const delta = Math.min(this.clock.getDelta(), 0.05);
     const elapsedTime = this.clock.getElapsedTime();
 
-    // 1. Chaining sequence timeline takes priority if enabled
-    if (this.config.chaining?.enabled && this.config.chaining.chain.length > 0) {
+    // 1. Priority scheduling: Spatial Chakra Body Mode -> Chaining sequence -> AutoMorph
+    if (this.config.spatialChakra?.enabled) {
+      this.tickChakra(delta, elapsedTime);
+    } else if (this.config.chaining?.enabled && this.config.chaining.chain.length > 0) {
       this.tickChaining(delta);
     } else if (this.config.autoMorph) {
       // Classic 1:1 auto-morph oscillation between glyph A & B (e.g. O and I)
@@ -520,8 +767,8 @@ export class PointCloudField {
     // Decay pointer velocity over time
     this.pointerVel.multiplyScalar(0.92);
 
-    // Update dynamic relational multi-attractors
-    if (this.config.relational?.enabled && this.bakedTargets?.attractorCenters) {
+    // Update dynamic relational multi-attractors (only when not in spatial chakra mode)
+    if (!this.config.spatialChakra?.enabled && this.config.relational?.enabled && this.bakedTargets?.attractorCenters) {
       const rel = this.config.relational;
       const count = Math.max(1, Math.min(6, rel.attractorCount || 3));
       const baseCenters = this.bakedTargets.attractorCenters;
@@ -847,6 +1094,362 @@ export class PointCloudField {
     });
   }
 
+  // --- Spatial Chakra Body Mode Engine Methods ---
+
+  public initChakraState() {
+    const sc = this.config.spatialChakra;
+    if (!sc) return;
+    const nodes = sc.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+
+    const startIdx =
+      sc.activeNodeIndex !== undefined &&
+      sc.activeNodeIndex >= 0 &&
+      sc.activeNodeIndex < validNodes.length
+        ? sc.activeNodeIndex
+        : (sc.cycleDirection === 'descent' ? 0 : validNodes.length - 1);
+
+    this.chakraIndex = startIdx;
+    this.chakraDirection = sc.cycleDirection === 'descent' ? 1 : -1;
+    this.nextChakraIndex = this.calcNextChakraIndex(sc.cycleDirection || 'ascent', this.chakraIndex, validNodes.length);
+    this.chakraPhase = 'hold';
+    this.chakraPhaseTimer = 0;
+    this.morphProgress = 0.0;
+    this.currentChakraHoldTime = Math.max(0.1, sc.holdDuration ?? 1.2);
+    this.currentChakraTransitionTime = Math.max(0.2, sc.transitionDuration ?? 2.4);
+
+    this.updateChakraMaterialColors(validNodes);
+
+    if (sc.playbackMode === 'simultaneousBody') {
+      if (this.bakedTargets) {
+        this.bakedTargets.textureA.dispose();
+        this.bakedTargets.textureB.dispose();
+      }
+      this.bakedTargets = this.glyphSampler.bakeChakraSimultaneousTargets(
+        validNodes,
+        this.simulator.particleCount,
+        this.simulator.texWidth,
+        this.simulator.texHeight,
+        this.config.style,
+        sc.glyphType || 'both',
+        this.config.fontFamily,
+        this.config.fontWeight,
+        sc.plane || 'horizontal'
+      );
+      this.simulator.setTargetTextures(
+        this.bakedTargets.textureA,
+        this.bakedTargets.textureB,
+        this.bakedTargets.vortexCenter
+      );
+      const initialData = (this.bakedTargets.textureA.image as { data: Float32Array }).data;
+      this.simulator.seedInitialState(initialData);
+      this.syncSimultaneousAttractors(validNodes);
+      this.syncChakraVortexCenters(validNodes);
+    } else {
+      const nodeA = validNodes[this.chakraIndex % validNodes.length];
+      const nodeB = validNodes[this.nextChakraIndex % validNodes.length];
+      this.loadChakraSequentialTargets(nodeA, nodeB);
+      if (this.bakedTargets?.textureA) {
+        const initialData = (this.bakedTargets.textureA.image as { data: Float32Array }).data;
+        this.simulator.seedInitialState(initialData);
+      }
+      this.syncChakraVortexCenters(validNodes);
+    }
+
+    this.emitChakraTimelineUpdate();
+  }
+
+  private tickChakra(delta: number, _elapsedTime: number) {
+    const sc = this.config.spatialChakra;
+    if (!sc) return;
+    const nodes = sc.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+
+    if (sc.playbackMode === 'simultaneousBody') {
+      if (this.particleMaterial) {
+        this.particleMaterial.uniforms.uChakraMode.value = 2.0;
+        this.particleMaterial.uniforms.uChakraNodeCount.value = Math.min(10, validNodes.length);
+        this.updateChakraMaterialColors(validNodes);
+      }
+      this.syncSimultaneousAttractors(validNodes);
+      this.syncChakraVortexCenters(validNodes);
+
+      if (this.config.autoMorph) {
+        const cycleDuration = this.config.autoMorphDuration || 5.0;
+        const step = (delta / cycleDuration) * this.morphDirection;
+        this.morphProgress += step;
+        if (this.morphProgress >= 1.0) {
+          this.morphProgress = 1.0;
+          this.morphDirection = -1.0;
+        } else if (this.morphProgress <= 0.0) {
+          this.morphProgress = 0.0;
+          this.morphDirection = 1.0;
+        }
+      }
+      this.emitChakraTimelineUpdate();
+    } else {
+      if (this.particleMaterial) {
+        this.particleMaterial.uniforms.uChakraMode.value = 1.0;
+        this.particleMaterial.uniforms.uChakraNodeCount.value = 2;
+      }
+
+      if (validNodes.length <= 1) {
+        this.morphProgress = 0.0;
+        this.emitChakraTimelineUpdate();
+        return;
+      }
+
+      const nodeA = validNodes[this.chakraIndex % validNodes.length];
+      const nodeB = validNodes[this.nextChakraIndex % validNodes.length];
+
+      // Update placed spatial attractors
+      const infl = sc.attractorInfluence ?? 1.5;
+      const dynamicAttractors: THREE.Vector4[] = [
+        new THREE.Vector4(nodeA.x, -nodeA.y, 0, (nodeA.attractorStrength ?? 2.0) * infl),
+        new THREE.Vector4(nodeB.x, -nodeB.y, 0, (nodeB.attractorStrength ?? 2.0) * infl),
+      ];
+      const dynamicSpins: number[] = [1.2, -1.2];
+      for (let i = 2; i < 10; i++) {
+        dynamicAttractors.push(new THREE.Vector4(-99999, -99999, 0, 0));
+        dynamicSpins.push(0);
+      }
+      this.simulator.setAttractors(dynamicAttractors, dynamicSpins);
+      this.syncChakraVortexCenters(validNodes);
+
+      if (sc.autoCycle !== false) {
+        if (this.chakraPhase === 'hold') {
+          this.morphProgress = 0.0;
+          this.chakraPhaseTimer += delta;
+
+          if (this.particleMaterial) {
+            this.particleMaterial.uniforms.uPrimaryColor.value.set(nodeA.color);
+          }
+
+          if (this.chakraPhaseTimer >= this.currentChakraHoldTime) {
+            this.chakraPhase = 'transition';
+            this.chakraPhaseTimer = 0;
+            this.currentChakraTransitionTime = Math.max(0.2, sc.transitionDuration ?? 2.4);
+          }
+        } else {
+          this.chakraPhaseTimer += delta;
+          const u = Math.min(1.0, Math.max(0.0, this.chakraPhaseTimer / this.currentChakraTransitionTime));
+          const t = u * u * (3.0 - 2.0 * u);
+          this.morphProgress = t;
+
+          if (this.particleMaterial) {
+            const colA = new THREE.Color(nodeA.color);
+            const colB = new THREE.Color(nodeB.color);
+            colA.lerp(colB, t);
+            this.particleMaterial.uniforms.uPrimaryColor.value.copy(colA);
+          }
+
+          if (this.chakraPhaseTimer >= this.currentChakraTransitionTime) {
+            this.advanceChakra();
+          }
+        }
+      }
+
+      this.emitChakraTimelineUpdate();
+    }
+  }
+
+  private syncSimultaneousAttractors(validNodes: SpatialChakraNode[]) {
+    const sc = this.config.spatialChakra;
+    const infl = sc?.attractorInfluence ?? 1.5;
+    const dynamicAttractors: THREE.Vector4[] = [];
+    const dynamicSpins: number[] = [];
+    const count = Math.min(10, validNodes.length);
+
+    for (let i = 0; i < 10; i++) {
+      if (i < count) {
+        const n = validNodes[i];
+        dynamicAttractors.push(new THREE.Vector4(n.x, -n.y, 0, (n.attractorStrength ?? 2.0) * infl));
+        dynamicSpins.push((i % 2 === 0 ? 1.0 : -1.0) * 0.8);
+      } else {
+        dynamicAttractors.push(new THREE.Vector4(-99999, -99999, 0, 0));
+        dynamicSpins.push(0);
+      }
+    }
+    this.simulator.setAttractors(dynamicAttractors, dynamicSpins);
+  }
+
+  private syncChakraVortexCenters(validNodes: SpatialChakraNode[]) {
+    const sc = this.config.spatialChakra;
+    const isSimultaneous = sc?.playbackMode === 'simultaneousBody';
+    const mode = isSimultaneous ? 2.0 : 1.0;
+    const plane = (sc?.plane ?? 'horizontal') === 'horizontal' ? 0.0 : 1.0;
+    const vortexPower = sc?.vortexStrength ?? 1.5;
+
+    const centers: THREE.Vector4[] = [];
+    const spins: number[] = [];
+
+    if (isSimultaneous) {
+      const count = Math.min(10, validNodes.length);
+      for (let i = 0; i < 10; i++) {
+        if (i < count) {
+          const n = validNodes[i];
+          // Each node has its own vortex center: (x, -y, 0) with radius threshold in w
+          centers.push(new THREE.Vector4(n.x, -n.y, 0, (n.scale ?? 0.20) * 450));
+          spins.push((i % 2 === 0 ? 1.0 : -1.0) * 1.2);
+        } else {
+          centers.push(new THREE.Vector4(0, 0, 0, 0));
+          spins.push(0);
+        }
+      }
+      this.simulator.setChakraVortexParams(mode, count, centers, spins, plane, vortexPower);
+    } else {
+      const nodeA = validNodes[this.chakraIndex % validNodes.length];
+      const nodeB = validNodes[this.nextChakraIndex % validNodes.length];
+      centers.push(new THREE.Vector4(nodeA.x, -nodeA.y, 0, (nodeA.scale ?? 0.20) * 450));
+      centers.push(new THREE.Vector4(nodeB.x, -nodeB.y, 0, (nodeB.scale ?? 0.20) * 450));
+      for (let i = 2; i < 10; i++) {
+        centers.push(new THREE.Vector4(0, 0, 0, 0));
+      }
+      spins.push(1.2, -1.2);
+      for (let i = 2; i < 10; i++) {
+        spins.push(0);
+      }
+      this.simulator.setChakraVortexParams(mode, 2, centers, spins, plane, vortexPower);
+    }
+  }
+
+  private updateChakraMaterialColors(validNodes: SpatialChakraNode[]) {
+    if (!this.particleMaterial) return;
+    const colors = this.particleMaterial.uniforms.uChakraColors.value as THREE.Color[];
+    for (let i = 0; i < 10; i++) {
+      if (i < validNodes.length) {
+        colors[i].set(validNodes[i].color);
+      } else {
+        colors[i].set('#ffffff');
+      }
+    }
+  }
+
+  private calcNextChakraIndex(direction: 'ascent' | 'descent' | 'pingpong', current: number, length: number): number {
+    if (length <= 1) return 0;
+    if (direction === 'ascent') {
+      return (current - 1 + length) % length;
+    }
+    if (direction === 'descent') {
+      return (current + 1) % length;
+    }
+    if (current <= 0) {
+      this.chakraDirection = 1;
+    } else if (current >= length - 1) {
+      this.chakraDirection = -1;
+    }
+    return Math.max(0, Math.min(length - 1, current + this.chakraDirection));
+  }
+
+  private advanceChakra() {
+    const sc = this.config.spatialChakra;
+    if (!sc) return;
+    const nodes = sc.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+    if (validNodes.length < 2) return;
+
+    this.chakraIndex = this.nextChakraIndex;
+    this.nextChakraIndex = this.calcNextChakraIndex(sc.cycleDirection || 'ascent', this.chakraIndex, validNodes.length);
+
+    this.chakraPhase = 'hold';
+    this.chakraPhaseTimer = 0;
+    this.morphProgress = 0.0;
+    this.currentChakraHoldTime = Math.max(0.1, sc.holdDuration ?? 1.2);
+
+    this.loadChakraSequentialTargets(validNodes[this.chakraIndex], validNodes[this.nextChakraIndex]);
+  }
+
+  private loadChakraSequentialTargets(nodeA: SpatialChakraNode, nodeB: SpatialChakraNode) {
+    const oldA = this.bakedTargets?.textureA;
+    const oldB = this.bakedTargets?.textureB;
+
+    const sc = this.config.spatialChakra;
+
+    this.bakedTargets = this.glyphSampler.bakeChakraSequentialTargets(
+      nodeA,
+      nodeB,
+      this.simulator.particleCount,
+      this.simulator.texWidth,
+      this.simulator.texHeight,
+      this.config.style,
+      sc?.glyphType || 'seed',
+      this.config.fontFamily,
+      this.config.fontWeight,
+      sc?.plane || 'horizontal'
+    );
+
+    if (oldA) oldA.dispose();
+    if (oldB) oldB.dispose();
+
+    this.simulator.setTargetTextures(
+      this.bakedTargets.textureA,
+      this.bakedTargets.textureB,
+      this.bakedTargets.vortexCenter
+    );
+  }
+
+  public jumpToChakraNode(index: number) {
+    const sc = this.config.spatialChakra;
+    if (!sc) return;
+    const nodes = sc.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+    const len = validNodes.length;
+    this.chakraIndex = ((index % len) + len) % len;
+    this.nextChakraIndex = this.calcNextChakraIndex(sc.cycleDirection || 'ascent', this.chakraIndex, len);
+    this.chakraPhase = 'hold';
+    this.chakraPhaseTimer = 0;
+    this.morphProgress = 0.0;
+    this.currentChakraHoldTime = Math.max(0.1, sc.holdDuration ?? 1.2);
+    if (sc.playbackMode === 'sequentialMorph') {
+      this.loadChakraSequentialTargets(validNodes[this.chakraIndex], validNodes[this.nextChakraIndex]);
+    }
+    this.emitChakraTimelineUpdate();
+  }
+
+  public stepChakra(direction: 1 | -1) {
+    const sc = this.config.spatialChakra;
+    if (!sc) return;
+    const nodes = sc.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+    const len = validNodes.length;
+    const target = (this.chakraIndex + direction + len) % len;
+    this.jumpToChakraNode(target);
+  }
+
+  public setOnChakraUpdate(cb: ((state: SpatialChakraTimelineState) => void) | null) {
+    this.onChakraUpdateCallback = cb;
+  }
+
+  public getChakraTimelineState(): SpatialChakraTimelineState {
+    const sc = this.config.spatialChakra;
+    const nodes = sc?.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+    const curN = validNodes[this.chakraIndex % validNodes.length] || CANONICAL_CHAKRAS[0];
+    const nextN = validNodes[this.nextChakraIndex % validNodes.length] || CANONICAL_CHAKRAS[0];
+    const dur = this.chakraPhase === 'hold' ? this.currentChakraHoldTime : this.currentChakraTransitionTime;
+    return {
+      currentIndex: this.chakraIndex,
+      nextIndex: this.nextChakraIndex,
+      currentNode: curN,
+      nextNode: nextN,
+      phase: this.chakraPhase,
+      progress: this.morphProgress,
+      elapsedInPhase: this.chakraPhaseTimer,
+      totalDurationInPhase: dur,
+    };
+  }
+
+  private emitChakraTimelineUpdate() {
+    if (!this.onChakraUpdateCallback) return;
+    this.onChakraUpdateCallback(this.getChakraTimelineState());
+  }
+
   public destroy() {
     this.isDestroyed = true;
     if (this.animFrameId !== null) {
@@ -857,6 +1460,10 @@ export class PointCloudField {
     window.removeEventListener('pointermove', this.onPointerMoveBound);
     window.removeEventListener('pointerleave', this.onPointerLeaveBound);
     window.removeEventListener('resize', this.onResizeBound);
+    window.removeEventListener('pointerup', this.onWindowPointerUpBound);
+    this.canvas.removeEventListener('wheel', this.onCanvasWheelBound);
+    this.canvas.removeEventListener('pointerdown', this.onCanvasPointerDownBound);
+    this.canvas.removeEventListener('contextmenu', this.onCanvasContextMenuBound);
 
     if (this.bakedTargets) {
       this.bakedTargets.textureA.dispose();

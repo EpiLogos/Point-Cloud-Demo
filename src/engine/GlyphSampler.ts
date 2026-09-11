@@ -4,6 +4,7 @@
  */
 
 import * as THREE from 'three';
+import { SpatialChakraNode, SpatialChakraGlyphType, SpatialChakraPlane } from './types';
 
 export interface BakeResult {
   textureA: THREE.DataTexture;
@@ -442,6 +443,613 @@ export class GlyphSampler {
       centerB: resB.center,
       vortexCenter,
       attractorCenters: uniqueAttractors.slice(0, 6),
+    };
+  }
+
+  /**
+   * Vector-based drawing of sacred geometric yantras for the 7 primary chakras
+   */
+  /**
+   * Helper to draw authentic pointed lotus petals for sacred yantras
+   */
+  private drawLotusPetals(
+    ctx: CanvasRenderingContext2D,
+    cx: number,
+    cy: number,
+    innerR: number,
+    outerR: number,
+    count: number,
+    phase = 0
+  ) {
+    const step = (Math.PI * 2) / count;
+    for (let i = 0; i < count; i++) {
+      const midAngle = i * step + phase;
+      const halfAngle = step * 0.48;
+      const leftAngle = midAngle - halfAngle;
+      const rightAngle = midAngle + halfAngle;
+
+      const p1x = cx + Math.cos(leftAngle) * innerR;
+      const p1y = cy + Math.sin(leftAngle) * innerR;
+
+      const tipX = cx + Math.cos(midAngle) * outerR;
+      const tipY = cy + Math.sin(midAngle) * outerR;
+
+      const p2x = cx + Math.cos(rightAngle) * innerR;
+      const p2y = cy + Math.sin(rightAngle) * innerR;
+
+      const ctrlDist = innerR + (outerR - innerR) * 0.58;
+      const c1x = cx + Math.cos(midAngle - halfAngle * 0.35) * ctrlDist;
+      const c1y = cy + Math.sin(midAngle - halfAngle * 0.35) * ctrlDist;
+
+      const c2x = cx + Math.cos(midAngle + halfAngle * 0.35) * ctrlDist;
+      const c2y = cy + Math.sin(midAngle + halfAngle * 0.35) * ctrlDist;
+
+      ctx.beginPath();
+      ctx.moveTo(p1x, p1y);
+      ctx.quadraticCurveTo(c1x, c1y, tipX, tipY);
+      ctx.quadraticCurveTo(c2x, c2y, p2x, p2y);
+      ctx.stroke();
+    }
+  }
+
+  /**
+   * Vector-based drawing of sacred geometric yantras for the 7 primary chakras.
+   * Pure sacred geometric mandala contours, sanctum rings, triangles, and bindus.
+   */
+  public drawSacredYantra(
+    ctx: CanvasRenderingContext2D,
+    chakraId: string,
+    cx: number,
+    cy: number,
+    radius: number,
+    isHarmonicB = false
+  ) {
+    ctx.save();
+    ctx.strokeStyle = '#ffffff';
+    ctx.fillStyle = '#ffffff';
+    ctx.lineWidth = Math.max(3.5, radius * 0.042);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    const breath = isHarmonicB ? 1.08 : 1.0;
+    const r = radius * breath;
+
+    switch (chakraId) {
+      case 'muladhara': {
+        // Root Chakra Yantra: 4 Pointed Lotus Petals, Earth Bhupura Square, Inverted Shakti Triangle & Bindu
+        const outerR = r * 0.95;
+        const innerR = r * 0.68;
+        this.drawLotusPetals(ctx, cx, cy, innerR, outerR, 4, -Math.PI / 2);
+
+        // Circular boundary ring
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Earth Square (Bhur mandala)
+        const sqSize = innerR * 1.08;
+        const halfSq = sqSize / 2;
+        ctx.strokeRect(cx - halfSq, cy - halfSq, sqSize, sqSize);
+
+        // Inner nested boundary
+        ctx.strokeRect(cx - halfSq * 0.82, cy - halfSq * 0.82, sqSize * 0.82, sqSize * 0.82);
+
+        // Downward Inverted Triangle (Tejas / Shakti)
+        const triR = sqSize * 0.36;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + triR);
+        ctx.lineTo(cx + triR * 0.866, cy - triR * 0.5);
+        ctx.lineTo(cx - triR * 0.866, cy - triR * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Central luminous Bindu dot
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.09, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+
+      case 'svadhisthana': {
+        // Sacral Chakra Yantra: 6 Pointed Lotus Petals, Outer Rings, Water Crescent Moon & Bindu
+        const outerR = r * 0.96;
+        const innerR = r * 0.70;
+        this.drawLotusPetals(ctx, cx, cy, innerR, outerR, 6, 0);
+
+        // Outer and inner rings
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR * 0.82, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Crescent Moon (Chandra mandala)
+        const moonR = innerR * 0.62;
+        ctx.beginPath();
+        ctx.arc(cx, cy + moonR * 0.15, moonR, 0.15 * Math.PI, 0.85 * Math.PI, false);
+        ctx.arc(cx, cy - moonR * 0.22, moonR * 0.85, 0.82 * Math.PI, 0.18 * Math.PI, true);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Central water Bindu
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.08, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+
+      case 'manipura': {
+        // Solar Plexus Chakra Yantra: 10 Pointed Lotus Petals, Fire Inverted Triangle & Concentric Nested Triangle
+        const outerR = r * 0.96;
+        const innerR = r * 0.72;
+        this.drawLotusPetals(ctx, cx, cy, innerR, outerR, 10, -Math.PI / 2);
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR * 0.85, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Primary Inverted Fire Triangle (Agni Trikona)
+        const triR = innerR * 0.76;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + triR);
+        ctx.lineTo(cx + triR * 0.866, cy - triR * 0.5);
+        ctx.lineTo(cx - triR * 0.866, cy - triR * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Inner nested triangle for sacred geometric depth
+        const triInner = triR * 0.54;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + triInner);
+        ctx.lineTo(cx + triInner * 0.866, cy - triInner * 0.5);
+        ctx.lineTo(cx - triInner * 0.866, cy - triInner * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Central radiant solar Bindu
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.085, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+
+      case 'anahata': {
+        // Heart Chakra Yantra: 12 Pointed Lotus Petals, Shatkona (Hexagram / 6-pointed star) & Bindu
+        const outerR = r * 0.98;
+        const innerR = r * 0.74;
+        this.drawLotusPetals(ctx, cx, cy, innerR, outerR, 12, 0);
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR * 0.88, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Shatkona: Two interlocking equilateral triangles (Shiva + Shakti)
+        const starR = innerR * 0.75;
+        // Upward triangle (Spirit / Shiva)
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - starR);
+        ctx.lineTo(cx + starR * 0.866, cy + starR * 0.5);
+        ctx.lineTo(cx - starR * 0.866, cy + starR * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Downward triangle (Nature / Shakti)
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + starR);
+        ctx.lineTo(cx + starR * 0.866, cy - starR * 0.5);
+        ctx.lineTo(cx - starR * 0.866, cy - starR * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Central circular sanctum
+        ctx.beginPath();
+        ctx.arc(cx, cy, starR * 0.35, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Central luminous Bindu (Ananda Kanda)
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.08, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+
+      case 'vishuddha': {
+        // Throat Chakra Yantra: 16 Pointed Lotus Petals, Outer Rings, Inverted Triangle & Etheric Bindu
+        const outerR = r * 0.98;
+        const innerR = r * 0.75;
+        this.drawLotusPetals(ctx, cx, cy, innerR, outerR, 16, 0);
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, innerR * 0.86, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Inverted triangle
+        const triR = innerR * 0.65;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + triR);
+        ctx.lineTo(cx + triR * 0.866, cy - triR * 0.5);
+        ctx.lineTo(cx - triR * 0.866, cy - triR * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Full etheric sphere / Akasha circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, triR * 0.42, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Central Bindu
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.09, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+
+      case 'ajna': {
+        // Third Eye Chakra Yantra: 2 Winged Lateral Lotus Petals, Sanctum Circle, Inverted Triangle & Eye Pupil Bindu
+        const wingR = r * 1.05;
+        const centerR = r * 0.42;
+
+        // Left Wing Petal
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - centerR);
+        ctx.quadraticCurveTo(cx - wingR * 0.7, cy - centerR * 0.9, cx - wingR, cy);
+        ctx.quadraticCurveTo(cx - wingR * 0.7, cy + centerR * 0.9, cx, cy + centerR);
+        ctx.stroke();
+
+        // Left Wing inner feather line
+        ctx.beginPath();
+        ctx.moveTo(cx - centerR * 0.6, cy);
+        ctx.lineTo(cx - wingR * 0.85, cy);
+        ctx.stroke();
+
+        // Right Wing Petal
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - centerR);
+        ctx.quadraticCurveTo(cx + wingR * 0.7, cy - centerR * 0.9, cx + wingR, cy);
+        ctx.quadraticCurveTo(cx + wingR * 0.7, cy + centerR * 0.9, cx, cy + centerR);
+        ctx.stroke();
+
+        // Right Wing inner feather line
+        ctx.beginPath();
+        ctx.moveTo(cx + centerR * 0.6, cy);
+        ctx.lineTo(cx + wingR * 0.85, cy);
+        ctx.stroke();
+
+        // Central Sanctum Circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, centerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Inverted sacred triangle
+        const triR = centerR * 0.75;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + triR);
+        ctx.lineTo(cx + triR * 0.866, cy - triR * 0.5);
+        ctx.lineTo(cx - triR * 0.866, cy - triR * 0.5);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Radiant Third Eye Pupil / Bindu
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.11, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+
+      case 'sahasrara':
+      default: {
+        // Crown Chakra Yantra: Thousand-Petaled Lotus (24 outer petals + 12 middle petals), Concentric Rings & 12-Spoke Sun Wheel
+        const rOuter = r * 0.98;
+        const rMid = r * 0.76;
+        const rInner = r * 0.54;
+
+        // Layer 1: Outer 24 pointed petals
+        this.drawLotusPetals(ctx, cx, cy, rMid, rOuter, 24, 0);
+
+        // Layer 2: Middle 12 pointed petals
+        this.drawLotusPetals(ctx, cx, cy, rInner, rMid, 12, Math.PI / 12);
+
+        // Concentric sacred boundary rings
+        ctx.beginPath();
+        ctx.arc(cx, cy, rMid, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, rInner, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // 12-Spoke Radiant Sun Wheel (Dharma Chakra)
+        const spokeCount = 12;
+        const spokeRot = isHarmonicB ? Math.PI / 12 : 0;
+        for (let s = 0; s < spokeCount; s++) {
+          const ang = (s * Math.PI * 2) / spokeCount + spokeRot;
+          ctx.beginPath();
+          ctx.moveTo(cx + Math.cos(ang) * (r * 0.14), cy + Math.sin(ang) * (r * 0.14));
+          ctx.lineTo(cx + Math.cos(ang) * rInner, cy + Math.sin(ang) * rInner);
+          ctx.stroke();
+        }
+
+        // Concentric hub ring
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.18, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Transcendental innermost Bindu
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.08, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+      }
+    }
+
+    ctx.restore();
+  }
+
+  /**
+   * Renders a specific node enforcing the sacred yantra geometric form
+   */
+  public rasterizeSpatialNode(
+    node: SpatialChakraNode,
+    glyphType: SpatialChakraGlyphType = 'yantra',
+    fontFamily: string = FALLBACK_FONT_STACK,
+    fontWeight: string | number = 900,
+    variant: 'yantraA' | 'yantraB' = 'yantraA'
+  ): { candidates: Array<{ x: number; y: number; density: number }> } {
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    const ctx = this.ctx;
+    ctx.clearRect(0, 0, w, h);
+
+    const cx = w / 2;
+    const cy = h / 2;
+
+    // Enforce pure sacred yantra geometric form for all chakras
+    this.drawSacredYantra(ctx, node.id, cx, cy, h * 0.38, variant === 'yantraB');
+
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const pixels = imgData.data;
+    const candidates: Array<{ x: number; y: number; density: number }> = [];
+
+    for (let y = 0; y < h; y += 3) {
+      for (let x = 0; x < w; x += 3) {
+        const idx = (y * w + x) * 4;
+        const alpha = pixels[idx + 3] / 255.0;
+        if (alpha > 0.05) {
+          candidates.push({
+            x: x - cx,
+            y: -(y - cy),
+            density: alpha,
+          });
+        }
+      }
+    }
+
+    if (candidates.length === 0) {
+      for (let i = 0; i < 500; i++) {
+        const ang = (i / 500) * Math.PI * 2;
+        const rad = 100 + (Math.random() - 0.5) * 20;
+        candidates.push({
+          x: Math.cos(ang) * rad,
+          y: Math.sin(ang) * rad,
+          density: 0.8,
+        });
+      }
+    }
+
+    return { candidates };
+  }
+
+  /**
+   * Bakes target textures for sequential Kundalini spatial morphing (Node A in space -> Node B in space)
+   */
+  public bakeChakraSequentialTargets(
+    nodeA: SpatialChakraNode,
+    nodeB: SpatialChakraNode,
+    particleCount: number,
+    texWidth: number,
+    texHeight: number,
+    style: 'stipple' | 'halftone' = 'stipple',
+    glyphType: SpatialChakraGlyphType = 'yantra',
+    fontFamily: string = FALLBACK_FONT_STACK,
+    fontWeight: string | number = 900,
+    plane: SpatialChakraPlane = 'horizontal'
+  ): BakeResult {
+    const resA = this.rasterizeSpatialNode(nodeA, glyphType, fontFamily, fontWeight, 'yantraA');
+    const resB = this.rasterizeSpatialNode(nodeB, glyphType, fontFamily, fontWeight, 'yantraA');
+
+    const dataA = new Float32Array(texWidth * texHeight * 4);
+    const dataB = new Float32Array(texWidth * texHeight * 4);
+
+    const countA = resA.candidates.length;
+    const countB = resB.candidates.length;
+
+    const scaleA = nodeA.scale ?? 0.20;
+    const scaleB = nodeB.scale ?? 0.20;
+
+    for (let i = 0; i < particleCount; i++) {
+      const pA = resA.candidates[i % countA];
+      const pB = resB.candidates[i % countB];
+
+      if (plane === 'horizontal') {
+        // Horizontal Transverse Plane: flat when viewed horizontally
+        const jAx = (Math.random() - 0.5) * 2;
+        const jAz = (Math.random() - 0.5) * 2;
+        dataA[i * 4 + 0] = pA.x * scaleA + nodeA.x + jAx;
+        dataA[i * 4 + 1] = -nodeA.y;
+        dataA[i * 4 + 2] = pA.y * scaleA + jAz;
+        dataA[i * 4 + 3] = pA.density;
+
+        const jBx = (Math.random() - 0.5) * 2;
+        const jBz = (Math.random() - 0.5) * 2;
+        dataB[i * 4 + 0] = pB.x * scaleB + nodeB.x + jBx;
+        dataB[i * 4 + 1] = -nodeB.y;
+        dataB[i * 4 + 2] = pB.y * scaleB + jBz;
+        dataB[i * 4 + 3] = pB.density;
+      } else {
+        // Vertical Coronal Plane
+        const jitterAx = (Math.random() - 0.5) * 3;
+        const jitterAy = (Math.random() - 0.5) * 3;
+        dataA[i * 4 + 0] = pA.x * scaleA + nodeA.x + jitterAx;
+        dataA[i * 4 + 1] = pA.y * scaleA - nodeA.y + jitterAy;
+        dataA[i * 4 + 2] = (Math.random() - 0.5) * 8;
+        dataA[i * 4 + 3] = pA.density;
+
+        const jitterBx = (Math.random() - 0.5) * 3;
+        const jitterBy = (Math.random() - 0.5) * 3;
+        dataB[i * 4 + 0] = pB.x * scaleB + nodeB.x + jitterBx;
+        dataB[i * 4 + 1] = pB.y * scaleB - nodeB.y + jitterBy;
+        dataB[i * 4 + 2] = (Math.random() - 0.5) * 8;
+        dataB[i * 4 + 3] = pB.density;
+      }
+    }
+
+    const texA = new THREE.DataTexture(dataA, texWidth, texHeight, THREE.RGBAFormat, THREE.FloatType);
+    texA.needsUpdate = true;
+    texA.minFilter = THREE.NearestFilter;
+    texA.magFilter = THREE.NearestFilter;
+
+    const texB = new THREE.DataTexture(dataB, texWidth, texHeight, THREE.RGBAFormat, THREE.FloatType);
+    texB.needsUpdate = true;
+    texB.minFilter = THREE.NearestFilter;
+    texB.magFilter = THREE.NearestFilter;
+
+    const vortexCenter = new THREE.Vector2(
+      (nodeA.x + nodeB.x) * 0.5,
+      (-nodeA.y - nodeB.y) * 0.5
+    );
+
+    const attractorCenters = [
+      new THREE.Vector2(nodeA.x, -nodeA.y),
+      new THREE.Vector2(nodeB.x, -nodeB.y),
+    ];
+
+    return {
+      textureA: texA,
+      textureB: texB,
+      centerA: new THREE.Vector2(nodeA.x, -nodeA.y),
+      centerB: new THREE.Vector2(nodeB.x, -nodeB.y),
+      vortexCenter,
+      attractorCenters,
+    };
+  }
+
+  /**
+   * Bakes target textures for simultaneous Chakra Subtle Body constellation.
+   * Particles are partitioned across all active spatial nodes.
+   * Target A = Seed syllable representation; Target B = Sacred Yantra representation.
+   */
+  public bakeChakraSimultaneousTargets(
+    nodes: SpatialChakraNode[],
+    particleCount: number,
+    texWidth: number,
+    texHeight: number,
+    style: 'stipple' | 'halftone' = 'stipple',
+    glyphType: SpatialChakraGlyphType = 'both',
+    fontFamily: string = FALLBACK_FONT_STACK,
+    fontWeight: string | number = 900,
+    plane: SpatialChakraPlane = 'horizontal'
+  ): BakeResult {
+    const activeNodes = nodes.filter((n) => n.active);
+    const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+    const K = validNodes.length;
+
+    const dataA = new Float32Array(texWidth * texHeight * 4);
+    const dataB = new Float32Array(texWidth * texHeight * 4);
+
+    const particlesPerNode = Math.floor(particleCount / K);
+
+    const attractorCenters: THREE.Vector2[] = [];
+    let sumX = 0;
+    let sumY = 0;
+
+    for (let k = 0; k < K; k++) {
+      const node = validNodes[k];
+      attractorCenters.push(new THREE.Vector2(node.x, -node.y));
+      sumX += node.x;
+      sumY += -node.y;
+
+      const resA = this.rasterizeSpatialNode(node, glyphType, fontFamily, fontWeight, 'yantraA');
+      const resB = this.rasterizeSpatialNode(node, glyphType, fontFamily, fontWeight, 'yantraB');
+
+      const startIndex = k * particlesPerNode;
+      const endIndex = k === K - 1 ? particleCount : (k + 1) * particlesPerNode;
+      const countA = resA.candidates.length;
+      const countB = resB.candidates.length;
+
+      const nodeScale = node.scale ?? 0.20;
+
+      for (let i = startIndex; i < endIndex; i++) {
+        const localIdx = i - startIndex;
+        const pA = resA.candidates[localIdx % countA];
+        const pB = resB.candidates[localIdx % countB];
+
+        if (plane === 'horizontal') {
+          // Horizontal Transverse Plane: flat when seen horizontally
+          const jAx = (Math.random() - 0.5) * 2;
+          const jAz = (Math.random() - 0.5) * 2;
+          dataA[i * 4 + 0] = pA.x * nodeScale + node.x + jAx;
+          dataA[i * 4 + 1] = -node.y; // Flat on horizontal plane!
+          dataA[i * 4 + 2] = pA.y * nodeScale + jAz;
+          dataA[i * 4 + 3] = pA.density;
+
+          const jBx = (Math.random() - 0.5) * 2;
+          const jBz = (Math.random() - 0.5) * 2;
+          dataB[i * 4 + 0] = pB.x * nodeScale + node.x + jBx;
+          dataB[i * 4 + 1] = -node.y;
+          dataB[i * 4 + 2] = pB.y * nodeScale + jBz;
+          dataB[i * 4 + 3] = pB.density;
+        } else {
+          // Vertical Coronal Plane
+          const jAx = (Math.random() - 0.5) * 3;
+          const jAy = (Math.random() - 0.5) * 3;
+          dataA[i * 4 + 0] = pA.x * nodeScale + node.x + jAx;
+          dataA[i * 4 + 1] = pA.y * nodeScale - node.y + jAy;
+          dataA[i * 4 + 2] = (Math.random() - 0.5) * 8;
+          dataA[i * 4 + 3] = pA.density;
+
+          const jBx = (Math.random() - 0.5) * 3;
+          const jBy = (Math.random() - 0.5) * 3;
+          dataB[i * 4 + 0] = pB.x * nodeScale + node.x + jBx;
+          dataB[i * 4 + 1] = pB.y * nodeScale - node.y + jBy;
+          dataB[i * 4 + 2] = (Math.random() - 0.5) * 8;
+          dataB[i * 4 + 3] = pB.density;
+        }
+      }
+    }
+
+    const texA = new THREE.DataTexture(dataA, texWidth, texHeight, THREE.RGBAFormat, THREE.FloatType);
+    texA.needsUpdate = true;
+    texA.minFilter = THREE.NearestFilter;
+    texA.magFilter = THREE.NearestFilter;
+
+    const texB = new THREE.DataTexture(dataB, texWidth, texHeight, THREE.RGBAFormat, THREE.FloatType);
+    texB.needsUpdate = true;
+    texB.minFilter = THREE.NearestFilter;
+    texB.magFilter = THREE.NearestFilter;
+
+    const vortexCenter = new THREE.Vector2(sumX / K, sumY / K);
+
+    return {
+      textureA: texA,
+      textureB: texB,
+      centerA: vortexCenter.clone(),
+      centerB: vortexCenter.clone(),
+      vortexCenter,
+      attractorCenters: attractorCenters.slice(0, 10),
     };
   }
 
