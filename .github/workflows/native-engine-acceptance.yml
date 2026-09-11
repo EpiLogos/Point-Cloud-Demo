@@ -1,0 +1,34 @@
+name: Native engine acceptance
+on:
+  push:
+    branches: [agent/native-engine-journeys]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+      - name: Package reproducible working source
+        run: |
+          git archive --format=tar HEAD > /tmp/working-source.tar
+          tar -rf /tmp/working-source.tar node_modules package-lock.json
+          gzip -1 /tmp/working-source.tar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-engine-working-source
+          path: /tmp/working-source.tar.gz
+          retention-days: 7
+      - name: Existing engine regression suite
+        run: npm test
+      - name: Existing application build
+        run: npm run build
