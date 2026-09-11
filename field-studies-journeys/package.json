@@ -1,0 +1,6 @@
+{
+  "name":"@oi/field-studies-journeys","version":"0.2.0","private":true,"type":"module",
+  "description":"A canvas-first journey authoring shell with a replaceable field-engine adapter.",
+  "scripts":{"build":"node scripts/build.mjs","dev":"node scripts/serve.mjs","test":"npm run build && node --test tests/model.test.mjs","test:browser":"python tests/browser.py","typecheck":"tsc --noEmit"},
+  "devDependencies":{"typescript":"5.8.3"}
+}

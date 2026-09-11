@@ -1,0 +1,159 @@
+{
+  "tests": [
+    {
+      "test": "Opening: WebGL, named Ink scene, inspector closed, oversized O/I",
+      "status": "passed"
+    },
+    {
+      "test": "Inspector navigation does not reset or advance paused simulation",
+      "status": "passed"
+    },
+    {
+      "test": "Click-to-pin is one-shot, preserves formation identities and palette",
+      "status": "passed"
+    },
+    {
+      "test": "Pin is placed at the requested canvas coordinate",
+      "status": "passed"
+    },
+    {
+      "test": "Dragging a pin preserves depth and edits only its position",
+      "status": "passed"
+    },
+    {
+      "test": "One undo restores the entire drag",
+      "status": "passed"
+    },
+    {
+      "test": "Repeller changes the selected influence, not palette or stations",
+      "status": "passed"
+    },
+    {
+      "test": "3D pin honours the visible working-plane depth",
+      "status": "passed"
+    },
+    {
+      "test": "A new formation is independently placed without replacing existing entities",
+      "status": "passed"
+    },
+    {
+      "test": "Glyph typing does not activate the Pin shortcut",
+      "status": "passed"
+    },
+    {
+      "test": "Empty glyph draft commits a sensible fallback",
+      "status": "passed"
+    },
+    {
+      "test": "Sequence spatial keyframe is a local offset, not an entity replacement",
+      "status": "passed"
+    },
+    {
+      "test": "Keyframe placement projects back to its actual click",
+      "status": "passed"
+    },
+    {
+      "test": "Automation is created from its parameter in the correct context",
+      "status": "passed"
+    },
+    {
+      "test": "Evaluating an automation never overwrites the base value",
+      "status": "passed"
+    },
+    {
+      "test": "Optional editorial text is actual scene content and can be hidden",
+      "status": "passed"
+    },
+    {
+      "test": "Text is safely rendered literally rather than interpreted as HTML",
+      "status": "passed"
+    },
+    {
+      "test": "Scene framing is stored and restored deliberately",
+      "status": "passed"
+    },
+    {
+      "test": "Duplicate scene makes a separately named full state",
+      "status": "passed"
+    },
+    {
+      "test": "Undo duplicate restores the scene list",
+      "status": "passed"
+    },
+    {
+      "test": "Physical cymatics are disabled instead of represented as fake templates",
+      "status": "passed"
+    },
+    {
+      "test": "Journey file preserves text, entities, scenes and automation",
+      "status": "passed"
+    },
+    {
+      "test": "Living HTML artifact opens with its complete embedded journey and presentation view",
+      "status": "passed"
+    },
+    {
+      "test": "PNG capture is a real image at the requested output size",
+      "status": "passed"
+    },
+    {
+      "test": "Transparent PNG contains real alpha, not a paper-coloured rectangle",
+      "status": "passed"
+    },
+    {
+      "test": "Video recording reaches a real reviewable media element",
+      "status": "passed"
+    },
+    {
+      "test": "Browser encoder produces a decodable video file",
+      "status": "passed"
+    },
+    {
+      "test": "Autosave persists the authoring document through the storage interface",
+      "status": "passed"
+    },
+    {
+      "test": "Seven-centre preset exposes seven editable entities with independent station links",
+      "status": "passed"
+    },
+    {
+      "test": "Interact tool activates only the transient pointer",
+      "status": "passed"
+    },
+    {
+      "test": "Switching to Pin clears transient pointer influence",
+      "status": "passed"
+    },
+    {
+      "test": "Repeated pinning is explicit and places distinct force centres",
+      "status": "passed"
+    },
+    {
+      "test": "Mobile opening has no horizontal page overflow",
+      "status": "passed"
+    },
+    {
+      "test": "Mobile contextual editor remains within viewport",
+      "status": "passed"
+    },
+    {
+      "test": "Journey playback advances full named scenes on the shared clock",
+      "status": "passed"
+    },
+    {
+      "test": "All exercised browser interactions complete without runtime errors",
+      "status": "passed"
+    },
+    {
+      "test": "Reduced motion starts paused without prohibiting deliberate play",
+      "status": "passed"
+    },
+    {
+      "test": "Reduced-motion user can explicitly resume",
+      "status": "passed"
+    }
+  ],
+  "passed": 38,
+  "runtimeErrors": [],
+  "environment": "Chromium + software WebGL under Xvfb; inline local content; explicit in-memory storage test double"
+}
