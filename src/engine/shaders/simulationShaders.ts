@@ -87,6 +87,13 @@ uniform float uChakraSpins[10];    // individual angular momentum per chakra
 uniform float uChakraPlane;        // 0.0 = horizontal (X-Z plane), 1.0 = vertical (X-Y plane)
 uniform float uChakraVortexStrength; // individual vortex strength multiplier
 
+// Dedicated Cymatic Chladni Acoustic Resonance System
+uniform float uCymaticsEnabled;       // 0.0 = off, 1.0 = on
+uniform float uCymaticsLock;          // 0.0 (chaotic in-between state) to 1.0 (crystallized resonance lock)
+uniform float uCymaticsChaos;         // in-between turbulent flutter intensity
+uniform float uCymaticsNodalPull;     // acoustic radiation force into nodal lines
+uniform vec4 uCymaticsParams;         // x = m, y = n, z = frequencyHz, w = plateType (0=sq, 1=circ, 2=3D)
+
 // Interaction properties
 uniform vec2 uPointerPos;
 uniform vec2 uPointerVelocity;
@@ -246,8 +253,31 @@ void main() {
     }
   }
 
-  // --- 7. Total Acceleration & Viscous Integration ---
-  vec3 accel = fSpring + fCurl + fVortex + fDisperse + fRelational + fPointer;
+  // --- 7. Dedicated Cymatic Chladni Acoustic Forces & In-Between Chaos ---
+  vec3 fCymatic = vec3(0.0);
+  if (uCymaticsEnabled > 0.5) {
+    // A. In-Between Chaotic Faraday Flutter (maximal when transitioning between harmonic stability points)
+    float inBetweenAgitation = (1.0 - uCymaticsLock) * uCymaticsChaos;
+    if (inBetweenAgitation > 0.001) {
+      vec3 flutterNoise = curlNoise(pos * 0.008 + vec3(uTime * 0.4), uTime * 4.2);
+      // Fast microscopic jitter as sand grains chatter and scatter across the vibrating plate
+      vec3 microJitter = vec3(
+        sin(pos.y * 0.09 + uTime * 15.0),
+        cos(pos.x * 0.09 + uTime * 13.0),
+        sin((pos.x + pos.y) * 0.07 + uTime * 17.0)
+      ) * 48.0;
+      fCymatic += (flutterNoise * 150.0 + microJitter) * inBetweenAgitation;
+    }
+
+    // B. Deterministic Chladni Nodal Pull: particles lock rigidly into target nodal curves
+    if (uCymaticsLock > 0.2) {
+      float nodalSpringBoost = uCymaticsLock * uCymaticsNodalPull * 4.5;
+      fCymatic += toTarget * nodalSpringBoost;
+    }
+  }
+
+  // --- 8. Total Acceleration & Viscous Integration ---
+  vec3 accel = fSpring + fCurl + fVortex + fDisperse + fRelational + fPointer + fCymatic;
   
   // Velocity damping / viscosity (supports zero damping and hyper-viscous)
   vel = (vel + accel * uDelta) * uViscosity;

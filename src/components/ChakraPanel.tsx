@@ -11,6 +11,7 @@ import {
   ArrowDown,
   Repeat,
   Play,
+  Pause,
   Sliders,
   Compass,
   RotateCcw,
@@ -22,18 +23,27 @@ import {
   Eye,
   Zap,
   Disc,
+  Waves,
+  Activity,
+  Volume2,
+  Box,
 } from 'lucide-react';
 import {
   PointCloudConfig,
   SpatialChakraConfig,
   SpatialChakraNode,
   SpatialChakraTimelineState,
+  CymaticsConfig,
+  CymaticPlateGeometry,
+  CymaticDimension,
+  ChakraGeometryMode,
 } from '../engine/types';
 import {
   CANONICAL_CHAKRAS,
   createDefaultChakraConfig,
   CHAKRA_SPATIAL_PRESETS,
 } from '../engine/chakraSystem';
+import { CHAKRA_CYMATIC_PROFILES } from '../engine/cymatics';
 import { EditableNumber } from './EditableNumber';
 
 export interface ChakraPanelProps {
@@ -54,7 +64,7 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
   isLight,
 }) => {
   const chakraConfig = config.spatialChakra || createDefaultChakraConfig();
-  const [activeSubTab, setActiveSubTab] = useState<'system' | 'spine' | 'coordinates' | 'presets'>('system');
+  const [activeSubTab, setActiveSubTab] = useState<'system' | 'cymatics' | 'spine' | 'coordinates' | 'presets'>('system');
   const [expandedNodeId, setExpandedNodeId] = useState<string | null>(null);
 
   const updateChakra = (updates: Partial<SpatialChakraConfig>) => {
@@ -65,6 +75,24 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
         ...updates,
       },
     }));
+  };
+
+  const updateCymatics = (updates: Partial<CymaticsConfig>) => {
+    updateChakra({
+      cymatics: {
+        ...(chakraConfig.cymatics || {
+          plateGeometry: 'square',
+          dimension: '2D',
+          frequencyHz: 396,
+          autoSweep: false,
+          sweepSpeed: 8.0,
+          chaosIntensity: 1.4,
+          nodalAttraction: 2.8,
+          dampingQFactor: 4.5,
+        }),
+        ...updates,
+      },
+    });
   };
 
   const updateNode = (id: string, updates: Partial<SpatialChakraNode>) => {
@@ -141,6 +169,7 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
       >
         {[
           { id: 'system', label: 'Playback' },
+          { id: 'cymatics', label: 'Cymatics' },
           { id: 'spine', label: 'Spine Transit' },
           { id: 'coordinates', label: 'Nodes / Space' },
           { id: 'presets', label: 'Layouts' },
@@ -149,7 +178,7 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
             key={tab.id}
             id={`chakra-subtab-${tab.id}`}
             onClick={() => setActiveSubTab(tab.id as any)}
-            className={`flex-1 py-1 text-[10px] font-mono uppercase rounded transition-all text-center ${
+            className={`flex-1 py-1 text-[10px] font-mono uppercase rounded transition-all text-center relative ${
               activeSubTab === tab.id
                 ? isLight
                   ? 'bg-white text-stone-950 font-bold shadow-xs'
@@ -158,6 +187,9 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
             }`}
           >
             {tab.label}
+            {tab.id === 'cymatics' && chakraConfig.geometryMode === 'cymatics' && (
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 ml-1 -mt-0.5 animate-pulse" />
+            )}
           </button>
         ))}
       </div>
@@ -213,29 +245,86 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
             </div>
           </div>
 
-          {/* Sacred Yantra Geometric Form */}
+          {/* Chakra System Geometry Mode: Mode 1 (Yantra) vs Mode 2 (Cymatics) */}
           <div>
-            <label className="text-[10px] uppercase font-bold tracking-wider opacity-70 block mb-1">
-              Chakra Geometry Form
-            </label>
-            <div className={`p-2.5 rounded-lg border text-left flex items-center justify-between ${
-              isLight
-                ? 'border-purple-200 bg-purple-50/80 text-purple-900'
-                : 'border-purple-900/60 bg-purple-950/20 text-purple-200'
-            }`}>
-              <div>
-                <div className="font-bold text-[11px] flex items-center gap-1.5">
-                  <span>☸ Sacred Yantra Geometric Form</span>
+            <div className="flex justify-between items-center mb-1">
+              <label className="text-[10px] uppercase font-bold tracking-wider opacity-70">
+                Chakra Geometric System
+              </label>
+              <span className="text-[9px] font-mono opacity-50">Mode 1 vs Mode 2</span>
+            </div>
+            <div className="grid grid-cols-2 gap-1.5">
+              <button
+                type="button"
+                id="chakra-mode-yantra-btn"
+                onClick={() => updateChakra({ geometryMode: 'yantra' })}
+                className={`p-2 rounded-lg border text-left transition-all ${
+                  (chakraConfig.geometryMode ?? 'yantra') === 'yantra'
+                    ? 'border-purple-500 bg-purple-950/30 text-purple-200 font-bold shadow-xs'
+                    : isLight
+                    ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700'
+                    : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300'
+                }`}
+              >
+                <div className="text-[10px] flex items-center gap-1.5 font-bold">
+                  <Sparkles className="w-3 h-3 text-purple-400" />
+                  <span>☸ Mode 1: Sacred Yantra</span>
                 </div>
-                <p className="text-[9px] opacity-75 mt-0.5 leading-tight">
-                  Authentic vector mandalas: Lotus Petals, Shatkona, Inverted Triangles, Crescent Moon & Sun Wheel.
+                <p className="text-[8.5px] opacity-70 mt-0.5 leading-tight">
+                  Classical vector mandalas: Lotus Petals, Shatkona & Sacred Bija Yantras.
                 </p>
-              </div>
-              <span className="text-[9px] px-2 py-0.5 rounded-full font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30 whitespace-nowrap">
-                Yantra Only
-              </span>
+              </button>
+
+              <button
+                type="button"
+                id="chakra-mode-cymatics-btn"
+                onClick={() => {
+                  updateChakra({ geometryMode: 'cymatics' });
+                  setActiveSubTab('cymatics');
+                }}
+                className={`p-2 rounded-lg border text-left transition-all ${
+                  chakraConfig.geometryMode === 'cymatics'
+                    ? 'border-cyan-500 bg-cyan-950/30 text-cyan-200 font-bold shadow-xs'
+                    : isLight
+                    ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700'
+                    : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300'
+                }`}
+              >
+                <div className="text-[10px] flex items-center gap-1.5 font-bold">
+                  <Waves className="w-3 h-3 text-cyan-400" />
+                  <span>〰 Mode 2: Acoustic Cymatics</span>
+                </div>
+                <p className="text-[8.5px] opacity-70 mt-0.5 leading-tight">
+                  Chladni wave equations & deterministic harmonic attractor basins.
+                </p>
+              </button>
             </div>
           </div>
+
+          {chakraConfig.geometryMode === 'cymatics' && (
+            <div className={`p-2 rounded-lg border flex items-center justify-between ${
+              isLight ? 'bg-cyan-50/70 border-cyan-200' : 'bg-cyan-950/20 border-cyan-800/60'
+            }`}>
+              <div className="flex items-center gap-2">
+                <Waves className="w-4 h-4 text-cyan-400" />
+                <div>
+                  <div className="text-[10px] font-bold text-cyan-400 uppercase">
+                    Cymatics Mode Active · {chakraConfig.cymatics?.plateGeometry ?? 'square'} Plate
+                  </div>
+                  <div className="text-[9px] opacity-70">
+                    Harmonic frequency: {timelineState?.cymaticFrequency ?? (chakraConfig.cymatics?.frequencyHz ?? 396)} Hz
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveSubTab('cymatics')}
+                className="px-2 py-1 rounded text-[9px] font-bold uppercase bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/30 transition-all"
+              >
+                Open Tuner →
+              </button>
+            </div>
+          )}
 
           {/* 3D Planar Alignment: Horizontal vs Vertical */}
           <div>
@@ -417,6 +506,361 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
         </div>
       )}
 
+      {/* SUB-TAB: ACOUSTIC CYMATICS & CHLADNI RESONATORS */}
+      {activeSubTab === 'cymatics' && (
+        <div className="space-y-3.5">
+          {/* Master Cymatic State & Telemetry Card */}
+          <div className={`p-3 rounded-lg border transition-all ${
+            isLight ? 'bg-cyan-50/60 border-cyan-200' : 'bg-cyan-950/20 border-cyan-800/60'
+          }`}>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400">
+                  <Waves className="w-4 h-4 animate-pulse" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider">
+                    Acoustic Cymatic Resonator
+                  </div>
+                  <div className="text-[9px] opacity-70">
+                    Chladni Standing Waves & Harmonic Attractor Basins
+                  </div>
+                </div>
+              </div>
+
+              {/* Resonance Stability Badge */}
+              <div className="text-right">
+                <span className={`inline-block px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${
+                  timelineState?.isResonanceLocked
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 animate-pulse'
+                    : (timelineState?.cymaticCoherence ?? 0) > 0.45
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                    : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                }`}>
+                  {timelineState?.cymaticStatus || (timelineState?.isResonanceLocked ? 'Resonance Lock' : 'Harmonic Transition')}
+                </span>
+              </div>
+            </div>
+
+            {/* Live Frequency & Modal Readout */}
+            <div className="grid grid-cols-2 gap-2 p-2 rounded bg-black/20 border border-white/5 text-[10px] mb-2">
+              <div>
+                <span className="opacity-60 text-[8.5px] uppercase block">Acoustic Frequency</span>
+                <span className="font-bold text-cyan-300 font-mono text-sm">
+                  {Math.round(timelineState?.cymaticFrequency ?? (chakraConfig.cymatics?.frequencyHz ?? 396))} Hz
+                </span>
+              </div>
+              <div className="text-right">
+                <span className="opacity-60 text-[8.5px] uppercase block">Nodal Symmetry</span>
+                <span className="font-bold text-cyan-200 font-mono text-xs">
+                  {chakraConfig.cymatics?.plateGeometry === 'volumetric3D'
+                    ? `3D (${timelineState?.modalL ?? 3}, ${timelineState?.modalM ?? 3}, ${timelineState?.modalN ?? 3})`
+                    : `m=${timelineState?.modalM ?? 2}, n=${timelineState?.modalN ?? 2}`}
+                </span>
+              </div>
+            </div>
+
+            {/* Live Coherence vs Chaos Meter */}
+            <div className="space-y-1">
+              <div className="flex justify-between text-[8.5px] uppercase opacity-75">
+                <span>Harmonic Coherence (Lock)</span>
+                <span className="font-mono font-bold">
+                  {Math.round((timelineState?.cymaticCoherence ?? 0.85) * 100)}%
+                </span>
+              </div>
+              <div className="h-1.5 w-full bg-black/40 rounded-full overflow-hidden flex">
+                <div
+                  className="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 transition-all duration-75"
+                  style={{ width: `${Math.round((timelineState?.cymaticCoherence ?? 0.85) * 100)}%` }}
+                />
+              </div>
+              <div className="flex justify-between text-[8px] opacity-60">
+                <span>Chaotic Flutter</span>
+                <span>Deterministic Lock</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Continuous Frequency Spectrum Tuning */}
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider opacity-80">
+              <span className="flex items-center gap-1">
+                <Activity className="w-3 h-3 text-cyan-400" />
+                Continuous Acoustic Spectrum
+              </span>
+              <EditableNumber
+                value={Math.round(chakraConfig.cymatics?.frequencyHz ?? 396)}
+                onChange={(v) => updateCymatics({ frequencyHz: v })}
+                min={300}
+                max={1050}
+                step={1}
+                unit="Hz"
+                isLight={isLight}
+              />
+            </div>
+
+            <input
+              id="slider-cymatics-frequency"
+              type="range"
+              min={300}
+              max={1050}
+              step={1}
+              value={chakraConfig.cymatics?.frequencyHz ?? 396}
+              onChange={(e) => updateCymatics({ frequencyHz: parseFloat(e.target.value) })}
+              className="w-full accent-cyan-400 cursor-pointer h-1.5"
+            />
+            <p className="text-[8.5px] opacity-60">
+              Sweep smoothly across frequencies. When traversing between harmonics, particles enter chaotic Faraday flutter before snapping into geometric nodal attractors.
+            </p>
+
+            {/* Auto-Sweep Continuous Spectrum Oscillation */}
+            <div className="flex items-center gap-2 pt-1">
+              <button
+                type="button"
+                id="btn-cymatics-autosweep"
+                onClick={() => updateCymatics({ autoSweep: !(chakraConfig.cymatics?.autoSweep ?? false) })}
+                className={`flex-1 py-1.5 px-2 rounded-lg border text-[10px] font-bold flex items-center justify-center gap-1.5 transition-all ${
+                  chakraConfig.cymatics?.autoSweep
+                    ? 'border-cyan-500 bg-cyan-950/40 text-cyan-200 shadow-xs'
+                    : isLight
+                    ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700'
+                    : 'border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-300'
+                }`}
+              >
+                {chakraConfig.cymatics?.autoSweep ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                <span>{chakraConfig.cymatics?.autoSweep ? 'Auto-Sweep Active' : 'Auto-Sweep Spectrum'}</span>
+              </button>
+
+              <div className="w-28">
+                <EditableNumber
+                  value={chakraConfig.cymatics?.sweepSpeed ?? 8.0}
+                  onChange={(v) => updateCymatics({ sweepSpeed: v })}
+                  min={2.0}
+                  max={30.0}
+                  step={0.5}
+                  unit="s/cycle"
+                  isLight={isLight}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* 7 Canonical Chakra Harmonic Attractor Points */}
+          <div>
+            <label className="text-[10px] uppercase font-bold tracking-wider opacity-70 block mb-1.5 flex items-center gap-1">
+              <Radio className="w-3 h-3 text-purple-400" />
+              Chakra Harmonic Attractor Points (Solfeggio Resonance)
+            </label>
+            <div className="grid grid-cols-1 gap-1">
+              {CHAKRA_CYMATIC_PROFILES.map((profile, idx) => {
+                const isCurrent = Math.abs((chakraConfig.cymatics?.frequencyHz ?? 396) - profile.frequencyHz) < 8;
+                const chakraNode = CANONICAL_CHAKRAS[idx] || CANONICAL_CHAKRAS[0];
+                return (
+                  <button
+                    key={profile.chakraId}
+                    type="button"
+                    id={`btn-cymatics-snap-${profile.chakraId}`}
+                    onClick={() => {
+                      updateCymatics({ frequencyHz: profile.frequencyHz, autoSweep: false });
+                      updateChakra({ geometryMode: 'cymatics' });
+                    }}
+                    className={`flex items-center justify-between p-2 rounded-lg border text-left transition-all ${
+                      isCurrent
+                        ? 'border-cyan-500 bg-cyan-950/40 text-white shadow-xs'
+                        : isLight
+                        ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800'
+                        : 'border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 text-zinc-200'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: chakraNode.color }}
+                      />
+                      <div>
+                        <span className="text-[10.5px] font-bold">{profile.chakraName}</span>
+                        <span className="text-[8.5px] opacity-60 ml-1.5">{profile.symmetryTitle}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 font-mono">
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-black/30 border border-white/5 text-cyan-300">
+                        {profile.frequencyHz} Hz
+                      </span>
+                      <span className="text-[8.5px] opacity-60">
+                        {profile.squareM}×{profile.squareN}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Plate Geometry Topology */}
+          <div>
+            <label className="text-[10px] uppercase font-bold tracking-wider opacity-70 block mb-1">
+              Cymatic Plate & Boundary Form
+            </label>
+            <div className="grid grid-cols-3 gap-1">
+              {[
+                { id: 'square', label: 'Square Plate', desc: 'Classic Chladni Matrix' },
+                { id: 'circular', label: 'Circular Membrane', desc: 'Bessel Azimuthal Petals' },
+                { id: 'volumetric3D', label: '3D Cavity', desc: 'Standing Wave Nodal Cage' },
+              ].map((geom) => (
+                <button
+                  key={geom.id}
+                  type="button"
+                  id={`btn-plate-${geom.id}`}
+                  onClick={() => updateCymatics({ plateGeometry: geom.id as CymaticPlateGeometry })}
+                  className={`p-2 rounded-lg border text-left transition-all ${
+                    (chakraConfig.cymatics?.plateGeometry ?? 'square') === geom.id
+                      ? 'border-cyan-500 bg-cyan-950/40 text-cyan-200 font-bold'
+                      : isLight
+                      ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-600'
+                      : 'border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-400'
+                  }`}
+                >
+                  <div className="text-[10px] font-bold">{geom.label}</div>
+                  <p className="text-[8px] opacity-65 leading-tight mt-0.5">{geom.desc}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Dimension: 2D Planar vs 3D Volumetric */}
+          <div>
+            <label className="text-[10px] uppercase font-bold tracking-wider opacity-70 block mb-1">
+              Spatial Dimensionality
+            </label>
+            <div className="grid grid-cols-2 gap-1.5">
+              <button
+                type="button"
+                id="btn-cymatics-dim-2d"
+                onClick={() => updateCymatics({ dimension: '2D' })}
+                className={`p-2 rounded-lg border text-left transition-all ${
+                  (chakraConfig.cymatics?.dimension ?? '2D') === '2D'
+                    ? 'border-cyan-500 bg-cyan-950/40 text-cyan-200 font-bold'
+                    : isLight
+                    ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700'
+                    : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300'
+                }`}
+              >
+                <div className="text-[10px] flex items-center gap-1.5">
+                  <Layers className="w-3 h-3 text-cyan-400" />
+                  <span>2D Planar Surface</span>
+                </div>
+                <p className="text-[8px] opacity-70 mt-0.5 leading-tight">
+                  Chladni plates aligned along horizontal discs or vertical spine.
+                </p>
+              </button>
+
+              <button
+                type="button"
+                id="btn-cymatics-dim-3d"
+                onClick={() => updateCymatics({ dimension: '3D' })}
+                className={`p-2 rounded-lg border text-left transition-all ${
+                  chakraConfig.cymatics?.dimension === '3D'
+                    ? 'border-cyan-500 bg-cyan-950/40 text-cyan-200 font-bold'
+                    : isLight
+                    ? 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700'
+                    : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300'
+                }`}
+              >
+                <div className="text-[10px] flex items-center gap-1.5">
+                  <Box className="w-3 h-3 text-purple-400" />
+                  <span>3D Volumetric Cloud</span>
+                </div>
+                <p className="text-[8px] opacity-70 mt-0.5 leading-tight">
+                  True 3D nodal surfaces forming spatial acoustic standing cages.
+                </p>
+              </button>
+            </div>
+          </div>
+
+          {/* Physics Attractor Lock & Faraday Turbulence Tuning */}
+          <div className="grid grid-cols-2 gap-2 pt-1 border-t border-zinc-800/40">
+            <div>
+              <div className="flex justify-between items-center text-[9px] uppercase tracking-wider mb-0.5">
+                <span className="opacity-70">Nodal Attraction Lock</span>
+                <EditableNumber
+                  value={chakraConfig.cymatics?.nodalAttraction ?? 2.8}
+                  onChange={(v) => updateCymatics({ nodalAttraction: v })}
+                  min={0.5}
+                  max={6.0}
+                  step={0.1}
+                  unit="x"
+                  isLight={isLight}
+                />
+              </div>
+              <input
+                type="range"
+                min={0.5}
+                max={6.0}
+                step={0.1}
+                value={chakraConfig.cymatics?.nodalAttraction ?? 2.8}
+                onChange={(e) => updateCymatics({ nodalAttraction: parseFloat(e.target.value) })}
+                className="w-full accent-cyan-400 cursor-pointer h-1.5"
+              />
+              <p className="text-[8px] opacity-50 mt-0.5">Deterministic pull into zero-vibration lines.</p>
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center text-[9px] uppercase tracking-wider mb-0.5">
+                <span className="opacity-70">In-Between Chaos</span>
+                <EditableNumber
+                  value={chakraConfig.cymatics?.chaosIntensity ?? 1.4}
+                  onChange={(v) => updateCymatics({ chaosIntensity: v })}
+                  min={0.0}
+                  max={3.5}
+                  step={0.1}
+                  unit="x"
+                  isLight={isLight}
+                />
+              </div>
+              <input
+                type="range"
+                min={0.0}
+                max={3.5}
+                step={0.1}
+                value={chakraConfig.cymatics?.chaosIntensity ?? 1.4}
+                onChange={(e) => updateCymatics({ chaosIntensity: parseFloat(e.target.value) })}
+                className="w-full accent-rose-400 cursor-pointer h-1.5"
+              />
+              <p className="text-[8px] opacity-50 mt-0.5">Faraday shear & Brownian flutter off-resonance.</p>
+            </div>
+          </div>
+
+          {/* Q-Factor Resonance Bandwidth */}
+          <div>
+            <div className="flex justify-between items-center text-[9px] uppercase tracking-wider mb-0.5">
+              <span className="opacity-70">Resonance Q-Factor (Damping Sharpness)</span>
+              <EditableNumber
+                value={chakraConfig.cymatics?.dampingQFactor ?? 4.5}
+                onChange={(v) => updateCymatics({ dampingQFactor: v })}
+                min={1.0}
+                max={12.0}
+                step={0.5}
+                unit="Q"
+                isLight={isLight}
+              />
+            </div>
+            <input
+              type="range"
+              min={1.0}
+              max={12.0}
+              step={0.5}
+              value={chakraConfig.cymatics?.dampingQFactor ?? 4.5}
+              onChange={(e) => updateCymatics({ dampingQFactor: parseFloat(e.target.value) })}
+              className="w-full accent-emerald-400 cursor-pointer h-1.5"
+            />
+            <p className="text-[8px] opacity-50 mt-0.5">
+              Higher Q-factor produces sharper, narrower harmonic locking zones and wider chaotic transitions.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* SUB-TAB 2: SPINE TRANSIT / LIVE KUNDALINI HUD */}
       {activeSubTab === 'spine' && (
         <div className="space-y-3">
@@ -441,7 +885,9 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
                     {currentNode.name} · {currentNode.sanskrit}
                   </div>
                   <div className="text-[9px] opacity-80">
-                    {currentNode.element} · {currentNode.frequencyHz ? `${currentNode.frequencyHz} Hz` : ''}
+                    {chakraConfig.geometryMode === 'cymatics'
+                      ? `Cymatic Harmonic: ${Math.round(timelineState?.cymaticFrequency ?? (currentNode.frequencyHz ?? 396))} Hz · ${timelineState?.cymaticStatus || 'Harmonic Attractor'}`
+                      : `${currentNode.element} · ${currentNode.frequencyHz ? `${currentNode.frequencyHz} Hz` : ''}`}
                   </div>
                 </div>
               </div>
@@ -468,6 +914,21 @@ export const ChakraPanel: React.FC<ChakraPanelProps> = ({
                     backgroundColor: currentNode.color,
                   }}
                 />
+              </div>
+            )}
+
+            {/* Cymatic Resonance Lock Mini-Bar when in Cymatics mode */}
+            {chakraConfig.geometryMode === 'cymatics' && (
+              <div className="mt-2 pt-2 border-t border-white/10 flex items-center justify-between text-[8.5px]">
+                <div className="flex items-center gap-1.5">
+                  <Waves className="w-3 h-3 text-cyan-300" />
+                  <span className="font-bold text-cyan-300">
+                    {timelineState?.isResonanceLocked ? 'Deterministic Nodal Lock' : 'Harmonic Spectrum State'}
+                  </span>
+                </div>
+                <div className="font-mono">
+                  Coherence: {Math.round((timelineState?.cymaticCoherence ?? 0.8) * 100)}%
+                </div>
               </div>
             )}
           </div>

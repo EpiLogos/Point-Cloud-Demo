@@ -25,6 +25,7 @@ import { GlyphSampler, BakeResult } from './GlyphSampler';
 import { particleVertexShader, particleFragmentShader } from './shaders/particleShaders';
 import { isLightHex } from './colorPalettes';
 import { CANONICAL_CHAKRAS } from './chakraSystem';
+import { evalHarmonicSpectrum, HarmonicSpectrumState } from './cymatics';
 
 export function getColorModeIndex(mode?: string): number {
   switch (mode) {
@@ -161,6 +162,9 @@ export class PointCloudField {
   private currentChakraHoldTime: number = 1.2;
   private currentChakraTransitionTime: number = 2.4;
   private onChakraUpdateCallback: ((state: SpatialChakraTimelineState) => void) | null = null;
+  private cymaticSweepPhase: number = 0;
+  private latestHarmonicEval: HarmonicSpectrumState | null = null;
+  private latestCymaticFreq: number = 396;
 
   // 3D Orbit Camera State (Orb Camera Control)
   private cameraState: CameraOrbState = {
@@ -287,7 +291,21 @@ export class PointCloudField {
       },
       spatialChakra: override.spatialChakra !== undefined
         ? {
+            ...base.spatialChakra,
             ...override.spatialChakra,
+            cymatics: {
+              ...(base.spatialChakra?.cymatics || {
+                plateGeometry: 'square',
+                dimension: '2D',
+                frequencyHz: 396,
+                autoSweep: false,
+                sweepSpeed: 8.0,
+                chaosIntensity: 1.4,
+                nodalAttraction: 2.8,
+                dampingQFactor: 4.5,
+              }),
+              ...(override.spatialChakra?.cymatics || {}),
+            },
             nodes: override.spatialChakra.nodes
               ? override.spatialChakra.nodes.map((n) => ({ ...n }))
               : (base.spatialChakra?.nodes ? base.spatialChakra.nodes.map((n) => ({ ...n })) : []),
@@ -1135,7 +1153,9 @@ export class PointCloudField {
         sc.glyphType || 'both',
         this.config.fontFamily,
         this.config.fontWeight,
-        sc.plane || 'horizontal'
+        sc.plane || 'horizontal',
+        sc.geometryMode || 'yantra',
+        sc.cymatics
       );
       this.simulator.setTargetTextures(
         this.bakedTargets.textureA,
@@ -1166,6 +1186,55 @@ export class PointCloudField {
     const nodes = sc.nodes && sc.nodes.length > 0 ? sc.nodes : CANONICAL_CHAKRAS;
     const activeNodes = nodes.filter((n) => n.active);
     const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
+
+    // Cymatics Acoustic Dynamics & Attractor Stability Logic
+    const isCymatics = sc.geometryMode === 'cymatics';
+    if (isCymatics) {
+      let currentFreq = 396;
+      if (sc.cymatics?.autoSweep) {
+        const sweepSpeed = sc.cymatics.sweepSpeed || 8.0;
+        this.cymaticSweepPhase = (this.cymaticSweepPhase + delta / sweepSpeed) % 1.0;
+        // Triangle wave sweeping between 396 Hz and 963 Hz
+        const tri = Math.abs((this.cymaticSweepPhase * 2.0) - 1.0);
+        currentFreq = 396 + (963 - 396) * (1.0 - tri);
+      } else if (sc.playbackMode === 'sequentialMorph' && validNodes.length > 1) {
+        const nodeA = validNodes[this.chakraIndex % validNodes.length];
+        const nodeB = validNodes[this.nextChakraIndex % validNodes.length];
+        const fA = nodeA.frequencyHz ?? 396;
+        const fB = nodeB.frequencyHz ?? 417;
+        currentFreq = fA + (fB - fA) * this.morphProgress;
+      } else {
+        currentFreq = sc.cymatics?.frequencyHz ?? 396;
+      }
+
+      this.latestCymaticFreq = currentFreq;
+      const qFactor = sc.cymatics?.dampingQFactor ?? 4.5;
+      const hEval = evalHarmonicSpectrum(currentFreq, qFactor);
+      this.latestHarmonicEval = hEval;
+
+      const chaosIntensity = sc.cymatics?.chaosIntensity ?? 1.4;
+      const nodalPull = sc.cymatics?.nodalAttraction ?? 2.8;
+      const plateType =
+        sc.cymatics?.plateGeometry === 'circular'
+          ? 1.0
+          : sc.cymatics?.plateGeometry === 'volumetric3D'
+          ? 2.0
+          : 0.0;
+
+      this.simulator.setCymaticsParams(
+        true,
+        hEval.coherence,
+        chaosIntensity * (1.0 - hEval.coherence),
+        nodalPull,
+        hEval.nearestProfile.squareM,
+        hEval.nearestProfile.squareN,
+        currentFreq,
+        plateType
+      );
+    } else {
+      this.simulator.setCymaticsParams(false, 1.0, 0.0, 0.0, 2, 2, 396, 0.0);
+      this.latestHarmonicEval = null;
+    }
 
     if (sc.playbackMode === 'simultaneousBody') {
       if (this.particleMaterial) {
@@ -1378,7 +1447,9 @@ export class PointCloudField {
       sc?.glyphType || 'seed',
       this.config.fontFamily,
       this.config.fontWeight,
-      sc?.plane || 'horizontal'
+      sc?.plane || 'horizontal',
+      sc?.geometryMode || 'yantra',
+      sc?.cymatics
     );
 
     if (oldA) oldA.dispose();
@@ -1442,6 +1513,15 @@ export class PointCloudField {
       progress: this.morphProgress,
       elapsedInPhase: this.chakraPhaseTimer,
       totalDurationInPhase: dur,
+      cymaticFrequency: Math.round(this.latestCymaticFreq || (curN.frequencyHz ?? 396)),
+      cymaticCoherence: this.latestHarmonicEval?.coherence ?? 1.0,
+      isResonanceLocked: this.latestHarmonicEval?.isLocked ?? true,
+      lockStrength: this.latestHarmonicEval?.lockStrength ?? 1.0,
+      chaosTurbulence: this.latestHarmonicEval?.chaosTurbulence ?? 0.0,
+      cymaticStatus: this.latestHarmonicEval?.statusLabel ?? 'Resonance Lock',
+      modalM: this.latestHarmonicEval?.nearestProfile.squareM,
+      modalN: this.latestHarmonicEval?.nearestProfile.squareN,
+      modalL: this.latestHarmonicEval?.nearestProfile.volumetricL,
     };
   }
 

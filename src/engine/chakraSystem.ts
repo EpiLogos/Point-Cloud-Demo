@@ -287,6 +287,17 @@ export const CANONICAL_CHAKRAS: SpatialChakraNode[] = [
 export function createDefaultSpatialChakraConfig(): SpatialChakraConfig {
   return {
     enabled: false,
+    geometryMode: 'yantra',
+    cymatics: {
+      plateGeometry: 'square',
+      dimension: '2D',
+      frequencyHz: 396,
+      autoSweep: false,
+      sweepSpeed: 8.0,
+      chaosIntensity: 1.4,
+      nodalAttraction: 2.8,
+      dampingQFactor: 4.5,
+    },
     playbackMode: 'simultaneousBody',
     glyphType: 'yantra',
     nodes: CANONICAL_CHAKRAS.map((c) => ({ ...c })),

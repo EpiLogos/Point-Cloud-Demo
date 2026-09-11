@@ -4,7 +4,21 @@
  */
 
 import * as THREE from 'three';
-import { SpatialChakraNode, SpatialChakraGlyphType, SpatialChakraPlane } from './types';
+import {
+  SpatialChakraNode,
+  SpatialChakraGlyphType,
+  SpatialChakraPlane,
+  ChakraGeometryMode,
+  CymaticsConfig,
+  CymaticPlateGeometry,
+  CymaticDimension,
+} from './types';
+import {
+  CHAKRA_CYMATIC_PROFILES,
+  renderChladniPlate,
+  sampleVolumetric3DNodalPoints,
+  evalHarmonicSpectrum,
+} from './cymatics';
 
 export interface BakeResult {
   textureA: THREE.DataTexture;
@@ -808,7 +822,7 @@ export class GlyphSampler {
     fontFamily: string = FALLBACK_FONT_STACK,
     fontWeight: string | number = 900,
     variant: 'yantraA' | 'yantraB' = 'yantraA'
-  ): { candidates: Array<{ x: number; y: number; density: number }> } {
+  ): { candidates: Array<{ x: number; y: number; z?: number; density: number }> } {
     const w = this.canvas.width;
     const h = this.canvas.height;
     const ctx = this.ctx;
@@ -822,7 +836,7 @@ export class GlyphSampler {
 
     const imgData = ctx.getImageData(0, 0, w, h);
     const pixels = imgData.data;
-    const candidates: Array<{ x: number; y: number; density: number }> = [];
+    const candidates: Array<{ x: number; y: number; z?: number; density: number }> = [];
 
     for (let y = 0; y < h; y += 3) {
       for (let x = 0; x < w; x += 3) {
@@ -854,6 +868,92 @@ export class GlyphSampler {
   }
 
   /**
+   * Generates candidate coordinates according to exact Chladni / cymatic harmonic wave equations
+   */
+  public sampleCymaticNode(
+    node: SpatialChakraNode,
+    plateGeometry: CymaticPlateGeometry = 'square',
+    dimension: CymaticDimension = '2D',
+    coherence: number = 1.0,
+    chaos: number = 0.0,
+    frequencyOverride?: number
+  ): {
+    candidates: Array<{ x: number; y: number; z?: number; density: number }>;
+    is3D: boolean;
+  } {
+    const freq = frequencyOverride ?? node.frequencyHz ?? 396;
+    const profile =
+      CHAKRA_CYMATIC_PROFILES.find(
+        (p) => p.chakraId === node.id || p.frequencyHz === freq
+      ) || CHAKRA_CYMATIC_PROFILES[0];
+
+    if (dimension === '3D' || plateGeometry === 'volumetric3D') {
+      const pts = sampleVolumetric3DNodalPoints(
+        12000,
+        profile.volumetricL,
+        profile.volumetricM,
+        profile.volumetricN,
+        coherence,
+        chaos,
+        280
+      );
+      return { candidates: pts, is3D: true };
+    }
+
+    // 2D Chladni plate rasterization
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    const ctx = this.ctx;
+    renderChladniPlate(
+      ctx,
+      w,
+      h,
+      plateGeometry,
+      profile.squareM,
+      profile.squareN,
+      profile.squareA,
+      profile.squareB,
+      coherence,
+      chaos
+    );
+
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const pixels = imgData.data;
+    const candidates: Array<{ x: number; y: number; z?: number; density: number }> = [];
+    const cx = w / 2;
+    const cy = h / 2;
+
+    for (let y = 0; y < h; y += 3) {
+      for (let x = 0; x < w; x += 3) {
+        const idx = (y * w + x) * 4;
+        const alpha = pixels[idx + 3] / 255.0;
+        if (alpha > 0.05) {
+          candidates.push({
+            x: x - cx,
+            y: -(y - cy),
+            z: 0,
+            density: alpha,
+          });
+        }
+      }
+    }
+
+    if (candidates.length === 0) {
+      for (let i = 0; i < 500; i++) {
+        const ang = (i / 500) * Math.PI * 2;
+        candidates.push({
+          x: Math.cos(ang) * 120,
+          y: Math.sin(ang) * 120,
+          z: 0,
+          density: 0.8,
+        });
+      }
+    }
+
+    return { candidates, is3D: false };
+  }
+
+  /**
    * Bakes target textures for sequential Kundalini spatial morphing (Node A in space -> Node B in space)
    */
   public bakeChakraSequentialTargets(
@@ -866,10 +966,17 @@ export class GlyphSampler {
     glyphType: SpatialChakraGlyphType = 'yantra',
     fontFamily: string = FALLBACK_FONT_STACK,
     fontWeight: string | number = 900,
-    plane: SpatialChakraPlane = 'horizontal'
+    plane: SpatialChakraPlane = 'horizontal',
+    geometryMode: ChakraGeometryMode = 'yantra',
+    cymatics?: CymaticsConfig
   ): BakeResult {
-    const resA = this.rasterizeSpatialNode(nodeA, glyphType, fontFamily, fontWeight, 'yantraA');
-    const resB = this.rasterizeSpatialNode(nodeB, glyphType, fontFamily, fontWeight, 'yantraA');
+    const isCymatics = geometryMode === 'cymatics';
+    const resA = isCymatics
+      ? this.sampleCymaticNode(nodeA, cymatics?.plateGeometry, cymatics?.dimension, 1.0, 0.0)
+      : { ...this.rasterizeSpatialNode(nodeA, glyphType, fontFamily, fontWeight, 'yantraA'), is3D: false };
+    const resB = isCymatics
+      ? this.sampleCymaticNode(nodeB, cymatics?.plateGeometry, cymatics?.dimension, 1.0, 0.0)
+      : { ...this.rasterizeSpatialNode(nodeB, glyphType, fontFamily, fontWeight, 'yantraA'), is3D: false };
 
     const dataA = new Float32Array(texWidth * texHeight * 4);
     const dataB = new Float32Array(texWidth * texHeight * 4);
@@ -884,7 +991,24 @@ export class GlyphSampler {
       const pA = resA.candidates[i % countA];
       const pB = resB.candidates[i % countB];
 
-      if (plane === 'horizontal') {
+      if (resA.is3D || cymatics?.dimension === '3D') {
+        // Volumetric 3D standing wave nodal cage
+        const jAx = (Math.random() - 0.5) * 2;
+        const jAy = (Math.random() - 0.5) * 2;
+        const jAz = (Math.random() - 0.5) * 2;
+        dataA[i * 4 + 0] = pA.x * scaleA + nodeA.x + jAx;
+        dataA[i * 4 + 1] = pA.y * scaleA - nodeA.y + jAy;
+        dataA[i * 4 + 2] = (pA.z ?? 0) * scaleA + jAz;
+        dataA[i * 4 + 3] = pA.density;
+
+        const jBx = (Math.random() - 0.5) * 2;
+        const jBy = (Math.random() - 0.5) * 2;
+        const jBz = (Math.random() - 0.5) * 2;
+        dataB[i * 4 + 0] = pB.x * scaleB + nodeB.x + jBx;
+        dataB[i * 4 + 1] = pB.y * scaleB - nodeB.y + jBy;
+        dataB[i * 4 + 2] = (pB.z ?? 0) * scaleB + jBz;
+        dataB[i * 4 + 3] = pB.density;
+      } else if (plane === 'horizontal') {
         // Horizontal Transverse Plane: flat when viewed horizontally
         const jAx = (Math.random() - 0.5) * 2;
         const jAz = (Math.random() - 0.5) * 2;
@@ -961,8 +1085,11 @@ export class GlyphSampler {
     glyphType: SpatialChakraGlyphType = 'both',
     fontFamily: string = FALLBACK_FONT_STACK,
     fontWeight: string | number = 900,
-    plane: SpatialChakraPlane = 'horizontal'
+    plane: SpatialChakraPlane = 'horizontal',
+    geometryMode: ChakraGeometryMode = 'yantra',
+    cymatics?: CymaticsConfig
   ): BakeResult {
+    const isCymatics = geometryMode === 'cymatics';
     const activeNodes = nodes.filter((n) => n.active);
     const validNodes = activeNodes.length > 0 ? activeNodes : nodes;
     const K = validNodes.length;
@@ -982,8 +1109,12 @@ export class GlyphSampler {
       sumX += node.x;
       sumY += -node.y;
 
-      const resA = this.rasterizeSpatialNode(node, glyphType, fontFamily, fontWeight, 'yantraA');
-      const resB = this.rasterizeSpatialNode(node, glyphType, fontFamily, fontWeight, 'yantraB');
+      const resA = isCymatics
+        ? this.sampleCymaticNode(node, cymatics?.plateGeometry, cymatics?.dimension, 1.0, 0.0)
+        : { ...this.rasterizeSpatialNode(node, glyphType, fontFamily, fontWeight, 'yantraA'), is3D: false };
+      const resB = isCymatics
+        ? this.sampleCymaticNode(node, cymatics?.plateGeometry, cymatics?.dimension, 0.95, 0.1)
+        : { ...this.rasterizeSpatialNode(node, glyphType, fontFamily, fontWeight, 'yantraB'), is3D: false };
 
       const startIndex = k * particlesPerNode;
       const endIndex = k === K - 1 ? particleCount : (k + 1) * particlesPerNode;
@@ -997,7 +1128,24 @@ export class GlyphSampler {
         const pA = resA.candidates[localIdx % countA];
         const pB = resB.candidates[localIdx % countB];
 
-        if (plane === 'horizontal') {
+        if (resA.is3D || cymatics?.dimension === '3D') {
+          // Volumetric 3D
+          const jAx = (Math.random() - 0.5) * 2;
+          const jAy = (Math.random() - 0.5) * 2;
+          const jAz = (Math.random() - 0.5) * 2;
+          dataA[i * 4 + 0] = pA.x * nodeScale + node.x + jAx;
+          dataA[i * 4 + 1] = pA.y * nodeScale - node.y + jAy;
+          dataA[i * 4 + 2] = (pA.z ?? 0) * nodeScale + jAz;
+          dataA[i * 4 + 3] = pA.density;
+
+          const jBx = (Math.random() - 0.5) * 2;
+          const jBy = (Math.random() - 0.5) * 2;
+          const jBz = (Math.random() - 0.5) * 2;
+          dataB[i * 4 + 0] = pB.x * nodeScale + node.x + jBx;
+          dataB[i * 4 + 1] = pB.y * nodeScale - node.y + jBy;
+          dataB[i * 4 + 2] = (pB.z ?? 0) * nodeScale + jBz;
+          dataB[i * 4 + 3] = pB.density;
+        } else if (plane === 'horizontal') {
           // Horizontal Transverse Plane: flat when seen horizontally
           const jAx = (Math.random() - 0.5) * 2;
           const jAz = (Math.random() - 0.5) * 2;

@@ -164,6 +164,13 @@ export class GPGPUSimulator {
         uChakraPlane: { value: 0.0 },
         uChakraVortexStrength: { value: 1.5 },
 
+        // Dedicated Cymatic Chladni Acoustic Resonance System
+        uCymaticsEnabled: { value: 0.0 },
+        uCymaticsLock: { value: 1.0 },
+        uCymaticsChaos: { value: 1.4 },
+        uCymaticsNodalPull: { value: 2.8 },
+        uCymaticsParams: { value: new THREE.Vector4(2, 2, 396, 0) },
+
         // Pointer
         uPointerPos: { value: new THREE.Vector2(-99999, -99999) },
         uPointerVelocity: { value: new THREE.Vector2(0, 0) },
@@ -290,6 +297,23 @@ export class GPGPUSimulator {
     const pU = this.posMaterial.uniforms;
     pU.uChakraMode.value = mode;
     pU.uChakraPlane.value = plane;
+  }
+
+  public setCymaticsParams(
+    enabled: boolean,
+    lock: number,
+    chaos: number,
+    nodalPull: number,
+    m: number,
+    n: number,
+    freq: number,
+    plateType: number
+  ) {
+    this.velMaterial.uniforms.uCymaticsEnabled.value = enabled ? 1.0 : 0.0;
+    this.velMaterial.uniforms.uCymaticsLock.value = lock;
+    this.velMaterial.uniforms.uCymaticsChaos.value = chaos;
+    this.velMaterial.uniforms.uCymaticsNodalPull.value = nodalPull;
+    this.velMaterial.uniforms.uCymaticsParams.value.set(m, n, freq, plateType);
   }
 
   /**

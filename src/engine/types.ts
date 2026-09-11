@@ -73,6 +73,23 @@ export type SpatialChakraPlaybackMode = 'simultaneousBody' | 'sequentialMorph';
 export type SpatialChakraGlyphType = 'yantra' | 'symbol' | 'seed' | 'both';
 export type SpatialChakraPlane = 'horizontal' | 'vertical';
 
+export type ChakraGeometryMode = 'yantra' | 'cymatics';
+export type CymaticPlateGeometry = 'square' | 'circular' | 'volumetric3D';
+export type CymaticDimension = '2D' | '3D';
+
+export interface CymaticsConfig {
+  plateGeometry: CymaticPlateGeometry;  // 'square' (classic Chladni plate) | 'circular' (drum/liquid membrane) | 'volumetric3D' (acoustic cavity)
+  dimension: CymaticDimension;          // '2D' (planar horizontal/vertical) | '3D' (volumetric standing wave nodal cages)
+  frequencyHz: number;                  // Continuous acoustic frequency (300Hz to 1050Hz, default 396)
+  autoSweep: boolean;                   // Continuous sweeping through the harmonic spectrum
+  sweepSpeed: number;                   // Continuous sweep rate in seconds per octave / cycle
+  chaosIntensity: number;               // Chaotic agitation / Faraday instability factor between harmonics (0.0 to 3.0, default 1.5)
+  nodalAttraction: number;              // Gravitational pull into Chladni zero-acceleration nodal lines (0.0 to 5.0, default 2.8)
+  dampingQFactor: number;               // Sharpness of harmonic resonance basins (1.0 to 10.0, default 4.5)
+  chladniM?: number;                    // Optional manual override for modal m parameter
+  chladniN?: number;                    // Optional manual override for modal n parameter
+}
+
 export interface CameraOrbState {
   pitch: number;    // Orbit elevation angle (-Math.PI/2 to Math.PI/2)
   yaw: number;      // Orbit azimuth angle (0 to Math.PI * 2)
@@ -107,10 +124,22 @@ export interface SpatialChakraTimelineState {
   phase: 'hold' | 'transition';
   elapsedInPhase: number;
   totalDurationInPhase: number;
+  // Cymatic real-time telemetry
+  cymaticFrequency?: number;
+  cymaticCoherence?: number;       // 0.0 (chaotic in-between state) to 1.0 (crystallized resonance lock)
+  isResonanceLocked?: boolean;
+  lockStrength?: number;
+  chaosTurbulence?: number;
+  cymaticStatus?: 'Resonance Lock' | 'Harmonic Transition' | 'Chaotic In-Between';
+  modalM?: number;
+  modalN?: number;
+  modalL?: number;
 }
 
 export interface SpatialChakraConfig {
   enabled: boolean;                           // Master toggle for Spatial Chakra Body Mode
+  geometryMode?: ChakraGeometryMode;          // 'yantra' (Sacred Yantra mandalas) vs 'cymatics' (Harmonic Chladni standing waves)
+  cymatics?: CymaticsConfig;                  // Cymatic acoustic resonance configuration
   playbackMode: SpatialChakraPlaybackMode;     // 'simultaneousBody' (full constellation) vs 'sequentialMorph' (Kundalini ascent)
   glyphType: SpatialChakraGlyphType;           // 'seed' (Sanskrit Bija) vs 'symbol' (Sacred Yantra)
   nodes: SpatialChakraNode[];                 // Placed spatial nodes
