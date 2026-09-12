@@ -6,10 +6,10 @@ export type Plane = 'XY'|'XZ'|'YZ';
 export type Tool = 'select'|'interact'|'pin'|'formation'|'text'|'orbit';
 export type Shape = 'text'|'ring'|'disc'|'square'|'triangle'|'yantra'|'cymatic';
 export type Material = 'ink'|'print'|'round';
-export interface SequenceStep {holdOverride?:boolean;transitionOverride?:boolean;native?:NativeLink;yantraId?:string;templateFrequency?:number;id:string;text:string;shape:Shape;hold:number;transition:number;position:Vec3|null}
+export interface SequenceStep {holdOverride?:boolean;transitionOverride?:boolean;native?:NativeLink;yantraId?:string;templateFrequency?:number;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';id:string;text:string;shape:Shape;hold:number;transition:number;position:Vec3|null}
 export interface Entity {
  source?:{kind:'image';image:CustomImageConfig}|{kind:'ascii';ascii:AsciiGlyphConfig};
- scale?:number;native?: NativeEntity;yantraId?:string;templateFrequency?:number;enabled?:boolean;
+ scale?:number;native?: NativeEntity;yantraId?:string;templateFrequency?:number;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';enabled?:boolean;
  id:string;name:string;kind:'formation'|'pin';position:Vec3;size:{x:number;y:number};rotation:number;
  shape:Shape;text:string;share:number;tint:string;tintWeight:number;locked:boolean;
  force:{kind:'none'|'attract'|'repel'|'vortex';strength:number;radius:number;spin:number};station:number|null;
@@ -17,12 +17,12 @@ export interface Entity {
 }
 export interface TextLayer {id:string;visible:boolean;kicker:string;title:string;italic:string;body:string;x:number;y:number;width:number;size:number;align:'left'|'center'|'right'}
 export interface AutomationLane {easing?:AutomationEasing;nativeId?:string;nativePath?:string;entityId?:string;id:string;enabled:boolean;target:string;type:'lfo'|'ramp';wave:'sine'|'triangle'|'square'|'saw'|'steps'|'smooth';min:number;max:number;rate:number;phase:number;blend:'replace'|'add'|'multiply';duration:number;delay:number;loop:'once'|'loop'|'pingpong';firedAt:number|null}
-export interface EngineSettings {paletteSource?:'custom'|'legacy';grainProfile?:boolean;backgroundMode?:'solid'|'vignette'|'ambientGlow'|'adaptive';resonatorMode?:'resonator'|'template';focusOrder?:'listed'|'reverse'|'pingpong';resonanceEnabled:boolean;morphEnabled:boolean;trajectory:'linear'|'toroidalHopf'|'vortexSpiral'|'quantumInterference';driveShape:'sine'|'triangle'|'smooth'|'pulse';autoOscillate:boolean;relationalEnabled:boolean;relationalMode:'orbital'|'nbody'|'chaos';pointerMode:'repel'|'attract'|'vortex';colorMode:string;colorEnabled:boolean;dotShape?:'circle'|'square';fontFamily?:string;fontWeight?:string|number;mediumPlane:'vertical'|'horizontal';autoSweep:boolean;sweepDirection:'ascent'|'descent'|'pingpong'}
+export interface EngineSettings {inkMode?:'blackOnWhite'|'whiteOnBlack';paletteId?:string;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';paletteSource?:'custom'|'legacy';grainProfile?:boolean;backgroundMode?:'solid'|'vignette'|'ambientGlow'|'adaptive';resonatorMode?:'resonator'|'template';focusOrder?:'listed'|'reverse'|'pingpong';resonanceEnabled:boolean;morphEnabled:boolean;trajectory:'linear'|'toroidalHopf'|'vortexSpiral'|'quantumInterference';driveShape:'sine'|'triangle'|'smooth'|'pulse';autoOscillate:boolean;relationalEnabled:boolean;relationalMode:'orbital'|'nbody'|'chaos';pointerMode:'repel'|'attract'|'vortex';colorMode:string;colorEnabled:boolean;dotShape?:'circle'|'square';fontFamily?:string;fontWeight?:string|number;mediumPlane:'vertical'|'horizontal';autoSweep:boolean;sweepDirection:'ascent'|'descent'|'pingpong'}
 export const DEFAULT_ENGINE_SETTINGS:EngineSettings={paletteSource:'custom',grainProfile:true,backgroundMode:'solid',resonatorMode:'resonator',focusOrder:'listed',dotShape:'circle',fontFamily:'system-ui, -apple-system, sans-serif',fontWeight:900,resonanceEnabled:true,morphEnabled:false,trajectory:'toroidalHopf',driveShape:'sine',autoOscillate:true,relationalEnabled:false,relationalMode:'orbital',pointerMode:'repel',colorMode:'linearGradient',colorEnabled:true,mediumPlane:'vertical',autoSweep:false,sweepDirection:'ascent'};
 export interface Scene {
  engine:EngineSettings;
  favourites?:string[];
- native?: {config:PointCloudConfig; original:unknown};
+ native?: {config:PointCloudConfig; original:unknown; projection?:PointCloudConfig};
  id:string;name:string;character:string;duration:number;transition:number;
  view:{nativeCamera?:CameraOrbState;mode:'2d'|'3d';yaw:number;pitch:number;zoom:number;panX:number;panY:number};
  field:{background:string;palette:string[];material:Material;params:Record<string,number>};

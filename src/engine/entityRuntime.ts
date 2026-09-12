@@ -52,6 +52,8 @@ export interface EntityUniformSet {
   centers: THREE.Vector4[]; // 10 — xyz centre, w force radius
   morph: Float32Array; // 10
   transforms: THREE.Vector3[]; // x/y scale and rotation radians
+  depthScales: Float32Array;
+  normalized: Float32Array;
   forces: THREE.Vector4[]; // 10 — x strength, y mode, z spin, w enabled
   tints: THREE.Color[]; // 10
   tintWeights: Float32Array; // 10
@@ -68,6 +70,8 @@ export class EntityRuntime {
   private particleCount = 0;
   private dataA: Float32Array = new Float32Array(0);
   private dataB: Float32Array = new Float32Array(0);
+  private noiseData: Float32Array = new Float32Array(0);
+  public noiseTexture: THREE.DataTexture | null = null;
   public textureA: THREE.DataTexture | null = null;
   public textureB: THREE.DataTexture | null = null;
 
@@ -78,6 +82,8 @@ export class EntityRuntime {
   private customCandidates = new Map<string, Candidate[]>();
   private candidateCache = new Map<string, Candidate[]>();
   private baseSig = '';
+  private templateGeometry: 'square'|'circular'|'volumetric3D' = 'square';
+  private templateDimension: '2D'|'3D' = '2D';
 
   public readonly uniforms: EntityUniformSet = {
     count: 0,
@@ -85,6 +91,8 @@ export class EntityRuntime {
     centers: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)),
     morph: new Float32Array(10),
     transforms: Array.from({ length: 10 }, () => new THREE.Vector3(1, 1, 0)),
+    depthScales: new Float32Array(10).fill(1),
+    normalized: new Float32Array(10),
     forces: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 0)),
     tints: Array.from({ length: 10 }, () => new THREE.Color('#ffffff')),
     tintWeights: new Float32Array(10),
@@ -102,9 +110,11 @@ export class EntityRuntime {
     this.particleCount = particleCount;
     this.dataA = new Float32Array(texW * texH * 4);
     this.dataB = new Float32Array(texW * texH * 4);
+    this.noiseData = new Float32Array(texW * texH * 4);
+    this.noiseTexture = new THREE.DataTexture(this.noiseData, texW, texH, THREE.RGBAFormat, THREE.FloatType);
     this.textureA = new THREE.DataTexture(this.dataA, texW, texH, THREE.RGBAFormat, THREE.FloatType);
     this.textureB = new THREE.DataTexture(this.dataB, texW, texH, THREE.RGBAFormat, THREE.FloatType);
-    for (const t of [this.textureA, this.textureB]) {
+    for (const t of [this.textureA, this.textureB, this.noiseTexture]) {
       t.minFilter = THREE.NearestFilter;
       t.magFilter = THREE.NearestFilter;
       t.needsUpdate = true;
@@ -117,6 +127,7 @@ export class EntityRuntime {
   private disposeTextures() {
     this.textureA?.dispose();
     this.textureB?.dispose();
+    this.noiseTexture?.dispose();this.noiseTexture=null;
     this.textureA = null;
     this.textureB = null;
   }
@@ -131,8 +142,9 @@ export class EntityRuntime {
   }
 
   /** Base bake context (style/font/plane). Changing it invalidates every partition. */
-  public setBaseContext(style: string, fontFamily: string | undefined, fontWeight: string | number | undefined, plane: Composition['plane']) {
-    const sig = `${style}|${fontFamily ?? ''}|${fontWeight ?? ''}|${plane}`;
+  public setBaseContext(style: string, fontFamily: string | undefined, fontWeight: string | number | undefined, plane: Composition['plane'], template?: {plateGeometry?:'square'|'circular'|'volumetric3D';dimension?:'2D'|'3D'}) {
+    this.templateGeometry=template?.plateGeometry??'square';this.templateDimension=template?.dimension??'2D';
+    const sig = `${style}|${fontFamily ?? ''}|${fontWeight ?? ''}|${plane}|${this.templateGeometry}|${this.templateDimension}`;
     if (sig !== this.baseSig) {
       this.baseSig = sig;
       this.candidateCache.clear();
@@ -149,7 +161,7 @@ export class EntityRuntime {
 
   // ------------------------------------------------------------------ shapes
   private shapeSignature(shape: Shape): string {
-    return `${shape.kind}|${shape.text ?? ''}|${shape.yantraId ?? ''}|${shape.frequencyHz ?? ''}|${shape.primitive ?? ''}`;
+    return `${shape.kind}|${shape.text ?? ''}|${shape.yantraId ?? ''}|${shape.frequencyHz ?? ''}|${shape.primitive ?? ''}|${shape.plateGeometry ?? ''}|${shape.dimension ?? ''}`;
   }
 
   private candidatesFor(shape: Shape, fontFamily: string | undefined, fontWeight: string | number | undefined): Candidate[] {
@@ -187,7 +199,7 @@ export class EntityRuntime {
       const freq = shape.frequencyHz ?? 396;
       const profile = CANONICAL_CHAKRAS.reduce((best, c) => (Math.abs((c.frequencyHz ?? 0) - freq) < Math.abs((best.frequencyHz ?? 0) - freq) ? c : best), CANONICAL_CHAKRAS[0]);
       pseudo.id = profile.id;
-      out = this.sampler.sampleCymaticNode(pseudo, 'square', '2D', 1.0, 0.0, freq).candidates;
+      out = this.sampler.sampleCymaticNode(pseudo, shape.plateGeometry ?? this.templateGeometry, shape.dimension ?? this.templateDimension, 1.0, 0.0, freq).candidates;
     } else {
       out = this.sampler.rasterizeSpatialNode(pseudo, shape.kind === 'glyph' ? 'symbol' : 'yantra', fontFamily, fontWeight, 'yantraA').candidates;
     }
@@ -215,18 +227,21 @@ export class EntityRuntime {
     cands: Candidate[],
     scale: number,
     plane: Composition['plane'],
-    jitterPx: number
+    jitterPx: number,
+    channel: 0 | 2,
+    normalized: boolean
   ) {
     const n = cands.length;
     for (let i = start; i < end; i++) {
       // The raster pool is scanline ordered. A prefix would crop low-share
       // allocations to the top of a glyph. A low-discrepancy stride covers the
       // complete local shape for every allocation size without changing IDs.
-      const c = cands[Math.floor(((i-start)*0.6180339887498949 % 1)*n)];
+      const c = normalized ? cands[Math.floor(((i-start)*0.6180339887498949 % 1)*n)] : cands[(i-start)%n];
       const jx = (Math.random() - 0.5) * jitterPx;
       const jy = (Math.random() - 0.5) * jitterPx;
-      const lx = c.x * scale + jx;
-      const ly = c.y * scale + jy;
+      this.noiseData[i*4+channel]=jx;this.noiseData[i*4+channel+1]=jy;
+      const lx = c.x * scale;
+      const ly = c.y * scale;
       const lz = (c.z ?? 0) * scale;
       const o = i * 4;
       if (plane === 'horizontal') {
@@ -257,8 +272,9 @@ export class EntityRuntime {
       return cands.map(c=>({...c,x:(c.x-(x0+x1)/2)*sx,y:(c.y-(y0+y1)/2)*sy}));
     };
     const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
-    this.writeCandidates(this.dataA, p.start, p.end, normalize(candA), scale, plane, 2);
-    this.writeCandidates(this.dataB, p.start, p.end, normalize(candB), scale, plane, 2);
+    this.writeCandidates(this.dataA, p.start, p.end, normalize(candA), scale, plane, 2, 0, !!e.extent && e.extent.normalized !== false);
+    this.writeCandidates(this.dataB, p.start, p.end, normalize(candB), scale, plane, 2, 2, !!e.extent && e.extent.normalized !== false);
+    if (this.noiseTexture) this.noiseTexture.needsUpdate = true;
     if (this.textureA) this.textureA.needsUpdate = true;
     if (this.textureB) this.textureB.needsUpdate = true;
   }
@@ -291,7 +307,7 @@ export class EntityRuntime {
       if (!e) return;
       const state = resolveSequence(e, simTime, drivePhase, manualMorph, holdRatio);
       const links = effectiveLinks(e);
-      const sig = `${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? 'c' : ''}`;
+      const sig = `${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
       const prevStep = this.lastStep.get(e.id);
       if (this.bakeSig.get(e.id) !== sig) {
         this.bakePartition(p, e, state.linkIndex, state.nextIndex, comp.plane, fontFamily, fontWeight);
@@ -311,6 +327,8 @@ export class EntityRuntime {
       u.bounds[i] = p.end;
       u.centers[i].set(cx, cy, cz, Math.max(5, e.forces.radius));
       u.morph[i] = state.progress;
+      u.depthScales[i]=Math.max(.001,e.scale);
+      u.normalized[i]=e.extent&&e.extent.normalized!==false?1:0;
       u.transforms[i].set(Math.max(0.001,e.scale)*(e.extent?e.extent.width/400:1), Math.max(0.001,e.scale)*(e.extent?e.extent.height/400:1), e.extent?.rotation??0);
       u.forces[i].set(e.forces.strength, FORCE_MODE[e.forces.mode] ?? 0, e.forces.spin, e.enabled && e.forces.mode !== 'none' ? 1 : e.enabled && Math.abs(e.forces.spin) > 0 ? 1 : 0);
       u.tints[i].set(e.tint);
@@ -346,11 +364,13 @@ export class EntityRuntime {
       for (let k = p.start; k < p.end; k++) {
         const tr=this.uniforms.transforms[i];
         const horizontal=this.currentPlane==='horizontal';
-        const x=seed[k*4]*tr.x, y=(horizontal?-seed[k*4+2]:seed[k*4+1])*tr.y;
+        const jx=this.noiseData[k*4],jy=this.noiseData[k*4+1],normalized=this.uniforms.normalized[i]>.5;
+        const x=(seed[k*4]+(normalized?jx:0))*tr.x, y=((horizontal?-seed[k*4+2]:seed[k*4+1])+(normalized?jy:0))*tr.y;
+        const nx=normalized?0:jx,ny=normalized?0:jy;
         const co=Math.cos(tr.z),si=Math.sin(tr.z);
-        seed[k*4]=x*co-y*si+c.x;
-        if(horizontal){seed[k*4+2]=-(x*si+y*co)+c.z;seed[k*4+1]+=c.y;}
-        else{seed[k*4+1]=x*si+y*co+c.y;seed[k*4+2]+=c.z;}
+        seed[k*4]=x*co-y*si+nx+c.x;
+        if(horizontal){seed[k*4+2]=-(x*si+y*co+ny)+c.z;seed[k*4+1]=seed[k*4+1]*this.uniforms.depthScales[i]+c.y;}
+        else{seed[k*4+1]=x*si+y*co+ny+c.y;seed[k*4+2]=seed[k*4+2]*this.uniforms.depthScales[i]+c.z;}
       }
     });
     return seed;

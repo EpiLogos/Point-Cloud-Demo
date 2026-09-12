@@ -60,6 +60,29 @@ export function entityTargets(scene:Scene):AutomationTarget[]{
 }
 export function automationTarget(scene:Scene,target:string):AutomationTarget|undefined{
  if(target.startsWith('field.')){const b=nativeBinding(target.slice(6));return b?{...b,target,value:baseValue(scene,b.key)}:undefined;}
- return entityTargets(scene).find(b=>b.target===target);
+ const known=entityTargets(scene).find(b=>b.target===target);if(known)return known;
+ // Preserve imported numeric lanes outside the static registry. IDs, not array
+ // indices, remain authoritative for both entities and their sequence links.
+ let path:string, value:unknown, entityId:string|undefined;
+ if(target.startsWith('entity:')){
+  const [,encoded,...rest]=target.split(':'),id=decodeURIComponent(encoded),i=scene.entities.findIndex(e=>e.id===id);
+  if(i<0)return;entityId=id;path=`entities.${i}.${rest.join(':')}`;value=readPath(scene.entities[i].native,rest.join(':'));
+ }else if(target.startsWith('link:')){
+  const [,encoded,encodedLink,...rest]=target.split(':'),id=decodeURIComponent(encoded),link=decodeURIComponent(encodedLink),i=scene.entities.findIndex(e=>e.id===id);
+  if(i<0)return;const j=scene.entities[i].sequence.steps.findIndex(k=>k.id===link);if(j<0)return;
+  entityId=id;path=`entities.${i}.sequence.links.${j}.${rest.join(':')}`;value=readPath(scene.entities[i].sequence.steps[j].native,rest.join(':'));
+ }else if(target.startsWith('native:')){path=decodeURIComponent(target.slice(7));value=readPath(scene.native?.config,path)??readPath(DEFAULT_CONFIG,path);}
+ else return;
+ if(!/^[a-zA-Z0-9_.]+$/.test(path)||path.split('.').some(k=>['__proto__','prototype','constructor'].includes(k))||typeof value!=='number'||!Number.isFinite(value))return;
+ return {path,key:path,bind:'',factor:1,label:'Native path · '+path,group:'native',target,entityId,value,defaultValue:value,min:Math.min(0,value),max:Math.max(1,value*2),hardMin:-1e10,hardMax:1e10,step:.01,note:'Imported native numeric path. Native units and existing consumer semantics are retained.'};
 }
-export function automationTargets(scene:Scene):AutomationTarget[]{return [...NATIVE_BINDINGS.map(b=>({...b,target:'field.'+b.key,value:baseValue(scene,b.key)})),...entityTargets(scene)];}
+export function automationTargets(scene:Scene):AutomationTarget[]{
+ const all=[...NATIVE_BINDINGS.map(b=>({...b,target:'field.'+b.key,value:baseValue(scene,b.key)})),...entityTargets(scene)];
+ for(const lane of scene.automation){const t=automationTarget(scene,lane.target);if(t&&!all.some(a=>a.target===t.target))all.push(t);}return all;
+}
+export function stableNativeTarget(scene:Scene,path:string):string {
+ const m=/^entities\.(\d+)\.(.+)$/.exec(path);if(!m)return 'native:'+encodeURIComponent(path);
+ const e=scene.entities[Number(m[1])];if(!e)return 'native:'+encodeURIComponent(path);
+ const link=/^sequence\.links\.(\d+)\.(.+)$/.exec(m[2]);
+ return link&&e.sequence.steps[Number(link[1])]?`link:${encodeURIComponent(e.id)}:${encodeURIComponent(e.sequence.steps[Number(link[1])].id)}:${link[2]}`:`entity:${encodeURIComponent(e.id)}:${m[2]}`;
+}

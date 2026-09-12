@@ -27,3 +27,10 @@ export function saveToLibrary(journey:Journey){
  const all=library.raw.filter(value=>{try{return validateJourney(value).id!==journey.id;}catch{return true;}});
  all.unshift(clone(validateJourney(journey)));localStorage.setItem(STORAGE_KEY,JSON.stringify(all));return readLibrary();
 }
+
+/** Delete only understood entries; failed/newer documents are retained verbatim. */
+export function removeFromLibrary(id:string){
+ const library=readLibraryDetailed();if(library.blocked)throw new Error('The existing library could not be read; nothing was deleted.');
+ const raw=library.raw.filter(value=>{try{return validateJourney(value).id!==id;}catch{return true;}});
+ localStorage.setItem(STORAGE_KEY,JSON.stringify(raw));
+}
