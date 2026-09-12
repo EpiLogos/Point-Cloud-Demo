@@ -1,9 +1,20 @@
-import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';import {execFileSync} from 'node:child_process';
-const require=createRequire(import.meta.url);let ts;try{ts=require('typescript');}catch{ts=require(path.join(execFileSync('npm',['root','-g'],{encoding:'utf8'}).trim(),'typescript'));}
+import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
+import {build} from 'esbuild';
+const require=createRequire(import.meta.url),ts=require('typescript');
 const root=path.resolve(import.meta.dirname,'..');process.chdir(root);fs.mkdirSync('public',{recursive:true});fs.mkdirSync('build',{recursive:true});
-const config=ts.readConfigFile('tsconfig.json',ts.sys.readFile);const parsed=ts.parseJsonConfigFileContent(config.config,ts.sys,root);const prog=ts.createProgram(parsed.fileNames,parsed.options);const diagnostics=ts.getPreEmitDiagnostics(prog);if(diagnostics.length){console.error(ts.formatDiagnosticsWithColorAndContext(diagnostics,{getCanonicalFileName:x=>x,getCurrentDirectory:()=>root,getNewLine:()=> '\n'}));process.exit(1);}
-const files=fs.readdirSync('src').filter(f=>f.endsWith('.ts'));
-const modules=files.map(file=>{const source=fs.readFileSync('src/'+file,'utf8');const cjs=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS},fileName:file}).outputText;const esm=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022},fileName:file}).outputText;fs.writeFileSync('build/'+file.replace('.ts','.js'),esm);return `${JSON.stringify(file.replace('.ts',''))}:function(require,module,exports){\n${cjs}\n}`;}).join(',\n');
-const bundle=`/*! O:I Field Studies — Journey edition. MIT. Visual preview is replaceable. */\n(()=>{const modules={${modules}};const cache={};function load(id){id=id.replace(/^\\.\\//,'').replace(/\\.js$/,'');if(cache[id])return cache[id].exports;if(!modules[id])throw new Error('Unknown module '+id);const module={exports:{}};cache[id]=module;modules[id](load,module,module.exports);return module.exports;}load('app');})();`;
-const css=fs.readFileSync('src/styles.css','utf8');const html=`<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f2eb"><meta name="description" content="A canvas-first instrument for composing living fields, named scenes and journeys."><title>O:I — Field Studies / Journeys</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4f2eb'/%3E%3Ccircle cx='23' cy='32' r='15' stroke='%23252720' stroke-width='9' fill='none'/%3E%3Cpath d='M48 13v38' stroke='%23252720' stroke-width='9'/%3E%3C/svg%3E"><style id="shell-style">${css}</style></head><body><div id="app"></div><script id="app-bundle">${bundle.replace(/<\/script/gi,'<\\/script')}</script></body></html>`;
-fs.writeFileSync('public/index.html',html);fs.writeFileSync('field-studies.html',html);fs.writeFileSync('public/_headers','/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n');console.log(`Built and type-checked ${files.length} TypeScript modules. Standalone: ${(html.length/1024).toFixed(0)} KB; no runtime requests or external fonts.`);
+const config=ts.readConfigFile('tsconfig.json',ts.sys.readFile),parsed=ts.parseJsonConfigFileContent(config.config,ts.sys,root);
+const diagnostics=ts.getPreEmitDiagnostics(ts.createProgram(parsed.fileNames,parsed.options));
+if(diagnostics.length){console.error(ts.formatDiagnosticsWithColorAndContext(diagnostics,{getCanonicalFileName:x=>x,getCurrentDirectory:()=>root,getNewLine:()=> '\n'}));process.exit(1);}
+// A real dependency-aware bundle includes the existing engine and Three.js, offline.
+const result=await build({absWorkingDir:root,entryPoints:['src/app.ts'],bundle:true,format:'iife',target:'es2022',write:false,minify:true,legalComments:'inline',metafile:true});
+const bundle=result.outputFiles[0].text;
+// Pure module fixtures remain independently importable by Node tests.
+for(const file of fs.readdirSync('src').filter(f=>f.endsWith('.ts'))){await build({absWorkingDir:root,entryPoints:['src/'+file],bundle:true,format:'esm',platform:'node',target:'es2022',outfile:'build/'+file.replace('.ts','.js')});}
+const css=fs.readFileSync('src/styles.css','utf8');
+const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f2eb"><meta name="description" content="A native particle-field instrument for composing scenes and living journeys."><title>O:I — Field Studies / Native Journeys</title><style id="shell-style">${css}</style></head><body><div id="app"></div><script id="app-bundle">${bundle.replace(/<\/script/gi,'<\\/script')}</script></body></html>`;
+fs.mkdirSync(path.resolve(root,'../public'),{recursive:true});fs.writeFileSync(path.resolve(root,'../public/field-studies.html'),html);
+fs.writeFileSync('public/index.html',html);fs.writeFileSync('field-studies.html',html);fs.writeFileSync('build/bundle-metafile.json',JSON.stringify(result.metafile,null,2));
+fs.writeFileSync('public/_headers','/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n');
+console.log(`Native standalone built: ${(html.length/1024/1024).toFixed(2)} MB; no runtime requests, external fonts or preview renderer.`);
+
+await build({absWorkingDir:root,entryPoints:['tests/nativeHarness.ts'],bundle:true,format:'iife',target:'es2022',outfile:'build/native-harness.js'});

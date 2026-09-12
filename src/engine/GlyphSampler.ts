@@ -1367,7 +1367,7 @@ export class GlyphSampler {
 
     const computedSize = Math.floor(Math.min((w * 0.82) / (maxLineLen * 0.6), (h * 0.82) / Math.max(1, numLines * 1.15)));
     const fontSize = options.fontSize || Math.max(12, Math.min(72, computedSize));
-    ctx.font = `bold ${fontSize}px "Fira Code", "Courier New", Courier, monospace`;
+    ctx.font = `bold ${fontSize}px ${options.fontFamily || '"Fira Code", "Courier New", Courier, monospace'}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#ffffff';
@@ -1395,7 +1395,8 @@ export class GlyphSampler {
     for (let y = 0; y < h; y += step) {
       for (let x = 0; x < w; x += step) {
         const idx = (y * w + x) * 4;
-        const alpha = px[idx + 3] / 255.0;
+        const originalAlpha = px[idx + 3] / 255.0;
+        const alpha = options.invert ? 1 - originalAlpha : originalAlpha;
         if (alpha > 0.08) {
           candidates.push({
             x: x - cx,

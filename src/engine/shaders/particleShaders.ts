@@ -38,6 +38,8 @@ uniform float uColorContrast;
 // Spatial Chakra Body System Uniforms
 // Entity tints (per particle partition) and the composition focus tint — layered over the field palette
 uniform int uEntityCount;
+uniform float uEditHasSelection;
+uniform float uEditSelected[10];
 uniform float uEntityBounds[10];
 uniform vec3 uEntityTint[10];
 uniform float uEntityTintWeight[10];
@@ -46,12 +48,17 @@ uniform vec3 uFocusTint;
 uniform float uFocusTintWeight;
 uniform vec3 uParticleColor;   // mono ink colour (also declared in the fragment stage)
 
+uniform vec4 uGrainA;
+uniform vec4 uGrainB;
+uniform vec4 uGrainC;
+uniform float uGrainEnabled;
 varying vec2 vSimUv;
 varying float vDensity;
 varying float vSpeed;
 varying float vJitter;
 varying vec3 vColor;
 varying float vTinted;
+varying float vEditAlpha;
 
 // High-speed pseudo-random generator
 float hash(vec2 p) {
@@ -85,8 +92,8 @@ vec3 evalPaletteRamp(float t, vec3 c1, vec3 c2, vec3 c3, float contrast) {
   }
   if (uColorStopCount >= 2) {
     float scaled = ct * float(uColorStopCount - 1);
-    int idx = int(floor(scaled));
-    float localT = fract(scaled);
+    int idx = min(int(floor(scaled)), uColorStopCount - 2);
+    float localT = scaled - float(idx);
     localT = smoothstep(0.0, 1.0, localT);
     vec3 cA = uPaletteColors[0];
     vec3 cB = uPaletteColors[1];
@@ -118,12 +125,16 @@ void main() {
   float density = posData.w; // 0.0 (scatter perimeter) to 1.0 (dense stroke core)
   float speed = velData.w;   // Local velocity magnitude
 
+  if(uGrainEnabled>0.5) {
+    density=clamp(pow(max(0.0001,density),mix(0.35,3.0,uGrainB.w)),0.0,1.0);
+  }
   vDensity = density;
   vSpeed = speed;
 
   // Compute stochastic micro-jitter based on simulation UV coordinates
   float rnd = hash(uv);
   vJitter = rnd;
+  if(uGrainEnabled>0.5) rnd=pow(rnd,max(0.1,uGrainA.x));
 
   // Dynamic particle size calculation
   float baseSize;
@@ -231,6 +242,7 @@ void main() {
     eIdx = i;
     if (pIndex < uEntityBounds[i]) break;
   }
+  vEditAlpha = (uEditHasSelection > 0.5 && uEntityCount > 0 && uEditSelected[eIdx] < 0.5) ? 0.23 : 1.0;
   float tintW = (uEntityCount > 0) ? clamp(uEntityTintWeight[eIdx], 0.0, 1.0) : 0.0;
   vTinted = max(tintW, clamp(uFocusTintWeight, 0.0, 1.0));
   if (tintW > 0.001) {
@@ -246,6 +258,11 @@ void main() {
     vColor = mix(base, uFocusTint, clamp(uFocusTintWeight, 0.0, 1.0));
   }
 
+  if(uGrainEnabled>0.5){
+    float band=0.7+0.3*sin(pos.x*0.01*uGrainC.x+sin(pos.y*0.013*uGrainC.x)+uGrainC.y);
+    baseSize*=mix(1.0,band,uGrainB.w*.35);
+    baseSize*=1.0+uGrainC.z*(1.0-density);
+  }
   // Orthographic point size scaling
   gl_PointSize = max(1.0, baseSize * uPixelRatio);
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
@@ -263,15 +280,26 @@ uniform float uDotShape;     // 0 = circle, 1 = square
 uniform float uStyleMode;    // 0 = stipple, 1 = halftone
 uniform float uContrast;
 
+uniform vec4 uGrainA;
+uniform vec4 uGrainB;
+uniform vec4 uGrainC;
+uniform float uGrainEnabled;
 varying vec2 vSimUv;
 varying float vDensity;
 varying float vSpeed;
 varying float vJitter;
 varying vec3 vColor;
 varying float vTinted;
+varying float vEditAlpha;
 
 void main() {
   vec2 coord = gl_PointCoord - vec2(0.5);
+  if(uGrainEnabled>0.5){
+    float angle=uGrainB.z+(vJitter-.5)*uGrainB.x;
+    float co=cos(angle),si=sin(angle);
+    coord=vec2(coord.x*co-coord.y*si,coord.x*si+coord.y*co);
+    coord.y*=1.0+uGrainB.y;
+  }
   float dist = length(coord);
 
   float alpha = 0.0;
@@ -288,6 +316,17 @@ void main() {
     alpha = 1.0 - smoothstep(0.48 - delta * 1.5, 0.50, maxD);
   }
 
+  if(uGrainEnabled>0.5){
+    float squareDistance=max(abs(coord.x),abs(coord.y));
+    float outline=mix(squareDistance,dist,clamp(uGrainA.z,0.0,1.0));
+    outline+=(sin(atan(coord.y,coord.x)*7.0+vJitter*25.0))*uGrainB.x*.045;
+    // Derivatives cross the primitive edge for one-pixel GL points. An unbounded
+    // fwidth made subpixel ink almost transparent. Limit the analytic edge band.
+    float aa=clamp(fwidth(outline)*1.5,.006,.22)+uGrainA.w*.15;
+    alpha=1.0-smoothstep(.49-aa,.50,outline);
+    alpha*=uGrainA.y;
+    alpha*=mix(clamp(uGrainC.w*2.0,0.0,1.0),1.0,smoothstep(0.0,.25,vDensity));
+  }
   if (alpha < 0.01) {
     discard;
   }
@@ -300,6 +339,6 @@ void main() {
 
   vec3 finalColor = (uColorEnabled > 0.5 || vTinted > 0.001) ? vColor : uParticleColor;
 
-  gl_FragColor = vec4(finalColor, inkAlpha);
+  gl_FragColor = vec4(finalColor, inkAlpha * vEditAlpha);
 }
 `;

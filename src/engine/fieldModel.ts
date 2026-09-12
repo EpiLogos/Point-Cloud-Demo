@@ -40,9 +40,10 @@ export const MAX_PINS = 8;
 // ---------------------------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------------------------
-export type ShapeKind = 'glyph' | 'yantra' | 'cymatic';
+export type ShapeKind = 'glyph' | 'yantra' | 'cymatic' | 'primitive';
 
 export interface Shape {
+  primitive?: 'ring' | 'disc' | 'square' | 'triangle';
   kind: ShapeKind;
   text?: string;          // glyph / word (kind 'glyph')
   yantraId?: string;      // sacred geometry id from CANONICAL_CHAKRAS (kind 'yantra')
@@ -50,6 +51,9 @@ export interface Shape {
 }
 
 export interface SequenceLink {
+  /** Optional authored timing; absent values inherit the entity sequence. */
+  hold?: number;
+  transition?: number;
   id: string;
   shape: Shape;
   x?: number;             // optional per-link centre offset (world px) — the entity glides here on this link
@@ -85,6 +89,7 @@ export interface EntityForces {
 export type EntityKind = 'formation' | 'pin';
 
 export interface Entity {
+  authoringSource?: {kind:'image';image:import('./types').CustomImageConfig}|{kind:'ascii';ascii:import('./types').AsciiGlyphConfig};
   id: string;
   name: string;
   kind: EntityKind;
@@ -92,6 +97,8 @@ export interface Entity {
   x: number;
   y: number;
   z: number;
+  /** Normalized 400-unit target extents. Transforms are uniforms, not baked geometry. */
+  extent?: {width: number; height: number; rotation: number; normalized?: boolean};
   scale: number;          // formation size multiplier (yantra/glyph rasters are normalised to ~1)
   share: number;          // relative particle share among enabled formations (weight, default 1)
   shape: Shape;           // base shape (also link 0 when the sequence is empty)
@@ -167,6 +174,9 @@ export const DEFAULT_CYMATIC_MEDIUM: CymaticMedium = {
   dampingQFactor: 4.5,
   dominance: 1.0,
   followFocus: true,
+  plateSize: 700, baseFrequency: 40, driveStrength: 1, modeCount: 64,
+  transportGain: 1, agitation: 0.3, boundaryStrength: 6, driveScale: 1,
+  sweep: {enabled:false,glideS:8,dwellS:2,direction:'ascent'},
 };
 
 export function makeLink(shape: Shape, pos?: { x?: number; y?: number; z?: number }): SequenceLink {
@@ -195,7 +205,7 @@ export function makeFormation(overrides: Partial<Entity> = {}): Entity {
 
 export function makePin(overrides: Partial<Entity> = {}): Entity {
   return {
-    ...makeFormation({ name: 'Pin', kind: 'pin', shape: { kind: 'glyph', text: '' }, forces: { mode: 'vortex', strength: 2.0, radius: 220, spin: 0 }, tint: '#06b6d4' }),
+    ...makeFormation({ name: 'Pin', kind: 'pin', shape: { kind: 'glyph', text: '' }, forces: { mode: 'attract', strength: 2.0, radius: 220, spin: 0 }, tint: '#06b6d4' }),
     ...overrides,
     kind: 'pin',
   };
@@ -307,6 +317,30 @@ export function resolveSequence(
     step = Math.floor(cycles);
     frac = cycles - step;
     hold = Math.max(0, Math.min(0.95, holdRatio));
+  } else if (links.some(l => l.hold !== undefined || l.transition !== undefined)) {
+    const duration = (k: number) => {
+      const l = links[orderedIndex(k, n, seq.order, seed)];
+      return Math.max(0.05, (l.hold ?? seq.hold) + (l.transition ?? seq.transition));
+    };
+    let t = Math.max(0, simTime * seq.rateMul + seq.phaseOffset * duration(0));
+    let k = 0;
+    // Deterministic periodic routes can skip whole periods without losing timing.
+    if (!seq.jitter && seq.order !== 'random') {
+      const routeLength = seq.order === 'pingpong' ? Math.max(1, 2 * n - 2) : n;
+      let cycleDuration = 0;
+      for (let j = 0; j < routeLength; j++) cycleDuration += duration(j);
+      const cycles = Math.floor(t / cycleDuration);
+      k = cycles * routeLength; t -= cycles * cycleDuration;
+    }
+    let period = duration(k);
+    for (let guard = 0; guard < 100000; guard++) {
+      period = duration(k) * Math.max(0.001, 1 + (hash01(k + seed) - 0.5) * 2 * Math.min(1, seq.jitter));
+      if (t < period) break;
+      t -= period; k++;
+    }
+    step = k; frac = Math.min(1, t / period);
+    const link = links[orderedIndex(k, n, seq.order, seed)];
+    hold = Math.max(0, Math.min(0.99, (link.hold ?? seq.hold) / duration(k)));
   } else {
     const period = Math.max(0.05, seq.hold + seq.transition);
     const t = Math.max(0, simTime * seq.rateMul + seq.phaseOffset * period);
@@ -421,7 +455,7 @@ export function migrateLegacyFieldConfig(cfg: Partial<PointCloudConfig>): {
   };
   const cymatics: CymaticMedium = { ...DEFAULT_CYMATIC_MEDIUM, ...((cfg.cymatics as any) || {}) };
 
-  if (Array.isArray(cfg.entities) && cfg.entities.length > 0) {
+  if (Array.isArray(cfg.entities)) {
     const entities = cfg.entities.map((e) => normaliseEntity(e));
     return { entities, composition, cymatics };
   }
@@ -530,9 +564,11 @@ export function pinsToPlacedPoints(entities: Entity[]) {
       y: e.y,
       z: e.z,
       radius: e.forces.radius,
-      strength: e.forces.strength,
+      strength: e.forces.mode === 'none' ? 0 : e.forces.strength,
+      spin: e.forces.spin,
+      falloff: 'gaussian' as const,
       mode: (e.forces.mode === 'none' ? 'repel' : e.forces.mode) as 'repel' | 'attract' | 'vortex',
-      active: e.enabled && e.forces.mode !== 'none',
+      active: e.enabled && (e.forces.mode !== 'none' || Math.abs(e.forces.spin) > 0),
     }));
 }
 

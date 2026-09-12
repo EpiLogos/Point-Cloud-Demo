@@ -1,3 +1,4 @@
+import {paintPaper} from './paper';
 import {Scene,TextLayer} from './model.js';
 export interface CaptureTransition {canvas:HTMLCanvasElement;alpha:number;background:string}
 export interface CaptureSettings {includeText:boolean;transparent:boolean;width:number;aspect:'stage'|'16:9'|'1:1'|'9:16';fps:number}
@@ -13,7 +14,13 @@ export function paintText(ctx:CanvasRenderingContext2D,s:Scene,w:number,h:number
  y+=l.titleGap;if('letterSpacing'in ctx)ctx.letterSpacing='0px';ctx.font=`${l.body}px Arial`;ctx.globalAlpha=.65;for(const line of wrap(ctx,t.body,Math.min(l.width,230))){ctx.fillText(line,anchor,y);y+=l.body*1.85;}ctx.restore();}}
 export function createOutput(settings:CaptureSettings,w:number,h:number){const c=document.createElement('canvas');const aspect=settings.aspect==='stage'?w/h:settings.aspect==='16:9'?16/9:settings.aspect==='1:1'?1:9/16;const width=settings.aspect==='9:16'?Math.round(settings.width*9/16):settings.width;c.width=Math.round(width);c.height=Math.round(width/aspect);return c;}
 /** A fixed output frame. The editor, guides, selection and cursor never enter this path. */
-export function paintCapture(out:HTMLCanvasElement,field:HTMLCanvasElement,s:Scene,settings:CaptureSettings,w:number,h:number,transition?:CaptureTransition){const ctx=out.getContext('2d')!;ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.clearRect(0,0,out.width,out.height);if(!settings.transparent){ctx.fillStyle=s.field.background;ctx.fillRect(0,0,out.width,out.height);}const scale=Math.max(out.width/w,out.height/h),dx=(out.width-w*scale)/2,dy=(out.height-h*scale)/2;ctx.save();ctx.translate(dx,dy);ctx.scale(scale,scale);if(transition&&settings.transparent)ctx.globalAlpha=1-transition.alpha;ctx.drawImage(field,0,0,w,h);if(transition){ctx.globalAlpha=transition.alpha;if(!settings.transparent){ctx.fillStyle=transition.background;ctx.fillRect(0,0,w,h);}ctx.drawImage(transition.canvas,0,0,w,h);}ctx.globalAlpha=1;if(settings.includeText)paintText(ctx,s,w,h);ctx.restore();}
+export function paintCapture(out:HTMLCanvasElement,field:HTMLCanvasElement,s:Scene,settings:CaptureSettings,w:number,h:number,transition?:CaptureTransition){const ctx=out.getContext('2d')!;ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.clearRect(0,0,out.width,out.height);if(!settings.transparent){const sc=Math.max(out.width/w,out.height/h);ctx.save();ctx.translate((out.width-w*sc)/2,(out.height-h*sc)/2);ctx.scale(sc,sc);paintPaper(ctx,s,w,h);ctx.restore();}const scale=Math.max(out.width/w,out.height/h),dx=(out.width-w*scale)/2,dy=(out.height-h*scale)/2;ctx.save();ctx.translate(dx,dy);ctx.scale(scale,scale);if(transition&&settings.transparent)ctx.globalAlpha=1-transition.alpha;ctx.drawImage(field,0,0,w,h);if(transition){ctx.globalAlpha=transition.alpha;if(!settings.transparent){ctx.fillStyle=transition.background;ctx.fillRect(0,0,w,h);}ctx.drawImage(transition.canvas,0,0,w,h);}ctx.globalAlpha=1;if(settings.includeText)paintText(ctx,s,w,h);ctx.restore();}
+/** The native engine has already rendered the field at this exact output resolution. */
+export function paintNativeCapture(out:HTMLCanvasElement,pixels:HTMLCanvasElement,s:Scene,settings:CaptureSettings,w:number,h:number){
+ const ctx=out.getContext('2d')!;ctx.clearRect(0,0,out.width,out.height);const scale=Math.max(out.width/w,out.height/h),dx=(out.width-w*scale)/2,dy=(out.height-h*scale)/2;
+ if(!settings.transparent){ctx.save();ctx.translate(dx,dy);ctx.scale(scale,scale);paintPaper(ctx,s,w,h);ctx.restore();}
+ ctx.drawImage(pixels,0,0);if(settings.includeText){ctx.save();ctx.translate(dx,dy);ctx.scale(scale,scale);paintText(ctx,s,w,h);ctx.restore();}
+}
 export function png(canvas:HTMLCanvasElement):Promise<Blob>{return new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error('The browser could not encode the captured frame.')),'image/png'));}
 export class LiveRecorder {
  private recorder:MediaRecorder|null=null;private output:HTMLCanvasElement|null=null;private stream:MediaStream|null=null;private chunks:Blob[]=[];private bytes=0;private lastFrame=0;private startTime=0;private settings:CaptureSettings|null=null;private sourceWidth=0;private sourceHeight=0;
@@ -27,7 +34,7 @@ export class LiveRecorder {
  rec.onstop=()=>{const blob=new Blob(this.chunks,{type:rec.mimeType||mime});this.cleanup();this.onStop(blob,rec.mimeType||mime);};
  this.startTime=performance.now();this.lastFrame=0;rec.start(1000);
  }
- frame(field:HTMLCanvasElement,s:Scene,w:number,h:number,transition?:CaptureTransition){if(!this.active||!this.output||!this.settings)return;const now=performance.now();if(now-this.startTime>=120000){this.onLimit('Recording stopped at the two-minute preview limit.');this.stop();return;}if(now-this.lastFrame<1000/this.settings.fps)return;this.lastFrame=now;paintCapture(this.output,field,s,this.settings,w,h,transition);}
+ frame(field:HTMLCanvasElement,s:Scene,w:number,h:number,transition?:CaptureTransition){if(!this.active||!this.output||!this.settings)return;const now=performance.now();if(now-this.startTime>=120000){this.onLimit('Recording stopped at the two-minute memory safety limit.');this.stop();return;}if(now-this.lastFrame<1000/this.settings.fps)return;this.lastFrame=now;paintCapture(this.output,field,s,this.settings,w,h,transition);}
  stop(){if(this.recorder?.state==='recording')this.recorder.stop();}
  private cleanup(){this.stream?.getTracks().forEach(t=>t.stop());this.stream=null;this.recorder=null;this.output=null;this.settings=null;this.chunks=[];}
 }

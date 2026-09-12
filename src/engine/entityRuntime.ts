@@ -51,6 +51,7 @@ export interface EntityUniformSet {
   bounds: Float32Array; // 10 — exclusive end particle index
   centers: THREE.Vector4[]; // 10 — xyz centre, w force radius
   morph: Float32Array; // 10
+  transforms: THREE.Vector3[]; // x/y scale and rotation radians
   forces: THREE.Vector4[]; // 10 — x strength, y mode, z spin, w enabled
   tints: THREE.Color[]; // 10
   tintWeights: Float32Array; // 10
@@ -60,6 +61,8 @@ const FORCE_MODE: Record<string, number> = { none: 0, attract: 1, repel: 2, vort
 
 export class EntityRuntime {
   private sampler: GlyphSampler;
+  public bakeGeneration = 0;
+  private currentPlane: Composition['plane'] = 'vertical';
   private texW = 0;
   private texH = 0;
   private particleCount = 0;
@@ -81,6 +84,7 @@ export class EntityRuntime {
     bounds: new Float32Array(10),
     centers: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)),
     morph: new Float32Array(10),
+    transforms: Array.from({ length: 10 }, () => new THREE.Vector3(1, 1, 0)),
     forces: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 0)),
     tints: Array.from({ length: 10 }, () => new THREE.Color('#ffffff')),
     tintWeights: new Float32Array(10),
@@ -145,7 +149,7 @@ export class EntityRuntime {
 
   // ------------------------------------------------------------------ shapes
   private shapeSignature(shape: Shape): string {
-    return `${shape.kind}|${shape.text ?? ''}|${shape.yantraId ?? ''}|${shape.frequencyHz ?? ''}`;
+    return `${shape.kind}|${shape.text ?? ''}|${shape.yantraId ?? ''}|${shape.frequencyHz ?? ''}|${shape.primitive ?? ''}`;
   }
 
   private candidatesFor(shape: Shape, fontFamily: string | undefined, fontWeight: string | number | undefined): Candidate[] {
@@ -170,7 +174,16 @@ export class EntityRuntime {
       attractorStrength: 0,
       active: true,
     };
-    if (shape.kind === 'cymatic') {
+    if (shape.kind === 'primitive') {
+      out = [];
+      const kind = shape.primitive ?? 'disc';
+      for (let j=0;j<192;j++) for(let i=0;i<192;i++) {
+        const x=(i/191-.5)*400, y=(j/191-.5)*400;
+        const r=Math.hypot(x,y);
+        const inside=kind==='square' || kind==='disc'&&r<=200 || kind==='ring'&&r>=140&&r<=200 || kind==='triangle'&&y>=-200&&y<=200&&Math.abs(x)<=(200-y)/2;
+        if (inside) out.push({x,y,density:1});
+      }
+    } else if (shape.kind === 'cymatic') {
       const freq = shape.frequencyHz ?? 396;
       const profile = CANONICAL_CHAKRAS.reduce((best, c) => (Math.abs((c.frequencyHz ?? 0) - freq) < Math.abs((best.frequencyHz ?? 0) - freq) ? c : best), CANONICAL_CHAKRAS[0]);
       pseudo.id = profile.id;
@@ -206,7 +219,10 @@ export class EntityRuntime {
   ) {
     const n = cands.length;
     for (let i = start; i < end; i++) {
-      const c = cands[(i - start) % n];
+      // The raster pool is scanline ordered. A prefix would crop low-share
+      // allocations to the top of a glyph. A low-discrepancy stride covers the
+      // complete local shape for every allocation size without changing IDs.
+      const c = cands[Math.floor(((i-start)*0.6180339887498949 % 1)*n)];
       const jx = (Math.random() - 0.5) * jitterPx;
       const jy = (Math.random() - 0.5) * jitterPx;
       const lx = c.x * scale + jx;
@@ -231,9 +247,18 @@ export class EntityRuntime {
     const custom = this.customCandidates.get(e.id);
     const candA = custom && linkIndex === 0 ? custom : this.candidatesFor(links[linkIndex].shape, fontFamily, fontWeight);
     const candB = custom && nextIndex === 0 ? custom : this.candidatesFor(links[nextIndex].shape, fontFamily, fontWeight);
-    const scale = BASE_SCALE * Math.max(0.001, e.scale);
-    this.writeCandidates(this.dataA, p.start, p.end, candA, scale, plane, 2);
-    this.writeCandidates(this.dataB, p.start, p.end, candB, scale, plane, 2);
+    this.bakeGeneration++;
+    const normalize = (cands: Candidate[]) => {
+      if (!e.extent || e.extent.normalized === false) return cands;
+      const core = cands.filter(c=>c.density>.25);
+      let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+      for (const c of (core.length ? core : cands)) {x0=Math.min(x0,c.x);x1=Math.max(x1,c.x);y0=Math.min(y0,c.y);y1=Math.max(y1,c.y);}
+      const sx=400/Math.max(1,x1-x0),sy=400/Math.max(1,y1-y0);
+      return cands.map(c=>({...c,x:(c.x-(x0+x1)/2)*sx,y:(c.y-(y0+y1)/2)*sy}));
+    };
+    const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
+    this.writeCandidates(this.dataA, p.start, p.end, normalize(candA), scale, plane, 2);
+    this.writeCandidates(this.dataB, p.start, p.end, normalize(candB), scale, plane, 2);
     if (this.textureA) this.textureA.needsUpdate = true;
     if (this.textureB) this.textureB.needsUpdate = true;
   }
@@ -252,6 +277,7 @@ export class EntityRuntime {
     fontFamily?: string,
     fontWeight?: string | number
   ): { frames: EntityFrame[]; impulses: number[]; rebaked: boolean } {
+    this.currentPlane = comp.plane;
     const byId = new Map(entities.map((e) => [e.id, e]));
     const frames: EntityFrame[] = [];
     const impulses: number[] = [];
@@ -265,7 +291,7 @@ export class EntityRuntime {
       if (!e) return;
       const state = resolveSequence(e, simTime, drivePhase, manualMorph, holdRatio);
       const links = effectiveLinks(e);
-      const sig = `${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${e.scale}|${this.customCandidates.has(e.id) ? 'c' : ''}`;
+      const sig = `${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? 'c' : ''}`;
       const prevStep = this.lastStep.get(e.id);
       if (this.bakeSig.get(e.id) !== sig) {
         this.bakePartition(p, e, state.linkIndex, state.nextIndex, comp.plane, fontFamily, fontWeight);
@@ -285,6 +311,7 @@ export class EntityRuntime {
       u.bounds[i] = p.end;
       u.centers[i].set(cx, cy, cz, Math.max(5, e.forces.radius));
       u.morph[i] = state.progress;
+      u.transforms[i].set(Math.max(0.001,e.scale)*(e.extent?e.extent.width/400:1), Math.max(0.001,e.scale)*(e.extent?e.extent.height/400:1), e.extent?.rotation??0);
       u.forces[i].set(e.forces.strength, FORCE_MODE[e.forces.mode] ?? 0, e.forces.spin, e.enabled && e.forces.mode !== 'none' ? 1 : e.enabled && Math.abs(e.forces.spin) > 0 ? 1 : 0);
       u.tints[i].set(e.tint);
       u.tintWeights[i] = Math.max(0, Math.min(1, e.tintWeight * comp.entityTintWeight));
@@ -303,13 +330,27 @@ export class EntityRuntime {
   public buildSeed(): Float32Array {
     const seed = new Float32Array(this.dataA.length);
     seed.set(this.dataA);
+    if (!this.partitions.length) {
+      // A field without formations remains a medium, not a stack at the origin.
+      // Used only on explicit reset / initial count allocation.
+      const count=seed.length/4;
+      for(let i=0;i<count;i++) {
+        seed[i*4]=(((i+.5)*0.6180339887498949)%1-.5)*700;
+        seed[i*4+1]=((i+.5)/count-.5)*700;
+        seed[i*4+2]=0; seed[i*4+3]=.8;
+      }
+    }
     this.partitions.forEach((p, i) => {
       if (i >= 10) return;
       const c = this.uniforms.centers[i];
       for (let k = p.start; k < p.end; k++) {
-        seed[k * 4] += c.x;
-        seed[k * 4 + 1] += c.y;
-        seed[k * 4 + 2] += c.z;
+        const tr=this.uniforms.transforms[i];
+        const horizontal=this.currentPlane==='horizontal';
+        const x=seed[k*4]*tr.x, y=(horizontal?-seed[k*4+2]:seed[k*4+1])*tr.y;
+        const co=Math.cos(tr.z),si=Math.sin(tr.z);
+        seed[k*4]=x*co-y*si+c.x;
+        if(horizontal){seed[k*4+2]=-(x*si+y*co)+c.z;seed[k*4+1]+=c.y;}
+        else{seed[k*4+1]=x*si+y*co+c.y;seed[k*4+2]+=c.z;}
       }
     });
     return seed;

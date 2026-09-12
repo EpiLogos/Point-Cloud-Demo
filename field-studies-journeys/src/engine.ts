@@ -11,6 +11,13 @@ export interface FieldEngineAdapter {
  readonly capabilities:EngineCapabilities;
  render(frame:EngineFrame):void;
  resize(width:number,height:number,pixelRatio:number):void;
+ needsRender?():boolean;
+ telemetry?():any;
+ capture?(width:number,height:number):HTMLCanvasElement;
+ withCleanFrame?<T>(copy:()=>T):T;
+ inspect?(readParticles?:boolean):unknown;
+ projectNative?(point:Vec3):unknown;
+ stations?():Array<{index:number;name:string;frequencyHz:number;m:number;n:number;color:string}>;
  dispose():void;
 }
 export type EngineFactory=(canvas:HTMLCanvasElement)=>FieldEngineAdapter;

@@ -1,15 +1,20 @@
 {
-  "name": "react-example",
+  "name": "oi-native-field-studies",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build": "npm run build:journeys && vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit",
-    "test": "tsx tests/run.ts"
+    "lint": "tsc --noEmit && tsc --noEmit -p field-studies-journeys/tsconfig.json",
+    "test": "tsx tests/run.ts",
+    "predev": "npm run build:journeys",
+    "build:journeys": "node field-studies-journeys/scripts/build.mjs",
+    "test:journeys": "node --test field-studies-journeys/tests/model.test.mjs",
+    "test:gpu": "python field-studies-journeys/tests/native_gpu.py",
+    "test:browser": "python field-studies-journeys/tests/native_browser.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
