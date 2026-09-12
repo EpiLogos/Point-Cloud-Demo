@@ -14,7 +14,8 @@
     "build:journeys": "node field-studies-journeys/scripts/build.mjs",
     "test:journeys": "node --test field-studies-journeys/tests/model.test.mjs",
     "test:gpu": "python field-studies-journeys/tests/native_gpu.py",
-    "test:browser": "python field-studies-journeys/tests/native_browser.py"
+    "test:browser": "python field-studies-journeys/tests/native_browser.py",
+    "test:workspace": "python field-studies-journeys/tests/workspace_browser.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

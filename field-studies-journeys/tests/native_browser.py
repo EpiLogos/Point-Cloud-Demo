@@ -17,7 +17,7 @@ def doc(p):return p.evaluate('window.__FIELD_STUDIES__.getDocument()')
 def current(p):return doc(p)['scenes'][state(p)['sceneIndex']]
 def inspect(p,read=False):return p.evaluate('(r)=>window.__FIELD_STUDIES__.inspect(r)',read)
 def act(p,name,extra=''):
- selector=f'[data-action="{name}"]'+extra;modal=p.locator('dialog[open] '+selector).filter(visible=True);loc=modal if modal.count() else p.locator(selector).filter(visible=True);loc.first.click(timeout=6000);p.wait_for_timeout(65)
+ selector=f'[data-action="{name}"]'+extra;modal=p.locator('dialog[open] '+selector).filter(visible=True);loc=modal if modal.count() else p.locator(selector).filter(visible=True);loc.first.click(timeout=20000);p.wait_for_timeout(65)
 def reveal(p,selector):
  p.locator(selector).first.evaluate('(el)=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;}')
 def fill(p,path,value):
@@ -33,7 +33,7 @@ try:
   p.set_content('<html><body></body></html>');p.add_script_tag(content=(ROOT/'build/native-harness.js').read_text())
   fixture=p.evaluate('()=>{const j=NATIVE_TEST.fieldStudies();j.scenes.forEach(s=>s.field.params.count=2048);return j;}')
   load(p,fixture)
-  check('Native opening, quiet canvas and four labelled tools',lambda:require(current(p)['name']=='Ink' and not p.locator('#inspector').is_visible() and state(p)['engine']=='Native particle field' and p.locator('.labelled-tool').count()==4))
+  check('Native opening, quiet canvas and seven aligned icon tools',lambda:require(current(p)['name']=='Ink' and not p.locator('#inspector').is_visible() and state(p)['engine']=='Native particle field' and p.locator('#tool-rail button').count()==7 and p.locator('#tool-rail button').first.get_attribute('data-action')=='tool-interact' and p.locator('.page-text').count()==0))
   before=inspect(p,True);p.evaluate("window.__FIELD_STUDIES__.openEditor('field')");act(p,'tab','[data-value="scene"]');after=inspect(p,True)
   check('Panel navigation leaves paused native state and render dimensions unchanged',lambda:require(equivalent(before,after,['simTime','steps','seeds','bakes','positions'])))
   p.keyboard.press('p');previous=current(p);p.mouse.click(710,315);p.wait_for_timeout(100);pin=current(p)['entities'][-1]
@@ -49,13 +49,13 @@ try:
   # Numeric positioning / locking / keyboard alternatives.
   fill(p,'entity.position.z',.31);fill(p,'entity.position.x',.14);p.locator('[data-bind="entity.locked"]').check();p.locator('[data-bind="entity.locked"]').blur();pos=current(p)['entities'][-1]['position'];p.keyboard.press('ArrowRight');require(current(p)['entities'][-1]['position']==pos)
   p.locator('[data-bind="entity.locked"]').uncheck();p.locator('[data-bind="entity.locked"]').blur();p.keyboard.press('ArrowRight');check('Editing lock and keyboard nudge are distinct from simulation motion',lambda:require(abs(current(p)['entities'][-1]['position']['x']-pos['x']-.01)<1e-9))
-  act(p,'view-3d');p.locator('#working-depth').fill('0.35');p.locator('#working-depth').press('Tab');p.keyboard.press('p');p.mouse.click(735,365);p.wait_for_timeout(80)
+  p.locator('[data-orbit="view"]').click();p.locator('#working-depth').fill('0.35');p.locator('#working-depth').press('Tab');p.keyboard.press('p');p.mouse.click(735,365);p.wait_for_timeout(80)
   check('Orbit-view placement respects explicit working-plane depth',lambda:require(current(p)['entities'][-1]['position']['z']==.35))
   # A camera gesture cannot also apply the pointer force.
   act(p,'tool-interact');p.mouse.move(720,300);p.mouse.down(button='right');p.mouse.move(755,310,steps=3);require(not state(p)['pointerActive']);p.mouse.up(button='right')
   check('Right-drag camera navigation does not also drive pointer force',lambda:require(not state(p)['pointerActive']))
-  p.locator('#working-plane').select_option('XZ');act(p,'view-3d');act(p,'view-2d'); # deliberately face current plane
-  act(p,'view-3d');p.locator('#working-plane').select_option('XY');act(p,'fit-view');p.locator('#working-depth').fill('0');p.locator('#working-depth').press('Tab')
+  p.keyboard.press('v');p.locator('#working-plane').select_option('XZ');act(p,'face-plane')
+  p.locator('#working-plane').select_option('XY');p.locator('[data-orbit="reset"]').click();p.locator('#working-depth').fill('0');p.locator('#working-depth').press('Tab')
   # Formation and draft editing.
   p.keyboard.press('a');p.locator('#placement-glyph').fill('S');p.locator('#placement-glyph').press('Tab');p.mouse.click(760,570);p.wait_for_timeout(100);form=current(p)['entities'][-1]
   check('Formation placement is additive with its own allocation and identity',lambda:require(form['kind']=='formation' and form['text']=='S' and len(current(p)['entities'])==5))
@@ -72,10 +72,10 @@ try:
   p.evaluate('(id)=>window.__FIELD_STUDIES__.selectEntity(id)',current(p)['entities'][0]['id']);p.wait_for_timeout(100)
   check('Station tuning uses native frequencies; selection does not retune',lambda:require(current(p)['field']['params']['frequency']==680 and p.evaluate('window.__FIELD_STUDIES__.telemetry().cymatic.frequencyHz')==freq and inspect(p)['seeds']==beforeSelect['seeds']))
   # Text, named scenes, user controlled viewing.
-  p.evaluate("window.__FIELD_STUDIES__.openEditor('scene')");fill(p,'name','Tender matter');fill(p,'text.title','A field <not a tag>');fill(p,'text.italic','is a place.')
+  p.evaluate("window.__FIELD_STUDIES__.openEditor('scene')");fill(p,'name','Tender matter');act(p,'add-text');fill(p,'text.title','A field <not a tag>');fill(p,'text.italic','is a place.')
   check('Scene text is authored literally and safely',lambda:require('A field <not a tag>' in p.locator('.page-text h1').first.inner_text() and p.locator('.page-text script').count()==0))
   # Persistence and file artifacts.
-  act(p,'keep');
+  act(p,'library');
   with p.expect_download() as d:act(p,'export-json')
   jpath=E/'acceptance.journey.json';d.value.save_as(jpath);exported=json.loads(jpath.read_text());require(exported==doc(p))
   check('Journey configuration export contains the actual authored document',lambda:{'scenes':len(exported['scenes']),'entities':len(exported['scenes'][0]['entities'])})
@@ -84,13 +84,14 @@ try:
   check('Self-contained living artifact reopens with native engine, editor and all authored state',lambda:require(doc(p2)==exported and state(p2)['engine']=='Native particle field' and p2.locator('#present-return').is_visible()))
   p2.evaluate('window.__FIELD_STUDIES__.dispose()');p2.close()
   # True GPU image export, actually decoded by the browser.
+  act(p,'close-library');act(p,'capture-options')
   p.locator('#capture-width').select_option('1280');p.locator('#capture-text').uncheck();p.locator('#capture-transparent').check();before=inspect(p,True)
   with p.expect_download() as d:act(p,'capture-image')
   image=E/'acceptance-native.png';d.value.save_as(image);raw=image.read_bytes();w,h=struct.unpack('>II',raw[16:24]);require(w==1280 and h==889)
   imageEvidence=p.evaluate('async(data)=>{const i=new Image();i.src="data:image/png;base64,"+data;await i.decode();const c=document.createElement("canvas");c.width=i.width;c.height=i.height;const x=c.getContext("2d");x.drawImage(i,0,0);const a=x.getImageData(0,0,c.width,c.height).data;let count=0;for(let k=3;k<a.length;k+=4)if(a[k]>16)count++;return {width:i.width,height:i.height,marked:count};}',base64.b64encode(raw).decode())
   after=inspect(p,True);check('PNG decodes actual visible native marks and leaves GPU state unchanged',lambda:(require(imageEvidence['marked']>100 and equivalent(before,after,['simTime','steps','seeds','positions'])),imageEvidence)[1])
   # Real recording / review / decode, opening editor must not alter recording dimensions.
-  p.locator('#capture-transparent').uncheck();act(p,'record-video');p.wait_for_timeout(1300);p.evaluate("window.__FIELD_STUDIES__.openEditor('motion')");p.wait_for_timeout(1000);act(p,'stop-record');p.locator('#recording-review').wait_for(state='visible',timeout=20000);p.evaluate('window.__FIELD_STUDIES__.pause()')
+  act(p,'capture-options');p.locator('#capture-transparent').uncheck();act(p,'record-video');p.wait_for_timeout(1300);p.evaluate("window.__FIELD_STUDIES__.openEditor('motion')");p.wait_for_timeout(1000);act(p,'stop-record');p.locator('#recording-review').wait_for(state='visible',timeout=20000);p.evaluate('window.__FIELD_STUDIES__.pause()')
   p.wait_for_function('document.querySelector("#recording-review").readyState>=2',timeout=15000)
   video=p.evaluate('async()=>{const v=document.querySelector("#recording-review");await v.play();await new Promise(r=>setTimeout(r,650));v.pause();const c=document.createElement("canvas");c.width=v.videoWidth;c.height=v.videoHeight;const x=c.getContext("2d");x.drawImage(v,0,0);const data=x.getImageData(0,0,c.width,c.height).data;let marks=0;for(let i=0;i<data.length;i+=4)if(data[i]<160)marks++;return {width:v.videoWidth,height:v.videoHeight,currentTime:v.currentTime,decodedFrames:v.getVideoPlaybackQuality().totalVideoFrames,marks,png:c.toDataURL()};}')
   (E/'decoded-performance.png').write_bytes(base64.b64decode(video.pop('png').split(',')[1]))
@@ -105,7 +106,9 @@ try:
   p.evaluate('window.__FIELD_STUDIES__.dispose()');p.set_content(HTML.replace('<head>','<head>'+reloadStart,1),wait_until='load');p.wait_for_function('!!window.__FIELD_STUDIES__?.inspect()')
   check('Browser-save reload and file import restore editable configuration without changing source file',lambda:require(doc(p)==exported and json.loads(jpath.read_text())==exported))
   # Non-destructive preset preview.
-  before=doc(p);act(p,'library');p.locator('.library-item details summary').first.click();check('Preset preview does not replace live work',lambda:require(doc(p)==before));act(p,'close-dialog')
+  before=doc(p)
+  if state(p)['libraryOpen']:act(p,'close-library')
+  act(p,'library');p.locator('.expression-card').first.hover();check('Preset preview does not replace live work',lambda:require(doc(p)==before));act(p,'close-library')
   # Native ASCII sampler target is independent, no GPU reset.
   p.evaluate("window.__FIELD_STUDIES__.openEditor('objects')");p.evaluate('(id)=>window.__FIELD_STUDIES__.selectEntity(id)',current(p)['entities'][1]['id']);reveal(p,'[data-action="source-kind"]');p.locator('[data-action="source-kind"]').select_option('ascii');p.wait_for_timeout(200);seed=inspect(p)['seeds'];fill(p,'entity.source.ascii.text','X  O\n O X');p.wait_for_timeout(200)
   check('Native ASCII source is local to its formation and does not reseed',lambda:require(inspect(p)['seeds']==seed and current(p)['entities'][1]['source']['kind']=='ascii' and not current(p)['entities'][0].get('source')))

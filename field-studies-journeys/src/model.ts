@@ -53,7 +53,7 @@ export function blankScene(name='Untitled scene'):Scene{return{
  id:uid('scene'),name,character:'An arrangement, waiting to happen.',duration:12,transition:1.5,
  view:{mode:'2d',yaw:0,pitch:0,zoom:1,panX:0,panY:0},
  field:{background:'#f4f2eb',palette:['#252720','#252720'],material:'ink',params:{...DEFAULT_PARAMS}},entities:[],
- text:[{id:uid('text'),visible:true,kicker:'A FIELD STUDY',title:'A place for',italic:'something new.',body:'Start with a centre. Let the rest follow.',x:.033,y:.595,width:240,size:44,align:'left'}],
+ text:[],
  composition:{layout:'free',plane:'XY',focus:'parallel',focusDuration:4,carryTint:true,carryStation:false,frequencyDriver:'manual'},
  morph:{thetaRate:.08,phiRate:.13,thetaOffset:0,phiOffset:0,law:'theta',depth:1,dwell:.3},automation:[]
 };}
@@ -68,7 +68,7 @@ const descriptions=[
  ['Nocturne','What the','dark holds.','Light collected in the dark.\nSomething quietly taking form.']
 ];
 export function fieldStudies():Journey {
- const scenes=descriptions.map((d,i)=>{const s=blankScene(d[0]);s.id='study-'+i;s.character=d[3].replace('\n',' ');s.duration=14;s.text[0]={...s.text[0],id:'editorial',kicker:'STUDY '+String(i+1).padStart(2,'0')+' / LIVE MATTER',title:d[1],italic:d[2],body:d[3]};
+ const scenes=descriptions.map((d,i)=>{const s=blankScene(d[0]);s.id='study-'+i;s.character=d[3].replace('\n',' ');s.duration=14;
  const o=entity('O — opening','O',{x:-.22,y:.03,z:0});o.id='opening-o';o.size={x:1.43,y:1.63};o.rotation=-5;
  o.share=4;const ii=entity('I — interval','I',{x:.66,y:.015,z:0});ii.id='opening-i';ii.size={x:.28,y:1.62};ii.share=1;s.entities=[o,ii];
  if(i===1){s.field.material='print';Object.assign(s.field.params,{count:24000,size:4.1,contrast:.7,warp:.12,jitter:.08,roundness:.15,dispersion:.025,speed:.4});}
@@ -80,12 +80,12 @@ export function fieldStudies():Journey {
  if(i===7){s.field.background='#1d231f';s.field.palette=['#eee9d9','#a9b399'];Object.assign(s.field.params,{opacity:.9,densityPhase:1.9});}
  s.field.params.count=62000;
  return s;});
- return {schema:'oi.journey',version:1,id:'field-studies',name:'Field studies',description:'Eight states of a living material. A journey from ink to atmosphere.',loop:true,scenes,updatedAt:new Date().toISOString()};
+ return {schema:'oi.journey',version:1,id:'field-studies',name:'Field studies',description:'Eight states of a living material. An expression from ink to atmosphere.',loop:true,scenes,updatedAt:new Date().toISOString()};
 }
 export function chakraEntities():Entity[]{return ['Root','Sacral','Solar','Heart','Throat','Brow','Crown'].map((name,i)=>{const e=entity(name,['△','◯','△','✧','◯','∞','✧'][i],{x:.18,y:-.82+i*.274,z:0});e.size={x:.235,y:.235};e.tint=['#a94138','#c67c46','#c2a852','#638c69','#5898a4','#737599','#a590b0'][i];e.tintWeight=1;e.station=i;e.force={kind:'vortex',strength:.3,radius:.27,spin:.12};return e;});}
-export function sevenCentres():Journey{const s=blankScene('Seven centres');s.entities=chakraEntities();s.field.params.count=42000;s.field.params.contrast=.5;s.field.params.warp=.12;s.text[0]={...s.text[0],kicker:'SEVEN CENTRES / ONE FIELD',title:'A body of',italic:'relationships.',body:'Seven places to gather.\nOne continuous medium.'};s.composition.layout='column';const t=clone(s);t.id=uid('scene');t.name='A rising attention';t.composition.focus='travelling';t.text[0].title='Attention';t.text[0].italic='travels.';return {schema:'oi.journey',version:1,id:'seven-centres',name:'Seven centres',description:'A spatial composition; not seven isolated simulations.',loop:true,scenes:[s,t],updatedAt:new Date().toISOString()};}
-export function smallLanguage():Journey {const j=fieldStudies();j.id='small-language';j.name='A small language';j.description='Three characters, and the intervals between them.';j.scenes=[j.scenes[0],j.scenes[4],j.scenes[6]].map((s,i)=>{s.id=uid('scene');s.name=['A beginning','And','An opening'][i];s.text[0].kicker='A SMALL LANGUAGE / '+String(i+1).padStart(2,'0');return s;});return j;}
-export function blankJourney():Journey{return {schema:'oi.journey',version:1,id:uid('journey'),name:'Untitled journey',description:'',loop:true,scenes:[blankScene()],updatedAt:new Date().toISOString()};}
+export function sevenCentres():Journey{const s=blankScene('Seven centres');s.entities=chakraEntities();s.field.params.count=42000;s.field.params.contrast=.5;s.field.params.warp=.12;s.composition.layout='column';const t=clone(s);t.id=uid('scene');t.name='A rising attention';t.composition.focus='travelling';return {schema:'oi.journey',version:1,id:'seven-centres',name:'Seven centres',description:'A spatial composition; not seven isolated simulations.',loop:true,scenes:[s,t],updatedAt:new Date().toISOString()};}
+export function smallLanguage():Journey {const j=fieldStudies();j.id='small-language';j.name='A small language';j.description='Three characters, and the intervals between them.';j.scenes=[j.scenes[0],j.scenes[4],j.scenes[6]].map((s,i)=>{s.id=uid('scene');s.name=['A beginning','And','An opening'][i];return s;});return j;}
+export function blankJourney():Journey{return {schema:'oi.journey',version:1,id:uid('journey'),name:'Untitled expression',description:'',loop:true,scenes:[blankScene()],updatedAt:new Date().toISOString()};}
 /** Validate before use. Reject malformed documents; never silently claim schema-4 migration. */
 export function validateJourney(value:unknown):Journey {
  if(!value||typeof value!=='object')throw new Error('Choose a Field Studies journey JSON file.');

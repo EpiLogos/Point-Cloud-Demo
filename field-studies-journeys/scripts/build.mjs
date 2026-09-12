@@ -10,8 +10,8 @@ const result=await build({absWorkingDir:root,entryPoints:['src/app.ts'],bundle:t
 const bundle=result.outputFiles[0].text;
 // Pure module fixtures remain independently importable by Node tests.
 for(const file of fs.readdirSync('src').filter(f=>f.endsWith('.ts'))){await build({absWorkingDir:root,entryPoints:['src/'+file],bundle:true,format:'esm',platform:'node',target:'es2022',outfile:'build/'+file.replace('.ts','.js')});}
-const css=fs.readFileSync('src/styles.css','utf8');
-const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f2eb"><meta name="description" content="A native particle-field instrument for composing scenes and living journeys."><title>O:I — Field Studies / Native Journeys</title><style id="shell-style">${css}</style></head><body><div id="app"></div><script id="app-bundle">${bundle.replace(/<\/script/gi,'<\\/script')}</script></body></html>`;
+const css=fs.readFileSync('src/styles.css','utf8')+fs.readFileSync('src/workspace.css','utf8');
+const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f2eb"><meta name="description" content="A native particle-field instrument for composing scenes and living expressions."><title>O:I — Expressions</title><style id="shell-style">${css}</style></head><body><div id="app"></div><script id="app-bundle">${bundle.replace(/<\/script/gi,'<\\/script')}</script></body></html>`;
 fs.mkdirSync(path.resolve(root,'../public'),{recursive:true});fs.writeFileSync(path.resolve(root,'../public/field-studies.html'),html);
 fs.writeFileSync('public/index.html',html);fs.writeFileSync('field-studies.html',html);fs.writeFileSync('build/bundle-metafile.json',JSON.stringify(result.metafile,null,2));
 fs.writeFileSync('public/_headers','/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n');

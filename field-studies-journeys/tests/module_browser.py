@@ -14,8 +14,8 @@ try:
   p.wait_for_function('window.__FIELD_STUDIES__?.inspect()?.particleCount===62000')
   assert p.evaluate('window.__FIELD_STUDIES__.capabilities.kind')=='production'
   p.screenshot(path=str(E/'review-opening.png'))
-  p.locator('[data-action="keep"]').click()
-  with p.expect_download() as d:p.locator('#keep-dialog [data-action="export-artifact"]').click()
+  p.locator('[data-action="library"]').click()
+  with p.expect_download() as d:p.locator('#library-page [data-action="export-artifact"]').click()
   out=E/'module-export.html';d.value.save_as(out);assert 'window.__JOURNEY__=' in out.read_text()
   assert 'Native particle field' in out.read_text()
   result={'defaultRoute':'native journey instrument','particleCount':62000,'moduleArtifactExport':True,'externalRequests':external,'browserErrors':errors,'standaloneBytes':out.stat().st_size}

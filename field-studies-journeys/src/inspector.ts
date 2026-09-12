@@ -46,7 +46,7 @@ export function inspectorHTML(c:InspectorContext){const s=c.scene,e=s.entities.f
  ${button('add-text','Add a text block','plus')}
  <p class="control-note">Text is part of the scene, not the editor chrome. It can remain visible in presentations and captures.</p>`,true,'page-text')}
  ${group('Scene view',`<p class="control-note">Store this camera setup for this scene only. Working planes and guides stay editor-only.</p><div class="button-row">${button('keep-view','Set scene view','check')}${button('restore-view','Reset scene view','undo')}</div>`)}
- ${group('Journey settings',`${text('Journey title','journey.name',c.journey.name,'maxlength="160"')}${area('Description','journey.description',c.journey.description)}${toggle('Loop the journey','journey.loop',c.journey.loop)}<div class="button-row">${button('open-timeline','Scene strip','layers')}${button('new-scene','Add scene','plus')}</div>`,false,'journey')}
+ ${group('Expression settings',`${text('Expression title','journey.name',c.journey.name,'maxlength="160"')}${area('Description','journey.description',c.journey.description)}${toggle('Loop the expression','journey.loop',c.journey.loop)}<div class="button-row">${button('open-timeline','Scene strip','layers')}${button('new-scene','Add scene','plus')}</div>`,false,'journey')}
  `;}
 
  if(c.tab==='objects')return objects(c,e);
