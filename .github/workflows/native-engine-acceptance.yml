@@ -17,6 +17,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Package exact review source
+        run: git archive --format=tar.gz HEAD > /tmp/native-review-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-review-source
+          path: /tmp/native-review-source.tar.gz
+          retention-days: 7
       - uses: actions/setup-node@v4
         with:
           node-version: 22
