@@ -45,8 +45,7 @@ jobs:
           for part in staging.iterdir():
               part.unlink()
           staging.rmdir()
-          Path('.github/workflows/publish-expressions-review.yml').unlink()
-          print('Applied 19 exact locally tested source files; temporary publication inputs removed.')
+          print('Applied 19 exact locally tested source files; source-transfer inputs removed.')
           PY
       - run: npm ci --ignore-scripts
       - name: Types, regressions, production build and authoring models
@@ -59,14 +58,17 @@ jobs:
         run: npm run test:gpu && npm run test:browser && npm run test:workspace
       - name: Served root and standalone export
         run: python field-studies-journeys/tests/module_browser.py
-      - name: Publish tested source only to the reviewed branch
+      - name: Publish tested application source only
         run: |
+          # Workflow maintenance is performed through the authorised connector,
+          # not this contents-only Actions token. Preserve workflows at HEAD.
+          git restore --source=HEAD --staged --worktree .github/workflows
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'Refine Expressions library, orbital camera and canvas tools'
           git push origin HEAD:refs/heads/agent/native-engine-journeys
-          git rev-parse HEAD > /tmp/expressions-published-commit.txt
+          git rev-parse HEAD > field-studies-journeys/evidence-native/publication.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -76,5 +78,4 @@ jobs:
             field-studies-journeys/field-studies.html
             field-studies-journeys/evidence-native/
             field-studies-journeys/docs/EXPRESSION_UI_REVIEW.md
-            /tmp/expressions-published-commit.txt
           retention-days: 14
