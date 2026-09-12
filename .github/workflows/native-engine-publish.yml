@@ -1,0 +1,66 @@
+name: Publish verified native integration
+on:
+  push:
+    branches: [agent/native-engine-journeys]
+    paths: ['.handoff/**', '.github/workflows/native-engine-publish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/agent/native-engine-journeys'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recover exact baseline dependency lock
+        uses: actions/download-artifact@v4
+        with:
+          name: native-engine-working-source
+          run-id: 34655212069
+          github-token: ${{ github.token }}
+          path: /tmp/native-baseline
+      - name: Verify and apply tested source
+        run: |
+          tar -xOf /tmp/native-baseline/working-source.tar.gz package-lock.json > package-lock.json
+          python .handoff/apply.py
+      - run: npm ci --ignore-scripts
+      - name: Types, regression suites, production builds and authoring model
+        run: npm run lint && npm test && npm run build && npm run test:journeys
+      - name: Install browser acceptance dependencies
+        run: |
+          python -m pip install -r field-studies-journeys/tests/requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Actual GPU state and editor workflows
+        run: npm run test:gpu && npm run test:browser
+      - name: Served default route and native artifact export
+        run: python field-studies-journeys/tests/module_browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-integration-review
+          path: |
+            dist/
+            field-studies-journeys/field-studies.html
+            field-studies-journeys/evidence-native/
+            field-studies-journeys/docs/NATIVE_*.md
+          retention-days: 14
+      - name: Publish ordinary source on the isolated branch
+        run: |
+          test "$GITHUB_REF" = refs/heads/agent/native-engine-journeys
+          # Workflow changes are applied separately by the connected GitHub action.
+          # The job token publishes ordinary source only; no workflow-permission bypass.
+          git restore -- .github/workflows/native-engine-acceptance.yml
+          rm -rf .handoff
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'feat: integrate native engine into canvas-first journey instrument'
+          git push origin HEAD:refs/heads/agent/native-engine-journeys
