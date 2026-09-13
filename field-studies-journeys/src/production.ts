@@ -28,7 +28,7 @@ export class ProductionAdapter implements FieldEngineAdapter {
   const sig=frame.authoringRevision===undefined?JSON.stringify(frame.scene):frame.scene.id+':'+frame.authoringRevision;
   if(sig!==this.signature){
    const config=toNativeConfig(frame.scene);
-   if(this.engine&&this.sceneId!==frame.scene.id){this.from=this.evaluated;this.transitionStart=this.engine.inspectState().simTime;this.duration=frame.scene.transition;}
+   if(this.engine&&this.sceneId!==frame.scene.id){this.duration=frame.delta>0?frame.scene.transition:0;this.from=this.duration>0?this.evaluated:null;this.transitionStart=this.engine.inspectState().simTime;}
    this.target=config;this.signature=sig;this.sceneId=frame.scene.id;
   }
   const target=this.target!;
