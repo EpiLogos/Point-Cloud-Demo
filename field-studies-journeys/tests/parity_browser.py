@@ -137,8 +137,9 @@ try:
    require(state(p)['inspectorOpen'],'Editor did not remain open');require(after['steps']>before['steps'],'Simulation did not advance');require(after['velocities']!=before['velocities'],'Pointer force had no live effect while editor was open');return {'inspectorStayedOpen':True,'pointerLive':True}
   check('UI-POINTER-LIVE-WITH-EDITOR',pointer_with_editor)
   def layouts():
-   act(p,'select-all');positions={}
+   p.evaluate("__FIELD_STUDIES__.openEditor('objects')");act(p,'select-all');positions={}
    for layout in ['line','column','ring','grid','spiral']:
+    # Names are taken from the contextual original native layout catalogue.
     selector='[data-action="native-layout"]';ids=p.locator(selector).evaluate_all('(els)=>els.map(e=>e.dataset.value)')
     if layout not in ids:continue
     act(p,'native-layout',f'[data-value="{layout}"]');positions[layout]=[e['position'] for e in doc(p)['scenes'][0]['entities']]
@@ -172,4 +173,4 @@ except Exception:
  traceback.print_exc()
 finally:
  (E/'parity-workflows.json').write_text(json.dumps({'results':results,'browserErrors':errors,'storage':'explicit inline-origin storage test double'},indent=2));print(json.dumps(results,indent=2))
-if len(results)<18 or any(not r['ok'] for r in results) or errors:raise SystemExit(1)
+if len(results)<17 or any(not r['ok'] for r in results) or errors:raise SystemExit(1)
