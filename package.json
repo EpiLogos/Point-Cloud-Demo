@@ -15,7 +15,10 @@
     "test:journeys": "node --test field-studies-journeys/tests/model.test.mjs",
     "test:gpu": "python field-studies-journeys/tests/native_gpu.py",
     "test:browser": "python field-studies-journeys/tests/native_browser.py",
-    "test:workspace": "python field-studies-journeys/tests/workspace_browser.py"
+    "test:workspace": "python field-studies-journeys/tests/workspace_browser.py",
+    "test:parity": "tsx tests/parity/independent.ts && tsx tests/parity/inventory.ts && node tests/parity/build.mjs",
+    "test:parity:browser": "python field-studies-journeys/tests/parity_gpu.py && python field-studies-journeys/tests/parity_browser.py && python field-studies-journeys/tests/parity_lifecycle.py",
+    "test:reference-apps": "node tests/parity/reference-apps.mjs && python field-studies-journeys/tests/reference_apps.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

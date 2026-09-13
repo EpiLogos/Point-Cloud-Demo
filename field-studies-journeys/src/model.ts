@@ -6,10 +6,10 @@ export type Plane = 'XY'|'XZ'|'YZ';
 export type Tool = 'select'|'interact'|'pin'|'formation'|'text'|'orbit';
 export type Shape = 'text'|'ring'|'disc'|'square'|'triangle'|'yantra'|'cymatic';
 export type Material = 'ink'|'print'|'round';
-export interface SequenceStep {holdOverride?:boolean;transitionOverride?:boolean;native?:NativeLink;yantraId?:string;templateFrequency?:number;id:string;text:string;shape:Shape;hold:number;transition:number;position:Vec3|null}
+export interface SequenceStep {holdOverride?:boolean;transitionOverride?:boolean;native?:NativeLink;yantraId?:string;templateFrequency?:number;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';id:string;text:string;shape:Shape;hold:number;transition:number;position:Vec3|null}
 export interface Entity {
  source?:{kind:'image';image:CustomImageConfig}|{kind:'ascii';ascii:AsciiGlyphConfig};
- scale?:number;native?: NativeEntity;yantraId?:string;templateFrequency?:number;enabled?:boolean;
+ scale?:number;native?: NativeEntity;yantraId?:string;templateFrequency?:number;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';enabled?:boolean;
  id:string;name:string;kind:'formation'|'pin';position:Vec3;size:{x:number;y:number};rotation:number;
  shape:Shape;text:string;share:number;tint:string;tintWeight:number;locked:boolean;
  force:{kind:'none'|'attract'|'repel'|'vortex';strength:number;radius:number;spin:number};station:number|null;
@@ -17,14 +17,14 @@ export interface Entity {
 }
 export interface TextLayer {id:string;visible:boolean;kicker:string;title:string;italic:string;body:string;x:number;y:number;width:number;size:number;align:'left'|'center'|'right'}
 export interface AutomationLane {easing?:AutomationEasing;nativeId?:string;nativePath?:string;entityId?:string;id:string;enabled:boolean;target:string;type:'lfo'|'ramp';wave:'sine'|'triangle'|'square'|'saw'|'steps'|'smooth';min:number;max:number;rate:number;phase:number;blend:'replace'|'add'|'multiply';duration:number;delay:number;loop:'once'|'loop'|'pingpong';firedAt:number|null}
-export interface EngineSettings {paletteSource?:'custom'|'legacy';grainProfile?:boolean;backgroundMode?:'solid'|'vignette'|'ambientGlow'|'adaptive';resonatorMode?:'resonator'|'template';focusOrder?:'listed'|'reverse'|'pingpong';resonanceEnabled:boolean;morphEnabled:boolean;trajectory:'linear'|'toroidalHopf'|'vortexSpiral'|'quantumInterference';driveShape:'sine'|'triangle'|'smooth'|'pulse';autoOscillate:boolean;relationalEnabled:boolean;relationalMode:'orbital'|'nbody'|'chaos';pointerMode:'repel'|'attract'|'vortex';colorMode:string;colorEnabled:boolean;dotShape?:'circle'|'square';fontFamily?:string;fontWeight?:string|number;mediumPlane:'vertical'|'horizontal';autoSweep:boolean;sweepDirection:'ascent'|'descent'|'pingpong'}
+export interface EngineSettings {inkMode?:'blackOnWhite'|'whiteOnBlack';paletteId?:string;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';paletteSource?:'custom'|'legacy';grainProfile?:boolean;backgroundMode?:'solid'|'vignette'|'ambientGlow'|'adaptive';resonatorMode?:'resonator'|'template';focusOrder?:'listed'|'reverse'|'pingpong';resonanceEnabled:boolean;morphEnabled:boolean;trajectory:'linear'|'toroidalHopf'|'vortexSpiral'|'quantumInterference';driveShape:'sine'|'triangle'|'smooth'|'pulse';autoOscillate:boolean;relationalEnabled:boolean;relationalMode:'orbital'|'nbody'|'chaos';pointerMode:'repel'|'attract'|'vortex';colorMode:string;colorEnabled:boolean;dotShape?:'circle'|'square';fontFamily?:string;fontWeight?:string|number;mediumPlane:'vertical'|'horizontal';autoSweep:boolean;sweepDirection:'ascent'|'descent'|'pingpong'}
 export const DEFAULT_ENGINE_SETTINGS:EngineSettings={paletteSource:'custom',grainProfile:true,backgroundMode:'solid',resonatorMode:'resonator',focusOrder:'listed',dotShape:'circle',fontFamily:'system-ui, -apple-system, sans-serif',fontWeight:900,resonanceEnabled:true,morphEnabled:false,trajectory:'toroidalHopf',driveShape:'sine',autoOscillate:true,relationalEnabled:false,relationalMode:'orbital',pointerMode:'repel',colorMode:'linearGradient',colorEnabled:true,mediumPlane:'vertical',autoSweep:false,sweepDirection:'ascent'};
 export interface Scene {
  engine:EngineSettings;
  favourites?:string[];
- native?: {config:PointCloudConfig; original:unknown};
+ native?: {config:PointCloudConfig; original:unknown; projection?:PointCloudConfig};
  id:string;name:string;character:string;duration:number;transition:number;
- view:{nativeCamera?:CameraOrbState;mode:'2d'|'3d';yaw:number;pitch:number;zoom:number;panX:number;panY:number};
+ view:{nativeScaffold?:'off'|'axis'|'grid';nativeCamera?:CameraOrbState;mode:'2d'|'3d';yaw:number;pitch:number;zoom:number;panX:number;panY:number};
  field:{background:string;palette:string[];material:Material;params:Record<string,number>};
  entities:Entity[];text:TextLayer[];
  composition:{layout:string;plane:Plane;focus:'parallel'|'travelling';focusDuration:number;focusDwell?:number;carryTint:boolean;carryStation:boolean;frequencyDriver:'manual'|'focus'|'automation'};
@@ -100,6 +100,7 @@ export function validateJourney(value:unknown):Journey {
  const ids=new Set<string>();
  for(const s of j.scenes){s.engine={...DEFAULT_ENGINE_SETTINGS,...s.engine};if(!safeId(s.id)||ids.has(s.id)||!str(s.name,160)||!str(s.character)||!finite(s.duration,1,3600)||!finite(s.transition,0,30))throw new Error('Invalid or duplicate scene.');ids.add(s.id);
   if(!s.view)s.view={mode:'2d',yaw:0,pitch:0,zoom:1,panX:0,panY:0};
+  if(s.view.nativeScaffold!==undefined&&!['off','axis','grid'].includes(s.view.nativeScaffold))throw new Error('Invalid native scaffold.');
   if(!['2d','3d'].includes(s.view.mode)||!finite(s.view.yaw,-1000,1000)||!finite(s.view.pitch,-1000,1000)||!finite(s.view.zoom,.01,100)||!finite(s.view.panX,-10,10)||!finite(s.view.panY,-10,10))throw new Error('Invalid scene framing.');
   if(!s.field||!color(s.field.background)||!['ink','print','round'].includes(s.field.material)||!Array.isArray(s.field.palette)||s.field.palette.length<2||s.field.palette.length>8||!s.field.palette.every(color)||!s.field.params)throw new Error('Scene material or palette is invalid.');
   for(const [key,defaultValue] of Object.entries(DEFAULT_PARAMS)){if(!(key in s.field.params))s.field.params[key]=defaultValue;if(!finite(s.field.params[key],-1e8,1e8))throw new Error('Invalid numeric field parameter: '+key);}
@@ -113,8 +114,8 @@ export function validateJourney(value:unknown):Journey {
   }
   for(const t of s.text){if(!safeId(t.id)||!str(t.kicker,300)||!str(t.title,300)||!str(t.italic,300)||!str(t.body)||!finite(t.x,-.5,1.5)||!finite(t.y,-.5,1.5)||!finite(t.width,60,1000)||!finite(t.size,14,150)||!['left','center','right'].includes(t.align)||typeof t.visible!=='boolean')throw new Error('Invalid page text.');}
   if(!s.composition||!['XY','XZ','YZ'].includes(s.composition.plane)||!['parallel','travelling'].includes(s.composition.focus)||!finite(s.composition.focusDuration,.01,3600)||!['manual','focus','automation'].includes(s.composition.frequencyDriver))throw new Error('Invalid composition.');
-  if(!s.morph||!['theta','product','sum','beat'].includes(s.morph.law)||!finite(s.morph.thetaRate,-100,100)||!finite(s.morph.phiRate,-100,100)||!finite(s.morph.thetaOffset,-100,100)||!finite(s.morph.phiOffset,-100,100)||!finite(s.morph.depth,-10,10)||!finite(s.morph.dwell,0,.99))throw new Error('Invalid morph clock.');
-  for(const a of s.automation){if(!safeId(a.id)||!str(a.target,250)||!['lfo','ramp'].includes(a.type)||!['sine','triangle','square','saw','steps','smooth'].includes(a.wave)||!['replace','add','multiply'].includes(a.blend)||!['once','loop','pingpong'].includes(a.loop)||![a.min,a.max,a.rate,a.phase,a.duration,a.delay].every(n=>finite(n,-100000,100000))||a.rate<0||a.duration<=0||a.delay<0||!(a.firedAt===null||finite(a.firedAt,0,1e10)))throw new Error('Invalid automation lane.');}
+  if(!s.morph||!['theta','product','sum','beat'].includes(s.morph.law)||!finite(s.morph.thetaRate,-100,100)||!finite(s.morph.phiRate,-100,100)||!finite(s.morph.thetaOffset,-1000,1000)||!finite(s.morph.phiOffset,-1000,1000)||!finite(s.morph.depth,-10,10)||!finite(s.morph.dwell,0,.99))throw new Error('Invalid morph clock.');
+  for(const a of s.automation){if(!safeId(a.id)||!str(a.target,250)||!['lfo','ramp'].includes(a.type)||!['sine','triangle','square','saw','steps','smooth'].includes(a.wave)||!['replace','add','multiply'].includes(a.blend)||!['once','loop','pingpong'].includes(a.loop)||![a.min,a.max,a.rate,a.phase,a.duration,a.delay].every(n=>typeof n==='number'&&Number.isFinite(n))||!(a.firedAt===null||typeof a.firedAt==='number'&&Number.isFinite(a.firedAt)))throw new Error('Invalid automation lane.');}
  }
  return clone(j);
 }
