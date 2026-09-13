@@ -153,7 +153,7 @@ try:
   check('UI-NATIVE-SCAFFOLD',scaffold)
   load(p,fixture);p.evaluate("__FIELD_STUDIES__.openEditor('field')")
   def disperse():
-   before=doc(p);act(p,'native-disperse');require(doc(p)==before);p.evaluate('__FIELD_STUDIES__.play()');p.wait_for_timeout(200);p.evaluate('__FIELD_STUDIES__.pause()');g=p.evaluate('__FIELD_STUDIES__.inspect(true)');require(any(abs(v)>0 for v in g['velocities']));return {'commandDoesNotEditDocument':True,'actualVelocity':True}
+   before=doc(p);act(p,'native-disperse');require(doc(p)==before);steps=p.evaluate('__FIELD_STUDIES__.inspect().steps');p.evaluate('__FIELD_STUDIES__.play()');p.wait_for_function('(s)=>__FIELD_STUDIES__.inspect().steps>s',arg=steps,timeout=10000);p.evaluate('__FIELD_STUDIES__.pause()');g=p.evaluate('__FIELD_STUDIES__.inspect(true)');require(any(abs(v)>0 for v in g['velocities']));return {'commandDoesNotEditDocument':True,'actualVelocity':True}
   check('UI-DISPERSE',disperse)
   def phases():
    p.evaluate("__FIELD_STUDIES__.openEditor('motion')");act(p,'motion-tab','[data-value="morph"]');before=doc(p);act(p,'native-reset-phases');require(doc(p)==before);require(abs(p.evaluate('__FIELD_STUDIES__.telemetry().drive.theta'))<1e-8);return {'phaseReset':True,'documentPreserved':True}

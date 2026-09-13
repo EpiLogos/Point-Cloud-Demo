@@ -57,6 +57,15 @@ function enhanceInspector(){
    weight.value=current;
   }
 
+  // The scene keeps the native engine's own off / axis / grid scaffold as authored view state.
+  if(content.querySelector('[data-bind="name"]')&&!content.querySelector('[data-bind="view.nativeScaffold"]')){
+   const api=(window as any).__FIELD_STUDIES__,state=api?.getState?.(),scene=api?.getDocument?.()?.scenes?.[state?.sceneIndex??0];
+   const value=scene?.view?.nativeScaffold??'off';
+   const control=`<label class="control"><span>Spatial scaffold</span><select data-bind="view.nativeScaffold"><option value="off" ${value==='off'?'selected':''}>Off</option><option value="axis" ${value==='axis'?'selected':''}>Axis</option><option value="grid" ${value==='grid'?'selected':''}>3D grid</option></select></label><p class="control-note">Native spatial guide only. It does not change the camera, working plane, layout plane or particle physics.</p>`;
+   const view=detail('Scene view')?.querySelector('.group-content');
+   html(view??content,control);
+  }
+
   // Native palette/paper catalogue remains contextual to appearance.
   const palette=detail('palette')?.querySelector('.group-content');
   if(palette&&!palette.querySelector('[data-detail="native-palettes"]'))html(palette,cataloguePalettes());
