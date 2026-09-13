@@ -24,7 +24,7 @@ export interface Scene {
  favourites?:string[];
  native?: {config:PointCloudConfig; original:unknown; projection?:PointCloudConfig};
  id:string;name:string;character:string;duration:number;transition:number;
- view:{nativeCamera?:CameraOrbState;mode:'2d'|'3d';yaw:number;pitch:number;zoom:number;panX:number;panY:number};
+ view:{nativeScaffold?:'off'|'axis'|'grid';nativeCamera?:CameraOrbState;mode:'2d'|'3d';yaw:number;pitch:number;zoom:number;panX:number;panY:number};
  field:{background:string;palette:string[];material:Material;params:Record<string,number>};
  entities:Entity[];text:TextLayer[];
  composition:{layout:string;plane:Plane;focus:'parallel'|'travelling';focusDuration:number;focusDwell?:number;carryTint:boolean;carryStation:boolean;frequencyDriver:'manual'|'focus'|'automation'};
@@ -100,6 +100,7 @@ export function validateJourney(value:unknown):Journey {
  const ids=new Set<string>();
  for(const s of j.scenes){s.engine={...DEFAULT_ENGINE_SETTINGS,...s.engine};if(!safeId(s.id)||ids.has(s.id)||!str(s.name,160)||!str(s.character)||!finite(s.duration,1,3600)||!finite(s.transition,0,30))throw new Error('Invalid or duplicate scene.');ids.add(s.id);
   if(!s.view)s.view={mode:'2d',yaw:0,pitch:0,zoom:1,panX:0,panY:0};
+  if(s.view.nativeScaffold!==undefined&&!['off','axis','grid'].includes(s.view.nativeScaffold))throw new Error('Invalid native scaffold.');
   if(!['2d','3d'].includes(s.view.mode)||!finite(s.view.yaw,-1000,1000)||!finite(s.view.pitch,-1000,1000)||!finite(s.view.zoom,.01,100)||!finite(s.view.panX,-10,10)||!finite(s.view.panY,-10,10))throw new Error('Invalid scene framing.');
   if(!s.field||!color(s.field.background)||!['ink','print','round'].includes(s.field.material)||!Array.isArray(s.field.palette)||s.field.palette.length<2||s.field.palette.length>8||!s.field.palette.every(color)||!s.field.params)throw new Error('Scene material or palette is invalid.');
   for(const [key,defaultValue] of Object.entries(DEFAULT_PARAMS)){if(!(key in s.field.params))s.field.params[key]=defaultValue;if(!finite(s.field.params[key],-1e8,1e8))throw new Error('Invalid numeric field parameter: '+key);}

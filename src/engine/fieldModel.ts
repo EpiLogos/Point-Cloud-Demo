@@ -43,6 +43,9 @@ export const MAX_PINS = 8;
 export type ShapeKind = 'glyph' | 'yantra' | 'cymatic' | 'primitive';
 
 export interface Shape {
+  /** Optional authored-template overrides; absent values inherit field template settings. */
+  plateGeometry?: CymaticsConfig['plateGeometry'];
+  dimension?: CymaticsConfig['dimension'];
   primitive?: 'ring' | 'disc' | 'square' | 'triangle';
   kind: ShapeKind;
   text?: string;          // glyph / word (kind 'glyph')
@@ -176,7 +179,6 @@ export const DEFAULT_CYMATIC_MEDIUM: CymaticMedium = {
   followFocus: true,
   plateSize: 700, baseFrequency: 40, driveStrength: 1, modeCount: 64,
   transportGain: 1, agitation: 0.3, boundaryStrength: 6, driveScale: 1,
-  sweep: {enabled:false,glideS:8,dwellS:2,direction:'ascent'},
 };
 
 export function makeLink(shape: Shape, pos?: { x?: number; y?: number; z?: number }): SequenceLink {

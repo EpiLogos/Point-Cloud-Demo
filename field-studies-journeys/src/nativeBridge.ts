@@ -144,6 +144,7 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
   const factor=l.blend==='multiply'?1:b?.factor??eb?.factor??1;
   return{id:l.id,nativeId:l.id,nativePath:l.path,entityId:eb?.entityId,enabled:l.enabled,target:b?'field.'+b.key:eb?.target??stableNativeTarget(s,l.path),type:l.type==='lfo'?'lfo':'ramp',wave:l.waveform==='randomStep'?'steps':l.waveform==='smoothRandom'?'smooth':l.waveform??'sine',min:(l.type==='lfo'?l.min??0:l.from??0)/factor,max:(l.type==='lfo'?l.max??1:l.to??1)/factor,rate:l.rateHz??.25,phase:l.phase??0,blend:l.blend??'replace',duration:l.durationS??2,delay:l.delayS??0,loop:l.loop==='restart'?'loop':l.loop==='pingpong'?'pingpong':'once',firedAt:l.fireToken??null,easing:l.easing??'smooth'};
  });
+ if(snapshot.view?.gridMode&&!s.view.nativeScaffold)s.view.nativeScaffold=snapshot.view.gridMode;
  j.name=snapshot.name;j.description='Native scene configuration imported through schema-4 migration. Original payload retained; this is not a runtime checkpoint.';j.scenes=[s];
  checkNativeLimits(s);s.native!.projection=clone(projectNativeConfig(s));return validateJourney(j);
 }

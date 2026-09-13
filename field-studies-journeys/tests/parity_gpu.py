@@ -4,6 +4,7 @@ from harness import browser_session
 root=Path(__file__).resolve().parents[2]
 with browser_session({'width':640,'height':480}) as (_,ctx,page):
     errors=[]
+    page.on('console',lambda e: print(e.text,flush=True) if e.text.startswith('PARITY ') else None)
     page.on('pageerror',lambda e: errors.append(str(e)))
     page.on('console',lambda e: errors.append(e.text) if e.type=='error' and 'CONTEXT_LOST' not in e.text else None)
     page.set_content('<!doctype html><html><body></body></html>')

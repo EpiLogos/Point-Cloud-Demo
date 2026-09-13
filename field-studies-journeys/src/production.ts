@@ -39,14 +39,14 @@ export class ProductionAdapter implements FieldEngineAdapter {
   const t=fraction*fraction*(3-2*fraction),a=this.from;
   // Target ownership changes once. GPU state is never cross-faded or reseeded.
   // Shared identities keep their actual places as transforms interpolate.
-  const cfg={...target,fluid:{...target.fluid},material:{...target.material},color:{...target.color!},entities:target.entities?.map(e=>{
+  const cfg={...target,fluid:{...target.fluid},material:target.material?{...target.material}:undefined,color:{...target.color!},entities:target.entities?.map(e=>{
    const old=a.entities?.find(x=>x.id===e.id);if(!old)return e;
    return{...e,x:mix(old.x,e.x,t),y:mix(old.y,e.y,t),z:mix(old.z,e.z,t),scale:mix(old.scale,e.scale,t),
     extent:e.extent&&old.extent?{...e.extent,width:mix(old.extent.width,e.extent.width,t),height:mix(old.extent.height,e.extent.height,t),rotation:mix(old.extent.rotation,e.extent.rotation,t)}:e.extent,
     tint:color(old.tint,e.tint,t),tintWeight:mix(old.tintWeight,e.tintWeight,t),forces:{...e.forces,strength:mix(old.forces.strength,e.forces.strength,t),radius:mix(old.forces.radius,e.forces.radius,t),spin:mix(old.forces.spin,e.forces.spin,t)}};
   })};
   for(const key of Object.keys(cfg.fluid) as (keyof typeof cfg.fluid)[])if(typeof cfg.fluid[key]==='number'&&typeof a.fluid[key]==='number')(cfg.fluid as any)[key]=mix(a.fluid[key]!,cfg.fluid[key]!,t);
-  for(const key of MATERIAL_KEYS)if(typeof a.material?.[key]==='number')cfg.material[key]=mix(a.material[key]!,target.material?.[key]??a.material[key]!,t);
+  for(const key of MATERIAL_KEYS)if(cfg.material&&typeof a.material?.[key]==='number')cfg.material[key]=mix(a.material[key]!,target.material?.[key]??a.material[key]!,t);
   cfg.backgroundColor=color(a.backgroundColor??'#f4f2eb',target.backgroundColor??'#f4f2eb',t);
   const oldPalette=a.color?.customPaletteColors??[a.color!.primaryColor],palette=target.color?.customPaletteColors??[target.color!.primaryColor];
   cfg.color.customPaletteColors=palette.map((c,i)=>color(oldPalette[Math.min(i,oldPalette.length-1)],c,t));
@@ -60,7 +60,7 @@ export class ProductionAdapter implements FieldEngineAdapter {
   if(!this.engine)this.engine=new PointCloudField(this.canvas,config,true);
   else if(config!==this.applied)this.engine.replaceConfig(config);
   if(config!==this.applied)this.syncSources(frame.scene);this.applied=config;
-  this.engine.setSelection(frame.selectedIds);
+  this.engine.setSelection(frame.selectedIds);this.engine.setGridMode(frame.scaffold??'off');
   const {a,b}=basis(frame.camera),o=stageCentre(this.width,this.height);
   this.engine.setHostView({width:this.width,height:this.height,pixelRatio:this.dpr,originX:o.x+frame.camera.panX,originY:o.y+frame.camera.panY,pixelsPerUnit:stageScale(this.width,this.height)*frame.camera.zoom/WORLD_SCALE,right:a,up:b});
   this.engine.setHostPointer(frame.pointer.active,{x:frame.pointer.world.x*WORLD_SCALE,y:frame.pointer.world.y*WORLD_SCALE,z:frame.pointer.world.z*WORLD_SCALE},frame.delta);

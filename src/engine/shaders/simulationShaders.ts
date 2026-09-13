@@ -58,6 +58,7 @@ uniform sampler2D uPositionTexture;
 uniform sampler2D uVelocityTexture;
 uniform sampler2D uTargetATexture;
 uniform sampler2D uTargetBTexture;
+uniform sampler2D uTargetNoise;
 
 uniform float uMorphProgress;
 uniform float uDelta;
@@ -96,6 +97,8 @@ uniform int uEntityCount;
 uniform float uEntityBounds[10];    // exclusive end particle index per partition
 uniform vec4 uEntityCenter[10];     // xyz world centre, w = force radius (px)
 uniform float uEntityMorph[10];
+uniform float uEntityDepthScale[10];
+uniform float uEntityNormalized[10];
 uniform vec3 uEntityTransform[10];     // per-partition A→B progress
 uniform vec4 uEntityForce[10];      // x strength, y mode (0 none, 1 attract, 2 repel, 3 vortex), z spin, w enabled
 uniform vec2 uTexSize;              // simulation texture size (particle index reconstruction)
@@ -143,6 +146,8 @@ uniform float uTorusDepthScale;      // volumetric 3D Z-depth expansion (default
 
 // Interaction properties
 uniform vec2 uPointerPos;
+uniform vec2 uBurstPosition;
+uniform vec2 uBurstVelocity;
 uniform float uPointerZ;
 uniform vec2 uPointerVelocity;
 uniform float uPointerRadius;
@@ -178,11 +183,14 @@ void main() {
 
   vec3 transform = uEntityTransform[eIdx];
   float co=cos(transform.z),si=sin(transform.z);
-  vec2 a = (uCompPlane > 0.5 ? vec2(targetA.x,-targetA.z) : targetA.xy) * transform.xy;
-  vec2 b = (uCompPlane > 0.5 ? vec2(targetB.x,-targetB.z) : targetB.xy) * transform.xy;
-  a=vec2(a.x*co-a.y*si,a.x*si+a.y*co); b=vec2(b.x*co-b.y*si,b.x*si+b.y*co);
-  if(uCompPlane>0.5){targetA.x=a.x;targetA.z=-a.y;targetB.x=b.x;targetB.z=-b.y;}
-  else{targetA.xy=a;targetB.xy=b;}
+  vec4 noise = texture2D(uTargetNoise, vUv);
+  float normalized = uEntityNormalized[eIdx];
+  vec2 a = ((uCompPlane > 0.5 ? vec2(targetA.x,-targetA.z) : targetA.xy) + noise.xy * normalized) * transform.xy;
+  vec2 b = ((uCompPlane > 0.5 ? vec2(targetB.x,-targetB.z) : targetB.xy) + noise.zw * normalized) * transform.xy;
+  a=vec2(a.x*co-a.y*si,a.x*si+a.y*co) + noise.xy * (1.0-normalized);
+  b=vec2(b.x*co-b.y*si,b.x*si+b.y*co) + noise.zw * (1.0-normalized);
+  if(uCompPlane>0.5){targetA.x=a.x;targetA.z=-a.y;targetB.x=b.x;targetB.z=-b.y;targetA.y*=uEntityDepthScale[eIdx];targetB.y*=uEntityDepthScale[eIdx];}
+  else{targetA.xy=a;targetB.xy=b;targetA.z*=uEntityDepthScale[eIdx];targetB.z*=uEntityDepthScale[eIdx];}
   // Targets are baked in entity-local coordinates; the centre is a uniform (moving never re-bakes)
   vec3 targetPos = mix(targetA.xyz, targetB.xyz, sMorph) + entityCenter;
   float targetDensity = mix(targetA.w, targetB.w, sMorph);
@@ -452,7 +460,8 @@ void main() {
     float dWim_dv = 0.0;
 
     for (int i = 0; i < 64; i++) {
-      if (i >= uResModeCount) break;
+      // Sparse addressed modes are not a contiguous prefix. Inspect all 64 slots.
+      if (abs(uResRe[i]) + abs(uResIm[i]) < 0.00000001) continue;
       int mi = i / 8;
       int ni = i - mi * 8;
       float m = float(mi + 1);
@@ -528,6 +537,10 @@ void main() {
   }
 
   // --- 8. Total Acceleration & Viscous Integration ---
+  // The same falloff-weighted velocity impulse as native pointer momentum,
+  // independently queued so a toolbar click cannot be cleared by pointer-leave.
+  float burstFalloff = pow(max(0.0, 1.0 - distance(pos.xy, uBurstPosition) / max(0.001, uPointerRadius)), uPointerFalloffPower);
+  fPointer.xy += uBurstVelocity * burstFalloff * 0.85;
   vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator;
 
   // Constant body force (gravity / wind)

@@ -28,7 +28,7 @@ const aliases:Record<string,[string,number?,string?]>={
  'composition.orchestration.glide':['focusGlide',1,'composition.focusDuration'],
 };
 const groups:Record<string,string>={Fluid:'motion','Physics+':'physics',Particles:'material',Morph:'morph',Interaction:'pointer',Relational:'relational',Color:'color',Cymatics:'resonance',Composition:'composition',Material:'material',Paper:'color'};
-const defaults:Record<string,number>={'color.cycleSpeed':0,'color.turbulenceModulation':0,'color.speedReactiveIntensity':0,'color.densityWeight':0,'composition.entityTintWeight':1,'composition.orchestration.dwell':0};
+const defaults:Record<string,number>={'cymatics.sweep.glideS':8,'cymatics.sweep.dwellS':2,'cymatics.modeCount':64,'color.cycleSpeed':0,'color.turbulenceModulation':0,'color.speedReactiveIntensity':0,'color.densityWeight':0,'composition.entityTintWeight':1,'composition.orchestration.dwell':0};
 export const NATIVE_BINDINGS:NativeBinding[]=PARAM_REGISTRY.map(p=>{
  const a=aliases[p.path], key=a?.[0]??'native_'+p.path.replaceAll('.','__'),factor=a?.[1]??1;
  const value=defaults[p.path]??readPath(DEFAULT_CONFIG,p.path);
@@ -42,6 +42,7 @@ export function baseValue(scene:Scene,key:string):number {
  return typeof value==='number'&&Number.isFinite(value)?value:b?.defaultValue??0;
 }
 export function bindValue(scene:Scene,path:string,value:unknown){
+ if(path==='field.params.native_composition__orchestration__focusTintWeight'&&typeof value==='number'&&value>0)scene.composition.carryTint=true;
  const keys=path.split('.');if(keys.some(k=>['__proto__','prototype','constructor'].includes(k)))throw new Error('Unsafe document path');
  let o:any=scene;for(const k of keys.slice(0,-1))o=o[k]??(o[k]={});o[keys.at(-1)!]=value;
 }

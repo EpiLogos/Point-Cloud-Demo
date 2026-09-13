@@ -2,7 +2,7 @@ import {Scene,Vec3} from './model.js';
 import {Camera} from './camera.js';
 /** All document writes belong to the shell. Adapters never create their own clock or UI. */
 export interface EngineFrame {
- scene:Readonly<Scene>;authoringRevision?:number;simTime:number;delta:number;params:Readonly<Record<string,number>>;
+ scene:Readonly<Scene>;scaffold?:'off'|'axis'|'grid';authoringRevision?:number;simTime:number;delta:number;params:Readonly<Record<string,number>>;
  camera:Readonly<Camera>;pointer:{active:boolean;world:Vec3};selectedIds:ReadonlyArray<string>;
 }
 export interface EngineCapabilities {name:string;kind:'preview'|'production';parameters:ReadonlyArray<string>;physicalResonance:boolean;runtimeCheckpoints:boolean;exactSeek:boolean;notes:ReadonlyArray<string>}

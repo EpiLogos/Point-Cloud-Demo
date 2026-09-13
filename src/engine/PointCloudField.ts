@@ -427,10 +427,10 @@ export class PointCloudField {
     const cfg = this.config;
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     this.entities.allocate(this.simulator.particleCount, this.simulator.texWidth, this.simulator.texHeight);
-    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane);
+    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     this.entities.layout(cfg.entities || []);
     this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
-    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre());
+    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
     this.simulator.setCompositionPlane(comp.plane);
     if (seed) { this.seedGeneration++; this.simulator.seedInitialState(this.entities.buildSeed()); }
@@ -438,6 +438,7 @@ export class PointCloudField {
 
   /** Explicit reset: particles jump to their current targets. The only user-driven reseed. */
   public resetField() {
+    this.burstVelocity.set(0, 0);
     this.seedGeneration++;
     this.simulator.seedInitialState(this.entities.buildSeed());
     this.resetMorphPhases();
@@ -1019,9 +1020,19 @@ export class PointCloudField {
   }
 
 
+  /** Complete document replacement, unlike the public incremental updateConfig API.
+   * Replacing a scene must not inherit its predecessor's optional palettes/sources. */
+  public replaceConfig(config: PointCloudConfig) {
+    this.applyConfig(this.mergeConfig(DEFAULT_CONFIG, config));
+  }
+
   public updateConfig(newConfig: Partial<PointCloudConfig>) {
+    this.applyConfig(this.mergeConfig(this.config, newConfig));
+  }
+
+  private applyConfig(config: PointCloudConfig) {
     const prev = this.config;
-    this.config = this.mergeConfig(prev, newConfig);
+    this.config = config;
     const cfg = this.config;
 
     if (Math.floor(cfg.particleCount) !== this.simulator.particleCount) {
@@ -1032,7 +1043,7 @@ export class PointCloudField {
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     const styleChanged = prev.style !== cfg.style || prev.fontFamily !== cfg.fontFamily || prev.fontWeight !== cfg.fontWeight;
     if (styleChanged) this.glyphSampler.clearCache();
-    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane);
+    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     if ((prev.composition || DEFAULT_COMPOSITION).plane !== comp.plane) this.simulator.setCompositionPlane(comp.plane);
 
     // Entity edits: partition layout is recomputed; bakes happen lazily in the next tick only for
@@ -1122,19 +1133,21 @@ export class PointCloudField {
   }
 
   public setMorphProgress(progress: number) {
+    if(!Number.isFinite(progress))throw new Error('Invalid morph progress');
     this.morphProgress = Math.max(0.0, Math.min(1.0, progress));
+    this.config = {...this.config,morphProgress:this.morphProgress};
   }
 
   public getMorphProgress(): number {
     return this.morphProgress;
   }
 
+  private burstVelocity = new THREE.Vector2();
+  private burstPosition = new THREE.Vector2();
   public triggerDisperse(strength: number = 3.0) {
-    // Injects instantaneous vorticity and radial turbulence into pointer position or center
-    this.pointerVel.set(
-      (Math.random() - 0.5) * 600 * strength,
-      (Math.random() - 0.5) * 600 * strength
-    );
+    if (!Number.isFinite(strength)) throw new Error('Invalid disperse strength');
+    this.burstVelocity.set((Math.random() - 0.5) * 600 * strength, (Math.random() - 0.5) * 600 * strength);
+    this.burstPosition.copy(this.pointerPos.x > -90000 ? this.pointerPos : this.entities.fieldCentre());
   }
 
   private tick = () => {
@@ -1151,7 +1164,11 @@ export class PointCloudField {
     if (this.isDestroyed) return this.simTime;
     if (!Number.isFinite(rawDelta) || rawDelta < 0) throw new Error('Invalid simulation delta');
     const base = this.config;
-    const auto = applyAutomations(base, base.automations, this.simTime, this.automationRt);
+    // Paused inspection may evaluate values but must not arm or consume one-shots.
+    const runtime = rawDelta > 0 ? this.automationRt : {
+      ...this.automationRt, lanes: new Map([...this.automationRt.lanes].map(([id, v]) => [id, {...v}]))
+    };
+    const auto = applyAutomations(base, base.automations, this.simTime, runtime);
     this.config = auto.config;
     this.liveAutomation = auto.live;
     this.evaluatedConfig = auto.config;
@@ -1375,6 +1392,8 @@ export class PointCloudField {
 
   /** Re-trigger a one-shot automation lane immediately (independent of config churn). */
   public fireAutomation(id: string, delayS: number = 0) {
+    const lane=this.config.automations?.find(l=>l.id===id);
+    if(lane&&!this.automationRt.lanes.has(id))applyAutomations(this.config,[lane],this.simTime,this.automationRt);
     const r = this.automationRt.lanes.get(id);
     if (r) r.startTime = this.simTime + delayS;
   }
@@ -1406,7 +1425,7 @@ export class PointCloudField {
     const res = this.entities.update(cfg.entities || [], comp, elapsedTime, drive.theta, manual, tm.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
     this.lastFrames = res.frames;
     if (delta > 0) for (const imp of res.impulses) this.triggerDisperse(imp);
-    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre());
+    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
     this.morphProgress = res.frames[0]?.state.progress ?? manual;
 
@@ -1443,7 +1462,7 @@ export class PointCloudField {
     // 5. Relational multi-attractors orbit the formation centres
     if (cfg.relational?.enabled) {
       const rel = cfg.relational;
-      const count = Math.max(1, Math.min(10, rel.attractorCount || 3));
+      const count = Math.max(1, Math.min(10, rel.attractorCount ?? 3));
       const eu = this.entities.uniforms;
       const baseCenters: THREE.Vector2[] = [];
       for (let i = 0; i < Math.max(1, eu.count); i++) baseCenters.push(new THREE.Vector2(eu.centers[i].x, eu.centers[i].y));
@@ -1454,25 +1473,25 @@ export class PointCloudField {
         if (i < count) {
           const basePt = baseCenters[i % baseCenters.length] || new THREE.Vector2(0, 0);
           const initialAngle = (i / count) * Math.PI * 2;
-          const currentAngle = initialAngle + elapsedTime * (rel.orbitSpeed || 0.8);
-          const radius = rel.orbitRadius || 240;
+          const currentAngle = initialAngle + elapsedTime * (rel.orbitSpeed ?? 0.8);
+          const radius = rel.orbitRadius ?? 240;
           let posX = 0;
           let posY = 0;
           if (rel.mode === 'chaos') {
-            const wx = Math.sin(elapsedTime * (rel.wanderSpeed || 0.5) * 1.4 + i * 2.1) * radius * 0.7;
-            const wy = Math.cos(elapsedTime * (rel.wanderSpeed || 0.5) * 1.1 + i * 1.7) * radius * 0.5;
+            const wx = Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.4 + i * 2.1) * radius * 0.7;
+            const wy = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.1 + i * 1.7) * radius * 0.5;
             posX = basePt.x + wx;
             posY = basePt.y + wy;
           } else if (rel.mode === 'nbody') {
-            const t = elapsedTime * (rel.orbitSpeed || 0.8) + i * ((Math.PI * 2) / count);
+            const t = elapsedTime * (rel.orbitSpeed ?? 0.8) + i * ((Math.PI * 2) / count);
             const denom = 1 + Math.cos(t) * Math.cos(t);
             posX = vCenter.x + (Math.sin(t) / denom) * radius * 1.4;
             posY = vCenter.y + ((Math.sin(t) * Math.cos(t)) / denom) * radius * 1.4;
           } else {
             const rx = Math.cos(currentAngle) * radius;
             const ry = Math.sin(currentAngle) * radius * 0.75;
-            const driftX = Math.sin(elapsedTime * (rel.wanderSpeed || 0.5) + i) * 35;
-            const driftY = Math.cos(elapsedTime * (rel.wanderSpeed || 0.5) + i) * 35;
+            const driftX = Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) + i) * 35;
+            const driftY = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) + i) * 35;
             posX = vCenter.x + rx + driftX;
             posY = vCenter.y + ry + driftY;
           }
@@ -1493,6 +1512,9 @@ export class PointCloudField {
       interaction: { ...cfg.interaction, placedPoints: pinsToPlacedPoints(cfg.entities || []) },
     };
 
+    // Runtime burst input survives UI/pointer clearing and is consumed only by physics.
+    this.simulator.setBurst(this.burstPosition, this.burstVelocity);
+    if (delta > 0) this.burstVelocity.multiplyScalar(Math.pow(0.92, delta * 60));
     // 7. GPGPU step
     this.simulator.step(delta, elapsedTime, stepConfig, this.morphProgress, this.pointerPos, this.pointerVel, this.hostPointerZ);
 
