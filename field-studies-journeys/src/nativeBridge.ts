@@ -68,7 +68,7 @@ function projectNativeConfig(s:Scene):PointCloudConfig{
  // unit conversion, its real soft range, and the original hard bounds.
  for(const b of NATIVE_BINDINGS)cfg=writePath(cfg,b.path,baseValue(s,b.key)*b.factor);
  cfg.particleCount=Math.floor(cfg.particleCount);
- cfg.backgroundColor=s.field.background;cfg.backgroundMode=s.engine.backgroundMode??'solid';cfg.fontFamily=s.engine.fontFamily??cfg.fontFamily;cfg.fontWeight=s.engine.fontWeight??cfg.fontWeight;
+ cfg.backgroundColor=s.field.background;cfg.backgroundMode=s.engine.backgroundMode??'solid';cfg.fontFamily=s.engine.fontFamily??cfg.fontFamily;const authoredWeight=s.engine.fontWeight??cfg.fontWeight;cfg.fontWeight=typeof authoredWeight==='string'&&/^\d+$/.test(authoredWeight)?Number(authoredWeight):authoredWeight;
  cfg.color={...DEFAULT_COLOR_CONFIG,...cfg.color,enabled:s.engine.colorEnabled!==false,mode:s.engine.colorMode as any,primaryColor:s.field.palette[0],secondaryColor:s.field.palette.at(-1)!,accentColor:s.field.palette[Math.floor(s.field.palette.length/2)],customPaletteColors:s.engine.paletteSource==='legacy'?undefined:[...s.field.palette],backgroundColor:s.field.background,backgroundMode:s.engine.backgroundMode??'solid'};
  cfg.colorMode=s.engine.inkMode??cfg.colorMode;if(s.engine.paletteId)cfg.color.paletteId=s.engine.paletteId;
  cfg.style=s.field.material==='print'?'halftone':'stipple';cfg.dotShape=s.engine.dotShape??'circle';
