@@ -61,6 +61,7 @@ jobs:
         run: |
           python field-studies-journeys/tests/module_browser.py
           npm run test:reference-apps
+          npx tsx tests/parity/inventory.ts --verify
           git -C .parity-reference/master diff --exit-code
           git -C .parity-reference/main diff --exit-code
       - name: Build receipt
