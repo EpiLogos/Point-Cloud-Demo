@@ -2,6 +2,10 @@ import {cataloguePalettes,catalogueGlyphs,catalogueSequences,runtimeControls} fr
 import {NATIVE_LAYOUTS} from './nativeFeatures.js';
 import {esc} from './icons.js';
 
+const refinementStyle=document.createElement('style');
+refinementStyle.textContent='#inspector[data-pointer-live="true"]{display:flex!important}.pointer-live-badge{font-size:8px;letter-spacing:.06em;color:var(--accent);margin-right:auto}.pointer-editor-live #inspector{pointer-events:auto}@media(max-width:620px){#inspector[data-pointer-live="true"]{width:min(310px,calc(100vw - 54px))}}';
+document.head.append(refinementStyle);
+
 /**
  * Late-bound UI accommodations for native capabilities that do not belong in the
  * engine adapter. This deliberately decorates the approved inspector rather than
@@ -68,7 +72,7 @@ function enhanceInspector(){
 
   // Cymatic authored targets can override field template sampling without becoming resonators.
   for(const input of content.querySelectorAll<HTMLInputElement>('input[data-bind="entity.templateFrequency"],input[data-bind="step.templateFrequency"]')){
-   if(input.parentElement?.parentElement?.querySelector('[data-native-template-options]'))continue;
+   if(input.closest('.number-field')?.parentElement?.querySelector('[data-native-template-options]'))continue;
    const prefix=input.dataset.bind!.startsWith('step.')?'step':'entity';
    input.closest('.number-field')?.insertAdjacentHTML('afterend',templateOptions(prefix));
   }
