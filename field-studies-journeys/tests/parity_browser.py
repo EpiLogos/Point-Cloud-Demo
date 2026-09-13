@@ -38,6 +38,7 @@ def toggle(p,path,value):
 def load(p,j):
  if p.evaluate('!!window.__FIELD_STUDIES__'):p.evaluate('__FIELD_STUDIES__.dispose()')
  p.set_content(HTML.replace('<head>','<head>'+STORAGE+'<script>window.__JOURNEY__='+json.dumps(j).replace('</','<\\/')+';</script>',1),wait_until='load');p.wait_for_function('!!window.__FIELD_STUDIES__?.inspect()');p.evaluate('__FIELD_STUDIES__.pause()');p.wait_for_timeout(100)
+ if state(p)['libraryOpen']:act(p,'close-library')
 def check(id,fn):
  try:result=fn();results.append({'id':id,'ok':True,'evidence':result});print('PASS',id,flush=True)
  except Exception as error:results.append({'id':id,'ok':False,'error':str(error)});raise

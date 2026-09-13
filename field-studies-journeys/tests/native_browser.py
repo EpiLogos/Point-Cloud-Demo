@@ -16,12 +16,14 @@ def state(p):return p.evaluate('window.__FIELD_STUDIES__.getState()')
 def doc(p):return p.evaluate('window.__FIELD_STUDIES__.getDocument()')
 def current(p):return doc(p)['scenes'][state(p)['sceneIndex']]
 def inspect(p,read=False):return p.evaluate('(r)=>window.__FIELD_STUDIES__.inspect(r)',read)
+def settle(p):
+ if not state(p)['libraryOpen']:p.wait_for_function('!window.__FIELD_STUDIES__.getState().needsFrame',timeout=15000)
 def act(p,name,extra=''):
- selector=f'[data-action="{name}"]'+extra;modal=p.locator('dialog[open] '+selector).filter(visible=True);loc=modal if modal.count() else p.locator(selector).filter(visible=True);loc.first.click(timeout=20000);p.wait_for_timeout(65)
+ selector=f'[data-action="{name}"]'+extra;modal=p.locator('dialog[open] '+selector).filter(visible=True);loc=modal if modal.count() else p.locator(selector).filter(visible=True);loc.first.click(timeout=20000);p.wait_for_timeout(65);settle(p)
 def reveal(p,selector):
  p.locator(selector).first.evaluate('(el)=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;}')
 def fill(p,path,value):
- selector=f'[data-bind="{path}"]:not([type="range"])';reveal(p,selector);el=p.locator(selector).first;el.fill(str(value));el.press('Tab');p.wait_for_timeout(65)
+ selector=f'[data-bind="{path}"]:not([type="range"])';reveal(p,selector);el=p.locator(selector).first;el.fill(str(value));el.press('Tab');p.wait_for_timeout(65);settle(p)
 def load(p,j):
  if p.evaluate('!!window.__FIELD_STUDIES__'):p.evaluate('window.__FIELD_STUDIES__.dispose()')
  start=STORAGE+'<script>window.__JOURNEY__='+json.dumps(j).replace('</','<\\/')+';</script>'
