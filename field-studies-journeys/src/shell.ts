@@ -1,3 +1,4 @@
+import './parityUI.js';
 import {icon} from './icons.js';
 export const iconButton=(action:string,name:string,label:string,extra='')=>`<button class="icon-button" data-action="${action}" aria-label="${label}" title="${label}" ${extra}>${icon(name)}</button>`;
 export function mountShell(){
