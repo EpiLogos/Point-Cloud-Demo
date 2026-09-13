@@ -51,6 +51,7 @@ export function readPath(obj: any, path: string): unknown {
 /** Immutable set: clones only the objects along the path. */
 export function writePath<T extends object>(obj: T, path: string, value: unknown): T {
   const parts = path.split('.');
+  if (parts.some(p => !p || ['__proto__', 'prototype', 'constructor'].includes(p))) throw new Error('Unsafe automation path');
   const root: any = Array.isArray(obj) ? [...(obj as any)] : { ...obj };
   let cur = root;
   for (let i = 0; i < parts.length - 1; i++) {

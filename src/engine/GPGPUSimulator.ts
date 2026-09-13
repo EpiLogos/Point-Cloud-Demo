@@ -16,6 +16,8 @@ export class GPGPUSimulator {
   public texWidth: number;
   public texHeight: number;
   public particleCount: number;
+  public seedGeneration = 0;
+  public stepCount = 0;
 
   // Ping-pong render targets
   private posTarget0: THREE.WebGLRenderTarget;
@@ -104,6 +106,7 @@ export class GPGPUSimulator {
         uVelocityTexture: { value: null },
         uTargetATexture: { value: null },
         uTargetBTexture: { value: null },
+        uTargetNoise: { value: null },
         uMorphProgress: { value: 0.0 },
         uDelta: { value: 0.016 },
         uTime: { value: 0.0 },
@@ -162,6 +165,9 @@ export class GPGPUSimulator {
         uEntityBounds: { value: new Float32Array(10) },
         uEntityCenter: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)) },
         uEntityMorph: { value: new Float32Array(10) },
+        uEntityDepthScale: {value: new Float32Array(10).fill(1)},
+        uEntityNormalized: {value: new Float32Array(10)},
+        uEntityTransform: { value: Array.from({length:10},()=>new THREE.Vector3(1,1,0)) },
         uEntityForce: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 0)) },
         uTexSize: { value: new THREE.Vector2(1, 1) },
         uCompPlane: { value: 0.0 },
@@ -192,7 +198,10 @@ export class GPGPUSimulator {
 
         // Pointer
         uPointerPos: { value: new THREE.Vector2(-99999, -99999) },
+        uBurstPosition: {value: new THREE.Vector2()},
+        uBurstVelocity: {value: new THREE.Vector2()},
         uPointerVelocity: { value: new THREE.Vector2(0, 0) },
+        uPointerZ: { value: 0 },
         uPointerRadius: { value: 150.0 },
         uPointerStrength: { value: 1.0 },
         uInteractionMode: { value: 0.0 },
@@ -218,6 +227,7 @@ export class GPGPUSimulator {
    * Initializes position and velocity textures with seed data from target A
    */
   public seedInitialState(initialData: Float32Array) {
+    this.seedGeneration++;
     const initTex = new THREE.DataTexture(
       initialData,
       this.texWidth,
@@ -277,7 +287,8 @@ export class GPGPUSimulator {
   /**
    * Updates target textures for morphing
    */
-  public setTargetTextures(texA: THREE.DataTexture, texB: THREE.DataTexture, vortexCenter: THREE.Vector2) {
+  public setTargetTextures(texA: THREE.DataTexture, texB: THREE.DataTexture, vortexCenter: THREE.Vector2, noise?: THREE.DataTexture) {
+    this.velMaterial.uniforms.uTargetNoise.value = noise ?? null;
     this.velMaterial.uniforms.uTargetATexture.value = texA;
     this.velMaterial.uniforms.uTargetBTexture.value = texB;
     this.velMaterial.uniforms.uVortexCenter.value.copy(vortexCenter);
@@ -304,16 +315,22 @@ export class GPGPUSimulator {
     centers: THREE.Vector4[];
     morph: Float32Array;
     forces: THREE.Vector4[];
+    transforms: THREE.Vector3[];
+    depthScales?: Float32Array;
+    normalized?: Float32Array;
   }) {
     const vU = this.velMaterial.uniforms;
     vU.uEntityCount.value = Math.min(10, u.count);
     (vU.uEntityBounds.value as Float32Array).set(u.bounds.subarray(0, 10));
     (vU.uEntityMorph.value as Float32Array).set(u.morph.subarray(0, 10));
+    (vU.uEntityDepthScale.value as Float32Array).set(u.depthScales ?? new Float32Array(10).fill(1));
+    (vU.uEntityNormalized.value as Float32Array).set(u.normalized ?? new Float32Array(10));
     const cU = vU.uEntityCenter.value as THREE.Vector4[];
     const fU = vU.uEntityForce.value as THREE.Vector4[];
     for (let i = 0; i < 10; i++) {
       cU[i].copy(u.centers[i]);
       fU[i].copy(u.forces[i]);
+      vU.uEntityTransform.value[i].copy(u.transforms[i]);
     }
     (vU.uTexSize.value as THREE.Vector2).set(this.texWidth, this.texHeight);
   }
@@ -386,14 +403,23 @@ export class GPGPUSimulator {
   /**
    * Advances simulation by dt seconds
    */
+  /** Native disperse command; independent of editor pointer ownership. */
+  public setBurst(position: THREE.Vector2, velocity: THREE.Vector2) {
+    this.velMaterial.uniforms.uBurstPosition.value.copy(position);
+    this.velMaterial.uniforms.uBurstVelocity.value.copy(velocity);
+  }
+
   public step(
     dt: number,
     time: number,
     config: PointCloudConfig,
     morphProgress: number,
     pointerPos: THREE.Vector2,
-    pointerVel: THREE.Vector2
+    pointerVel: THREE.Vector2,
+    pointerZ = 0
   ) {
+    if (!(dt > 0)) return;
+    this.stepCount++;
     // 1. Update uniforms for velocity simulation
     const vUniforms = this.velMaterial.uniforms;
     vUniforms.uPositionTexture.value = this.currentPosTarget.texture;
@@ -465,6 +491,7 @@ export class GPGPUSimulator {
     vUniforms.uSwirlRadius.value = rel?.swirlRadius ?? 500.0;
 
     vUniforms.uPointerPos.value.copy(pointerPos);
+    vUniforms.uPointerZ.value = pointerZ;
     vUniforms.uPointerVelocity.value.copy(pointerVel).multiplyScalar(config.interaction.velocityInfluence ?? 1.0);
     vUniforms.uPointerRadius.value = config.interaction.radius;
     vUniforms.uPointerStrength.value = config.interaction.strength;
@@ -489,7 +516,7 @@ export class GPGPUSimulator {
         let pMode = 0.0;
         if (p.mode === 'attract') pMode = 1.0;
         else if (p.mode === 'vortex') pMode = 2.0;
-        (vUniforms.uPlacedPointParams.value[i] as THREE.Vector4).set(p.strength, pMode, 0, 0);
+        (vUniforms.uPlacedPointParams.value[i] as THREE.Vector4).set(p.strength, pMode, p.spin ?? 0, p.falloff === 'gaussian' ? 1 : 0);
       } else {
         (vUniforms.uPlacedPoints.value[i] as THREE.Vector4).set(-99999, -99999, 0, 0);
         (vUniforms.uPlacedPointParams.value[i] as THREE.Vector4).set(0, 0, 0, 0);

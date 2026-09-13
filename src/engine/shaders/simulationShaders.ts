@@ -42,7 +42,7 @@ void main() {
   // Z is the authentic 3D spatial depth coordinate, so preserve full 3D volumetric depth!
   if (uCompPlane < 0.5 && uMorphTrajectory < 0.5) {
     float zDecay = 1.0 - 0.015 * uZConfinement * (1.0 - clamp(uZDepthRetention, 0.0, 1.0));
-    pos.z *= zDecay;
+    pos.z *= pow(max(0.0,zDecay), uDelta * 60.0);
   }
 
   gl_FragColor = vec4(pos, posData.w); // posData.w holds density/particle metadata
@@ -58,6 +58,7 @@ uniform sampler2D uPositionTexture;
 uniform sampler2D uVelocityTexture;
 uniform sampler2D uTargetATexture;
 uniform sampler2D uTargetBTexture;
+uniform sampler2D uTargetNoise;
 
 uniform float uMorphProgress;
 uniform float uDelta;
@@ -95,7 +96,10 @@ uniform float uPolPhase;            // running poloidal phase (radians)
 uniform int uEntityCount;
 uniform float uEntityBounds[10];    // exclusive end particle index per partition
 uniform vec4 uEntityCenter[10];     // xyz world centre, w = force radius (px)
-uniform float uEntityMorph[10];     // per-partition A→B progress
+uniform float uEntityMorph[10];
+uniform float uEntityDepthScale[10];
+uniform float uEntityNormalized[10];
+uniform vec3 uEntityTransform[10];     // per-partition A→B progress
 uniform vec4 uEntityForce[10];      // x strength, y mode (0 none, 1 attract, 2 repel, 3 vortex), z spin, w enabled
 uniform vec2 uTexSize;              // simulation texture size (particle index reconstruction)
 uniform float uCompPlane;           // 0 = vertical (XY), 1 = horizontal (XZ)
@@ -142,6 +146,9 @@ uniform float uTorusDepthScale;      // volumetric 3D Z-depth expansion (default
 
 // Interaction properties
 uniform vec2 uPointerPos;
+uniform vec2 uBurstPosition;
+uniform vec2 uBurstVelocity;
+uniform float uPointerZ;
 uniform vec2 uPointerVelocity;
 uniform float uPointerRadius;
 uniform float uPointerStrength;
@@ -174,6 +181,16 @@ void main() {
   float sMorph = clamp(uEntityMorph[eIdx], 0.0, 1.0);
   vec3 entityCenter = uEntityCenter[eIdx].xyz;
 
+  vec3 transform = uEntityTransform[eIdx];
+  float co=cos(transform.z),si=sin(transform.z);
+  vec4 noise = texture2D(uTargetNoise, vUv);
+  float normalized = uEntityNormalized[eIdx];
+  vec2 a = ((uCompPlane > 0.5 ? vec2(targetA.x,-targetA.z) : targetA.xy) + noise.xy * normalized) * transform.xy;
+  vec2 b = ((uCompPlane > 0.5 ? vec2(targetB.x,-targetB.z) : targetB.xy) + noise.zw * normalized) * transform.xy;
+  a=vec2(a.x*co-a.y*si,a.x*si+a.y*co) + noise.xy * (1.0-normalized);
+  b=vec2(b.x*co-b.y*si,b.x*si+b.y*co) + noise.zw * (1.0-normalized);
+  if(uCompPlane>0.5){targetA.x=a.x;targetA.z=-a.y;targetB.x=b.x;targetB.z=-b.y;targetA.y*=uEntityDepthScale[eIdx];targetB.y*=uEntityDepthScale[eIdx];}
+  else{targetA.xy=a;targetB.xy=b;targetA.z*=uEntityDepthScale[eIdx];targetB.z*=uEntityDepthScale[eIdx];}
   // Targets are baked in entity-local coordinates; the centre is a uniform (moving never re-bakes)
   vec3 targetPos = mix(targetA.xyz, targetB.xyz, sMorph) + entityCenter;
   float targetDensity = mix(targetA.w, targetB.w, sMorph);
@@ -262,6 +279,7 @@ void main() {
   // that transport, not from a spring toward stored target coordinates.
   fSpring *= 1.0 - uResEnabled * clamp(uResDominance, 0.0, 1.0);
 
+  if(uEntityCount == 0) fSpring = vec3(0.0);
   // --- 2. Divergence-Free Curl Noise Advection ---
   vec3 noiseCoords = vec3(pos.xy * (uCurlScale * 0.0035), pos.z * (uCurlScale * 0.0035 * uCurlDepth));
   vec3 curl = curlNoise(noiseCoords, uTime * uCurlSpeed * 0.85);
@@ -356,7 +374,7 @@ void main() {
   // --- 6. Pointer Interaction Force ---
   vec3 fPointer = vec3(0.0);
   if (uPointerRadius > 0.0 && abs(uPointerStrength) > 0.0001) {
-    vec2 toPtr = pos.xy - uPointerPos;
+    vec3 toPtr = pos - vec3(uPointerPos,uPointerZ);
     float dPtr = length(toPtr);
     if (dPtr < uPointerRadius) {
       float normDist = dPtr / uPointerRadius;
@@ -364,12 +382,12 @@ void main() {
 
       if (uInteractionMode < 0.5) {
         // Repulsion: push outward
-        vec2 dir = (dPtr > 0.001) ? (toPtr / dPtr) : vec2(0.0, 1.0);
-        fPointer.xy += dir * (uPointerStrength * 400.0 * falloff);
+        vec3 dir = (dPtr > 0.001) ? (toPtr / dPtr) : vec3(0.0, 1.0, 0.0);
+        fPointer += dir * (uPointerStrength * 400.0 * falloff);
       } else if (uInteractionMode < 1.5) {
         // Attraction: pull inward
-        vec2 dir = (dPtr > 0.001) ? (-toPtr / dPtr) : vec2(0.0, 0.0);
-        fPointer.xy += dir * (uPointerStrength * 400.0 * falloff);
+        vec3 dir = (dPtr > 0.001) ? (-toPtr / dPtr) : vec3(0.0);
+        fPointer += dir * (uPointerStrength * 400.0 * falloff);
       } else {
         // Pointer Vortex: swirl around cursor
         vec2 pTan = vec2(-toPtr.y, toPtr.x) / (dPtr + 10.0);
@@ -390,12 +408,16 @@ void main() {
       float pStr = uPlacedPointParams[i].x;
       float pMode = uPlacedPointParams[i].y;
 
-      if (pRad > 0.0 && abs(pStr) > 0.0001) {
+      float pSpin = uPlacedPointParams[i].z;
+      bool gaussian = uPlacedPointParams[i].w > 0.5;
+      if (pRad > 0.0 && (abs(pStr) > 0.0001 || abs(pSpin) > 0.0001)) {
         vec3 toPt = pos - pPos;
         float dPt = length(toPt);
-        if (dPt < pRad) {
+        if (gaussian || dPt < pRad) {
           float normDist = dPt / pRad;
-          float falloff = pow(max(0.0, 1.0 - normDist), uPointerFalloffPower);
+          float falloff = gaussian ? exp(-0.5 * normDist * normDist) : pow(max(0.0, 1.0 - normDist), uPointerFalloffPower);
+          vec3 spinTangent = vec3(-toPt.y, toPt.x, 0.0) / (dPt + 10.0);
+          fPointer += spinTangent * (pSpin * 480.0 * falloff);
           if (pMode < 0.5) {
             // 3D Repel
             vec3 dir = (dPt > 0.001) ? (toPt / dPt) : vec3(0.0, 1.0, 0.0);
@@ -422,7 +444,7 @@ void main() {
   // get agitated in proportion to local vibration, and are softly confined to the plate —
   // there is no attraction to any stored target shape here.
   vec3 fResonator = vec3(0.0);
-  if (uResEnabled > 0.5) {
+  if (uResEnabled > 0.5 && uResDominance > 0.0001) {
     const float RES_PI = 3.14159265358979;
     float L = max(10.0, uResPlateSize);
     float u = pos.x;
@@ -438,7 +460,8 @@ void main() {
     float dWim_dv = 0.0;
 
     for (int i = 0; i < 64; i++) {
-      if (i >= uResModeCount) break;
+      // Sparse addressed modes are not a contiguous prefix. Inspect all 64 slots.
+      if (abs(uResRe[i]) + abs(uResIm[i]) < 0.00000001) continue;
       int mi = i / 8;
       int ni = i - mi * 8;
       float m = float(mi + 1);
@@ -514,6 +537,10 @@ void main() {
   }
 
   // --- 8. Total Acceleration & Viscous Integration ---
+  // The same falloff-weighted velocity impulse as native pointer momentum,
+  // independently queued so a toolbar click cannot be cleared by pointer-leave.
+  float burstFalloff = pow(max(0.0, 1.0 - distance(pos.xy, uBurstPosition) / max(0.001, uPointerRadius)), uPointerFalloffPower);
+  fPointer.xy += uBurstVelocity * burstFalloff * 0.85;
   vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator;
 
   // Constant body force (gravity / wind)

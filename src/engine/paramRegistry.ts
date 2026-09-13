@@ -37,6 +37,24 @@ const P = (
 ): ParamDef => ({ path, label, group, min, max, hardMin, hardMax, step, ...extra });
 
 export const PARAM_REGISTRY: ParamDef[] = [
+  // ---- Native granular mark profile (render-only; one particle system) ----
+  P('material.sizeBias', 'Size Distribution', 'Material', .2, 4, .1, 12, .05),
+  P('material.opacity', 'Ink Opacity', 'Material', 0, 1, 0, 1, .01),
+  P('material.roundness', 'Mark Roundness', 'Material', 0, 1, 0, 1, .01),
+  P('material.softness', 'Edge Softness', 'Material', 0, 1, 0, 1, .01),
+  P('material.irregularity', 'Imperfect Edges', 'Material', 0, 1, 0, 1, .01),
+  P('material.elongation', 'Elongation', 'Material', 0, 3, 0, 12, .01),
+  P('material.orientation', 'Mark Orientation', 'Material', -180, 180, -36000, 36000, 1, {unit:'°'}),
+  P('material.contrast', 'Density Contrast', 'Material', 0, 1, 0, 1, .01),
+  P('material.densityScale', 'Density Band Scale', 'Material', .1, 3, .01, 100, .01),
+  P('material.densityPhase', 'Density Band Phase', 'Material', 0, 6.283, -1000, 1000, .01, {unit:'rad'}),
+  P('material.edgeWeight', 'Edge Emphasis', 'Material', 0, 1, 0, 5, .01),
+  P('material.halo', 'Peripheral Ink', 'Material', 0, .6, 0, 1, .01, {hint:'Visibility of low-density source samples; does not manufacture a second cloud'}),
+  P('paperGrain', 'Paper Grain', 'Paper', 0, .2, 0, 1, .005, {hint:'Host-rendered paper surface; excluded from transparent PNG'}),
+  P('color.fieldCenterOffset.0', 'Palette Centre X', 'Color', -3, 3, -20, 20, .05),
+  P('color.fieldCenterOffset.1', 'Palette Centre Y', 'Color', -3, 3, -20, 20, .05),
+  P('relational.attractorCount', 'Relational Centre Count', 'Relational', 1, 10, 1, 10, 1),
+  P('cymatics.driveScale', 'Intensity Field Scale', 'Cymatics', 0, 4, 0, 100, .05),
   // ---- Fluid core ----
   P('fluid.returnSpeed', 'Return Spring', 'Fluid', -5, 25, -100, 500, 0.1),
   P('fluid.viscosity', 'Viscosity Damp', 'Fluid', 0.2, 1.01, 0, 1.2, 0.005, { decimals: 3 }),

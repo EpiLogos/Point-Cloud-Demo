@@ -266,6 +266,7 @@ export class PointCloudField {
   private animFrameId: number | null = null;
   private isDestroyed: boolean = false;
   private simTime: number = 0;
+  private seedGeneration = 0;
 
   // Field-level manual morph scrub (entities with sequence.advance === 'off')
   private morphProgress: number = 0.0;
@@ -317,10 +318,11 @@ export class PointCloudField {
   private onWindowPointerUpBound: (e: PointerEvent) => void;
   private onCanvasContextMenuBound: (e: MouseEvent) => void;
 
-  constructor(canvas: HTMLCanvasElement, options: Partial<PointCloudConfig> = {}) {
+  constructor(canvas: HTMLCanvasElement, options: Partial<PointCloudConfig> = {}, private readonly hosted = false) {
     this.canvas = canvas;
     this.config = this.mergeConfig(DEFAULT_CONFIG, options);
     this.morphProgress = this.config.morphProgress ?? 0.0;
+    this.cymaticFreqCurrent = this.config.cymatics?.frequencyHz ?? 396;
     this.clock = new THREE.Clock();
 
     // 1. Initialize WebGL Renderer
@@ -335,8 +337,9 @@ export class PointCloudField {
     const dpr = Math.min(window.devicePixelRatio || 1, 2.0);
     this.renderer.setPixelRatio(dpr);
 
-    const width = this.canvas.clientWidth || window.innerWidth;
-    const height = this.canvas.clientHeight || window.innerHeight;
+    const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
+    const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
+    const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
     this.renderer.setSize(width, height, false);
 
     // 2. Scene + orthographic orbit camera + scaffolds
@@ -364,6 +367,7 @@ export class PointCloudField {
     this.onWindowPointerUpBound = this.handleWindowPointerUp.bind(this);
     this.onCanvasContextMenuBound = (e: MouseEvent) => e.preventDefault();
 
+    if (!this.hosted) {
     window.addEventListener('pointermove', this.onPointerMoveBound, { passive: false });
     window.addEventListener('pointerleave', this.onPointerLeaveBound, { passive: true });
     window.addEventListener('resize', this.onResizeBound, { passive: true });
@@ -375,6 +379,7 @@ export class PointCloudField {
     // 6. Start
     this.clock.start();
     this.tick();
+    }
   }
 
   // ------------------------------------------------------------------ config
@@ -390,7 +395,7 @@ export class PointCloudField {
       particleSize: { ...base.particleSize, ...override.particleSize },
       fluid: { ...base.fluid, ...override.fluid },
       interaction: { ...base.interaction, ...override.interaction },
-      relational: { ...base.relational, ...override.relational },
+      relational: { enabled:false, ...base.relational, ...override.relational },
       color: {
         ...(base.color || DEFAULT_COLOR_CONFIG),
         ...(override.color || {}),
@@ -422,17 +427,19 @@ export class PointCloudField {
     const cfg = this.config;
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     this.entities.allocate(this.simulator.particleCount, this.simulator.texWidth, this.simulator.texHeight);
-    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane);
+    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     this.entities.layout(cfg.entities || []);
     this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
-    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre());
+    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
     this.simulator.setCompositionPlane(comp.plane);
-    if (seed) this.simulator.seedInitialState(this.entities.buildSeed());
+    if (seed) { this.seedGeneration++; this.simulator.seedInitialState(this.entities.buildSeed()); }
   }
 
   /** Explicit reset: particles jump to their current targets. The only user-driven reseed. */
   public resetField() {
+    this.burstVelocity.set(0, 0);
+    this.seedGeneration++;
     this.simulator.seedInitialState(this.entities.buildSeed());
     this.resetMorphPhases();
   }
@@ -462,8 +469,9 @@ export class PointCloudField {
    * count, then re-bakes and reseeds. Camera, grid, pins and config all persist.
    */
   private rebuildParticleSystem() {
-    const width = this.canvas.clientWidth || window.innerWidth;
-    const height = this.canvas.clientHeight || window.innerHeight;
+    const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
+    const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
+    const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
     const dpr = Math.min(window.devicePixelRatio || 1, 2.0);
 
     if (this.particlePoints) this.scene.remove(this.particlePoints);
@@ -523,6 +531,10 @@ export class PointCloudField {
         uParticleColor: { value: particleColor },
         uColorMode: { value: isLightMode ? 0.0 : 1.0 },
         uContrast: { value: 1.0 },
+        uGrainA: {value: new THREE.Vector4(1, 1, 1, 0)}, // size bias, opacity, roundness, softness
+        uGrainB: {value: new THREE.Vector4(0, 0, 0, 1)}, // edge irregularity, elongation, orientation radians, density contrast
+        uGrainC: {value: new THREE.Vector4(1, 0, 0, 1)}, // density scale, density phase, edge emphasis, halo
+        uGrainEnabled: {value: 0},
         uPixelRatio: { value: dpr },
         uCanvasSize: { value: new THREE.Vector2(width, height) },
         uTime: { value: 0.0 },
@@ -559,6 +571,8 @@ export class PointCloudField {
         },
 
         // Entity tints (per partition) + composition focus tint
+        uEditHasSelection: {value:0},
+        uEditSelected: {value:new Float32Array(10)},
         uEntityCount: { value: 0 },
         uEntityBounds: { value: new Float32Array(10) },
         uEntityTint: { value: Array.from({ length: 10 }, () => new THREE.Color('#ffffff')) },
@@ -668,8 +682,9 @@ export class PointCloudField {
 
   public updateCameraTransform() {
     if (!this.canvas || !this.camera) return;
-    const width = this.canvas.clientWidth || window.innerWidth;
-    const height = this.canvas.clientHeight || window.innerHeight;
+    const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
+    const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
+    const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
 
     this.camera.left = -width / 2;
     this.camera.right = width / 2;
@@ -920,8 +935,9 @@ export class PointCloudField {
     if (!this.camera || !this.canvas) return { x: 0, y: 0, visible: false };
     const vec = new THREE.Vector3(x, y, z);
     vec.project(this.camera);
-    const width = this.canvas.clientWidth || window.innerWidth;
-    const height = this.canvas.clientHeight || window.innerHeight;
+    const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
+    const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
+    const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
     return {
       x: (vec.x * 0.5 + 0.5) * width,
       y: (-vec.y * 0.5 + 0.5) * height,
@@ -931,8 +947,9 @@ export class PointCloudField {
 
   public unprojectScreenToWorld(screenX: number, screenY: number, planeZ: number = 0): { x: number; y: number; z: number } {
     if (!this.camera || !this.canvas) return { x: 0, y: 0, z: planeZ };
-    const width = this.canvas.clientWidth || window.innerWidth;
-    const height = this.canvas.clientHeight || window.innerHeight;
+    const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
+    const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
+    const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
     const ndcX = (screenX / width) * 2 - 1;
     const ndcY = -(screenY / height) * 2 + 1;
     const origin = new THREE.Vector3(ndcX, ndcY, -1).unproject(this.camera);
@@ -986,8 +1003,9 @@ export class PointCloudField {
 
   private handleResize() {
     if (!this.canvas || this.isDestroyed) return;
-    const width = this.canvas.clientWidth || window.innerWidth;
-    const height = this.canvas.clientHeight || window.innerHeight;
+    const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
+    const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
+    const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2.0);
     this.renderer.setPixelRatio(dpr);
@@ -1002,12 +1020,22 @@ export class PointCloudField {
   }
 
 
+  /** Complete document replacement, unlike the public incremental updateConfig API.
+   * Replacing a scene must not inherit its predecessor's optional palettes/sources. */
+  public replaceConfig(config: PointCloudConfig) {
+    this.applyConfig(this.mergeConfig(DEFAULT_CONFIG, config));
+  }
+
   public updateConfig(newConfig: Partial<PointCloudConfig>) {
+    this.applyConfig(this.mergeConfig(this.config, newConfig));
+  }
+
+  private applyConfig(config: PointCloudConfig) {
     const prev = this.config;
-    this.config = this.mergeConfig(prev, newConfig);
+    this.config = config;
     const cfg = this.config;
 
-    if (Math.floor(cfg.particleCount) !== Math.floor(prev.particleCount)) {
+    if (Math.floor(cfg.particleCount) !== this.simulator.particleCount) {
       this.rebuildParticleSystem();
       return;
     }
@@ -1015,7 +1043,7 @@ export class PointCloudField {
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     const styleChanged = prev.style !== cfg.style || prev.fontFamily !== cfg.fontFamily || prev.fontWeight !== cfg.fontWeight;
     if (styleChanged) this.glyphSampler.clearCache();
-    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane);
+    this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     if ((prev.composition || DEFAULT_COMPOSITION).plane !== comp.plane) this.simulator.setCompositionPlane(comp.plane);
 
     // Entity edits: partition layout is recomputed; bakes happen lazily in the next tick only for
@@ -1024,7 +1052,7 @@ export class PointCloudField {
 
     // Update canvas background styling
     const effectiveBg = this.config.backgroundColor || this.config.color?.backgroundColor;
-    if (effectiveBg && this.canvas) {
+    if (effectiveBg && this.canvas && !this.hosted) {
       this.canvas.style.backgroundColor = effectiveBg;
     }
 
@@ -1085,15 +1113,15 @@ export class PointCloudField {
   }
 
 
-  public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}) {
-    const target = this.formations()[0];
+  public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string) {
+    const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
     if (!target) return;
     const { candidates } = this.glyphSampler.rasterizeCustomImage(img, options);
     this.entities.setCustomCandidates(target.id, candidates);
   }
 
-  public loadAsciiArt(asciiText: string, options: { fontFamily?: string; fontSize?: number; invert?: boolean } = {}) {
-    const target = this.formations()[0];
+  public loadAsciiArt(asciiText: string, options: { fontFamily?: string; fontSize?: number; invert?: boolean } = {}, entityId?: string) {
+    const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
     if (!target) return;
     const { candidates } = this.glyphSampler.rasterizeAscii(asciiText, options);
     this.entities.setCustomCandidates(target.id, candidates);
@@ -1105,43 +1133,155 @@ export class PointCloudField {
   }
 
   public setMorphProgress(progress: number) {
+    if(!Number.isFinite(progress))throw new Error('Invalid morph progress');
     this.morphProgress = Math.max(0.0, Math.min(1.0, progress));
+    this.config = {...this.config,morphProgress:this.morphProgress};
   }
 
   public getMorphProgress(): number {
     return this.morphProgress;
   }
 
+  private burstVelocity = new THREE.Vector2();
+  private burstPosition = new THREE.Vector2();
   public triggerDisperse(strength: number = 3.0) {
-    // Injects instantaneous vorticity and radial turbulence into pointer position or center
-    this.pointerVel.set(
-      (Math.random() - 0.5) * 600 * strength,
-      (Math.random() - 0.5) * 600 * strength
-    );
+    if (!Number.isFinite(strength)) throw new Error('Invalid disperse strength');
+    this.burstVelocity.set((Math.random() - 0.5) * 600 * strength, (Math.random() - 0.5) * 600 * strength);
+    this.burstPosition.copy(this.pointerPos.x > -90000 ? this.pointerPos : this.entities.fieldCentre());
   }
 
   private tick = () => {
     if (this.isDestroyed) return;
     this.animFrameId = requestAnimationFrame(this.tick);
-
-    const rawDelta = Math.min(this.clock.getDelta(), 0.05);
-    const wallTime = this.clock.getElapsedTime();
-
-    // Parameter automation: evaluate lanes against the base config for this frame only.
-    const base = this.config;
-    const auto = applyAutomations(base, base.automations, wallTime, this.automationRt);
-    this.config = auto.config;
-    try {
-      const timeScale = Math.max(0, this.config.fluid.timeScale ?? 1.0);
-      const delta = rawDelta * timeScale;
-      this.simTime += delta;
-      if (auto.live.length > 0) this.syncLiveMaterialUniforms();
-      this.tickFrame(delta, this.simTime);
-      this.emitTelemetry(rawDelta, auto.live);
-    } finally {
-      this.config = base;
-    }
+    this.advance(Math.min(this.clock.getDelta(), 0.05));
   };
+
+  /** Synchronous step. The caller is the only scheduler in hosted mode.
+   * rawDelta is unscaled wall duration; every native driver uses simTime.
+   * Zero delta performs a clean render, never a GPGPU integration pass.
+   */
+  public advance(rawDelta: number): number {
+    if (this.isDestroyed) return this.simTime;
+    if (!Number.isFinite(rawDelta) || rawDelta < 0) throw new Error('Invalid simulation delta');
+    const base = this.config;
+    // Paused inspection may evaluate values but must not arm or consume one-shots.
+    const runtime = rawDelta > 0 ? this.automationRt : {
+      ...this.automationRt, lanes: new Map([...this.automationRt.lanes].map(([id, v]) => [id, {...v}]))
+    };
+    const auto = applyAutomations(base, base.automations, this.simTime, runtime);
+    this.config = auto.config;
+    this.liveAutomation = auto.live;
+    this.evaluatedConfig = auto.config;
+    try {
+      if (Math.floor(this.config.particleCount) !== this.simulator.particleCount) this.rebuildParticleSystem();
+      const delta = Math.min(rawDelta, 0.1) * Math.max(0, this.config.fluid.timeScale ?? 1);
+      const count = Math.max(1, Math.ceil(delta / (1 / 60)));
+      if (count > 600) throw new Error('Time scale exceeds the safe live stepping budget');
+      if (auto.live.length > 0) this.syncLiveMaterialUniforms();
+      for (let i = 0; i < count; i++) {
+        this.simTime += delta / count;
+        this.tickFrame(delta / count, this.simTime, i === count - 1);
+      }
+      this.emitTelemetry(rawDelta, auto.live);
+      return this.simTime;
+    } finally { this.config = base; }
+  }
+
+  private liveAutomation: AutomationLiveValue[] = [];
+  private evaluatedConfig: PointCloudConfig | null = null;
+  public getEvaluation() { return { config: this.evaluatedConfig ?? this.config, live: this.liveAutomation }; }
+
+  /** Host projection is exact, including off-centre framing and edge-on workplanes. */
+  public setHostView(view: { width: number; height: number; pixelRatio: number; originX: number; originY: number; pixelsPerUnit: number; right: number[]; up: number[] }) {
+    const {width, height, originX, originY, pixelsPerUnit: s} = view;
+    const dpr = Math.max(0.5, Math.min(3, view.pixelRatio));
+    const size = this.renderer.getSize(new THREE.Vector2());
+    if (size.x !== width || size.y !== height || this.renderer.getPixelRatio() !== dpr) {
+      this.renderer.setPixelRatio(dpr); this.renderer.setSize(width, height, false);
+    }
+    const right = new THREE.Vector3(...view.right as [number,number,number]);
+    const up = new THREE.Vector3(...view.up as [number,number,number]);
+    const normal = new THREE.Vector3().crossVectors(right, up).normalize();
+    this.camera.left = -originX / s; this.camera.right = (width - originX) / s;
+    this.camera.top = originY / s; this.camera.bottom = -(height - originY) / s;
+    this.camera.near = 0.1; this.camera.far = 20000; this.camera.zoom = 1;
+    this.camera.position.copy(normal).multiplyScalar(5000);
+    this.camera.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(right, up, normal));
+    this.camera.updateProjectionMatrix(); this.camera.updateMatrixWorld(true);
+    this.particleMaterial.uniforms.uPixelRatio.value = dpr;
+    this.particleMaterial.uniforms.uCanvasSize.value.set(width, height);
+  }
+
+  public setHostPointer(active: boolean, point: {x:number; y:number; z:number}, delta: number) {
+    if (!active) { this.handlePointerLeave(); this.hostPointerZ = 0; return; }
+    if (this.pointerPos.x > -90000 && delta > 0) {
+      this.pointerVel.set((point.x - this.pointerPos.x) / delta, (point.y - this.pointerPos.y) / delta).clampLength(0, 20000);
+    } else this.pointerVel.set(0, 0);
+    this.pointerPos.set(point.x, point.y); this.hostPointerZ = point.z;
+  }
+  private hostPointerZ = 0;
+
+  /** Diagnostics read real floating-point GPU state, only on explicit request. */
+  public inspectState(readParticles = false) {
+    const result = { simTime: this.simTime, steps: this.simulator.stepCount, seeds: this.seedGeneration,
+      bakes: this.entities.bakeGeneration, particleCount: this.simulator.particleCount,
+      drive: this.lastDrive, composition: this.getCompositionTelemetry(),
+      positions: [] as number[], velocities: [] as number[] };
+    if (readParticles) {
+      const n = this.simulator.texWidth * this.simulator.texHeight * 4;
+      const p = new Float32Array(n), v = new Float32Array(n);
+      this.renderer.readRenderTargetPixels(this.simulator.currentPosTarget, 0, 0, this.simulator.texWidth, this.simulator.texHeight, p);
+      this.renderer.readRenderTargetPixels(this.simulator.currentVelTarget, 0, 0, this.simulator.texWidth, this.simulator.texHeight, v);
+      result.positions = Array.from(p.subarray(0, this.simulator.particleCount * 4));
+      result.velocities = Array.from(v.subarray(0, this.simulator.particleCount * 4));
+    }
+    return result;
+  }
+
+  /** Editing decoration only. Neither GPU state nor the stored configuration is touched. */
+  public setSelection(ids: readonly string[]) {
+    const u=this.particleMaterial.uniforms,parts=this.entities.getPartitions();
+    const mask=u.uEditSelected.value as Float32Array;mask.fill(0);
+    let any=false;parts.forEach((p,i)=>{if(i<10&&ids.includes(p.entityId)){mask[i]=1;any=true;}});
+    u.uEditHasSelection.value=any?1:0;
+  }
+  /** Copy a clean live framebuffer without readback, stepping, or changing the authoring frame. */
+  public withCleanFrame<T>(copy:()=>T):T {
+    const u=this.particleMaterial.uniforms,selected=u.uEditHasSelection.value;
+    const visibility=this.scene.children.map(o=>[o,o.visible] as const);
+    try {u.uEditHasSelection.value=0;for(const [o] of visibility)if(o!==this.particlePoints)o.visible=false;this.renderer.render(this.scene,this.camera);return copy();}
+    finally {u.uEditHasSelection.value=selected;for(const [o,v] of visibility)o.visible=v;if(selected||visibility.some(([o,v])=>o!==this.particlePoints&&v))this.renderer.render(this.scene,this.camera);}
+  }
+
+  /** Render current state at native output resolution. No stepping or allocation changes. */
+  public renderImage(width: number, height: number): HTMLCanvasElement {
+    if (![width, height].every(n => Number.isInteger(n) && n > 0 && n <= 8192) || width * height > 33554432) throw new Error('Image exceeds the 32 megapixel capture budget');
+    const target = new THREE.WebGLRenderTarget(width, height, {format:THREE.RGBAFormat, type:THREE.UnsignedByteType, depthBuffer:false, stencilBuffer:false});
+    const previous = this.renderer.getRenderTarget();
+    const selected=this.particleMaterial.uniforms.uEditHasSelection.value;
+    const visibility=this.scene.children.map(o=>[o,o.visible] as const);
+    this.particleMaterial.uniforms.uEditHasSelection.value=0;for(const [o] of visibility)if(o!==this.particlePoints)o.visible=false;
+    const pixelRatio = this.particleMaterial.uniforms.uPixelRatio.value;
+    const camera = this.camera.clone();
+    const aspect = width / height, oldAspect = (camera.right-camera.left)/(camera.top-camera.bottom);
+    const cx = (camera.left+camera.right)/2, cy=(camera.top+camera.bottom)/2;
+    let w=camera.right-camera.left, h=camera.top-camera.bottom;
+    if (aspect < oldAspect) w=h*aspect; else h=w/aspect;
+    camera.left=cx-w/2; camera.right=cx+w/2; camera.top=cy+h/2; camera.bottom=cy-h/2;
+    camera.updateProjectionMatrix();
+    const cssHeight = this.renderer.getSize(new THREE.Vector2()).y;
+    const originalHeight = this.camera.top-this.camera.bottom;
+    this.particleMaterial.uniforms.uPixelRatio.value = height/cssHeight * originalHeight/h;
+    try {
+      this.renderer.setRenderTarget(target); this.renderer.clear(); this.renderer.render(this.scene,camera);
+      const bytes=new Uint8Array(width*height*4);this.renderer.readRenderTargetPixels(target,0,0,width,height,bytes);
+      const out=document.createElement('canvas');out.width=width;out.height=height;
+      const ctx=out.getContext('2d')!;const image=ctx.createImageData(width,height);
+      for(let y=0;y<height;y++) image.data.set(bytes.subarray((height-1-y)*width*4,(height-y)*width*4),y*width*4);
+      for(let i=0;i<image.data.length;i+=4){const alpha=image.data[i+3];if(alpha>0&&alpha<255){image.data[i]=Math.min(255,Math.round(image.data[i]*255/alpha));image.data[i+1]=Math.min(255,Math.round(image.data[i+1]*255/alpha));image.data[i+2]=Math.min(255,Math.round(image.data[i+2]*255/alpha));}}
+      ctx.putImageData(image,0,0);return out;
+    } finally {this.renderer.setRenderTarget(previous);this.particleMaterial.uniforms.uPixelRatio.value=pixelRatio;this.particleMaterial.uniforms.uEditHasSelection.value=selected;for(const [o,v] of visibility)o.visible=v;target.dispose();}
+  }
 
   /** Advances the two conjugate phase oscillators and pushes them to the GPU. */
   private advanceMorphOscillator(delta: number): MorphDriveState {
@@ -1162,6 +1302,13 @@ export class PointCloudField {
   private syncLiveMaterialUniforms() {
     if (!this.particleMaterial) return;
     const u = this.particleMaterial.uniforms;
+    const m = this.config.material;
+    u.uGrainEnabled.value = m ? 1 : 0;
+    if (m) {
+      u.uGrainA.value.set(m.sizeBias??1,m.opacity??1,m.roundness??1,m.softness??0);
+      u.uGrainB.value.set(m.irregularity??0,m.elongation??0,(m.orientation??0)*Math.PI/180,m.contrast??1);
+      u.uGrainC.value.set(m.densityScale??1,m.densityPhase??0,m.edgeWeight??0,m.halo??1);
+    }
     u.uMinParticleSize.value = this.config.particleSize.min;
     u.uMaxParticleSize.value = this.config.particleSize.max;
     const col = this.config.color;
@@ -1173,6 +1320,7 @@ export class PointCloudField {
       u.uColorSpeedReactive.value = col.speedReactiveIntensity ?? 0.6;
       u.uColorDensityWeight.value = col.densityWeight ?? 0.5;
       u.uColorContrast.value = col.contrast ?? 1.0;
+      u.uColorCenter.value.set((col.fieldCenterOffset?.[0]??0)*300,(col.fieldCenterOffset?.[1]??0)*300);
     }
   }
 
@@ -1244,8 +1392,10 @@ export class PointCloudField {
 
   /** Re-trigger a one-shot automation lane immediately (independent of config churn). */
   public fireAutomation(id: string, delayS: number = 0) {
+    const lane=this.config.automations?.find(l=>l.id===id);
+    if(lane&&!this.automationRt.lanes.has(id))applyAutomations(this.config,[lane],this.simTime,this.automationRt);
     const r = this.automationRt.lanes.get(id);
-    if (r) r.startTime = this.clock.getElapsedTime() + delayS;
+    if (r) r.startTime = this.simTime + delayS;
   }
 
   /** Zero the running toroidal / poloidal phases (restart the morph cycle). */
@@ -1259,10 +1409,12 @@ export class PointCloudField {
   }
 
 
-  private tickFrame(delta: number, elapsedTime: number) {
+  private tickFrame(delta: number, elapsedTime: number, draw = true) {
     const cfg = this.config;
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     const tm = cfg.toroidalMorph || DEFAULT_TOROIDAL_CONFIG;
+
+    this.syncLiveMaterialUniforms();
 
     // 0. Dual-phase morph oscillator (the field's morph control system)
     const drive = this.advanceMorphOscillator(delta);
@@ -1272,8 +1424,8 @@ export class PointCloudField {
     // 1. Entities: resolve sequences from the clock, re-bake changed partitions, refresh uniforms
     const res = this.entities.update(cfg.entities || [], comp, elapsedTime, drive.theta, manual, tm.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
     this.lastFrames = res.frames;
-    for (const imp of res.impulses) this.triggerDisperse(imp);
-    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre());
+    if (delta > 0) for (const imp of res.impulses) this.triggerDisperse(imp);
+    this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
     this.morphProgress = res.frames[0]?.state.progress ?? manual;
 
@@ -1305,12 +1457,12 @@ export class PointCloudField {
     this.tickCymaticMedium(delta, comp, forms, focus);
 
     // 4. Pointer velocity decay
-    this.pointerVel.multiplyScalar(0.92);
+    this.pointerVel.multiplyScalar(Math.pow(0.92, delta * 60));
 
     // 5. Relational multi-attractors orbit the formation centres
     if (cfg.relational?.enabled) {
       const rel = cfg.relational;
-      const count = Math.max(1, Math.min(10, rel.attractorCount || 3));
+      const count = Math.max(1, Math.min(10, rel.attractorCount ?? 3));
       const eu = this.entities.uniforms;
       const baseCenters: THREE.Vector2[] = [];
       for (let i = 0; i < Math.max(1, eu.count); i++) baseCenters.push(new THREE.Vector2(eu.centers[i].x, eu.centers[i].y));
@@ -1321,25 +1473,25 @@ export class PointCloudField {
         if (i < count) {
           const basePt = baseCenters[i % baseCenters.length] || new THREE.Vector2(0, 0);
           const initialAngle = (i / count) * Math.PI * 2;
-          const currentAngle = initialAngle + elapsedTime * (rel.orbitSpeed || 0.8);
-          const radius = rel.orbitRadius || 240;
+          const currentAngle = initialAngle + elapsedTime * (rel.orbitSpeed ?? 0.8);
+          const radius = rel.orbitRadius ?? 240;
           let posX = 0;
           let posY = 0;
           if (rel.mode === 'chaos') {
-            const wx = Math.sin(elapsedTime * (rel.wanderSpeed || 0.5) * 1.4 + i * 2.1) * radius * 0.7;
-            const wy = Math.cos(elapsedTime * (rel.wanderSpeed || 0.5) * 1.1 + i * 1.7) * radius * 0.5;
+            const wx = Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.4 + i * 2.1) * radius * 0.7;
+            const wy = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.1 + i * 1.7) * radius * 0.5;
             posX = basePt.x + wx;
             posY = basePt.y + wy;
           } else if (rel.mode === 'nbody') {
-            const t = elapsedTime * (rel.orbitSpeed || 0.8) + i * ((Math.PI * 2) / count);
+            const t = elapsedTime * (rel.orbitSpeed ?? 0.8) + i * ((Math.PI * 2) / count);
             const denom = 1 + Math.cos(t) * Math.cos(t);
             posX = vCenter.x + (Math.sin(t) / denom) * radius * 1.4;
             posY = vCenter.y + ((Math.sin(t) * Math.cos(t)) / denom) * radius * 1.4;
           } else {
             const rx = Math.cos(currentAngle) * radius;
             const ry = Math.sin(currentAngle) * radius * 0.75;
-            const driftX = Math.sin(elapsedTime * (rel.wanderSpeed || 0.5) + i) * 35;
-            const driftY = Math.cos(elapsedTime * (rel.wanderSpeed || 0.5) + i) * 35;
+            const driftX = Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) + i) * 35;
+            const driftY = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) + i) * 35;
             posX = vCenter.x + rx + driftX;
             posY = vCenter.y + ry + driftY;
           }
@@ -1360,8 +1512,11 @@ export class PointCloudField {
       interaction: { ...cfg.interaction, placedPoints: pinsToPlacedPoints(cfg.entities || []) },
     };
 
+    // Runtime burst input survives UI/pointer clearing and is consumed only by physics.
+    this.simulator.setBurst(this.burstPosition, this.burstVelocity);
+    if (delta > 0) this.burstVelocity.multiplyScalar(Math.pow(0.92, delta * 60));
     // 7. GPGPU step
-    this.simulator.step(delta, elapsedTime, stepConfig, this.morphProgress, this.pointerPos, this.pointerVel);
+    this.simulator.step(delta, elapsedTime, stepConfig, this.morphProgress, this.pointerPos, this.pointerVel, this.hostPointerZ);
 
     // 8. Bind simulation textures and render
     this.particleMaterial.uniforms.uPositionTexture.value = this.simulator.currentPosTarget.texture;
@@ -1375,7 +1530,7 @@ export class PointCloudField {
       this.particleMaterial.uniforms.uColorHueShift.value = 0.0;
     }
 
-    this.renderer.render(this.scene, this.camera);
+    if (draw) this.renderer.render(this.scene, this.camera);
   }
 
   // ------------------------------------------------------------------ cymatic medium

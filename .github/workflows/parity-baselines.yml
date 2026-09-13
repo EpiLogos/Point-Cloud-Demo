@@ -1,0 +1,23 @@
+name: Native parity baselines
+on:
+  push:
+    branches: [agent/expressions-native-parity]
+    paths: ['.github/workflows/parity-baselines.yml']
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 040627d0ea40032fe7c7b8c98be9a246be9db7f6
+          persist-credentials: false
+      - name: Archive original main without modifying it
+        run: git archive --format=tar.gz HEAD > /tmp/native-main-040627d.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-main-040627d
+          path: /tmp/native-main-040627d.tar.gz
+          retention-days: 14

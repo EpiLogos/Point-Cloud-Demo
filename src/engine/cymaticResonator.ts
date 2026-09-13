@@ -254,8 +254,9 @@ export class CymaticResonator {
     for (let i = 0; i < RESONATOR_MODE_TOTAL; i++) {
       if (!this.modeActive[i]) {
         // Inactive modes still relax passively toward silence (no drive term).
-        this.re[i] *= 0.98;
-        this.im[i] *= 0.98;
+        const decay = Math.pow(0.98, clampedDt * 60);
+        this.re[i] *= decay;
+        this.im[i] *= decay;
         continue;
       }
       const fm = this.modeFreq[i];

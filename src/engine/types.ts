@@ -36,6 +36,9 @@ export interface PlacedInteractionPoint {
   strength: number;
   mode: 'repel' | 'attract' | 'vortex';
   active: boolean;
+  /** Entity pins use Gaussian falloff; legacy points retain compact falloff. */
+  falloff?: 'gaussian' | 'compact';
+  spin?: number;
 }
 
 export interface PointCloudInteractionConfig {
@@ -391,6 +394,10 @@ export interface CompositionTelemetry {
 }
 
 export interface PointCloudConfig {
+  /** Host-rendered paper surface, driven by the same automation clock. */
+  paperGrain?: number;
+  /** Granular mark rendering; no secondary particle simulation. */
+  material?: Partial<Record<'sizeBias'|'opacity'|'roundness'|'softness'|'irregularity'|'elongation'|'orientation'|'contrast'|'densityScale'|'densityPhase'|'edgeWeight'|'halo',number>>;
   /** First-class field organisation (see fieldModel.ts). Legacy keys below are migrated into these on load. */
   entities?: import('./fieldModel').Entity[];
   composition?: import('./fieldModel').Composition;
