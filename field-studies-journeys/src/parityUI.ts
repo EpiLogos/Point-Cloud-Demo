@@ -118,8 +118,14 @@ document.addEventListener('input',event=>{
  root.querySelectorAll<HTMLDetailsElement>('.group-content>details').forEach(group=>{group.hidden=!Array.from(group.querySelectorAll<HTMLElement>('[data-action="native-glyph"]')).some(button=>!button.hidden);if(q&&!group.hidden)group.open=true;});
 });
 
-let observedInspector:Element|null=null,observedContent:Element|null=null;
+let observedInspector:Element|null=null,observedContent:Element|null=null,patchedApi:any=null;
+function patchPublicState(){
+ const api=(window as any).__FIELD_STUDIES__;if(!api||api===patchedApi)return;patchedApi=api;
+ const getState=api.getState.bind(api);api.getState=()=>{const state=getState();return preservePointerInspector?{...state,editing:true,inspectorOpen:true,railExpanded:true}:state;};
+ const openEditor=api.openEditor.bind(api);api.openEditor=(tab:any)=>{clearPointerInspector();return openEditor(tab);};
+}
 function installObservers(){
+ patchPublicState();
  const inspector=document.getElementById('inspector'),content=document.getElementById('inspector-content');
  if(inspector&&inspector!==observedInspector){observedInspector=inspector;new MutationObserver(()=>{if(preservePointerInspector)queueMicrotask(retainPointerInspector);}).observe(inspector,{attributes:true,attributeFilter:['hidden']});}
  if(content&&content!==observedContent){observedContent=content;new MutationObserver(()=>queueMicrotask(enhanceInspector)).observe(content,{childList:true,subtree:true});queueMicrotask(enhanceInspector);}
