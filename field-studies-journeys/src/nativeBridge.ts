@@ -127,7 +127,10 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  s.field.background=cfg.backgroundColor??cfg.color?.backgroundColor??'#f4f2eb';s.field.material=cfg.style==='halftone'?'print':'ink';
  s.field.palette=cfg.color?.customPaletteColors?.length?cfg.color.customPaletteColors.slice(0,8):[cfg.color?.primaryColor??'#252720',cfg.color?.accentColor??'#252720',cfg.color?.secondaryColor??'#252720'];
  for(const b of NATIVE_BINDINGS){const v=readPath(cfg,b.path);if(typeof v==='number')bindValue(s,b.bind,v/b.factor);}
- if(cfg.cymatics?.sweep?.glideS===undefined)bindValue(s,'field.params.native_cymatics__sweep__glideS',cfg.cymatics?.sweepSpeed??3.5);
+ // An absent explicit glide is not a request to copy the legacy fallback into
+ // a differently bounded parameter. Retain the native fallback verbatim and
+ // keep an inactive, editable default for opting into explicit timing.
+ if(cfg.cymatics?.sweep?.glideS===undefined)bindValue(s,'field.params.native_cymatics__sweep__glideS',nativeBinding('native_cymatics__sweep__glideS')!.defaultValue);
  s.engine.paletteId=cfg.color?.paletteId;s.engine.paletteSource=cfg.color?.customPaletteColors?.length?'custom':'legacy';if(cfg.paperGrain===undefined)s.field.params.grain=0;s.engine.grainProfile=!!cfg.material;s.engine.backgroundMode=cfg.backgroundMode??cfg.color?.backgroundMode??'solid';s.engine.dotShape=cfg.dotShape??'circle';
  s.engine.fontFamily=cfg.fontFamily;s.engine.fontWeight=cfg.fontWeight;s.engine.resonatorMode=cfg.cymatics?.engine??'resonator';s.engine.focusOrder=cfg.composition?.orchestration.order??'listed';
  s.entities=(cfg.entities??[]).map(fromNativeEntity);
