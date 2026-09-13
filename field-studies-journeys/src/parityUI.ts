@@ -49,6 +49,14 @@ function enhanceInspector(){
    const note=source.querySelector('.control-note');if(note)note.textContent='Use an embedded image or ASCII drawing as the sampled target for this formation. The source travels with the expression and portable artifact.';
   }
 
+  // The native engine accepts the complete 100–900 CSS weight range; every value gets a home.
+  const weight=content.querySelector<HTMLSelectElement>('select[data-bind="engine.fontWeight"]');
+  if(weight&&weight.options.length!==9){
+   const current=String(weight.value||900);
+   weight.innerHTML=Array.from({length:9},(_,i)=>String((i+1)*100)).map(value=>`<option value="${value}" ${value===current?'selected':''}>${value}${value==='400'?' · Regular':value==='700'?' · Bold':value==='900'?' · Heavy':''}</option>`).join('');
+   weight.value=current;
+  }
+
   // Native palette/paper catalogue remains contextual to appearance.
   const palette=detail('palette')?.querySelector('.group-content');
   if(palette&&!palette.querySelector('[data-detail="native-palettes"]'))html(palette,cataloguePalettes());
