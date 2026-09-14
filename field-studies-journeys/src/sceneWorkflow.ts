@@ -7,7 +7,7 @@ export function initialiseSceneSaves(j:Journey){
 }
 export function sceneSaveState(j:Journey,s:Scene):'Draft'|'Saved'|'Edited since save'{
  const saved=j.savedScenes?.[s.id];
- return !saved?'Draft':JSON.stringify(saved)===JSON.stringify(s)?'Saved':'Edited since save';
+ const compare=(scene:Scene)=>{const {toolbelt,pointerScope,...rest}=scene;return rest;};return !saved?'Draft':JSON.stringify(compare(saved))===JSON.stringify(compare(s))?'Saved':'Edited since save';
 }
 export function saveScene(j:Journey,s:Scene,name:string){
  const trimmed=name.trim();if(!trimmed||trimmed.length>160)throw new Error('Give this scene a name of 1–160 characters.');
@@ -21,7 +21,7 @@ export function nextSceneFrom(j:Journey,s:Scene):Scene{
 }
 export function restoreScene(j:Journey,id:string){
  const saved=j.savedScenes?.[id],i=j.scenes.findIndex(s=>s.id===id);if(!saved||i<0)return false;
- j.scenes[i]=clone(saved);return true;
+ const pointerScope=j.scenes[i].pointerScope;j.scenes[i]=clone(saved);j.scenes[i].pointerScope=pointerScope;return true;
 }
 export function savedSceneIndices(j:Journey){return j.scenes.flatMap((s,i)=>j.savedScenes?.[s.id]?[i]:[]);}
 export function sceneParameterChanges(a:Scene,b:Scene):Array<{path:string;from:number;to:number}>{

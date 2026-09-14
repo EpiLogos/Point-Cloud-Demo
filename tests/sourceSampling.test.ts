@@ -188,3 +188,11 @@ test('analysis stays within declared bounds for pathological inputs', () => {
 	assert.ok(analysis.threshold >= 0.05 && analysis.threshold <= 1);
 	assert.ok(analysis.candidates > 0);
 });
+
+test('fractional ASCII cell sizes cannot create non-finite source candidates',()=>{
+ const w=80,h=90,px=new Uint8ClampedArray(w*h*4);
+ for(let y=10;y<80;y++)for(let x=10;x<25;x++){const p=(y*w+x)*4;px[p]=px[p+1]=px[p+2]=px[p+3]=255;}
+ const sampled=sampleAlphaSource(px,w,h,{cell:{w:19.2,h:36.8}});
+ assert.ok(sampled.candidates.length>0);assert.ok(sampled.candidates.every(p=>[p.x,p.y,p.density].every(Number.isFinite)));
+ const empty=sampleAlphaSource(new Uint8ClampedArray(w*h*4),w,h,{cell:{w:19.2,h:36.8}});assert.equal(empty.candidates.length,0);assert.equal(empty.analysis.fallback,true);
+});

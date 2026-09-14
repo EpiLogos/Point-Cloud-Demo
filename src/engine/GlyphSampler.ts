@@ -1,3 +1,4 @@
+import {asciiLayout} from './asciiLayout';
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -1290,20 +1291,13 @@ export class GlyphSampler {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, w, h);
 
-    const rawLines = asciiText.split('\n');
-    const lines = rawLines.length > 0 ? rawLines : ['[EMPTY ASCII]'];
-    const maxLineLen = Math.max(...lines.map((l) => l.length), 1);
-    const numLines = lines.length;
-
-    const computedSize = Math.floor(Math.min((w * 0.82) / (maxLineLen * 0.6), (h * 0.82) / Math.max(1, numLines * 1.15)));
-    const fontSize = options.fontSize || Math.max(12, Math.min(72, computedSize));
+    const {lines,fontSize,charWidth,lineHeight}=asciiLayout(asciiText,w,h,options.fontSize);
+    const maxLineLen=Math.max(1,...lines.map(l=>Array.from(l).length));const numLines=lines.length;
     ctx.font = `bold ${fontSize}px ${options.fontFamily || '"Fira Code", "Courier New", Courier, monospace'}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#ffffff';
 
-    const lineHeight = fontSize * 1.15;
-    const charWidth = fontSize * 0.6;
     const totalW = maxLineLen * charWidth;
     const totalH = numLines * lineHeight;
 
@@ -1317,7 +1311,7 @@ export class GlyphSampler {
     const imgData = ctx.getImageData(0, 0, w, h);
     const sampled = sampleAlphaSource(imgData.data, w, h, {
       invert: options.invert,
-      cell: { w: charWidth, h: lineHeight },
+      // Preserve the actual typed contours, including sparse strokes and spaces.
     });
     return { candidates: sampled.candidates, center: new THREE.Vector2(0, 0), analysis: sampled.analysis };
   }

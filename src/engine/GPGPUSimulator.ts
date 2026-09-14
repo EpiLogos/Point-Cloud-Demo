@@ -200,6 +200,9 @@ export class GPGPUSimulator {
         uPointerPos: { value: new THREE.Vector2(-99999, -99999) },
         uBurstPosition: {value: new THREE.Vector2()},
         uBurstVelocity: {value: new THREE.Vector2()},
+        uBurstRadius: { value: 150.0 },
+        uBurstRadial: { value: 0.0 },
+        uBurstSpin: { value: 0.0 },
         uPointerVelocity: { value: new THREE.Vector2(0, 0) },
         uPointerZ: { value: 0 },
         uPointerRadius: { value: 150.0 },
@@ -404,9 +407,12 @@ export class GPGPUSimulator {
    * Advances simulation by dt seconds
    */
   /** Native disperse command; independent of editor pointer ownership. */
-  public setBurst(position: THREE.Vector2, velocity: THREE.Vector2) {
+  public setBurst(position: THREE.Vector2, velocity: THREE.Vector2, radius: number, radial: number, spin: number) {
     this.velMaterial.uniforms.uBurstPosition.value.copy(position);
     this.velMaterial.uniforms.uBurstVelocity.value.copy(velocity);
+    this.velMaterial.uniforms.uBurstRadius.value = radius;
+    this.velMaterial.uniforms.uBurstRadial.value = radial;
+    this.velMaterial.uniforms.uBurstSpin.value = spin;
   }
 
   public step(

@@ -98,6 +98,8 @@ export const PARAM_REGISTRY: ParamDef[] = [
   P('toroidalMorph.manifoldRadius', 'Manifold Radius', 'Morph', 10, 1200, 1, 20000, 5, { unit: 'px' }),
   P('toroidalMorph.volumetricDepthScale', 'Volumetric Depth', 'Morph', 0, 6, 0, 100, 0.05),
   // ---- Interaction ----
+  P('interaction.clickStrength','Click Strength','Interaction',.2,8,.01,20,.05),
+  P('interaction.clickRadius','Click Radius','Interaction',20,800,4,4000,4,{unit:'px'}),
   P('interaction.radius', 'Cursor Radius', 'Interaction', 10, 2000, 0, 50000, 10, { unit: 'px' }),
   P('interaction.strength', 'Cursor Force', 'Interaction', -30, 30, -1000, 1000, 0.1),
   P('interaction.velocityInfluence', 'Velocity Inject', 'Interaction', 0, 5, -100, 100, 0.05),

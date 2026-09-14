@@ -54,6 +54,9 @@ export interface Shape {
 }
 
 export interface SequenceLink {
+  source?:Entity['authoringSource'];
+  state?:Pick<Entity,'extent'|'scale'|'tint'|'tintWeight'|'forces'>;
+  name?:string;
   /** Optional authored timing; absent values inherit the entity sequence. */
   hold?: number;
   transition?: number;

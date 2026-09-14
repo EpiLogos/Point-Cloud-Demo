@@ -1,3 +1,4 @@
+import {asciiLayout} from '../../src/engine/asciiLayout';
 import {computeInkField, summarizeAnalysis, SOURCE_WORK_MAX, type SourceAnalysis, type InternalMode} from '../../src/engine/sourceSampling';
 import {GlyphSampler} from '../../src/engine/GlyphSampler';
 
@@ -33,7 +34,7 @@ function cacheKey(kind: 'image' | 'ascii', opts: SourceVisualOptions, theme: Sou
 }
 
 function hashPayload(payload: string): string {
-	return `${payload.length}:${payload.slice(0, 96)}:${payload.slice(-48)}`;
+	return payload;
 }
 
 async function decodePayload(payload: string): Promise<{ data: Uint8ClampedArray; width: number; height: number }> {
@@ -150,14 +151,12 @@ function asciiPreview(payload: string, opts: SourceVisualOptions, theme: SourceT
 	canvas.height = maxSide;
 	const ctx = canvas.getContext('2d', { willReadFrequently: true });
 	if (!ctx) return '';
-	const lines = payload.split('\n');
-	const maxLen = Math.max(...lines.map(l => l.length), 1);
-	const fontSize = Math.floor(Math.min((maxSide * 0.82) / (maxLen * 0.6), (maxSide * 0.82) / Math.max(1, lines.length * 1.15)));
+	const {lines,fontSize,charWidth,lineHeight}=asciiLayout(payload,maxSide,maxSide,opts.fontSize);
+	const maxLen=Math.max(1,...lines.map(l=>Array.from(l).length));
 	ctx.font = `bold ${fontSize}px ${opts.fontFamily || '"Fira Code", "Courier New", Courier, monospace'}`;
 	ctx.textAlign = 'left';
 	ctx.textBaseline = 'middle';
 	ctx.fillStyle = theme.ink;
-	const lineHeight = fontSize * 1.15;
 	const startX = (maxSide - maxLen * fontSize * 0.6) / 2;
 	const startY = (maxSide - lines.length * lineHeight) / 2 + lineHeight / 2;
 	ctx.fillStyle = theme.paper;
@@ -169,6 +168,7 @@ function asciiPreview(payload: string, opts: SourceVisualOptions, theme: SourceT
 
 /** Panel-facing one-liner: what was detected, distinct from the engine status line. */
 export function describeAnalysis(analysis: SourceAnalysis, kind: 'image' | 'ascii'): string {
+	if (analysis.fallback && kind === 'ascii') return 'No visible marks. Type or paste a drawing; empty cells contribute no ink.';
 	if (analysis.fallback) return 'No ink found at this threshold — the field shows a placeholder ring. Lower the ink threshold or check the file.';
 	const source = kind === 'ascii'
 		? `ASCII crop ${analysis.contentPx.w}×${analysis.contentPx.h}`

@@ -1,3 +1,4 @@
+import {stateSource} from './sourceState';
 import {resolvedAutomation,automationLeader} from './automationLinks';
 import {applyNativeDelta} from './nativeDelta';
 /** Document → existing production engine. No renderer, scheduler, DOM or storage writes. */
@@ -48,11 +49,11 @@ export function toNativeEntity(e:Entity):NativeEntity{
   scale:e.scale??1,extent:{width:e.size.x*WORLD_SCALE,height:e.size.y*WORLD_SCALE,rotation:e.rotation*Math.PI/180,normalized:original?original.extent?.normalized??!!original.extent:true},
   share:e.kind==='pin'?0:e.share,shape:shapeOf(e,original?.shape),
   sequence:{...sequence,hold,transition,advance:e.sequence.enabled?(e.sequence.clock==='morph'?'morphCycle':'time'):'off',
-   links:e.kind==='pin'?[]:e.sequence.enabled||e.sequence.manual?e.sequence.steps.map(k=>({...k.native,id:k.id,shape:shapeOf(k,k.native?.shape),
+   links:e.kind==='pin'?[]:e.sequence.enabled||e.sequence.manual?e.sequence.steps.map(k=>({...k.native,id:k.id,name:k.name,source:k.source?clone(k.source):undefined,state:k.objectState?{scale:k.objectState.scale??1,extent:{width:k.objectState.size.x*WORLD_SCALE,height:k.objectState.size.y*WORLD_SCALE,rotation:k.objectState.rotation*Math.PI/180,normalized:true},tint:k.objectState.tint,tintWeight:k.objectState.tintWeight,forces:{mode:k.objectState.force.kind,strength:k.objectState.force.strength,radius:k.objectState.force.radius*WORLD_SCALE,spin:k.objectState.force.spin}}:undefined,shape:shapeOf(k,k.native?.shape),
     hold:k.holdOverride?k.hold:e.sequence.hold===undefined&&k.hold!==hold?k.hold:undefined,transition:k.transitionOverride?k.transition:e.sequence.transition===undefined&&k.transition!==transition?k.transition:undefined,
-    x:k.position?k.position.x*WORLD_SCALE:undefined,y:k.position?k.position.y*WORLD_SCALE:undefined,z:k.position?k.position.z*WORLD_SCALE:undefined})):[{id:e.id+'_base',shape:shapeOf(e,original?.shape)}]},
+    x:k.position?k.position.x*WORLD_SCALE:undefined,y:k.position?k.position.y*WORLD_SCALE:undefined,z:k.position?k.position.z*WORLD_SCALE:undefined})):[{id:e.id+'_base',source:e.source?clone(e.source):undefined,shape:shapeOf(e,original?.shape)}]},
   forces:{...DEFAULT_FORCES,...original?.forces,mode:e.force.kind,strength:e.force.strength,radius:e.force.radius*WORLD_SCALE,spin:e.force.spin},
-  authoringSource:e.source?clone(e.source):undefined,
+  authoringSource:e.sequence.enabled||e.sequence.manual?(stateSource(e,0)?clone(stateSource(e,0)):undefined):e.source?clone(e.source):undefined,
   tint:e.tint,tintWeight:e.tintWeight,stationIndex:e.station??undefined,
  };
 }
@@ -82,7 +83,7 @@ function projectNativeConfig(s:Scene):PointCloudConfig{
  focusTintWeight:s.composition.carryTint?(cfg.composition?.orchestration.focusTintWeight??0):0}};
  cfg.cymatics={...DEFAULT_CYMATIC_MEDIUM,...cfg.cymatics,plateGeometry:s.engine.templateGeometry??cfg.cymatics!.plateGeometry,dimension:s.engine.templateDimension??cfg.cymatics!.dimension,enabled:s.engine.resonanceEnabled,engine:s.engine.resonatorMode??'resonator',followFocus:s.composition.frequencyDriver==='focus',autoSweep:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',sweep:{glideS:8,dwellS:2,...cfg.cymatics?.sweep,enabled:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',direction:s.engine.sweepDirection}};
  cfg.relational={...cfg.relational!,enabled:s.engine.relationalEnabled,mode:s.engine.relationalMode as any};
- cfg.interaction={...cfg.interaction,mode:s.engine.pointerMode,placedPoints:[]};
+ cfg.interaction={...cfg.interaction,mode:s.engine.pointerMode,clickMode:s.engine.pointerClick??'pulse',placedPoints:[]};
  cfg.automations=s.automation.map(authored=>{const l=resolvedAutomation(s.automation,authored),leader=automationLeader(s.automation,authored);
   const b=automationTarget(s,l.target);if(!b)return l.nativePath?{...original?.automations?.find(a=>a.id===l.nativeId),id:l.nativeId??l.id,path:l.nativePath,enabled:false,type:l.type==='lfo'?'lfo':'oneShot'} as NativeLane:null;
   const factor=l.blend==='multiply'?1:b.factor;
@@ -108,7 +109,7 @@ export function fromNativeEntity(e:NativeEntity):Entity{
  out.size=e.extent?{x:e.extent.width/WORLD_SCALE,y:e.extent.height/WORLD_SCALE}:{x:1,y:1};
  out.rotation=(e.extent?.rotation??0)*180/Math.PI;out.share=e.kind==='pin'?0:e.share;out.tint=e.tint;out.tintWeight=e.tintWeight;
  out.force={kind:e.forces.mode,strength:e.forces.strength,radius:e.forces.radius/WORLD_SCALE,spin:e.forces.spin};out.station=e.stationIndex??null;
- out.sequence={...e.sequence,manual:e.sequence.advance==='off'&&e.sequence.links.length>1,enabled:e.sequence.advance!=='off',clock:e.sequence.advance==='morphCycle'?'morph':'seconds',steps:(e.sequence.links.length?e.sequence.links:[{id:e.id+'_base',shape:e.shape}]).map(k=>({id:k.id,native:clone(k),holdOverride:k.hold!==undefined,transitionOverride:k.transition!==undefined,text:k.shape.text??'',shape:shellShape(k.shape),yantraId:k.shape.yantraId,templateFrequency:k.shape.frequencyHz,templateGeometry:k.shape.plateGeometry,templateDimension:k.shape.dimension,hold:k.hold??e.sequence.hold,transition:k.transition??e.sequence.transition,
+ out.sequence={...e.sequence,manual:e.sequence.advance==='off'&&e.sequence.links.length>1,enabled:e.sequence.advance!=='off',clock:e.sequence.advance==='morphCycle'?'morph':'seconds',steps:(e.sequence.links.length?e.sequence.links:[{id:e.id+'_base',source:e.authoringSource?clone(e.authoringSource):undefined,shape:e.shape}]).map(k=>({id:k.id,name:k.name,source:k.source?clone(k.source):undefined,objectState:k.state?{scale:k.state.scale,size:{x:(k.state.extent?.width??400)/WORLD_SCALE,y:(k.state.extent?.height??400)/WORLD_SCALE},rotation:(k.state.extent?.rotation??0)*180/Math.PI,tint:k.state.tint,tintWeight:k.state.tintWeight,force:{kind:k.state.forces.mode,strength:k.state.forces.strength,radius:k.state.forces.radius/WORLD_SCALE,spin:k.state.forces.spin}}:undefined,native:clone(k),holdOverride:k.hold!==undefined,transitionOverride:k.transition!==undefined,text:k.shape.text??'',shape:shellShape(k.shape),yantraId:k.shape.yantraId,templateFrequency:k.shape.frequencyHz,templateGeometry:k.shape.plateGeometry,templateDimension:k.shape.dimension,hold:k.hold??e.sequence.hold,transition:k.transition??e.sequence.transition,
  position:k.x!==undefined||k.y!==undefined||k.z!==undefined?{x:(k.x??0)/WORLD_SCALE,y:(k.y??0)/WORLD_SCALE,z:(k.z??0)/WORLD_SCALE}:null}))};
  if(e.authoringSource)out.source=clone(e.authoringSource);return out;
 }
@@ -124,7 +125,7 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  const cfg=snapshot.config,s=blankScene(snapshot.name),j=blankJourney();
  const completeV4=value.schemaVersion===4&&source.fluid&&source.interaction&&source.particleSize&&typeof source.particleCount==='number'&&Array.isArray(source.entities);
  s.native={config:clone(completeV4?source:cfg),original:clone(raw)};s.text=[];
- s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',pointerMode:cfg.interaction.mode,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent'};
+ s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',pointerMode:cfg.interaction.mode,pointerClick:cfg.interaction.clickMode??'pulse',pointerClickStrength:cfg.interaction.clickStrength??2.2,pointerClickRadius:(cfg.interaction.clickRadius??180)/400,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent'};
  s.field.background=cfg.backgroundColor??cfg.color?.backgroundColor??'#f4f2eb';s.field.material=cfg.style==='halftone'?'print':'ink';
  s.field.palette=cfg.color?.customPaletteColors?.length?cfg.color.customPaletteColors.slice(0,8):[cfg.color?.primaryColor??'#252720',cfg.color?.accentColor??'#252720',cfg.color?.secondaryColor??'#252720'];
  for(const b of NATIVE_BINDINGS){const v=readPath(cfg,b.path);if(typeof v==='number')bindValue(s,b.bind,v/b.factor);}

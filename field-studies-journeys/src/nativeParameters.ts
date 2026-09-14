@@ -6,6 +6,7 @@ import type {Scene} from './model';
 export const WORLD_SCALE = 400;
 export interface NativeBinding {path:string;key:string;bind:string;factor:number;label:string;group:string;min:number;max:number;hardMin:number;hardMax:number;step:number;unit?:string;note?:string;defaultValue:number;scale?:'linear'|'log'}
 const aliases:Record<string,[string,number?,string?]>={
+ 'interaction.clickStrength':['pointerClickStrength',1,'engine.pointerClickStrength'],'interaction.clickRadius':['pointerClickRadius',400,'engine.pointerClickRadius'],
  ...Object.fromEntries(['sizeBias','opacity','roundness','softness','irregularity','elongation','orientation','contrast','densityScale','densityPhase','edgeWeight','halo'].map(k=>['material.'+k,[k]])), paperGrain:['grain'],
  particleCount:['count'], 'particleSize.max':['size'],
  'fluid.returnSpeed':['recovery'],'fluid.vortexStrength':['circulation'],'fluid.curlScale':['turbulenceScale'],

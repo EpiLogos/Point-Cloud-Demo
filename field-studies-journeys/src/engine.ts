@@ -1,3 +1,4 @@
+import {TransportState} from '../../src/engine/transportState';
 import {Scene,Vec3} from './model.js';
 import {Camera} from './camera.js';
 /** All document writes belong to the shell. Adapters never create their own clock or UI. */
@@ -6,8 +7,11 @@ export interface EngineFrame {
  camera:Readonly<Camera>;pointer:{active:boolean;world:Vec3};selectedIds:ReadonlyArray<string>;
 }
 export interface EngineCapabilities {name:string;kind:'preview'|'production';parameters:ReadonlyArray<string>;physicalResonance:boolean;runtimeCheckpoints:boolean;exactSeek:boolean;notes:ReadonlyArray<string>}
-export type EngineCommand={type:'reset-field'}|{type:'recover-context'}|{type:'reset-phases'}|{type:'disperse';strength:number}|{type:'fire-automation';id:string;delay?:number};
+export type PointerEffectKind='pulse'|'implode'|'vortex'|'shove';
+export type EngineCommand={type:'reset-field'}|{type:'recover-context'}|{type:'reset-phases'}|{type:'disperse';strength:number}|{type:'fire-automation';id:string;delay?:number}|{type:'pointer-effect';kind:PointerEffectKind;strength:number;radius:number;x:number;y:number;z:number};
 export interface FieldEngineAdapter {
+ transportState?():TransportState|undefined;
+ restoreTransport?(state:TransportState):void;
  command?(command:EngineCommand):void;
  readonly canvas:HTMLCanvasElement;
  readonly capabilities:EngineCapabilities;

@@ -148,6 +148,9 @@ uniform float uTorusDepthScale;      // volumetric 3D Z-depth expansion (default
 uniform vec2 uPointerPos;
 uniform vec2 uBurstPosition;
 uniform vec2 uBurstVelocity;
+uniform float uBurstRadius;   // characteristic falloff radius of the queued click effect
+uniform float uBurstRadial;   // outward (+) / inward (−) shock component
+uniform float uBurstSpin;     // tangential vortex-whirl component
 uniform float uPointerZ;
 uniform vec2 uPointerVelocity;
 uniform float uPointerRadius;
@@ -537,10 +540,17 @@ void main() {
   }
 
   // --- 8. Total Acceleration & Viscous Integration ---
-  // The same falloff-weighted velocity impulse as native pointer momentum,
+  // Queued click effects: a falloff-weighted impulse around the burst centre,
   // independently queued so a toolbar click cannot be cleared by pointer-leave.
-  float burstFalloff = pow(max(0.0, 1.0 - distance(pos.xy, uBurstPosition) / max(0.001, uPointerRadius)), uPointerFalloffPower);
+  // Directional (shove), radial (pulse / implode) and tangential (vortex)
+  // components compose; each decays through the CPU-side effect state.
+  vec2 burstDir = pos.xy - uBurstPosition;
+  float burstDist = max(0.001, length(burstDir));
+  burstDir /= burstDist;
+  float burstFalloff = pow(max(0.0, 1.0 - burstDist / max(0.001, uBurstRadius)), uPointerFalloffPower);
   fPointer.xy += uBurstVelocity * burstFalloff * 0.85;
+  fPointer.xy += burstDir * uBurstRadial * burstFalloff;
+  fPointer.xy += vec2(-burstDir.y, burstDir.x) * uBurstSpin * burstFalloff;
   vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator;
 
   // Constant body force (gravity / wind)

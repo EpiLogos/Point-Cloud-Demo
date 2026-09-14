@@ -1,3 +1,4 @@
+import {stateLabel,stateSource} from './sourceState';
 import type {Entity} from './model';
 
 export type BeltEntry = {id:string;key:string;scope:'field'|'selected'|'named';entityId?:string;sceneId?:string;journeyId?:string};
@@ -19,13 +20,13 @@ export function moveBeltEntry(entries:BeltEntry[],id:string,offset:number){const
 export function formationSummary(e:Entity):string {
  const label=(s:{shape:string;text:string})=>s.shape==='text'?s.text:s.shape;
  const states=e.sequence.steps;
- if(states.length>1)return states.map(label).join(e.sequence.enabled?' → ':' ↔ ')+(e.sequence.enabled?' · playing':e.sequence.manual?' · manual':' · held');
- return label(e)+' · single state';
+ if(states.length>1)return states.map((s,i)=>stateLabel({...s,source:stateSource(e,i)})).join(e.sequence.enabled?' → ':' ↔ ')+(e.sequence.enabled?' · playing':e.sequence.manual?' · manual':' · held');
+ return (states[0]?stateLabel({...states[0],source:stateSource(e,0)}):label(e))+' · single state';
 }
 
 /** Editing a held target must reach the native base geometry as well as its link. */
 export function syncHeldState(e:Entity,index:number){
  const step=e.sequence.steps[index];if(!step||e.sequence.enabled||e.sequence.manual)return;
- e.shape=step.shape;e.text=step.text;e.yantraId=step.yantraId;e.templateFrequency=step.templateFrequency;
+ e.source=step.source?structuredClone(step.source):undefined;if(step.objectState)Object.assign(e,structuredClone(step.objectState));e.shape=step.shape;e.text=step.text;e.yantraId=step.yantraId;e.templateFrequency=step.templateFrequency;
  e.templateGeometry=step.templateGeometry;e.templateDimension=step.templateDimension;
 }

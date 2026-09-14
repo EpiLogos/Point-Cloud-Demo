@@ -1,3 +1,4 @@
+import {TransportState,validateTransport} from './transportState';
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -387,6 +388,8 @@ export class PointCloudField {
   /** Explicit reset: particles jump to their current targets. The only user-driven reseed. */
   public resetField() {
     this.burstVelocity.set(0, 0);
+    this.burstRadial = 0;
+    this.burstSpin = 0;
     this.seedGeneration++;
     this.simulator.seedInitialState(this.entities.buildSeed());
     this.resetMorphPhases();
@@ -1069,29 +1072,29 @@ export class PointCloudField {
     return id ? this.sourceAnalyses.get(id) : undefined;
   }
 
-  public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string): SourceAnalysis | null {
+  public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string, linkId?:string): SourceAnalysis | null {
     const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
     if (!target) return null;
     const { candidates, analysis } = this.glyphSampler.rasterizeCustomImage(img, options);
     if (entityId) this.sourceAnalyses.set(entityId, analysis);
-    this.entities.setCustomCandidates(target.id, candidates);
+    this.entities.setCustomCandidates(target.id, candidates,linkId);
     return analysis;
   }
 
-  public loadAsciiArt(asciiText: string, options: { fontFamily?: string; fontSize?: number; invert?: boolean } = {}, entityId?: string): SourceAnalysis | null {
+  public loadAsciiArt(asciiText: string, options: { fontFamily?: string; fontSize?: number; invert?: boolean } = {}, entityId?: string, linkId?:string): SourceAnalysis | null {
     const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
     if (!target) return null;
     const { candidates, analysis } = this.glyphSampler.rasterizeAscii(asciiText, options);
     if (entityId) this.sourceAnalyses.set(entityId, analysis);
-    this.entities.setCustomCandidates(target.id, candidates);
+    this.entities.setCustomCandidates(target.id, candidates,linkId);
     return analysis;
   }
 
-  public clearCustomSource(entityId?: string) {
+  public clearCustomSource(entityId?: string,linkId?:string) {
     const id = entityId ?? this.formations()[0]?.id;
     if (id) {
       this.sourceAnalyses.delete(id);
-      this.entities.setCustomCandidates(id, null);
+      this.entities.setCustomCandidates(id, null,linkId);
     }
   }
 
@@ -1105,12 +1108,32 @@ export class PointCloudField {
     return this.morphProgress;
   }
 
+  /** Queued click-effect impulse, consumed by the velocity shader and decayed each step. */
   private burstVelocity = new THREE.Vector2();
   private burstPosition = new THREE.Vector2();
+  private burstRadius = 150;
+  private burstRadial = 0;
+  private burstSpin = 0;
   public triggerDisperse(strength: number = 3.0) {
     if (!Number.isFinite(strength)) throw new Error('Invalid disperse strength');
     this.burstVelocity.set((Math.random() - 0.5) * 600 * strength, (Math.random() - 0.5) * 600 * strength);
+    this.burstRadial = 0;
+    this.burstSpin = 0;
     this.burstPosition.copy(this.pointerPos.x > -90000 ? this.pointerPos : this.entities.fieldCentre());
+  }
+
+  /** Momentary pointer click effect. Coordinates are native world pixels. */
+  public triggerPointerEffect(kind: 'pulse' | 'implode' | 'vortex' | 'shove', x: number, y: number, strength = 1, radius = 150) {
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(strength) || !Number.isFinite(radius)) {
+      throw new Error('Invalid pointer effect');
+    }
+    this.burstPosition.set(x, y);
+    this.burstRadius = Math.max(8, Math.abs(radius));
+    this.burstVelocity.set(0, 0);
+    const power = 950 * strength;
+    this.burstRadial = kind === 'pulse' ? power : kind === 'implode' ? -power : 0;
+    this.burstSpin = kind === 'vortex' ? power : 0;
+    if (kind === 'shove') this.burstVelocity.set((Math.random() - 0.5) * 2 * power, (Math.random() - 0.5) * 2 * power);
   }
 
   private tick = () => {
@@ -1362,6 +1385,10 @@ export class PointCloudField {
   }
 
   /** Zero the running toroidal / poloidal phases (restart the morph cycle). */
+  /** Reconstruct source targets after startup decoding; preserve recovered driver clocks. */
+  seedCurrentTargets(){this.seedGeneration++;this.simulator.seedInitialState(this.entities.buildSeed());}
+  getTransportState():TransportState{return {version:1,simTime:this.simTime,theta:this.torPhaseAcc,phi:this.polPhaseAcc,lanes:[...this.automationRt.lanes].map(([id,v])=>[id,{...v}])};}
+  restoreTransportState(value:unknown){const s=validateTransport(value);this.simTime=s.simTime;this.torPhaseAcc=s.theta;this.polPhaseAcc=s.phi;this.automationRt={lanes:new Map(s.lanes)};}
   public resetMorphPhases() {
     this.torPhaseAcc = 0;
     this.polPhaseAcc = 0;
@@ -1476,8 +1503,13 @@ export class PointCloudField {
     };
 
     // Runtime burst input survives UI/pointer clearing and is consumed only by physics.
-    this.simulator.setBurst(this.burstPosition, this.burstVelocity);
-    if (delta > 0) this.burstVelocity.multiplyScalar(Math.pow(0.92, delta * 60));
+    this.simulator.setBurst(this.burstPosition, this.burstVelocity, this.burstRadius, this.burstRadial, this.burstSpin);
+    if (delta > 0) {
+      const decay = Math.pow(0.92, delta * 60);
+      this.burstVelocity.multiplyScalar(decay);
+      this.burstRadial *= decay;
+      this.burstSpin *= decay;
+    }
     // 7. GPGPU step
     this.simulator.step(delta, elapsedTime, stepConfig, this.morphProgress, this.pointerPos, this.pointerVel, this.hostPointerZ);
 

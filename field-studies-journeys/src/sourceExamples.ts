@@ -1,5 +1,6 @@
+import {initialiseSources} from './sourceState';
 import {Journey,Scene,blankScene,entity,SequenceStep} from './model.js';
-import {FACE_COLOUR_DATA_URL,FACE_MONO_DATA_URL,FACE_ASCII_ART} from './sourceExamplesData.generated.js';
+import {FACE_COLOUR_DATA_URL,FACE_MONO_DATA_URL,FACE_ASCII_ART,FACES_DATA_URLS} from './sourceExamplesData.generated.js';
 import type {StartingPoint} from './expressions.js';
 
 /** Source studies: the same mask carried through the whole pipeline —
@@ -45,9 +46,10 @@ function cutout():Journey{
  const s=studyScene('Cutout and dissolve','A true silhouette cutout, then the field remembers its letter.');
  const mask=s.entities[0];
  // The colour photograph is one coherent subject: the cutout fills it solid.
- mask.source={kind:'image',image:{mode:'silhouette',threshold:.24,invert:false,scale:1,dataUrl:FACE_COLOUR_DATA_URL,name:'face-colour.jpg'}};
+ // A firm threshold keeps the outer glow out of the flood fill's subject.
+ mask.source={kind:'image',image:{mode:'silhouette',threshold:.46,invert:false,scale:1,dataUrl:FACE_COLOUR_DATA_URL,name:'face-colour.jpg'}};
  const step=(text:string,id:string):SequenceStep=>({id,text,shape:'text',hold:4,transition:3,position:null});
- mask.sequence={...mask.sequence,enabled:true,clock:'seconds',steps:[step('O','step-o'),step('I','step-i')]};
+ mask.sequence={...mask.sequence,enabled:true,clock:'seconds',steps:[step('O','step-mask'),step('O','step-o'),step('I','step-i')]};
  s.field.background='#101418';
  s.field.palette=['#e6e2d8','#9fb0a8','#5d6b60'];
  s.engine.inkMode='whiteOnBlack';
@@ -66,6 +68,43 @@ function ascii():Journey{
  return j;
 }
 
+const TWELVE_MOODS:{id:string;name:string;line:string}[]=[
+ {id:'origin',name:'I · Origin',line:'The mask at rest — where every face begins.'},
+ {id:'still',name:'II · Still',line:'Barely a change. The first variation holds its breath.'},
+ {id:'solemn',name:'III · Solemn',line:'The lids lower. The same lattice, heavier.'},
+ {id:'sorrow',name:'IV · Sorrow',line:'Everything falls a little. Nothing is rebuilt.'},
+ {id:'frown',name:'V · Frown',line:'The brow gathers. The field follows.'},
+ {id:'stern',name:'VI · Stern',line:'Eyes nearly closed. Attention narrowing.'},
+ {id:'grit',name:'VII · Grit',line:'The jaw locks. The wires take the strain.'},
+ {id:'smile',name:'VIII · Smile',line:'The lattice lifts. For a moment it is easy.'},
+ {id:'snarl',name:'IX · Snarl',line:'One side resists the smile and wins.'},
+ {id:'startle',name:'X · Startle',line:'Everything opens at once.'},
+ {id:'spectacle',name:'XI · Spectacle',line:'The mask invents glasses. The field keeps looking.'},
+ {id:'hollow',name:'XII · Hollow',line:'The last variation lets go — and loops to rest.'},
+];
+
+/** Twelve faces: the whole series as one looping expression. Every scene
+ * samples one mask through the same normalization law on the original blue
+ * field, so the strip reads as a single face changing its mind. */
+function twelveFaces():Journey{
+ const scenes=TWELVE_MOODS.map((mood,i)=>{
+  const s=studyScene(mood.name,mood.line);
+  s.id='face-'+mood.id;
+  s.duration=6.5;
+  s.transition=2.5;
+  const mask=s.entities[0];
+  mask.source={kind:'image',image:{mode:'luminance',threshold:.19,invert:false,scale:1,dataUrl:FACES_DATA_URLS[i],name:`face-${String(i+1).padStart(2,'0')}`}};
+  s.field.background='#0a0f1c';
+  s.field.palette=['#e8fbff','#6fd8e8','#2e7fa8'];
+  s.engine.inkMode='whiteOnBlack';
+  s.engine.backgroundMode='ambientGlow';
+  Object.assign(s.field.params,{count:62000,size:2.25,opacity:.92,contrast:.82,warp:.12,dispersion:.05,jitter:.45,speed:.45,turbulence:.15});
+  return s;
+ });
+ const j:Journey={schema:'oi.journey' as const,version:1,id:'source-twelve-faces',name:'Twelve faces · one mask',description:'A single series of the same wireframe mask, sampled from twelve photographs. Watch one face become another.',loop:true,scenes,updatedAt:new Date().toISOString()};
+ return j;
+}
+
 export function sourceStudies():StartingPoint[]{
- return [mono(),neon(),cutout(),ascii()].map(expression=>({id:expression.id,group:'Source studies' as const,expression}));
+ return [mono(),neon(),cutout(),ascii(),twelveFaces()].map(expression=>({id:expression.id,group:'Source studies' as const,expression:initialiseSources(expression)}));
 }

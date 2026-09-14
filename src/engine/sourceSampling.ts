@@ -473,10 +473,10 @@ function candidatesFromAlphaCells(
 			const y0 = crop.y0 + row * cell.h;
 			for (const [dx0, dx1] of [[0, 0.5], [0.5, 1]] as const) {
 				for (const [dy0, dy1] of [[0, 0.5], [0.5, 1]] as const) {
-					const qx0 = x0 + Math.floor(dx0 * cell.w);
-					const qx1 = Math.min(x0 + Math.ceil(dx1 * cell.w), crop.x1 + 1);
-					const qy0 = y0 + Math.floor(dy0 * cell.h);
-					const qy1 = Math.min(y0 + Math.ceil(dy1 * cell.h), crop.y1 + 1);
+					const qx0 = Math.max(0,Math.floor(x0 + dx0 * cell.w));
+					const qx1 = Math.min(w,Math.ceil(x0 + dx1 * cell.w), crop.x1 + 1);
+					const qy0 = Math.max(0,Math.floor(y0 + dy0 * cell.h));
+					const qy1 = Math.min(h,Math.ceil(y0 + dy1 * cell.h), crop.y1 + 1);
 					let sum = 0, count = 0;
 					for (let y = qy0; y < qy1; y++) {
 						for (let x = qx0; x < qx1; x++) {
@@ -508,6 +508,7 @@ const MODE_LABEL: Record<InternalMode, string> = {
 
 /** Human summary for the source status line. Ends with a capture-ready marker. */
 export function summarizeAnalysis(analysis: SourceAnalysis, kind: 'image' | 'ascii'): string {
+	if (analysis.fallback && kind === 'ascii') return 'ASCII source active · no visible marks. Empty cells contribute no ink.';
 	if (analysis.fallback) {
 		return `${kind === 'image' ? 'Image' : 'ASCII'} source active · no ink detected above the threshold — showing a placeholder ring. Lower the ink threshold or check the file.`;
 	}

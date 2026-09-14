@@ -35,7 +35,12 @@ error rather than a misleading visual fallback.
 
 Interact is the first and default tool. Clicking a different tool opens its
 context, clicking it again closes that context, and the next click returns to
-Interact. The thinner rail keeps every icon on the same centre line.
+Interact. In Interact the scroll wheel zooms the view, and a click fires the
+scene's chosen pointer effect — pulse, implode, vortex or shove — at the
+pointer, with its own strength and radius under Studio → Pointer (the ripple
+icon sits with the cursor tools). Holding the button still applies the
+temporary attract/repel/vortex force. The thinner rail keeps every icon on the
+same centre line.
 
 Choose **Pin**, then click to place one attractor. It remains selected and the
 tool returns to Select. Drag its centre, edit exact coordinates or nudge with the
@@ -100,27 +105,6 @@ rename. Current covers come from native capture; other cards use labelled static
 composition previews loaded as they come into view. Optional text in existing
 user documents is preserved.
 
-## Verify
-
-```sh
-npm run lint
-npm test
-npm run build
-npm run test:journeys
-python -m pip install -r field-studies-journeys/tests/requirements.txt
-python -m playwright install chromium
-npm run test:gpu
-npm run test:browser
-npm run test:workspace
-python field-studies-journeys/tests/module_browser.py
-```
-
-Acceptance comprises 70 native/bridge regressions, 23 authoring-model checks,
-five real GPU suites, 25 original browser workflows and 23 Expressions workspace
-checks. The served-module test exercises the actual default route and its
-module-to-standalone export. PNG and recorded video are decoded, not merely
-checked for file existence.
-
 GPU/browser fixtures use 2,048 particles with software WebGL. Set
 `FIELD_HARDWARE=1` for device measurements; `CHROMIUM_EXECUTABLE` can select an
 installed Chromium executable. Inline-content storage checks declare their test
@@ -170,8 +154,65 @@ height reserving their available space. Motion respects reduced-motion preferenc
 
 Automation is presented as one oscillator or one-shot group with multiple parameter targets. The parameter wave button lets you choose an existing group or create a new one; **Add parameter** chooses an explicit target without creating a default Size Distribution lane. Each target retains its own range and blend. Removing the first target preserves the running group clock, including random waves and retriggered ramps, across the remaining targets. Native export/import retains membership.
 
+## Image and ASCII sources
+
+A formation can be driven by an embedded image or ASCII drawing (Studio →
+Objects → **Image / ASCII source**). Every source passes through one
+normalization law (`src/engine/sourceSampling.ts`): the background is estimated
+from the border ring, ink polarity is auto-detected (dark ink on light paper or
+light ink on dark paper — the legacy *invert* toggle still forces it), the
+subject is cropped from its margins, and the shape is projected into the field
+with its true aspect. Three readings are available: ink luminance (density
+follows brightness), Sobel edges, and a silhouette cutout whose flood fill only
+claims enclosed regions large enough to be the subject — the sealed cells of a
+wireframe stay open. The panel shows a WYSIWYG preview of the exact cutout plus
+a detected-polarity/coverage/point-count readout; the engine status line
+reports the same analysis after it samples. Sources travel inside expressions
+and portable artifacts.
+
+The **Source studies** starting compositions demonstrate the pipeline with one
+mask carried through it: mono line art, the colour photograph, a silhouette
+cutout that dissolves into O→I, an ASCII transcription, and **Twelve faces ·
+one mask** — a looping twelve-scene series built from `faces-test/` that morphs
+the same wireframe through twelve subtly different faces on the original blue
+field. Their embedded assets live in `field-studies-journeys/sources/`
+(regenerate the data module with
+`node field-studies-journeys/scripts/prepare-source-examples.mjs`).
+
+## Verify
+
+```sh
+npm run lint
+npm test
+npm run build
+npm run test:journeys
+python -m pip install -r field-studies-journeys/tests/requirements.txt
+python -m playwright install chromium
+npm run test:gpu
+npm run test:browser
+npm run test:workspace
+python field-studies-journeys/tests/module_browser.py
+```
+
+Acceptance comprises 92 native/bridge regressions (including the source
+sampling normalization suite), 23 authoring-model checks, five real GPU suites,
+25 original browser workflows and 23 Expressions workspace checks. The
+served-module test exercises the actual default route and its
+module-to-standalone export. PNG and recorded video are decoded, not merely
+checked for file existence.
+
 LFO rate edits preserve accumulated phase. The **Morph drive** source uses the engine’s real toroidal/poloidal phase signal, including interference law, drive shape, depth and dwell. Quantum Superposition, Toroidal Hopf and Chiral Vortex Spiral remain geometry trajectories on the Morph page, where their original names and descriptions are visible. The older manifold scrub is retained for compatibility; the current entity path uses A→B Scrub and sequence controls.
 
 The cycle monitor displays every target in its selected group. Toolbelt controls track evaluated values; direct manipulation offsets a replacing automation’s range, while **Take manual control** releases that target at its current value. Focused inputs remain stable, and slider drags do not replace their DOM nodes. Studio surfaces remain translucent.
 
 Cursor choice and local-panel selection are independent. Text, formation sequence and object panels toggle in one click; placement controls appear only during placement. The retired three-step toolbar toggle and late pointer-inspector reopening patch are removed. Capture uses the camera icon; capture settings use the framed-image icon.
+
+### Expression workflow and recovery
+
+Images and ASCII drawings belong to individual formation sequence states. The framed **Image suite** button at the top right edits the selected source, offers a sampling preview, and keeps capture output settings in a separate disclosure. Source thumbnails follow their state when it is duplicated, reordered, exported, or folded into an earlier scene. **Formation sequence → Add state to earlier scene** copies the chosen object's source, shape, offset, size, rotation, tint and force into a destination formation; scene-wide physics and automation stay with their scenes. The optional removal of the working scene is undoable.
+
+The toolbelt is shared by every scene in an expression. A property's globe makes its value an expression override, independent of named scene saves. Such overrides take precedence over local automation and recorded takes; switch the property back to local to automate or record it. Pointer settings use an expression override by default, with a local-scene scope selector.
+
+Working drafts use IndexedDB so image-heavy expressions are not limited by the smaller localStorage library. Recovery restores the active expression and scene, working configuration, camera, paused/playing state, and driver clocks. Active property takes are checkpointed while recording. Named scene saves remain independent. Particle positions and velocities are regenerated from the current targets after a crash; they are not physical checkpoints. Storage errors retain the export fallback.
+
+Regression coverage: `npm test`, `npm run test:journeys`, and `npm run lint`. With the development server running, open `/field-studies-journeys/tests/workflow.html` for five additional checks using actual image decoding, WebGL floating-point readback, fresh-engine LFO recovery, and IndexedDB. This page creates and removes its own temporary draft, without editing library expressions.

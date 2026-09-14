@@ -153,9 +153,10 @@ export class EntityRuntime {
   }
 
   /** Image / ASCII sources: override a formation's shape with an explicit candidate pool. */
-  public setCustomCandidates(entityId: string, candidates: Candidate[] | null) {
-    if (candidates) this.customCandidates.set(entityId, candidates);
-    else this.customCandidates.delete(entityId);
+  public setCustomCandidates(entityId: string, candidates: Candidate[] | null, linkId?:string) {
+    const key=linkId?entityId+':'+linkId:entityId;
+    if (candidates) this.customCandidates.set(key, candidates);
+    else this.customCandidates.delete(key);
     this.bakeSig.delete(entityId);
   }
 
@@ -232,6 +233,7 @@ export class EntityRuntime {
     normalized: boolean
   ) {
     const n = cands.length;
+    if(!n){target.fill(0,start*4,end*4);for(let i=start;i<end;i++){this.noiseData[i*4+channel]=0;this.noiseData[i*4+channel+1]=0;}return;}
     for (let i = start; i < end; i++) {
       // The raster pool is scanline ordered. A prefix would crop low-share
       // allocations to the top of a glyph. A low-discrepancy stride covers the
@@ -260,8 +262,8 @@ export class EntityRuntime {
   private bakePartition(p: Partition, e: Entity, linkIndex: number, nextIndex: number, plane: Composition['plane'], fontFamily?: string, fontWeight?: string | number) {
     const links = effectiveLinks(e);
     const custom = this.customCandidates.get(e.id);
-    const candA = custom && linkIndex === 0 ? custom : this.candidatesFor(links[linkIndex].shape, fontFamily, fontWeight);
-    const candB = custom && nextIndex === 0 ? custom : this.candidatesFor(links[nextIndex].shape, fontFamily, fontWeight);
+    const candA = this.customCandidates.get(e.id+':'+links[linkIndex].id) ?? (custom && linkIndex === 0 ? custom : this.candidatesFor(links[linkIndex].shape, fontFamily, fontWeight));
+    const candB = this.customCandidates.get(e.id+':'+links[nextIndex].id) ?? (custom && nextIndex === 0 ? custom : this.candidatesFor(links[nextIndex].shape, fontFamily, fontWeight));
     this.bakeGeneration++;
     const normalize = (cands: Candidate[]) => {
       if (!e.extent || e.extent.normalized === false) return cands;
@@ -310,7 +312,7 @@ export class EntityRuntime {
       if (!e) return;
       const state = resolveSequence(e, simTime, drivePhase, manualMorph, holdRatio);
       const links = effectiveLinks(e);
-      const sig = `${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
+      const sig = `${links[state.linkIndex].id}:${links[state.nextIndex].id}|${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
       const prevStep = this.lastStep.get(e.id);
       if (this.bakeSig.get(e.id) !== sig) {
         this.bakePartition(p, e, state.linkIndex, state.nextIndex, comp.plane, fontFamily, fontWeight);
@@ -330,12 +332,14 @@ export class EntityRuntime {
       u.bounds[i] = p.end;
       u.centers[i].set(cx, cy, cz, Math.max(5, e.forces.radius));
       u.morph[i] = state.progress;
-      u.depthScales[i]=Math.max(.001,e.scale);
+      const mix=(a:number,b:number)=>a+(b-a)*t;const sa=la.state,sb=lb.state;const scale=mix(sa?.scale??e.scale,sb?.scale??e.scale);const extentA=sa?.extent??e.extent,extentB=sb?.extent??e.extent;
+      u.depthScales[i]=Math.max(.001,scale);
       u.normalized[i]=e.extent&&e.extent.normalized!==false?1:0;
-      u.transforms[i].set(Math.max(0.001,e.scale)*(e.extent?e.extent.width/400:1), Math.max(0.001,e.scale)*(e.extent?e.extent.height/400:1), e.extent?.rotation??0);
-      u.forces[i].set(e.forces.strength, FORCE_MODE[e.forces.mode] ?? 0, e.forces.spin, e.enabled && e.forces.mode !== 'none' ? 1 : e.enabled && Math.abs(e.forces.spin) > 0 ? 1 : 0);
-      u.tints[i].set(e.tint);
-      u.tintWeights[i] = Math.max(0, Math.min(1, e.tintWeight * comp.entityTintWeight));
+      u.transforms[i].set(Math.max(.001,scale)*mix(extentA?.width??400,extentB?.width??400)/400,Math.max(.001,scale)*mix(extentA?.height??400,extentB?.height??400)/400,mix(extentA?.rotation??0,extentB?.rotation??0));
+      const fa=sa?.forces??e.forces,fb=sb?.forces??e.forces,mode=t<.5?fa.mode:fb.mode,spin=mix(fa.spin,fb.spin);u.centers[i].w=Math.max(5,mix(fa.radius,fb.radius));
+      u.forces[i].set(mix(fa.strength,fb.strength),FORCE_MODE[mode]??0,spin,e.enabled&&(mode!=='none'||Math.abs(spin)>0)?1:0);
+      u.tints[i].set(sa?.tint??e.tint).lerp(new THREE.Color(sb?.tint??e.tint),t);
+      u.tintWeights[i] = Math.max(0, Math.min(1, mix(sa?.tintWeight??e.tintWeight,sb?.tintWeight??e.tintWeight) * comp.entityTintWeight));
       frames.push({ entityId: e.id, index: i, state });
     });
     for (let i = u.count; i < 10; i++) {
@@ -347,7 +351,7 @@ export class EntityRuntime {
     return { frames, impulses, rebaked };
   }
 
-  /** Explicit reset: particle seed = current A targets translated to each entity's centre. */
+  /** Explicit reset: particle seed = current blended targets translated to each entity's centre. */
   public buildSeed(): Float32Array {
     const seed = new Float32Array(this.dataA.length);
     seed.set(this.dataA);
@@ -365,9 +369,10 @@ export class EntityRuntime {
       if (i >= 10) return;
       const c = this.uniforms.centers[i];
       for (let k = p.start; k < p.end; k++) {
-        const tr=this.uniforms.transforms[i];
+        const tr=this.uniforms.transforms[i],blend=this.uniforms.morph[i];
+        for(let channel=0;channel<4;channel++){const offset=k*4+channel;seed[offset]=this.dataA[offset]+(this.dataB[offset]-this.dataA[offset])*blend;}
         const horizontal=this.currentPlane==='horizontal';
-        const jx=this.noiseData[k*4],jy=this.noiseData[k*4+1],normalized=this.uniforms.normalized[i]>.5;
+        const jx=this.noiseData[k*4]+(this.noiseData[k*4+2]-this.noiseData[k*4])*blend,jy=this.noiseData[k*4+1]+(this.noiseData[k*4+3]-this.noiseData[k*4+1])*blend,normalized=this.uniforms.normalized[i]>.5;
         const x=(seed[k*4]+(normalized?jx:0))*tr.x, y=((horizontal?-seed[k*4+2]:seed[k*4+1])+(normalized?jy:0))*tr.y;
         const nx=normalized?0:jx,ny=normalized?0:jy;
         const co=Math.cos(tr.z),si=Math.sin(tr.z);

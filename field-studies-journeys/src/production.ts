@@ -1,3 +1,5 @@
+import {TransportState} from '../../src/engine/transportState';
+import {stateSource} from './sourceState';
 import {PointCloudField} from '../../src/engine/PointCloudField';
 import type {PointCloudConfig} from '../../src/engine/types';
 import {CymaticResonator} from '../../src/engine/cymaticResonator';
@@ -20,7 +22,7 @@ export class ProductionAdapter implements FieldEngineAdapter {
  private dirty=false;private signature='';private sceneId='';private target:PointCloudConfig|null=null;
  private from:PointCloudConfig|null=null;private transitionStart=0;private duration=0;
  private evaluated:PointCloudConfig|null=null;private applied:PointCloudConfig|null=null;private sources=new Map<string,string>();private sourceStatus:Record<string,string>={};
- private contextLost=false;
+ private contextLost=false;private seedRecoveredSources=false;private restoredClock=false;
  private lost=(event:Event)=>{event.preventDefault();this.contextLost=true;this.dirty=true;};
  constructor(readonly canvas:HTMLCanvasElement){canvas.addEventListener('webglcontextlost',this.lost);}
 
@@ -59,16 +61,18 @@ export class ProductionAdapter implements FieldEngineAdapter {
   this.dirty=false;
   if(this.contextLost)throw new Error('GPU context was lost. Your expression is retained. Restore the field explicitly; its physical state must be reseeded.');
   const config=this.configuration(frame);
-  if(!this.engine)this.engine=new PointCloudField(this.canvas,config,true);
+  if(!this.engine){this.engine=new PointCloudField(this.canvas,config,true);this.seedRecoveredSources=true;}
   else if(config!==this.applied)this.engine.replaceConfig(config);
   if(config!==this.applied)this.syncSources(frame.scene);this.applied=config;
   this.engine.setSelection(frame.selectedIds);this.engine.setGridMode(frame.scaffold??'off');
   const {a,b}=basis(frame.camera),o=stageCentre(this.width,this.height);
   this.engine.setHostView({width:this.width,height:this.height,pixelRatio:this.dpr,originX:o.x+frame.camera.panX,originY:o.y+frame.camera.panY,pixelsPerUnit:stageScale(this.width,this.height)*frame.camera.zoom/WORLD_SCALE,right:a,up:b});
   this.engine.setHostPointer(frame.pointer.active,{x:frame.pointer.world.x*WORLD_SCALE,y:frame.pointer.world.y*WORLD_SCALE,z:frame.pointer.world.z*WORLD_SCALE},frame.delta);
-  this.engine.advance(frame.delta);
+  this.engine.advance(frame.delta);if(this.seedRecoveredSources&&Object.values(this.sourceStatus).every(v=>v.includes('source active'))){if(this.sources.size||this.restoredClock)this.engine.seedCurrentTargets();this.seedRecoveredSources=false;this.restoredClock=false;this.engine.advance(0);}
   this.evaluated=this.engine.getEvaluation().config;
  }
+ transportState(){return this.engine?.getTransportState();}
+ restoreTransport(state:TransportState){this.engine?.restoreTransportState(state);this.seedRecoveredSources=true;this.restoredClock=true;this.dirty=true;}
  telemetry(){
   if(!this.engine)return null;
   const t=this.engine.getCompositionTelemetry(),drive=this.engine.getMorphDrive(),cfg=this.engine.getEvaluation().config;
@@ -76,17 +80,19 @@ export class ProductionAdapter implements FieldEngineAdapter {
   return {...t,drive,params,config:cfg,sourceStatus:{...this.sourceStatus},live:this.engine.getEvaluation().live,background:cfg.backgroundColor??'#f4f2eb',palette:cfg.color?.customPaletteColors??[cfg.color!.primaryColor,cfg.color!.accentColor,cfg.color!.secondaryColor],transition:this.from?Math.min(1,(t.simTime-this.transitionStart)/Math.max(.001,this.duration)):1};
  }
  private syncSources(scene:EngineFrame['scene']){
-  const ids=new Set(scene.entities.map(e=>e.id));for(const id of this.sources.keys())if(!ids.has(id)){this.engine?.clearCustomSource(id);this.sources.delete(id);delete this.sourceStatus[id];}
-  for(const e of scene.entities){const signature=JSON.stringify(e.source??null);if(this.sources.get(e.id)===signature)continue;this.sources.set(e.id,signature);this.engine?.clearCustomSource(e.id);delete this.sourceStatus[e.id];
-   if(e.kind==='pin'||!e.source)continue;
-   if(e.source.kind==='ascii'){const analysis=this.engine?.loadAsciiArt(e.source.ascii.text,e.source.ascii,e.id);this.sourceStatus[e.id]=analysis?summarizeAnalysis(analysis,'ascii'):'ASCII source active';continue;}
-   const options=e.source.image,url=options.dataUrl??'';
-   if(!/^data:image\/(png|jpeg|webp);base64,/i.test(url)){this.sourceStatus[e.id]='Image source needs an embedded PNG, JPEG or WebP. The original value is retained.';continue;}
-   const image=new Image();this.sourceStatus[e.id]='Decoding image…';
-   image.onload=()=>{if(this.sources.get(e.id)!==signature||!this.engine)return;if(image.naturalWidth*image.naturalHeight>16777216){this.sourceStatus[e.id]='Image exceeds the 16 megapixel source limit.';this.dirty=true;return;}const analysis=this.engine.loadCustomImage(image,options,e.id);this.sourceStatus[e.id]=analysis?summarizeAnalysis(analysis,'image'):'Image source active';this.dirty=true;};
-   image.onerror=()=>{if(this.sources.get(e.id)===signature){this.sourceStatus[e.id]='The embedded image could not be decoded.';this.dirty=true;}};image.src=url;
+  const requests=scene.entities.filter(e=>e.kind==='formation').flatMap(e=>e.sequence.enabled||e.sequence.manual?e.sequence.steps.flatMap((k,i)=>{const source=stateSource(e,i);return source?[{entityId:e.id,linkId:k.id,source}]:[]}):e.source?[{entityId:e.id,linkId:e.id+'_base',source:e.source}]:[]);
+  const ids=new Set(requests.map(r=>JSON.stringify([r.entityId,r.linkId])));
+  for(const key of this.sources.keys())if(!ids.has(key)){const [entityId,linkId]=JSON.parse(key);this.engine?.clearCustomSource(entityId,linkId);this.sources.delete(key);delete this.sourceStatus[key];}
+  for(const {entityId,linkId,source} of requests){const key=JSON.stringify([entityId,linkId]),signature=JSON.stringify(source);if(this.sources.get(key)===signature)continue;this.sources.set(key,signature);this.engine?.clearCustomSource(entityId,linkId);delete this.sourceStatus[key];
+   if(source.kind==='ascii'){const analysis=this.engine?.loadAsciiArt(source.ascii.text,source.ascii,entityId,linkId);this.sourceStatus[key]=analysis?summarizeAnalysis(analysis,'ascii'):'ASCII source active';continue;}
+   const options=source.image,url=options.dataUrl??'';
+   if(!/^data:image\/(png|jpeg|webp);base64,/i.test(url)){this.sourceStatus[key]='Image source needs an embedded PNG, JPEG or WebP.';continue;}
+   const image=new Image();this.sourceStatus[key]='Decoding image…';
+   image.onload=()=>{if(this.sources.get(key)!==signature||!this.engine)return;if(image.naturalWidth*image.naturalHeight>16777216){this.sourceStatus[key]='Image exceeds the 16 megapixel source limit.';this.dirty=true;return;}const analysis=this.engine.loadCustomImage(image,options,entityId,linkId);this.sourceStatus[key]=analysis?summarizeAnalysis(analysis,'image'):'Image source active';this.dirty=true;};
+   image.onerror=()=>{if(this.sources.get(key)===signature){this.sourceStatus[key]='The embedded image could not be decoded.';this.dirty=true;}};image.src=url;
   }
  }
+
  private assertCaptureReady(){if(this.contextLost)throw new Error('GPU context lost: restore the field before capturing.');for(const status of Object.values(this.sourceStatus))if(!status.includes('source active'))throw new Error('Capture waits for a valid source: '+status);}
  withCleanFrame<T>(copy:()=>T):T {this.assertCaptureReady();return this.engine?this.engine.withCleanFrame(copy):copy();}
  capture(width:number,height:number){this.assertCaptureReady();if(!this.engine)throw new Error('No rendered field yet');return this.engine.renderImage(width,height);}
@@ -103,6 +109,11 @@ export class ProductionAdapter implements FieldEngineAdapter {
   else if(command.type==='disperse'){
    if(!Number.isFinite(command.strength)||Math.abs(command.strength)>20)throw new Error('Impulse strength must be finite and within ±20.');
    this.engine.triggerDisperse(command.strength);
+  }else if(command.type==='pointer-effect'){
+   if(!['pulse','implode','vortex','shove'].includes(command.kind))throw new Error('Unknown pointer effect.');
+   if(!Number.isFinite(command.strength)||command.strength<0||command.strength>20)throw new Error('Pointer effect strength must be finite and within 0–20.');
+   if(!Number.isFinite(command.radius)||command.radius<=0)throw new Error('Pointer effect radius must be positive.');
+   this.engine.triggerPointerEffect(command.kind,command.x,command.y,command.strength,command.radius);
   }else this.engine.fireAutomation(command.id,command.delay??0);
   this.dirty=true;
  }

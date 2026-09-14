@@ -42,6 +42,9 @@ export interface PlacedInteractionPoint {
 }
 
 export interface PointCloudInteractionConfig {
+  clickMode?:'pulse'|'implode'|'vortex'|'shove'|'off';
+  clickStrength?:number;
+  clickRadius?:number;
   radius: number;          // Mouse influence radius in world/pixel units
   strength: number;        // Push/pull or velocity advection strength
   mode: 'repel' | 'attract' | 'vortex'; // Interaction mode
