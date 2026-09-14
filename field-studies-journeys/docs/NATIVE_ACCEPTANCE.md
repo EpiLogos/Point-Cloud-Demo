@@ -8,7 +8,7 @@ Integration branch: `agent/native-engine-journeys`.
 | Suite | Result | What it establishes |
 |---|---:|---|
 | Root regressions (`npm test`) | 70 passed | Existing 51 engine cases plus 19 bridge, ownership, migration and persistence cases |
-| Authoring model | 19 passed | Scene validation, editing, bounds and journey/model invariants |
+| Authoring model | 23 passed | Scene validation, editing, bounds and journey/model invariants |
 | Strict TypeScript | Passed | Both native and shell projects |
 | Native and legacy production build | Passed | Default native module app, retained workbench and independent HTML artifact |
 | GPU acceptance | 5 suites passed | Actual float-buffer forces, state continuity, single stepping, combined resonance and projection/capture |
