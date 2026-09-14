@@ -124,3 +124,9 @@ Configuration restoration does not restore accumulated particle/resonator state.
 The original handoff and UX contracts remain in `field-studies-journeys/docs/`.
 The later Expressions review records the user's visual refinements. Original
 snapshots and legacy browser keys are never overwritten by conversion.
+
+## Physis desktop integration
+
+This checkout also provides the local `physis` command, an Omarchy bar toggle,
+transparent desktop rendering, and direct capture-to-screensaver storage. See
+[PHYSIS.md](PHYSIS.md) for installation, controls and desktop-specific validation.

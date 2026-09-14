@@ -153,3 +153,11 @@
  .inspector.is-motion .motion-content{display:block}.inspector-content{padding:10px 12px}.inspector-heading{padding:11px 11px 8px}.inspector-heading h2{font-size:20px}
  #coordinates.coordinate-readout{right:10px;bottom:59px;max-width:210px;font-size:8px;gap:8px}
 }
+
+/* Optional Physis panel follows the existing capture controls. */
+#physis-panel{max-height:calc(100vh - 100px);overflow:auto;z-index:45}
+#physis-panel .button-row{flex-wrap:wrap}
+#physis-panel .physis-media{display:grid;gap:8px;font-size:11px;margin-top:14px}
+#physis-panel .physis-media a{color:var(--ink);text-decoration:none}
+#physis-panel .control{margin-top:14px}
+body.presentation #physis-panel,body.library-open #physis-panel{display:none}

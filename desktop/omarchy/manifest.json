@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "org.epilogos.physis",
+  "name": "Physis",
+  "version": "0.1.0",
+  "author": "EpiLogos",
+  "description": "Toggle the Physis point-cloud overlay; right-click to open the studio.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {"barWidget": "BarWidget.qml"},
+  "barWidget": {"displayName": "Physis", "category": "System", "allowMultiple": false, "defaultSection": "right"}
+}
