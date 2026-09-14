@@ -30,7 +30,8 @@ def main():
         except (OSError,RuntimeError): print(json.dumps({'enabled':False,'running':False,'error':'service offline'}))
         return
     if cmd=='screensaver':
-        os.execv(sys.executable,[sys.executable,str(ROOT/'scripts/screensaver.py')])
+        ensure()
+        os.execv(sys.executable,[sys.executable,str(ROOT/'scripts/screensaver.py'),*args[1:]])
     ensure()
     if cmd=='open':
         # Match the web app URL, which Omarchy's launch-or-focus helper inspects.
