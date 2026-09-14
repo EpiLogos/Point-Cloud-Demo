@@ -15,8 +15,9 @@ npm run dev
 ```
 
 Open the URL printed by Vite (normally `http://localhost:3000`). The native
-Expressions workspace is the root route. The original React workbench remains
-at `/legacy.html` rather than being silently discarded.
+Expressions workspace is the root route. The original React workbench is
+retired legacy reference material at `/legacy.html`: clearly bannered in-app,
+frozen, and excluded from feature work.
 
 ```sh
 npm run build
@@ -47,8 +48,31 @@ provide precise alternatives. Camera gestures do not apply particle forces.
 Bottom-right XYZ reports the pointer's world-space construction-plane position.
 Camera orientation, working plane, arrangement plane and confinement are separate.
 
-Contextual editing exposes Scene, Objects, Field and Motion without resizing the
-canvas. The motion editor opens below it. Scenes have names, saved views and
+Live controls combines the selected formation’s glyph sequence with a personal
+toolbelt of editable parameters. Add controls with their star, reorder with the
+arrow buttons, and use Bind / Follow to choose a named formation or the current
+selection. Toolbelt membership, order and bindings belong to each scene. Interface
+appearance and panel dimensions remain browser preferences.
+
+Select works directly on the canvas. Objects, page text and pointer controls open
+local panels; Studio owns the detailed parameter pages without resizing the canvas. Every slider has an exact numeric input; Enter
+commits, Escape cancels, and invalid empty values leave the field unchanged.
+Studio floats over the canvas beside the right-hand toolbelt. Its focused sections
+separate formations, glyph sequences, physics, pointer forces, relational forces,
+material, resonance and automation. The former separate scene inspector is retired.
+The thin top toolbar centres Library and Studio; formation controls sit at the left,
+with the camera below. Panels have translucent backgrounds, solid focused controls,
+and persistent pointer/keyboard resizing.
+
+The scene strip distinguishes Draft, Saved and Edited since save. **Save scene**
+stores an independent configuration; **Save & make next** starts a copy as a draft.
+**Restore saved** restores that configuration. Scene playback uses saved versions and
+skips unsaved drafts. Browser autosave backs up working edits separately; exporting
+an expression retains both drafts and saved scenes. These are configuration states,
+not particle runtime checkpoints. The starting menu lists recently opened local work
+before the curated compositions. The question-mark button explains this workflow.
+
+ Scenes have names, saved views and
 timing; authored text is optional, with no compulsory opening caption. The scene
 strip sequences whole compositions, not instantaneous physical-state seeking.
 The main workspace has direct still-image and live-video icons and a small
@@ -124,3 +148,30 @@ Configuration restoration does not restore accumulated particle/resonator state.
 The original handoff and UX contracts remain in `field-studies-journeys/docs/`.
 The later Expressions review records the user's visual refinements. Original
 snapshots and legacy browser keys are never overwritten by conversion.
+
+Toolbelts now belong to individual scenes, including their order and named formation
+bindings. **Add properties** opens a searchable multi-select picker with an explicit
+Add selected action; there is no arbitrary 128-property limit. The right-edge ellipsis
+opens the toolbelt. Its header offers property recording, take mode, and pointer controls.
+Select stays a canvas tool; text and objects open their own local controls. Glyph selection
+uses the formation sequence panel and a nested tree of the complete bundled glyph library.
+Studio’s Glyph sequence, Morph, Travelling focus and Automation pages have separate ownership.
+
+The footer expands into a centred scene-image strip with save, copy-next, restoration,
+reordering and timing. It shares a seconds-based expression playhead with recorded
+property tracks. Recording has a two-second count-in: replace reuses the last take’s
+interval, while next section appends from its end. Takes retain held values, interpolate
+changes, and preserve tracks outside the overwritten interval. They remain scene drafts
+until saved. Native defaults and stable entity IDs are recorded through the real parameter
+registry. Existing LFO/ramp layers still apply over those base values. Particle state is
+not rewound by parameter scrubbing. Opening a work surface yields other large surfaces;
+the toolbelt and one work surface can remain visible together, with the footer’s measured
+height reserving their available space. Motion respects reduced-motion preferences.
+
+Automation is presented as one oscillator or one-shot group with multiple parameter targets. The parameter wave button lets you choose an existing group or create a new one; **Add parameter** chooses an explicit target without creating a default Size Distribution lane. Each target retains its own range and blend. Removing the first target preserves the running group clock, including random waves and retriggered ramps, across the remaining targets. Native export/import retains membership.
+
+LFO rate edits preserve accumulated phase. The **Morph drive** source uses the engine’s real toroidal/poloidal phase signal, including interference law, drive shape, depth and dwell. Quantum Superposition, Toroidal Hopf and Chiral Vortex Spiral remain geometry trajectories on the Morph page, where their original names and descriptions are visible. The older manifold scrub is retained for compatibility; the current entity path uses A→B Scrub and sequence controls.
+
+The cycle monitor displays every target in its selected group. Toolbelt controls track evaluated values; direct manipulation offsets a replacing automation’s range, while **Take manual control** releases that target at its current value. Focused inputs remain stable, and slider drags do not replace their DOM nodes. Studio surfaces remain translucent.
+
+Cursor choice and local-panel selection are independent. Text, formation sequence and object panels toggle in one click; placement controls appear only during placement. The retired three-step toolbar toggle and late pointer-inspector reopening patch are removed. Capture uses the camera icon; capture settings use the framed-image icon.

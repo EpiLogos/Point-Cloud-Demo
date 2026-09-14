@@ -1,3 +1,6 @@
+import {computeMorphDrive} from '../../src/engine/morphSignal';
+import {toNativeConfig} from './nativeBridge';
+import {resolvedAutomation} from './automationLinks';
 import {Scene,Entity,Vec3,clamp} from './model.js';
 import {parameter} from './registry.js';
 const TAU=Math.PI*2;
@@ -10,8 +13,9 @@ export function sequenceAt(e:Entity,s:Scene,time:number):{from:number;to:number;
  mix=mix*mix*(3-2*mix);const next=(index+1)%q.steps.length,a=q.steps[index],b=q.steps[next];const p=a.position??{x:0,y:0,z:0},r=b.position??{x:0,y:0,z:0};
  return{from:index,to:next,mix,position:{x:e.position.x+p.x+(r.x-p.x)*mix,y:e.position.y+p.y+(r.y-p.y)*mix,z:e.position.z+p.z+(r.z-p.z)*mix},text:a.text,nextText:b.text,shape:a.shape,nextShape:b.shape};
 }
-export function evaluateParameters(s:Scene,time:number){const p={...s.field.params};for(const l of s.automation){if(!l.enabled||!l.target.startsWith('field.'))continue;const key=l.target.slice(6);if(!(key in p))continue;let v=0;
+export function evaluateParameters(s:Scene,time:number){const p={...s.field.params};for(const authored of s.automation){const l=resolvedAutomation(s.automation,authored);if(!l.enabled||!l.target.startsWith('field.'))continue;const key=l.target.slice(6);if(!(key in p))continue;let v=0;
  if(l.type==='ramp'){if(l.firedAt===null)continue;let t=(time-l.firedAt-l.delay)/Math.max(.01,l.duration);if(t<0)continue;if(l.loop==='loop')t%=1;else if(l.loop==='pingpong'){t%=2;t=t>1?2-t:t;}else t=clamp(t,0,1);v=t*t*(3-2*t);}
+ else if(l.wave==='morph'){const tm=toNativeConfig(s).toroidalMorph!;v=computeMorphDrive(tm,(s.engine.autoOscillate?time*(tm.oscillationSpeed??0)*TAU:0)+(tm.toroidalPhase??0),(s.engine.autoOscillate?time*(tm.poloidalRate??0)*TAU:0)+(tm.poloidalPhase??0)).progress;}
  else {const phase=time*l.rate+l.phase,t=((phase%1)+1)%1;v=l.wave==='sine'?(1-Math.cos(t*TAU))/2:l.wave==='triangle'?1-Math.abs(t*2-1):l.wave==='square'?(t<.5?0:1):l.wave==='saw'?t:l.wave==='steps'?Math.floor(t*5)/4:(1+Math.sin(phase*2.7)*Math.cos(phase*1.17))/2;}
  const n=l.min+(l.max-l.min)*v;p[key]=l.blend==='replace'?n:l.blend==='add'?p[key]+n:p[key]*n;
  const def=parameter(key);if(def)p[key]=clamp(p[key],def.min,def.max);

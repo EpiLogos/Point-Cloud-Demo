@@ -93,6 +93,7 @@ function migrateAutomations(raw: unknown): AutomationLane[] {
     .filter((l) => l && typeof l === 'object' && typeof (l as any).path === 'string')
     .map((l: any, i: number) => ({
       id: typeof l.id === 'string' ? l.id : `auto_migrated_${i}_${Date.now().toString(36)}`,
+      ...(typeof l.clockId === 'string' && l.clockId ? {clockId:l.clockId} : {}),
       path: l.path,
       enabled: l.enabled !== false,
       type: l.type === 'oneShot' ? 'oneShot' : 'lfo',

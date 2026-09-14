@@ -19,6 +19,7 @@ import {
   sampleVolumetric3DNodalPoints,
   evalHarmonicSpectrum,
 } from './cymatics';
+import { sampleImageSource, sampleAlphaSource, SOURCE_WORK_MAX, type SourceAnalysis } from './sourceSampling';
 
 export interface BakeResult {
   textureA: THREE.DataTexture;
@@ -35,6 +36,8 @@ export const FALLBACK_FONT_STACK =
 export class GlyphSampler {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
+  /** Bounded scratch buffer for image source normalization. */
+  private workCanvas: HTMLCanvasElement = document.createElement('canvas');
   private targetCache = new Map<
     string,
     {
@@ -1221,7 +1224,8 @@ export class GlyphSampler {
   }
 
   /**
-   * Samples pixel density from custom user image (Sobel edges, luminance, or silhouette)
+   * Samples pixel density from a custom user image through the shared
+   * normalization law (background estimate, polarity, crop, mode shaping).
    */
   public rasterizeCustomImage(
     img: CanvasImageSource | ImageData,
@@ -1234,115 +1238,40 @@ export class GlyphSampler {
   ): {
     candidates: Array<{ x: number; y: number; density: number }>;
     center: THREE.Vector2;
+    analysis: SourceAnalysis;
   } {
-    const w = this.canvas.width;
-    const h = this.canvas.height;
-    const ctx = this.ctx;
-    ctx.clearRect(0, 0, w, h);
+    const { px, w, h } = this.drawToWorkBuffer(img);
+    const sampled = sampleImageSource(px, w, h, options);
+    return { candidates: sampled.candidates, center: new THREE.Vector2(0, 0), analysis: sampled.analysis };
+  }
 
-    const mode = options.mode || 'luminance';
-    const threshold = options.threshold ?? 0.30;
-    const invert = options.invert ?? false;
-    const scale = options.scale ?? 0.85;
-
+  /** Bounded working copy: sampling never touches raw source resolution. */
+  private drawToWorkBuffer(img: CanvasImageSource | ImageData): { px: Uint8ClampedArray; w: number; h: number } {
+    const naturalW = (img as HTMLImageElement).naturalWidth || (img as HTMLCanvasElement).width || (img as ImageData).width || SOURCE_WORK_MAX;
+    const naturalH = (img as HTMLImageElement).naturalHeight || (img as HTMLCanvasElement).height || (img as ImageData).height || SOURCE_WORK_MAX;
+    const fit = Math.min(1, SOURCE_WORK_MAX / Math.max(naturalW, naturalH));
+    const w = Math.max(2, Math.round(naturalW * fit));
+    const h = Math.max(2, Math.round(naturalH * fit));
+    const work = this.workCanvas.getContext('2d', { willReadFrequently: true });
+    if (!work) throw new Error('Failed to create offscreen 2D canvas context for source sampling');
+    if (this.workCanvas.width !== w || this.workCanvas.height !== h) {
+      this.workCanvas.width = w;
+      this.workCanvas.height = h;
+    }
+    work.clearRect(0, 0, w, h);
     if (img instanceof ImageData) {
-      ctx.putImageData(img, (w - img.width) / 2, (h - img.height) / 2);
-    } else {
-      const naturalW = (img as HTMLImageElement).naturalWidth || (img as HTMLCanvasElement).width || w;
-      const naturalH = (img as HTMLImageElement).naturalHeight || (img as HTMLCanvasElement).height || h;
-      const aspect = naturalW / Math.max(1, naturalH);
-      let drawW = w * scale;
-      let drawH = drawW / aspect;
-      if (drawH > h * scale) {
-        drawH = h * scale;
-        drawW = drawH * aspect;
-      }
-      const dx = (w - drawW) / 2;
-      const dy = (h - drawH) / 2;
-      ctx.drawImage(img, dx, dy, drawW, drawH);
+      work.putImageData(img, 0, 0);
+      const drawn = work.getImageData(0, 0, w, h);
+      return { px: drawn.data, w, h };
     }
-
-    const imgData = ctx.getImageData(0, 0, w, h);
-    const px = imgData.data;
-    const cx = w / 2;
-    const cy = h / 2;
-
-    const candidates: Array<{ x: number; y: number; density: number }> = [];
-
-    if (mode === 'edgeSobel') {
-      const step = 2;
-      for (let y = step; y < h - step; y += step) {
-        for (let x = step; x < w - step; x += step) {
-          let gx = 0;
-          let gy = 0;
-          for (let ky = -1; ky <= 1; ky++) {
-            for (let kx = -1; kx <= 1; kx++) {
-              const idx = ((y + ky) * w + (x + kx)) * 4;
-              const lum = (px[idx] * 0.299 + px[idx + 1] * 0.587 + px[idx + 2] * 0.114) / 255.0;
-              const alpha = px[idx + 3] / 255.0;
-              const val = lum * alpha;
-
-              const weightX = (kx === 0 ? 0 : (kx < 0 ? -1 : 1)) * (ky === 0 ? 2 : 1);
-              const weightY = (ky === 0 ? 0 : (ky < 0 ? -1 : 1)) * (kx === 0 ? 2 : 1);
-              gx += val * weightX;
-              gy += val * weightY;
-            }
-          }
-          let edgeMag = Math.sqrt(gx * gx + gy * gy);
-          if (invert) edgeMag = 1.0 - edgeMag;
-          if (edgeMag > threshold * 0.45) {
-            candidates.push({
-              x: x - cx,
-              y: -(y - cy),
-              density: Math.min(1.0, edgeMag * 1.5),
-            });
-          }
-        }
-      }
-    } else {
-      const step = 2;
-      for (let y = 0; y < h; y += step) {
-        for (let x = 0; x < w; x += step) {
-          const idx = (y * w + x) * 4;
-          const alpha = px[idx + 3] / 255.0;
-          if (alpha < 0.05) continue;
-
-          let val: number;
-          if (mode === 'silhouette') {
-            val = alpha;
-          } else {
-            val = (px[idx] * 0.299 + px[idx + 1] * 0.587 + px[idx + 2] * 0.114) / 255.0;
-          }
-
-          if (invert) val = 1.0 - val;
-
-          if (val >= threshold) {
-            candidates.push({
-              x: x - cx,
-              y: -(y - cy),
-              density: val,
-            });
-          }
-        }
-      }
-    }
-
-    if (candidates.length === 0) {
-      for (let i = 0; i < 500; i++) {
-        const ang = (i / 500) * Math.PI * 2;
-        candidates.push({
-          x: Math.cos(ang) * 120,
-          y: Math.sin(ang) * 120,
-          density: 0.8,
-        });
-      }
-    }
-
-    return { candidates, center: new THREE.Vector2(0, 0) };
+    work.drawImage(img, 0, 0, w, h);
+    const drawn = work.getImageData(0, 0, w, h);
+    return { px: drawn.data, w, h };
   }
 
   /**
-   * Samples pixel density from multi-line ASCII art text
+   * Samples pixel density from multi-line ASCII art text through the same
+   * normalization law as images (crop, stage units, density = alpha).
    */
   public rasterizeAscii(
     asciiText: string,
@@ -1354,6 +1283,7 @@ export class GlyphSampler {
   ): {
     candidates: Array<{ x: number; y: number; density: number }>;
     center: THREE.Vector2;
+    analysis: SourceAnalysis;
   } {
     const w = this.canvas.width;
     const h = this.canvas.height;
@@ -1385,40 +1315,11 @@ export class GlyphSampler {
     }
 
     const imgData = ctx.getImageData(0, 0, w, h);
-    const px = imgData.data;
-    const cx = w / 2;
-    const cy = h / 2;
-
-    const candidates: Array<{ x: number; y: number; density: number }> = [];
-    const step = 2;
-
-    for (let y = 0; y < h; y += step) {
-      for (let x = 0; x < w; x += step) {
-        const idx = (y * w + x) * 4;
-        const originalAlpha = px[idx + 3] / 255.0;
-        const alpha = options.invert ? 1 - originalAlpha : originalAlpha;
-        if (alpha > 0.08) {
-          candidates.push({
-            x: x - cx,
-            y: -(y - cy),
-            density: alpha,
-          });
-        }
-      }
-    }
-
-    if (candidates.length === 0) {
-      for (let i = 0; i < 500; i++) {
-        const ang = (i / 500) * Math.PI * 2;
-        candidates.push({
-          x: Math.cos(ang) * 120,
-          y: Math.sin(ang) * 120,
-          density: 0.8,
-        });
-      }
-    }
-
-    return { candidates, center: new THREE.Vector2(0, 0) };
+    const sampled = sampleAlphaSource(imgData.data, w, h, {
+      invert: options.invert,
+      cell: { w: charWidth, h: lineHeight },
+    });
+    return { candidates: sampled.candidates, center: new THREE.Vector2(0, 0), analysis: sampled.analysis };
   }
 
   /**

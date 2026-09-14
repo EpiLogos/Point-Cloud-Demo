@@ -2,16 +2,6 @@ import {cataloguePalettes,catalogueGlyphs,catalogueSequences,runtimeControls} fr
 import {NATIVE_LAYOUTS} from './nativeFeatures.js';
 import {esc} from './icons.js';
 
-const refinementStyle=document.createElement('style');
-refinementStyle.textContent='#inspector[data-pointer-live="true"]{display:flex!important}.pointer-live-badge{font-size:8px;letter-spacing:.06em;color:var(--accent);margin-right:auto}.pointer-editor-live #inspector{pointer-events:auto}@media(max-width:620px){#inspector[data-pointer-live="true"]{width:min(310px,calc(100vw - 54px))}}';
-document.head.append(refinementStyle);
-
-/**
- * Late-bound UI accommodations for native capabilities that do not belong in the
- * engine adapter. This deliberately decorates the approved inspector rather than
- * introducing another settings surface or another simulation owner.
- */
-let preservePointerInspector=false;
 let enhancing=false;
 
 function html(parent:Element,markup:string){
@@ -76,7 +66,7 @@ function enhanceInspector(){
 
   // Native chain presets remain ordinary editable links after application.
   const motion=content.querySelector('.motion-content');
-  const activeMotion=content.querySelector<HTMLButtonElement>('.motion-tabs button.active')?.dataset.value;
+  const section=document.querySelector<HTMLButtonElement>('[data-action="studio-section"][aria-current="page"]')?.dataset.value;const activeMotion=section==='motion'?'morph':section;
   if(activeMotion==='sequence'&&motion&&!motion.querySelector('[data-detail="sequence-presets"]')){
    const first=motion.querySelector('section');if(first)html(first,catalogueSequences());
   }
@@ -94,39 +84,8 @@ function enhanceInspector(){
    input.closest('.number-field')?.insertAdjacentHTML('afterend',templateOptions(prefix));
   }
 
-  if(preservePointerInspector){
-   const inspector=document.getElementById('inspector');
-   if(inspector){inspector.hidden=false;inspector.dataset.pointerLive='true';}
-   const footer=document.querySelector('#inspector .inspector-footer');
-   if(footer&&!footer.querySelector('.pointer-live-badge'))html(footer,'<span class="pointer-live-badge">● Interact live</span>');
-  }
  } finally {enhancing=false;}
 }
-
-function retainPointerInspector(){
- if(!preservePointerInspector)return;
- const inspector=document.getElementById('inspector');if(!inspector)return;
- if(inspector.hidden)inspector.hidden=false;
- inspector.dataset.pointerLive='true';document.body.classList.add('pointer-editor-live');
- enhanceInspector();
-}
-function clearPointerInspector(){
- preservePointerInspector=false;document.body.classList.remove('pointer-editor-live');
- document.getElementById('inspector')?.removeAttribute('data-pointer-live');
-}
-
-// Capture phase records the panel before the controller switches into direct Interact.
-document.addEventListener('click',event=>{
- const target=(event.target as Element).closest<HTMLElement>('[data-action],[data-rail]');if(!target)return;
- const action=target.dataset.action,rail=target.dataset.rail;
- if(action==='tool-interact'||rail==='interact'){
-  const inspector=document.getElementById('inspector');
-  preservePointerInspector=!!inspector&&!inspector.hidden;
-  if(preservePointerInspector)queueMicrotask(retainPointerInspector);
-  return;
- }
- if(action==='close-inspector'||action==='edit'||(rail&&rail!=='interact')||action==='tab')clearPointerInspector();
-},true);
 
 document.addEventListener('input',event=>{
  const input=event.target as HTMLInputElement;if(!input.hasAttribute('data-glyph-search'))return;
@@ -135,16 +94,9 @@ document.addEventListener('input',event=>{
  root.querySelectorAll<HTMLDetailsElement>('.group-content>details').forEach(group=>{group.hidden=!Array.from(group.querySelectorAll<HTMLElement>('[data-action="native-glyph"]')).some(button=>!button.hidden);if(q&&!group.hidden)group.open=true;});
 });
 
-let observedInspector:Element|null=null,observedContent:Element|null=null,patchedApi:any=null;
-function patchPublicState(){
- const api=(window as any).__FIELD_STUDIES__;if(!api||api===patchedApi)return;patchedApi=api;
- const getState=api.getState.bind(api);api.getState=()=>{const state=getState();return preservePointerInspector?{...state,editing:true,inspectorOpen:true,railExpanded:true}:state;};
- const openEditor=api.openEditor.bind(api);api.openEditor=(tab:any)=>{clearPointerInspector();return openEditor(tab);};
-}
+let observedContent:Element|null=null;
 function installObservers(){
- patchPublicState();
- const inspector=document.getElementById('inspector'),content=document.getElementById('inspector-content');
- if(inspector&&inspector!==observedInspector){observedInspector=inspector;new MutationObserver(()=>{if(preservePointerInspector)queueMicrotask(retainPointerInspector);}).observe(inspector,{attributes:true,attributeFilter:['hidden']});}
+ const content=document.getElementById('inspector-content');
  if(content&&content!==observedContent){observedContent=content;new MutationObserver(()=>queueMicrotask(enhanceInspector)).observe(content,{childList:true,subtree:true});queueMicrotask(enhanceInspector);}
 }
 new MutationObserver(installObservers).observe(document.documentElement,{childList:true,subtree:true});

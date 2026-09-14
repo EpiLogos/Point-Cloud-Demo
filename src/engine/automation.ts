@@ -1,3 +1,4 @@
+import type {MorphDriveState} from './morphSignal';
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -13,6 +14,10 @@
 import { AutomationLane, AutomationEasing, AutomationWaveform, PointCloudConfig } from './types';
 
 export interface LaneRuntime {
+  cycle?: number;
+  lastTime?: number;
+  phaseOffset?: number;
+  rateHz?: number;
   startTime: number;        // engine time (s) at which the current ramp started
   token: number;            // last fireToken seen
   randSeed: number;
@@ -139,7 +144,7 @@ export function ease(kind: AutomationEasing, u: number): number {
 
 // ---------------------------------------------------------------- evaluation
 function getRuntime(rt: AutomationRuntime, lane: AutomationLane, now: number): LaneRuntime {
-  let r = rt.lanes.get(lane.id);
+  let r = rt.lanes.get(lane.clockId ?? lane.id);
   if (!r) {
     r = {
       startTime: now + (lane.delayS ?? 0),
@@ -149,7 +154,7 @@ function getRuntime(rt: AutomationRuntime, lane: AutomationLane, now: number): L
       lastValue: 0,
       nextValue: 0,
     };
-    rt.lanes.set(lane.id, r);
+    rt.lanes.set(lane.clockId ?? lane.id, r);
   } else if ((lane.fireToken ?? 0) !== r.token) {
     r.token = lane.fireToken ?? 0;
     r.startTime = now + (lane.delayS ?? 0);
@@ -163,7 +168,13 @@ export function evaluateLane(lane: AutomationLane, now: number, rt: AutomationRu
 
   if (lane.type === 'lfo') {
     const rate = lane.rateHz ?? 0.25;
-    const cycle = now * rate + (lane.phase ?? 0);
+    const phase = lane.phase ?? 0;
+    // Integrate frequency instead of multiplying the entire elapsed time by a new rate.
+    // A linked target reads the same accumulator at the same timestamp.
+    const cycle = r.cycle === undefined || now < (r.lastTime ?? now)
+      ? now * rate + phase
+      : r.cycle + (now - (r.lastTime ?? now)) * (r.rateHz ?? rate) + phase - (r.phaseOffset ?? phase);
+    r.cycle=cycle;r.lastTime=now;r.phaseOffset=phase;r.rateHz=rate;
     const w = waveform(lane.waveform ?? 'sine', cycle, r);
     const lo = lane.min ?? 0;
     const hi = lane.max ?? 1;
@@ -205,13 +216,14 @@ export function applyAutomations(
   config: PointCloudConfig,
   lanes: AutomationLane[] | undefined,
   now: number,
-  rt: AutomationRuntime
+  rt: AutomationRuntime,
+  morphDrive?: MorphDriveState
 ): { config: PointCloudConfig; live: AutomationLiveValue[] } {
   if (!lanes || lanes.length === 0) return { config, live: [] };
   let out: PointCloudConfig = config;
   const live: AutomationLiveValue[] = [];
   for (const lane of lanes) {
-    const v = evaluateLane(lane, now, rt);
+    const v = lane.waveform==='morph'&&lane.type==='lfo' ? (lane.enabled&&morphDrive?{id:lane.id,path:lane.path,value:(lane.min??0)+((lane.max??1)-(lane.min??0))*morphDrive.progress,phase:morphDrive.cycleFraction,done:false}:null) : evaluateLane(lane, now, rt);
     if (!v) continue;
     const base = readPath(config, lane.path);
     let value = v.value;
@@ -222,7 +234,7 @@ export function applyAutomations(
   }
   // prune runtime for removed lanes
   if (rt.lanes.size > lanes.length * 2 + 8) {
-    const ids = new Set(lanes.map((l) => l.id));
+    const ids = new Set(lanes.map((l) => l.clockId ?? l.id));
     for (const k of Array.from(rt.lanes.keys())) if (!ids.has(k)) rt.lanes.delete(k);
   }
   return { config: out, live };

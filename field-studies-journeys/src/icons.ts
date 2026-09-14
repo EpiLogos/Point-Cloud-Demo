@@ -1,4 +1,4 @@
-const paths:Record<string,string>={
+const paths:Record<string,string>={frame:'M3 3h18v18H3ZM6 16l5-6 4 4 3-3M7 7h.01',record:'M12 5a7 7 0 1 0 0 14 7 7 0 0 0 0-14',
  library:'M4 4v16h4V4ZM11 4v16h4V4ZM18 5l3 14',modes:'M3 5h7v6H3ZM14 5h7v6h-7ZM3 15h7v6H3ZM14 15h7v6h-7Z',
  sequence:'M3 5h4v14H3ZM10 5h4v14h-4ZM17 5h4v14h-4Z',branch:'M6 3v13a4 4 0 0 0 8 0V9m-4 4 4-4 4 4M4 3h4',
  code:'M9 6 3 12l6 6M15 6l6 6-6 6M14 3l-4 18',save:'M4 3h13l4 4v14H3V3ZM7 3v6h9V3M7 21v-8h10v8',
