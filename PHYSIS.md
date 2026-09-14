@@ -1,11 +1,12 @@
 # Physis on Omarchy
 
-Physis hosts the **current `master` Expressions application**, based on `569a9eb`, with local media storage, a video screensaver and a click-through Wayland renderer. The original editor, native engine, built-in capture workflow, expression library, and offline export remain the source of truth. The old React workbench is still at `/legacy.html` as upstream specifies.
+Physis hosts the **current `master` Expressions application**, based on `569a9eb`, with local media storage, a live generative screensaver and a click-through Wayland renderer. The original editor, native engine, built-in capture workflow, expression library, and offline export remain the source of truth. The old React workbench is still at `/legacy.html` as upstream specifies.
 
 ```sh
 physis                       # open/focus the Expressions studio
 physis overlay toggle        # or: on / off
-physis screensaver           # preview the video screensaver
+physis screensaver           # live scene with slow ambient motion
+physis screensaver --video   # optional playback of exported recordings
 physis library               # open the output directory
 physis status
 ```
@@ -16,7 +17,11 @@ Use the application's existing **Capture image** icon and **Record video → Sto
 
 `scenes/` stores the full `oi.journey` expression, selected scene index, and current camera in a version-2 Physis envelope. Capture metadata links to that expression and preserves output settings. Older version-1 Physis scene configurations remain readable through the current engine's native migration. Saving is configuration persistence, not a simulation checkpoint.
 
-Completed videos feed the existing Omarchy idle integration at 150 seconds; locking remains at 300 seconds. Playback shuffles and loops complete Physis recordings. The original themed O:I videos remain the fallback before recordings exist. The player retains the `org.omarchy.screensaver` app ID, does not inhibit locking, and dismisses on keyboard/button input or pointer movement. It opens on the active monitor. Live desktop overlays are separate surfaces on every monitor.
+The Omarchy screensaver starts the live native engine after 150 seconds of inactivity. It uses the selected desktop scene (or the default expression), with at most 16,000 particles, slow camera drift and gentle 47–83-second dispersion, circulation and speed cycles. Existing automation lanes take precedence. These additions exist only in memory; saved expressions are unchanged. Rendering targets 60 fps and lowers pixel ratio from 0.85 toward 0.5 if measured throughput falls below 40 fps. This is a target, not a guarantee on a busy machine.
+
+The fullscreen host retains `org.omarchy.screensaver`, does not inhibit locking, and dismisses on keys, mouse buttons, scrolling or pointer movement (with a one-second movement grace). It opens on the active monitor. The desktop overlay pauses while the saver runs. Automatic locking is currently configured at two hours in the user's Omarchy settings.
+
+`physis screensaver --video` retains the exported-video playlist. The original themed O:I videos remain its fallback before recordings exist. Live desktop overlays are separate click-through surfaces on every monitor.
 
 ```sh
 physis quality gentle        # 20 fps / <= 50k requested particles / 0.75 pixel ratio
@@ -58,16 +63,19 @@ For removal, turn off the overlay, run `systemctl --user disable --now physis`, 
 - `field-studies-journeys/src/physis.ts`: optional desktop controls and output sink, integrated with existing capture actions.
 - `src/physis/render.ts`: a minimal renderer using the current production adapter, with bounded frame rate and no editor UI.
 - `server/index.mjs`: loopback-only production host, versioned scene storage, atomic media publication, SSE and renderer lifecycle. Foreign origins, unexpected Host headers and writes lacking the client header are rejected.
-- `desktop/overlay.c`: transparent per-monitor surfaces, no input region or keyboard focus, native readiness reporting.
+- `desktop/overlay.c`: transparent per-monitor surfaces, no input region or keyboard focus, native readiness reporting, plus an input-dismissable fullscreen screensaver mode.
 - `scripts/`: build, reversible user installation, command and screensaver.
 
 Run the upstream tests documented in [README.md](README.md), plus:
 
 ```sh
+npx tsx --test tests/ambient.test.ts
 npm run test:physis
 npm run test:physis:browser
 ```
 
-The Physis browser test exercises the current Expressions app, both PNG alpha modes, decoded animated video, complete expression provenance, disk load, and the production overlay page. It uses isolated test storage and 2,048-particle fixtures with software WebGL. Device-specific monitor hotplug, scaling and fullscreen behavior need hardware verification.
+The Physis browser test exercises the current Expressions app, both PNG alpha modes, decoded animated video, complete expression provenance, disk load, the production overlay page, and advancing frames in the live screensaver. It uses isolated test storage and 2,048-particle fixtures with software WebGL. Device-specific monitor hotplug, scaling and fullscreen behavior need hardware verification.
 
 Videos are live performances: browser/encoder speed determines actual frame rate and duration. The upstream limits and hidden-tab/resize stop behavior apply. There is no claim of deterministic replay, seamless physical loops or runtime checkpoints. Earlier Physis work based on `main` is preserved only in local checkpoint `bc486a2` on `feat/physis-desktop`; the active integration is based on `master`.
+
+Live screensaver verification on this machine: native Wayland preview at 16,000 particles and 0.75 pixel ratio measured 43–58 fps after startup, under concurrent database-import load. The host advertised the expected fullscreen app ID, and Escape dismissed it. The browser test checks distinct rendered frames and advancing simulation time. These measurements do not guarantee throughput for every scene or workload.

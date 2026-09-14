@@ -30,7 +30,7 @@ test('master Expressions captures, scene provenance, desktop library, and produc
  await page.locator('#record-button').click();
  await expect(page.getByRole('dialog',{name:'Review recording'})).toBeVisible();
  await page.getByRole('button',{name:'Save recording',exact:true}).click();
- await expect(page.getByRole('status')).toHaveText('Video saved to the Physis library and screensaver.',{timeout:15000});
+ await expect(page.getByRole('status')).toHaveText('Video saved to the Physis library.',{timeout:15000});
  media=await (await request.get('/api/media')).json();const video=media.find((m:any)=>m.kind==='videos');expect(video.captureSettings).toBeTruthy();
  const bytes=await (await request.get(video.url)).body();writeFileSync('/tmp/physis-master-test.webm',bytes);
  const info=JSON.parse(execFileSync('ffprobe',['-v','error','-show_streams','-of','json','/tmp/physis-master-test.webm'],{encoding:'utf8'}));expect(info.streams[0].width).toBe(1280);
@@ -47,5 +47,21 @@ test('master Expressions captures, scene provenance, desktop library, and produc
  const ready=page.waitForEvent('console',msg=>msg.text()==='PHYSIS_ENGINE_READY');await page.goto('/render');await ready;
  expect(await page.locator('canvas').evaluate(c=>getComputedStyle(c).backgroundColor)).toBe('rgba(0, 0, 0, 0)');
  await page.screenshot({path:'build/master-overlay-verified.png',omitBackground:true});
+ expect(errors).toEqual([]);
+});
+
+test('live screensaver advances real frames with bounded ambient motion',async({page,request})=>{
+ const expression=fieldStudies();expression.scenes.forEach(s=>s.field.params.count=2048);
+ const saved=await (await request.post('/api/scenes',{headers:{'X-Physis-Client':'1'},data:{expression,sceneIndex:7}})).json();
+ await request.post('/api/overlay',{headers:{'X-Physis-Client':'1'},data:{sceneId:saved.id}});
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/render?screensaver=1');
+ await page.waitForFunction(()=>!!document.querySelector('canvas')?.dataset.stats);
+ const before=JSON.parse(await page.locator('canvas').getAttribute('data-stats')??'{}');
+ expect(before.mode).toBe('live-screensaver');expect(before.particles).toBeLessThanOrEqual(16000);
+ const frameA=await page.screenshot();
+ await page.waitForFunction(time=>JSON.parse(document.querySelector('canvas')!.dataset.stats!).simTime>time+1,before.simTime);
+ const frameB=await page.screenshot();expect(frameA.equals(frameB)).toBe(false);
+ expect(await page.locator('body').evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(8, 10, 12)');
  expect(errors).toEqual([]);
 });
