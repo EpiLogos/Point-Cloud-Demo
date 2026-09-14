@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import StudioTools from './physis/StudioTools';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Sparkles,
@@ -886,8 +887,19 @@ export default function App() {
 
   // Configuration state
   const [config, setConfig] = useState<PointCloudConfig>(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('physis:working-config') || 'null');
+      if (saved && typeof saved === 'object' && saved.glyph) return { ...DEFAULT_CONFIG, ...saved };
+    } catch { /* Fall back to the default scene if local storage is unavailable. */ }
     return { ...DEFAULT_CONFIG };
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try { localStorage.setItem('physis:working-config', JSON.stringify(config)); } catch {}
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [config]);
 
   // UI Visibility State (Zen Mode)
   const [isUIHidden, setIsUIHidden] = useState<boolean>(false);
@@ -1172,6 +1184,8 @@ export default function App() {
         className="w-full h-full inset-0 z-0"
       />
 
+      <StudioTools engine={engine} config={config} onLoad={setConfig} hidden={isUIHidden} />
+
       {/* 3D Camera Gimbal & Orbit Control */}
       {config.spatialChakra?.enabled && (
         <CameraOrbControl
@@ -1223,11 +1237,11 @@ export default function App() {
       {/* 2. Top Header Overlay (Hideable) */}
       <header
         id="app-header"
-        className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-4 pointer-events-none transition-all duration-500 ${
+        className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between gap-6 px-6 py-4 pointer-events-none transition-all duration-500 ${
           isUIHidden ? '-translate-y-24 opacity-0' : 'translate-y-0 opacity-100'
         }`}
       >
-        <div className="flex items-center gap-4 pointer-events-auto">
+        <div className="flex shrink-0 items-center gap-4 pointer-events-auto">
           <div>
             <div className="flex items-center gap-2">
               <div
@@ -1236,17 +1250,17 @@ export default function App() {
                 }`}
               />
               <h1 className="text-xs tracking-[0.2em] font-mono uppercase font-bold">
-                Fluid Dynamic Typographic Point-Cloud
+                Physis
               </h1>
             </div>
             <p className="text-[11px] font-mono opacity-50 tracking-wider mt-0.5">
-              262,144 PARTICLES · GPGPU PING-PONG FBO · DYNAMIC ATTRACTORS & RELATIONAL FORCES
+              Point-cloud studio
             </p>
           </div>
         </div>
 
         {/* Quick Toolbar */}
-        <div className="flex items-center gap-2 pointer-events-auto">
+        <div className="flex min-w-0 items-center gap-2 overflow-x-auto pointer-events-auto">
           {/* Quick Glyph Pair Pills */}
           <div
             className={`hidden lg:flex items-center rounded-lg p-1 border ${

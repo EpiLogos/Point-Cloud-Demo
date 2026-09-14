@@ -118,6 +118,34 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
 };
 
 export class PointCloudField {
+  private frameListeners = new Set<() => void>();
+  private maxFps = 60;
+  private lastFrameAt = 0;
+  private paused = false;
+
+  public setQuality(fps = 30, pixelRatio = 1) {
+    this.maxFps = Math.max(1, Math.min(60, fps));
+    this.renderer.setPixelRatio(Math.max(0.5, Math.min(2, pixelRatio)));
+    this.resize();
+  }
+
+  public setPaused(paused: boolean) {
+    if (this.paused === paused || this.isDestroyed) return;
+    this.paused = paused;
+    if (paused) {
+      if (this.animFrameId !== null) cancelAnimationFrame(this.animFrameId);
+      this.animFrameId = null;
+    } else {
+      this.clock.getDelta();
+      this.tick();
+    }
+  }
+
+  public onFrame(listener: () => void) {
+    this.frameListeners.add(listener);
+    return () => { this.frameListeners.delete(listener); };
+  }
+
   public canvas: HTMLCanvasElement;
   public config: PointCloudConfig;
 
@@ -755,10 +783,13 @@ export class PointCloudField {
   }
 
   private tick = () => {
-    if (this.isDestroyed) return;
+    if (this.isDestroyed || this.paused) return;
 
     this.animFrameId = requestAnimationFrame(this.tick);
 
+    const now = performance.now();
+    if (now - this.lastFrameAt < 1000 / this.maxFps - 1) return;
+    this.lastFrameAt = now;
     const delta = Math.min(this.clock.getDelta(), 0.05);
     const elapsedTime = this.clock.getElapsedTime();
 
@@ -865,6 +896,7 @@ export class PointCloudField {
 
     // Render final scene
     this.renderer.render(this.scene, this.camera);
+    for (const listener of this.frameListeners) listener();
   };
 
   // --- Chaining Mode Engine Methods ---
@@ -1532,6 +1564,7 @@ export class PointCloudField {
 
   public destroy() {
     this.isDestroyed = true;
+    this.frameListeners.clear();
     if (this.animFrameId !== null) {
       cancelAnimationFrame(this.animFrameId);
       this.animFrameId = null;

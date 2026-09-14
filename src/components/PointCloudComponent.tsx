@@ -133,7 +133,7 @@ export const PointCloudComponent = forwardRef<PointCloudComponentRef, PointCloud
         engine.destroy();
         engineRef.current = null;
       };
-    }, []);
+    }, [props.particleCount]);
 
     // Update onChainUpdate listener if it changes
     useEffect(() => {

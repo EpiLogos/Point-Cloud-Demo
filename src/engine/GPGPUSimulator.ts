@@ -40,14 +40,9 @@ export class GPGPUSimulator {
   constructor(renderer: THREE.WebGLRenderer, particleCount: number = 200000) {
     this.renderer = renderer;
 
-    // Calculate optimal square texture dimensions (e.g., 512x512 = 262,144 or 400x500 etc)
-    const side = Math.ceil(Math.sqrt(particleCount));
-    // Pick nearest power of 2 or clean dimension
-    let texSide = 512;
-    if (side <= 256) texSide = 256;
-    else if (side <= 384) texSide = 384;
-    else if (side <= 512) texSide = 512;
-    else texSide = 640;
+    // WebGL 2 supports NPOT textures. Stay within the requested particle budget
+    // instead of rounding small scenes up to at least 65,536 particles.
+    const texSide = Math.max(1, Math.floor(Math.sqrt(Math.max(1, Math.min(1000000, particleCount)))));
 
     this.texWidth = texSide;
     this.texHeight = texSide;
