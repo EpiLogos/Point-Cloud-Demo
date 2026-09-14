@@ -19,7 +19,7 @@ export interface FieldEngineAdapter {
  withCleanFrame?<T>(copy:()=>T):T;
  inspect?(readParticles?:boolean):unknown;
  projectNative?(point:Vec3):unknown;
- stations?():Array<{index:number;name:string;frequencyHz:number;m:number;n:number;color:string}>;
+ stations?():Array<{id?:string;index:number;name:string;frequencyHz:number;m:number;n:number;color:string;energy?:number;semanticNodeId?:string;affinity?:number}>;
  dispose():void;
 }
 export type EngineFactory=(canvas:HTMLCanvasElement)=>FieldEngineAdapter;
