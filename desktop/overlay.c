@@ -4,10 +4,9 @@
 // A separate native host keeps GPU and web-process failures away from omarchy-shell.
 static GHashTable *windows;
 static gboolean screensaver = FALSE;
-static gint64 launched;
 static void close_saver(GtkWidget *widget, gpointer unused) { if (gtk_main_level()>0) gtk_main_quit(); }
 static gboolean dismiss(GtkWidget *widget, GdkEvent *event, gpointer unused) {
-  if (event->type != GDK_MOTION_NOTIFY || g_get_monotonic_time()-launched > G_USEC_PER_SEC) gtk_main_quit();
+  gtk_main_quit();
   return TRUE;
 }
 static const char *render_url;
@@ -97,29 +96,18 @@ static void monitor_added(GdkDisplay *display, GdkMonitor *monitor, gpointer unu
   } else {
     gtk_widget_add_events(window,GDK_POINTER_MOTION_MASK|GDK_BUTTON_PRESS_MASK|GDK_KEY_PRESS_MASK|GDK_SCROLL_MASK);
     g_signal_connect(window,"key-press-event",G_CALLBACK(dismiss),NULL);
-    g_signal_connect(window,"button-press-event",G_CALLBACK(dismiss),NULL);
-    g_signal_connect(window,"motion-notify-event",G_CALLBACK(dismiss),NULL);
-    g_signal_connect(window,"scroll-event",G_CALLBACK(dismiss),NULL);
     g_signal_connect(view,"key-press-event",G_CALLBACK(dismiss),NULL);
-    g_signal_connect(view,"button-press-event",G_CALLBACK(dismiss),NULL);
-    g_signal_connect(view,"motion-notify-event",G_CALLBACK(dismiss),NULL);
-    g_signal_connect(view,"scroll-event",G_CALLBACK(dismiss),NULL);
   }
   webkit_web_view_load_uri(WEBKIT_WEB_VIEW(view),render_url);
   g_hash_table_insert(windows,g_object_ref(monitor),window);
   gtk_widget_show_all(window);
   if (!screensaver) { input_region(window,NULL); input_region(view,NULL); }
-  else {
-    GdkCursor *cursor=gdk_cursor_new_for_display(display,GDK_BLANK_CURSOR);
-    gdk_window_set_cursor(gtk_widget_get_window(window),cursor);g_object_unref(cursor);
-  }
 }
 static void monitor_removed(GdkDisplay *display,GdkMonitor *monitor,gpointer unused) { g_hash_table_remove(windows,monitor); }
 int main(int argc,char **argv) {
   setvbuf(stdout,NULL,_IOLBF,0);
   screensaver=argc==3 && g_strcmp0(argv[2],"--screensaver")==0;
   if (screensaver) { g_set_prgname("org.omarchy.screensaver"); argc=2; }
-  launched=g_get_monotonic_time();
   gtk_init(&argc,&argv);
   if(argc!=2 || !g_str_has_prefix(argv[1],"http://127.0.0.1:")) { g_printerr("Usage: physis-overlay http://127.0.0.1:PORT/render\n"); return 2; }
   if(!screensaver && !gtk_layer_is_supported()) { g_printerr("Wayland layer-shell is unavailable\n");return 1; }

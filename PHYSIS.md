@@ -19,7 +19,7 @@ Use the application's existing **Capture image** icon and **Record video → Sto
 
 The Omarchy screensaver starts the live native engine after 150 seconds of inactivity. It uses the selected desktop scene (or the default expression), with at most 16,000 particles, slow camera drift and gentle 47–83-second dispersion, circulation and speed cycles. Existing automation lanes take precedence. These additions exist only in memory; saved expressions are unchanged. Rendering targets 60 fps and lowers pixel ratio from 0.85 toward 0.5 if measured throughput falls below 40 fps. This is a target, not a guarantee on a busy machine.
 
-The fullscreen host retains `org.omarchy.screensaver`, does not inhibit locking, and dismisses on keys, mouse buttons, scrolling or pointer movement (with a one-second movement grace). It opens on the active monitor. The desktop overlay pauses while the saver runs. Automatic locking is currently configured at two hours in the user's Omarchy settings.
+The fullscreen host retains `org.omarchy.screensaver`, does not inhibit locking, and closes on any keyboard key, including Space and Enter. Mouse movement interacts with the field using the scene’s native pointer mode; mouse buttons and scrolling do not close it. After five minutes without mouse movement, the engine and animation loop pause on the last frame. Moving the mouse resumes the same simulation without catching up the idle time. It opens on the active monitor. The desktop overlay pauses while the saver runs. Automatic locking is currently configured at two hours in the user's Omarchy settings.
 
 `physis screensaver --video` retains the exported-video playlist. The original themed O:I videos remain its fallback before recordings exist. Live desktop overlays are separate click-through surfaces on every monitor.
 
@@ -63,7 +63,7 @@ For removal, turn off the overlay, run `systemctl --user disable --now physis`, 
 - `field-studies-journeys/src/physis.ts`: optional desktop controls and output sink, integrated with existing capture actions.
 - `src/physis/render.ts`: a minimal renderer using the current production adapter, with bounded frame rate and no editor UI.
 - `server/index.mjs`: loopback-only production host, versioned scene storage, atomic media publication, SSE and renderer lifecycle. Foreign origins, unexpected Host headers and writes lacking the client header are rejected.
-- `desktop/overlay.c`: transparent per-monitor surfaces, no input region or keyboard focus, native readiness reporting, plus an input-dismissable fullscreen screensaver mode.
+- `desktop/overlay.c`: transparent per-monitor surfaces, no input region or keyboard focus, native readiness reporting, plus an keyboard-dismissable, mouse-interactive fullscreen screensaver mode.
 - `scripts/`: build, reversible user installation, command and screensaver.
 
 Run the upstream tests documented in [README.md](README.md), plus:
