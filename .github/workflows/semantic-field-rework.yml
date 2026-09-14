@@ -1,0 +1,41 @@
+name: Semantic field rework
+on:
+  push:
+    branches: [agent/semantic-field-cymatics-chakra-color]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: semantic-field-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Package exact source
+        run: git archive --format=tar.gz HEAD > /tmp/semantic-field-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-field-source
+          path: /tmp/semantic-field-source.tar.gz
+          retention-days: 14
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Engine, shell and build gates
+        run: npm run lint && npm test && npm run build && npm run test:journeys
+      - name: Upload review build
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-field-review
+          path: |
+            dist/
+            field-studies-journeys/field-studies.html
+          retention-days: 14
