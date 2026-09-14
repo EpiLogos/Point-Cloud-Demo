@@ -252,3 +252,8 @@ The toolbelt is shared by every scene in an expression. A property's globe makes
 Working drafts use IndexedDB so image-heavy expressions are not limited by the smaller localStorage library. Recovery restores the active expression and scene, working configuration, camera, paused/playing state, and driver clocks. Active property takes are checkpointed while recording. Named scene saves remain independent. Particle positions and velocities are regenerated from the current targets after a crash; they are not physical checkpoints. Storage errors retain the export fallback.
 
 Regression coverage: `npm test`, `npm run test:journeys`, and `npm run lint`. With the development server running, open `/field-studies-journeys/tests/workflow.html` for five additional checks using actual image decoding, WebGL floating-point readback, fresh-engine LFO recovery, and IndexedDB. This page creates and removes its own temporary draft, without editing library expressions.
+## Physis desktop integration
+
+This checkout also provides the local `physis` command, an Omarchy bar toggle,
+transparent desktop rendering, and direct capture-to-screensaver storage. See
+[PHYSIS.md](PHYSIS.md) for installation, controls and desktop-specific validation.

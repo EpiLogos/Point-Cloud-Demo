@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Physis desktop entry point. All controls use the same local service."""
+import json, os, pathlib, subprocess, sys, time, urllib.request, urllib.error
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+BASE='http://127.0.0.1:'+os.environ.get('PHYSIS_PORT','47831')
+def request(route, body=None):
+    data=None if body is None else json.dumps(body).encode()
+    req=urllib.request.Request(BASE+route,data=data,headers={'Content-Type':'application/json','X-Physis-Client':'1'})
+    try:
+        with urllib.request.urlopen(req,timeout=8) as response: return json.load(response)
+    except urllib.error.HTTPError as e: raise RuntimeError(json.load(e).get('error',str(e)))
+def ensure():
+    try:
+        if request('/api/health').get('app')=='physis': return
+    except (OSError,RuntimeError): pass
+    subprocess.run(['systemctl','--user','start','physis.service'],check=True)
+    for _ in range(80):
+        try:
+            if request('/api/health').get('app')=='physis': return
+        except (OSError,RuntimeError): pass
+        time.sleep(.1)
+    raise RuntimeError('Physis service did not become ready; run journalctl --user -u physis')
+def main():
+    args=sys.argv[1:]
+    cmd=args[0] if args else 'open'
+    if cmd in ('-h','--help','help'):
+        print('physis [open | overlay on|off|toggle | status | scenes | scene ID | screensaver | library | quality gentle|balanced|fluid | opacity 0.05..1 | mp4 VIDEO_ID]');return
+    if cmd=='status':
+        try: print(json.dumps(request('/api/state')))
+        except (OSError,RuntimeError): print(json.dumps({'enabled':False,'running':False,'error':'service offline'}))
+        return
+    if cmd=='screensaver':
+        os.execv(sys.executable,[sys.executable,str(ROOT/'scripts/screensaver.py')])
+    ensure()
+    if cmd=='open':
+        # Match the web app URL, which Omarchy's launch-or-focus helper inspects.
+        subprocess.run(['omarchy','launch','or-focus-webapp','Physis',BASE],check=True)
+    elif cmd=='overlay':
+        value=args[1] if len(args)>1 else 'toggle'
+        if value not in ('on','off','toggle'): raise RuntimeError('Use overlay on, off, or toggle')
+        print(json.dumps(request('/api/overlay',{'enabled':{'on':True,'off':False,'toggle':'toggle'}[value]})))
+    elif cmd=='scenes': print(json.dumps(request('/api/scenes'),indent=2))
+    elif cmd=='scene': print(json.dumps(request('/api/overlay',{'sceneId':args[1]})))
+    elif cmd=='opacity': print(json.dumps(request('/api/overlay',{'opacity':float(args[1])})))
+    elif cmd=='quality':
+        choices={'gentle':{'fps':20,'particleLimit':50000,'pixelRatio':.75},'balanced':{'fps':30,'particleLimit':100000,'pixelRatio':1},'fluid':{'fps':60,'particleLimit':200000,'pixelRatio':1}}
+        if args[1] not in choices: raise RuntimeError('Choose gentle, balanced, or fluid')
+        print(json.dumps(request('/api/overlay',choices[args[1]])))
+    elif cmd=='library': subprocess.run(['xdg-open',request('/api/state')['library']],check=True)
+    elif cmd=='mp4':
+        item=next((m for m in request('/api/media') if m['id']==args[1] and m['kind']=='videos'),None)
+        if not item: raise RuntimeError('Video ID not found in the library')
+        library=pathlib.Path(request('/api/state')['library']);source=library/'videos'/item['filename'];target=source.with_suffix('.mp4');temp=source.with_suffix('.partial.mp4')
+        try:
+            subprocess.run(['ffmpeg','-nostdin','-y','-i',str(source),'-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart',str(temp)],check=True)
+            temp.replace(target);print(target)
+        finally: temp.unlink(missing_ok=True)
+    else: raise RuntimeError('Unknown command; see physis --help')
+if __name__=='__main__':
+    try: main()
+    except (RuntimeError, OSError, subprocess.CalledProcessError, IndexError, ValueError) as e: print('physis:',e,file=sys.stderr);sys.exit(1)
