@@ -13,12 +13,8 @@ import {
   CymaticPlateGeometry,
   CymaticDimension,
 } from './types';
-import {
-  CHAKRA_CYMATIC_PROFILES,
-  renderChladniPlate,
-  sampleVolumetric3DNodalPoints,
-  evalHarmonicSpectrum,
-} from './cymatics';
+import {renderChladniPlate,sampleVolumetric3DNodalPoints,deriveCymaticTemplateModes} from './cymatics';
+import {CHAKRA_CYMATIC_PROFILES} from './legacy/chakraCymaticProfiles';
 import { sampleImageSource, sampleAlphaSource, SOURCE_WORK_MAX, type SourceAnalysis } from './sourceSampling';
 
 export interface BakeResult {
@@ -887,8 +883,26 @@ export class GlyphSampler {
     return { candidates };
   }
 
+  /** Generic authored cymatic target. No chakra lookup or semantic correspondence. */
+  public sampleCymaticTemplate(
+    spec:{frequencyHz:number;plateGeometry?:CymaticPlateGeometry;dimension?:CymaticDimension;m?:number;n?:number;l?:number;a?:number;b?:number;baseFrequency?:number},
+    coherence:number=1,
+    chaos:number=0
+  ):{candidates:Array<{x:number;y:number;z?:number;density:number}>;is3D:boolean}{
+    const derived=deriveCymaticTemplateModes(spec.frequencyHz,spec.baseFrequency??40);
+    const m=spec.m??derived.m,n=spec.n??derived.n,l=spec.l??derived.l,a=spec.a??derived.a,b=spec.b??derived.b;
+    const geometry=spec.plateGeometry??'square',dimension=spec.dimension??'2D';
+    if(dimension==='3D'||geometry==='volumetric3D'){return{candidates:sampleVolumetric3DNodalPoints(12000,l,m,n,coherence,chaos,280),is3D:true};}
+    const w=this.canvas.width,h=this.canvas.height,ctx=this.ctx;
+    renderChladniPlate(ctx,w,h,geometry,m,n,a,b,coherence,chaos);
+    const pixels=ctx.getImageData(0,0,w,h).data,candidates:Array<{x:number;y:number;z?:number;density:number}>=[],cx=w/2,cy=h/2;
+    for(let y=0;y<h;y+=3)for(let x=0;x<w;x+=3){const idx=(y*w+x)*4,alpha=pixels[idx+3]/255;if(alpha>.05)candidates.push({x:x-cx,y:-(y-cy),z:0,density:alpha});}
+    if(!candidates.length)for(let i=0;i<500;i++){const ang=i/500*Math.PI*2;candidates.push({x:Math.cos(ang)*120,y:Math.sin(ang)*120,z:0,density:.8});}
+    return{candidates,is3D:false};
+  }
+
   /**
-   * Generates candidate coordinates according to exact Chladni / cymatic harmonic wave equations
+   * @deprecated Legacy semantic wrapper. New authored geometry uses sampleCymaticTemplate().
    */
   public sampleCymaticNode(
     node: SpatialChakraNode,

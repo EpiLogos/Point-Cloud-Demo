@@ -18,6 +18,7 @@
  *   2  color.angle is always degrees; camera + viewport saved alongside config
  *   3  unified morph (dual-phase), extended physics, anchors with shape, automation lanes
  *   4  first-class entities / composition / cymatic medium (legacy glyph, chaining, spatialChakra migrated)
+ *   5  semantic field bindings + explicit resonance driver; chakra meaning no longer lives in physics objects
  */
 
 import {
@@ -32,8 +33,12 @@ import { DEFAULT_CONFIG, DEFAULT_COLOR_CONFIG, DEFAULT_TOROIDAL_CONFIG } from '.
 import { createDefaultChakraConfig } from './chakraSystem';
 import { isLightHex } from './colorPalettes';
 import { migrateLegacyFieldConfig } from './fieldModel';
+import type { SemanticFieldConfig, SemanticBinding } from './semantics/semanticTypes';
+import { CHAKRA_BY_ID } from './semantics/chakraSemantics';
+import { CHAKRA_PROFILE_ID } from './semantics/chakraProfile';
+import type { ResonanceDriveConfig } from './resonanceDrive';
 
-export const CONFIG_SCHEMA_VERSION = 4;
+export const CONFIG_SCHEMA_VERSION = 5;
 export const SNAPSHOT_STORAGE_KEY = 'typographic_pointcloud_saved_states';
 
 export type SpatialGridMode = 'off' | 'axis' | 'grid';
@@ -141,6 +146,55 @@ function migrateToroidal(raw: Partial<ToroidalMorphConfig> | undefined): Toroida
   return { ...DEFAULT_TOROIDAL_CONFIG, ...raw, enabled: raw.enabled === true };
 }
 
+function cloneSemanticField(raw: SemanticFieldConfig): SemanticFieldConfig {
+  return {
+    ...raw,
+    profile:{...raw.profile},
+    affinity:{...raw.affinity},
+    bindings:(raw.bindings||[]).map((b)=>({
+      ...b,
+      ...(b.resonance?{resonance:{...b.resonance}}:{}),
+      carriers:(b.carriers||[]).map((c)=>({...c})),
+      ...(b.color?{color:{...b.color,radius:{...b.color.radius}}}:{}),
+      ...(b.modulations?{modulations:b.modulations.map((m)=>({...m,source:{...m.source},...(m.clamp?{clamp:[...m.clamp] as [number,number]}:{})}))}:{}),
+    })),
+  };
+}
+
+/** v4 carried semantic chakra identity on Entity. v5 retains appearance but moves meaning into bindings. */
+function migrateSemanticField(src: Partial<PointCloudConfig>, entities: NonNullable<PointCloudConfig['entities']>): SemanticFieldConfig {
+  if (src.semanticField) return cloneSemanticField(src.semanticField);
+  const bindings: SemanticBinding[]=[];
+  for(const entity of entities){
+    const chakraId=entity.chakraId;
+    if(!chakraId||!CHAKRA_BY_ID.has(chakraId as any)) continue;
+    bindings.push({
+      id:`semantic_${chakraId}_${entity.id}`,
+      semanticNodeId:chakraId,
+      enabled:true,
+      resonance:{gain:1},
+      carriers:[{kind:'entity',id:entity.id}],
+      // v4 partition tint is retained on the entity. Spatial semantic colour starts disabled so migration is appearance-preserving.
+      color:{enabled:false,colorSource:'canonical',gain:1,radius:{source:'force'},falloff:'gaussian',metric:'compositionPlane',blend:'weighted',activation:'constant'},
+    });
+  }
+  return {
+    enabled:bindings.length>0,
+    profile:{kind:'chakra',profileId:CHAKRA_PROFILE_ID},
+    affinity:{method:'modalProjection',bandwidth:.14},
+    globalColorGain:1,
+    bindings,
+  };
+}
+
+function migrateResonanceDrive(src: Partial<PointCloudConfig>, field:{composition:NonNullable<PointCloudConfig['composition']>;cymatics:NonNullable<PointCloudConfig['cymatics']>}, semantic:SemanticFieldConfig):ResonanceDriveConfig {
+  if(src.resonanceDrive) return {...src.resonanceDrive} as ResonanceDriveConfig;
+  const cym=field.cymatics;
+  if(cym.autoSweep||cym.sweep?.enabled)return{kind:'sweep',glideS:cym.sweep?.glideS??cym.sweepSpeed,dwellS:cym.sweep?.dwellS,direction:cym.sweep?.direction};
+  if(cym.followFocus&&field.composition.orchestration.followStation&&semantic.enabled&&semantic.bindings.length>0)return{kind:'semanticFocus',profileId:semantic.profile.profileId};
+  return{kind:'frequency'};
+}
+
 /**
  * Rebuild a complete, engine-safe PointCloudConfig from any partial / legacy object.
  * Pure: safe to call from lazy state initialisers and module scope.
@@ -168,6 +222,8 @@ export function migrateConfig(
     ...src,
     interaction: { ...DEFAULT_CONFIG.interaction, ...(src.interaction || {}), placedPoints: migratePlacedPoints(src.interaction?.placedPoints) },
   });
+  const semanticField=migrateSemanticField(src,field.entities);
+  const resonanceDrive=migrateResonanceDrive(src,field,semanticField);
 
   return {
     ...DEFAULT_CONFIG,
@@ -226,6 +282,8 @@ export function migrateConfig(
     entities: field.entities,
     composition: field.composition,
     cymatics: field.cymatics,
+    semanticField,
+    resonanceDrive,
     morphProgress: num(src.morphProgress, 0),
     autoMorph: src.autoMorph !== undefined ? !!src.autoMorph : DEFAULT_CONFIG.autoMorph,
     autoMorphDuration: num(src.autoMorphDuration, DEFAULT_CONFIG.autoMorphDuration ?? 4.0),

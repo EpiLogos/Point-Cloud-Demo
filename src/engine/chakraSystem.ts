@@ -4,6 +4,7 @@
  */
 
 import { SpatialChakraNode, SpatialChakraConfig } from './types';
+import { CHAKRA_DEFINITIONS } from './semantics/chakraSemantics';
 
 export interface ChakraGlyphItem {
   id: string;
@@ -166,120 +167,29 @@ export const CHAKRA_GLYPH_PRESETS: ChakraGlyphItem[] = [
  * The 7 Canonical Chakras arranged along the subtle human energetic spine
  * Coordinates: y < 0 is upward toward the head/crown, y > 0 is downward toward root
  */
-export const CANONICAL_CHAKRAS: SpatialChakraNode[] = [
-  {
-    id: 'sahasrara',
-    name: 'Sahasrara (Crown)',
-    sanskrit: 'सहस्रार',
-    seedSyllable: 'ॐ',
-    symbol: '☸',
-    englishTitle: 'Crown / Pure Consciousness',
-    frequencyHz: 963,
-    element: 'Cosmic Spirit (Akasha)',
-    x: 0,
-    y: -270,
-    scale: 0.16,
-    color: '#ff77ff', // Brilliant Luminous Radiant Neon Violet
-    attractorStrength: 2.2,
-    active: true,
-  },
-  {
-    id: 'ajna',
-    name: 'Ajna (Third Eye)',
-    sanskrit: 'आज्ञा',
-    seedSyllable: 'ॐ',
-    symbol: '👁',
-    englishTitle: 'Third Eye / Intuition',
-    frequencyHz: 852,
-    element: 'Light (Prakasha)',
-    x: 0,
-    y: -180,
-    scale: 0.14,
-    color: '#66a3ff', // Radiant Vivid Electric Cyan-Indigo Blue
-    attractorStrength: 2.0,
-    active: true,
-  },
-  {
-    id: 'vishuddha',
-    name: 'Vishuddha (Throat)',
-    sanskrit: 'विशुद्ध',
-    seedSyllable: 'हं',
-    symbol: '◯',
-    englishTitle: 'Throat / Expression',
-    frequencyHz: 741,
-    element: 'Ether / Sound (Akasha)',
-    x: 0,
-    y: -90,
-    scale: 0.14,
-    color: '#00ffff', // Pure Glowing Electric Neon Cyan
-    attractorStrength: 1.8,
-    active: true,
-  },
-  {
-    id: 'anahata',
-    name: 'Anahata (Heart)',
-    sanskrit: 'अनाहत',
-    seedSyllable: 'यं',
-    symbol: '✡',
-    englishTitle: 'Heart / Compassion',
-    frequencyHz: 639,
-    element: 'Air (Vayu)',
-    x: 0,
-    y: 0,
-    scale: 0.15,
-    color: '#00ff99', // Luminous Vivid Emerald Spring Green
-    attractorStrength: 2.4,
-    active: true,
-  },
-  {
-    id: 'manipura',
-    name: 'Manipura (Solar Plexus)',
-    sanskrit: 'मणिपूर',
-    seedSyllable: 'रं',
-    symbol: '▽',
-    englishTitle: 'Solar Plexus / Willpower',
-    frequencyHz: 528,
-    element: 'Fire (Tejas)',
-    x: 0,
-    y: 90,
-    scale: 0.14,
-    color: '#ffff00', // Pure Dazzling Solar Laser Gold Yellow
-    attractorStrength: 1.9,
-    active: true,
-  },
-  {
-    id: 'svadhisthana',
-    name: 'Svadhisthana (Sacral)',
-    sanskrit: 'स्वाधिष्ठान',
-    seedSyllable: 'वं',
-    symbol: '☽',
-    englishTitle: 'Sacral / Fluid Creativity',
-    frequencyHz: 417,
-    element: 'Water (Apas)',
-    x: 0,
-    y: 180,
-    scale: 0.14,
-    color: '#ff8800', // Intense Radiant Sunset Flame Orange
-    attractorStrength: 1.8,
-    active: true,
-  },
-  {
-    id: 'muladhara',
-    name: 'Muladhara (Root)',
-    sanskrit: 'मूलाधार',
-    seedSyllable: 'लं',
-    symbol: '🪷',
-    englishTitle: 'Root / Grounded Foundation',
-    frequencyHz: 396,
-    element: 'Earth (Prithvi)',
-    x: 0,
-    y: 270,
-    scale: 0.15,
-    color: '#ff2255', // Blazing Vivid Laser Ruby Crimson
-    attractorStrength: 2.2,
-    active: true,
-  },
-];
+export const CANONICAL_CHAKRAS: SpatialChakraNode[] = [...CHAKRA_DEFINITIONS]
+  .reverse() // legacy order remains Crown -> Root for snapshot/preset compatibility
+  .map((definition) => {
+    const scaleById: Record<string, number> = {sahasrara:.16,ajna:.14,vishuddha:.14,anahata:.15,manipura:.14,svadhisthana:.14,muladhara:.15};
+    const strengthById: Record<string, number> = {sahasrara:2.2,ajna:2.0,vishuddha:1.8,anahata:2.4,manipura:1.9,svadhisthana:1.8,muladhara:2.2};
+    return {
+      id: definition.id,
+      name: definition.name,
+      sanskrit: definition.sanskrit,
+      seedSyllable: definition.seedSyllable,
+      symbol: definition.symbol,
+      englishTitle: definition.englishTitle,
+      // Historical correspondence only. The real resonator does not consume this value.
+      frequencyHz: definition.historicalCorrespondences?.solfeggioHz,
+      element: definition.element,
+      x: 0,
+      y: 270 - definition.order * 90,
+      scale: scaleById[definition.id] ?? .14,
+      color: definition.canonicalColor,
+      attractorStrength: strengthById[definition.id] ?? 2,
+      active: true,
+    };
+  });
 
 /**
  * Creates a complete default Spatial Chakra Configuration

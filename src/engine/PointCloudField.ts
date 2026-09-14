@@ -18,9 +18,16 @@ import { GPGPUSimulator } from './GPGPUSimulator';
 import { GlyphSampler } from './GlyphSampler';
 import { particleVertexShader, particleFragmentShader } from './shaders/particleShaders';
 import { isLightHex } from './colorPalettes';
-import { CymaticResonator, ResonatorTelemetry } from './cymaticResonator';
+import { CymaticResonator, ResonatorTelemetry, type ResonanceState, type ResonanceAnchor } from './cymaticResonator';
 import { PinMarkerLayer, PinGhostState } from './pinMarkers';
 import { EntityRuntime, EntityFrame } from './entityRuntime';
+import type { EvaluatedEntityPose } from './entityPose';
+import { compileEntityForceEmitters, relationalCarrierStates, type ForceEmitterState, type RelationalCarrierState } from './forceRuntime';
+import { SemanticFieldRuntime } from './semantics/semanticFieldRuntime';
+import type { SemanticFieldState } from './semantics/semanticTypes';
+import { CHAKRA_BY_ID } from './semantics/chakraSemantics';
+import { mapChakrasToAnchors, CHAKRA_PROFILE_ID } from './semantics/chakraProfile';
+import { semanticFocusTarget, type ResonanceDriveConfig, type ResolvedResonanceDrive } from './resonanceDrive';
 import type { SourceAnalysis } from './sourceSampling';
 import {
   Entity,
@@ -33,7 +40,6 @@ import {
   makeFormation,
   makeLink,
   resolveFocus,
-  pinsToPlacedPoints,
 } from './fieldModel';
 
 export function getColorModeIndex(mode?: string): number {
@@ -182,6 +188,13 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
   ],
   composition: DEFAULT_COMPOSITION,
   cymatics: DEFAULT_CYMATIC_MEDIUM,
+  semanticField: {
+    enabled: false,
+    profile: { kind: 'chakra', profileId: CHAKRA_PROFILE_ID },
+    affinity: { method: 'modalProjection', bandwidth: 0.14 },
+    globalColorGain: 1,
+    bindings: [],
+  },
   morphProgress: 0.0,
   autoMorph: true,
   autoMorphDuration: 4.0,
@@ -224,6 +237,12 @@ export class PointCloudField {
   private lastFocus: FocusState | null = null;
   private focusTint: THREE.Color = new THREE.Color('#ffffff');
   private activeEntityId: string | null = null;
+  private lastPoses: EvaluatedEntityPose[] = [];
+  private lastForceEmitters: ForceEmitterState[] = [];
+  private lastRelationalCarriers: RelationalCarrierState[] = [];
+  private semanticRuntime = new SemanticFieldRuntime();
+  private latestSemanticState: SemanticFieldState = { nodes: [], colorFields: [] };
+  private lastResonanceDrive: ResolvedResonanceDrive = { kind: 'frequency', targetHz: 396, bound: true };
 
   // Cymatic medium: one continuously driven resonator (see cymaticResonator.ts)
   private cymaticResonator: CymaticResonator | null = null;
@@ -362,6 +381,19 @@ export class PointCloudField {
       entities: override.entities !== undefined ? override.entities : base.entities,
       composition: comp,
       cymatics: { ...(base.cymatics || DEFAULT_CYMATIC_MEDIUM), ...(override.cymatics || {}) } as CymaticMedium,
+      resonanceDrive: override.resonanceDrive !== undefined ? override.resonanceDrive : base.resonanceDrive,
+      semanticField: override.semanticField !== undefined ? {
+        ...override.semanticField,
+        profile: { ...override.semanticField.profile },
+        affinity: { ...override.semanticField.affinity },
+        bindings: override.semanticField.bindings.map((b) => ({
+          ...b,
+          resonance: b.resonance ? { ...b.resonance } : undefined,
+          carriers: b.carriers.map((c) => ({ ...c })),
+          color: b.color ? { ...b.color, radius: { ...b.color.radius } } : undefined,
+          modulations: b.modulations?.map((m) => ({ ...m, source: { ...m.source }, clamp: m.clamp ? [...m.clamp] as [number, number] : undefined })),
+        })),
+      } : base.semanticField,
       automations: override.automations !== undefined ? override.automations : base.automations,
     };
   }
@@ -377,9 +409,12 @@ export class PointCloudField {
     this.entities.allocate(this.simulator.particleCount, this.simulator.texWidth, this.simulator.texHeight);
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     this.entities.layout(cfg.entities || []);
-    this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
+    const resolved = this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
+    this.lastPoses = resolved.poses;
+    this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], resolved.poses, cfg.interaction.placedPoints || []);
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
+    this.simulator.setForceEmitters(this.lastForceEmitters);
     this.simulator.setCompositionPlane(comp.plane);
     if (seed) { this.seedGeneration++; this.simulator.seedInitialState(this.entities.buildSeed()); }
   }
@@ -528,6 +563,13 @@ export class PointCloudField {
         uTexSize: { value: new THREE.Vector2(texW, texH) },
         uFocusTint: { value: new THREE.Color('#ffffff') },
         uFocusTintWeight: { value: 0.0 },
+
+        // Semantic spatial colour is a render-only contribution field. It does not own particles or forces.
+        uCompPlane: { value: (this.config.composition || DEFAULT_COMPOSITION).plane === 'horizontal' ? 1.0 : 0.0 },
+        uSemanticColorCount: { value: 0 },
+        uSemanticColorCenter: { value: Array.from({ length: 16 }, () => new THREE.Vector4(-99999, -99999, 0, 1)) },
+        uSemanticColorValue: { value: Array.from({ length: 16 }, () => new THREE.Vector4(1, 1, 1, 0)) },
+        uSemanticColorParams: { value: Array.from({ length: 16 }, () => new THREE.Vector4(0, 0, 0, 0)) },
       },
       transparent: true,
       depthTest: false,
@@ -1311,7 +1353,7 @@ export class PointCloudField {
     const forms = this.formations();
     const focus = this.lastFocus;
     const res = this.latestResonatorTelemetry;
-    const stations = this.cymaticResonator ? this.cymaticResonator.getStations() : [];
+    const stations = this.getCymaticStations();
     return {
       simTime: this.simTime,
       focus: focus && forms.length > 0
@@ -1322,6 +1364,7 @@ export class PointCloudField {
             blend: focus.blend,
           }
         : null,
+      semantic: this.latestSemanticState,
       sequences: this.lastFrames.map((f) => ({
         entityId: f.entityId,
         linkIndex: f.state.linkIndex,
@@ -1339,7 +1382,8 @@ export class PointCloudField {
             dominantN: res?.dominantN ?? 0,
             nearestStation: res?.nearestStationIndex ?? 0,
             stationProximity: res?.nearestStationProximity ?? 0,
-            stations: stations.map((s) => ({ index: s.index, name: s.name, frequencyHz: s.frequencyHz, m: s.m, n: s.n, color: s.color })),
+            stations,
+            driver: { ...this.lastResonanceDrive },
           }
         : null,
     };
@@ -1387,6 +1431,7 @@ export class PointCloudField {
     // 1. Entities: resolve sequences from the clock, re-bake changed partitions, refresh uniforms
     const res = this.entities.update(cfg.entities || [], comp, elapsedTime, drive.theta, manual, tm.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
     this.lastFrames = res.frames;
+    this.lastPoses = res.poses;
     if (delta > 0) for (const imp of res.impulses) this.triggerDisperse(imp);
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
@@ -1422,7 +1467,8 @@ export class PointCloudField {
     // 4. Pointer velocity decay
     this.pointerVel.multiplyScalar(Math.pow(0.92, delta * 60));
 
-    // 5. Relational multi-attractors orbit the formation centres
+    // 5. Relational multi-attractors retain their own physical law, but expose carrier telemetry.
+    this.lastRelationalCarriers = [];
     if (cfg.relational?.enabled) {
       const rel = cfg.relational;
       const count = Math.max(1, Math.min(10, rel.attractorCount ?? 3));
@@ -1432,6 +1478,7 @@ export class PointCloudField {
       const vCenter = this.entities.fieldCentre();
       const dynamicAttractors: THREE.Vector4[] = [];
       const dynamicSpins: number[] = [];
+      const carrierPositions: Array<{x:number;y:number;z:number}> = [];
       for (let i = 0; i < 10; i++) {
         if (i < count) {
           const basePt = baseCenters[i % baseCenters.length] || new THREE.Vector2(0, 0);
@@ -1461,27 +1508,49 @@ export class PointCloudField {
           const spin = (i % 2 === 0 ? 1.0 : -1.0) * (1.0 + i * 0.2);
           dynamicAttractors.push(new THREE.Vector4(posX, posY, 0, 1.0));
           dynamicSpins.push(spin);
+          carrierPositions.push({x:posX,y:posY,z:0});
         } else {
           dynamicAttractors.push(new THREE.Vector4(-99999, -99999, 0, 0));
           dynamicSpins.push(0);
         }
       }
       this.simulator.setAttractors(dynamicAttractors, dynamicSpins);
+      this.lastRelationalCarriers = relationalCarrierStates(carrierPositions, rel);
     }
 
-    // 6. Pins (kind 'pin' entities) are the simulator's placed points
-    const stepConfig: PointCloudConfig = {
-      ...cfg,
-      interaction: { ...cfg.interaction, placedPoints: pinsToPlacedPoints(cfg.entities || []) },
-    };
+    // 6. All first-class entity forces compile through one physical emitter table. Formation
+    // forces keep their composition-plane metric; pins keep their full-3D metric. Legacy placed
+    // points are accepted only as migration input and compile into the same table.
+    this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], this.lastPoses, cfg.interaction.placedPoints || []);
+    this.simulator.setForceEmitters(this.lastForceEmitters);
+
+    // 7. Semantic interpretation consumes physical resonance + evaluated carriers, then emits
+    // render-only colour fields. It cannot mutate resonance, forces, targets, or particle state.
+    const focusSemantic = focus && forms.length > 0 ? {
+      entityId: forms[Math.min(focus.index, forms.length - 1)].id,
+      nextEntityId: forms[Math.min(focus.nextIndex, forms.length - 1)].id,
+      blend: focus.blend,
+    } : null;
+    const resonanceState = this.cymaticResonator && this.resonatorActive ? this.cymaticResonator.getState() : null;
+    this.latestSemanticState = this.semanticRuntime.evaluate({
+      config: cfg.semanticField,
+      resonance: resonanceState,
+      poses: this.lastPoses,
+      entityTints: new Map((cfg.entities || []).map((e) => [e.id, e.tint] as const)),
+      forceEmitters: this.lastForceEmitters,
+      relationalCarriers: this.lastRelationalCarriers,
+      focus: focusSemantic,
+      delta,
+    });
+    this.syncSemanticColorUniforms(comp);
 
     // Runtime burst input survives UI/pointer clearing and is consumed only by physics.
     this.simulator.setBurst(this.burstPosition, this.burstVelocity);
     if (delta > 0) this.burstVelocity.multiplyScalar(Math.pow(0.92, delta * 60));
-    // 7. GPGPU step
-    this.simulator.step(delta, elapsedTime, stepConfig, this.morphProgress, this.pointerPos, this.pointerVel, this.hostPointerZ);
+    // 8. GPGPU step
+    this.simulator.step(delta, elapsedTime, cfg, this.morphProgress, this.pointerPos, this.pointerVel, this.hostPointerZ);
 
-    // 8. Bind simulation textures and render
+    // 9. Bind simulation textures and render
     this.particleMaterial.uniforms.uPositionTexture.value = this.simulator.currentPosTarget.texture;
     this.particleMaterial.uniforms.uVelocityTexture.value = this.simulator.currentVelTarget.texture;
     this.particleMaterial.uniforms.uTime.value = elapsedTime;
@@ -1513,6 +1582,7 @@ export class PointCloudField {
     const cym = this.config.cymatics;
     if (!cym || !cym.enabled || cym.engine === 'template') {
       this.stopResonator();
+      this.lastResonanceDrive = { kind:'frequency', targetHz:cym?.frequencyHz ?? this.cymaticFreqCurrent, bound:true };
       return;
     }
     const params = {
@@ -1525,26 +1595,50 @@ export class PointCloudField {
     if (!this.cymaticResonator) this.cymaticResonator = new CymaticResonator(params);
     else this.cymaticResonator.configure(params);
     const resonator = this.cymaticResonator;
-    const stations = resonator.getStations();
+    const anchors = resonator.getAnchors();
+    const focusIds = focus && forms.length > 0 ? {
+      entityId: forms[Math.min(focus.index, forms.length - 1)].id,
+      nextEntityId: forms[Math.min(focus.nextIndex, forms.length - 1)].id,
+      blend: focus.blend,
+    } : null;
 
-    let target: number;
-    if (cym.autoSweep || cym.sweep?.enabled) {
-      this.sweepAccum += delta;
-      target = resonator.sweepFrequency(this.sweepAccum, {
-        glideS: Math.max(0.05, cym.sweep?.glideS ?? cym.sweepSpeed ?? 3.5),
-        dwellS: Math.max(0, cym.sweep?.dwellS ?? 2.0),
-        direction: cym.sweep?.direction ?? 'ascent',
-      });
-    } else if (cym.followFocus && comp.orchestration.followStation && focus && forms.length > 0 && stations.length > 0) {
-      const sA = stations[Math.min(stations.length - 1, forms[Math.min(focus.index, forms.length - 1)].stationIndex ?? 0)];
-      const sB = stations[Math.min(stations.length - 1, forms[Math.min(focus.nextIndex, forms.length - 1)].stationIndex ?? 0)];
-      target = sA.frequencyHz + (sB.frequencyHz - sA.frequencyHz) * focus.blend;
-    } else {
-      target = cym.frequencyHz ?? 396;
+    // New documents name one physical driver. Undefined is a compatibility bridge for schema-4.
+    let drive: ResonanceDriveConfig | undefined = this.config.resonanceDrive;
+    if (!drive) {
+      if (cym.autoSweep || cym.sweep?.enabled) drive = { kind:'sweep' };
+      else if (cym.followFocus && comp.orchestration.followStation) drive = this.config.semanticField?.enabled
+        ? { kind:'semanticFocus', profileId:this.config.semanticField.profile.profileId }
+        : undefined;
+      else drive = { kind:'frequency' };
     }
-    // Continuous glide toward the target so slider drags never produce discontinuities
-    this.cymaticFreqCurrent += (target - this.cymaticFreqCurrent) * (1 - Math.exp(-delta * 8));
 
+    let target = cym.frequencyHz ?? 396;
+    if (drive?.kind === 'sweep') {
+      this.sweepAccum += delta;
+      const opts = {
+        glideS: Math.max(0.05, drive.glideS ?? cym.sweep?.glideS ?? cym.sweepSpeed ?? 3.5),
+        dwellS: Math.max(0, drive.dwellS ?? cym.sweep?.dwellS ?? 2.0),
+        direction: drive.direction ?? cym.sweep?.direction ?? 'ascent' as const,
+      };
+      target = resonator.sweepFrequency(this.sweepAccum, opts);
+      this.lastResonanceDrive = {kind:'sweep',targetHz:target,bound:true};
+    } else if (drive?.kind === 'semanticFocus') {
+      const resolved = semanticFocusTarget({currentHz:this.cymaticFreqCurrent,focus:focusIds,semanticField:this.config.semanticField,anchors});
+      target = resolved.targetHz;
+      this.lastResonanceDrive = resolved;
+    } else if (!drive && cym.followFocus && comp.orchestration.followStation && focus && forms.length > 0 && anchors.length > 0) {
+      // Explicit schema-4 compatibility only. New authoring uses SemanticBinding → physical anchor.
+      const aIndex = Math.min(anchors.length - 1, forms[Math.min(focus.index, forms.length - 1)].stationIndex ?? 0);
+      const bIndex = Math.min(anchors.length - 1, forms[Math.min(focus.nextIndex, forms.length - 1)].stationIndex ?? 0);
+      const a = anchors[aIndex], b = anchors[bIndex];
+      target = a.frequencyHz + (b.frequencyHz - a.frequencyHz) * focus.blend;
+      this.lastResonanceDrive = {kind:'semanticFocus',targetHz:target,bound:true,anchorId:focus.blend<.5?a.id:b.id};
+    } else {
+      this.lastResonanceDrive = {kind:'frequency',targetHz:target,bound:true};
+    }
+
+    // Continuous glide toward the target so editing never resets the modal envelopes.
+    this.cymaticFreqCurrent += (target - this.cymaticFreqCurrent) * (1 - Math.exp(-delta * 8));
     this.latestResonatorTelemetry = resonator.step(delta, this.cymaticFreqCurrent);
     this.resonatorActive = true;
     this.simulator.setResonatorState(
@@ -1562,8 +1656,50 @@ export class PointCloudField {
     this.simulator.setResonatorDominance(cym.dominance ?? 1.0);
   }
 
+  /** Physical anchors enriched at the orchestration boundary; the resonator itself has no semantic imports. */
   public getCymaticStations() {
-    return this.cymaticResonator ? this.cymaticResonator.getStations() : [];
+    const anchors = this.cymaticResonator?.getAnchors() ?? [];
+    const semantic = this.config.semanticField?.enabled && this.config.semanticField.profile.kind === 'chakra'
+      ? mapChakrasToAnchors(anchors) : [];
+    const semanticByAnchor = new Map(semantic.filter((m) => m.anchor).map((m) => [m.anchor!.id, m.node] as const));
+    const stateByNode = new Map(this.latestSemanticState.nodes.map((n) => [n.semanticNodeId, n] as const));
+    const physicalState = this.cymaticResonator?.getState();
+    return anchors.map((anchor) => {
+      const node = semanticByAnchor.get(anchor.id);
+      const sem = node ? stateByNode.get(node.id) : undefined;
+      const physical = physicalState?.anchors.find((a) => a.id === anchor.id);
+      return {
+        id: anchor.id,
+        index: anchor.index,
+        name: node?.name ?? `Mode ${anchor.m}:${anchor.n}`,
+        frequencyHz: anchor.frequencyHz,
+        m: anchor.m,
+        n: anchor.n,
+        color: node?.canonicalColor ?? '#888888',
+        energy: physical?.energy ?? 0,
+        semanticNodeId: node?.id,
+        affinity: sem?.affinity,
+      };
+    });
+  }
+
+  private syncSemanticColorUniforms(comp: Composition) {
+    if (!this.particleMaterial) return;
+    const u = this.particleMaterial.uniforms;
+    const fields = this.latestSemanticState.colorFields.slice(0, 16);
+    u.uSemanticColorCount.value = fields.length;
+    u.uCompPlane.value = comp.plane === 'horizontal' ? 1 : 0;
+    const centres = u.uSemanticColorCenter.value as THREE.Vector4[];
+    const values = u.uSemanticColorValue.value as THREE.Vector4[];
+    const params = u.uSemanticColorParams.value as THREE.Vector4[];
+    for (let i = 0; i < 16; i++) {
+      const field = fields[i];
+      if (!field) { centres[i].set(-99999,-99999,0,1); values[i].set(1,1,1,0); params[i].set(0,0,0,0); continue; }
+      const color = new THREE.Color(field.color);
+      centres[i].set(field.center.x, field.center.y, field.center.z, Math.max(1e-3, field.radius));
+      values[i].set(color.r, color.g, color.b, Math.max(0, field.gain));
+      params[i].set(field.metric === 'world3d' ? 1 : 0, field.falloff === 'compact' ? 1 : 0, field.blend === 'additive' ? 1 : 0, 0);
+    }
   }
 
   public getCymaticTelemetry(): ResonatorTelemetry | null {

@@ -1,6 +1,6 @@
 import {Journey,Scene,fieldStudies,sevenCentres,smallLanguage,clone,uid} from './model.js';
-import {nativeChakras,nativeSnapshotToJourney} from './nativeBridge.js';
-import {COMPOSITION_PRESETS} from '../../src/engine/fieldModel';
+import {nativeSnapshotToJourney} from './nativeBridge.js';
+import {COMPOSITION_PRESETS} from '../../src/engine/compositionPresets';
 import {FACTORY_PRESETS} from '../../src/engine/factoryPresets';
 import {sourceStudies} from './sourceExamples.js';
 import {defaultCamera,project,stageScale} from './camera.js';
@@ -10,17 +10,20 @@ import {icon,esc} from './icons.js';
 export type Expression = Journey;
 export interface StartingPoint {id:string;group:'Material'|'Composition'|'Native'|'Source studies';expression:Expression}
 export function nativeSeven():Expression {
-  const j=sevenCentres(),resonance=clone(j.scenes[1]);resonance.id='chakra-cymatic';j.scenes.push(resonance);
-  j.name='Seven centres';j.description='Chakra Body, Kundalini and a shared resonant field.';
-  j.scenes.forEach((s,i)=>{s.name=['Chakra Body','Kundalini','Chakra × Cymatic'][i];s.entities=nativeChakras();s.text=[];s.composition.focus=i?'travelling':'parallel';s.composition.frequencyDriver=i?'focus':'manual';s.engine.resonanceEnabled=i>0;s.field.params.dominance=i===2?.8:i?.45:0;s.field.params.count=62000;});
-  return j;
+  const ids=['chakra_body','kundalini_focus','chakra_cymatic'];
+  const scenes=ids.map(id=>{
+    const preset=COMPOSITION_PRESETS.find(p=>p.id===id)!;const built=preset.build();
+    const expression=nativeSnapshotToJourney({name:preset.name,config:{particleCount:62000,entities:built.entities,composition:built.composition,cymatics:built.cymatics,semanticField:built.semanticField,resonanceDrive:built.resonanceDrive}});
+    const scene=expression.scenes[0];scene.name=preset.name;scene.text=[];return scene;
+  });
+  return {schema:'oi.journey',version:1,id:'seven-centres',name:'Seven centres',description:'Chakra Body, Kundalini and the shared resonant field expressed through semantic bindings.',loop:true,scenes,updatedAt:new Date().toISOString()};
 }
 export function featuredExpressions():Expression[]{return [fieldStudies(),nativeSeven(),smallLanguage()];}
 export function startingPoints():StartingPoint[]{
   const material=fieldStudies().scenes.map(s=>({id:'material-'+s.id,group:'Material' as const,expression:{...fieldStudies(),id:'material-'+s.id,name:s.name,description:s.character,scenes:[s]}}));
   const compositions=COMPOSITION_PRESETS.map(p=>{
     const built=p.build();
-    const expression=nativeSnapshotToJourney({name:p.name,config:{particleCount:62000,entities:built.entities,composition:built.composition,cymatics:built.cymatics}});
+    const expression=nativeSnapshotToJourney({name:p.name,config:{particleCount:62000,entities:built.entities,composition:built.composition,cymatics:built.cymatics,semanticField:built.semanticField,resonanceDrive:built.resonanceDrive}});
     expression.id='composition-'+p.id;expression.description=p.description;
     // Face a horizontal medium without changing its physics or placement plane.
     if(built.composition.plane==='horizontal')expression.scenes[0].view={mode:'3d',yaw:0,pitch:-Math.PI/2,zoom:.8,panX:0,panY:0};

@@ -7,11 +7,11 @@ import assert from 'node:assert/strict';
 import { test } from './harness.ts';
 import { migrateConfig, migrateSnapshot, createSnapshot, CONFIG_SCHEMA_VERSION } from '../src/engine/configMigration.ts';
 
-test('CONFIG_SCHEMA_VERSION is 4', () => {
-  assert.equal(CONFIG_SCHEMA_VERSION, 4);
+test('CONFIG_SCHEMA_VERSION is 5', () => {
+  assert.equal(CONFIG_SCHEMA_VERSION, 5);
 });
 
-test('migrateSnapshot: a v0 legacy snapshot migrates to schemaVersion 4 with angle converted from radians to degrees', () => {
+test('migrateSnapshot: a v0 legacy snapshot migrates to schemaVersion 5 with angle converted from radians to degrees', () => {
   const rawV0 = {
     name: 'legacy',
     config: {
@@ -27,7 +27,7 @@ test('migrateSnapshot: a v0 legacy snapshot migrates to schemaVersion 4 with ang
 
   const snap = migrateSnapshot(rawV0, 0);
   assert.ok(snap);
-  assert.equal(snap!.schemaVersion, 4);
+  assert.equal(snap!.schemaVersion, 5);
   assert.ok(Math.abs(snap!.config.color!.angle - 44.98) < 0.01, `expected ~44.98deg, got ${snap!.config.color!.angle}`);
 
   // chaining migrated into entities
@@ -54,7 +54,7 @@ test('migrateSnapshot: an angle already in degrees (>= v2) is left unchanged', (
   assert.equal(snap!.config.color!.angle, 120);
 });
 
-test('migrateConfig / createSnapshot / migrateSnapshot: a v4 snapshot round-trips through JSON', () => {
+test('migrateConfig / createSnapshot / migrateSnapshot: a v5 snapshot round-trips through JSON', () => {
   const base = migrateConfig({});
   const snapshot = createSnapshot('roundtrip', base);
   assert.equal(snapshot.schemaVersion, CONFIG_SCHEMA_VERSION);
@@ -74,7 +74,7 @@ test('migrateConfig / createSnapshot / migrateSnapshot: a v4 snapshot round-trip
   );
 });
 
-test('migrateConfig: pins/sequence survive a round trip through a v4 snapshot with custom entities', () => {
+test('migrateConfig: pins/sequence survive a round trip through a v5 snapshot with custom entities', () => {
   const base = migrateConfig({});
   const customized = {
     ...base,
@@ -104,4 +104,37 @@ test('migrateConfig: pins/sequence survive a round trip through a v4 snapshot wi
   const migratedBack = migrateSnapshot(throughJson, 0);
 
   assert.deepEqual(migratedBack!.config.entities, customized.entities);
+});
+
+
+test('migrateConfig: v4 chakra identity becomes semantic bindings without enabling new spatial colour', () => {
+  const raw:any={
+    entities:[{
+      id:'ent-heart',name:'Heart',kind:'formation',enabled:true,x:0,y:0,z:0,scale:1,share:1,
+      shape:{kind:'yantra',yantraId:'anahata'},sequence:{links:[],advance:'off',hold:1,transition:1,easing:'smoothstep',order:'loop',jitter:0,impulse:0,phaseOffset:0,rateMul:1},
+      forces:{mode:'vortex',strength:1,radius:220,spin:.4},tint:'#00ff99',tintWeight:1,chakraId:'anahata',stationIndex:3,
+    }],
+    composition:{plane:'vertical',orchestration:{mode:'focus',order:'listed',dwell:1,glide:1,followStation:true,focusTintWeight:.3},entityTintWeight:.8},
+    cymatics:{enabled:true,engine:'resonator',followFocus:true},
+  };
+  const migrated=migrateConfig(raw,4);
+  assert.equal(migrated.semanticField?.enabled,true);
+  const binding=migrated.semanticField!.bindings[0];
+  assert.equal(binding.semanticNodeId,'anahata');
+  assert.deepEqual(binding.carriers,[{kind:'entity',id:'ent-heart'}]);
+  assert.equal(binding.color?.enabled,false,'migration must preserve old partition-tint appearance');
+  assert.deepEqual(migrated.resonanceDrive,{kind:'semanticFocus',profileId:'chakra-seven-v1'});
+  assert.equal(migrated.entities![0].tint,'#00ff99');
+});
+
+test('migrateConfig: explicit v5 semantic colour and resonance drive round-trip unchanged', () => {
+  const base=migrateConfig({});
+  const semantic={enabled:true,profile:{kind:'chakra' as const,profileId:'chakra-seven-v1'},affinity:{method:'modalProjection' as const,bandwidth:.2},globalColorGain:.7,bindings:[{
+    id:'b1',semanticNodeId:'anahata',enabled:true,resonance:{gain:.9},carriers:[{kind:'entity' as const,id:'ent_main'}],
+    color:{enabled:true,colorSource:'canonical' as const,gain:.8,radius:{source:'independent' as const,value:180},falloff:'gaussian' as const,metric:'world3d' as const,blend:'weighted' as const,activation:'resonanceAffinity' as const},
+  }]};
+  const snap=createSnapshot('v5',{...base,semanticField:semantic,resonanceDrive:{kind:'semanticFocus',profileId:'chakra-seven-v1'}});
+  const back=migrateSnapshot(JSON.parse(JSON.stringify(snap)),0)!;
+  assert.deepEqual(back.config.semanticField,semantic);
+  assert.deepEqual(back.config.resonanceDrive,{kind:'semanticFocus',profileId:'chakra-seven-v1'});
 });

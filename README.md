@@ -100,6 +100,20 @@ rename. Current covers come from native capture; other cards use labelled static
 composition previews loaded as they come into view. Optional text in existing
 user documents is preserved.
 
+## Semantic field
+
+The continuous cymatic resonator is physically independent from chakra meaning.
+Seven physical resonance anchors expose live modal energy; scene-level semantic
+bindings map those anchors onto chakra definitions and bind them to ordinary moving
+formations or pins. Spatial semantic colour is evaluated from world position after
+the ordinary palette/entity-tint layers and never owns particles or force. Resonant
+affinity, travelling focus, carrier motion and force values can be connected to
+colour only through explicit authored mappings. New chakra compositions contain no
+physical `chakraId` or `stationIndex` authority; those fields remain migration-only.
+
+See [the semantic-field architecture](field-studies-journeys/docs/SEMANTIC_FIELD_REWORK.md)
+and [its acceptance contract](field-studies-journeys/docs/SEMANTIC_FIELD_ACCEPTANCE.md).
+
 ## Verify
 
 ```sh
@@ -112,12 +126,13 @@ python -m playwright install chromium
 npm run test:gpu
 npm run test:browser
 npm run test:workspace
+python field-studies-journeys/tests/semantic_field_browser.py
 python field-studies-journeys/tests/module_browser.py
 ```
 
-Acceptance comprises 70 native/bridge regressions, 23 authoring-model checks,
-five real GPU suites, 25 original browser workflows and 23 Expressions workspace
-checks. The served-module test exercises the actual default route and its
+Acceptance now includes 103 native/bridge/semantic regressions, 50 authoring-model checks,
+six real GPU suites, the original native browser workflows, 25 Expressions workspace
+checks and a 62,000-particle combined semantic-field run. The served-module test exercises the actual default route and its
 module-to-standalone export. PNG and recorded video are decoded, not merely
 checked for file existence.
 
