@@ -1,3 +1,8 @@
+import {validateAutomationLinks} from './automationLinks';
+import type {BeltEntry} from './workspacePreferences';
+import {validateWorkspace,defaultWorkspace} from './workspacePreferences';
+import type {PropertyTrack} from './propertyTracks';
+import {validateTracks} from './propertyTracks';
 import type {PointCloudConfig, AutomationEasing,CustomImageConfig,AsciiGlyphConfig,CameraOrbState} from '../../src/engine/types';
 import type {Entity as NativeEntity, SequenceLink as NativeLink} from '../../src/engine/fieldModel';
 /** Authoring schema. Deliberately NOT the production engine's schema-4 snapshot. */
@@ -16,14 +21,14 @@ export interface Entity {
  sequence:{enabled:boolean;clock:'seconds'|'morph';steps:SequenceStep[];manual?:boolean;hold?:number;transition?:number;order?:'loop'|'pingpong'|'random';easing?:'linear'|'smoothstep'|'kineticSnap'|'whip';jitter?:number;impulse?:number;rateMul?:number;phaseOffset?:number};
 }
 export interface TextLayer {id:string;visible:boolean;kicker:string;title:string;italic:string;body:string;x:number;y:number;width:number;size:number;align:'left'|'center'|'right'}
-export interface AutomationLane {easing?:AutomationEasing;nativeId?:string;nativePath?:string;entityId?:string;id:string;enabled:boolean;target:string;type:'lfo'|'ramp';wave:'sine'|'triangle'|'square'|'saw'|'steps'|'smooth';min:number;max:number;rate:number;phase:number;blend:'replace'|'add'|'multiply';duration:number;delay:number;loop:'once'|'loop'|'pingpong';firedAt:number|null}
+export interface AutomationLane {clockId?:string;syncWith?:string;easing?:AutomationEasing;nativeId?:string;nativePath?:string;entityId?:string;id:string;enabled:boolean;target:string;type:'lfo'|'ramp';wave:'sine'|'triangle'|'square'|'saw'|'steps'|'smooth'|'morph';min:number;max:number;rate:number;phase:number;blend:'replace'|'add'|'multiply';duration:number;delay:number;loop:'once'|'loop'|'pingpong';firedAt:number|null}
 export interface EngineSettings {inkMode?:'blackOnWhite'|'whiteOnBlack';paletteId?:string;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';paletteSource?:'custom'|'legacy';grainProfile?:boolean;backgroundMode?:'solid'|'vignette'|'ambientGlow'|'adaptive';resonatorMode?:'resonator'|'template';focusOrder?:'listed'|'reverse'|'pingpong';resonanceEnabled:boolean;morphEnabled:boolean;trajectory:'linear'|'toroidalHopf'|'vortexSpiral'|'quantumInterference';driveShape:'sine'|'triangle'|'smooth'|'pulse';autoOscillate:boolean;relationalEnabled:boolean;relationalMode:'orbital'|'nbody'|'chaos';pointerMode:'repel'|'attract'|'vortex';colorMode:string;colorEnabled:boolean;dotShape?:'circle'|'square';fontFamily?:string;fontWeight?:string|number;mediumPlane:'vertical'|'horizontal';autoSweep:boolean;sweepDirection:'ascent'|'descent'|'pingpong'}
 export const DEFAULT_ENGINE_SETTINGS:EngineSettings={paletteSource:'custom',grainProfile:true,backgroundMode:'solid',resonatorMode:'resonator',focusOrder:'listed',dotShape:'circle',fontFamily:'system-ui, -apple-system, sans-serif',fontWeight:900,resonanceEnabled:true,morphEnabled:false,trajectory:'toroidalHopf',driveShape:'sine',autoOscillate:true,relationalEnabled:false,relationalMode:'orbital',pointerMode:'repel',colorMode:'linearGradient',colorEnabled:true,mediumPlane:'vertical',autoSweep:false,sweepDirection:'ascent'};
 export interface Scene {
  engine:EngineSettings;
  favourites?:string[];
  native?: {config:PointCloudConfig; original:unknown; projection?:PointCloudConfig};
- id:string;name:string;character:string;duration:number;transition:number;
+ propertyTakeRange?:{start:number;end:number};toolbelt?:BeltEntry[];propertyTracks?:PropertyTrack[];id:string;name:string;character:string;duration:number;transition:number;
  view:{nativeScaffold?:'off'|'axis'|'grid';nativeCamera?:CameraOrbState;mode:'2d'|'3d';yaw:number;pitch:number;zoom:number;panX:number;panY:number};
  field:{background:string;palette:string[];material:Material;params:Record<string,number>};
  entities:Entity[];text:TextLayer[];
@@ -31,7 +36,7 @@ export interface Scene {
  morph:{thetaRate:number;phiRate:number;thetaOffset:number;phiOffset:number;law:'theta'|'product'|'sum'|'beat';depth:number;dwell:number};
  automation:AutomationLane[];
 }
-export interface Journey {schema:'oi.journey';version:1;id:string;name:string;description:string;loop:boolean;scenes:Scene[];updatedAt:string}
+export interface Journey {savedScenes?:Record<string,Scene>;schema:'oi.journey';version:1;id:string;name:string;description:string;loop:boolean;scenes:Scene[];updatedAt:string}
 export const clone=<T>(v:T):T=>JSON.parse(JSON.stringify(v));
 export const uid=(prefix='id')=>prefix+'-'+(globalThis.crypto?.randomUUID?.()??Math.random().toString(36).slice(2,12));
 export const clamp=(x:number,a:number,b:number)=>Math.max(a,Math.min(b,x));
@@ -48,7 +53,7 @@ export function entity(name:string,text='O',position:Vec3={x:0,y:0,z:0}):Entity{
  force:{kind:'attract',strength:0,radius:.45,spin:0},station:null,sequence:{enabled:false,clock:'seconds',steps:[{id:uid('step'),text,shape:'text',hold:3,transition:1,position:null}]}
 };}
 export function pin(position:Vec3):Entity{const e=entity('Attractor','',position);e.kind='pin';e.share=0;e.force.strength=1;e.size={x:.1,y:.1};return e;}
-export function blankScene(name='Untitled scene'):Scene{return{
+export function blankScene(name='Untitled scene'):Scene{return{toolbelt:defaultWorkspace().entries,
  engine:{...DEFAULT_ENGINE_SETTINGS},
  id:uid('scene'),name,character:'An arrangement, waiting to happen.',duration:12,transition:1.5,
  view:{mode:'2d',yaw:0,pitch:0,zoom:1,panX:0,panY:0},
@@ -85,7 +90,7 @@ export function fieldStudies():Journey {
 export function chakraEntities():Entity[]{return ['Root','Sacral','Solar','Heart','Throat','Brow','Crown'].map((name,i)=>{const e=entity(name,['△','◯','△','✧','◯','∞','✧'][i],{x:.18,y:-.82+i*.274,z:0});e.size={x:.235,y:.235};e.tint=['#a94138','#c67c46','#c2a852','#638c69','#5898a4','#737599','#a590b0'][i];e.tintWeight=1;e.station=i;e.force={kind:'vortex',strength:.3,radius:.27,spin:.12};return e;});}
 export function sevenCentres():Journey{const s=blankScene('Seven centres');s.entities=chakraEntities();s.field.params.count=42000;s.field.params.contrast=.5;s.field.params.warp=.12;s.composition.layout='column';const t=clone(s);t.id=uid('scene');t.name='A rising attention';t.composition.focus='travelling';return {schema:'oi.journey',version:1,id:'seven-centres',name:'Seven centres',description:'A spatial composition; not seven isolated simulations.',loop:true,scenes:[s,t],updatedAt:new Date().toISOString()};}
 export function smallLanguage():Journey {const j=fieldStudies();j.id='small-language';j.name='A small language';j.description='Three characters, and the intervals between them.';j.scenes=[j.scenes[0],j.scenes[4],j.scenes[6]].map((s,i)=>{s.id=uid('scene');s.name=['A beginning','And','An opening'][i];return s;});return j;}
-export function blankJourney():Journey{return {schema:'oi.journey',version:1,id:uid('journey'),name:'Untitled expression',description:'',loop:true,scenes:[blankScene()],updatedAt:new Date().toISOString()};}
+export function blankJourney():Journey{return {schema:'oi.journey',version:1,savedScenes:{},id:uid('journey'),name:'Untitled expression',description:'',loop:true,scenes:[blankScene()],updatedAt:new Date().toISOString()};}
 /** Validate before use. Reject malformed documents; never silently claim schema-4 migration. */
 export function validateJourney(value:unknown):Journey {
  if(!value||typeof value!=='object')throw new Error('Choose a Field Studies journey JSON file.');
@@ -98,7 +103,7 @@ export function validateJourney(value:unknown):Journey {
  const color=(s:unknown)=>typeof s==='string'&&/^#[\da-f]{6}$/i.test(s);
  if(!str(j.name,160)||!safeId(j.id)||!str(j.description)||typeof j.loop!=='boolean'||!Array.isArray(j.scenes)||!j.scenes.length||j.scenes.length>64)throw new Error('Journey metadata or scene count is invalid (1–64 scenes).');
  const ids=new Set<string>();
- for(const s of j.scenes){s.engine={...DEFAULT_ENGINE_SETTINGS,...s.engine};if(!safeId(s.id)||ids.has(s.id)||!str(s.name,160)||!str(s.character)||!finite(s.duration,1,3600)||!finite(s.transition,0,30))throw new Error('Invalid or duplicate scene.');ids.add(s.id);
+ for(const s of j.scenes){if(s.propertyTakeRange&&(!Number.isFinite(s.propertyTakeRange.start)||!Number.isFinite(s.propertyTakeRange.end)||s.propertyTakeRange.start<0||s.propertyTakeRange.end<=s.propertyTakeRange.start||s.propertyTakeRange.end>3600))throw new Error('Invalid property take interval');if(s.toolbelt!==undefined)s.toolbelt=validateWorkspace({version:1,appearance:'scene',entries:s.toolbelt}).entries;if(s.propertyTracks!==undefined)s.propertyTracks=validateTracks(s.propertyTracks);s.engine={...DEFAULT_ENGINE_SETTINGS,...s.engine};if(!safeId(s.id)||ids.has(s.id)||!str(s.name,160)||!str(s.character)||!finite(s.duration,1,3600)||!finite(s.transition,0,30))throw new Error('Invalid or duplicate scene.');ids.add(s.id);
   if(!s.view)s.view={mode:'2d',yaw:0,pitch:0,zoom:1,panX:0,panY:0};
   if(s.view.nativeScaffold!==undefined&&!['off','axis','grid'].includes(s.view.nativeScaffold))throw new Error('Invalid native scaffold.');
   if(!['2d','3d'].includes(s.view.mode)||!finite(s.view.yaw,-1000,1000)||!finite(s.view.pitch,-1000,1000)||!finite(s.view.zoom,.01,100)||!finite(s.view.panX,-10,10)||!finite(s.view.panY,-10,10))throw new Error('Invalid scene framing.');
@@ -115,7 +120,13 @@ export function validateJourney(value:unknown):Journey {
   for(const t of s.text){if(!safeId(t.id)||!str(t.kicker,300)||!str(t.title,300)||!str(t.italic,300)||!str(t.body)||!finite(t.x,-.5,1.5)||!finite(t.y,-.5,1.5)||!finite(t.width,60,1000)||!finite(t.size,14,150)||!['left','center','right'].includes(t.align)||typeof t.visible!=='boolean')throw new Error('Invalid page text.');}
   if(!s.composition||!['XY','XZ','YZ'].includes(s.composition.plane)||!['parallel','travelling'].includes(s.composition.focus)||!finite(s.composition.focusDuration,.01,3600)||!['manual','focus','automation'].includes(s.composition.frequencyDriver))throw new Error('Invalid composition.');
   if(!s.morph||!['theta','product','sum','beat'].includes(s.morph.law)||!finite(s.morph.thetaRate,-100,100)||!finite(s.morph.phiRate,-100,100)||!finite(s.morph.thetaOffset,-1000,1000)||!finite(s.morph.phiOffset,-1000,1000)||!finite(s.morph.depth,-10,10)||!finite(s.morph.dwell,0,.99))throw new Error('Invalid morph clock.');
-  for(const a of s.automation){if(!safeId(a.id)||!str(a.target,250)||!['lfo','ramp'].includes(a.type)||!['sine','triangle','square','saw','steps','smooth'].includes(a.wave)||!['replace','add','multiply'].includes(a.blend)||!['once','loop','pingpong'].includes(a.loop)||![a.min,a.max,a.rate,a.phase,a.duration,a.delay].every(n=>typeof n==='number'&&Number.isFinite(n))||!(a.firedAt===null||typeof a.firedAt==='number'&&Number.isFinite(a.firedAt)))throw new Error('Invalid automation lane.');}
+  validateAutomationLinks(s.automation);for(const a of s.automation){if(!safeId(a.id)||!str(a.target,250)||!['lfo','ramp'].includes(a.type)||!['sine','triangle','square','saw','steps','smooth','morph'].includes(a.wave)||!['replace','add','multiply'].includes(a.blend)||!['once','loop','pingpong'].includes(a.loop)||![a.min,a.max,a.rate,a.phase,a.duration,a.delay].every(n=>typeof n==='number'&&Number.isFinite(n))||!(a.firedAt===null||typeof a.firedAt==='number'&&Number.isFinite(a.firedAt)))throw new Error('Invalid automation lane.');}
+ }
+ if(j.savedScenes!==undefined){
+  if(!j.savedScenes||typeof j.savedScenes!=='object'||Array.isArray(j.savedScenes))throw new Error('Invalid saved scenes.');
+  const saved=Object.entries(j.savedScenes);
+  if(saved.length>64||saved.some(([id,s])=>!ids.has(id)||!s||s.id!==id))throw new Error('Saved scene does not match its working scene.');
+  if(saved.length){const checked=validateJourney({...j,savedScenes:undefined,scenes:saved.map(([,s])=>s)});j.savedScenes=Object.fromEntries(checked.scenes.map(s=>[s.id,s]));}
  }
  return clone(j);
 }

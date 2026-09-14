@@ -2,12 +2,13 @@ import {Journey,Scene,fieldStudies,sevenCentres,smallLanguage,clone,uid} from '.
 import {nativeChakras,nativeSnapshotToJourney} from './nativeBridge.js';
 import {COMPOSITION_PRESETS} from '../../src/engine/fieldModel';
 import {FACTORY_PRESETS} from '../../src/engine/factoryPresets';
+import {sourceStudies} from './sourceExamples.js';
 import {defaultCamera,project,stageScale} from './camera.js';
 import {icon,esc} from './icons.js';
 
 /** Expression is the public name. The oi.journey/1 envelope remains compatible. */
 export type Expression = Journey;
-export interface StartingPoint {id:string;group:'Material'|'Composition'|'Native';expression:Expression}
+export interface StartingPoint {id:string;group:'Material'|'Composition'|'Native'|'Source studies';expression:Expression}
 export function nativeSeven():Expression {
   const j=sevenCentres(),resonance=clone(j.scenes[1]);resonance.id='chakra-cymatic';j.scenes.push(resonance);
   j.name='Seven centres';j.description='Chakra Body, Kundalini and a shared resonant field.';
@@ -30,7 +31,7 @@ export function startingPoints():StartingPoint[]{
     expression.id='native-'+p.id;expression.description=p.description;
     return{id:expression.id,group:'Native' as const,expression};
   });
-  return [...material,...compositions,...native];
+  return [...material,...compositions,...native,...sourceStudies()];
 }
 /** A fork is ordinary editable data, never a runtime mode flag. */
 export function forkExpression(source:Expression):Expression {
@@ -83,6 +84,6 @@ export function libraryHTML(c:LibraryContext):string{
   <section class="library-section"><header><h2>Starting compositions</h2><label class="library-search">${icon('search')}<input id="library-search" placeholder="Find a mode or material" aria-label="Find a starting composition"></label></header><div class="expression-grid starting-grid">${c.starters.map(p=>`<div data-starting-card data-search="${esc((p.expression.name+' '+p.expression.description+' '+p.group).toLowerCase())}">${card(p.expression,'mode',p.id)}</div>`).join('')}</div><p id="library-empty" hidden>No compositions match that search.</p></section>
   <footer class="library-footer"><span>O:I · Native particle field</span><span>Editable configurations, not runtime checkpoints.</span></footer></div>`}`;
 }
-export function modesHTML(points:StartingPoint[]):string{
- return `<label class="modes-search">${icon('search')}<input id="mode-search" placeholder="Find a starting point" aria-label="Find a mode"></label><div class="modes-list">${(['Material','Composition','Native'] as const).map(group=>`<section><h3>${group}</h3>${points.filter(p=>p.group===group).map(p=>`<button data-action="start-mode" data-id="${esc(p.id)}" data-mode-choice data-search="${esc((p.expression.name+' '+p.expression.description).toLowerCase())}"><span>${esc(p.expression.name)}</span>${icon('branch')}</button>`).join('')}</section>`).join('')}</div><footer>Each mode opens as an editable expression.</footer>`;
+export function modesHTML(points:StartingPoint[],recent:Journey[]=[]):string{
+ return `<label class="modes-search">${icon('search')}<input id="mode-search" placeholder="Find a starting point" aria-label="Find a mode"></label><div class="modes-list">${recent.length?`<section><h3>Recent work</h3>${recent.slice(0,12).map(j=>`<button data-action="load-saved" data-id="${esc(j.id)}" data-mode-choice data-search="${esc(j.name.toLowerCase())}">${esc(j.name)}</button>`).join('')}</section>`:''}${(['Material','Composition','Native','Source studies'] as const).map(group=>`<section><h3>${group}</h3>${points.filter(p=>p.group===group).map(p=>`<button data-action="start-mode" data-id="${esc(p.id)}" data-mode-choice data-search="${esc((p.expression.name+' '+p.expression.description).toLowerCase())}"><span>${esc(p.expression.name)}</span>${icon('branch')}</button>`).join('')}</section>`).join('')}</div><footer>Each mode opens as an editable expression.</footer>`;
 }

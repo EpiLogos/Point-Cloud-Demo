@@ -1,6 +1,6 @@
 import {reorderFocus} from '../build/timeline.js';
 import test from 'node:test';import assert from 'node:assert/strict';
-import {fieldStudies,sevenCentres,smallLanguage,blankJourney,validateJourney,clone,entity,pin} from '../build/model.js';
+import {fieldStudies,sevenCentres,smallLanguage,blankJourney,blankScene,validateJourney,clone,entity,pin} from '../build/model.js';
 import {DocumentStore} from '../build/store.js';
 import {project,unproject,defaultCamera,facePlane} from '../build/camera.js';
 import {sequenceAt,evaluateParameters,arrange,phases,focusAt} from '../build/timeline.js';
@@ -26,10 +26,103 @@ test('round-trip includes framing and optional text',()=>{const j=fieldStudies()
 test('focus-route reordering skips interleaved pins and preserves spatial positions',()=>{const a=entity('A'),b=entity('B'),p=pin({x:.2,y:.3,z:.4});const entities=[a,p,b];const positions=entities.map(e=>({...e.position}));assert.equal(reorderFocus(entities,b.id,-1),true);assert.deepEqual(entities.map(e=>e.id),[b.id,p.id,a.id]);assert.deepEqual(a.position,positions[0]);assert.deepEqual(p.position,positions[1]);assert.deepEqual(b.position,positions[2]);});
 
 // Review-requested workspace contracts.
-import {railClick} from '../build/rail.js';
+import {railPressed} from '../build/rail.js';
 import {axisView,orbitBy} from '../build/orbitControl.js';
 import {featuredExpressions,startingPoints,forkExpression} from '../build/expressions.js';
-test('tool rail opens, closes, then returns to Interact for every non-default tool',()=>{for(const key of ['select','pin','formation','text','orbit','objects']){assert.equal(railClick('interact',key,false),'activate');assert.equal(railClick(key,key,true),'close');assert.equal(railClick(key,key,false),'interact');}assert.equal(railClick('select','interact',true),'interact');});
+import {defaultWorkspace,validateWorkspace,moveBeltEntry,formationSummary,syncHeldState} from '../build/workspacePreferences.js';
+import {PARAMETERS} from '../build/registry.js';
+import {toNativeEntity,toNativeConfig} from '../build/nativeBridge.js';
+import {nativeBinding,entityTargets} from '../build/nativeParameters.js';
+import {paperStops} from '../build/paper.js';
+test('ambient paper glow stays faint and fades monotonically without a cyan halo',()=>{
+ const s=fieldStudies().scenes[0];s.engine.backgroundMode='ambientGlow';s.field.background='#09090b';s.field.palette=['#00f0ff','#ffe600'];s.field.params.native_backgroundGlowIntensity=.45;
+ const stops=paperStops(s);assert.deepEqual(stops.map(s=>s.offset),[0,.58,1]);
+ assert.deepEqual(stops[0].color,[8,38,42]);
+ for(let i=1;i<stops.length;i++)for(let channel=0;channel<3;channel++)assert.ok(stops[i].color[channel]<=Math.max(stops[0].color[channel],9),JSON.stringify(stops));
+ // A convex interpolation between opaque stops cannot create an intermediate colour peak.
+ for(let i=1;i<stops.length;i++)for(let t=0;t<=1;t+=.01)for(let c=0;c<3;c++){
+  const value=stops[i-1].color[c]*(1-t)+stops[i].color[c]*t;
+  assert.ok(value<=Math.max(stops[i-1].color[c],stops[i].color[c])+1e-9);
+ }
+});
+test('paper modes retain solid and vignette endpoints, including light paper',()=>{
+ const s=fieldStudies().scenes[0];s.field.background='#ffffff';s.engine.backgroundMode='solid';assert.deepEqual(paperStops(s).map(s=>s.color),[[255,255,255],[255,255,255]]);
+ s.engine.backgroundMode='vignette';assert.deepEqual(paperStops(s).at(-1).color,[224,224,224]);
+ s.engine.backgroundMode='adaptive';assert.deepEqual(paperStops(s).map(s=>s.offset),[0,.4,.75,1]);
+});
+test('starter toolbelt resolves to real native field and entity controls',()=>{
+ const prefs=defaultWorkspace(),scene=fieldStudies().scenes[0];
+ for(const entry of prefs.entries)assert.ok(entry.scope==='field'?nativeBinding(entry.key):entityTargets(scene).find(t=>t.key===entry.key),entry.key);
+ assert.deepEqual(validateWorkspace(JSON.parse(JSON.stringify(prefs))),prefs);
+});
+test('toolbelt reordering retains identity and named bindings across serialization',()=>{
+ const p=defaultWorkspace();p.entries.push({id:'named',key:'sequence.transition',scope:'named',entityId:'opening-o',sceneId:'study-0',journeyId:'field-studies'});
+ const before=structuredClone(p.entries.at(-1));assert.equal(moveBeltEntry(p.entries,'named',-1),true);
+ const restored=validateWorkspace(JSON.parse(JSON.stringify(p)));
+ assert.deepEqual(restored.entries.at(-2),before);assert.equal(moveBeltEntry(p.entries,'speed',-1),false);
+});
+test('invalid and future workspace preferences fail without accepting ambiguous targets',()=>{
+ const p=defaultWorkspace();assert.throws(()=>validateWorkspace({...p,version:2}));
+ assert.throws(()=>validateWorkspace({...p,entries:[p.entries[0],p.entries[0]]}));
+ assert.throws(()=>validateWorkspace({...p,entries:[{id:'bad',key:'sequence.hold',scope:'named'}]}));
+});
+test('formation summary discloses states without merging independent entities',()=>{
+ const s=fieldStudies().scenes[0],e=s.entities[0];assert.match(formationSummary(e),/single state/);
+ e.sequence.steps.push({...clone(e.sequence.steps[0]),id:'interval',text:'I'});e.sequence.manual=true;
+ assert.equal(formationSummary(e),'O ↔ I · manual');e.sequence.enabled=true;assert.equal(formationSummary(e),'O → I · playing');
+ assert.equal(s.entities.length,2);assert.equal(s.entities[1].text,'I');
+});
+test('editing a held glyph reaches the real native target without discarding its sequence',()=>{
+ const e=entity('Held form');e.sequence.steps[0].text='A';syncHeldState(e,0);
+ assert.equal(toNativeEntity(e).shape.text,'A');assert.equal(toNativeEntity(e).sequence.links[0].shape.text,'A');
+ e.sequence.steps.push({...clone(e.sequence.steps[0]),id:'second-state',text:'I'});syncHeldState(e,1);
+ assert.equal(toNativeEntity(e).shape.text,'I');assert.equal(e.sequence.steps[0].text,'A');
+ e.sequence.enabled=true;const n=toNativeEntity(e);assert.deepEqual(n.sequence.links.map(l=>l.shape.text),['A','I']);
+});
+test('cursor selection remains active alongside an independently toggled panel',()=>{assert.equal(railPressed('select','select','text',false),true);assert.equal(railPressed('text','select','text',false),true);assert.equal(railPressed('interact','select','text',false),false);assert.equal(railPressed('text','select','',false),false);assert.equal(railPressed('select','select','',false),true);assert.equal(railPressed('formation','interact','formation',false),true);assert.equal(railPressed('pin','interact','',true),true);});
 test('camera axis views and orbit preserve construction plane and physical independence',()=>{const c=defaultCamera();c.plane='XZ';c.depth=.3;c.grid=true;c.snap=true;c.panX=20;c.zoom=1.2;for(const a of ['X','-X','Y','-Y','Z','-Z']){axisView(c,a);assert.equal(c.plane,'XZ');assert.equal(c.depth,.3);assert.equal(c.panX,20);assert.equal(c.zoom,1.2);}orbitBy(c,55,5);assert.ok(Math.abs(c.yaw)<=Math.PI);assert.equal(c.pitch,Math.PI/2);});
 test('all material, composition and native starting modes are validated editable expressions',()=>{const modes=startingPoints();assert.equal(modes.filter(m=>m.group==='Material').length,8);assert.equal(modes.filter(m=>m.group==='Composition').length,5);assert.ok(modes.filter(m=>m.group==='Native').length>10);for(const m of modes){assert.deepEqual(validateJourney(m.expression),m.expression);assert.equal(m.expression.scenes.length,1);const copy=forkExpression(m.expression);assert.notEqual(copy.id,m.expression.id);copy.scenes[0].name='Changed';assert.notEqual(m.expression.scenes[0].name,copy.scenes[0].name);}});
 test('starter expressions and blank scenes contain no compulsory editorial text',()=>{for(const j of [...featuredExpressions(),blankJourney()])assert.ok(j.scenes.every(s=>s.text.length===0));});
+
+const workflow=await import('../build/sceneWorkflow.js');
+const panelLayout=await import('../build/panelResize.js');
+const recents=await import('../build/recentWork.js');
+test('explicit scene saves retain an independent configuration through edits and restoration',()=>{
+ const j=blankJourney(),s=j.scenes[0];assert.equal(workflow.sceneSaveState(j,s),'Draft');
+ workflow.saveScene(j,s,'  First light  ');assert.equal(s.name,'First light');assert.equal(workflow.sceneSaveState(j,s),'Saved');
+ const original=s.field.params.recovery;s.field.params.recovery=original+1;
+ assert.equal(workflow.sceneSaveState(j,s),'Edited since save');assert.equal(j.savedScenes[s.id].field.params.recovery,original);
+ assert.ok(workflow.restoreScene(j,s.id));assert.equal(j.scenes[0].field.params.recovery,original);assert.equal(workflow.sceneSaveState(j,j.scenes[0]),'Saved');
+ assert.throws(()=>workflow.saveScene(j,j.scenes[0],'   '));
+});
+test('next scene is a real independent draft with stable formation identities',()=>{
+ const j=blankJourney(),s=j.scenes[0];s.entities.push(entity('O'));workflow.saveScene(j,s,'Origin');const next=workflow.nextSceneFrom(j,s);
+ assert.notEqual(next.id,s.id);assert.equal(next.entities[0].id,s.entities[0].id);assert.equal(workflow.sceneSaveState(j,next),'Draft');
+ next.entities[0].text='I';assert.equal(s.entities[0].text,'O');assert.equal(j.savedScenes[s.id].entities[0].text,'O');
+ assert.deepEqual(workflow.savedSceneIndices(j),[0]);workflow.saveScene(j,next,'Interval');assert.deepEqual(workflow.savedSceneIndices(j),[0,1]);
+ const roundtrip=validateJourney(JSON.parse(JSON.stringify(j)));assert.deepEqual(roundtrip.savedScenes,j.savedScenes);
+});
+test('legacy scene saves migrate once and corrupt checkpoints are rejected',()=>{
+ const j=fieldStudies();delete j.savedScenes;workflow.initialiseSceneSaves(j);assert.equal(Object.keys(j.savedScenes).length,j.scenes.length);
+ j.scenes[0].name='Edited';workflow.initialiseSceneSaves(j);assert.notEqual(j.savedScenes[j.scenes[0].id].name,'Edited');
+ const broken=clone(j);broken.savedScenes[broken.scenes[0].id].duration=-1;assert.throws(()=>validateJourney(broken));
+ const orphan=clone(j);orphan.scenes.shift();assert.throws(()=>validateJourney(orphan));
+});
+test('scene differences expose actual numeric parameter changes',()=>{const a=blankScene(),b=clone(a);b.field.params.recovery+=.5;b.name='Renamed';assert.deepEqual(workflow.sceneParameterChanges(a,b),[{path:'field.params.recovery',from:a.field.params.recovery,to:b.field.params.recovery}]);});
+test('panel sizes clamp to the usable viewport',()=>{assert.deepEqual(panelLayout.panelSize(900,900,800,600),{width:776,height:460});assert.deepEqual(panelLayout.panelSize(100,100,1440,900),{width:220,height:180});});
+test('recently opened work moves first without duplicates, missing entries are ignored',()=>{const a=blankJourney(),b=blankJourney();const ids=recents.recordRecent([a.id,'missing',b.id],b.id);assert.deepEqual(ids,[b.id,a.id,'missing']);assert.deepEqual(recents.recentJourneys([a,b],ids).map(j=>j.id),[b.id,a.id]);assert.deepEqual(recents.recordRecent(null,a.id),[a.id]);});
+
+const tracks=await import('../build/propertyTracks.js');
+const beltPicker=await import('../build/beltPicker.js');
+test('scene-owned toolbelts copy, save, restore and round-trip independently',()=>{const j=blankJourney(),s=j.scenes[0];s.toolbelt=defaultWorkspace().entries;workflow.saveScene(j,s,'First');const next=workflow.nextSceneFrom(j,s);next.toolbelt.pop();assert.equal(s.toolbelt.length,6);assert.equal(next.toolbelt.length,5);workflow.saveScene(j,next,'Second');const loaded=validateJourney(JSON.parse(JSON.stringify(j)));assert.equal(loaded.savedScenes[next.id].toolbelt.length,5);loaded.scenes[1].toolbelt=[];workflow.restoreScene(loaded,next.id);assert.equal(loaded.scenes[1].toolbelt.length,5);});
+test('property picker exposes real registry controls and distinguishes formation identities',()=>{const s=fieldStudies().scenes[0],items=beltPicker.beltCandidates(s);assert.equal(items.length,PARAMETERS.filter(p=>!p.inactive&&p.preview).length+entityTargets(s).length);assert.equal(new Set(items.map(i=>i.id)).size,items.length);for(const c of items.filter(c=>c.entry.scope==='field'))assert.ok(PARAMETERS.some(p=>p.key===c.entry.key&&!p.inactive));const pending=new Set(items.slice(0,3).map(i=>i.id));const html=beltPicker.pickerHTML(s,[],pending);assert.match(html,/3 selected/);assert.equal((html.match(/ checked/g)||[]).length,3);});
+test('large scene toolbelts have no arbitrary 128-property cutoff',()=>{const prefs=defaultWorkspace();prefs.entries=Array.from({length:180},(_,i)=>({id:'control-'+i,key:'recovery',scope:'field'}));assert.equal(validateWorkspace(prefs).entries.length,180);});
+test('recorded keyframes interpolate actual native parameters without mutating saved configuration',()=>{const s=fieldStudies().scenes[0],base=clone(s),track={id:'spring-take',bind:'field.params.recovery',points:[{time:2,value:1},{time:4,value:3}]};s.propertyTracks=[track];assert.equal(tracks.valueAt(track.points,1),undefined);assert.equal(tracks.valueAt(track.points,3),2);assert.equal(tracks.valueAt(track.points,8),3);const evaluated=tracks.evaluateTracks(s,3);assert.equal(evaluated.field.params.recovery,2);assert.equal(s.field.params.recovery,base.field.params.recovery);assert.equal(toNativeConfig(evaluated).fluid.returnSpeed,2);});
+test('entity property tracks retain independent formation identity',()=>{const s=fieldStudies().scenes[0],first=s.entities[0],other=clone(s.entities[1]);s.propertyTracks=[{id:'move',entityId:first.id,bind:'entity.position.x',points:[{time:0,value:0},{time:2,value:1}]}];const evaluated=tracks.evaluateTracks(s,1);assert.equal(evaluated.entities[0].position.x,.5);assert.deepEqual(evaluated.entities[1],other);assert.notEqual(s.entities[0].position.x,.5);});
+test('replacement and appended property takes preserve other tracks and out-of-range keys',()=>{const existing=[{id:'a',bind:'field.params.recovery',points:[{time:0,value:1},{time:2,value:2},{time:4,value:1}]},{id:'b',bind:'field.params.speed',points:[{time:0,value:1}]}];const take=[{id:'new',bind:'field.params.recovery',points:[{time:1,value:3},{time:3,value:4}]}];const merged=tracks.mergeTake(existing,take,1,3);assert.deepEqual(merged[0].points,[{time:0,value:1},{time:1,value:3},{time:3,value:4},{time:4,value:1}]);assert.deepEqual(merged[1],existing[1]);assert.equal(existing[0].points.length,3);const appended=tracks.mergeTake(merged,[{...take[0],points:[{time:5,value:5},{time:6,value:6}]}],5,6);assert.equal(appended[0].points.length,6);});
+test('keyframe validation rejects unsafe paths, unordered and non-finite points',()=>{const t={id:'valid',bind:'field.params.recovery',points:[{time:0,value:1},{time:1,value:2}]};assert.deepEqual(tracks.validateTracks([t]),[t]);for(const invalid of [{...t,bind:'entity.__proto__.polluted'},{...t,points:[{time:1,value:1},{time:0,value:2}]},{...t,points:[{time:0,value:NaN}]}])assert.throws(()=>tracks.validateTracks([invalid]));const j=blankJourney();j.scenes[0].propertyTracks=[t];workflow.saveScene(j,j.scenes[0],'Take');assert.deepEqual(validateJourney(JSON.parse(JSON.stringify(j))).savedScenes[j.scenes[0].id].propertyTracks,[t]);});
+test('expression clock sums scene lengths and resolves scene-local offsets',()=>{const j=fieldStudies();assert.deepEqual(tracks.expressionTiming(j,2,3),{start:28,total:112,time:31});});
+test('recording captures native defaults even before a property has been edited',()=>{const s=fieldStudies().scenes[0];delete s.field.params.native_fluid__viscosity;const t={id:'default',bind:'field.params.native_fluid__viscosity',points:[{time:0,value:.8},{time:1,value:.9}]};assert.ok(Number.isFinite(tracks.readTrackValue(s,t)));s.propertyTracks=[t];assert.ok(Math.abs(toNativeConfig(tracks.evaluateTracks(s,.5)).fluid.viscosity-.85)<1e-8);});
+test('recorded optional entity properties evaluate through the native adapter',()=>{const s=fieldStudies().scenes[0],e=s.entities[0];delete e.scale;const t={id:'scale',entityId:e.id,bind:'entity.scale',points:[{time:0,value:1},{time:2,value:2}]};assert.ok(Number.isFinite(tracks.readTrackValue(s,t)));s.propertyTracks=[t];assert.equal(tracks.evaluateTracks(s,1).entities[0].scale,1.5);assert.equal(toNativeConfig(tracks.evaluateTracks(s,1)).entities[0].scale,1.5);});
+test('recording preserves a held value before a gesture instead of inventing a ramp',()=>{const t={id:'held',bind:'field.params.recovery',points:[]};tracks.sampleTrack(t,.05,1,0);tracks.sampleTrack(t,4,1,3.95);tracks.sampleTrack(t,4.05,2,4);assert.deepEqual(t.points,[{time:0,value:1},{time:4,value:1},{time:4.05,value:2}]);assert.equal(tracks.valueAt(t.points,3),1);assert.equal(tracks.valueAt(t.points,4.05),2);});
+test('saved playback timing excludes drafts and uses saved durations',()=>{const j=blankJourney();workflow.saveScene(j,j.scenes[0],'One');j.scenes[0].duration=30;workflow.nextSceneFrom(j,j.scenes[0]);assert.deepEqual(tracks.expressionTiming(j,0,3,true),{start:0,total:12,time:3});});

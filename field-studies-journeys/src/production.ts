@@ -4,6 +4,7 @@ import {CymaticResonator} from '../../src/engine/cymaticResonator';
 import {readPath} from '../../src/engine/automation';
 import {Color} from 'three';
 import {toNativeConfig,MATERIAL_KEYS,UNSUPPORTED_PREVIEW} from './nativeBridge';
+import {summarizeAnalysis} from '../../src/engine/sourceSampling';
 import {NATIVE_BINDINGS,WORLD_SCALE} from './nativeParameters';
 import {basis,stageCentre,stageScale} from './camera';
 import type {EngineFrame,FieldEngineAdapter,EngineCommand} from './engine';
@@ -25,7 +26,8 @@ export class ProductionAdapter implements FieldEngineAdapter {
 
  resize(width:number,height:number,pixelRatio:number){this.width=width;this.height=height;this.dpr=pixelRatio;}
  private configuration(frame:EngineFrame):PointCloudConfig{
-  const sig=frame.authoringRevision===undefined?JSON.stringify(frame.scene):frame.scene.id+':'+frame.authoringRevision;
+  const {toolbelt,propertyTracks,...renderScene}=frame.scene;
+  const sig=frame.authoringRevision===undefined?JSON.stringify(renderScene):frame.scene.id+':'+frame.authoringRevision;
   if(sig!==this.signature){
    const config=toNativeConfig(frame.scene);
    if(this.engine&&this.sceneId!==frame.scene.id){this.duration=frame.delta>0?frame.scene.transition:0;this.from=this.duration>0?this.evaluated:null;this.transitionStart=this.engine.inspectState().simTime;}
@@ -77,15 +79,15 @@ export class ProductionAdapter implements FieldEngineAdapter {
   const ids=new Set(scene.entities.map(e=>e.id));for(const id of this.sources.keys())if(!ids.has(id)){this.engine?.clearCustomSource(id);this.sources.delete(id);delete this.sourceStatus[id];}
   for(const e of scene.entities){const signature=JSON.stringify(e.source??null);if(this.sources.get(e.id)===signature)continue;this.sources.set(e.id,signature);this.engine?.clearCustomSource(e.id);delete this.sourceStatus[e.id];
    if(e.kind==='pin'||!e.source)continue;
-   if(e.source.kind==='ascii'){this.engine?.loadAsciiArt(e.source.ascii.text,e.source.ascii,e.id);this.sourceStatus[e.id]='ASCII source active';continue;}
+   if(e.source.kind==='ascii'){const analysis=this.engine?.loadAsciiArt(e.source.ascii.text,e.source.ascii,e.id);this.sourceStatus[e.id]=analysis?summarizeAnalysis(analysis,'ascii'):'ASCII source active';continue;}
    const options=e.source.image,url=options.dataUrl??'';
    if(!/^data:image\/(png|jpeg|webp);base64,/i.test(url)){this.sourceStatus[e.id]='Image source needs an embedded PNG, JPEG or WebP. The original value is retained.';continue;}
    const image=new Image();this.sourceStatus[e.id]='Decoding image…';
-   image.onload=()=>{if(this.sources.get(e.id)!==signature||!this.engine)return;if(image.naturalWidth*image.naturalHeight>16777216){this.sourceStatus[e.id]='Image exceeds the 16 megapixel source limit.';this.dirty=true;return;}this.engine.loadCustomImage(image,options,e.id);this.sourceStatus[e.id]='Image source active';this.dirty=true;};
+   image.onload=()=>{if(this.sources.get(e.id)!==signature||!this.engine)return;if(image.naturalWidth*image.naturalHeight>16777216){this.sourceStatus[e.id]='Image exceeds the 16 megapixel source limit.';this.dirty=true;return;}const analysis=this.engine.loadCustomImage(image,options,e.id);this.sourceStatus[e.id]=analysis?summarizeAnalysis(analysis,'image'):'Image source active';this.dirty=true;};
    image.onerror=()=>{if(this.sources.get(e.id)===signature){this.sourceStatus[e.id]='The embedded image could not be decoded.';this.dirty=true;}};image.src=url;
   }
  }
- private assertCaptureReady(){if(this.contextLost)throw new Error('GPU context lost: restore the field before capturing.');for(const status of Object.values(this.sourceStatus))if(!status.endsWith('source active'))throw new Error('Capture waits for a valid source: '+status);}
+ private assertCaptureReady(){if(this.contextLost)throw new Error('GPU context lost: restore the field before capturing.');for(const status of Object.values(this.sourceStatus))if(!status.includes('source active'))throw new Error('Capture waits for a valid source: '+status);}
  withCleanFrame<T>(copy:()=>T):T {this.assertCaptureReady();return this.engine?this.engine.withCleanFrame(copy):copy();}
  capture(width:number,height:number){this.assertCaptureReady();if(!this.engine)throw new Error('No rendered field yet');return this.engine.renderImage(width,height);}
  inspect(readParticles=false){return this.engine?.inspectState(readParticles);}

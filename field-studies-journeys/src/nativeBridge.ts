@@ -1,3 +1,4 @@
+import {resolvedAutomation,automationLeader} from './automationLinks';
 import {applyNativeDelta} from './nativeDelta';
 /** Document → existing production engine. No renderer, scheduler, DOM or storage writes. */
 import type {PointCloudConfig,AutomationLane as NativeLane} from '../../src/engine/types';
@@ -55,7 +56,7 @@ export function toNativeEntity(e:Entity):NativeEntity{
   tint:e.tint,tintWeight:e.tintWeight,stationIndex:e.station??undefined,
  };
 }
-const waves:Record<string,NativeLane['waveform']>={sine:'sine',triangle:'triangle',square:'square',saw:'saw',steps:'randomStep',smooth:'smoothRandom'};
+const waves:Record<string,NativeLane['waveform']>={sine:'sine',triangle:'triangle',square:'square',saw:'saw',steps:'randomStep',smooth:'smoothRandom',morph:'morph'};
 function projectNativeConfig(s:Scene):PointCloudConfig{
  checkNativeLimits(s);
  const original=s.native?.config;
@@ -82,10 +83,10 @@ function projectNativeConfig(s:Scene):PointCloudConfig{
  cfg.cymatics={...DEFAULT_CYMATIC_MEDIUM,...cfg.cymatics,plateGeometry:s.engine.templateGeometry??cfg.cymatics!.plateGeometry,dimension:s.engine.templateDimension??cfg.cymatics!.dimension,enabled:s.engine.resonanceEnabled,engine:s.engine.resonatorMode??'resonator',followFocus:s.composition.frequencyDriver==='focus',autoSweep:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',sweep:{glideS:8,dwellS:2,...cfg.cymatics?.sweep,enabled:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',direction:s.engine.sweepDirection}};
  cfg.relational={...cfg.relational!,enabled:s.engine.relationalEnabled,mode:s.engine.relationalMode as any};
  cfg.interaction={...cfg.interaction,mode:s.engine.pointerMode,placedPoints:[]};
- cfg.automations=s.automation.map(l=>{
+ cfg.automations=s.automation.map(authored=>{const l=resolvedAutomation(s.automation,authored),leader=automationLeader(s.automation,authored);
   const b=automationTarget(s,l.target);if(!b)return l.nativePath?{...original?.automations?.find(a=>a.id===l.nativeId),id:l.nativeId??l.id,path:l.nativePath,enabled:false,type:l.type==='lfo'?'lfo':'oneShot'} as NativeLane:null;
   const factor=l.blend==='multiply'?1:b.factor;
-  return {id:l.nativeId??l.id,path:b.path,enabled:l.enabled&&(b.path!=='cymatics.frequencyHz'||s.composition.frequencyDriver==='automation'),type:l.type==='lfo'?'lfo':'oneShot',waveform:waves[l.wave],min:l.min*factor,max:l.max*factor,rateHz:l.rate,phase:l.phase,blend:l.blend,
+  return {...(l.syncWith||leader.clockId?{clockId:leader.clockId??leader.nativeId??leader.id}:{}),id:l.nativeId??l.id,path:b.path,enabled:l.enabled&&(b.path!=='cymatics.frequencyHz'||s.composition.frequencyDriver==='automation'),type:l.type==='lfo'?'lfo':'oneShot',waveform:waves[l.wave],min:l.min*factor,max:l.max*factor,rateHz:l.rate,phase:l.phase,blend:l.blend,
    from:l.min*factor,to:l.max*factor,durationS:l.duration,delayS:l.delay,easing:l.easing??'smooth',loop:l.loop==='once'?'none':l.loop==='loop'?'restart':'pingpong',fireToken:l.firedAt??0} as NativeLane;
  }).filter((l):l is NativeLane=>!!l);
  return cfg;
@@ -145,7 +146,8 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  s.automation=(cfg.automations??[]).map(l=>{
   const b=NATIVE_BINDINGS.find(b=>b.path===l.path),eb=entityTargets(s).find(b=>b.path===l.path);
   const factor=l.blend==='multiply'?1:b?.factor??eb?.factor??1;
-  return{id:l.id,nativeId:l.id,nativePath:l.path,entityId:eb?.entityId,enabled:l.enabled,target:b?'field.'+b.key:eb?.target??stableNativeTarget(s,l.path),type:l.type==='lfo'?'lfo':'ramp',wave:l.waveform==='randomStep'?'steps':l.waveform==='smoothRandom'?'smooth':l.waveform??'sine',min:(l.type==='lfo'?l.min??0:l.from??0)/factor,max:(l.type==='lfo'?l.max??1:l.to??1)/factor,rate:l.rateHz??.25,phase:l.phase??0,blend:l.blend??'replace',duration:l.durationS??2,delay:l.delayS??0,loop:l.loop==='restart'?'loop':l.loop==='pingpong'?'pingpong':'once',firedAt:l.fireToken??null,easing:l.easing??'smooth'};
+  const clockLeader=l.clockId?(cfg.automations??[]).find(a=>a.id===l.clockId)??(cfg.automations??[]).find(a=>a.clockId===l.clockId):undefined;
+  return{...(l.clockId?{clockId:l.clockId}:{}),...(clockLeader&&clockLeader.id!==l.id?{syncWith:clockLeader.id}:{}),id:l.id,nativeId:l.id,nativePath:l.path,entityId:eb?.entityId,enabled:l.enabled,target:b?'field.'+b.key:eb?.target??stableNativeTarget(s,l.path),type:l.type==='lfo'?'lfo':'ramp',wave:l.waveform==='randomStep'?'steps':l.waveform==='smoothRandom'?'smooth':l.waveform??'sine',min:(l.type==='lfo'?l.min??0:l.from??0)/factor,max:(l.type==='lfo'?l.max??1:l.to??1)/factor,rate:l.rateHz??.25,phase:l.phase??0,blend:l.blend??'replace',duration:l.durationS??2,delay:l.delayS??0,loop:l.loop==='restart'?'loop':l.loop==='pingpong'?'pingpong':'once',firedAt:l.fireToken??null,easing:l.easing??'smooth'};
  });
  if(snapshot.view?.gridMode&&!s.view.nativeScaffold)s.view.nativeScaffold=snapshot.view.gridMode;
  j.name=snapshot.name;j.description='Native scene configuration imported through schema-4 migration. Original payload retained; this is not a runtime checkpoint.';j.scenes=[s];

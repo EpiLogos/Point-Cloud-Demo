@@ -271,9 +271,12 @@ export class EntityRuntime {
       const sx=400/Math.max(1,x1-x0),sy=400/Math.max(1,y1-y0);
       return cands.map(c=>({...c,x:(c.x-(x0+x1)/2)*sx,y:(c.y-(y0+y1)/2)*sy}));
     };
+    // Image/ASCII pools arrive already normalized to the 400-unit stage box with
+    // their true aspect preserved. The glyph law would stretch them to a square.
+    const preset = (cands: Candidate[]) => (cands as {norm?:string}).norm === 'stage400' ? cands : normalize(cands);
     const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
-    this.writeCandidates(this.dataA, p.start, p.end, normalize(candA), scale, plane, 2, 0, !!e.extent && e.extent.normalized !== false);
-    this.writeCandidates(this.dataB, p.start, p.end, normalize(candB), scale, plane, 2, 2, !!e.extent && e.extent.normalized !== false);
+    this.writeCandidates(this.dataA, p.start, p.end, preset(candA), scale, plane, 2, 0, !!e.extent && e.extent.normalized !== false);
+    this.writeCandidates(this.dataB, p.start, p.end, preset(candB), scale, plane, 2, 2, !!e.extent && e.extent.normalized !== false);
     if (this.noiseTexture) this.noiseTexture.needsUpdate = true;
     if (this.textureA) this.textureA.needsUpdate = true;
     if (this.textureB) this.textureB.needsUpdate = true;

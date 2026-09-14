@@ -21,6 +21,7 @@ import { isLightHex } from './colorPalettes';
 import { CymaticResonator, ResonatorTelemetry } from './cymaticResonator';
 import { PinMarkerLayer, PinGhostState } from './pinMarkers';
 import { EntityRuntime, EntityFrame } from './entityRuntime';
+import type { SourceAnalysis } from './sourceSampling';
 import {
   Entity,
   Composition,
@@ -95,62 +96,9 @@ export const DEFAULT_TOROIDAL_CONFIG: ToroidalMorphConfig = {
 const TAU = Math.PI * 2;
 const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
 
-export interface MorphDriveState {
-  progress: number;
-  theta: number;
-  phi: number;
-  signal: number;        // -1..1 combined drive
-  cycleIndex: number;    // floor(theta / 2π)
-  cycleFraction: number; // 0..1 within the current toroidal cycle
-}
+export {computeMorphDrive} from './morphSignal';
+import {computeMorphDrive,MorphDriveState} from './morphSignal';
 
-/**
- * The unified morph control law: two conjugate phases (toroidal θ, poloidal φ) produce a
- * -1..1 interference signal that becomes the A→B morph progress. Pure and reusable by the UI.
- */
-export function computeMorphDrive(tm: ToroidalMorphConfig, theta: number, phi: number): MorphDriveState {
-  const shape = tm.driveShape ?? 'sine';
-  const cycles = theta / TAU;
-  const cycleIndex = Math.floor(cycles);
-  const f = cycles - cycleIndex;
-  let w: number;
-  const tri = 1 - 4 * Math.abs(f - 0.5);
-  switch (shape) {
-    case 'triangle':
-      w = tri;
-      break;
-    case 'smooth': {
-      const u = (tri + 1) * 0.5;
-      w = (u * u * (3 - 2 * u)) * 2 - 1;
-      break;
-    }
-    case 'pulse':
-      w = Math.sin(theta) >= 0 ? 1 : -1;
-      break;
-    default:
-      w = Math.sin(theta);
-  }
-  const hold = Math.max(0, Math.min(0.95, tm.holdRatio ?? 0));
-  if (hold > 0) w = Math.max(-1, Math.min(1, w / (1 - hold)));
-
-  const conj = Math.cos(phi + (tm.fiberPhaseOffset ?? 0));
-  let signal: number;
-  switch (tm.interference ?? 'toroidalOnly') {
-    case 'product':
-      signal = w * conj;
-      break;
-    case 'sum':
-      signal = (w + conj) * 0.5;
-      break;
-    case 'beat':
-      signal = w * (0.5 + 0.5 * conj);
-      break;
-    default:
-      signal = w;
-  }
-  const depth = tm.driveDepth ?? 1;
-  return { progress: clamp01(0.5 + 0.5 * depth * signal), theta, phi, signal, cycleIndex, cycleFraction: f };
-}
 
 export type SpatialGridMode = 'off' | 'axis' | 'grid';
 
@@ -1113,23 +1061,38 @@ export class PointCloudField {
   }
 
 
-  public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string) {
-    const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
-    if (!target) return;
-    const { candidates } = this.glyphSampler.rasterizeCustomImage(img, options);
-    this.entities.setCustomCandidates(target.id, candidates);
+  private sourceAnalyses = new Map<string, SourceAnalysis>();
+
+  /** Last sampling analysis per entity, for status lines and previews. */
+  public getSourceAnalysis(entityId?: string): SourceAnalysis | undefined {
+    const id = entityId ?? this.formations()[0]?.id;
+    return id ? this.sourceAnalyses.get(id) : undefined;
   }
 
-  public loadAsciiArt(asciiText: string, options: { fontFamily?: string; fontSize?: number; invert?: boolean } = {}, entityId?: string) {
+  public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string): SourceAnalysis | null {
     const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
-    if (!target) return;
-    const { candidates } = this.glyphSampler.rasterizeAscii(asciiText, options);
+    if (!target) return null;
+    const { candidates, analysis } = this.glyphSampler.rasterizeCustomImage(img, options);
+    if (entityId) this.sourceAnalyses.set(entityId, analysis);
     this.entities.setCustomCandidates(target.id, candidates);
+    return analysis;
+  }
+
+  public loadAsciiArt(asciiText: string, options: { fontFamily?: string; fontSize?: number; invert?: boolean } = {}, entityId?: string): SourceAnalysis | null {
+    const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
+    if (!target) return null;
+    const { candidates, analysis } = this.glyphSampler.rasterizeAscii(asciiText, options);
+    if (entityId) this.sourceAnalyses.set(entityId, analysis);
+    this.entities.setCustomCandidates(target.id, candidates);
+    return analysis;
   }
 
   public clearCustomSource(entityId?: string) {
     const id = entityId ?? this.formations()[0]?.id;
-    if (id) this.entities.setCustomCandidates(id, null);
+    if (id) {
+      this.sourceAnalyses.delete(id);
+      this.entities.setCustomCandidates(id, null);
+    }
   }
 
   public setMorphProgress(progress: number) {
@@ -1168,7 +1131,7 @@ export class PointCloudField {
     const runtime = rawDelta > 0 ? this.automationRt : {
       ...this.automationRt, lanes: new Map([...this.automationRt.lanes].map(([id, v]) => [id, {...v}]))
     };
-    const auto = applyAutomations(base, base.automations, this.simTime, runtime);
+    const auto = applyAutomations(base, base.automations, this.simTime, runtime, computeMorphDrive(base.toroidalMorph??DEFAULT_TOROIDAL_CONFIG, (base.toroidalMorph?.autoOscillate===false?0:this.torPhaseAcc)+(base.toroidalMorph?.toroidalPhase??0), (base.toroidalMorph?.autoOscillate===false?0:this.polPhaseAcc)+(base.toroidalMorph?.poloidalPhase??0)));
     this.config = auto.config;
     this.liveAutomation = auto.live;
     this.evaluatedConfig = auto.config;

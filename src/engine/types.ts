@@ -148,11 +148,13 @@ export interface MorphTelemetry {
 // ---------------------------------------------------------------------------
 // Parameter automation (LFOs & one-shot ramps on any registered parameter path)
 // ---------------------------------------------------------------------------
-export type AutomationWaveform = 'sine' | 'triangle' | 'square' | 'saw' | 'randomStep' | 'smoothRandom';
+export type AutomationWaveform = 'sine' | 'triangle' | 'square' | 'saw' | 'randomStep' | 'smoothRandom' | 'morph';
 export type AutomationEasing = 'linear' | 'smooth' | 'easeIn' | 'easeOut' | 'elastic' | 'bounce';
 export type AutomationLoop = 'none' | 'restart' | 'pingpong';
 
 export interface AutomationLane {
+  /** Shared runtime clock for linked lanes; targets and output ranges remain independent. */
+  clockId?: string;
   id: string;
   path: string;                 // dot path into PointCloudConfig, e.g. 'fluid.curlScale'
   enabled: boolean;
