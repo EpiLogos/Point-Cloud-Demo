@@ -145,6 +145,8 @@ uniform float uPoloidalWinding;      // q winding number (e.g. 1 to 12)
 uniform float uChiralCoupling;       // coupling/interference strength (0 to 1)
 uniform float uOscillationAmp;       // vibrational breathing amplitude
 uniform float uOscillationFreq;      // vibrational rate
+uniform float uBreathPhase;          // dedicated breathing oscillator phase (radians)
+uniform float uBreathDepth;          // breathing swell depth around unity (0 = none, default 0.35)
 uniform float uManifoldRadius;       // scale of toroidal interference manifold
 uniform float uTorusDepthScale;      // volumetric 3D Z-depth expansion (default 1.0)
 
@@ -254,7 +256,7 @@ void main() {
       );
     }
 
-    float oscBreathing = (1.0 + 0.35 * sin(uPolPhase)) * uOscillationAmp;
+    float oscBreathing = (1.0 + uBreathDepth * sin(uBreathPhase)) * uOscillationAmp;
     vec3 morphDisplacement = hopfInterference * (rMinor * 0.75 * oscBreathing * morphEnvelope);
     morphDisplacement.z *= max(0.1, uTorusDepthScale > 0.001 ? uTorusDepthScale : 1.0);
     targetPos += morphDisplacement;

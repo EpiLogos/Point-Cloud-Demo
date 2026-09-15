@@ -2,6 +2,7 @@
 import {PARAM_REGISTRY,entityParamDefs} from '../../src/engine/paramRegistry';
 import {DEFAULT_CONFIG} from '../../src/engine/PointCloudField';
 import {readPath} from '../../src/engine/automation';
+import {automationGroups} from './automationLinks';
 import type {Scene} from './model';
 export const WORLD_SCALE = 400;
 export interface NativeBinding {path:string;key:string;bind:string;factor:number;label:string;group:string;min:number;max:number;hardMin:number;hardMax:number;step:number;unit?:string;note?:string;defaultValue:number;scale?:'linear'|'log'}
@@ -82,6 +83,16 @@ export function automationTargets(scene:Scene):AutomationTarget[]{
  const all=[...NATIVE_BINDINGS.map(b=>({...b,target:'field.'+b.key,value:baseValue(scene,b.key)})),...entityTargets(scene)];
  for(const lane of scene.automation){const t=automationTarget(scene,lane.target);if(t&&!all.some(a=>a.target===t.target))all.push(t);}return all;
 }
+/** Lanes whose entity or sequence link no longer exists cannot drive anything; drop them. */
+export function pruneAutomation(scene:Scene):boolean{
+ const before=scene.automation.length;
+ scene.automation=scene.automation.filter(l=>automationTarget(scene,l.target));
+ return scene.automation.length!==before;
+}
+/** A pin's own cycle clock: one stable shared clockId per pin, expressed with the existing lane clockId grouping (one engine clock, no second timer). */
+export const pinCycleClockId=(entityId:string)=>'pin:'+entityId;
+/** Automation groups with at least one lane targeting this entity, restricted to that entity's targets. */
+export function entityCycleGroups(scene:Scene,entityId:string){return automationGroups(scene.automation).map(g=>({...g,targets:g.targets.filter(l=>automationTarget(scene,l.target)?.entityId===entityId)})).filter(g=>g.targets.length);}
 export function stableNativeTarget(scene:Scene,path:string):string {
  const m=/^entities\.(\d+)\.(.+)$/.exec(path);if(!m)return 'native:'+encodeURIComponent(path);
  const e=scene.entities[Number(m[1])];if(!e)return 'native:'+encodeURIComponent(path);

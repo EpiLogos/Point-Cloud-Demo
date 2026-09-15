@@ -11,14 +11,6 @@ import {writePath,readPath} from '../../src/engine/automation';
 import {NATIVE_BINDINGS,WORLD_SCALE,baseValue,bindValue,nativeBinding,automationTarget,entityTargets,stableNativeTarget} from './nativeParameters';
 import {clone,blankJourney,blankScene,entity,validateJourney,DEFAULT_ENGINE_SETTINGS,type Scene,type Entity,type Journey,type SequenceStep,type Shape} from './model';
 
-export const UNSUPPORTED_PREVIEW:Record<string,string>={
- damping:'Preview damping has no defined native unit. Use Viscosity Damp in Physics.',
- flow:'The preview fluid-coupling macro has no reversible native law. Use native curl, spring and viscosity controls.',
- resonanceDamping:'Use the native resonator Q factor. Q is not the preview damping scalar.',
- thickness:'Preview stroke dilation is not a native target parameter; source geometry is retained unchanged.',
- warp:'Preview form warping is not a native force law. Use the native Hopf trajectory and flow controls.',
- jitter:'Preview lattice jitter is not the native target sampler. This value is retained, not applied.',
-};
 export const MATERIAL_KEYS=['sizeBias','opacity','roundness','softness','irregularity','elongation','orientation','contrast','densityScale','densityPhase','edgeWeight','halo'] as const;
 export function assertSafe(value:unknown,depth=0):void{
  if(depth>30)throw new Error('Document nesting exceeds the safe limit');

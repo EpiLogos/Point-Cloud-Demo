@@ -44,6 +44,8 @@ export function forkExpression(source:Expression):Expression {
 const previews=new Map<string,string>();
 /** Thumbnail only: a static projection of the authored composition, not substitute physics.
  * Live saved covers are supplied by the native render-target capture when available.
+ * Each formation is drawn as its first sequence state, so covers match what a scene
+ * actually opens with after the object/sequence system rework.
  */
 export function compositionCover(s:Scene):string {
   const key=JSON.stringify([s.field,s.entities,s.view]);const cached=previews.get(key);if(cached)return cached;
@@ -53,19 +55,22 @@ export function compositionCover(s:Scene):string {
   let seed=7134;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
   for(const e of s.entities){
     if(e.enabled===false)continue;
-    const p=project(e.position,c,w,h),scale=stageScale(w,h)*c.zoom,sx=e.size.x*scale,sy=e.size.y*scale;
+    const step=e.sequence.steps[0],state=step?.objectState,source=step?.source??e.source;
+    const p=project(e.position,c,w,h),scale=stageScale(w,h)*c.zoom,sx=(state?.size.x??e.size.x)*scale,sy=(state?.size.y??e.size.y)*scale,rotation=state?.rotation??e.rotation;
     if(e.kind==='pin'){ctx.strokeStyle=s.field.palette[0];ctx.lineWidth=.75;ctx.globalAlpha=.45;ctx.beginPath();ctx.arc(p.x,p.y,e.force.radius*scale,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=1;continue;}
+    const shape=step?.shape??e.shape;
     const mask=document.createElement('canvas');mask.width=w;mask.height=h;const m=mask.getContext('2d',{willReadFrequently:true})!;
-    m.translate(p.x,p.y);m.rotate(-e.rotation*Math.PI/180);m.fillStyle='#fff';m.strokeStyle='#fff';m.lineWidth=Math.max(1,sx*.055);
-    if(e.shape==='ring'){m.beginPath();m.ellipse(0,0,sx/2,sy/2,0,0,Math.PI*2);m.stroke();}
-    else if(e.shape==='disc'||e.shape==='cymatic'){m.beginPath();m.ellipse(0,0,sx/2,sy/2,0,0,Math.PI*2);m.fill();}
-    else if(e.shape==='square')m.fillRect(-sx/2,-sy/2,sx,sy);
-    else if(e.shape==='triangle'||e.shape==='yantra'){m.beginPath();m.moveTo(0,-sy/2);m.lineTo(sx/2,sy/2);m.lineTo(-sx/2,sy/2);m.closePath();e.shape==='yantra'?m.stroke():m.fill();if(e.shape==='yantra'){m.beginPath();m.ellipse(0,0,sx*.48,sy*.48,0,0,Math.PI*2);m.stroke();}}
-    else{const text=e.source?.kind==='ascii'?e.source.ascii.text:e.text||'O';m.font='900 200px Arial';const metrics=m.measureText(text),left=metrics.actualBoundingBoxLeft,right=metrics.actualBoundingBoxRight,up=metrics.actualBoundingBoxAscent,down=metrics.actualBoundingBoxDescent;
+    m.translate(p.x,p.y);m.rotate(-rotation*Math.PI/180);m.fillStyle='#fff';m.strokeStyle='#fff';m.lineWidth=Math.max(1,sx*.055);
+    if(shape==='ring'){m.beginPath();m.ellipse(0,0,sx/2,sy/2,0,0,Math.PI*2);m.stroke();}
+    else if(shape==='disc'||shape==='cymatic'){m.beginPath();m.ellipse(0,0,sx/2,sy/2,0,0,Math.PI*2);m.fill();}
+    else if(shape==='square')m.fillRect(-sx/2,-sy/2,sx,sy);
+    else if(shape==='triangle'||shape==='yantra'){m.beginPath();m.moveTo(0,-sy/2);m.lineTo(sx/2,sy/2);m.lineTo(-sx/2,sy/2);m.closePath();shape==='yantra'?m.stroke():m.fill();if(shape==='yantra'){m.beginPath();m.ellipse(0,0,sx*.48,sy*.48,0,0,Math.PI*2);m.stroke();}}
+    else if(source?.kind==='image'){const inset=Math.min(sx,sy)*.12;m.strokeStyle='#fff';m.lineWidth=Math.max(1.2,sx*.02);m.strokeRect(-sx/2+inset,-sy/2+inset,sx-inset*2,sy-inset*2);m.beginPath();m.moveTo(-sx/2+inset,sy/2-inset);m.lineTo(-sx*.1,-sy*.05);m.lineTo(sx*.14,sy*.12);m.lineTo(sx/2-inset,sy/2-inset);m.closePath();m.fill();}
+    else{const text=source?.kind==='ascii'?source.ascii.text:step?.text||e.text||'O';m.font='900 200px Arial';const metrics=m.measureText(text),left=metrics.actualBoundingBoxLeft,right=metrics.actualBoundingBoxRight,up=metrics.actualBoundingBoxAscent,down=metrics.actualBoundingBoxDescent;
       m.scale(sx/Math.max(1,left+right),sy/Math.max(1,up+down));m.fillText(text,(left-right)/2,(up-down)/2);}
-    const pixels=m.getImageData(0,0,w,h).data;ctx.fillStyle=e.tintWeight>.5?e.tint:s.field.palette[0];
-    const grid=s.field.material==='print';const step=grid?3.5:2;
-    for(let y=0;y<h;y+=step)for(let x=0;x<w;x+=step){const px=x+(grid?0:random()*step),py=y+(grid?0:random()*step);if(pixels[(Math.floor(py)*w+Math.floor(px))*4+3]<50||random()>.68)continue;
+    const pixels=m.getImageData(0,0,w,h).data;ctx.fillStyle=(state?.tintWeight??e.tintWeight)>.5?(state?.tint??e.tint):s.field.palette[0];
+    const grid=s.field.material==='print';const step2=grid?3.5:2;
+    for(let y=0;y<h;y+=step2)for(let x=0;x<w;x+=step2){const px=x+(grid?0:random()*step2),py=y+(grid?0:random()*step2);if(pixels[(Math.floor(py)*w+Math.floor(px))*4+3]<50||random()>.68)continue;
       ctx.globalAlpha=.55+random()*.45;const radius=grid?1.04:.34+random()*.53;ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.fill();}
     ctx.globalAlpha=1;
   }

@@ -42,16 +42,17 @@ export interface Scene {pointerScope?:'local'|'global';
  automation:AutomationLane[];
 }
 export interface Journey {shared?:SharedSettings;savedScenes?:Record<string,Scene>;schema:'oi.journey';version:1;id:string;name:string;description:string;loop:boolean;scenes:Scene[];updatedAt:string}
-export const clone=<T>(v:T):T=>JSON.parse(JSON.stringify(v));
+/** structuredClone is several times cheaper than a JSON round-trip on source-heavy documents. */
+export const clone=<T>(v:T):T=>typeof structuredClone==='function'?structuredClone(v):JSON.parse(JSON.stringify(v));
 export const uid=(prefix='id')=>prefix+'-'+(globalThis.crypto?.randomUUID?.()??Math.random().toString(36).slice(2,12));
 export const clamp=(x:number,a:number,b:number)=>Math.max(a,Math.min(b,x));
 export const DEFAULT_PARAMS:Record<string,number>={
- count:62000,size:2.8,sizeBias:1.6,opacity:.92,roundness:.95,softness:.15,irregularity:.35,elongation:.04,orientation:0,jitter:.8,
- contrast:.93,densityScale:1,densityPhase:.3,edgeWeight:0,halo:.13,thickness:.035,warp:.4,
- speed:.7,circulation:1,turbulence:.22,turbulenceScale:1.2,damping:1.4,recovery:1.1,flow:1,dispersion:.09,
+ count:62000,size:2.8,sizeBias:1.6,opacity:.92,roundness:.95,softness:.15,irregularity:.35,elongation:.04,orientation:0,
+ contrast:.93,densityScale:1,densityPhase:.3,edgeWeight:0,halo:.13,
+ speed:.7,circulation:1,turbulence:.22,turbulenceScale:1.2,recovery:1.1,dispersion:.09,
  pointerStrength:.8,pointerRadius:.23,pointerFalloff:2,depth:.12,grain:.035,
  snapRigidity:1,densityTether:1,curlDepth:.2,vortexRadius:.4,gravityX:0,gravityY:0,gravityZ:0,quadraticDrag:.2,thermalJitter:0,speedLimit:3,zConfinement:1,timeScale:1,gravitySoftening:.1,gravityFalloff:2,swirlRadius:.4,
- frequency:220,dominance:0,resonanceDamping:.04,excitation:.6,
+ frequency:220,dominance:0,excitation:.6,
 };
 export function entity(name:string,text='O',position:Vec3={x:0,y:0,z:0}):Entity{return {
  id:uid('entity'),name,kind:'formation',position:{...position},size:{x:.65,y:.86},rotation:0,shape:'text',text,share:1,tint:'#252720',tintWeight:0,locked:false,
@@ -81,19 +82,19 @@ export function fieldStudies():Journey {
  const scenes=descriptions.map((d,i)=>{const s=blankScene(d[0]);s.id='study-'+i;s.character=d[3].replace('\n',' ');s.duration=14;
  const o=entity('O — opening','O',{x:-.22,y:.03,z:0});o.id='opening-o';o.size={x:1.43,y:1.63};o.rotation=-5;
  o.share=4;const ii=entity('I — interval','I',{x:.66,y:.015,z:0});ii.id='opening-i';ii.size={x:.28,y:1.62};ii.share=1;s.entities=[o,ii];
- if(i===1){s.field.material='print';Object.assign(s.field.params,{count:24000,size:4.1,contrast:.7,warp:.12,jitter:.08,roundness:.15,dispersion:.025,speed:.4});}
- if(i===2){const e=entity('Gathering ring','O');e.id='opening-o';e.shape='ring';e.size={x:1.6,y:1.64};s.entities=[e];s.field.material='round';Object.assign(s.field.params,{count:28000,size:3.6,contrast:.75,warp:.4,densityPhase:2});}
- if(i===3){o.position.x=-.14;o.rotation=-17;ii.position.x=.40;ii.rotation=10;Object.assign(s.field.params,{warp:.8,dispersion:.16,contrast:.86});}
- if(i===4){o.text='&';o.name='Ampersand';o.size={x:1.25,y:1.5};o.position.x=.1;o.rotation=0;s.entities=[o];Object.assign(s.field.params,{warp:.12,contrast:.6});}
- if(i===5){o.shape='square';o.name='Atmosphere';o.position.x=0;o.size={x:3.6,y:2.5};s.entities=[o];Object.assign(s.field.params,{count:52000,size:1.45,contrast:.98,densityScale:1.8,warp:.25,opacity:.5,dispersion:.4});}
- if(i===6){o.position.x=.2;o.size={x:1.15,y:1.55};ii.position.x=.84;s.field.palette=['#8b8576','#c5bba3'];Object.assign(s.field.params,{count:29000,opacity:.5,size:1.5,contrast:.7,warp:.14});}
+ if(i===1){s.field.material='print';Object.assign(s.field.params,{count:24000,size:4.1,contrast:.7,roundness:.15,dispersion:.025,speed:.4});}
+ if(i===2){const e=entity('Gathering ring','O');e.id='opening-o';e.shape='ring';e.size={x:1.6,y:1.64};s.entities=[e];s.field.material='round';Object.assign(s.field.params,{count:28000,size:3.6,contrast:.75,densityPhase:2});}
+ if(i===3){o.position.x=-.14;o.rotation=-17;ii.position.x=.40;ii.rotation=10;Object.assign(s.field.params,{dispersion:.16,contrast:.86});}
+ if(i===4){o.text='&';o.name='Ampersand';o.size={x:1.25,y:1.5};o.position.x=.1;o.rotation=0;s.entities=[o];Object.assign(s.field.params,{contrast:.6});}
+ if(i===5){o.shape='square';o.name='Atmosphere';o.position.x=0;o.size={x:3.6,y:2.5};s.entities=[o];Object.assign(s.field.params,{count:52000,size:1.45,contrast:.98,densityScale:1.8,opacity:.5,dispersion:.4});}
+ if(i===6){o.position.x=.2;o.size={x:1.15,y:1.55};ii.position.x=.84;s.field.palette=['#8b8576','#c5bba3'];Object.assign(s.field.params,{count:29000,opacity:.5,size:1.5,contrast:.7});}
  if(i===7){s.field.background='#1d231f';s.field.palette=['#eee9d9','#a9b399'];Object.assign(s.field.params,{opacity:.9,densityPhase:1.9});}
  s.field.params.count=62000;
  return s;});
  return {schema:'oi.journey',version:1,id:'field-studies',name:'Field studies',description:'Eight states of a living material. An expression from ink to atmosphere.',loop:true,scenes,updatedAt:new Date().toISOString()};
 }
 export function chakraEntities():Entity[]{return ['Root','Sacral','Solar','Heart','Throat','Brow','Crown'].map((name,i)=>{const e=entity(name,['△','◯','△','✧','◯','∞','✧'][i],{x:.18,y:-.82+i*.274,z:0});e.size={x:.235,y:.235};e.tint=['#a94138','#c67c46','#c2a852','#638c69','#5898a4','#737599','#a590b0'][i];e.tintWeight=1;e.station=i;e.force={kind:'vortex',strength:.3,radius:.27,spin:.12};return e;});}
-export function sevenCentres():Journey{const s=blankScene('Seven centres');s.entities=chakraEntities();s.field.params.count=42000;s.field.params.contrast=.5;s.field.params.warp=.12;s.composition.layout='column';const t=clone(s);t.id=uid('scene');t.name='A rising attention';t.composition.focus='travelling';return {schema:'oi.journey',version:1,id:'seven-centres',name:'Seven centres',description:'A spatial composition; not seven isolated simulations.',loop:true,scenes:[s,t],updatedAt:new Date().toISOString()};}
+export function sevenCentres():Journey{const s=blankScene('Seven centres');s.entities=chakraEntities();s.field.params.count=42000;s.field.params.contrast=.5;s.composition.layout='column';const t=clone(s);t.id=uid('scene');t.name='A rising attention';t.composition.focus='travelling';return {schema:'oi.journey',version:1,id:'seven-centres',name:'Seven centres',description:'A spatial composition; not seven isolated simulations.',loop:true,scenes:[s,t],updatedAt:new Date().toISOString()};}
 export function smallLanguage():Journey {const j=fieldStudies();j.id='small-language';j.name='A small language';j.description='Three characters, and the intervals between them.';j.scenes=[j.scenes[0],j.scenes[4],j.scenes[6]].map((s,i)=>{s.id=uid('scene');s.name=['A beginning','And','An opening'][i];return s;});return j;}
 export function blankJourney():Journey{return {schema:'oi.journey',version:1,savedScenes:{},id:uid('journey'),name:'Untitled expression',description:'',loop:true,scenes:[blankScene()],updatedAt:new Date().toISOString()};}
 /** Validate before use. Reject malformed documents; never silently claim schema-4 migration. */

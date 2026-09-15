@@ -5,7 +5,7 @@ import type {PointCloudConfig} from '../../src/engine/types';
 import {CymaticResonator} from '../../src/engine/cymaticResonator';
 import {readPath} from '../../src/engine/automation';
 import {Color} from 'three';
-import {toNativeConfig,MATERIAL_KEYS,UNSUPPORTED_PREVIEW} from './nativeBridge';
+import {toNativeConfig,MATERIAL_KEYS} from './nativeBridge';
 import {summarizeAnalysis} from '../../src/engine/sourceSampling';
 import {NATIVE_BINDINGS,WORLD_SCALE} from './nativeParameters';
 import {basis,stageCentre,stageScale} from './camera';

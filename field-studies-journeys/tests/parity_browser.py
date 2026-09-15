@@ -78,7 +78,7 @@ try:
     value=1024 if b['path']=='particleCount' else round(float(p.locator(sel).first.input_value())+max(b['step'],.01),4)
     value=max(b['hardMin'],min(b['hardMax'],value))
     fill(p,b['bind'],value);actual=read(cfg(p),b['path']);expected=value*b['factor'];require(abs(actual-expected)<=1e-8*max(1,abs(expected)),b['path']+str((actual,expected)));tested.append(b['path'])
-   require(set(inert)=={'autoMorphDuration','toroidalMorph.progress'},'Unexpected disabled native controls: '+str(inert));return {'paths':tested,'retainedUnconsumed':inert}
+   require(not inert,'Unexpected disabled native controls: '+str(inert));return {'paths':tested,'retainedUnconsumed':inert}
   check('UI-ALL-NATIVE-NUMERIC-HOMES',numerics)
   load(p,fixture);p.evaluate("__FIELD_STUDIES__.openEditor('field')")
   def enums():

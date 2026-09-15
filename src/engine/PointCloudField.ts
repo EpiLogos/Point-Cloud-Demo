@@ -85,6 +85,8 @@ export const DEFAULT_TOROIDAL_CONFIG: ToroidalMorphConfig = {
   autoOscillate: true,
   oscillationSpeed: 0.8,
   oscillationAmplitude: 1.2,
+  breathRate: 0.35,
+  breathDepth: 0.35,
   fiberPhaseOffset: 0.0,
   toroidalWinding: 3.0,
   poloidalWinding: 2.0,
@@ -264,6 +266,7 @@ export class PointCloudField {
   // Unified morph oscillator + automation runtime
   private torPhaseAcc: number = 0;
   private polPhaseAcc: number = 0;
+  private breathPhaseAcc: number = 0;
   private lastDrive: MorphDriveState | null = null;
   private automationRt: AutomationRuntime = createAutomationRuntime();
   private telemetryAccum: number = 0;
@@ -1318,12 +1321,16 @@ export class PointCloudField {
     if (!manual) {
       this.torPhaseAcc += delta * TAU * (tm.oscillationSpeed ?? 0.8);
       this.polPhaseAcc += delta * TAU * (tm.poloidalRate ?? 0.35);
+      this.breathPhaseAcc += delta * TAU * (tm.breathRate ?? tm.poloidalRate ?? 0.35);
     }
     const theta = (manual ? 0 : this.torPhaseAcc) + (tm.toroidalPhase ?? 0);
     const phi = (manual ? 0 : this.polPhaseAcc) + (tm.poloidalPhase ?? 0);
+    // The breathing phase mirrors the poloidal phase (offset included) until an
+    // explicit breathRate decouples it, preserving the pre-breath-rate law.
+    const breath = manual ? 0 : this.breathPhaseAcc + (tm.poloidalPhase ?? 0);
     const drive = computeMorphDrive(tm, theta, phi);
     this.lastDrive = drive;
-    this.simulator.setMorphPhases(theta, phi);
+    this.simulator.setMorphPhases(theta, phi, breath);
     return drive;
   }
 
@@ -1432,10 +1439,11 @@ export class PointCloudField {
   /** Reconstruct source targets after startup decoding; preserve recovered driver clocks. */
   seedCurrentTargets(){this.seedGeneration++;this.simulator.seedInitialState(this.entities.buildSeed());}
   getTransportState():TransportState{return {version:1,simTime:this.simTime,theta:this.torPhaseAcc,phi:this.polPhaseAcc,lanes:[...this.automationRt.lanes].map(([id,v])=>[id,{...v}])};}
-  restoreTransportState(value:unknown){const s=validateTransport(value);this.simTime=s.simTime;this.torPhaseAcc=s.theta;this.polPhaseAcc=s.phi;this.automationRt={lanes:new Map(s.lanes)};}
+  restoreTransportState(value:unknown){const s=validateTransport(value);this.simTime=s.simTime;this.torPhaseAcc=s.theta;this.polPhaseAcc=s.phi;this.breathPhaseAcc=s.phi;this.automationRt={lanes:new Map(s.lanes)};}
   public resetMorphPhases() {
     this.torPhaseAcc = 0;
     this.polPhaseAcc = 0;
+    this.breathPhaseAcc = 0;
   }
 
   public getMorphDrive(): MorphDriveState | null {

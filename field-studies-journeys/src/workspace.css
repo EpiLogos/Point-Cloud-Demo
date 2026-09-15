@@ -127,7 +127,7 @@
 .orbit-control{left:clamp(10px,1.5vw,18px);bottom:clamp(66px,10vh,82px);width:96px;opacity:.9}
 .orbit-pad{width:96px;height:96px}.orbit-axis{width:21px;height:21px;min-width:21px;min-height:21px;line-height:21px;font-size:8px}.orbit-axis.negative,.orbit-axis.behind{font-size:7px}.orbit-actions{margin-top:-5px;gap:0}.orbit-actions button{width:23px;height:24px;padding:5px}.orbit-actions svg{width:13px;height:13px}.orbit-view{font-size:7px}
 .inspector{width:clamp(276px,28vw,332px);right:clamp(10px,1.6vw,20px);top:clamp(66px,10vh,88px);bottom:clamp(70px,12vh,102px)}
-.inspector-heading{padding:clamp(14px,2vh,20px) 16px 10px 18px}.inspector-heading h2{font-size:clamp(21px,2.4vw,26px)}.scope-tabs{padding:0 11px 8px}.scope-tabs button{font-size:9px;padding:6px 3px}.inspector-search{padding:7px 17px}.inspector-content{padding:14px 18px 10px}.inspector-footer{padding:9px 18px}
+.inspector-heading{padding:clamp(14px,2vh,20px) 16px 10px 18px}.inspector-heading h2{font-size:clamp(21px,2.4vw,26px)}.inspector-search{padding:7px 17px}.inspector-content{padding:14px 18px 10px}.inspector-footer{padding:9px 18px}
 #coordinates.coordinate-readout{right:clamp(14px,2vw,26px);bottom:clamp(68px,10vh,84px)}
 @media(max-height:720px){
  .orbit-control{width:78px;bottom:60px}.orbit-pad{width:78px;height:78px}.orbit-axis{width:18px;height:18px;min-width:18px;min-height:18px;line-height:18px;font-size:7px}.orbit-actions button{width:20px;height:21px;padding:4px}
@@ -157,9 +157,9 @@ body.night{--ui-surface:#000;--ui-ink:#ededed;--ui-muted:#a6a6a6;--ui-line:#333;
 .inspector{display:flex;flex-direction:column;overflow:hidden}
 .inspector-content{min-height:0;overflow:auto;overscroll-behavior:contain}
 .motion-content{display:block}.motion-content>section{margin-bottom:24px}
-.inspector-search{display:flex}.scope-tabs{position:static;width:auto;flex-shrink:0}
+.inspector-search{display:flex}
 .inspector-actions{display:flex;align-items:center;gap:8px}.inspector-actions button{font-size:10px;white-space:nowrap}
-.studio-return,.studio-sections{display:none}
+.studio-sections{display:none}
 .range-label .number-wrap input,.number-field input,.depth-field input{background:var(--ui-input);border:1px solid var(--ui-line);border-radius:4px;min-width:76px;max-width:none;width:86px;padding:6px 7px;color:var(--ui-ink);font-variant-numeric:tabular-nums;text-align:right;font-size:12px}
 .number-field input{width:100%;text-align:left}.range-label label{max-width:none;flex:1}.range-label{gap:8px;align-items:center}.range-label .number-wrap{flex-shrink:0;flex-wrap:wrap;max-width:55%}
 .range-control input:focus{border-color:var(--ui-muted)}
@@ -176,7 +176,7 @@ body.studio-open .chrome,body.studio-open #shape-picker{visibility:hidden;pointe
 body.studio-open #timeline-panel{visibility:visible;pointer-events:auto;z-index:62;left:24px;right:24px;bottom:24px;width:auto;transform:none}
 #inspector.is-studio{position:fixed;inset:12px;width:auto;height:auto;z-index:60;border-radius:10px;display:grid;grid-template-columns:220px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;background:var(--ui-surface)}
 .is-studio .inspector-heading{grid-column:1/-1;border-bottom:1px solid var(--ui-line);padding:18px 24px}.is-studio .inspector-heading h2{font-size:26px}.is-studio .inspector-heading .eyebrow{display:none}
-.is-studio .studio-open,.is-studio .scope-tabs,.is-studio [data-action="close-inspector"]{display:none}.is-studio .studio-return{display:inline-block}
+.is-studio .studio-open,.is-studio [data-action="close-inspector"]{display:none}
 .is-studio .studio-sections{display:flex;grid-column:1;grid-row:2/4;flex-direction:column;gap:4px;padding:24px 16px;border-right:1px solid var(--ui-line);overflow:auto}.studio-sections button{text-align:left;padding:11px 10px;border-radius:4px;font-size:12px}.studio-sections button:hover{background:var(--ui-wash)}.studio-sections label{margin:20px 10px;color:var(--ui-muted);font-size:11px}.studio-sections select{display:block;margin-top:8px;background:var(--ui-input);padding:7px;width:100%;border:1px solid var(--ui-line)}
 .is-studio .inspector-search{grid-column:2;padding:16px 26px}.is-studio .inspector-content{grid-column:2;grid-row:3;padding:24px 32px;max-width:1400px;width:100%;justify-self:center}.is-studio .inspector-footer{grid-column:1/-1}.is-studio .motion-content{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.is-studio .control-group{max-width:100%}.is-studio .range-control{max-width:680px}.is-studio .section-heading{margin-top:0}.is-studio .object-list{max-width:680px}
 @media(max-width:1000px){.live-workspace{width:280px;left:58px}.is-studio .motion-content{grid-template-columns:1fr 1fr}.is-studio .motion-content>section:last-child{grid-column:1/-1}}
@@ -351,3 +351,58 @@ body.night #app select{color-scheme:dark}
  .belt-candidates input[type=checkbox]{appearance:auto}
  .belt-candidates input[type=checkbox]::after{display:none}
 }
+
+/* One shared floor: the full-size studio, the orbit controller, the toolbelt and
+   the automation monitor all end on the same line; the coordinates sit below it. */
+:root{--field-line:calc(var(--footer-height,44px) + 36px)}
+#inspector.is-studio{height:var(--panel-height,calc(100vh - 60px - var(--field-line)));max-height:calc(100vh - 60px - var(--field-line))}
+#toolbelt-panel{height:var(--panel-height,calc(100vh - 60px - var(--field-line) - var(--automation-height,0px)));max-height:calc(100vh - 60px - var(--field-line) - var(--automation-height,0px))}
+.automation-monitor{height:152px}
+#coordinates.coordinate-readout{bottom:10px;right:clamp(14px,2vw,26px)}
+@media(max-height:720px){#coordinates.coordinate-readout{bottom:8px}}
+
+/* The resize handle owns the studio's bottom-right corner now that the footer is quiet. */
+.panel-resize{right:6px;bottom:6px;border-radius:4px;padding:2px}
+#inspector.is-studio .panel-resize{right:8px;bottom:8px}
+#toolbelt-panel .panel-resize{right:auto;left:4px;bottom:6px}
+#inspector.is-studio.docked .panel-resize{display:none}
+
+/* Docked studio: the whole instrument in the toolbelt's exact place and size. */
+.inspector-heading{position:relative}
+.inspector-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center}
+.inspector-center .icon-button{width:28px;height:28px;min-width:28px;padding:6px;opacity:.5}
+.inspector-center .icon-button:hover,.inspector-center .icon-button:focus-visible,.inspector-center .icon-button[aria-pressed=true]{opacity:1;background:var(--ui-wash)}
+#inspector.is-studio.docked{left:auto;right:30px;top:60px;bottom:auto;display:flex;flex-direction:column;grid-template-columns:none;width:var(--panel-width,280px);max-width:min(var(--panel-width,280px),calc(100vw - 24px));height:var(--panel-height,600px);max-height:calc(100vh - 60px - var(--field-line) - var(--automation-height,0px))}
+#inspector.is-studio.docked .inspector-heading{grid-column:auto;flex:none}
+#inspector.is-studio.docked .studio-sections{grid-column:auto;grid-row:auto;flex-direction:row;flex-wrap:nowrap;flex-shrink:0;gap:2px;padding:6px;border-right:0;border-bottom:1px solid var(--ui-line);overflow:auto}
+#inspector.is-studio.docked .studio-sections button{white-space:nowrap;padding:8px;font-size:10px}
+#inspector.is-studio.docked .studio-sections label{margin:0 8px;white-space:nowrap}
+#inspector.is-studio.docked .studio-sections select{margin:0;width:auto}
+#inspector.is-studio.docked .inspector-search{grid-column:auto;padding:8px 12px;flex:none}
+#inspector.is-studio.docked .inspector-content{grid-column:auto;grid-row:auto;padding:10px 12px;max-width:none;justify-self:stretch}
+#inspector.is-studio.docked .motion-content{display:block}
+#inspector.is-studio.docked .inspector-footer{grid-column:auto;flex-shrink:0;padding:8px 12px}
+
+/* Programmatic panel edits commit in place; smooth scrolling must not fight them. */
+.context-content,.inspector-content{scroll-behavior:auto}
+@media(max-width:620px){#inspector.is-studio.docked{right:12px}}
+
+/* The cycle instrument: two pages, and it docks inside the toolbelt. */
+.automation-monitor{flex-direction:column;align-items:stretch;height:auto;min-height:0;gap:8px}
+.monitor-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.monitor-tabs{display:flex;gap:2px;background:var(--ui-wash);border-radius:6px;padding:2px}
+.monitor-tabs button{font-size:10px;padding:5px 12px;border-radius:4px}
+.monitor-tabs button[aria-selected=true]{background:var(--ui-ink);color:var(--ui-surface)}
+.monitor-dock{width:24px;height:24px;min-width:24px;padding:5px;opacity:.5}
+.monitor-dock:hover,.monitor-dock:focus-visible{opacity:1;background:var(--ui-wash)}
+.monitor-body{display:flex;align-items:center;gap:12px;min-height:0}
+.monitor-live{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
+.monitor-live .monitor-range{display:flex;align-items:center;gap:10px;min-width:0}
+.monitor-live .monitor-range input[type=range]{flex:1;min-width:0}
+.monitor-live .monitor-range output{font-variant-numeric:tabular-nums;font-size:10px;color:var(--ui-muted);min-width:52px;text-align:right}
+.monitor-ops{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.monitor-ops label{display:flex;gap:6px;align-items:center;font-size:9px;color:var(--ui-muted)}
+.monitor-ops select{font-size:11px;background:transparent;border:0;color:inherit;max-width:130px}
+.monitor-ops button{font-size:10px;padding:5px 8px;display:inline-flex;gap:4px;align-items:center}
+.automation-monitor.docked{position:static;width:auto;height:auto;margin:8px 12px;flex:none}
+@media(max-width:620px){.automation-monitor.docked{margin:6px 8px}}

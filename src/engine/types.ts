@@ -125,6 +125,8 @@ export interface ToroidalMorphConfig {
   autoOscillate: boolean;          // Auto-oscillating ping-pong or manual scrub
   oscillationSpeed: number;        // Rate in Hz (0.1 to 4.0, default 0.8)
   oscillationAmplitude: number;    // Vibrational breathing intensity (0.0 to 3.0, default 1.2)
+  breathRate?: number;             // Breathing oscillator rate in Hz (default: the poloidal rate)
+  breathDepth?: number;            // Breathing swell depth around unity (default 0.35)
   fiberPhaseOffset: number;        // Phase difference delta-psi between conjugate Hopf fibers (0 to 2*PI, default 0.0)
   toroidalWinding: number;         // p winding number (1 to 12, default 3)
   poloidalWinding: number;         // q winding number (1 to 12, default 2)

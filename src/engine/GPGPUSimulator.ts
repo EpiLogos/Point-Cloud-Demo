@@ -196,6 +196,8 @@ export class GPGPUSimulator {
         uChiralCoupling: { value: 0.75 },
         uOscillationAmp: { value: 1.2 },
         uOscillationFreq: { value: 0.8 },
+        uBreathPhase: { value: 0.0 },
+        uBreathDepth: { value: 0.35 },
         uManifoldRadius: { value: 180.0 },
         uTorusDepthScale: { value: 1.0 },
 
@@ -400,10 +402,11 @@ export class GPGPUSimulator {
     vU.uManifoldRadius.value = manifoldRadius;
   }
 
-  /** Running phases of the two conjugate morph oscillators (radians) */
-  public setMorphPhases(toroidal: number, poloidal: number) {
+  /** Running phases of the two conjugate morph oscillators plus the breathing oscillator (radians) */
+  public setMorphPhases(toroidal: number, poloidal: number, breathPhase: number = poloidal) {
     this.velMaterial.uniforms.uTorPhase.value = toroidal;
     this.velMaterial.uniforms.uPolPhase.value = poloidal;
+    this.velMaterial.uniforms.uBreathPhase.value = breathPhase;
   }
 
   /**
@@ -474,6 +477,7 @@ export class GPGPUSimulator {
       vUniforms.uChiralCoupling.value = tm.chiralCoupling ?? 0.75;
       vUniforms.uOscillationAmp.value = tm.oscillationAmplitude ?? 1.2;
       vUniforms.uOscillationFreq.value = tm.oscillationSpeed ?? 0.8;
+      vUniforms.uBreathDepth.value = tm.breathDepth ?? 0.35;
       vUniforms.uManifoldRadius.value = tm.manifoldRadius ?? 180.0;
       vUniforms.uTorusDepthScale.value = tm.volumetricDepthScale ?? 1.0;
     } else {
@@ -484,6 +488,7 @@ export class GPGPUSimulator {
       vUniforms.uChiralCoupling.value = 0.75;
       vUniforms.uOscillationAmp.value = 1.2;
       vUniforms.uOscillationFreq.value = 0.8;
+      vUniforms.uBreathDepth.value = 0.35;
       vUniforms.uManifoldRadius.value = 180.0;
       vUniforms.uTorusDepthScale.value = 1.0;
     }

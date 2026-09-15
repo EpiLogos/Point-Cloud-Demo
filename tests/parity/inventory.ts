@@ -16,7 +16,6 @@ import {COMPOSITION_PRESETS} from '../../src/engine/fieldModel';
 const dir='field-studies-journeys/docs/parity',evidence='field-studies-journeys/evidence-native';
 fs.mkdirSync(dir,{recursive:true});
 const verify=process.argv.includes('--verify');
-const dormant:Record<string,string>={autoMorphDuration:'The entity runtime superseded this timer with sequence and phase controls.', 'toroidalMorph.progress':'The current entity runtime uses morphProgress or the shared drive; this older field is no longer consumed.'};
 const home=(group:string)=>group==='Morph'?'Motion / Morph':group==='Composition'?'Motion / Focus':`Field / ${group}`;
 function consumer(p:string){
  if(p==='particleCount')return 'PointCloudField.applyConfig → rebuildParticleSystem / GPGPUSimulator constructor';
@@ -36,9 +35,9 @@ for(const p of PARAM_REGISTRY){
   nativeBounds:{slider:[p.min,p.max],typed:[p.hardMin,p.hardMax],step:p.step,unit:p.unit??'native scalar'},authoringHome:home(p.group),authoringPath:b!.bind,conversion:{nativePerAuthoringUnit:b!.factor},
   reset:p.path==='particleCount'?'Explicit allocation/reseed; all other config preserved':'No particle reseed; owning native driver/target/render state changes',
   authority:originalRegistry.some(x=>x.path===p.path)?'pinned native':'approved authoring extension or previously unregistered native owner',
-  implementation:dormant[p.path]?'retained-unconsumed':'connected',reason:dormant[p.path],
-  verification:dormant[p.path]?['PAR-CONFIG','UI-ALL-NATIVE-NUMERIC-HOMES']:['PAR-NUMERIC','UI-ALL-NATIVE-NUMERIC-HOMES',p.group==='Color'||p.group==='Particles'?'RENDER-NATIVE-CLASSIC-MATRIX':'GPU-REFERENCE'],
-  status:verify?(dormant[p.path]?'declared-unconsumed':'verified-in-recorded-matrices'):'implemented-awaiting-clean-run'});
+  implementation:'connected',
+  verification:['PAR-NUMERIC','UI-ALL-NATIVE-NUMERIC-HOMES',p.group==='Color'||p.group==='Particles'?'RENDER-NATIVE-CLASSIC-MATRIX':'GPU-REFERENCE'],
+  status:verify?'verified-in-recorded-matrices':'implemented-awaiting-clean-run'});
 }
 for(const p of entityParamDefs(0,{name:'Selected formation'}))rows.push({id:'ENTITY:'+p.path.replace('entities.0.',''),capability:p.label,nativeSource:'src/engine/fieldModel.ts / entityRuntime.ts',nativeConsumer:'EntityRuntime.update → native partition uniforms / fieldModel.resolveSequence',owner:'entity',scope:'selected stable entity ID',nativeBounds:{slider:[p.min,p.max],typed:[p.hardMin,p.hardMax],unit:p.unit??'native scalar'},authoringHome:p.path.includes('sequence.')?'Motion / selected entity sequence':'Objects / selected entity',conversion:['x','y','z','forces.radius'].some(k=>p.path==='entities.0.'+k)?400:1,reset:'No reseed; target changes rebake only affected geometry',verification:['PAR-UNREGISTERED-LANES-REORDER','PAR-SEQUENCE','GPU external clock/uniform movement','native editor browser workflows'],status:verify?'verified-in-recorded-matrices':'implemented-awaiting-clean-run'});
 function feature(id:string,capability:string,source:string,scope:string,location:string,variants:any,tests:string[],notes=''){
@@ -77,7 +76,6 @@ const cls=ast.statements.find(s=>ts.isClassDeclaration(s)&&s.name?.text==='Point
 for(const member of cls.members)if(ts.isMethodDeclaration(member)&&!member.modifiers?.some(m=>m.kind===ts.SyntaxKind.PrivateKeyword)){
  const name=member.name.getText(ast);rows.push({id:'API:'+name,capability:name,nativeSource:`src/engine/PointCloudField.ts:${ast.getLineAndCharacterOfPosition(member.getStart()).line+1} (pinned reference)`,nativeConsumer:'Public PointCloudField / unchanged PointCloudComponent embedding contract',owner:'native runtime or native view',scope:'embedding API',authoringHome:'Native API preserved; host commands / contextual UI are separate consumers',reset:/resetField/.test(name)?'Explicit native reset':'Native method contract retained',verification:['PAR-PUBLIC-API-SURFACE','PUBLIC-NATIVE-API-RUNTIME','source-specific GPU/browser suites'],status:verify?'api-preserved-and-exercised-by-group':'implemented-awaiting-clean-run'});
 }
-for(const p of PARAMETERS.filter(p=>p.group==='retained'))rows.push({id:'PREVIEW:'+p.key,capability:p.label,scope:'historical preview only',authoringHome:'Field / Retained preview values',implementation:'not-a-native-capability',reason:p.inactive,status:'explicitly-unavailable'});
 const files=['parity-independent.json','parity-gpu.json','parity-workflows.json','parity-lifecycle.json','gpu-acceptance.json','browser-acceptance.json','workspace-acceptance.json','module-acceptance.json','reference-apps.json'];
 const receipts:any[]=[];
 if(verify)for(const f of files){const result=JSON.parse(fs.readFileSync(path.join(evidence,f),'utf8'));assert.ok(!result.failed, f+' failures');assert.ok(!(result.browserErrors?.length),f+' browser errors');const outcomes=result.results??[];assert.ok(outcomes.every((r:any)=>r.ok!==false),f+' failed case');if(f==='module-acceptance.json')assert.ok(result.moduleArtifactExport&&result.particleCount===62000&&!result.externalRequests.length);receipts.push({file:f,cases:outcomes.length,passed:true});}
