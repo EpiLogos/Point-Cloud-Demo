@@ -2,6 +2,7 @@
 import type {Journey} from './model';
 import type {Camera} from './camera';
 import {esc} from './icons';
+import {ensureAutoQuality} from '../../src/physis/hardware';
 export interface DesktopScene {expression:Journey;sceneIndex:number;camera:Camera;viewport?:{width:number;height:number};name:string}
 export const physisHost=()=>!!document.querySelector('meta[name="physis-host"]');
 async function api(route:string,body?:unknown){const r=await fetch(route,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Physis-Client':'1'},body:JSON.stringify(body)});const value=await r.json();if(!r.ok)throw new Error(value.error??r.statusText);return value;}
@@ -19,6 +20,8 @@ export function installPhysis(getSource:()=>DesktopScene,load:(source:DesktopSce
  const panel=document.createElement('section');panel.id='physis-panel';panel.className='capture-panel chrome';panel.setAttribute('aria-label','Physis desktop');panel.hidden=true;document.body.append(panel);
  let state:any=null;
  const events=new EventSource('/api/events');events.onmessage=e=>{state=JSON.parse(e.data);button.classList.toggle('active',!!state.running);const indicator=panel.querySelector('[data-physis-status]');if(indicator)indicator.textContent=statusText();};
+ // The studio resolves `auto` too: open the app once and the tier is set for every surface.
+ void ensureAutoQuality('studio');
  const statusText=()=>state?.error?state.error:state?.suspended&&state.enabled?`Paused: ${state.suspended}`:state?.running?'Desktop engine on':state?.starting?'Starting desktop engine':'Desktop engine off';
  const run=async(fn:()=>Promise<void>)=>{try{await fn();}catch(error){toast(error instanceof Error?error.message:String(error));}};
   async function render(){
