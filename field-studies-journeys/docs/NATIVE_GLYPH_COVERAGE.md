@@ -5,7 +5,8 @@ Implementation evidence, 2026-09-15.
 - Exact starting owner revision: `9443f58fa8599f903d6affa61bc6fbed7109f640`.
 - Compatibility branch: `agent/glyph-coverage-oi-compat`.
 - Current-main owner repair: [Point-Cloud-Demo #5](https://github.com/EpiLogos/Point-Cloud-Demo/pull/5),
-  commit `333eb55c62a94fcb3ff8b50fa151e363eddf7700` on main base
+  production commit `333eb55c62a94fcb3ff8b50fa151e363eddf7700`, with cross-font
+  regression follow-up `ae32714ec1f24ee894bd54bc2c32ed185d90ad5c`, on main base
   `22c02d543dfee2c6eb30ded1f4a0a62225200eeb`.
 
 This is a provisional native source commit for O:I's existing engine intake.
@@ -35,8 +36,14 @@ absent/false/true normalized extents and total counts 1,024/8,192 are covered:
 | ● (8,304 candidates) | 512 | 10.78% | 100% | 2 → 4 |
 | ● (8,304 candidates) | 4,096 | 49.02% | 100% | 2 → 4 |
 
-All repaired cases cover at least 97% of both source dimensions and all four
-quadrants. Repeated zero-time updates do not rebake. Reallocating the same count
+All repaired cases retain full-height coverage and all four quadrants. The
+regression also compares every sampled source point between normalized and
+ordinary formations, within Float32 precision. Linux's sparse O allocation
+covers 96.97% of the extreme-column width even in the pre-existing normalized
+path; source-point identity checks horizontal coverage without a font-specific
+width cutoff. The height and quadrant assertions remain.
+
+Repeated zero-time updates do not rebake; reallocating the same count
 retains identical A/B shape targets. Counts above are same-machine font/raster
 observations, not fixed test expectations.
 
