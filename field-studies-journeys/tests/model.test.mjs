@@ -126,3 +126,24 @@ test('recording captures native defaults even before a property has been edited'
 test('recorded optional entity properties evaluate through the native adapter',()=>{const s=fieldStudies().scenes[0],e=s.entities[0];delete e.scale;const t={id:'scale',entityId:e.id,bind:'entity.scale',points:[{time:0,value:1},{time:2,value:2}]};assert.ok(Number.isFinite(tracks.readTrackValue(s,t)));s.propertyTracks=[t];assert.equal(tracks.evaluateTracks(s,1).entities[0].scale,1.5);assert.equal(toNativeConfig(tracks.evaluateTracks(s,1)).entities[0].scale,1.5);});
 test('recording preserves a held value before a gesture instead of inventing a ramp',()=>{const t={id:'held',bind:'field.params.recovery',points:[]};tracks.sampleTrack(t,.05,1,0);tracks.sampleTrack(t,4,1,3.95);tracks.sampleTrack(t,4.05,2,4);assert.deepEqual(t.points,[{time:0,value:1},{time:4,value:1},{time:4.05,value:2}]);assert.equal(tracks.valueAt(t.points,3),1);assert.equal(tracks.valueAt(t.points,4.05),2);});
 test('saved playback timing excludes drafts and uses saved durations',()=>{const j=blankJourney();workflow.saveScene(j,j.scenes[0],'One');j.scenes[0].duration=30;workflow.nextSceneFrom(j,j.scenes[0]);assert.deepEqual(tracks.expressionTiming(j,0,3,true),{start:0,total:12,time:3});});
+
+test('semantic chakra starters use stable bindings rather than native station or chakra entity fields',()=>{
+ const modes=startingPoints();
+ for(const id of ['composition-chakra_body','composition-kundalini_focus','composition-chakra_cymatic']){
+  const item=modes.find(v=>v.id===id);assert.ok(item,id);const scene=item.expression.scenes[0];
+  assert.equal(scene.semanticField?.bindings.length,7,id+' semantic bindings');
+  assert.equal(scene.semanticField?.profile.profileId,'chakra-seven-v1');
+  const native=toNativeConfig(scene);assert.equal(native.semanticField?.bindings.length,7);
+  assert.ok(native.entities.every(e=>e.stationIndex===undefined&&e.chakraId===undefined),'new semantic presets must not put chakra authority back on entities');
+  if(id!=='composition-chakra_body')assert.equal(native.resonanceDrive?.kind,'semanticFocus');
+ }
+});
+
+test('semantic bindings survive expression round-trip by stable entity identity',()=>{
+ const source=startingPoints().find(v=>v.id==='composition-chakra_cymatic').expression;
+ const round=validateJourney(JSON.parse(JSON.stringify(source)));const scene=round.scenes[0];
+ assert.equal(scene.semanticField?.bindings.length,7);
+ const ids=new Set(scene.entities.map(e=>e.id));
+ for(const binding of scene.semanticField.bindings)for(const carrier of binding.carriers)if(carrier.kind==='entity')assert.ok(ids.has(carrier.id),carrier.id);
+ const native=toNativeConfig(scene);assert.deepEqual(native.semanticField,scene.semanticField);assert.equal(native.resonanceDrive?.kind,'semanticFocus');
+});

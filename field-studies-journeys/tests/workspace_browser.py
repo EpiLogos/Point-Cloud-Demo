@@ -69,6 +69,17 @@ try:
   check('A running field pauses for library browsing and resumes without time catch-up',0<=state(p)['simTime']-frozen<.35)
   act(p,'modes');require(p.locator('[data-mode-choice]').count()>=30,'all native modes reachable');p.locator('#mode-search').fill('kundalini');choices=p.locator('[data-mode-choice]').filter(visible=True);require(choices.count()>=1,'Kundalini mode');choice_id=choices.first.get_attribute('data-id');choices.first.click();p.wait_for_timeout(250)
   fork=doc(p);check('Modes open editable composition forks and retain the previous expression',fork['id']!=base['id'] and len(fork['scenes'][0]['entities'])==7 and state(p)['tool']=='interact' and not state(p)['modesOpen'],choice_id)
+  # Semantic bindings are ordinary scene data: editable without changing physics, force, geometry or selection semantics.
+  semantic_scene=fork['scenes'][0];first_id=semantic_scene['entities'][0]['id'];before_entity=json.loads(json.dumps(semantic_scene['entities'][0]));before_gpu=gpu(p);p.evaluate('(id)=>window.__FIELD_STUDIES__.selectEntity(id)',first_id);p.wait_for_timeout(100)
+  semantic_select=p.locator('[data-semantic-node][data-entity-id="'+first_id+'"]');require(semantic_select.is_visible() and semantic_select.input_value()!='none','semantic binding control visible')
+  semantic_select.select_option('anahata');p.wait_for_timeout(120);after_semantic=doc(p)['scenes'][0];after_entity=next(e for e in after_semantic['entities'] if e['id']==first_id);after_gpu=gpu(p)
+  require(after_entity['force']==before_entity['force'] and after_entity['shape']==before_entity['shape'] and after_entity['tint']==before_entity['tint'],'semantic assignment changed physical entity')
+  require(all(before_gpu[k]==after_gpu[k] for k in ['steps','seeds','bakes','positions','velocities']),'semantic assignment changed physical state')
+  binding=next(b for b in after_semantic['semanticField']['bindings'] if any(c['kind']=='entity' and c['id']==first_id for c in b['carriers']));require(binding['semanticNodeId']=='anahata','semantic node did not update by stable identity')
+  p.locator('[data-semantic-bind="color.radius.source"][data-entity-id="'+first_id+'"]').select_option('independent');p.wait_for_timeout(80);radius=p.locator('[data-semantic-bind="color.radius.value"][data-entity-id="'+first_id+'"]');radius.fill('333');radius.press('Tab');p.wait_for_timeout(120);edited=doc(p)['scenes'][0];edited_entity=next(e for e in edited['entities'] if e['id']==first_id);binding=next(b for b in edited['semanticField']['bindings'] if any(c['kind']=='entity' and c['id']==first_id for c in b['carriers']));
+  check('Semantic authoring is explicit and does not alias the physical force kernel',binding['color']['radius']['source']=='independent' and binding['color']['radius']['value']==333 and edited_entity['force']['radius']==before_entity['force']['radius'] and binding['semanticNodeId']=='anahata')
+  semantic_toggle=p.locator('[data-semantic-global="enabled"]').first;semantic_toggle.uncheck();p.wait_for_timeout(100);off_gpu=gpu(p);semantic_toggle.check();p.wait_for_timeout(100)
+  check('Disabling semantic expression leaves the particle simulation untouched',all(after_gpu[k]==off_gpu[k] for k in ['steps','seeds','bakes','positions','velocities']))
   act(p,'library');saved_ids=p.locator('[data-action="load-saved"]').evaluate_all('(items)=>items.map(e=>e.dataset.id)');require(base['id'] in saved_ids,'previous expression saved')
   act(p,'load-saved','[data-id="'+base['id']+'"]');require(doc(p)==base,'open previous')
   # Imported expressions enter the collection without destroying the current work.
@@ -85,7 +96,7 @@ try:
   check('Expression export retains the compatible authoring envelope and the edited document',json.loads(path.read_text())==doc(p) and json.loads(path.read_text())['schema']=='oi.journey' and downloaded.value.suggested_filename.endswith('.expression.json'))
   act(p,'close-library');p.set_viewport_size({'width':390,'height':844});p.wait_for_timeout(180)
   check('Narrow layout keeps controller, capture and transport without horizontal overflow',p.locator('#orbit-control').is_visible() and p.locator('#play-button').is_visible() and p.locator('[data-action="capture-options"]').is_visible() and p.evaluate('document.documentElement.scrollWidth<=innerWidth'))
-  p.screenshot(path=str(E/'expressions-mobile.png'));act(p,'library');p.wait_for_timeout(100);check('Library remains a scrollable single-column page on small screens',p.locator('#library-page').evaluate('e=>e.scrollHeight>e.clientHeight') and p.evaluate('document.documentElement.scrollWidth<=innerWidth'))
+  p.screenshot(path=str(E/'expressions-mobile.png'));p.locator('.workspace-cluster .header-menu-toggle').click();p.wait_for_timeout(120);act(p,'library');p.wait_for_timeout(100);check('Library remains a scrollable single-column page on small screens',p.locator('#library-page').evaluate('e=>e.scrollHeight>e.clientHeight') and p.evaluate('document.documentElement.scrollWidth<=innerWidth'))
   p.screenshot(path=str(E/'expressions-library-mobile.png'));p.evaluate('window.__FIELD_STUDIES__.dispose()')
   # True trusted touch events on the controller; no synthetic event masquerading as a device test.
   tc=browser.new_context(viewport={'width':900,'height':700},has_touch=True,reduced_motion='reduce');tp=tc.new_page();open_page(tp,fixture)

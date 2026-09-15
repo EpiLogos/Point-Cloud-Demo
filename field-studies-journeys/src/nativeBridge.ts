@@ -4,7 +4,8 @@ import {applyNativeDelta} from './nativeDelta';
 /** Document → existing production engine. No renderer, scheduler, DOM or storage writes. */
 import type {PointCloudConfig,AutomationLane as NativeLane} from '../../src/engine/types';
 import {DEFAULT_CONFIG,DEFAULT_COLOR_CONFIG,DEFAULT_TOROIDAL_CONFIG} from '../../src/engine/PointCloudField';
-import {DEFAULT_SEQUENCE,DEFAULT_FORCES,DEFAULT_COMPOSITION,DEFAULT_CYMATIC_MEDIUM,makeChakraEntities,MAX_FORMATIONS,MAX_PINS,type Entity as NativeEntity,type Shape as NativeShape} from '../../src/engine/fieldModel';
+import {DEFAULT_SEQUENCE,DEFAULT_FORCES,DEFAULT_COMPOSITION,DEFAULT_CYMATIC_MEDIUM,MAX_FORMATIONS,MAX_PINS,type Entity as NativeEntity,type Shape as NativeShape} from '../../src/engine/fieldModel';
+import {makeSemanticChakraEntities} from '../../src/engine/semantics/chakraPresets';
 import {migrateSnapshot,CONFIG_SCHEMA_VERSION} from '../../src/engine/configMigration';
 import {writePath,readPath} from '../../src/engine/automation';
 import {NATIVE_BINDINGS,WORLD_SCALE,baseValue,bindValue,nativeBinding,automationTarget,entityTargets,stableNativeTarget} from './nativeParameters';
@@ -39,7 +40,7 @@ function shapeOf(e:Pick<Entity,'shape'|'text'|'yantraId'|'templateFrequency'|'te
  if(e.shape==='text')return {...native,kind:'glyph',text:e.text.trim()||'O'};
  return {kind:'primitive',primitive:e.shape};
 }
-export function toNativeEntity(e:Entity):NativeEntity{
+export function toNativeEntity(e:Entity,semanticAuthority=false):NativeEntity{
  const original=e.native;
  const {enabled,clock,steps,manual,...nativeSequence}=e.sequence;
  const sequence={...DEFAULT_SEQUENCE,...original?.sequence,...nativeSequence,links:[]};
@@ -54,7 +55,8 @@ export function toNativeEntity(e:Entity):NativeEntity{
     x:k.position?k.position.x*WORLD_SCALE:undefined,y:k.position?k.position.y*WORLD_SCALE:undefined,z:k.position?k.position.z*WORLD_SCALE:undefined})):[{id:e.id+'_base',source:e.source?clone(e.source):undefined,shape:shapeOf(e,original?.shape)}]},
   forces:{...DEFAULT_FORCES,...original?.forces,mode:e.force.kind,strength:e.force.strength,radius:e.force.radius*WORLD_SCALE,spin:e.force.spin},
   authoringSource:e.sequence.enabled||e.sequence.manual?(stateSource(e,0)?clone(stateSource(e,0)):undefined):e.source?clone(e.source):undefined,
-  tint:e.tint,tintWeight:e.tintWeight,stationIndex:e.station??undefined,
+  tint:e.tint,tintWeight:e.tintWeight,stationIndex:semanticAuthority?original?.stationIndex:e.station??original?.stationIndex,
+  chakraId:semanticAuthority?original?.chakraId:original?.chakraId,
  };
 }
 const waves:Record<string,NativeLane['waveform']>={sine:'sine',triangle:'triangle',square:'square',saw:'saw',steps:'randomStep',smooth:'smoothRandom',morph:'morph'};
@@ -75,13 +77,20 @@ function projectNativeConfig(s:Scene):PointCloudConfig{
  cfg.colorMode=s.engine.inkMode??cfg.colorMode;if(s.engine.paletteId)cfg.color.paletteId=s.engine.paletteId;
  cfg.style=s.field.material==='print'?'halftone':'stipple';cfg.dotShape=s.engine.dotShape??'circle';
  if(s.engine.grainProfile===false)cfg.material=undefined;
- cfg.entities=s.entities.map(toNativeEntity);
+ const semanticAuthority=!!s.semanticField?.enabled;cfg.entities=s.entities.map(e=>toNativeEntity(e,semanticAuthority));
  const first=s.entities.find(e=>e.kind==='formation'&&e.enabled!==false);cfg.sourceType=first?.source?.kind==='image'?'image':first?.source?.kind==='ascii'?'ascii':'composition';cfg.customImage=first?.source?.kind==='image'?clone(first.source.image):undefined;cfg.asciiGlyph=first?.source?.kind==='ascii'?clone(first.source.ascii):undefined;
  cfg.toroidalMorph={...DEFAULT_TOROIDAL_CONFIG,...cfg.toroidalMorph,enabled:s.engine.morphEnabled,autoOscillate:s.engine.autoOscillate,trajectory:s.engine.trajectory,driveShape:s.engine.driveShape,interference:s.morph.law==='theta'?'toroidalOnly':s.morph.law};
  // The layout plane is NOT the physical medium plane.
- cfg.composition={...DEFAULT_COMPOSITION,...cfg.composition,plane:s.engine.mediumPlane,layoutName:s.composition.layout,orchestration:{...DEFAULT_COMPOSITION.orchestration,...cfg.composition?.orchestration,mode:s.composition.focus==='travelling'?'focus':'parallel',order:s.engine.focusOrder??'listed',followStation:s.composition.carryStation,
+ const semanticFocus=s.composition.frequencyDriver==='focus'&&semanticAuthority;
+ const legacyFocus=s.composition.frequencyDriver==='focus'&&!semanticAuthority;
+ cfg.composition={...DEFAULT_COMPOSITION,...cfg.composition,plane:s.engine.mediumPlane,layoutName:s.composition.layout,orchestration:{...DEFAULT_COMPOSITION.orchestration,...cfg.composition?.orchestration,mode:s.composition.focus==='travelling'?'focus':'parallel',order:s.engine.focusOrder??'listed',followStation:legacyFocus&&s.composition.carryStation,
  focusTintWeight:s.composition.carryTint?(cfg.composition?.orchestration.focusTintWeight??0):0}};
- cfg.cymatics={...DEFAULT_CYMATIC_MEDIUM,...cfg.cymatics,plateGeometry:s.engine.templateGeometry??cfg.cymatics!.plateGeometry,dimension:s.engine.templateDimension??cfg.cymatics!.dimension,enabled:s.engine.resonanceEnabled,engine:s.engine.resonatorMode??'resonator',followFocus:s.composition.frequencyDriver==='focus',autoSweep:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',sweep:{glideS:8,dwellS:2,...cfg.cymatics?.sweep,enabled:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',direction:s.engine.sweepDirection}};
+ cfg.cymatics={...DEFAULT_CYMATIC_MEDIUM,...cfg.cymatics,plateGeometry:s.engine.templateGeometry??cfg.cymatics!.plateGeometry,dimension:s.engine.templateDimension??cfg.cymatics!.dimension,enabled:s.engine.resonanceEnabled,engine:s.engine.resonatorMode??'resonator',followFocus:legacyFocus,autoSweep:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',sweep:{glideS:8,dwellS:2,...cfg.cymatics?.sweep,enabled:s.engine.autoSweep&&s.composition.frequencyDriver==='automation',direction:s.engine.sweepDirection}};
+ cfg.semanticField=s.semanticField?clone(s.semanticField):undefined;
+ if(s.composition.frequencyDriver==='focus'&&semanticAuthority)cfg.resonanceDrive={kind:'semanticFocus',profileId:s.semanticField!.profile.profileId};
+ else if(s.composition.frequencyDriver==='automation'&&s.engine.autoSweep)cfg.resonanceDrive={kind:'sweep',glideS:cfg.cymatics.sweep?.glideS,dwellS:cfg.cymatics.sweep?.dwellS,direction:cfg.cymatics.sweep?.direction};
+ else if(s.composition.frequencyDriver!=='focus')cfg.resonanceDrive={kind:'frequency'};
+ else cfg.resonanceDrive=undefined;
  cfg.relational={...cfg.relational!,enabled:s.engine.relationalEnabled,mode:s.engine.relationalMode as any};
  cfg.interaction={...cfg.interaction,mode:s.engine.pointerMode,clickMode:s.engine.pointerClick??'pulse',placedPoints:[]};
  cfg.automations=s.automation.map(authored=>{const l=resolvedAutomation(s.automation,authored),leader=automationLeader(s.automation,authored);
@@ -98,7 +107,7 @@ export function toNativeConfig(s:Scene):PointCloudConfig {
  if(!s.native)return projected;
  // Earlier Expressions files have an original config but no projection baseline.
  // Recover that baseline without mutating the document or erasing authored edits.
- const baseline=s.native.projection??nativeSnapshotToJourney({schemaVersion:4,config:s.native.config}).scenes[0].native!.projection!;
+ const baseline=s.native.projection??nativeSnapshotToJourney({schemaVersion:CONFIG_SCHEMA_VERSION,config:s.native.config}).scenes[0].native!.projection!;
  return applyNativeDelta(s.native.config,baseline,projected) as PointCloudConfig;
 }
 const shellShape=(s:NativeShape):Shape=>s.kind==='glyph'?'text':s.kind==='primitive'?s.primitive??'disc':s.kind;
@@ -123,8 +132,8 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  const rawEntities=source.entities;if(Array.isArray(rawEntities)&&(rawEntities.filter((e:any)=>e.kind==='formation').length>10||rawEntities.filter((e:any)=>e.kind==='pin').length>8))throw new Error('Native capacity exceeded; no entities were silently truncated.');
  const snapshot=migrateSnapshot(value,index);if(!snapshot)throw new Error('Native migration returned no scene');
  const cfg=snapshot.config,s=blankScene(snapshot.name),j=blankJourney();
- const completeV4=value.schemaVersion===4&&source.fluid&&source.interaction&&source.particleSize&&typeof source.particleCount==='number'&&Array.isArray(source.entities);
- s.native={config:clone(completeV4?source:cfg),original:clone(raw)};s.text=[];
+ const completeNative=Number(value.schemaVersion)>=4&&Number(value.schemaVersion)<=CONFIG_SCHEMA_VERSION&&source.fluid&&source.interaction&&source.particleSize&&typeof source.particleCount==='number'&&Array.isArray(source.entities);
+ s.native={config:clone(completeNative?source:cfg),original:clone(raw)};s.text=[];
  s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',pointerMode:cfg.interaction.mode,pointerClick:cfg.interaction.clickMode??'pulse',pointerClickStrength:cfg.interaction.clickStrength??2.2,pointerClickRadius:(cfg.interaction.clickRadius??180)/400,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent'};
  s.field.background=cfg.backgroundColor??cfg.color?.backgroundColor??'#f4f2eb';s.field.material=cfg.style==='halftone'?'print':'ink';
  s.field.palette=cfg.color?.customPaletteColors?.length?cfg.color.customPaletteColors.slice(0,8):[cfg.color?.primaryColor??'#252720',cfg.color?.accentColor??'#252720',cfg.color?.secondaryColor??'#252720'];
@@ -136,13 +145,15 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  s.engine.paletteId=cfg.color?.paletteId;s.engine.paletteSource=cfg.color?.customPaletteColors?.length?'custom':'legacy';if(cfg.paperGrain===undefined)s.field.params.grain=0;s.engine.grainProfile=!!cfg.material;s.engine.backgroundMode=cfg.backgroundMode??cfg.color?.backgroundMode??'solid';s.engine.dotShape=cfg.dotShape??'circle';
  s.engine.fontFamily=cfg.fontFamily;s.engine.fontWeight=cfg.fontWeight;s.engine.resonatorMode=cfg.cymatics?.engine??'resonator';s.engine.focusOrder=cfg.composition?.orchestration.order??'listed';
  s.entities=(cfg.entities??[]).map(fromNativeEntity);
+ s.semanticField=cfg.semanticField?clone(cfg.semanticField):undefined;
+ s.resonanceDrive=cfg.resonanceDrive?clone(cfg.resonanceDrive):undefined;
  const first=s.entities.find(e=>e.kind==='formation'&&e.enabled!==false);
  if(first&&!first.source){if(cfg.sourceType==='image'&&cfg.customImage?.dataUrl)first.source={kind:'image',image:clone(cfg.customImage)};else if(cfg.sourceType==='ascii'&&cfg.asciiGlyph?.text)first.source={kind:'ascii',ascii:clone(cfg.asciiGlyph)};}
  if(value.authoringView)s.view=clone(value.authoringView);else if(snapshot.view?.camera)s.view.nativeCamera=clone(snapshot.view.camera);
  s.composition.layout=cfg.composition?.layoutName??'free';
  s.composition.focus=cfg.composition?.orchestration.mode==='focus'?'travelling':'parallel';
  s.composition.carryTint=(cfg.composition?.orchestration.focusTintWeight??0)>0;s.composition.carryStation=cfg.composition?.orchestration.followStation??false;
- s.composition.frequencyDriver=cfg.cymatics?.sweep?.enabled||cfg.cymatics?.autoSweep||cfg.automations?.some(l=>l.enabled&&l.path==='cymatics.frequencyHz')?'automation':cfg.cymatics?.followFocus?'focus':'manual';
+ s.composition.frequencyDriver=cfg.resonanceDrive?.kind==='semanticFocus'?'focus':cfg.resonanceDrive?.kind==='sweep'||cfg.cymatics?.sweep?.enabled||cfg.cymatics?.autoSweep||cfg.automations?.some(l=>l.enabled&&l.path==='cymatics.frequencyHz')?'automation':cfg.cymatics?.followFocus?'focus':'manual';
  s.morph.law=cfg.toroidalMorph?.interference==='toroidalOnly'?'theta':cfg.toroidalMorph?.interference??'theta';
  s.automation=(cfg.automations??[]).map(l=>{
   const b=NATIVE_BINDINGS.find(b=>b.path===l.path),eb=entityTargets(s).find(b=>b.path===l.path);
@@ -151,7 +162,7 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
   return{...(l.clockId?{clockId:l.clockId}:{}),...(clockLeader&&clockLeader.id!==l.id?{syncWith:clockLeader.id}:{}),id:l.id,nativeId:l.id,nativePath:l.path,entityId:eb?.entityId,enabled:l.enabled,target:b?'field.'+b.key:eb?.target??stableNativeTarget(s,l.path),type:l.type==='lfo'?'lfo':'ramp',wave:l.waveform==='randomStep'?'steps':l.waveform==='smoothRandom'?'smooth':l.waveform??'sine',min:(l.type==='lfo'?l.min??0:l.from??0)/factor,max:(l.type==='lfo'?l.max??1:l.to??1)/factor,rate:l.rateHz??.25,phase:l.phase??0,blend:l.blend??'replace',duration:l.durationS??2,delay:l.delayS??0,loop:l.loop==='restart'?'loop':l.loop==='pingpong'?'pingpong':'once',firedAt:l.fireToken??null,easing:l.easing??'smooth'};
  });
  if(snapshot.view?.gridMode&&!s.view.nativeScaffold)s.view.nativeScaffold=snapshot.view.gridMode;
- j.name=snapshot.name;j.description='Native scene configuration imported through schema-4 migration. Original payload retained; this is not a runtime checkpoint.';j.scenes=[s];
+ j.name=snapshot.name;j.description='Native scene configuration imported through schema-5 migration. Original payload retained; this is not a runtime checkpoint.';j.scenes=[s];
  checkNativeLimits(s);s.native!.projection=clone(projectNativeConfig(s));return validateJourney(j);
 }
 export function importDocuments(raw:unknown):{journeys:Journey[];errors:{index:number;message:string}[]}{
@@ -161,7 +172,7 @@ export function importDocuments(raw:unknown):{journeys:Journey[];errors:{index:n
  }catch(e){errors.push({index,message:e instanceof Error?e.message:String(e)});}
  return{journeys,errors};
 }
-export function nativeExport(s:Scene){return{schemaVersion:4,id:s.id,name:s.name,timestamp:Date.now(),config:toNativeConfig(s),authoringView:clone(s.view),source:s.native?.original};}
-export function nativeChakras():Entity[]{return makeChakraEntities('yantra').slice().reverse().map((e,i)=>{
+export function nativeExport(s:Scene){return{schemaVersion:CONFIG_SCHEMA_VERSION,id:s.id,name:s.name,timestamp:Date.now(),config:toNativeConfig(s),authoringView:clone(s.view),source:s.native?.original};}
+export function nativeChakras():Entity[]{return makeSemanticChakraEntities('yantra').slice().reverse().map((e,i)=>{
  const out=fromNativeEntity(e);out.position={x:.18,y:-.82+i*.274,z:0};out.size={x:.235,y:.235};out.scale=1;out.native={...e,extent:{width:94,height:94,rotation:0}};out.force.radius=.27;return out;
 });}

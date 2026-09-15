@@ -5,6 +5,7 @@
 
 import * as THREE from 'three';
 import { PointCloudConfig } from './types';
+import type { ForceEmitterState } from './forceRuntime';
 import {
   simulationVertexShader,
   positionSimulationShader,
@@ -168,8 +169,10 @@ export class GPGPUSimulator {
         uEntityDepthScale: {value: new Float32Array(10).fill(1)},
         uEntityNormalized: {value: new Float32Array(10)},
         uEntityTransform: { value: Array.from({length:10},()=>new THREE.Vector3(1,1,0)) },
-        uEntityForce: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 0)) },
         uTexSize: { value: new THREE.Vector2(1, 1) },
+        uForceEmitterCount: { value: 0 },
+        uForceEmitterCenter: { value: Array.from({ length: 18 }, () => new THREE.Vector4(-99999, -99999, 0, 1)) },
+        uForceEmitterParams: { value: Array.from({ length: 18 }, () => new THREE.Vector4(0, 0, 0, 0)) },
         uCompPlane: { value: 0.0 },
         uResDominance: { value: 1.0 },
 
@@ -209,14 +212,6 @@ export class GPGPUSimulator {
         uPointerStrength: { value: 1.0 },
         uInteractionMode: { value: 0.0 },
 
-        // Placed persistent interaction points in 3D
-        uPlacedPointCount: { value: 0 },
-        uPlacedPoints: {
-          value: Array.from({ length: 8 }, () => new THREE.Vector4(-99999, -99999, 0, 0)),
-        },
-        uPlacedPointParams: {
-          value: Array.from({ length: 8 }, () => new THREE.Vector4(0, 0, 0, 0)),
-        },
       },
       depthTest: false,
       depthWrite: false,
@@ -311,13 +306,12 @@ export class GPGPUSimulator {
     }
   }
 
-  /** Push the entity uniform set (partition bounds, centres, morph, forces) to the velocity material */
+  /** Push formation partition geometry/state; physical forces use the separate emitter table. */
   public setEntityState(u: {
     count: number;
     bounds: Float32Array;
     centers: THREE.Vector4[];
     morph: Float32Array;
-    forces: THREE.Vector4[];
     transforms: THREE.Vector3[];
     depthScales?: Float32Array;
     normalized?: Float32Array;
@@ -329,13 +323,22 @@ export class GPGPUSimulator {
     (vU.uEntityDepthScale.value as Float32Array).set(u.depthScales ?? new Float32Array(10).fill(1));
     (vU.uEntityNormalized.value as Float32Array).set(u.normalized ?? new Float32Array(10));
     const cU = vU.uEntityCenter.value as THREE.Vector4[];
-    const fU = vU.uEntityForce.value as THREE.Vector4[];
     for (let i = 0; i < 10; i++) {
       cU[i].copy(u.centers[i]);
-      fU[i].copy(u.forces[i]);
       vU.uEntityTransform.value[i].copy(u.transforms[i]);
     }
     (vU.uTexSize.value as THREE.Vector2).set(this.texWidth, this.texHeight);
+  }
+
+  public setForceEmitters(emitters: readonly ForceEmitterState[]) {
+    const u=this.velMaterial.uniforms;
+    const centers=u.uForceEmitterCenter.value as THREE.Vector4[];
+    const params=u.uForceEmitterParams.value as THREE.Vector4[];
+    const count=Math.min(18,emitters.length);u.uForceEmitterCount.value=count;
+    for(let i=0;i<18;i++){const e=emitters[i];if(!e||!e.enabled){centers[i].set(-99999,-99999,0,1);params[i].set(0,0,0,0);continue;}
+      centers[i].set(e.position.x,e.position.y,e.position.z,Math.max(5,e.radius));
+      const mode=e.law==='vortex'?3:e.polarity==='repel'?2:1;params[i].set(e.strength,mode,e.spin,e.metric==='world3d'?1:0);
+    }
   }
 
   public setCompositionPlane(plane: 'vertical' | 'horizontal') {
@@ -506,28 +509,6 @@ export class GPGPUSimulator {
     if (config.interaction.mode === 'attract') modeVal = 1.0;
     else if (config.interaction.mode === 'vortex') modeVal = 2.0;
     vUniforms.uInteractionMode.value = modeVal;
-
-    // Placed interaction points in 3D
-    const placed = config.interaction.placedPoints || [];
-    vUniforms.uPlacedPointCount.value = Math.min(8, placed.length);
-    for (let i = 0; i < 8; i++) {
-      const p = placed[i];
-      if (p && p.active !== false) {
-        (vUniforms.uPlacedPoints.value[i] as THREE.Vector4).set(
-          p.x,
-          p.y,
-          p.z ?? 0.0,
-          p.radius
-        );
-        let pMode = 0.0;
-        if (p.mode === 'attract') pMode = 1.0;
-        else if (p.mode === 'vortex') pMode = 2.0;
-        (vUniforms.uPlacedPointParams.value[i] as THREE.Vector4).set(p.strength, pMode, p.spin ?? 0, p.falloff === 'gaussian' ? 1 : 0);
-      } else {
-        (vUniforms.uPlacedPoints.value[i] as THREE.Vector4).set(-99999, -99999, 0, 0);
-        (vUniforms.uPlacedPointParams.value[i] as THREE.Vector4).set(0, 0, 0, 0);
-      }
-    }
 
     // 2. Render velocity simulation pass
     this.quadMesh.material = this.velMaterial;

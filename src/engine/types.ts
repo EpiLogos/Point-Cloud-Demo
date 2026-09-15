@@ -386,6 +386,7 @@ export interface CompositionTelemetry {
   simTime: number;
   focus: { index: number; entityId: string; nextEntityId: string; blend: number } | null;
   sequences: SequenceTelemetry[];
+  semantic?: import('./semantics/semanticTypes').SemanticFieldState;
   cymatic: {
     enabled: boolean;
     frequencyHz: number;
@@ -394,7 +395,8 @@ export interface CompositionTelemetry {
     dominantN: number;
     nearestStation: number;
     stationProximity: number; // 0..1
-    stations: Array<{ index: number; name: string; frequencyHz: number; m: number; n: number; color: string }>;
+    stations: Array<{ id:string; index:number; name:string; frequencyHz:number; m:number; n:number; color:string; energy?:number; semanticNodeId?:string; affinity?:number }>;
+    driver?: {kind:'frequency'|'sweep'|'semanticFocus'; bound:boolean; semanticNodeId?:string; anchorId?:string};
   } | null;
 }
 
@@ -407,6 +409,9 @@ export interface PointCloudConfig {
   entities?: import('./fieldModel').Entity[];
   composition?: import('./fieldModel').Composition;
   cymatics?: import('./fieldModel').CymaticMedium;
+  /** Semantic interpretation/expression layer. Physics remains independent when absent/disabled. */
+  semanticField?: import('./semantics/semanticTypes').SemanticFieldConfig;
+  resonanceDrive?: import('./resonanceDrive').ResonanceDriveConfig;
 
   /** @deprecated legacy — migrated into entities[0] (kept only as migration input) */
   glyph: string | string[];           // e.g., ["O", "I"] or "OI" or "✦ ✧"

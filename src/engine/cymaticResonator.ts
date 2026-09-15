@@ -41,25 +41,45 @@
  *
  * Because this is state (A_mn) that is carried frame to frame, sweeping the drive
  * frequency f(t) continuously detunes and re-tunes every mode's envelope live — nothing is
- * ever reset, reseeded, or swapped for a stored picture. The seven chakral "stations" below
+ * ever reset, reseeded, or swapped for a stored picture. The seven physical anchors below
  * are simply the seven most strongly-driven, mutually distinct eigenmodes of this one
- * instrument, picked by an explicit selection rule over the real mode spectrum.
+ * instrument, picked by an explicit selection rule over the real mode spectrum. Semantic
+ * systems may interpret these anchors; this physical model deliberately does not.
  */
-
-import { CANONICAL_CHAKRAS } from './chakraSystem';
 
 export const RESONATOR_K = 8; // mode grid side (K x K = 64 modes)
 export const RESONATOR_MODE_TOTAL = RESONATOR_K * RESONATOR_K;
 export const RESONATOR_STATION_COUNT = 7;
 
-export interface ResonatorStation {
-  index: number;       // 0 (lowest freq / Root) .. 6 (highest freq / Crown)
-  name: string;        // chakra name from CANONICAL_CHAKRAS
+export interface ResonanceAnchor {
+  id: string;
+  index: number;       // ascending physical frequency order
   m: number;
   n: number;
   frequencyHz: number;
-  color: string;
   modeIndex: number;   // flat index into the 64-mode arrays
+}
+/** @deprecated compatibility name; anchors no longer carry semantic identity. */
+export type ResonatorStation = ResonanceAnchor;
+
+export interface ModalState {
+  modeIndex:number;
+  m:number;
+  n:number;
+  frequencyHz:number;
+  coupling:number;
+  active:boolean;
+  re:number;
+  im:number;
+  energy:number;
+}
+
+export interface ResonanceState {
+  frequencyHz:number;
+  totalEnergy:number;
+  coherence:number;
+  modes:ModalState[];
+  anchors:Array<ResonanceAnchor & {energy:number}>;
 }
 
 export interface ResonatorTelemetry {
@@ -128,7 +148,7 @@ export class CymaticResonator {
   private modeActive: Uint8Array = new Uint8Array(RESONATOR_MODE_TOTAL);
   private orderByCoupling: number[] = [];
 
-  public stations: ResonatorStation[] = [];
+  public stations: ResonanceAnchor[] = [];
   public params: ResonatorParams;
 
   private lastTelemetry: ResonatorTelemetry;
@@ -190,12 +210,12 @@ export class CymaticResonator {
   }
 
   /**
-   * Selects the seven chakral stations: the seven mutually-distinct, most strongly-coupled
+   * Selects seven physical stability anchors: the mutually-distinct, most strongly-coupled
    * eigenmodes of THIS instrument, ordered ascending by frequency across the band. Distinct
    * shape = distinct unordered {m,n} pair (on a free square plate, (m,n) and (n,m) are the
    * same nodal pattern up to an overall sign, so only one representative per pair is kept).
    */
-  private selectStations(_L: number): ResonatorStation[] {
+  private selectStations(_L: number): ResonanceAnchor[] {
     const f0 = this.params.baseFrequency;
     // The instrument's working band: f_11 = f0*2 (lowest mode) up to f0*27.5, which with the
     // default f0=40 reproduces the ~80-1100Hz band the physical model is tuned for. Restricting
@@ -222,19 +242,14 @@ export class CymaticResonator {
     // ...then presented ascending by frequency (Root -> Crown).
     chosen.sort((a, b) => a.f - b.f);
 
-    return chosen.map((c, idx) => {
-      // CANONICAL_CHAKRAS is Crown(0) .. Root(6); ascending-frequency station idx 0 = Root.
-      const chakra = CANONICAL_CHAKRAS[CANONICAL_CHAKRAS.length - 1 - idx] ?? CANONICAL_CHAKRAS[0];
-      return {
-        index: idx,
-        name: chakra.name,
-        m: c.m,
-        n: c.n,
-        frequencyHz: c.f,
-        color: chakra.color,
-        modeIndex: c.modeIndex,
-      };
-    });
+    return chosen.map((c, idx) => ({
+      id: `mode:${Math.min(c.m,c.n)}:${Math.max(c.m,c.n)}`,
+      index: idx,
+      m: c.m,
+      n: c.n,
+      frequencyHz: c.f,
+      modeIndex: c.modeIndex,
+    }));
   }
 
   /**
@@ -318,8 +333,39 @@ export class CymaticResonator {
     return this.lastTelemetry;
   }
 
-  public getStations(): ResonatorStation[] {
-    return this.stations;
+  public getAnchors(): ResonanceAnchor[] {
+    return this.stations.map((anchor)=>({...anchor}));
+  }
+
+  /** @deprecated use getAnchors(); retained for compatibility with pre-semantic callers. */
+  public getStations(): ResonanceAnchor[] {
+    return this.getAnchors();
+  }
+
+  public getModalState(): ModalState[] {
+    return Array.from({length:RESONATOR_MODE_TOTAL},(_,modeIndex)=>({
+      modeIndex,
+      m:this.modeM[modeIndex],
+      n:this.modeN[modeIndex],
+      frequencyHz:this.modeFreq[modeIndex],
+      coupling:this.modeCoupling[modeIndex],
+      active:this.modeActive[modeIndex]===1,
+      re:this.re[modeIndex],
+      im:this.im[modeIndex],
+      energy:this.re[modeIndex]*this.re[modeIndex]+this.im[modeIndex]*this.im[modeIndex],
+    }));
+  }
+
+  public getState(): ResonanceState {
+    const modes=this.getModalState();
+    const energyByIndex=new Map(modes.map(mode=>[mode.modeIndex,mode.energy] as const));
+    return {
+      frequencyHz:this.lastTelemetry.frequencyHz,
+      totalEnergy:this.lastTelemetry.totalEnergy,
+      coherence:this.lastTelemetry.coherence,
+      modes,
+      anchors:this.getAnchors().map(anchor=>({...anchor,energy:energyByIndex.get(anchor.modeIndex)??0})),
+    };
   }
 
   /**

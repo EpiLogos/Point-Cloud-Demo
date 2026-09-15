@@ -28,7 +28,7 @@ import {
   MAX_FORMATIONS,
 } from './fieldModel';
 import { SpatialChakraNode } from './types';
-import { CANONICAL_CHAKRAS } from './chakraSystem';
+import { resolveEntityPose, type EvaluatedEntityPose } from './entityPose';
 
 /** World px per canvas px at entity.scale = 1 (a glyph fills ≈ 400 px) */
 const BASE_SCALE = 0.56;
@@ -54,12 +54,9 @@ export interface EntityUniformSet {
   transforms: THREE.Vector3[]; // x/y scale and rotation radians
   depthScales: Float32Array;
   normalized: Float32Array;
-  forces: THREE.Vector4[]; // 10 — x strength, y mode, z spin, w enabled
   tints: THREE.Color[]; // 10
   tintWeights: Float32Array; // 10
 }
-
-const FORCE_MODE: Record<string, number> = { none: 0, attract: 1, repel: 2, vortex: 3 };
 
 export class EntityRuntime {
   private sampler: GlyphSampler;
@@ -93,7 +90,6 @@ export class EntityRuntime {
     transforms: Array.from({ length: 10 }, () => new THREE.Vector3(1, 1, 0)),
     depthScales: new Float32Array(10).fill(1),
     normalized: new Float32Array(10),
-    forces: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 0)),
     tints: Array.from({ length: 10 }, () => new THREE.Color('#ffffff')),
     tintWeights: new Float32Array(10),
   };
@@ -197,10 +193,7 @@ export class EntityRuntime {
         if (inside) out.push({x,y,density:1});
       }
     } else if (shape.kind === 'cymatic') {
-      const freq = shape.frequencyHz ?? 396;
-      const profile = CANONICAL_CHAKRAS.reduce((best, c) => (Math.abs((c.frequencyHz ?? 0) - freq) < Math.abs((best.frequencyHz ?? 0) - freq) ? c : best), CANONICAL_CHAKRAS[0]);
-      pseudo.id = profile.id;
-      out = this.sampler.sampleCymaticNode(pseudo, shape.plateGeometry ?? this.templateGeometry, shape.dimension ?? this.templateDimension, 1.0, 0.0, freq).candidates;
+      out = this.sampler.sampleCymaticTemplate({frequencyHz:shape.frequencyHz??396,plateGeometry:shape.plateGeometry??this.templateGeometry,dimension:shape.dimension??this.templateDimension}).candidates;
     } else {
       out = this.sampler.rasterizeSpatialNode(pseudo, shape.kind === 'glyph' ? 'symbol' : 'yantra', fontFamily, fontWeight, 'yantraA').candidates;
     }
@@ -297,10 +290,12 @@ export class EntityRuntime {
     holdRatio: number,
     fontFamily?: string,
     fontWeight?: string | number
-  ): { frames: EntityFrame[]; impulses: number[]; rebaked: boolean } {
+  ): { frames: EntityFrame[]; poses: EvaluatedEntityPose[]; impulses: number[]; rebaked: boolean } {
     this.currentPlane = comp.plane;
     const byId = new Map(entities.map((e) => [e.id, e]));
     const frames: EntityFrame[] = [];
+    const poses = entities.map((entity)=>resolveEntityPose(entity,simTime,drivePhase,manualMorph,holdRatio));
+    const poseById = new Map(poses.map((pose)=>[pose.entityId,pose] as const));
     const impulses: number[] = [];
     let rebaked = false;
     const u = this.uniforms;
@@ -310,7 +305,8 @@ export class EntityRuntime {
       if (i >= 10) return;
       const e = byId.get(p.entityId);
       if (!e) return;
-      const state = resolveSequence(e, simTime, drivePhase, manualMorph, holdRatio);
+      const pose = poseById.get(e.id)!;
+      const state = pose.sequence;
       const links = effectiveLinks(e);
       const sig = `${links[state.linkIndex].id}:${links[state.nextIndex].id}|${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
       const prevStep = this.lastStep.get(e.id);
@@ -322,33 +318,24 @@ export class EntityRuntime {
       if (prevStep !== undefined && prevStep !== state.step && e.sequence.impulse > 0) impulses.push(e.sequence.impulse);
       this.lastStep.set(e.id, state.step);
 
-      // centre = entity position + per-link offsets glided by progress
-      const la = links[state.linkIndex];
-      const lb = links[state.nextIndex];
-      const t = state.progress;
-      const cx = e.x + ((la.x ?? 0) * (1 - t) + (lb.x ?? 0) * t);
-      const cy = e.y + ((la.y ?? 0) * (1 - t) + (lb.y ?? 0) * t);
-      const cz = e.z + ((la.z ?? 0) * (1 - t) + (lb.z ?? 0) * t);
+      // Every subsystem consumes the same evaluated pose — centre, per-link object
+      // state (scale/extent/tint) and forces. Moving never re-bakes.
       u.bounds[i] = p.end;
-      u.centers[i].set(cx, cy, cz, Math.max(5, e.forces.radius));
+      u.centers[i].set(pose.x, pose.y, pose.z, Math.max(5, pose.forces.radius));
       u.morph[i] = state.progress;
-      const mix=(a:number,b:number)=>a+(b-a)*t;const sa=la.state,sb=lb.state;const scale=mix(sa?.scale??e.scale,sb?.scale??e.scale);const extentA=sa?.extent??e.extent,extentB=sb?.extent??e.extent;
-      u.depthScales[i]=Math.max(.001,scale);
+      u.depthScales[i]=Math.max(.001,pose.scale);
       u.normalized[i]=e.extent&&e.extent.normalized!==false?1:0;
-      u.transforms[i].set(Math.max(.001,scale)*mix(extentA?.width??400,extentB?.width??400)/400,Math.max(.001,scale)*mix(extentA?.height??400,extentB?.height??400)/400,mix(extentA?.rotation??0,extentB?.rotation??0));
-      const fa=sa?.forces??e.forces,fb=sb?.forces??e.forces,mode=t<.5?fa.mode:fb.mode,spin=mix(fa.spin,fb.spin);u.centers[i].w=Math.max(5,mix(fa.radius,fb.radius));
-      u.forces[i].set(mix(fa.strength,fb.strength),FORCE_MODE[mode]??0,spin,e.enabled&&(mode!=='none'||Math.abs(spin)>0)?1:0);
-      u.tints[i].set(sa?.tint??e.tint).lerp(new THREE.Color(sb?.tint??e.tint),t);
-      u.tintWeights[i] = Math.max(0, Math.min(1, mix(sa?.tintWeight??e.tintWeight,sb?.tintWeight??e.tintWeight) * comp.entityTintWeight));
+      u.transforms[i].set(Math.max(.001,pose.scale)*(pose.extent?pose.extent.width/400:1),Math.max(.001,pose.scale)*(pose.extent?pose.extent.height/400:1),pose.extent?.rotation??0);
+      u.tints[i].set(pose.tint);
+      u.tintWeights[i] = Math.max(0, Math.min(1, pose.tintWeight * comp.entityTintWeight));
       frames.push({ entityId: e.id, index: i, state });
     });
     for (let i = u.count; i < 10; i++) {
       u.bounds[i] = this.particleCount;
-      u.forces[i].set(0, 0, 0, 0);
       u.tintWeights[i] = 0;
       u.morph[i] = 0;
     }
-    return { frames, impulses, rebaked };
+    return { frames, poses, impulses, rebaked };
   }
 
   /** Explicit reset: particle seed = current blended targets translated to each entity's centre. */

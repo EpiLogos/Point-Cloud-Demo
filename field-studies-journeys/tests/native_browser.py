@@ -88,13 +88,13 @@ try:
   p2.evaluate('window.__FIELD_STUDIES__.dispose()');p2.close()
   # True GPU image export, actually decoded by the browser.
   act(p,'close-library');act(p,'capture-options')
-  p.locator('#capture-width').select_option('1280');p.locator('#capture-text').uncheck();p.locator('#capture-transparent').check();before=inspect(p,True)
+  p.locator('details.image-output summary').click();p.locator('#capture-width').select_option('1280');p.locator('#capture-text').uncheck();p.locator('#capture-transparent').check();before=inspect(p,True)
   with p.expect_download() as d:act(p,'capture-image')
   image=E/'acceptance-native.png';d.value.save_as(image);raw=image.read_bytes();w,h=struct.unpack('>II',raw[16:24]);require(w==1280 and h==889)
   imageEvidence=p.evaluate('async(data)=>{const i=new Image();i.src="data:image/png;base64,"+data;await i.decode();const c=document.createElement("canvas");c.width=i.width;c.height=i.height;const x=c.getContext("2d");x.drawImage(i,0,0);const a=x.getImageData(0,0,c.width,c.height).data;let count=0;for(let k=3;k<a.length;k+=4)if(a[k]>16)count++;return {width:i.width,height:i.height,marked:count};}',base64.b64encode(raw).decode())
   after=inspect(p,True);check('PNG decodes actual visible native marks and leaves GPU state unchanged',lambda:(require(imageEvidence['marked']>100 and equivalent(before,after,['simTime','steps','seeds','positions'])),imageEvidence)[1])
   # Real recording / review / decode, opening editor must not alter recording dimensions.
-  act(p,'capture-options');p.locator('#capture-transparent').uncheck();act(p,'record-video');p.wait_for_timeout(1300);p.evaluate("window.__FIELD_STUDIES__.openEditor('motion')");p.wait_for_timeout(1000);act(p,'stop-record');p.locator('#recording-review').wait_for(state='visible',timeout=20000);p.evaluate('window.__FIELD_STUDIES__.pause()')
+  act(p,'capture-options');p.locator('details.image-output summary').click();p.locator('#capture-transparent').uncheck();act(p,'record-video');p.wait_for_timeout(1300);p.evaluate("window.__FIELD_STUDIES__.openEditor('motion')");p.wait_for_timeout(1000);act(p,'stop-record');p.locator('#recording-review').wait_for(state='visible',timeout=20000);p.evaluate('window.__FIELD_STUDIES__.pause()')
   p.wait_for_function('document.querySelector("#recording-review").readyState>=2',timeout=15000)
   video=p.evaluate('async()=>{const v=document.querySelector("#recording-review");await v.play();await new Promise(r=>setTimeout(r,650));v.pause();const c=document.createElement("canvas");c.width=v.videoWidth;c.height=v.videoHeight;const x=c.getContext("2d");x.drawImage(v,0,0);const data=x.getImageData(0,0,c.width,c.height).data;let marks=0;for(let i=0;i<data.length;i+=4)if(data[i]<160)marks++;return {width:v.videoWidth,height:v.videoHeight,currentTime:v.currentTime,decodedFrames:v.getVideoPlaybackQuality().totalVideoFrames,marks,png:c.toDataURL()};}')
   (E/'decoded-performance.png').write_bytes(base64.b64decode(video.pop('png').split(',')[1]))
@@ -113,7 +113,7 @@ try:
   if state(p)['libraryOpen']:act(p,'close-library')
   act(p,'library');p.locator('.expression-card').first.hover();check('Preset preview does not replace live work',lambda:require(doc(p)==before));act(p,'close-library')
   # Native ASCII sampler target is independent, no GPU reset.
-  p.evaluate("window.__FIELD_STUDIES__.openEditor('objects')");p.evaluate('(id)=>window.__FIELD_STUDIES__.selectEntity(id)',current(p)['entities'][1]['id']);reveal(p,'[data-action="source-kind"]');p.locator('[data-action="source-kind"]').select_option('ascii');p.wait_for_timeout(200);seed=inspect(p)['seeds'];fill(p,'entity.source.ascii.text','X  O\n O X');p.wait_for_timeout(200)
+  p.evaluate("window.__FIELD_STUDIES__.openEditor('objects')");p.evaluate('(id)=>window.__FIELD_STUDIES__.selectEntity(id)',current(p)['entities'][1]['id']);act(p,'capture-options');reveal(p,'[data-action="source-kind"]');p.locator('[data-action="source-kind"]').select_option('ascii');p.wait_for_timeout(200);seed=inspect(p)['seeds'];fill(p,'step.source.ascii.text','X  O\n O X');p.wait_for_timeout(200);act(p,'capture-options')
   check('Native ASCII source is local to its formation and does not reseed',lambda:require(inspect(p)['seeds']==seed and current(p)['entities'][1]['source']['kind']=='ascii' and not current(p)['entities'][0].get('source')))
   # Small window keeps accessible transport and stacked drawers, no horizontal overflow.
   p.set_viewport_size({'width':390,'height':844});p.evaluate("window.__FIELD_STUDIES__.openEditor('motion')");p.wait_for_timeout(150);p.screenshot(path=str(E/'native-mobile.png'))
