@@ -3,4 +3,7 @@ import {fieldStudies,blankScene,blankJourney,entity,pin,clone} from '../src/mode
 import {toNativeConfig,nativeSnapshotToJourney,importDocuments,nativeChakras} from '../src/nativeBridge';
 import {defaultCamera,project,unproject} from '../src/camera';
 import {PointCloudField} from '../../src/engine/PointCloudField';
-(window as any).NATIVE_TEST={ProductionAdapter,PointCloudField,fieldStudies,blankScene,blankJourney,entity,pin,clone,toNativeConfig,nativeSnapshotToJourney,importDocuments,nativeChakras,defaultCamera,project,unproject};
+import {makeFormation,makeLink,DEFAULT_COMPOSITION} from '../../src/engine/fieldModel';
+import {GlyphSampler} from '../../src/engine/GlyphSampler';
+import {EntityRuntime} from '../../src/engine/entityRuntime';
+(window as any).NATIVE_TEST={ProductionAdapter,PointCloudField,fieldStudies,blankScene,blankJourney,entity,pin,clone,toNativeConfig,nativeSnapshotToJourney,importDocuments,nativeChakras,makeFormation,makeLink,DEFAULT_COMPOSITION,GlyphSampler,EntityRuntime,defaultCamera,project,unproject};
