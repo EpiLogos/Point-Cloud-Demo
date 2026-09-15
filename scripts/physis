@@ -24,10 +24,15 @@ def main():
     args=sys.argv[1:]
     cmd=args[0] if args else 'open'
     if cmd in ('-h','--help','help'):
-        print('physis [open | overlay on|off|toggle | status | scenes | scene ID | screensaver | library | quality gentle|balanced|fluid | opacity 0.05..1 | mp4 VIDEO_ID]');return
+        print('physis [open | overlay on|off|toggle | status | scenes | scene ID | screensaver | library | quality auto|eco|gentle|balanced|fluid | opacity 0.05..1 | mp4 VIDEO_ID]');return
     if cmd=='status':
-        try: print(json.dumps(request('/api/state')))
-        except (OSError,RuntimeError): print(json.dumps({'enabled':False,'running':False,'error':'service offline'}))
+        try: state=request('/api/state')
+        except (OSError,RuntimeError): print(json.dumps({'enabled':False,'running':False,'error':'service offline'}));return
+        print(json.dumps(state))
+        hw=state.get('hardware') or {};live=state.get('live') or {}
+        tier=hw.get('tier') or state.get('qualityMode') or 'balanced'
+        liveFps=('%.0f'%live['fps']) if isinstance(live.get('fps'),(int,float)) else 'n/a'
+        print('quality: %s%s · %s · live %s fps%s'%(state.get('qualityMode'),(' → '+hw['tier'] if hw.get('tier') else ''),hw.get('gpuLabel') or 'hardware not yet detected',liveFps,' · reduced' if live.get('degraded') else ''))
         return
     if cmd=='screensaver':
         ensure()
@@ -44,9 +49,8 @@ def main():
     elif cmd=='scene': print(json.dumps(request('/api/overlay',{'sceneId':args[1]})))
     elif cmd=='opacity': print(json.dumps(request('/api/overlay',{'opacity':float(args[1])})))
     elif cmd=='quality':
-        choices={'gentle':{'fps':20,'particleLimit':50000,'pixelRatio':.75},'balanced':{'fps':30,'particleLimit':100000,'pixelRatio':1},'fluid':{'fps':60,'particleLimit':200000,'pixelRatio':1}}
-        if args[1] not in choices: raise RuntimeError('Choose gentle, balanced, or fluid')
-        print(json.dumps(request('/api/overlay',choices[args[1]])))
+        if args[1] not in ('auto','eco','gentle','balanced','fluid'): raise RuntimeError('Choose auto, eco, gentle, balanced, or fluid')
+        print(json.dumps(request('/api/overlay',{'quality':args[1]})))
     elif cmd=='library': subprocess.run(['xdg-open',request('/api/state')['library']],check=True)
     elif cmd=='mp4':
         item=next((m for m in request('/api/media') if m['id']==args[1] and m['kind']=='videos'),None)

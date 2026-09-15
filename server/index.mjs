@@ -1,12 +1,13 @@
 import express from 'express';
-import { promises as fs } from 'node:fs';
+import { promises as fs, readFileSync } from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 import { spawn, execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import {validateJourney} from '../field-studies-journeys/build/model.js';
+import { validateJourney } from '../field-studies-journeys/build/model.js';
+import { PRESETS, resolveAuto } from './quality.mjs';
 const exec = promisify(execFile);
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const library = process.env.PHYSIS_DATA_DIR || path.join(process.env.XDG_DATA_HOME || path.join(os.homedir(), '.local/share'), 'physis');
@@ -15,7 +16,7 @@ const app = express();
 const wrap = fn => (req, res, next) => Promise.resolve(fn(req, res)).catch(next);
 const atomic = async (file, data) => { const tmp = file + '.' + randomUUID() + '.partial'; try { await fs.writeFile(tmp, data); await fs.rename(tmp, file); } finally { await fs.rm(tmp, {force: true}); } };
 for (const dir of ['scenes', 'images', 'videos', 'thumbnails']) await fs.mkdir(path.join(library, dir), { recursive: true });
-let state = { enabled: false, sceneId: null, opacity: 0.55, fps: 30, particleLimit: 100000, pixelRatio: 1 };
+let state = { enabled: false, sceneId: null, opacity: 0.55, fps: 30, particleLimit: 100000, pixelRatio: 1, qualityMode: 'balanced', hardware: null, live: null };
 try { const saved = JSON.parse(await fs.readFile(path.join(library, 'settings.json'), 'utf8')); Object.assign(state, saved, { enabled: false }); } catch {}
 let renderer = null, rendererReady = false, error = null, suspended = null, currentScene = null, stopping = false;
 const clients = new Map();
@@ -24,6 +25,26 @@ const validId = id => typeof id === 'string' && /^[a-zA-Z0-9_-]{1,80}$/.test(id)
 async function readScene(id) { if (!validId(id)) throw Object.assign(new Error('Invalid scene ID'), {status: 400}); return JSON.parse(await fs.readFile(scenePath(id), 'utf8')); }
 if (state.sceneId) { try { currentScene = await readScene(state.sceneId); } catch { state.sceneId = null; } }
 function status(includeScene=false) { return { ...state, running: !!renderer && rendererReady, starting: !!renderer && !rendererReady, suspended, error, scene: includeScene?currentScene:currentScene?{id:currentScene.id,name:currentScene.name,version:currentScene.version}:null, library }; }
+// Linux signals only; anything unreadable stays null and the resolver ignores it.
+function probe() {
+  const out = { cores: os.cpus().length, memTotalMiB: null, memAvailableMiB: null, psiCpuSomeAvg10: null, psiMemorySomeAvg10: null, loadAvg1: Number(os.loadavg()[0].toFixed(2)) };
+  try {
+    const info = readFileSync('/proc/meminfo', 'utf8');
+    out.memTotalMiB = Math.round(Number(/MemTotal:\s+(\d+)/.exec(info)?.[1] ?? 0) / 1024) || null;
+    out.memAvailableMiB = Math.round(Number(/MemAvailable:\s+(\d+)/.exec(info)?.[1] ?? 0) / 1024) || null;
+  } catch {}
+  for (const [key, file] of [['psiCpuSomeAvg10', '/proc/pressure/cpu'], ['psiMemorySomeAvg10', '/proc/pressure/memory']]) {
+    try { const v = Number(/avg10=(\d+(?:\.\d+)?)/.exec(readFileSync(file, 'utf8'))?.[1]); if (Number.isFinite(v)) out[key] = v; } catch {}
+  }
+  return out;
+}
+const sanitizeDetection = d => {
+  const clean = {};
+  for (const key of ['surface', 'gpuClass', 'gpuLabel', 'rendererString']) if (typeof d[key] === 'string') clean[key] = d[key].slice(0, 200);
+  for (const key of ['cores', 'deviceMemoryGiB', 'dpr', 'memAvailableMiB', 'psiCpuSomeAvg10', 'psiMemorySomeAvg10']) if (Number.isFinite(d[key])) clean[key] = d[key];
+  if (Number.isFinite(d.screenPx?.width) && Number.isFinite(d.screenPx?.height)) clean.screenPx = { width: d.screenPx.width, height: d.screenPx.height };
+  return clean;
+};
 function broadcast() { for (const [res,includeScene] of clients) res.write(`data: ${JSON.stringify(status(includeScene))}\n\n`); }
 async function persist() { await atomic(path.join(library, 'settings.json'), JSON.stringify(state, null, 2)); broadcast(); }
 function reconcile() {
@@ -50,8 +71,9 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json({ limit: '32mb' }));
-app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'physis', upstreamBranch: 'master', upstreamRevision: '569a9eb' }));
+app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'physis', upstreamBranch: 'main', upstreamRevision: '7306b7b' }));
 app.get('/api/state', (_req, res) => res.json(status()));
+app.get('/api/hardware', (_req, res) => res.json({ server: probe(), detection: state.hardware, qualityMode: state.qualityMode, presets: PRESETS }));
 app.get('/api/events', (req, res) => {
   res.set({'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', Connection: 'keep-alive'}); res.flushHeaders(); const includeScene=req.query.renderer==='1'; clients.set(res,includeScene); res.write(`data: ${JSON.stringify(status(includeScene))}\n\n`);
   const timer = setInterval(() => res.write(': keepalive\n\n'), 15000); req.on('close', () => { clients.delete(res); clearInterval(timer); });
@@ -61,6 +83,24 @@ app.post('/api/overlay', wrap(async (req, res) => {
   const next = {...state};
   const nextScene = body.sceneId !== undefined ? await readScene(body.sceneId) : currentScene;
   if (body.sceneId !== undefined) next.sceneId = nextScene.id;
+  if (body.quality !== undefined) {
+    if (typeof body.quality !== 'string' || !(body.quality === 'auto' || body.quality in PRESETS)) return res.status(400).json({error: 'Invalid quality'});
+    next.qualityMode = body.quality;
+    if (body.quality === 'auto') {
+      if (body.detection && typeof body.detection === 'object' && !Array.isArray(body.detection)) {
+        // Browsers supply the GPU/renderer signals; the live memory and PSI
+        // probe comes from this process. The resolved tier is stored so the
+        // CLI and every surface agree until the next detection.
+        const detection = sanitizeDetection(body.detection);
+        const resolved = resolveAuto(detection, probe());
+        next.hardware = {...detection, ...resolved, resolvedAt: new Date().toISOString()};
+        Object.assign(next, {fps: resolved.fps, particleLimit: resolved.particleLimit, pixelRatio: resolved.pixelRatio});
+      }
+    } else {
+      next.hardware = null;
+      Object.assign(next, PRESETS[body.quality]);
+    }
+  }
   for (const [key, min, max] of [['opacity',0.05,1], ['fps',10,60], ['particleLimit',1000,300000], ['pixelRatio',0.5,2]]) {
     if (body[key] !== undefined) { if (!Number.isFinite(body[key]) || body[key] < min || body[key] > max) return res.status(400).json({error: `Invalid ${key}`}); next[key] = body[key]; }
   }
@@ -68,6 +108,13 @@ app.post('/api/overlay', wrap(async (req, res) => {
   else if (body.enabled !== undefined) { if (typeof body.enabled !== 'boolean') return res.status(400).json({error:'Invalid enabled'}); next.enabled = body.enabled; }
   state = next; currentScene = nextScene;
   await checkDesktop(); reconcile(); await persist(); res.json(status());
+}));
+app.post('/api/telemetry', wrap(async (req, res) => {
+  const b = req.body || {};
+  const live = { fps: Number(b.fps), particles: Number(b.particles), pixelRatio: Number(b.pixelRatio), degraded: !!b.degraded, updatedAt: new Date().toISOString() };
+  if (![live.fps, live.particles, live.pixelRatio].every(Number.isFinite)) return res.status(400).json({error: 'Invalid telemetry'});
+  state = {...state, live};
+  broadcast(); res.json(status());
 }));
 app.get('/api/scenes', wrap(async (_req, res) => {
   const names = (await fs.readdir(path.join(library, 'scenes'))).filter(n => n.endsWith('.json'));

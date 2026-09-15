@@ -44,6 +44,33 @@ test('completed PNG has scene provenance and invalid media is never published',a
  assert.ok((await readdir(path.join(dir,'images'))).every(name=>!name.includes('partial')));
 });
 
+test('hardware probe exposes server signals and preset tiers',async()=>{
+ const hardware=await (await fetch(base+'/api/hardware')).json();
+ assert.ok(hardware.server.cores>=1);
+ assert.equal(hardware.presets.eco.fps,24);
+ assert.equal(hardware.qualityMode,'balanced');
+ assert.equal((await post('/api/overlay',{quality:'eco'})).status,200);
+ const eco=await (await fetch(base+'/api/state')).json();
+ assert.equal(eco.qualityMode,'eco');assert.equal(eco.fps,24);assert.equal(eco.particleLimit,8000);assert.equal(eco.pixelRatio,.6);
+ assert.equal((await post('/api/overlay',{quality:'max'})).status,400);
+});
+
+test('auto quality resolves from detection signals; telemetry reports live frames',async()=>{
+ // A strong GPU with almost no free memory must not get the top tier.
+ const response=await post('/api/overlay',{quality:'auto',detection:{surface:'ambient',rendererString:'Apple M2 Pro',cores:10,memAvailableMiB:900,psiMemorySomeAvg10:0,psiCpuSomeAvg10:0,screenPx:{width:1280,height:800},dpr:1}});
+ assert.equal(response.status,200);
+ const state=await (await fetch(base+'/api/state')).json();
+ assert.equal(state.qualityMode,'auto');
+ assert.equal(state.hardware.tier,'gentle');
+ assert.ok(state.hardware.reason.includes('low available memory'));
+ assert.ok(state.hardware.gpuLabel.includes('Apple M2 Pro'));
+ assert.equal(state.fps,20);assert.equal(state.particleLimit,50000);assert.equal(state.pixelRatio,.75);
+ assert.equal((await post('/api/telemetry',{fps:18,particles:42000,pixelRatio:.65,degraded:true})).status,200);
+ const live=(await (await fetch(base+'/api/state')).json()).live;
+ assert.equal(live.fps,18);assert.equal(live.particles,42000);assert.equal(live.degraded,true);
+ assert.equal((await post('/api/telemetry',{fps:'fast'})).status,400);
+});
+
 test('current master expressions retain all scenes, camera and viewport; status stays lightweight',async()=>{
  const {fieldStudies}=await import('../field-studies-journeys/build/model.js');
  const expression=fieldStudies(),camera={mode:'3d',yaw:.3,pitch:.2,zoom:1.4,panX:80,panY:-30,plane:'XY',depth:0,grid:false,snap:false};

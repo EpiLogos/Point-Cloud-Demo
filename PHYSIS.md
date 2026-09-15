@@ -1,6 +1,32 @@
 # Physis on Omarchy
 
-Physis hosts the **current `master` Expressions application**, based on `569a9eb`, with local media storage, a live generative screensaver and a click-through Wayland renderer. The original editor, native engine, built-in capture workflow, expression library, and offline export remain the source of truth. The old React workbench is still at `/legacy.html` as upstream specifies.
+Physis hosts the **current `main` Expressions application**, rebased on `7306b7b`, with local media storage, a live generative screensaver and an optional click-through Wayland renderer. The original editor, native engine, built-in capture workflow, expression library, and offline export remain the source of truth. The old React workbench is still at `/legacy.html` as upstream specifies.
+
+## Web app delivery (current)
+
+The desktop system (bar widget, idle-plugin integration, native overlay service) was decommissioned on 2026-09-15 and replaced by a plain Omarchy web app:
+
+```sh
+python3 scripts/install-webapp.py        # CLI shim + launcher + user service
+python3 scripts/install-webapp.py --uninstall
+```
+
+This installs only three user files: `~/.local/bin/physis`, a `physis.desktop` launcher, and a user `physis.service` that runs the loopback host (no bar widget, no idle-plugin change, `/usr/share/omarchy` untouched). `physis` (or the launcher) starts the service if needed and opens the studio as a Chromium app window via `omarchy launch or-focus-webapp Physis`; the hosted page titles itself `Physis · …` so focus matching works.
+
+## Hardware-aware quality
+
+Quality is a server-side concern now (`server/quality.mjs`): presets are `eco` (24 fps / ≤8k particles / 0.6 ratio), `gentle`, `balanced`, `fluid`, plus `auto`.
+
+```sh
+physis quality auto        # resolve from this machine's hardware
+physis quality eco|gentle|balanced|fluid
+physis status              # shows mode → tier, GPU label, live fps
+```
+
+With `auto`, the first hosted surface collects browser signals (`WEBGL_debug_renderer_info` renderer string, `navigator.deviceMemory`, cores, screen, DPR) merged with the service's live probe (`/api/hardware`: `MemAvailable`, memory/CPU PSI, load). The deterministic resolver classifies the GPU (`intel-legacy` → eco on this machine) and only ever *lowers* the tier for low memory, two cores, or memory pressure. The resolution persists in the library `settings.json` until hardware changes or a preset is picked.
+
+Live surfaces defend the tier themselves in `src/physis/render.ts`: after two seconds below 85 % of the target fps the pixel ratio steps down toward 0.5, then the particle budget scales down in quarters; ten sustained seconds above 92 % recovers one notch at a time. They report fps/particles/degraded state to `/api/telemetry`, which the studio's ✧ desktop panel and `physis status` display. On this machine (i5-3427U, HD 4000, ~0.9–1.2 GiB free) auto resolves to **eco**.
+
 
 ```sh
 physis                       # open/focus the Expressions studio
@@ -24,6 +50,7 @@ The fullscreen host retains `org.omarchy.screensaver`, does not inhibit locking,
 `physis screensaver --video` retains the exported-video playlist. The original themed O:I videos remain its fallback before recordings exist. Live desktop overlays are separate click-through surfaces on every monitor.
 
 ```sh
+physis quality eco           # 24 fps / <= 8k requested particles / 0.6 pixel ratio
 physis quality gentle        # 20 fps / <= 50k requested particles / 0.75 pixel ratio
 physis quality balanced      # 30 fps / <= 100k / 1.0
 physis quality fluid         # 60 fps / <= 200k / 1.0
