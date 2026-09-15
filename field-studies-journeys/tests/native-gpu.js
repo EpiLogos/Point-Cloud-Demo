@@ -5,6 +5,34 @@ async () => {
  const test=async(name,fn)=>{try{results.push({name,ok:true,evidence:await fn()});}catch(error){results.push({name,ok:false,error:error.stack});}};
  const canvas=()=>document.body.appendChild(Object.assign(document.createElement('canvas'),{width:480,height:360}));
  const bare=()=>{const s=T.blankScene('GPU test');s.field.params.count=1024;s.entities=[];const cfg=T.toNativeConfig(s);Object.assign(cfg.fluid,{returnSpeed:0,turbulence:0,vortexStrength:0,thermalJitter:0,gravityX:0,gravityY:0,gravityZ:0,quadraticDrag:0,viscosity:1,zConfinement:0});cfg.cymatics.enabled=false;cfg.relational.enabled=false;cfg.toroidalMorph.enabled=false;return cfg;};
+ await test('Terminal adapter disposal releases held contexts and preserves same-canvas recovery',async()=>{
+  const scene=T.fieldStudies().scenes[0];scene.field.params.count=1024;scene.engine.resonanceEnabled=false;
+  const frame={scene,simTime:0,delta:0,params:scene.field.params,camera:T.defaultCamera(),pointer:{active:false,world:{x:0,y:0,z:0}},selectedIds:[]};
+  const event=(target,name)=>new Promise((resolve,reject)=>{const timeout=setTimeout(()=>{target.removeEventListener(name,done);reject(new Error('Missing real '+name));},5000);const done=()=>{clearTimeout(timeout);resolve();};target.addEventListener(name,done,{once:true});});
+  const create=()=>{const c=canvas(),adapter=new T.ProductionAdapter(c);adapter.resize(480,360,1);adapter.render(frame);const gl=c.getContext('webgl2');assert(gl&&!gl.isContextLost(),'fresh canvas must own a real live WebGL context');return {c,adapter,gl};};
+  const rendered=adapter=>{const state=adapter.inspect(true);assert(state.particleCount===1024&&state.positions.every(Number.isFinite),'recovered native field must retain its allocation and finite state');const image=adapter.capture(480,360),data=image.getContext('2d').getImageData(0,0,480,360).data,colours=new Set();for(let i=0;i<data.length;i+=64)colours.add(data.slice(i,i+4).join(','));assert(colours.size>1,'native renderer must produce actual marks after recovery');};
+  const first=create();rendered(first.adapter);
+  first.adapter.command({type:'reset-field'});assert(!first.gl.isContextLost(),'reset must preserve the current canvas context');
+  first.adapter.command({type:'recover-context'});assert(!first.gl.isContextLost(),'recovery preparation must preserve the reusable context');
+  first.adapter.render(frame);assert(first.c.getContext('webgl2')===first.gl,'recovery must reuse the same canvas context');rendered(first.adapter);
+  const terminal=event(first.c,'webglcontextlost');first.adapter.dispose();first.adapter.dispose();await terminal;
+  assert(first.gl.isContextLost(),'terminal disposal must lose the strongly held real context');assert(!first.adapter.inspect(),'disposed adapter must have no live engine');
+  const second=create();rendered(second.adapter);
+  second.adapter.command({type:'recover-context'});
+  // Recovery may be cancelled before the next render creates a replacement.
+  const cancelled=event(second.c,'webglcontextlost');second.adapter.dispose();second.adapter.dispose();await cancelled;
+  assert(second.gl.isContextLost(),'dispose between recovery and redraw must release the retained context owner');
+  const third=create();rendered(third.adapter);assert(first.gl.isContextLost()&&second.gl.isContextLost(),'fresh canvas creation must not revive disposed contexts');
+  const extension=third.gl.getExtension('WEBGL_lose_context');assert(extension,'real context-loss extension is required for this regression');
+  const lost=event(third.c,'webglcontextlost');extension.loseContext();await lost;
+  let refused=false;try{third.adapter.render(frame);}catch(error){refused=String(error).includes('context was lost');}assert(refused,'a real lost context must refuse rendering until explicit recovery');
+  // Leave the loss event's dispatch before requesting its real restoration.
+  await new Promise(resolve=>setTimeout(resolve,0));
+  const restored=event(third.c,'webglcontextrestored');extension.restoreContext();await restored;
+  third.adapter.command({type:'recover-context'});third.adapter.render(frame);rendered(third.adapter);
+  const last=event(third.c,'webglcontextlost');third.adapter.dispose();await last;assert(third.gl.isContextLost(),'fresh replacement must also release on terminal disposal');
+  return {heldContexts:3,terminalContextsLost:3,sameCanvasRecovery:true,realLossAndRestore:true,cancelledRecoveryDisposed:true,repeatedDispose:true};
+ });
  await test('Sparse native glyph allocations cover both complete sequence shapes in each plane',()=>{
   const sampler=new T.GlyphSampler(),font='sans-serif',weight=900;
   const bounds=points=>points.reduce((b,p)=>({x0:Math.min(b.x0,p.x),x1:Math.max(b.x1,p.x),y0:Math.min(b.y0,p.y),y1:Math.max(b.y1,p.y)}),{x0:Infinity,x1:-Infinity,y0:Infinity,y1:-Infinity});
