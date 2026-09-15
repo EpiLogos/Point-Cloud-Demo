@@ -24,7 +24,7 @@ def main():
     args=sys.argv[1:]
     cmd=args[0] if args else 'open'
     if cmd in ('-h','--help','help'):
-        print('physis [open | overlay on|off|toggle | status | scenes | scene ID | screensaver | library | quality auto|eco|gentle|balanced|fluid | opacity 0.05..1 | mp4 VIDEO_ID]');return
+        print('physis [open | live | overlay on|off|toggle | status | scenes | scene ID | screensaver | library | quality auto|eco|gentle|balanced|fluid | opacity 0.05..1 | mp4 VIDEO_ID]');return
     if cmd=='status':
         try: state=request('/api/state')
         except (OSError,RuntimeError): print(json.dumps({'enabled':False,'running':False,'error':'service offline'}));return
@@ -41,6 +41,9 @@ def main():
     if cmd=='open':
         # Match the web app URL, which Omarchy's launch-or-focus helper inspects.
         subprocess.run(['omarchy','launch','or-focus-webapp','Physis',BASE],check=True)
+    elif cmd=='live':
+        # The dedicated live scene surface: the fastest way to feel a quality tier.
+        subprocess.run(['omarchy','launch','or-focus-webapp','Physis live',BASE+'/render?screensaver=1','--start-fullscreen'],check=True)
     elif cmd=='overlay':
         value=args[1] if len(args)>1 else 'toggle'
         if value not in ('on','off','toggle'): raise RuntimeError('Use overlay on, off, or toggle')

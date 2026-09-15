@@ -25,7 +25,14 @@ physis status              # shows mode → tier, GPU label, live fps
 
 With `auto`, the first hosted surface collects browser signals (`WEBGL_debug_renderer_info` renderer string, `navigator.deviceMemory`, cores, screen, DPR) merged with the service's live probe (`/api/hardware`: `MemAvailable`, memory/CPU PSI, load). The deterministic resolver classifies the GPU (`intel-legacy` → eco on this machine) and only ever *lowers* the tier for low memory, two cores, or memory pressure. The resolution persists in the library `settings.json` until hardware changes or a preset is picked.
 
-Live surfaces defend the tier themselves in `src/physis/render.ts`: after two seconds below 85 % of the target fps the pixel ratio steps down toward 0.5, then the particle budget scales down in quarters; ten sustained seconds above 92 % recovers one notch at a time. They report fps/particles/degraded state to `/api/telemetry`, which the studio's ✧ desktop panel and `physis status` display. On this machine (i5-3427U, HD 4000, ~0.9–1.2 GiB free) auto resolves to **eco**.
+Manual choice works everywhere, and applies immediately:
+
+```sh
+physis quality eco    # or gentle / balanced / fluid — no restart needed
+physis live           # fullscreen live scene window: the fastest way to feel a tier
+```
+
+The ✧ desktop panel's Quality picker and the CLI set the same state. In hosted mode the **studio itself** obeys the tier — fps cap, pixel ratio and particle budget apply to the editor canvas (never mutating your saved expression; the cap exists only at render time) — so switching levels in the panel is instantly felt. Live surfaces (`physis live`) additionally defend the tier with degrade/recover hysteresis and report fps/particles/degraded state to `/api/telemetry`, which the panel and `physis status` display. On this machine (i5-3427U, HD 4000, ~0.9–1.2 GiB free) auto resolves to **eco**.
 
 
 ```sh
