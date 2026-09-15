@@ -13,7 +13,11 @@ def require(v,message='Assertion failed'):
 def check(name,fn):
  evidence=fn();results.append({'name':name,'ok':True,'evidence':evidence});print('PASS',name,flush=True)
 def state(p):return p.evaluate('window.__FIELD_STUDIES__.getState()')
-def doc(p):return p.evaluate('window.__FIELD_STUDIES__.getDocument()')
+def doc(p):
+ # Documents cross this file/artifact boundary as JSON. A structured clone can
+ # retain optional undefined fields, which Playwright otherwise turns into None
+ # during its own object transport. Preserve the document's actual JSON shape.
+ return json.loads(p.evaluate('JSON.stringify(window.__FIELD_STUDIES__.getDocument())'))
 def current(p):return doc(p)['scenes'][state(p)['sceneIndex']]
 def inspect(p,read=False):return p.evaluate('(r)=>window.__FIELD_STUDIES__.inspect(r)',read)
 def settle(p):
