@@ -80,7 +80,9 @@ try:
   # Persistence and file artifacts.
   act(p,'library');
   with p.expect_download() as d:act(p,'export-json')
-  jpath=E/'acceptance.journey.json';d.value.save_as(jpath);exported=json.loads(jpath.read_text());require(exported==doc(p))
+  jpath=E/'acceptance.journey.json';d.value.save_as(jpath);exported=json.loads(jpath.read_text());live=doc(p)
+  if exported!=live:(E/'acceptance.live-after-export.json').write_text(json.dumps(live,indent=2))
+  require(exported==live,'Export differs from the live authored document; compare acceptance.journey.json with acceptance.live-after-export.json')
   check('Journey configuration export contains the actual authored document',lambda:{'scenes':len(exported['scenes']),'entities':len(exported['scenes'][0]['entities'])})
   with p.expect_download() as d:act(p,'export-artifact')
   artifact=E/'acceptance-artifact.html';d.value.save_as(artifact);p2=ctx.new_page();p2.emulate_media(reduced_motion='reduce');p2.set_content(artifact.read_text().replace('<head>','<head>'+STORAGE,1),wait_until='load');p2.wait_for_function('!!window.__FIELD_STUDIES__?.inspect()')
