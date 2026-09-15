@@ -34,8 +34,14 @@ Example ordinary vertical allocation results on the same machine:
 | ● | 8,304 | 512 | 10.78% | 100% | 2 → 4 |
 | ● | 8,304 | 4,096 | 49.02% | 100% | 2 → 4 |
 
-All 48 repaired cases cover at least 97% of both source dimensions and all four
-quadrants. Repeated zero-time updates do not rebake; reallocating the same count
+All repaired cases retain full-height coverage and all four quadrants. The
+regression also compares every sampled source point between normalized and
+ordinary formations, within Float32 precision. Linux's sparse O allocation
+covers 96.97% of the extreme-column width even in the pre-existing normalized
+path; source-point identity checks horizontal coverage without a font-specific
+width cutoff. The height and quadrant assertions remain.
+
+Repeated zero-time updates do not rebake; reallocating the same count
 retains identical A/B shape targets. The regression failed on the unmodified
 starting engine before applying the repair. Raster counts are platform/font
 observations, not fixed test expectations.
