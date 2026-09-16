@@ -13,6 +13,8 @@ import {
   MorphTelemetry,
   PlacedInteractionPoint,
   CompositionTelemetry,
+  MediumConfig,
+  CollisionConfig,
 } from './types';
 import { applyAutomations, createAutomationRuntime, AutomationRuntime, AutomationLiveValue } from './automation';
 import { GPGPUSimulator } from './GPGPUSimulator';
@@ -105,6 +107,28 @@ export const DEFAULT_TOROIDAL_CONFIG: ToroidalMorphConfig = {
 const TAU = Math.PI * 2;
 const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
 
+export const DEFAULT_MEDIUM_CONFIG: MediumConfig = {
+  enabled: false,
+  pressure: 4,
+  coupling: 0.8,
+  persistence: 0.97,
+  iterations: 4,
+  gridRes: 192,
+  splatGain: 1,
+  extent: 1400,
+  plane: 'compositionPlane',
+};
+
+export const DEFAULT_COLLISION_CONFIG: CollisionConfig = {
+  enabled: false,
+  mode: 'obstacle',
+  restitution: 0.35,
+  friction: 0.1,
+  band: 40,
+  strength: 4,
+  integrity: 0.5,
+};
+
 export {computeMorphDrive} from './morphSignal';
 import {computeMorphDrive,MorphDriveState} from './morphSignal';
 
@@ -180,6 +204,8 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
   },
   color: DEFAULT_COLOR_CONFIG,
   toroidalMorph: DEFAULT_TOROIDAL_CONFIG,
+  medium: DEFAULT_MEDIUM_CONFIG,
+  collision: DEFAULT_COLLISION_CONFIG,
   automations: [],
   entities: [
     makeFormation({
@@ -382,6 +408,8 @@ export class PointCloudField {
           : undefined,
       },
       toroidalMorph: override.toroidalMorph !== undefined ? { ...DEFAULT_TOROIDAL_CONFIG, ...override.toroidalMorph } : base.toroidalMorph,
+      medium: { ...DEFAULT_MEDIUM_CONFIG, ...base.medium, ...override.medium },
+      collision: { ...DEFAULT_COLLISION_CONFIG, ...base.collision, ...override.collision },
       entities: override.entities !== undefined ? override.entities : base.entities,
       composition: comp,
       cymatics: { ...(base.cymatics || DEFAULT_CYMATIC_MEDIUM), ...(override.cymatics || {}) } as CymaticMedium,
@@ -411,6 +439,12 @@ export class PointCloudField {
     const cfg = this.config;
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     this.entities.allocate(this.simulator.particleCount, this.simulator.texWidth, this.simulator.texHeight);
+    // Bilinear SDF sampling when the device can filter float textures (smooth distance falloff).
+    if (this.entities.collisionTexture && this.renderer.capabilities.isWebGL2 && this.renderer.extensions.has('OES_texture_float_linear')) {
+      this.entities.collisionTexture.minFilter = THREE.LinearFilter;
+      this.entities.collisionTexture.magFilter = THREE.LinearFilter;
+      this.entities.collisionTexture.needsUpdate = true;
+    }
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     this.entities.layout(cfg.entities || []);
     const resolved = this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
@@ -418,6 +452,7 @@ export class PointCloudField {
     this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], resolved.poses, cfg.interaction.placedPoints || []);
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
+    this.simulator.setCollisionState(this.entities.collisionTiles, this.entities.collisionTexture);
     this.simulator.setForceEmitters(this.lastForceEmitters);
     this.simulator.setCompositionPlane(comp.plane);
     if (seed) { this.seedGeneration++; this.simulator.seedInitialState(this.entities.buildSeed()); }
@@ -1470,6 +1505,7 @@ export class PointCloudField {
     if (delta > 0) for (const imp of res.impulses) this.triggerDisperse(imp);
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
+    this.simulator.setCollisionState(this.entities.collisionTiles, this.entities.collisionTexture);
     this.morphProgress = res.frames[0]?.state.progress ?? manual;
 
     // 2. Composition focus (pure function of time) → focus tint + cymatic station follow

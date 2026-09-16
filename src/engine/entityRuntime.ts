@@ -17,6 +17,15 @@
 import * as THREE from 'three';
 import { GlyphSampler } from './GlyphSampler';
 import {
+  SDF_ATLAS_WIDTH,
+  SDF_ATLAS_HEIGHT,
+  SDF_TILE_U,
+  SDF_TILE_V,
+  allocateEntitySlot,
+  buildSdfTile,
+  writeSdfTile,
+} from './sdfField';
+import {
   Entity,
   Shape,
   Composition,
@@ -82,6 +91,14 @@ export class EntityRuntime {
   private templateGeometry: 'square'|'circular'|'volumetric3D' = 'square';
   private templateDimension: '2D'|'3D' = '2D';
 
+  // Glyph SDF atlas: 2 columns (state A|B) x 10 rows (stable entity slots), RGBA float.
+  // Uploaded alongside the targets at bake time; never rewritten during steady-state frames.
+  public collisionTexture: THREE.DataTexture | null = null;
+  /** Per-partition tile rect (uv origin x/y, tile width u, enabled) pushed to the simulator. */
+  public readonly collisionTiles = new Float32Array(40);
+  private collisionData = new Float32Array(0);
+  private collisionSlots = new Map<string, number>();
+
   public readonly uniforms: EntityUniformSet = {
     count: 0,
     bounds: new Float32Array(10),
@@ -110,11 +127,18 @@ export class EntityRuntime {
     this.noiseTexture = new THREE.DataTexture(this.noiseData, texW, texH, THREE.RGBAFormat, THREE.FloatType);
     this.textureA = new THREE.DataTexture(this.dataA, texW, texH, THREE.RGBAFormat, THREE.FloatType);
     this.textureB = new THREE.DataTexture(this.dataB, texW, texH, THREE.RGBAFormat, THREE.FloatType);
+    this.collisionData = new Float32Array(SDF_ATLAS_WIDTH * SDF_ATLAS_HEIGHT * 4);
+    this.collisionTexture = new THREE.DataTexture(this.collisionData, SDF_ATLAS_WIDTH, SDF_ATLAS_HEIGHT, THREE.RGBAFormat, THREE.FloatType);
+    this.collisionTexture.minFilter = THREE.NearestFilter;
+    this.collisionTexture.magFilter = THREE.NearestFilter;
+    this.collisionTexture.needsUpdate = true;
     for (const t of [this.textureA, this.textureB, this.noiseTexture]) {
       t.minFilter = THREE.NearestFilter;
       t.magFilter = THREE.NearestFilter;
       t.needsUpdate = true;
     }
+    this.collisionSlots.clear();
+    this.collisionTiles.fill(0);
     this.layoutSig = '';
     this.bakeSig.clear();
     this.lastStep.clear();
@@ -124,6 +148,7 @@ export class EntityRuntime {
     this.textureA?.dispose();
     this.textureB?.dispose();
     this.noiseTexture?.dispose();this.noiseTexture=null;
+    this.collisionTexture?.dispose();this.collisionTexture=null;
     this.textureA = null;
     this.textureB = null;
   }
@@ -270,11 +295,35 @@ export class EntityRuntime {
     // their true aspect preserved. The glyph law would stretch them to a square.
     const preset = (cands: Candidate[]) => (cands as {norm?:string}).norm === 'stage400' ? cands : normalize(cands);
     const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
-    this.writeCandidates(this.dataA, p.start, p.end, preset(candA), scale, plane, 2, 0, !!e.extent && e.extent.normalized !== false);
-    this.writeCandidates(this.dataB, p.start, p.end, preset(candB), scale, plane, 2, 2, !!e.extent && e.extent.normalized !== false);
+    const poolA = preset(candA);
+    const poolB = preset(candB);
+    this.writeCandidates(this.dataA, p.start, p.end, poolA, scale, plane, 2, 0, !!e.extent && e.extent.normalized !== false);
+    this.writeCandidates(this.dataB, p.start, p.end, poolB, scale, plane, 2, 2, !!e.extent && e.extent.normalized !== false);
     if (this.noiseTexture) this.noiseTexture.needsUpdate = true;
     if (this.textureA) this.textureA.needsUpdate = true;
     if (this.textureB) this.textureB.needsUpdate = true;
+
+    // Collision boundary: the SDF bakes from the same candidate pools the targets
+    // were baked from, so the wall always matches the visual shape. The slot is
+    // stable per entity id, so tiles never migrate between rows.
+    if (this.collisionTexture) {
+      const slot = this.collisionSlot(e.id);
+      if (slot >= 0) {
+        writeSdfTile(this.collisionData, slot, 0, buildSdfTile(poolA, scale));
+        writeSdfTile(this.collisionData, slot, 1, buildSdfTile(poolB, scale));
+        this.collisionTexture.needsUpdate = true;
+      }
+    }
+  }
+
+  /** Stable atlas row per entity id; -1 when all 10 rows are taken. */
+  private collisionSlot(entityId: string): number {
+    let slot = this.collisionSlots.get(entityId);
+    if (slot === undefined) {
+      slot = allocateEntitySlot(this.collisionSlots.values());
+      if (slot >= 0) this.collisionSlots.set(entityId, slot);
+    }
+    return slot;
   }
 
   /**
@@ -328,12 +377,23 @@ export class EntityRuntime {
       u.transforms[i].set(Math.max(.001,pose.scale)*(pose.extent?pose.extent.width/400:1),Math.max(.001,pose.scale)*(pose.extent?pose.extent.height/400:1),pose.extent?.rotation??0);
       u.tints[i].set(pose.tint);
       u.tintWeights[i] = Math.max(0, Math.min(1, pose.tintWeight * comp.entityTintWeight));
+      const cSlot = this.collisionSlot(e.id);
+      const tOff = i * 4;
+      if (cSlot >= 0) {
+        this.collisionTiles[tOff] = 0;
+        this.collisionTiles[tOff + 1] = cSlot * SDF_TILE_V;
+        this.collisionTiles[tOff + 2] = SDF_TILE_U;
+        this.collisionTiles[tOff + 3] = 1;
+      } else {
+        this.collisionTiles[tOff + 3] = 0;
+      }
       frames.push({ entityId: e.id, index: i, state });
     });
     for (let i = u.count; i < 10; i++) {
       u.bounds[i] = this.particleCount;
       u.tintWeights[i] = 0;
       u.morph[i] = 0;
+      this.collisionTiles[i * 4 + 3] = 0;
     }
     return { frames, poses, impulses, rebaked };
   }

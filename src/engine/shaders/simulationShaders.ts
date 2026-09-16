@@ -4,6 +4,71 @@
  */
 
 import { curlNoiseGLSL } from './curlNoise';
+import {
+  SDF_GRID,
+  SDF_EXTENT,
+  SDF_DISTANCE_SCALE,
+  SDF_TILE_V,
+} from '../sdfField';
+
+/**
+ * Shared glyph-SDF boundary sampling for the velocity and position passes.
+ * Tiles: uCollisionTile = (uv origin x, uv origin y, tile width in u, enabled);
+ * an entity's A/B state tiles sit side by side, B at origin + tile width.
+ * d is stored in R as local glyph units / SDF_DISTANCE_SCALE, negative inside strokes.
+ */
+const sdfSamplingGLSL = /* glsl */ `
+uniform sampler2D uSdfAtlas;
+uniform vec4 uCollisionTile[10];
+
+vec2 sdfTileUv(vec2 local, vec4 tile, float which) {
+  vec2 origin = vec2(tile.x + which * tile.z, tile.y);
+  vec2 size = vec2(tile.z, ${SDF_TILE_V});
+  vec2 localUv = local / (2.0 * ${SDF_EXTENT}.0) + 0.5;
+  vec2 halfTexel = size / (2.0 * ${SDF_GRID}.0);
+  return clamp(origin + localUv * size, origin + halfTexel, origin + size - halfTexel);
+}
+
+// Blended signed distance (R units) of the A/B pair and its local-space gradient
+// (central differences, one cell). grad points toward increasing distance.
+void sdfSample(vec2 local, vec4 tile, float blend, out float d, out vec2 grad) {
+  vec2 uvA = sdfTileUv(local, tile, 0.0);
+  vec2 uvB = sdfTileUv(local, tile, 1.0);
+  float dA = texture2D(uSdfAtlas, uvA).x;
+  float dB = texture2D(uSdfAtlas, uvB).x;
+  d = mix(dA, dB, blend);
+  vec2 st = vec2(tile.z, ${SDF_TILE_V}) / ${SDF_GRID}.0;
+  float dAx = texture2D(uSdfAtlas, uvA + vec2(st.x, 0.0)).x;
+  float dAx0 = texture2D(uSdfAtlas, uvA - vec2(st.x, 0.0)).x;
+  float dAy = texture2D(uSdfAtlas, uvA + vec2(0.0, st.y)).x;
+  float dAy0 = texture2D(uSdfAtlas, uvA - vec2(0.0, st.y)).x;
+  float dBx = texture2D(uSdfAtlas, uvB + vec2(st.x, 0.0)).x;
+  float dBx0 = texture2D(uSdfAtlas, uvB - vec2(st.x, 0.0)).x;
+  float dBy = texture2D(uSdfAtlas, uvB + vec2(0.0, st.y)).x;
+  float dBy0 = texture2D(uSdfAtlas, uvB - vec2(0.0, st.y)).x;
+  grad = mix(vec2(dAx - dAx0, dAy - dAy0), vec2(dBx - dBx0, dBy - dBy0), blend);
+}
+
+// Entity-local position of a world position (inverse of the forward target
+// transform: subtract centre, undo rotation, undo scale; co/si from transform.z).
+vec2 sdfLocalPos(vec3 world, vec3 center, vec3 transform, float co, float si, float compPlane) {
+  vec3 rel = world - center;
+  vec2 p2 = (compPlane > 0.5) ? vec2(rel.x, -rel.z) : rel.xy;
+  vec2 un = vec2(p2.x * co + p2.y * si, -p2.x * si + p2.y * co);
+  return un / max(transform.xy, vec2(0.001));
+}
+
+// Outward world-space normal: the local gradient transforms through the inverse
+// entity scale then the forward rotation (∇_world = R·S⁻¹·∇_local); local glyph y
+// maps to world -z on the horizontal plane.
+vec3 sdfWorldNormal(vec2 grad, vec3 transform, float co, float si, float compPlane) {
+  vec2 nLocal = grad / max(length(grad), 0.00001);
+  vec2 nScaled = nLocal / max(transform.xy, vec2(0.001));
+  vec2 nRot = vec2(nScaled.x * co - nScaled.y * si, nScaled.x * si + nScaled.y * co);
+  vec3 nWorld = (compPlane > 0.5) ? vec3(nRot.x, 0.0, -nRot.y) : vec3(nRot.x, nRot.y, 0.0);
+  return nWorld / max(length(nWorld), 0.00001);
+}
+`;
 
 export const simulationVertexShader = /* glsl */ `
 varying vec2 vUv;
@@ -17,6 +82,8 @@ void main() {
 export const positionSimulationShader = /* glsl */ `
 precision highp float;
 
+${sdfSamplingGLSL}
+
 uniform sampler2D uPositionTexture;
 uniform sampler2D uVelocityTexture;
 uniform float uDelta;
@@ -24,6 +91,20 @@ uniform float uCompPlane;        // 0 = vertical (XY facing camera), 1 = horizon
 uniform float uMorphTrajectory;
 uniform float uZDepthRetention;
 uniform float uZConfinement;
+
+// Glyph SDF colliders (see velocitySimulationShader): the position pass only
+// hard-projects obstacle interiors.
+uniform float uCollisionEnabled;
+uniform float uCollisionMode;    // 0 = obstacle, 1 = vessel
+uniform float uCollisionIntegrity;
+
+// Partition geometry so a particle can resolve its own entity (mirrors the velocity pass).
+uniform int uEntityCount;
+uniform float uEntityBounds[10];
+uniform vec4 uEntityCenter[10];
+uniform float uEntityMorph[10];
+uniform vec3 uEntityTransform[10];
+uniform vec2 uTexSize;
 
 varying vec2 vUv;
 
@@ -36,6 +117,35 @@ void main() {
 
   // Integrate position
   pos += vel * uDelta;
+
+  // --- Glyph SDF colliders: hard projection out of solid stroke interiors ---
+  // Constraint: only particles strictly below the surface are evicted, so resting
+  // particles near d≈0 are not fought; integrity lets energetic particles punch
+  // deeper before the wall heals as they calm down.
+  if (uCollisionEnabled > 0.5 && uEntityCount > 0) {
+    float pIndex = floor(vUv.y * uTexSize.y) * uTexSize.x + floor(vUv.x * uTexSize.x);
+    int eIdx = 0;
+    for (int i = 0; i < 10; i++) {
+      if (i >= uEntityCount) break;
+      eIdx = i;
+      if (pIndex < uEntityBounds[i]) break;
+    }
+    vec4 tile = uCollisionTile[eIdx];
+    if (tile.w > 0.5 && uCollisionMode < 0.5) {
+      float co = cos(uEntityTransform[eIdx].z);
+      float si = sin(uEntityTransform[eIdx].z);
+      vec2 local = sdfLocalPos(pos, uEntityCenter[eIdx].xyz, uEntityTransform[eIdx], co, si, uCompPlane);
+      float d;
+      vec2 grad;
+      sdfSample(local, tile, clamp(uEntityMorph[eIdx], 0.0, 1.0), d, grad);
+      if (d < 0.0) {
+        vec3 nWorld = sdfWorldNormal(grad, uEntityTransform[eIdx], co, si, uCompPlane);
+        // Integrity uses the post-integration speed (velData.w is the velocity magnitude).
+        float wall = 1.0 / (1.0 + uCollisionIntegrity * velData.w * 0.01);
+        pos -= nWorld * (d * ${SDF_DISTANCE_SCALE}.0 * wall);
+      }
+    }
+  }
 
   // Mild z-plane dampening only in pure 2D planar mode to preserve flat typography clarity.
   // In Toroidal Hopf (uMorphTrajectory > 0.5) or 3D horizontal chakra mode,
@@ -162,6 +272,32 @@ uniform vec2 uPointerVelocity;
 uniform float uPointerRadius;
 uniform float uPointerStrength;
 uniform float uInteractionMode; // 0 = repel, 1 = attract, 2 = vortex
+
+// Shared Eulerian medium (see mediumShaders.ts): particles inject momentum into a
+// coarse grid fluid and are pushed by its pressure gradient and carried by its flow.
+uniform float uMediumEnabled;
+uniform sampler2D uMediumVelTexture;
+uniform sampler2D uMediumPressureTexture;
+uniform vec2 uMediumMin;
+uniform vec2 uMediumMax;
+uniform vec2 uMediumTexel;
+uniform float uMediumGridRes;
+uniform float uMediumPlane;         // 0 = XY media axes, 1 = XZ
+uniform float uMediumPressureGain;  // gradient repulsion gain
+uniform float uMediumCoupling;      // drag toward the medium flow
+
+// Glyph SDF colliders: letterforms act as physical boundaries whose strength
+// modulates with local particle energy (integrity). The third dimension is
+// ignored, like the resonator plate.
+uniform float uCollisionEnabled;
+uniform float uCollisionMode;       // 0 = obstacle (strokes solid), 1 = vessel (strokes contain)
+uniform float uCollisionRestitution;
+uniform float uCollisionFriction;
+uniform float uCollisionBand;       // influence band, world px
+uniform float uCollisionStrength;
+uniform float uCollisionIntegrity;
+
+${sdfSamplingGLSL}
 
 varying vec2 vUv;
 
@@ -515,6 +651,81 @@ void main() {
     fResonator *= dom;
   }
 
+  // --- 7C. Shared Eulerian medium: crowd pressure + drag into the medium flow ---
+  // Samples are gated to the grid AABB; particles outside the covered extent feel nothing.
+  vec3 fMedium = vec3(0.0);
+  if (uMediumEnabled > 0.5) {
+    vec2 mPos = (uMediumPlane > 0.5) ? pos.xz : pos.xy;
+    vec2 mSpan = max(uMediumMax - uMediumMin, vec2(0.001));
+    vec2 guv = (mPos - uMediumMin) / mSpan;
+    if (guv.x > 0.0 && guv.x < 1.0 && guv.y > 0.0 && guv.y < 1.0) {
+      vec2 flow = texture2D(uMediumVelTexture, guv).xy;
+      vec2 mPlane = (uMediumPlane > 0.5) ? vel.xz : vel.xy;
+      // Pressure gradient per world px: the solver runs in unit cells, so the
+      // central difference is divided by the world cell size.
+      float cellWorld = mSpan.x / max(uMediumGridRes, 1.0);
+      float pR = texture2D(uMediumPressureTexture, guv + vec2(uMediumTexel.x, 0.0)).x;
+      float pL = texture2D(uMediumPressureTexture, guv - vec2(uMediumTexel.x, 0.0)).x;
+      float pT = texture2D(uMediumPressureTexture, guv + vec2(0.0, uMediumTexel.y)).x;
+      float pB = texture2D(uMediumPressureTexture, guv - vec2(0.0, uMediumTexel.y)).x;
+      vec2 gradP = vec2(pR - pL, pT - pB) / (2.0 * max(cellWorld, 0.001));
+      vec2 f2 = -gradP * (uMediumPressureGain * 40.0) + (flow - mPlane) * (uMediumCoupling * 6.0);
+      if (uMediumPlane > 0.5) fMedium.xz = f2; else fMedium.xy = f2;
+    }
+  }
+
+  // --- 7D. Glyph SDF colliders: letterforms as boundaries with energy-dependent integrity ---
+  // Sign convention: grad points toward increasing distance (out of the strokes), so
+  // obstacle mode pushes along +grad and vessel mode along -grad. Integrity is a
+  // constraint, not a decoration: wall strength decays with the contact speed, so
+  // energetic particles buy passage and the wall heals as things calm down.
+  vec3 fCollision = vec3(0.0);
+  if (uCollisionEnabled > 0.5) {
+    vec4 tile = uCollisionTile[eIdx];
+    if (tile.w > 0.5) {
+      vec2 local = sdfLocalPos(pos, entityCenter, transform, co, si, uCompPlane);
+      float cD;
+      vec2 cGrad;
+      sdfSample(local, tile, sMorph, cD, cGrad);
+      vec3 cN = sdfWorldNormal(cGrad, transform, co, si, uCompPlane);
+      float cBand = max(1.0, uCollisionBand);
+      float cWorld = cD * ${SDF_DISTANCE_SCALE}.0;
+      // Contact falloff: full strength at the surface, decaying outward across the band.
+      float cFalloff = exp(-max(0.0, cWorld) / cBand);
+      float cSpeed = length(vel);
+      float cWall = 1.0 / (1.0 + uCollisionIntegrity * cSpeed * 0.01 * cFalloff);
+      float cW = clamp(cFalloff * cWall, 0.0, 1.0);
+      vec2 cPlane = (uCompPlane > 0.5) ? vel.xz : vel.xy;
+      float cVn = dot(cPlane, cN.xy);
+      vec2 cTan = cPlane - cN.xy * cVn;
+      if (uCollisionMode < 0.5) {
+        // Obstacle: strokes are solid; the exp term grows with penetration depth
+        // (bounded at e^2) so deep intruders are evicted harder.
+        if (cWorld < cBand) {
+          float push = uCollisionStrength * 400.0 * exp(clamp(-cWorld / cBand, -1.0, 2.0));
+          fCollision += cN * (push * cW);
+          if (cVn < 0.0) {
+            vec2 reflected = cTan * (1.0 - uCollisionFriction) - cN.xy * (cVn * uCollisionRestitution);
+            vec2 vNew = mix(cPlane, reflected, cW);
+            if (uCompPlane > 0.5) vel.xz = vNew; else vel.xy = vNew;
+          }
+        }
+      } else {
+        // Vessel: stroke interiors are containers. Thin strokes make this degenerate
+        // (band overlaps both walls); the falloff blend keeps the response finite.
+        if (cWorld > -cBand && cWorld < cBand * 4.0) {
+          float push = uCollisionStrength * 400.0 * cFalloff;
+          fCollision -= cN * (push * cW);
+          if (cVn > 0.0) {
+            vec2 reflected = cTan * (1.0 - uCollisionFriction) - cN.xy * (cVn * uCollisionRestitution);
+            vec2 vNew = mix(cPlane, reflected, cW);
+            if (uCompPlane > 0.5) vel.xz = vNew; else vel.xy = vNew;
+          }
+        }
+      }
+    }
+  }
+
   // --- 8. Total Acceleration & Viscous Integration ---
   // Queued click effects: a falloff-weighted impulse around the burst centre,
   // independently queued so a toolbar click cannot be cleared by pointer-leave.
@@ -527,7 +738,7 @@ void main() {
   fPointer.xy += uBurstVelocity * burstFalloff * 0.85;
   fPointer.xy += burstDir * uBurstRadial * burstFalloff;
   fPointer.xy += vec2(-burstDir.y, burstDir.x) * uBurstSpin * burstFalloff;
-  vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator;
+  vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator + fMedium + fCollision;
 
   // Constant body force (gravity / wind)
   accel += uGravity * 120.0;

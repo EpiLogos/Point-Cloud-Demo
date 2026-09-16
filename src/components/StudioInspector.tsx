@@ -736,6 +736,58 @@ export const StudioInspector: React.FC<StudioInspectorProps> = ({
             )}
           </div>
 
+          {/* Shared medium & glyph colliders */}
+          <div>
+            <button type="button" onClick={() => toggleSection('medium')} className={accordionBtn}>
+              <div className="flex items-center gap-1.5 text-sky-400">
+                <Wind className="w-3 h-3" />
+                <span>Medium & Collision</span>
+              </div>
+              {openSections.medium ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+            </button>
+            {openSections.medium && (
+              <div className="p-3 space-y-1.5">
+                <div className="flex items-center justify-between py-1">
+                  <span className="text-[10px] font-mono uppercase opacity-70">Shared Medium</span>
+                  <button
+                    type="button"
+                    onClick={() => onChange({ medium: { ...(config.medium ?? {}), enabled: !(config.medium?.enabled ?? false) } as PointCloudConfig['medium'] })}
+                    className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase border ${config.medium?.enabled ? 'bg-sky-500/20 text-sky-400 border-sky-500/40' : 'border-inherit opacity-60'}`}
+                  >
+                    {config.medium?.enabled ? 'On' : 'Off'}
+                  </button>
+                </div>
+                {PARAM_REGISTRY.filter((p) => p.group === 'Medium').map((p) => (
+                  <RegistryRow key={p.path} path={p.path} config={config} onChange={onChange} />
+                ))}
+                <div className="pt-1.5 mt-1 border-t border-inherit/40">
+                  <div className="flex items-center justify-between py-1">
+                    <span className="text-[10px] font-mono uppercase opacity-70">Glyph Colliders</span>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => onChange({ collision: { ...(config.collision ?? {}), mode: 'obstacle', enabled: !(config.collision?.enabled ?? false) } as PointCloudConfig['collision'] })}
+                        className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase border ${config.collision?.enabled && config.collision?.mode !== 'vessel' ? 'bg-sky-500/20 text-sky-400 border-sky-500/40' : 'border-inherit opacity-60'}`}
+                      >
+                        Obstacle
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onChange({ collision: { ...(config.collision ?? {}), mode: 'vessel', enabled: true } as PointCloudConfig['collision'] })}
+                        className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase border ${config.collision?.enabled && config.collision?.mode === 'vessel' ? 'bg-sky-500/20 text-sky-400 border-sky-500/40' : 'border-inherit opacity-60'}`}
+                      >
+                        Vessel
+                      </button>
+                    </div>
+                  </div>
+                  {PARAM_REGISTRY.filter((p) => p.group === 'Collision').map((p) => (
+                    <RegistryRow key={p.path} path={p.path} config={config} onChange={onChange} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Particles */}
           <div>
             <button type="button" onClick={() => toggleSection('particles')} className={accordionBtn}>

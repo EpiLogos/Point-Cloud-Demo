@@ -138,6 +138,20 @@ export const PARAM_REGISTRY: ParamDef[] = [
   P('cymatics.sweepSpeed', 'Sweep Period', 'Cymatics', 0.05, 600, 0.01, 100000, 0.05, { unit: 's', scale: 'log' }),
   P('cymatics.sweep.glideS', 'Sweep Glide', 'Cymatics', 0.1, 30, 0.01, 3600, 0.1, { unit: 's' }),
   P('cymatics.sweep.dwellS', 'Sweep Dwell', 'Cymatics', 0, 30, 0, 3600, 0.1, { unit: 's' }),
+  // ---- Shared medium (Eulerian grid fluid; enabled toggle lives on config.medium.enabled) ----
+  P('medium.pressure', 'Medium Pressure', 'Medium', 0, 20, 0, 200, 0.05, { hint: 'Crowd repulsion from the medium pressure gradient' }),
+  P('medium.coupling', 'Medium Coupling', 'Medium', 0, 4, 0, 20, 0.01, { hint: 'Drag toward the shared medium flow' }),
+  P('medium.persistence', 'Medium Persistence', 'Medium', 0.8, 1.0, 0, 1.0, 0.002, { decimals: 3, hint: 'Medium velocity retained per frame at 60fps' }),
+  P('medium.iterations', 'Pressure Iterations', 'Medium', 1, 12, 1, 64, 1, { decimals: 0, hint: 'Jacobi pressure solver steps per frame' }),
+  P('medium.gridRes', 'Medium Grid', 'Medium', 64, 512, 16, 1024, 4, { decimals: 0, hint: 'Square solver grid resolution' }),
+  P('medium.splatGain', 'Splat Gain', 'Medium', 0, 4, 0, 20, 0.01, { hint: 'Momentum injection of particles into the medium' }),
+  P('medium.extent', 'Medium Extent', 'Medium', 200, 5000, 50, 20000, 10, { decimals: 0, unit: 'px', scale: 'log', hint: 'World half-extent the solver grid covers' }),
+  // ---- Glyph SDF colliders (enabled toggle lives on config.collision.enabled) ----
+  P('collision.restitution', 'Restitution', 'Collision', 0, 1, 0, 1, 0.01, { hint: 'Normal bounce off the letterform boundary' }),
+  P('collision.friction', 'Contact Friction', 'Collision', 0, 1, 0, 1, 0.01, { hint: 'Tangential loss while in contact with the boundary' }),
+  P('collision.band', 'Contact Band', 'Collision', 5, 200, 1, 2000, 1, { decimals: 0, unit: 'px', hint: 'Influence band around the glyph surface' }),
+  P('collision.strength', 'Wall Strength', 'Collision', 0, 20, 0, 200, 0.05, { hint: 'Soft push gain near the glyph boundary' }),
+  P('collision.integrity', 'Integrity Weakening', 'Collision', 0, 4, 0, 20, 0.01, { hint: 'Energetic particles weaken the local wall; it heals as they calm down' }),
   // ---- Composition ----
   P('composition.orchestration.dwell', 'Focus Dwell', 'Composition', 0, 30, 0, 3600, 0.05, { unit: 's' }),
   P('composition.orchestration.glide', 'Focus Glide', 'Composition', 0.02, 30, 0.01, 3600, 0.05, { unit: 's' }),
