@@ -137,6 +137,12 @@ uniform float uResBoundary;     // soft-wall strength keeping particles on the p
 uniform float uResPlane;        // 0.0 = horizontal plate (X-Z, y confined), 1.0 = vertical plate (X-Y, z confined)
 uniform float uResDriveScale;   // final scale on the raw envelope field (tames resonance peaks)
 
+// Sorted-grid pairwise collisions: per-particle contact acceleration from
+// pairwiseForcePass (composition-plane xy/xz only). Disabled = exact zero.
+uniform sampler2D uPairwiseForceTexture;
+uniform float uPairwiseEnabled;
+uniform float uPairMaxDelta;    // per-step clamp on |pairwise dv| (speed units)
+
 // Dual-Phase Toroidal/Poloidal Morph & Inverse Hopf Fibration System
 uniform float uMorphTrajectory;       // 0 = linear, 1 = toroidalHopf, 2 = vortexSpiral, 3 = quantumInterference
 uniform float uFiberPhaseOffset;     // delta psi phase difference (0 to 2*PI)
@@ -515,6 +521,19 @@ void main() {
     fResonator *= dom;
   }
 
+  // --- 7C. Sorted-grid pairwise collision response ---
+  // The pass writes composition-plane forces; the per-step velocity change is
+  // clamped so a dense pile can never inject more than uPairMaxDelta in one step.
+  vec3 fPairwise = vec3(0.0);
+  if (uPairwiseEnabled > 0.5) {
+    vec4 pw = texture2D(uPairwiseForceTexture, vUv);
+    vec3 pairAccel = (uCompPlane < 0.5) ? vec3(pw.x, pw.y, 0.0) : vec3(pw.x, 0.0, pw.y);
+    vec3 pairDv = pairAccel * uDelta;
+    float pairDvLen = length(pairDv);
+    if (pairDvLen > uPairMaxDelta) pairDv *= uPairMaxDelta / pairDvLen;
+    fPairwise = pairDv / max(uDelta, 0.0001);
+  }
+
   // --- 8. Total Acceleration & Viscous Integration ---
   // Queued click effects: a falloff-weighted impulse around the burst centre,
   // independently queued so a toolbar click cannot be cleared by pointer-leave.
@@ -527,7 +546,7 @@ void main() {
   fPointer.xy += uBurstVelocity * burstFalloff * 0.85;
   fPointer.xy += burstDir * uBurstRadial * burstFalloff;
   fPointer.xy += vec2(-burstDir.y, burstDir.x) * uBurstSpin * burstFalloff;
-  vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator;
+  vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator + fPairwise;
 
   // Constant body force (gravity / wind)
   accel += uGravity * 120.0;
