@@ -137,8 +137,32 @@ with browser_session({'width': 1280, 'height': 900}) as (_, ctx, page):
         )
 
     check('the volume toggle is clickable', tick('engine.volumeEnabled'))
-    page.wait_for_timeout(7000)  # re-bake, reseed, and let the spring settle onto the new depth
+
+    # Software WebGL runs at a handful of frames per second and the spring only
+    # advances per frame, so a wall-clock wait is a frame-rate lottery. Poll the
+    # real buffer until the body has actually settled onto its new depth.
+    SPAN_EXPR = """() => {
+      const s = window.__FIELD_STUDIES__.inspect(true);
+      const p = s.positions;
+      let mn = Infinity, mx = -Infinity;
+      for (let i = 0; i < p.length; i += 4) {
+        const z = p[i + 2];
+        if (z < mn) mn = z;
+        if (z > mx) mx = z;
+      }
+      return mx - mn;
+    }"""
+
+    def wait_for_span(min_span, timeout_ms=90000):
+        try:
+            page.wait_for_function(f'() => ({SPAN_EXPR})() > {min_span}', timeout=timeout_ms)
+            return True
+        except Exception:
+            return False
+
+    settled = wait_for_span(before['spanZ'] * 3)
     after_volume = page.evaluate(DEPTH_STATS)
+    check('the volume control settles into a body', settled, f"settled span {after_volume['spanZ']:.2f}")
     # The realized span is the extent the spring has actually settled onto, which
     # depends on the profile and where the flank band falls — not simply twice the
     # requested depth. The strong linear claim is made against the Body Depth
@@ -175,11 +199,14 @@ with browser_session({'width': 1280, 'height': 900}) as (_, ctx, page):
         )
 
     check('the body depth slider is present', set_slider('field.params.native_glyphVolume__depth', 40))
-    page.wait_for_timeout(2500)
+    wait_for_span(after_volume['spanZ'] * 0.6)
     shallow = page.evaluate(DEPTH_STATS)
     set_slider('field.params.native_glyphVolume__depth', 400)
-    page.wait_for_timeout(3500)
+    # Same reasoning as above: wait for the spring to reach the deeper target
+    # rather than assuming a fixed number of seconds buys enough frames.
+    deep_settled = wait_for_span(max(shallow['spanZ'] * 2.5, 200))
     deep = page.evaluate(DEPTH_STATS)
+    check('the larger depth settles', deep_settled, f"settled span {deep['spanZ']:.2f}")
     check(
         'the Body Depth slider drives real thickness',
         deep['spanZ'] > shallow['spanZ'] * 2,
