@@ -133,18 +133,49 @@ Depth is then real geometry, not a rendering trick, and the rest of the engine
 follows it:
 
 - Physics stops flattening the depth axis, so the body holds its thickness. The
-  global vortex and the inter-glyph bridge can be given a depth component
-  (**Depth in the swirl**, **Depth in the bridge**), turning them through the
-  body rather than sliding it in the picture plane.
-- With **Collision & medium** walls enabled, the boundary becomes the extruded
-  solid rather than its 2D silhouette: a particle can no longer pass straight
-  through a letterform's thickness, and the wall normal turns to face the near
-  surface.
+  global vortex and the inter-glyph bridge gain their depth component **by
+  default** once the body law is on (**Depth in the swirl**, **Depth in the
+  bridge** blend from planar to through-the-body; until touched they follow the
+  body law, so an author opts out by lowering them, not by discovering them).
+  With **Collision & medium** walls enabled, the boundary becomes the extruded
+  solid rather than its 2D silhouette: contacts reflect through the depth axis,
+  so a face is as hard as a flank.
+- **Relational forces live in the same space as the body.** Attractors orbit
+  around the field's real 3D centre and, with bodies on, trace tilted orbits
+  through the depth; the whirlpool torque turns about the depth axis instead of
+  dragging everything back toward the picture plane. Formation forces take the
+  full-3D metric with the body law; pins always had it.
+- **Pairwise contacts are true 3D**: overlap, separation and restitution use the
+  full offset, so the front and back sheets of a letter no longer shove each
+  other sideways and the interior stops pressurizing the faces off their planes.
+  The spatial hash stays planar; the depth axis joins in the contact response.
+- Pointer vortices and click effects (pulse, implode, vortex, shove) measure and
+  act in the full frame: a pulse is a spherical shock, a whirl turns about the
+  depth axis through the pointer.
 - **Projection & aerial depth** adds the lens that makes any of it legible.
   Orthographic has no convergence, so distance cannot change a mark's size or
   tone. Perspective restores it, with **Size Attenuation** for the physical 1/w
   law, **Aerial Fade** for distance dimming the ink, and **Depth Tint** for the
-  colour distant marks drift toward.
+  colour distant marks drift toward. **Surfaces occlude** switches the drawing
+  from "every mark draws" to depth-buffered occlusion where near bodies win the
+  pixel.
+
+## The medium is the space; the resonator fills it
+
+The shared Eulerian medium has a 3D mode (**Collision & medium → Medium space →
+3D · volume**): an N³ voxel grid tiled into a single texture, with the classic
+splat → advect → divergence → Jacobi → gradient-subtract pipeline running
+through the full depth. Particles inject momentum in 3D, pressure waves travel
+through the volume, and a body at any depth is entrained as a solid rather than
+a decal on a sheet. The 2D sheet remains the default and is unchanged.
+
+The continuous cymatic resonator likewise gains a volumetric mode
+(**Resonator dimension → 3D volumetric field**): box modes (m,n,p) of a cubic
+cavity replace the plate modes, transport slides particles down the full 3D
+intensity gradient into 3D nodal lobes, and the plate's hard normal-axis pin is
+gone — the volume boundary is the only cage, so the resonator organises and
+entrains a whole 3D body instead of flattening it. The 2D plate is preserved
+exactly for existing compositions.
 
 Two projections share one orbit rig, so switching is a change of lens and not of
 scene. Capture and host framing stay exact under both: the host's requested world
@@ -163,7 +194,8 @@ The law lives in `src/engine/glyphVolume.ts`; its behaviour is pinned by
 the studio controls and read settled GPU particle state back
 (`field-studies-journeys/tests/three_d_body_browser.py` for letterforms,
 `field-studies-journeys/tests/three_d_source_body_browser.py` for the
-twelve-mask image study).
+twelve-mask image study, `field-studies-journeys/tests/three_d_forces_browser.mjs`
+for the 3D force layer — relational, pairwise, resonator, medium, occlusion).
 
 ## Semantic field
 

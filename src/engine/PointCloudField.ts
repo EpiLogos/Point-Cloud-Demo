@@ -131,6 +131,7 @@ export const DEFAULT_MEDIUM_CONFIG: MediumConfig = {
   splatGain: 1,
   extent: 1400,
   plane: 'compositionPlane',
+  dimension: '2D',
 };
 
 export const DEFAULT_COLLISION_CONFIG: CollisionConfig = {
@@ -514,7 +515,8 @@ export class PointCloudField {
     this.entities.layout(cfg.entities || []);
     const resolved = this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
     this.lastPoses = resolved.poses;
-    this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], resolved.poses, cfg.interaction.placedPoints || []);
+    const depthForms = !!(cfg.glyphVolume?.enabled && (cfg.glyphVolume?.depth ?? 0) > 0);
+    this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], resolved.poses, cfg.interaction.placedPoints || [], depthForms ? 'world3d' : 'compositionPlane');
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
     this.simulator.setCollisionState(this.entities.collisionTiles, this.entities.collisionTexture);
@@ -889,7 +891,15 @@ export class PointCloudField {
     const persp = this.cameraProjection === 'perspective';
     const fov = (this.perspCamera.fov * Math.PI) / 180;
     const viewH = persp ? this.viewHeight() : 0;
-    u.uDepthEnabled.value = persp || depth.aerialFade > 0.0001 || depth.sizeDepthBias !== 0 ? 1 : 0;
+    // The tint is depth presentation too — without it in the gate, Depth Tint
+    // silently dies in orthographic when fade and bias are zero.
+    u.uDepthEnabled.value = persp || depth.aerialFade > 0.0001 || depth.sizeDepthBias !== 0 || (depth.depthTintWeight ?? 0) > 0 ? 1 : 0;
+    // Surfaces occlude: near marks win the pixel through the depth buffer and
+    // far marks are rejected. Off — the original instrument — every mark draws.
+    // Legacy 'on'/'off' strings predate the boolean coercion and are honoured.
+    const occlude = depth.occlusion === true || (depth.occlusion as unknown as string) === 'on';
+    this.particleMaterial.depthTest = occlude;
+    this.particleMaterial.depthWrite = occlude;
     u.uPerspective.value = persp ? 1 : 0;
     u.uCameraDistance.value = this.orbitDistance();
     u.uViewHeight.value = viewH;
@@ -1394,6 +1404,7 @@ export class PointCloudField {
   /** Queued click-effect impulse, consumed by the velocity shader and decayed each step. */
   private burstVelocity = new THREE.Vector2();
   private burstPosition = new THREE.Vector2();
+  private burstZ = 0;
   private burstRadius = 150;
   private burstRadial = 0;
   private burstSpin = 0;
@@ -1403,14 +1414,16 @@ export class PointCloudField {
     this.burstRadial = 0;
     this.burstSpin = 0;
     this.burstPosition.copy(this.pointerPos.x > -90000 ? this.pointerPos : this.entities.fieldCentre());
+    this.burstZ = this.pointerPos.x > -90000 ? this.hostPointerZ : this.entities.fieldCentreZ();
   }
 
   /** Momentary pointer click effect. Coordinates are native world pixels. */
-  public triggerPointerEffect(kind: 'pulse' | 'implode' | 'vortex' | 'shove', x: number, y: number, strength = 1, radius = 150) {
-    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(strength) || !Number.isFinite(radius)) {
+  public triggerPointerEffect(kind: 'pulse' | 'implode' | 'vortex' | 'shove', x: number, y: number, strength = 1, radius = 150, z = 0) {
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(strength) || !Number.isFinite(radius) || !Number.isFinite(z)) {
       throw new Error('Invalid pointer effect');
     }
     this.burstPosition.set(x, y);
+    this.burstZ = z;
     this.burstRadius = Math.max(8, Math.abs(radius));
     this.burstVelocity.set(0, 0);
     const power = 950 * strength;
@@ -1769,35 +1782,46 @@ export class PointCloudField {
     this.pointerVel.multiplyScalar(Math.pow(0.92, delta * 60));
 
     // 5. Relational multi-attractors retain their own physical law, but expose carrier telemetry.
+    // Attractors live in the field's real 3D centre; once the body law is on they also
+    // trace tilted orbits through the depth axis, so a whirlpool organises a solid
+    // instead of dragging it flat toward the picture plane.
     this.lastRelationalCarriers = [];
     if (cfg.relational?.enabled) {
       const rel = cfg.relational;
       const count = Math.max(1, Math.min(10, rel.attractorCount ?? 3));
       const eu = this.entities.uniforms;
-      const baseCenters: THREE.Vector2[] = [];
-      for (let i = 0; i < Math.max(1, eu.count); i++) baseCenters.push(new THREE.Vector2(eu.centers[i].x, eu.centers[i].y));
+      const baseCenters: Array<{x:number;y:number;z:number}> = [];
+      for (let i = 0; i < Math.max(1, eu.count); i++) baseCenters.push({x: eu.centers[i].x, y: eu.centers[i].y, z: eu.centers[i].z});
       const vCenter = this.entities.fieldCentre();
+      let centreZ = 0;
+      for (const c of baseCenters) centreZ += c.z;
+      centreZ /= Math.max(1, baseCenters.length);
+      const depthForms = !!(cfg.glyphVolume?.enabled && (cfg.glyphVolume?.depth ?? 0) > 0);
       const dynamicAttractors: THREE.Vector4[] = [];
       const dynamicSpins: number[] = [];
       const carrierPositions: Array<{x:number;y:number;z:number}> = [];
       for (let i = 0; i < 10; i++) {
         if (i < count) {
-          const basePt = baseCenters[i % baseCenters.length] || new THREE.Vector2(0, 0);
+          const basePt = baseCenters[i % baseCenters.length] || {x: 0, y: 0, z: 0};
           const initialAngle = (i / count) * Math.PI * 2;
           const currentAngle = initialAngle + elapsedTime * (rel.orbitSpeed ?? 0.8);
           const radius = rel.orbitRadius ?? 240;
+          const phase = (i / count) * Math.PI * 2;
           let posX = 0;
           let posY = 0;
+          let posZ = centreZ;
           if (rel.mode === 'chaos') {
             const wx = Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.4 + i * 2.1) * radius * 0.7;
             const wy = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.1 + i * 1.7) * radius * 0.5;
             posX = basePt.x + wx;
             posY = basePt.y + wy;
+            if (depthForms) posZ += Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) * 0.9 + i * 1.3) * radius * 0.35;
           } else if (rel.mode === 'nbody') {
             const t = elapsedTime * (rel.orbitSpeed ?? 0.8) + i * ((Math.PI * 2) / count);
             const denom = 1 + Math.cos(t) * Math.cos(t);
             posX = vCenter.x + (Math.sin(t) / denom) * radius * 1.4;
             posY = vCenter.y + ((Math.sin(t) * Math.cos(t)) / denom) * radius * 1.4;
+            if (depthForms) posZ += (Math.cos(t) / denom) * radius * 0.55;
           } else {
             const rx = Math.cos(currentAngle) * radius;
             const ry = Math.sin(currentAngle) * radius * 0.75;
@@ -1805,11 +1829,12 @@ export class PointCloudField {
             const driftY = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) + i) * 35;
             posX = vCenter.x + rx + driftX;
             posY = vCenter.y + ry + driftY;
+            if (depthForms) posZ += Math.sin(currentAngle + phase) * radius * 0.6;
           }
           const spin = (i % 2 === 0 ? 1.0 : -1.0) * (1.0 + i * 0.2);
-          dynamicAttractors.push(new THREE.Vector4(posX, posY, 0, 1.0));
+          dynamicAttractors.push(new THREE.Vector4(posX, posY, posZ, 1.0));
           dynamicSpins.push(spin);
-          carrierPositions.push({x:posX,y:posY,z:0});
+          carrierPositions.push({x:posX,y:posY,z:posZ});
         } else {
           dynamicAttractors.push(new THREE.Vector4(-99999, -99999, 0, 0));
           dynamicSpins.push(0);
@@ -1846,7 +1871,7 @@ export class PointCloudField {
     this.syncSemanticColorUniforms(comp);
 
     // Runtime burst input survives UI/pointer clearing and is consumed only by physics.
-    this.simulator.setBurst(this.burstPosition, this.burstVelocity, this.burstRadius, this.burstRadial, this.burstSpin);
+    this.simulator.setBurst(this.burstPosition, this.burstVelocity, this.burstRadius, this.burstRadial, this.burstSpin, this.burstZ);
     if (delta > 0) {
       const decay = Math.pow(0.92, delta * 60);
       this.burstVelocity.multiplyScalar(decay);
@@ -1876,7 +1901,7 @@ export class PointCloudField {
     if (!this.resonatorActive) return;
     this.resonatorActive = false;
     const zero = new Float32Array(64);
-    this.simulator.setResonatorState(false, 0, zero, zero, 700, 0, 0, 0, 0, 1);
+    this.simulator.setResonatorState(false, 0, zero, zero, 700, 0, 0, 0, 0, 1, false);
   }
 
   /**
@@ -1891,12 +1916,17 @@ export class PointCloudField {
       this.lastResonanceDrive = { kind:'frequency', targetHz:cym?.frequencyHz ?? this.cymaticFreqCurrent, bound:true };
       return;
     }
+    // The two existing dim/plane keys are the single source of truth for the volumetric
+    // mode: either '3D' dimension or the volumetric3D plate geometry turns the resonator
+    // into a standing-wave cavity (4x4x4 mode lattice instead of the 8x8 plate grid).
+    const volumetric = cym.dimension === '3D' || cym.plateGeometry === 'volumetric3D';
     const params = {
       plateSize: cym.plateSize ?? 700,
       baseFrequency: cym.baseFrequency ?? 40,
       dampingQ: cym.dampingQFactor ?? 4.5,
       driveStrength: cym.driveStrength ?? 1.0,
       modeCount: Math.max(1, Math.min(64, Math.round(cym.modeCount ?? 64))),
+      dimension: volumetric ? ('3D' as const) : ('2D' as const),
     };
     if (!this.cymaticResonator) this.cymaticResonator = new CymaticResonator(params);
     else this.cymaticResonator.configure(params);
@@ -1957,7 +1987,8 @@ export class PointCloudField {
       cym.agitation ?? 0.3,
       cym.boundaryStrength ?? 6.0,
       comp.plane === 'horizontal' ? 0.0 : 1.0,
-      cym.driveScale ?? 1.0
+      cym.driveScale ?? 1.0,
+      volumetric
     );
     this.simulator.setResonatorDominance(cym.dominance ?? 1.0);
   }

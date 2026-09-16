@@ -105,6 +105,7 @@ export interface MediumConfig {
   splatGain?: number;     // momentum injection scale (0..4, default 1)
   extent?: number;        // world half-extent the grid covers (200..5000, default 1400)
   plane?: 'compositionPlane' | 'world3d'; // media axes follow the composition plane, or always the XZ world floor
+  dimension?: '2D' | '3D'; // solver topology: '2D' sheet (legacy default) or '3D' voxel volume (see mediumGrid.ts)
 }
 
 /**

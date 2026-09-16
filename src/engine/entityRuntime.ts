@@ -498,4 +498,13 @@ export class EntityRuntime {
     }
     return new THREE.Vector2(x / n, y / n);
   }
+
+  /** Mean depth of the formation centres — the field's 3D reference plane. */
+  public fieldCentreZ(): number {
+    const n = this.uniforms.count;
+    if (n === 0) return 0;
+    let z = 0;
+    for (let i = 0; i < n; i++) z += this.uniforms.centers[i].z;
+    return z / n;
+  }
 }

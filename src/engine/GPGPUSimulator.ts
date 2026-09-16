@@ -20,6 +20,7 @@ import {
   mediumGradientSubtractShader,
   MEDIUM_PRESSURE_DECAY,
 } from './shaders/mediumShaders';
+import { mediumVolumeSideFor } from './mediumGrid';
 import {
   pairwiseCellIdShader,
   pairwiseForceShader,
@@ -55,8 +56,10 @@ export class GPGPUSimulator {
   public nextVelTarget: THREE.WebGLRenderTarget;
 
   // Shared medium (Eulerian grid): ping-pong velocity + divergence + ping-pong pressure.
-  // Allocated lazily at the configured grid resolution.
+  // Allocated lazily at the configured grid resolution; in 3D mode the side is
+  // N² (an N×N×N voxel volume tiled into the texture, see mediumGrid.ts).
   private mediumRes = 0;
+  private medium3D = false;
   private mediumVel0: THREE.WebGLRenderTarget | null = null;
   private mediumVel1: THREE.WebGLRenderTarget | null = null;
   private mediumDivergenceTarget: THREE.WebGLRenderTarget | null = null;
@@ -164,7 +167,10 @@ export class GPGPUSimulator {
         uTargetATexture: { value: null },
         uTargetBTexture: { value: null },
         uPairwiseEnabled: { value: 0.0 },
+        // 1 = volumetric bodies: pairwise contacts also correct the depth axis.
+        uPairwise3D: { value: 0.0 },
         uPairwiseCorrectionTexture: { value: null },
+        uPairwiseCorrectionZTexture: { value: null },
         uEntityCount: { value: 0 },
         uEntityBounds: { value: new Float32Array(10) },
         uEntityCenter: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)) },
@@ -271,10 +277,13 @@ export class GPGPUSimulator {
         uResBoundary: { value: 6.0 },
         uResPlane: { value: 0.0 },
         uResDriveScale: { value: 1.0 },
+        uRes3D: { value: 0.0 },
 
         // Sorted-grid pairwise collisions (bound to a 1x1 zero texture while disabled)
         uPairwiseForceTexture: { value: null },
+        uPairwiseForceZTexture: { value: null }, // 3D path: depth-axis dv (force pass draw buffer 1)
         uPairwiseEnabled: { value: 0.0 },
+        uPairwise3D: { value: 0.0 },
         uPairMaxDelta: { value: 5000.0 },
 
         // Dual-Phase Toroidal/Poloidal Morph & Inverse Hopf Fibration System
@@ -293,6 +302,7 @@ export class GPGPUSimulator {
         // Pointer
         uPointerPos: { value: new THREE.Vector2(-99999, -99999) },
         uBurstPosition: {value: new THREE.Vector2()},
+        uBurstZ: { value: 0.0 },
         uBurstVelocity: {value: new THREE.Vector2()},
         uBurstRadius: { value: 150.0 },
         uBurstRadial: { value: 0.0 },
@@ -314,6 +324,10 @@ export class GPGPUSimulator {
         uMediumPlane: { value: 0.0 },
         uMediumPressureGain: { value: 4.0 },
         uMediumCoupling: { value: 0.8 },
+        // 3D medium: voxel volume tiled into an N²×N² texture (see mediumGrid.ts)
+        uMedium3D: { value: 0.0 },
+        uMediumN: { value: 32.0 },
+        uMediumTexSide: { value: 1024.0 },
 
         // Glyph SDF colliders (all terms multiply the enabled guard)
         uCollisionEnabled: { value: 0.0 },
@@ -355,6 +369,10 @@ export class GPGPUSimulator {
           uMediumMax: { value: new THREE.Vector2(1400, 1400) },
           uMediumPlane: { value: 0.0 },
           uSplatGain: { value: 1.0 },
+          // 3D medium: this draw writes the slice at round(fvz) + uSliceOffset
+          uMedium3D: { value: 0.0 },
+          uMediumN: { value: 32.0 },
+          uSliceOffset: { value: 0.0 },
         },
         blending: THREE.AdditiveBlending,
         transparent: true,
@@ -377,6 +395,9 @@ export class GPGPUSimulator {
         uDissipation: { value: 0.97 },
         uMediumExtent: { value: 2800.0 },
         uTexel: { value: unitTexel() },
+        uMedium3D: { value: 0.0 },
+        uMediumN: { value: 32.0 },
+        uMediumTexSide: { value: 1024.0 },
       },
       depthTest: false,
       depthWrite: false,
@@ -384,7 +405,7 @@ export class GPGPUSimulator {
     this.mediumDivergenceMaterial = new THREE.ShaderMaterial({
       vertexShader: simulationVertexShader,
       fragmentShader: mediumDivergenceShader,
-      uniforms: { uMediumVelocity: { value: null }, uTexel: { value: unitTexel() } },
+      uniforms: { uMediumVelocity: { value: null }, uTexel: { value: unitTexel() }, uMedium3D: { value: 0.0 }, uMediumN: { value: 32.0 }, uMediumTexSide: { value: 1024.0 } },
       depthTest: false,
       depthWrite: false,
     });
@@ -396,6 +417,9 @@ export class GPGPUSimulator {
         uDivergence: { value: null },
         uTexel: { value: unitTexel() },
         uPressureDecay: { value: MEDIUM_PRESSURE_DECAY },
+        uMedium3D: { value: 0.0 },
+        uMediumN: { value: 32.0 },
+        uMediumTexSide: { value: 1024.0 },
       },
       depthTest: false,
       depthWrite: false,
@@ -407,6 +431,9 @@ export class GPGPUSimulator {
         uPressure: { value: null },
         uMediumVelocity: { value: null },
         uTexel: { value: unitTexel() },
+        uMedium3D: { value: 0.0 },
+        uMediumN: { value: 32.0 },
+        uMediumTexSide: { value: 1024.0 },
       },
       depthTest: false,
       depthWrite: false,
@@ -430,6 +457,7 @@ export class GPGPUSimulator {
       uRestitution: { value: 0.12 },
       uPairViscosity: { value: 0.06 },
       uCompPlane: { value: 0.0 },
+      uPairwise3D: { value: 0.0 },
       uDelta: { value: 0.016 },
       uPartner: { value: 1.0 },
       uBlock: { value: 2.0 },
@@ -455,9 +483,14 @@ export class GPGPUSimulator {
       depthTest: false,
       depthWrite: false,
     });
+    // The force material is the one GLSL3 material in the chain: MRT needs
+    // explicit layout(location) fragment outputs. three's GLSL3 prefix still
+    // defines texture2D/varying, so the shared vertex shader and the shader
+    // source style stay identical to the other passes.
     this.pairForceMaterial = new THREE.ShaderMaterial({
       vertexShader: simulationVertexShader,
       fragmentShader: pairwiseForceShader,
+      glslVersion: THREE.GLSL3,
       uniforms: pwUniforms(),
       depthTest: false,
       depthWrite: false,
@@ -466,6 +499,8 @@ export class GPGPUSimulator {
     this.pairForceFallback = new THREE.DataTexture(new Float32Array([0, 0, 0, 0]), 1, 1, THREE.RGBAFormat, THREE.FloatType);
     this.pairForceFallback.needsUpdate = true;
     this.velMaterial.uniforms.uPairwiseForceTexture.value = this.pairForceFallback;
+    this.velMaterial.uniforms.uPairwiseForceZTexture.value = this.pairForceFallback;
+    this.posMaterial.uniforms.uPairwiseCorrectionZTexture.value = this.pairForceFallback;
   }
 
   /**
@@ -630,7 +665,9 @@ export class GPGPUSimulator {
     this.velMaterial.uniforms.uResDominance.value = Math.max(0, Math.min(1, d));
   }
 
-  /** Push the live modal envelopes + coupling parameters of the cymatic resonator */
+  /** Push the live modal envelopes + coupling parameters of the cymatic resonator.
+   *  `threeD` switches the shader into the volumetric standing-wave mode whose slot
+   *  layout is i = ((m-1)*4 + (n-1))*4 + (p-1); false keeps the legacy 2D plate. */
   public setResonatorState(
     enabled: boolean,
     modeCount: number,
@@ -641,7 +678,8 @@ export class GPGPUSimulator {
     agitation: number,
     boundary: number,
     plane: number,
-    driveScale: number
+    driveScale: number,
+    threeD: boolean = false
   ) {
     const vU = this.velMaterial.uniforms;
     vU.uResEnabled.value = enabled ? 1.0 : 0.0;
@@ -654,6 +692,7 @@ export class GPGPUSimulator {
     vU.uResBoundary.value = boundary;
     vU.uResPlane.value = plane;
     vU.uResDriveScale.value = driveScale;
+    vU.uRes3D.value = threeD ? 1.0 : 0.0;
   }
 
   public setToroidalMorphParams(
@@ -687,9 +726,10 @@ export class GPGPUSimulator {
   /**
    * Advances simulation by dt seconds
    */
-  /** Native disperse command; independent of editor pointer ownership. */
-  public setBurst(position: THREE.Vector2, velocity: THREE.Vector2, radius: number, radial: number, spin: number) {
+  /** Native disperse command; independent of editor pointer ownership. z is the burst centre's depth. */
+  public setBurst(position: THREE.Vector2, velocity: THREE.Vector2, radius: number, radial: number, spin: number, z: number = 0) {
     this.velMaterial.uniforms.uBurstPosition.value.copy(position);
+    this.velMaterial.uniforms.uBurstZ.value = z;
     this.velMaterial.uniforms.uBurstVelocity.value.copy(velocity);
     this.velMaterial.uniforms.uBurstRadius.value = radius;
     this.velMaterial.uniforms.uBurstRadial.value = radial;
@@ -700,11 +740,14 @@ export class GPGPUSimulator {
    * Sorted-grid neighbour search + DEM contact response.
    * cellId -> bitonic sort (schedule-driven ping-pong) -> cell ranges -> force.
    * The force pass runs in particle-index space, so no scatter-back pass is needed.
+   * pairwise3D (the glyphVolume signal, same value uDepthGeometry carries) selects
+   * the full-3D contact path in the force material and its consumers.
    */
   private runPairwisePasses(
     pw: { radius?: number; stiffness?: number; restitution?: number; viscosity?: number; extent?: number },
     compPlane: number,
-    dt: number
+    dt: number,
+    pairwise3D: number
   ): void {
     const side = sortSideForParticleTexSide(this.texWidth);
     if (side === null) return; // caller has already warned once
@@ -726,8 +769,18 @@ export class GPGPUSimulator {
       this.pairCellTable = new THREE.WebGLRenderTarget(grid.cellsX, grid.cellsY, this.rtTemplate);
       this.pairCells.set(grid.cellsX, grid.cellsY);
     }
+    // Force output: MRT (count: 2). Buffer 0 keeps the legacy vec4(corr.xy,
+    // dv.xy) packing both consumers have always read; buffer 1 carries the
+    // depth-axis components (corr.z, dv.z) the 3D contact path needs — six
+    // floats total. Both buffers are written every frame; with pairwise3D = 0
+    // buffer 1 is exact zeros and nothing reads it. A second render pass would
+    // re-run the whole candidate loop for two floats, and the legacy packing
+    // has no spare channels, so one MRT draw is the cheapest mechanism.
     if (!this.pairForceTarget) {
-      this.pairForceTarget = new THREE.WebGLRenderTarget(this.texWidth, this.texHeight, this.rtTemplate);
+      this.pairForceTarget = new THREE.WebGLRenderTarget(this.texWidth, this.texHeight, {
+        ...this.rtTemplate,
+        count: 2,
+      });
     }
 
     // 1. Cell keys
@@ -785,6 +838,7 @@ export class GPGPUSimulator {
     forceU.uRestitution.value = Math.max(0, Math.min(1, pw.restitution ?? 0.12));
     forceU.uPairViscosity.value = Math.max(0, Math.min(1, pw.viscosity ?? 0.06));
     forceU.uCompPlane.value = compPlane;
+    forceU.uPairwise3D.value = pairwise3D;
     forceU.uParticleCount.value = this.particleCount;
     forceU.uDelta.value = dt;
     this.quadMesh.material = this.pairForceMaterial;
@@ -792,6 +846,7 @@ export class GPGPUSimulator {
     this.renderer.render(this.quadScene, this.quadCamera);
 
     this.velMaterial.uniforms.uPairwiseForceTexture.value = this.pairForceTarget.texture;
+    this.velMaterial.uniforms.uPairwiseForceZTexture.value = this.pairForceTarget.textures[1];
   }
 
   public step(
@@ -816,13 +871,18 @@ export class GPGPUSimulator {
         `pairwise: ${this.particleCount} particles exceed the ${PAIRWISE_MAX_PARTICLES} sort capacity; the collision system stays disabled.`
       );
     }
+    // Depth geometry: the vortex and dispersion gain a real depth component, so
+    // forces turn through the body rather than sliding it in the picture plane.
+    // The same signal turns pairwise contacts into genuine 3D interactions.
+    const depthGeometry = (config.glyphVolume?.enabled && (config.glyphVolume?.depth ?? 0) > 0) ? 1.0 : 0.0;
     if (pwEnabled) {
-      this.runPairwisePasses(pw!, this.velMaterial.uniforms.uCompPlane.value as number, clampedDt);
+      this.runPairwisePasses(pw!, this.velMaterial.uniforms.uCompPlane.value as number, clampedDt, depthGeometry);
     }
 
     // 1. Update uniforms for velocity simulation
     const vUniforms = this.velMaterial.uniforms;
     vUniforms.uPairwiseEnabled.value = pwEnabled ? 1.0 : 0.0;
+    vUniforms.uPairwise3D.value = depthGeometry;
     vUniforms.uPairMaxDelta.value = Math.max(1.0, PAIRWISE_MAX_SPEED_FRACTION * (config.fluid.maxSpeed ?? 35000.0));
     vUniforms.uPositionTexture.value = this.currentPosTarget.texture;
     vUniforms.uVelocityTexture.value = this.currentVelTarget.texture;
@@ -834,12 +894,13 @@ export class GPGPUSimulator {
     vUniforms.uCurlSpeed.value = config.fluid.curlSpeed;
     vUniforms.uTurbulence.value = config.fluid.turbulence ?? 1.0;
     vUniforms.uVortexStrength.value = config.fluid.vortexStrength;
-    // Depth geometry: the vortex and dispersion gain a real depth component, so
-    // forces turn through the body rather than sliding it in the picture plane.
-    const depthGeometry = (config.glyphVolume?.enabled && (config.glyphVolume?.depth ?? 0) > 0) ? 1.0 : 0.0;
     vUniforms.uDepthGeometry.value = depthGeometry;
-    vUniforms.uVortex3d.value = Math.max(0, Math.min(1, config.fluid.vortex3d ?? 0));
-    vUniforms.uDispersion3d.value = Math.max(0, Math.min(1, config.fluid.dispersion3d ?? 0));
+    // When the body law is on, the depth components of the vortex and the bridge
+    // engage by default — an author opts out by lowering the slider, not by
+    // discovering it. The shader still gates on uDepthGeometry, so flat
+    // compositions never see either.
+    vUniforms.uVortex3d.value = Math.max(0, Math.min(1, config.fluid.vortex3d ?? depthGeometry));
+    vUniforms.uDispersion3d.value = Math.max(0, Math.min(1, config.fluid.dispersion3d ?? depthGeometry));
     vUniforms.uViscosity.value = config.fluid.viscosity;
     vUniforms.uReturnSpeed.value = config.fluid.returnSpeed;
     vUniforms.uDispersion.value = config.fluid.dispersion ?? 0.5;
@@ -908,14 +969,26 @@ export class GPGPUSimulator {
     if (mediumEnabled && medium) {
       const mediumExtent = Math.max(200, Math.min(20000, medium.extent ?? 1400));
       const mediumRes = Math.max(16, Math.min(1024, Math.round(medium.gridRes ?? 192)));
-      this.ensureMediumTargets(mediumRes);
+      // 3D mode derives the voxel volume side N from the same gridRes and packs
+      // the N³ cells into an N²×N² texture (mapping pinned in mediumGrid.ts).
+      // The solver side then jumps from mediumRes to N² — 1024 for the default
+      // 192 — and every medium target is reallocated at that size.
+      const threeD = medium.dimension === '3D';
+      const mediumN = threeD ? mediumVolumeSideFor(mediumRes) : mediumRes;
+      const solverSide = threeD ? mediumN * mediumN : mediumRes;
+      this.ensureMediumTargets(solverSide, threeD);
       const compPlane = vUniforms.uCompPlane.value as number;
       vUniforms.uMediumPressureGain.value = Math.max(0, medium.pressure ?? 4);
       vUniforms.uMediumCoupling.value = Math.max(0, medium.coupling ?? 0.8);
       (vUniforms.uMediumMin.value as THREE.Vector2).set(-mediumExtent, -mediumExtent);
       (vUniforms.uMediumMax.value as THREE.Vector2).set(mediumExtent, mediumExtent);
-      (vUniforms.uMediumTexel.value as THREE.Vector2).set(1 / mediumRes, 1 / mediumRes);
+      // 2D: one texel per solver cell. 3D: one texel per packed voxel; the §7C
+      // 3D branch reads the tiling geometry from uMediumN / uMediumTexSide.
+      (vUniforms.uMediumTexel.value as THREE.Vector2).set(1 / solverSide, 1 / solverSide);
       vUniforms.uMediumGridRes.value = mediumRes;
+      vUniforms.uMedium3D.value = threeD ? 1.0 : 0.0;
+      vUniforms.uMediumN.value = mediumN;
+      vUniforms.uMediumTexSide.value = solverSide;
       // 'world3d' pins the medium to the XZ world floor; otherwise it follows the composition plane.
       vUniforms.uMediumPlane.value = medium.plane === 'world3d' ? 1.0 : compPlane;
       vUniforms.uMediumVelTexture.value = this.mediumVelRead!.texture;
@@ -965,14 +1038,18 @@ export class GPGPUSimulator {
     pUniforms.uPositionTexture.value = this.currentPosTarget.texture;
     pUniforms.uVelocityTexture.value = this.currentVelTarget.texture;
     pUniforms.uPairwiseEnabled.value = pwEnabled ? 1.0 : 0.0;
+    pUniforms.uPairwise3D.value = depthGeometry;
     pUniforms.uPairwiseCorrectionTexture.value = pwEnabled && this.pairForceTarget
       ? this.pairForceTarget.texture
+      : this.pairForceFallback;
+    pUniforms.uPairwiseCorrectionZTexture.value = pwEnabled && this.pairForceTarget
+      ? this.pairForceTarget.textures[1]
       : this.pairForceFallback;
     pUniforms.uDelta.value = clampedDt;
     pUniforms.uMorphTrajectory.value = tm && tm.enabled !== false && tm.trajectory !== 'linear' ? 1.0 : 0.0;
     pUniforms.uZDepthRetention.value = tm?.enabled ? 1.0 : 0.0;
     pUniforms.uZConfinement.value = config.fluid.zConfinement ?? 1.0;
-    pUniforms.uDepthGeometry.value = (config.glyphVolume?.enabled && (config.glyphVolume?.depth ?? 0) > 0) ? 1.0 : 0.0;
+    pUniforms.uDepthGeometry.value = depthGeometry;
     // Residency classification needs the same baked slots the velocity pass sees.
     pUniforms.uTargetATexture.value = vUniforms.uTargetATexture.value;
     pUniforms.uTargetBTexture.value = vUniforms.uTargetBTexture.value;
@@ -996,9 +1073,9 @@ export class GPGPUSimulator {
   }
 
   // ------------------------------------------------------------------ shared medium
-  /** Allocate (or reallocate at a new gridRes) the medium solver targets. */
-  private ensureMediumTargets(res: number) {
-    if (this.mediumRes === res && this.mediumVel0) return;
+  /** Allocate (or reallocate when the side or the dimension changes) the medium solver targets. */
+  private ensureMediumTargets(side: number, threeD: boolean) {
+    if (this.mediumRes === side && this.medium3D === threeD && this.mediumVel0) return;
     this.disposeMediumTargets();
     const isWebGL2 = this.renderer.capabilities.isWebGL2;
     const floatType = isWebGL2 ? THREE.FloatType : THREE.HalfFloatType;
@@ -1018,17 +1095,18 @@ export class GPGPUSimulator {
       stencilBuffer: false,
       depthBuffer: false,
     };
-    this.mediumVel0 = new THREE.WebGLRenderTarget(res, res, options);
-    this.mediumVel1 = new THREE.WebGLRenderTarget(res, res, options);
-    this.mediumDivergenceTarget = new THREE.WebGLRenderTarget(res, res, options);
-    this.mediumPressure0 = new THREE.WebGLRenderTarget(res, res, options);
-    this.mediumPressure1 = new THREE.WebGLRenderTarget(res, res, options);
+    this.mediumVel0 = new THREE.WebGLRenderTarget(side, side, options);
+    this.mediumVel1 = new THREE.WebGLRenderTarget(side, side, options);
+    this.mediumDivergenceTarget = new THREE.WebGLRenderTarget(side, side, options);
+    this.mediumPressure0 = new THREE.WebGLRenderTarget(side, side, options);
+    this.mediumPressure1 = new THREE.WebGLRenderTarget(side, side, options);
     this.mediumVelRead = this.mediumVel0;
     this.mediumVelWrite = this.mediumVel1;
     this.mediumPressureRead = this.mediumPressure0;
     this.mediumPressureWrite = this.mediumPressure1;
-    this.mediumRes = res;
-    const texel = new THREE.Vector2(1 / res, 1 / res);
+    this.mediumRes = side;
+    this.medium3D = threeD;
+    const texel = new THREE.Vector2(1 / side, 1 / side);
     (this.mediumAdvectMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
     (this.mediumDivergenceMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
     (this.mediumPressureMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
@@ -1051,9 +1129,20 @@ export class GPGPUSimulator {
   private stepMedium(dt: number, medium: MediumConfig) {
     if (!this.mediumVelRead || !this.mediumVelWrite || !this.mediumDivergenceTarget || !this.mediumPressureRead || !this.mediumPressureWrite) return;
     const vUniforms = this.velMaterial.uniforms;
+    const threeD = vUniforms.uMedium3D.value as number;
+    const volumeN = vUniforms.uMediumN.value as number;
+    const solverSide = vUniforms.uMediumTexSide.value as number;
+    // One wiring point for the 3D tiling uniforms every solver material carries.
+    const setVolume = (m: THREE.ShaderMaterial) => {
+      m.uniforms.uMedium3D.value = threeD;
+      m.uniforms.uMediumN.value = volumeN;
+      m.uniforms.uMediumTexSide.value = solverSide;
+    };
 
     // Splat: additive render of every particle into the existing velocity field
-    // (no clear — the previous field must survive).
+    // (no clear — the previous field must survive). In 3D the same draw runs
+    // three times, one per hat-kernel slice offset; the vertex shader culls
+    // zero-weight instances, and 2D keeps the single legacy draw.
     const sU = this.mediumSplatMaterial.uniforms;
     sU.uPositionTexture.value = this.currentPosTarget.texture;
     sU.uVelocityTexture.value = this.currentVelTarget.texture;
@@ -1061,10 +1150,16 @@ export class GPGPUSimulator {
     (sU.uMediumMin.value as THREE.Vector2).copy(vUniforms.uMediumMin.value as THREE.Vector2);
     (sU.uMediumMax.value as THREE.Vector2).copy(vUniforms.uMediumMax.value as THREE.Vector2);
     sU.uSplatGain.value = Math.max(0, medium.splatGain ?? 1);
+    sU.uMedium3D.value = threeD;
+    sU.uMediumN.value = volumeN;
     const prevAutoClear = this.renderer.autoClear;
     this.renderer.autoClear = false;
-    this.renderer.setRenderTarget(this.mediumVelRead);
-    this.renderer.render(this.splatScene, this.quadCamera);
+    const sliceOffsets = threeD > 0.5 ? [-1, 0, 1] : [0];
+    for (const sliceOffset of sliceOffsets) {
+      sU.uSliceOffset.value = sliceOffset;
+      this.renderer.setRenderTarget(this.mediumVelRead);
+      this.renderer.render(this.splatScene, this.quadCamera);
+    }
     this.renderer.autoClear = prevAutoClear;
 
     // Advect: semi-Lagrangian self-advection with dt-scaled dissipation.
@@ -1073,6 +1168,7 @@ export class GPGPUSimulator {
     aU.uDelta.value = dt;
     aU.uDissipation.value = Math.pow(Math.max(0, Math.min(1.05, medium.persistence ?? 0.97)), dt * 60);
     aU.uMediumExtent.value = ((vUniforms.uMediumMax.value as THREE.Vector2).x - (vUniforms.uMediumMin.value as THREE.Vector2).x) || 1;
+    setVolume(this.mediumAdvectMaterial);
     this.quadMesh.material = this.mediumAdvectMaterial;
     this.renderer.setRenderTarget(this.mediumVelWrite);
     this.renderer.render(this.quadScene, this.quadCamera);
@@ -1080,6 +1176,7 @@ export class GPGPUSimulator {
 
     // Divergence of the advected field.
     this.mediumDivergenceMaterial.uniforms.uMediumVelocity.value = this.mediumVelRead.texture;
+    setVolume(this.mediumDivergenceMaterial);
     this.quadMesh.material = this.mediumDivergenceMaterial;
     this.renderer.setRenderTarget(this.mediumDivergenceTarget);
     this.renderer.render(this.quadScene, this.quadCamera);
@@ -1087,6 +1184,7 @@ export class GPGPUSimulator {
     // Jacobi pressure iterations (warm-started, under-relaxed).
     const iterations = Math.max(1, Math.min(12, Math.round(medium.iterations ?? 4)));
     this.mediumPressureMaterial.uniforms.uDivergence.value = this.mediumDivergenceTarget.texture;
+    setVolume(this.mediumPressureMaterial);
     for (let i = 0; i < iterations; i++) {
       this.mediumPressureMaterial.uniforms.uPressure.value = this.mediumPressureRead.texture;
       this.quadMesh.material = this.mediumPressureMaterial;
@@ -1098,6 +1196,7 @@ export class GPGPUSimulator {
     // Gradient subtract: project the field toward divergence-free flow.
     this.mediumGradientMaterial.uniforms.uMediumVelocity.value = this.mediumVelRead.texture;
     this.mediumGradientMaterial.uniforms.uPressure.value = this.mediumPressureRead.texture;
+    setVolume(this.mediumGradientMaterial);
     this.quadMesh.material = this.mediumGradientMaterial;
     this.renderer.setRenderTarget(this.mediumVelWrite);
     this.renderer.render(this.quadScene, this.quadCamera);

@@ -130,9 +130,12 @@ uniform float uCollisionIntegrity;
 uniform sampler2D uTargetATexture;
 uniform sampler2D uTargetBTexture;
 
-// Pairwise contact separation (xy = position correction in the composition plane).
+// Pairwise contact separation (xy = position correction in the composition plane;
+// the second draw buffer carries the depth-axis correction when uPairwise3D = 1).
 uniform float uPairwiseEnabled;
+uniform float uPairwise3D;      // 1 = volumetric bodies: contacts also correct the depth axis
 uniform sampler2D uPairwiseCorrectionTexture;
+uniform sampler2D uPairwiseCorrectionZTexture;
 
 // Partition geometry so a particle can resolve its own entity (mirrors the velocity pass).
 uniform int uEntityCount;
@@ -159,6 +162,12 @@ void main() {
   if (uPairwiseEnabled > 0.5) {
     vec2 pc = texture2D(uPairwiseCorrectionTexture, vUv).xy;
     if (uCompPlane < 0.5) pos.xy += pc; else pos.xz += pc;
+    // 3D bodies: the same projection also moves the depth axis (z on XY, y on XZ),
+    // so front/back sheets separate through depth instead of being shoved sideways.
+    if (uPairwise3D > 0.5) {
+      float pcz = texture2D(uPairwiseCorrectionZTexture, vUv).x;
+      if (uCompPlane < 0.5) pos.z += pcz; else pos.y += pcz;
+    }
   }
 
   // --- Glyph SDF colliders: hard projection out of solid stroke interiors ---
@@ -329,13 +338,17 @@ uniform float uResPlateSize;    // plate side L, world px
 uniform float uResTransport;    // gain on -grad(intensity): slides particles toward nodal lines
 uniform float uResAgitation;    // random kick amplitude, scaled by sqrt(local intensity)
 uniform float uResBoundary;     // soft-wall strength keeping particles on the plate
-uniform float uResPlane;        // 0.0 = horizontal plate (X-Z, y confined), 1.0 = vertical plate (X-Y, z confined)
+uniform float uResPlane;        // 0.0 = horizontal plate (X-Z, y confined), 1.0 = vertical plate (X-Y, z confined); 2D mode only
 uniform float uResDriveScale;   // final scale on the raw envelope field (tames resonance peaks)
+uniform float uRes3D;           // 0.0 = 2D plate above, 1.0 = volumetric standing-wave field on all three axes (box boundary is the only cage)
 
 // Sorted-grid pairwise collisions: per-particle contact acceleration from
-// pairwiseForcePass (composition-plane xy/xz only). Disabled = exact zero.
+// pairwiseForcePass (composition-plane xy/xz; the second draw buffer carries
+// the depth-axis dv when uPairwise3D = 1). Disabled = exact zero.
 uniform sampler2D uPairwiseForceTexture;
+uniform sampler2D uPairwiseForceZTexture;
 uniform float uPairwiseEnabled;
+uniform float uPairwise3D;
 uniform float uPairMaxDelta;    // per-step clamp on |pairwise dv| (speed units)
 
 // Dual-Phase Toroidal/Poloidal Morph & Inverse Hopf Fibration System
@@ -354,6 +367,7 @@ uniform float uTorusDepthScale;      // volumetric 3D Z-depth expansion (default
 // Interaction properties
 uniform vec2 uPointerPos;
 uniform vec2 uBurstPosition;
+uniform float uBurstZ;        // depth of the queued click effect
 uniform vec2 uBurstVelocity;
 uniform float uBurstRadius;   // characteristic falloff radius of the queued click effect
 uniform float uBurstRadial;   // outward (+) / inward (−) shock component
@@ -376,6 +390,9 @@ uniform float uMediumGridRes;
 uniform float uMediumPlane;         // 0 = XY media axes, 1 = XZ
 uniform float uMediumPressureGain;  // gradient repulsion gain
 uniform float uMediumCoupling;      // drag toward the medium flow
+uniform float uMedium3D;            // 0 = 2D sheet (legacy), 1 = 3D voxel volume
+uniform float uMediumN;             // 3D: voxels per volume axis (N, see mediumGrid.ts)
+uniform float uMediumTexSide;       // 3D: packed texture side (N * N)
 
 // Glyph SDF colliders: letterforms act as physical boundaries whose strength
 // modulates with local particle energy (integrity). The third dimension is
@@ -562,12 +579,15 @@ void main() {
     float fall = exp(-(dist * dist) / (2.0 * radius * radius));
     if (fall < 0.000001) continue;
     if (world3d) {
+      // Swirl about the depth axis of the composition, not always about world
+      // Z: on a horizontal stage the genuine whirlpool axis is vertical.
+      vec3 axis = (uCompPlane > 0.5) ? vec3(0.0, 1.0, 0.0) : vec3(0.0, 0.0, 1.0);
       vec3 radial = d / (dist + 15.0);
-      vec3 tangent = vec3(-d.y, d.x, 0.0) / (dist + 15.0);
+      vec3 tangent = cross(axis, d) / (dist + 15.0);
       if (params.y > 0.5 && params.y < 1.5) fEntity -= radial * (params.x * 400.0 * fall);
       else if (params.y > 1.5 && params.y < 2.5) fEntity += radial * (params.x * 400.0 * fall);
       else if (params.y > 2.5) {
-        vec3 helix = vec3(-d.y, d.x, -d.z * 0.35) / (dist + 10.0);
+        vec3 helix = (cross(axis, d) - axis * dot(d, axis) * 0.35) / (dist + 10.0);
         fEntity += helix * (params.x * 480.0 * fall);
       }
       fEntity += tangent * (params.z * 480.0 * fall);
@@ -621,11 +641,16 @@ void main() {
       float denom = pow(dAttr * dAttr + eps * eps, uGravityFalloff);
       fRelational += toAttr * (uRelationalGravity * aMass * 140000.0 / denom);
       
-      // Relational orbital torque / Coriolis swirl around attractor
-      vec2 aTan = vec2(-toAttr.y, toAttr.x) / (dAttr + 22.0);
+      // Relational orbital torque / Coriolis swirl around attractor. Under true
+      // 3D bodies the whirlpool turns about the depth axis through the attractor,
+      // so a body's sheets revolve with it rather than sliding past in-plane.
       float sr = max(5.0, uSwirlRadius);
       float aFalloff = exp(- (dAttr * dAttr) / (2.0 * sr * sr));
-      fRelational.xy += aTan * (uRelationalSpin * uAttractorSpin[i] * 350.0 * aFalloff);
+      float spinMag = uRelationalSpin * uAttractorSpin[i] * 350.0 * aFalloff;
+      vec3 axisR = (uCompPlane > 0.5) ? vec3(0.0, 1.0, 0.0) : vec3(0.0, 0.0, 1.0);
+      vec3 swirlPlanar = vec3(-toAttr.y, toAttr.x, 0.0) / (dAttr + 22.0);
+      vec3 swirl3 = cross(axisR, toAttr) / (dAttr + 22.0);
+      fRelational += mix(swirlPlanar, swirl3, uDepthGeometry) * spinMag;
     }
 
     // Chaos Vector Field (Strange attractor non-linear flow)
@@ -659,9 +684,12 @@ void main() {
         vec3 dir = (dPtr > 0.001) ? (-toPtr / dPtr) : vec3(0.0);
         fPointer += dir * (uPointerStrength * 400.0 * falloff);
       } else {
-        // Pointer Vortex: swirl around cursor
-        vec2 pTan = vec2(-toPtr.y, toPtr.x) / (dPtr + 10.0);
-        fPointer.xy += pTan * (uPointerStrength * 480.0 * falloff);
+        // Pointer Vortex: swirl around cursor. With 3D bodies the whirl turns
+        // about the depth axis through the pointer, carrying the sheets with it.
+        vec3 axisP = (uCompPlane > 0.5) ? vec3(0.0, 1.0, 0.0) : vec3(0.0, 0.0, 1.0);
+        vec3 swirlPlanar = vec3(-toPtr.y, toPtr.x, 0.0) / (dPtr + 10.0);
+        vec3 swirl3 = cross(axisP, toPtr) / (dPtr + 10.0);
+        fPointer += mix(swirlPlanar, swirl3, uDepthGeometry) * (uPointerStrength * 480.0 * falloff);
       }
 
       // Velocity injection from mouse movement
@@ -672,16 +700,111 @@ void main() {
   // --- 6B. Legacy placed points are compiled into the unified force-emitter table. ---
 
   // --- 7B. Continuous Modal Cymatic Resonator: vibration-field transport ---
-  // Real-time approximation: the field intensity I(u,v) = <w^2> ~= Wre^2 + Wim^2 is the
-  // time-averaged squared plate displacement (the standard "sand on a vibrating plate"
-  // approximation), reconstructed each frame from the resonator's live per-mode complex
-  // envelopes. Particles slide down its gradient into the nodal (low-intensity) regions,
-  // get agitated in proportion to local vibration, and are softly confined to the plate —
-  // there is no attraction to any stored target shape here.
+  // Real-time approximation: the field intensity I = <w^2> ~= Wre^2 + Wim^2 is the
+  // time-averaged squared displacement of the driven medium (the standard "sand on a
+  // vibrating plate" approximation), reconstructed each frame from the resonator's live
+  // per-mode complex envelopes. Particles slide down its gradient into the nodal
+  // (low-intensity) regions, get agitated in proportion to local vibration, and are
+  // softly confined to the resonator's extent — there is no attraction to any stored
+  // target shape here.
+  // uRes3D selects the mode set the CPU is driving: 0 = the 2D plate (uResPlane picks
+  // horizontal/vertical, normal axis hard-confined); 1 = the volumetric standing-wave
+  // field of a rigid-walled box cavity, where the medium IS the space — transport,
+  // agitation and the soft box all act on all three axes, so particles are organised
+  // through the whole volume and entrained toward 3D nodal regions.
   vec3 fResonator = vec3(0.0);
   if (uResEnabled > 0.5 && uResDominance > 0.0001) {
     const float RES_PI = 3.14159265358979;
     float L = max(10.0, uResPlateSize);
+    if (uRes3D > 0.5) {
+      // Volumetric branch: W(x,y,z) = sum envelope * cos(m*pi*u)cos(n*pi*v)cos(p*pi*w),
+      // coordinates centred per axis: u,v,w = pos/L + 0.5. Outside [0,1] the cosines just
+      // extrapolate; the soft box below is what recages those particles. Slot layout
+      // matches cymaticResonator.ts: i = ((m-1)*4 + (n-1))*4 + (p-1), m,n,p in [1..4].
+      float un = pos.x / L + 0.5;
+      float vn = pos.y / L + 0.5;
+      float wn = pos.z / L + 0.5;
+
+      float Wre = 0.0;
+      float Wim = 0.0;
+      float dWre_du = 0.0;
+      float dWre_dv = 0.0;
+      float dWre_dw = 0.0;
+      float dWim_du = 0.0;
+      float dWim_dv = 0.0;
+      float dWim_dw = 0.0;
+
+      for (int i = 0; i < 64; i++) {
+        // Sparse addressed modes are not a contiguous prefix. Inspect all 64 slots.
+        if (abs(uResRe[i]) + abs(uResIm[i]) < 0.00000001) continue;
+        int mi = i / 16;
+        int ni = (i - mi * 16) / 4;
+        int qi = i - mi * 16 - ni * 4;
+        float m = float(mi + 1);
+        float n = float(ni + 1);
+        float p = float(qi + 1);
+
+        float mPiL = m * RES_PI / L;
+        float nPiL = n * RES_PI / L;
+        float pPiL = p * RES_PI / L;
+
+        float cosMu = cos(m * RES_PI * un);
+        float cosNv = cos(n * RES_PI * vn);
+        float cosPw = cos(p * RES_PI * wn);
+        float sinMu = sin(m * RES_PI * un);
+        float sinNv = sin(n * RES_PI * vn);
+        float sinPw = sin(p * RES_PI * wn);
+
+        float phi = cosMu * cosNv * cosPw;
+        float dphi_du = -mPiL * sinMu * cosNv * cosPw;
+        float dphi_dv = -nPiL * cosMu * sinNv * cosPw;
+        float dphi_dw = -pPiL * cosMu * cosNv * sinPw;
+
+        float re = uResRe[i];
+        float im = uResIm[i];
+
+        Wre += re * phi;
+        Wim += im * phi;
+        dWre_du += re * dphi_du;
+        dWre_dv += re * dphi_dv;
+        dWre_dw += re * dphi_dw;
+        dWim_du += im * dphi_du;
+        dWim_dv += im * dphi_dv;
+        dWim_dw += im * dphi_dw;
+      }
+
+      float intensity = (Wre * Wre + Wim * Wim) * uResDriveScale;
+      float dI_du = 2.0 * (Wre * dWre_du + Wim * dWim_du) * uResDriveScale;
+      float dI_dv = 2.0 * (Wre * dWre_dv + Wim * dWim_dv) * uResDriveScale;
+      float dI_dw = 2.0 * (Wre * dWre_dw + Wim * dWim_dw) * uResDriveScale;
+
+      // Transport: slide down the vibration-intensity gradient in full 3D.
+      vec3 transport = -vec3(dI_du, dI_dv, dI_dw) * uResTransport;
+
+      // Agitation: grains bounce where the medium itself is moving, proportional to
+      // sqrt(intensity); the kick is hashed per particle and per frame in 3D.
+      vec3 seedR = vec3(vUv * 731.3, uTime * 9.13);
+      vec3 kick = vec3(
+        fract(sin(dot(seedR, vec3(27.61, 61.19, 14.7))) * 51234.239) * 2.0 - 1.0,
+        fract(sin(dot(seedR, vec3(71.41, 19.61, 38.3))) * 61234.919) * 2.0 - 1.0,
+        fract(sin(dot(seedR, vec3(13.17, 43.71, 91.19))) * 41234.317) * 2.0 - 1.0
+      );
+      vec3 agitation = kick * (uResAgitation * sqrt(max(0.0, intensity)));
+
+      // Soft box on all three axes (half-size L/2 per axis). This volume boundary is the
+      // ONLY cage in 3D: no normal-axis pin, no plate damping — the body law's own spring
+      // holds the shape while the field organises it.
+      float halfL = L * 0.5;
+      vec3 boundaryForce = vec3(0.0);
+      if (abs(pos.x) > halfL) boundaryForce.x = -sign(pos.x) * (abs(pos.x) - halfL);
+      if (abs(pos.y) > halfL) boundaryForce.y = -sign(pos.y) * (abs(pos.y) - halfL);
+      if (abs(pos.z) > halfL) boundaryForce.z = -sign(pos.z) * (abs(pos.z) - halfL);
+      boundaryForce *= uResBoundary;
+
+      fResonator = (transport + agitation + boundaryForce) * clamp(uResDominance, 0.0, 1.0);
+    } else {
+    // 2D plate (legacy path, expressions and constants unchanged). uResPlane stays
+    // meaningful here only: it selects which two world axes are the plate surface.
     float u = pos.x;
     float v = (uResPlane < 0.5) ? pos.z : pos.y;
     float un = u / L;
@@ -769,12 +892,13 @@ void main() {
       vel.z *= mix(1.0, 0.9, dom);
     }
     fResonator *= dom;
+    }
   }
 
   // --- 7C. Shared Eulerian medium: crowd pressure + drag into the medium flow ---
   // Samples are gated to the grid AABB; particles outside the covered extent feel nothing.
   vec3 fMedium = vec3(0.0);
-  if (uMediumEnabled > 0.5) {
+  if (uMediumEnabled > 0.5 && uMedium3D < 0.5) {
     vec2 mPos = (uMediumPlane > 0.5) ? pos.xz : pos.xy;
     vec2 mSpan = max(uMediumMax - uMediumMin, vec2(0.001));
     vec2 guv = (mPos - uMediumMin) / mSpan;
@@ -791,6 +915,69 @@ void main() {
       vec2 gradP = vec2(pR - pL, pT - pB) / (2.0 * max(cellWorld, 0.001));
       vec2 f2 = -gradP * (uMediumPressureGain * 40.0) + (flow - mPlane) * (uMediumCoupling * 6.0);
       if (uMediumPlane > 0.5) fMedium.xz = f2; else fMedium.xy = f2;
+    }
+  }
+  if (uMediumEnabled > 0.5 && uMedium3D > 0.5) {
+    // 3D medium: an N×N×N voxel volume tiled into an N²×N² texture (N×N tiles
+    // of N×N, tile = depth slice; canonical math in mediumGrid.ts). The volume
+    // covers the sheet extent on its two media axes and a depth range of the
+    // same span centred on the field, so it is a cube. The particle samples the
+    // flow trilinearly at its own 3D position and the pressure gradient from
+    // the same eight taps: force acts on all three world axes, so a body is
+    // entrained as a solid through the full depth, not as a decal on a sheet.
+    float mN = uMediumN;
+    float mSide = uMediumTexSide;
+    vec2 mSpan = max(uMediumMax - uMediumMin, vec2(0.001));
+    vec2 mPos = (uMediumPlane > 0.5) ? pos.xz : pos.xy;
+    float mDepth = (uMediumPlane > 0.5) ? pos.y : pos.z;
+    vec2 guv = (mPos - uMediumMin) / mSpan;
+    // Depth axis spans the sheet extent, centred on the field: [-span/2, +span/2].
+    float gd = (mDepth + 0.5 * mSpan.x) / mSpan.x;
+    if (guv.x > 0.0 && guv.x < 1.0 && guv.y > 0.0 && guv.y < 1.0 && gd > 0.0 && gd < 1.0) {
+      // Trilinear tap (macro, not helper: the 7C block stays self-contained
+      // inside main). Voxel coords clamp to the volume edge — free-slip wall,
+      // the same boundary philosophy as the solver — then the tiling maps the
+      // depth slice to its N×N tile.
+      #define M3_TAP(tex, px, py, pz) texture2D(tex, (vec2(mod(pz, mN) * mN + px, floor(pz / mN) * mN + py) + 0.5) / mSide)
+      vec3 fv = clamp(vec3(guv * mN, gd * mN), vec3(0.0), vec3(mN - 1.0));
+      vec3 mi = floor(fv);
+      vec3 mf = fv - mi;
+      vec3 c0 = max(mi, vec3(0.0));
+      vec3 c1 = min(mi + vec3(1.0), vec3(mN - 1.0));
+      vec4 v000 = M3_TAP(uMediumVelTexture, c0.x, c0.y, c0.z);
+      vec4 v100 = M3_TAP(uMediumVelTexture, c1.x, c0.y, c0.z);
+      vec4 v010 = M3_TAP(uMediumVelTexture, c0.x, c1.y, c0.z);
+      vec4 v110 = M3_TAP(uMediumVelTexture, c1.x, c1.y, c0.z);
+      vec4 v001 = M3_TAP(uMediumVelTexture, c0.x, c0.y, c1.z);
+      vec4 v101 = M3_TAP(uMediumVelTexture, c1.x, c0.y, c1.z);
+      vec4 v011 = M3_TAP(uMediumVelTexture, c0.x, c1.y, c1.z);
+      vec4 v111 = M3_TAP(uMediumVelTexture, c1.x, c1.y, c1.z);
+      vec3 flow = mix(mix(mix(v000, v100, mf.x), mix(v010, v110, mf.x), mf.y),
+                      mix(mix(v001, v101, mf.x), mix(v011, v111, mf.x), mf.y), mf.z).xyz;
+      float p000 = M3_TAP(uMediumPressureTexture, c0.x, c0.y, c0.z).x;
+      float p100 = M3_TAP(uMediumPressureTexture, c1.x, c0.y, c0.z).x;
+      float p010 = M3_TAP(uMediumPressureTexture, c0.x, c1.y, c0.z).x;
+      float p110 = M3_TAP(uMediumPressureTexture, c1.x, c1.y, c0.z).x;
+      float p001 = M3_TAP(uMediumPressureTexture, c0.x, c0.y, c1.z).x;
+      float p101 = M3_TAP(uMediumPressureTexture, c1.x, c0.y, c1.z).x;
+      float p011 = M3_TAP(uMediumPressureTexture, c0.x, c1.y, c1.z).x;
+      float p111 = M3_TAP(uMediumPressureTexture, c1.x, c1.y, c1.z).x;
+      #undef M3_TAP
+      // Exact trilinear derivative: per-cell pressure slope per world px — the
+      // same magnitude the 2D central difference carries on smooth fields.
+      float cellWorld = mSpan.x / max(mN, 1.0);
+      vec3 gradP = vec3(
+        ((p100 - p000) * (1.0 - mf.y) + (p110 - p010) * mf.y) * (1.0 - mf.z)
+          + ((p101 - p001) * (1.0 - mf.y) + (p111 - p011) * mf.y) * mf.z,
+        ((p010 - p000) * (1.0 - mf.x) + (p110 - p100) * mf.x) * (1.0 - mf.z)
+          + ((p011 - p001) * (1.0 - mf.x) + (p111 - p101) * mf.x) * mf.z,
+        ((p001 - p000) * (1.0 - mf.y) + (p011 - p010) * mf.y) * (1.0 - mf.x)
+          + ((p101 - p100) * (1.0 - mf.y) + (p111 - p110) * mf.y) * mf.x
+      ) / max(cellWorld, 0.001);
+      vec3 mVel = (uMediumPlane > 0.5) ? vel.xzy : vel.xyz;
+      vec3 f3 = -gradP * (uMediumPressureGain * 40.0) + (flow - mVel) * (uMediumCoupling * 6.0);
+      // Medium-axis order (a, b, depth) unwound to world axes; all three drive.
+      fMedium += (uMediumPlane > 0.5) ? f3.xzy : f3;
     }
   }
 
@@ -847,9 +1034,17 @@ void main() {
           float push = uCollisionStrength * 400.0 * exp(clamp(-cWorld / cBand, -1.0, 2.0));
           fCollision += cN * (push * cW);
           if (cVn < 0.0) {
-            vec2 reflected = cTan * (1.0 - uCollisionFriction) - cN.xy * (cVn * uCollisionRestitution);
-            vec2 vNew = mix(cPlane, reflected, cW);
-            if (uCompPlane > 0.5) vel.xz = vNew; else vel.xy = vNew;
+            if (uDepthGeometry > 0.5) {
+              // The depth axis takes part in the contact: a face hit reflects
+              // and rubs in full 3D, so a face is as hard as a flank.
+              float vn3 = dot(vel, cN);
+              vec3 reflected3 = (vel - cN * vn3) * (1.0 - uCollisionFriction) - cN * (vn3 * uCollisionRestitution);
+              vel = mix(vel, reflected3, cW);
+            } else {
+              vec2 reflected = cTan * (1.0 - uCollisionFriction) - cN.xy * (cVn * uCollisionRestitution);
+              vec2 vNew = mix(cPlane, reflected, cW);
+              if (uCompPlane > 0.5) vel.xz = vNew; else vel.xy = vNew;
+            }
           }
         }
       } else {
@@ -859,9 +1054,15 @@ void main() {
           float push = uCollisionStrength * 400.0 * cFalloff;
           fCollision -= cN * (push * cW);
           if (cVn > 0.0) {
-            vec2 reflected = cTan * (1.0 - uCollisionFriction) - cN.xy * (cVn * uCollisionRestitution);
-            vec2 vNew = mix(cPlane, reflected, cW);
-            if (uCompPlane > 0.5) vel.xz = vNew; else vel.xy = vNew;
+            if (uDepthGeometry > 0.5) {
+              float vn3 = dot(vel, cN);
+              vec3 reflected3 = (vel - cN * vn3) * (1.0 - uCollisionFriction) - cN * (vn3 * uCollisionRestitution);
+              vel = mix(vel, reflected3, cW);
+            } else {
+              vec2 reflected = cTan * (1.0 - uCollisionFriction) - cN.xy * (cVn * uCollisionRestitution);
+              vec2 vNew = mix(cPlane, reflected, cW);
+              if (uCompPlane > 0.5) vel.xz = vNew; else vel.xy = vNew;
+            }
           }
         }
       }
@@ -874,10 +1075,22 @@ void main() {
   vec3 fPairwise = vec3(0.0);
   if (uPairwiseEnabled > 0.5) {
     vec4 pw = texture2D(uPairwiseForceTexture, vUv);
-    vec2 pairDv = pw.zw;
-    float pairDvLen = length(pairDv);
-    if (pairDvLen > uPairMaxDelta) pairDv *= uPairMaxDelta / pairDvLen;
-    vec3 pairAccel = (uCompPlane < 0.5) ? vec3(pairDv, 0.0) : vec3(pairDv.x, 0.0, pairDv.y);
+    vec3 pairAccel;
+    if (uPairwise3D > 0.5) {
+      // 3D bodies: the force pass's second draw buffer carries the depth-axis
+      // dv, and the clamp must bound the full 3D velocity change, not its
+      // in-plane projection. Stored order is (plane axis 0, depth, plane axis 1),
+      // which is already the world order on the XZ plate.
+      vec3 pairDv3 = vec3(pw.z, texture2D(uPairwiseForceZTexture, vUv).x, pw.w);
+      float pairDvLen3 = length(pairDv3);
+      if (pairDvLen3 > uPairMaxDelta) pairDv3 *= uPairMaxDelta / pairDvLen3;
+      pairAccel = (uCompPlane < 0.5) ? vec3(pairDv3.x, pairDv3.z, pairDv3.y) : pairDv3;
+    } else {
+      vec2 pairDv = pw.zw;
+      float pairDvLen = length(pairDv);
+      if (pairDvLen > uPairMaxDelta) pairDv *= uPairMaxDelta / pairDvLen;
+      pairAccel = (uCompPlane < 0.5) ? vec3(pairDv, 0.0) : vec3(pairDv.x, 0.0, pairDv.y);
+    }
     fPairwise = pairAccel / max(uDelta, 0.0001);
   }
 
@@ -885,14 +1098,18 @@ void main() {
   // Queued click effects: a falloff-weighted impulse around the burst centre,
   // independently queued so a toolbar click cannot be cleared by pointer-leave.
   // Directional (shove), radial (pulse / implode) and tangential (vortex)
-  // components compose; each decays through the CPU-side effect state.
-  vec2 burstDir = pos.xy - uBurstPosition;
-  float burstDist = max(0.001, length(burstDir));
-  burstDir /= burstDist;
+  // components compose; each decays through the CPU-side effect state. With 3D
+  // bodies the radial shock measures in the full frame (a sphere, not a disc)
+  // and the whirl turns about the depth axis through the burst centre.
+  vec3 burstOff = pos - vec3(uBurstPosition, uBurstZ);
+  float burstDistPlanar = max(0.001, length(burstOff.xy));
+  float burstDist = mix(burstDistPlanar, max(0.001, length(burstOff)), uDepthGeometry);
+  vec3 radialDir = mix(vec3(burstOff.xy / burstDistPlanar, 0.0), burstOff / burstDist, uDepthGeometry);
   float burstFalloff = pow(max(0.0, 1.0 - burstDist / max(0.001, uBurstRadius)), uPointerFalloffPower);
+  vec3 burstAxis = (uCompPlane > 0.5) ? vec3(0.0, 1.0, 0.0) : vec3(0.0, 0.0, 1.0);
   fPointer.xy += uBurstVelocity * burstFalloff * 0.85;
-  fPointer.xy += burstDir * uBurstRadial * burstFalloff;
-  fPointer.xy += vec2(-burstDir.y, burstDir.x) * uBurstSpin * burstFalloff;
+  fPointer += radialDir * (uBurstRadial * burstFalloff);
+  fPointer += mix(vec3(-radialDir.y, radialDir.x, 0.0), cross(burstAxis, radialDir), uDepthGeometry) * (uBurstSpin * burstFalloff);
   vec3 accel = fSpring + fCurl + fVortex + fEntity + fDisperse + fRelational + fPointer + fHopf + fResonator + fMedium + fCollision + fPairwise;
 
   // Constant body force (gravity / wind)
