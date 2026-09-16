@@ -121,6 +121,14 @@ band. **Body Depth** is the thickness, **Flank Share / Face Share / Interior
 Fill** are the split between those families, and **Depth Profile** picks the
 cross-section (slab, bevel, round, dome, taper).
 
+The law is one law for every planar object type. Image masks, ASCII drawings,
+primitives and 2D cymatic plates measure their bodies with the same distance
+transform — a sampled photograph or a typed drawing extrudes exactly like a
+letterform of the same settings, and the collision wall extrudes with it.
+Toggling the law re-derives every already-loaded source pool against the new
+setting, so a scene of masks gains (or loses) its bodies without re-uploading
+anything.
+
 Depth is then real geometry, not a rendering trick, and the rest of the engine
 follows it:
 
@@ -150,9 +158,12 @@ particle budget like anything else: raise **Body Depth** and drop **Particle
 Count** if a device struggles.
 
 The law lives in `src/engine/glyphVolume.ts`; its behaviour is pinned by
-`tests/glyphVolume.test.ts` and by a real-browser acceptance run that drives the
-studio controls and reads settled GPU particle state back
-(`field-studies-journeys/tests/three_d_body_browser.py`).
+`tests/glyphVolume.test.ts`, by the source-uniformity suite
+`tests/sourceVolume.test.ts`, and by real-browser acceptance runs that drive
+the studio controls and read settled GPU particle state back
+(`field-studies-journeys/tests/three_d_body_browser.py` for letterforms,
+`field-studies-journeys/tests/three_d_source_body_browser.py` for the
+twelve-mask image study).
 
 ## Semantic field
 
@@ -181,6 +192,7 @@ npm run test:gpu
 npm run test:browser
 npm run test:workspace
 python field-studies-journeys/tests/three_d_body_browser.py
+python field-studies-journeys/tests/three_d_source_body_browser.py
 python field-studies-journeys/tests/semantic_field_browser.py
 python field-studies-journeys/tests/module_browser.py
 ```

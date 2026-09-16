@@ -157,12 +157,25 @@ with browser_session({'width': 1280, 'height': 900}) as (_, ctx, page):
     )
 
     # --- 4. A second mask of the twelve gains the same body --------------------
+    # The toggle is a per-scene engine setting, so scene VI starts flat again —
+    # this mask is then sampled with the law already on, the fresh-load twin of
+    # scene I's toggle-after-load path.
     page.evaluate("window.__FIELD_STUDIES__.setScene(5)")
-    page.wait_for_timeout(5000)
+    page.wait_for_timeout(3000)
     second_name = page.evaluate("window.__FIELD_STUDIES__.getDocument().scenes[5].name")
+    # Not asserted: the 2.5s scene transition is still settling here, so the
+    # span carries over particles from scene I's body. Scene I pins the flat
+    # baseline; scene VI only has to prove the fresh-load path extrudes.
+    second_ticked = page.evaluate("""() => {
+      const el = document.querySelector('input[data-bind="engine.volumeEnabled"]');
+      if (!el) return false;
+      if (!el.checked) { el.checked = true; el.dispatchEvent(new Event('change', {bubbles: true})); }
+      return true;
+    }""")
+    check('the second scene carries its own volume toggle', second_ticked)
     second = wait_for_span(page, 30, timeout_ms=90000)
     second_stats = page.evaluate(DEPTH_STATS)
-    check(f'another mask of the twelve ({second_name}) extrudes too', second and second_stats['spanZ'] > 30,
+    check(f'the second mask ({second_name}) extrudes too', second and second_stats['spanZ'] > 30,
           f"z span {second_stats['spanZ']:.2f}")
 
     # --- 5. No engine or shader errors ----------------------------------------
