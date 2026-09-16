@@ -68,6 +68,19 @@ export interface PointCloudRelationalConfig {
   swirlRadius?: number;       // Gaussian radius of the orbital swirl around each attractor (default 500)
 }
 
+/**
+ * Sorted-grid pairwise particle collisions (DEM-style contact response).
+ * Default-off: absent or enabled=false reproduces the classic simulation exactly.
+ */
+export interface PairwiseConfig {
+  enabled: boolean;
+  radius?: number;      // Interaction radius h in world px (2..80, default 14; ~baked slot spacing)
+  stiffness?: number;   // Separation spring strength (0..10, default 1)
+  restitution?: number; // Normal damping on approach (0..1, default 0.2)
+  viscosity?: number;   // Tangential relative-velocity smoothing (0..1, default 0.3)
+  extent?: number;      // Collision-grid half-extent in world px (200..5000, default 1400)
+}
+
 export type ChainTraversalMode = 'loop' | 'pingpong' | 'randomWalk' | 'chaos' | 'shuffle';
 export type ChainEasing = 'smoothstep' | 'linear' | 'kineticSnap' | 'whip';
 /** 'time' = classic hold/transition timeline. 'morphCycle' = the morph oscillator is the clock: one toroidal cycle = one link. */
@@ -431,6 +444,7 @@ export interface PointCloudConfig {
   fluid: PointCloudFluidConfig;
   interaction: PointCloudInteractionConfig;
   relational?: PointCloudRelationalConfig;
+  pairwise?: PairwiseConfig;
   chaining?: PointCloudChainingConfig;
   spatialChakra?: SpatialChakraConfig;
   toroidalMorph?: ToroidalMorphConfig;
