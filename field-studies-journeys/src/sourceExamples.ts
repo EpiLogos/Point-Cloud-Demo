@@ -105,6 +105,31 @@ function twelveFaces():Journey{
  return j;
 }
 
+/** Depth lamination: the sequence's spatial dual. Three states — a face, a
+ * typed lattice, and a second face — render simultaneously as front, core and
+ * back of one laminated head. The clock rests; the layers hold. */
+function laminated():Journey{
+ const s=studyScene('Laminated head','Front and back of one head, a typed lattice between — three states composed in depth at once.');
+ const mask=s.entities[0];
+ mask.name='Laminated head';
+ mask.size={x:1.35,y:1.35};
+ const face=(id:string,z:number,dataUrl:string,name:string):SequenceStep=>({id,text:'O',shape:'text',hold:4,transition:3,position:{x:0,y:0,z},source:{kind:'image',image:{mode:'luminance',threshold:.19,invert:false,scale:1,dataUrl,name}}});
+ mask.sequence={...mask.sequence,enabled:false,manual:false,laminate:{span:1.1},steps:[
+  face('lam-front',.38,FACES_DATA_URLS[1],'face-front'),
+  {id:'lam-core',text:'O',shape:'text',hold:4,transition:3,position:{x:0,y:0,z:0},source:{kind:'ascii',ascii:{text:['        # ######## #','      ###        ###','    ###  ##  ##  ###','   ##   ##    ##   ##','   ##    ##  ##    ##','   ##     ##      ##','    #             #'].join('\n'),fontFamily:'monospace'}},name:'typed lattice'},
+  face('lam-back',-.38,FACES_DATA_URLS[9],'face-back'),
+ ]};
+ mask.tint='#9fd8e8';
+ s.engine.volumeEnabled=true;
+ s.field.background='#0a0f1c';
+ s.field.palette=['#e8fbff','#6fd8e8','#2e7fa8'];
+ s.engine.inkMode='whiteOnBlack';
+ s.engine.backgroundMode='ambientGlow';
+ Object.assign(s.field.params,{count:62000,size:2.25,opacity:.92,contrast:.82,warp:.1,dispersion:.04,jitter:.4,speed:.42,turbulence:.12});
+ const j:Journey={schema:'oi.journey' as const,version:1,id:'source-laminate-head',name:'Laminate · head, front and back',description:'Depth lamination: three states hold at once as front, core and back of one head. The sequence clock rests; the layers stand.',loop:true,scenes:[s],updatedAt:new Date().toISOString()};
+ return j;
+}
+
 export function sourceStudies():StartingPoint[]{
- return [mono(),neon(),cutout(),ascii(),twelveFaces()].map(expression=>({id:expression.id,group:'Source studies' as const,expression:initialiseSources(expression)}));
+ return [mono(),neon(),cutout(),ascii(),twelveFaces(),laminated()].map(expression=>({id:expression.id,group:'Source studies' as const,expression:initialiseSources(expression)}));
 }
