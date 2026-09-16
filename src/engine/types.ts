@@ -73,6 +73,38 @@ export type ChainEasing = 'smoothstep' | 'linear' | 'kineticSnap' | 'whip';
 /** 'time' = classic hold/transition timeline. 'morphCycle' = the morph oscillator is the clock: one toroidal cycle = one link. */
 export type ChainAdvanceMode = 'time' | 'morphCycle';
 
+/**
+ * Shared Eulerian medium: a coarse grid fluid that particles inject momentum into
+ * and are pushed around by (see mediumShaders.ts). Absent or `enabled: false`
+ * keeps the simulation numerically identical to the classic engine.
+ */
+export interface MediumConfig {
+  enabled: boolean;
+  pressure?: number;      // pressure-gradient crowd repulsion gain (0..20, default 4)
+  coupling?: number;      // velocity drag into the medium flow (0..4, default 0.8)
+  persistence?: number;   // medium velocity retained per frame at 60fps (0.8..1.0, default 0.97)
+  iterations?: number;    // Jacobi pressure steps per frame (1..12, default 4)
+  gridRes?: number;       // square solver grid resolution (default 192)
+  splatGain?: number;     // momentum injection scale (0..4, default 1)
+  extent?: number;        // world half-extent the grid covers (200..5000, default 1400)
+  plane?: 'compositionPlane' | 'world3d'; // media axes follow the composition plane, or always the XZ world floor
+}
+
+/**
+ * Glyph SDF colliders: each formation's letterform acts as a solid boundary with
+ * restitution/friction and energy-dependent integrity (fast particles punch
+ * through; the wall heals as things calm down).
+ */
+export interface CollisionConfig {
+  enabled: boolean;
+  mode?: 'obstacle' | 'vessel'; // strokes solid vs strokes as containers
+  restitution?: number;   // normal bounce on contact (0..1, default 0.35)
+  friction?: number;      // tangential loss on contact (0..1, default 0.1)
+  band?: number;          // influence band around the surface in px (5..200, default 40)
+  strength?: number;      // soft push gain (0..20, default 4)
+  integrity?: number;     // energy-dependent wall weakening (0..4, default 0.5)
+}
+
 export interface PointCloudChainingConfig {
   enabled: boolean;                      // Sequenced morph chaining mode toggle
   chain: string[];                       // Array of glyphs or words in sequence
@@ -414,6 +446,10 @@ export interface PointCloudConfig {
   /** Semantic interpretation/expression layer. Physics remains independent when absent/disabled. */
   semanticField?: import('./semantics/semanticTypes').SemanticFieldConfig;
   resonanceDrive?: import('./resonanceDrive').ResonanceDriveConfig;
+  /** Shared Eulerian medium (default off; absent = disabled with defaults). */
+  medium?: MediumConfig;
+  /** Glyph SDF collision boundaries (default off; absent = disabled with defaults). */
+  collision?: CollisionConfig;
 
   /** @deprecated legacy — migrated into entities[0] (kept only as migration input) */
   glyph: string | string[];           // e.g., ["O", "I"] or "OI" or "✦ ✧"

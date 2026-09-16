@@ -4,13 +4,22 @@
  */
 
 import * as THREE from 'three';
-import { PointCloudConfig } from './types';
+import { PointCloudConfig, MediumConfig } from './types';
 import type { ForceEmitterState } from './forceRuntime';
 import {
   simulationVertexShader,
   positionSimulationShader,
   velocitySimulationShader,
 } from './shaders/simulationShaders';
+import {
+  mediumSplatVertexShader,
+  mediumSplatFragmentShader,
+  mediumAdvectShader,
+  mediumDivergenceShader,
+  mediumPressureShader,
+  mediumGradientSubtractShader,
+  MEDIUM_PRESSURE_DECAY,
+} from './shaders/mediumShaders';
 
 export class GPGPUSimulator {
   private renderer: THREE.WebGLRenderer;
@@ -30,6 +39,26 @@ export class GPGPUSimulator {
   public nextPosTarget: THREE.WebGLRenderTarget;
   public currentVelTarget: THREE.WebGLRenderTarget;
   public nextVelTarget: THREE.WebGLRenderTarget;
+
+  // Shared medium (Eulerian grid): ping-pong velocity + divergence + ping-pong pressure.
+  // Allocated lazily at the configured grid resolution.
+  private mediumRes = 0;
+  private mediumVel0: THREE.WebGLRenderTarget | null = null;
+  private mediumVel1: THREE.WebGLRenderTarget | null = null;
+  private mediumDivergenceTarget: THREE.WebGLRenderTarget | null = null;
+  private mediumPressure0: THREE.WebGLRenderTarget | null = null;
+  private mediumPressure1: THREE.WebGLRenderTarget | null = null;
+  public mediumVelRead: THREE.WebGLRenderTarget | null = null;
+  private mediumVelWrite: THREE.WebGLRenderTarget | null = null;
+  private mediumPressureRead: THREE.WebGLRenderTarget | null = null;
+  private mediumPressureWrite: THREE.WebGLRenderTarget | null = null;
+  private mediumSplatMaterial: THREE.ShaderMaterial;
+  private mediumAdvectMaterial: THREE.ShaderMaterial;
+  private mediumDivergenceMaterial: THREE.ShaderMaterial;
+  private mediumPressureMaterial: THREE.ShaderMaterial;
+  private mediumGradientMaterial: THREE.ShaderMaterial;
+  private splatScene: THREE.Scene;
+  private splatPoints: THREE.Points;
 
   // Quad setup for GPGPU render pass
   private quadScene: THREE.Scene;
@@ -93,6 +122,18 @@ export class GPGPUSimulator {
         uMorphTrajectory: { value: 0.0 },
         uZDepthRetention: { value: 0.0 },
         uZConfinement: { value: 1.0 },
+        // Glyph SDF colliders (hard projection out of obstacle interiors)
+        uCollisionEnabled: { value: 0.0 },
+        uCollisionMode: { value: 0.0 },
+        uCollisionIntegrity: { value: 0.5 },
+        uSdfAtlas: { value: null },
+        uCollisionTile: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0.5, 0)) },
+        uEntityCount: { value: 0 },
+        uEntityBounds: { value: new Float32Array(10) },
+        uEntityCenter: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)) },
+        uEntityMorph: { value: new Float32Array(10) },
+        uEntityTransform: { value: Array.from({ length: 10 }, () => new THREE.Vector3(1, 1, 0)) },
+        uTexSize: { value: new THREE.Vector2(1, 1) },
       },
       depthTest: false,
       depthWrite: false,
@@ -214,6 +255,29 @@ export class GPGPUSimulator {
         uPointerStrength: { value: 1.0 },
         uInteractionMode: { value: 0.0 },
 
+        // Shared Eulerian medium (all terms multiply the enabled guard)
+        uMediumEnabled: { value: 0.0 },
+        uMediumVelTexture: { value: null },
+        uMediumPressureTexture: { value: null },
+        uMediumMin: { value: new THREE.Vector2(-1400, -1400) },
+        uMediumMax: { value: new THREE.Vector2(1400, 1400) },
+        uMediumTexel: { value: new THREE.Vector2(1 / 192, 1 / 192) },
+        uMediumGridRes: { value: 192.0 },
+        uMediumPlane: { value: 0.0 },
+        uMediumPressureGain: { value: 4.0 },
+        uMediumCoupling: { value: 0.8 },
+
+        // Glyph SDF colliders (all terms multiply the enabled guard)
+        uCollisionEnabled: { value: 0.0 },
+        uCollisionMode: { value: 0.0 },
+        uCollisionRestitution: { value: 0.35 },
+        uCollisionFriction: { value: 0.1 },
+        uCollisionBand: { value: 40.0 },
+        uCollisionStrength: { value: 4.0 },
+        uCollisionIntegrity: { value: 0.5 },
+        uSdfAtlas: { value: null },
+        uCollisionTile: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0.5, 0)) },
+
       },
       depthTest: false,
       depthWrite: false,
@@ -221,6 +285,84 @@ export class GPGPUSimulator {
 
     this.quadMesh = new THREE.Mesh(quadGeom, this.posMaterial);
     this.quadScene.add(this.quadMesh);
+
+    // Medium splat pass: one 1px point per particle, additive into the velocity grid.
+    this.splatScene = new THREE.Scene();
+    {
+      const splatUv = new Float32Array(this.particleCount * 2);
+      for (let i = 0; i < this.particleCount; i++) {
+        splatUv[i * 2 + 0] = ((i % this.texWidth) + 0.5) / this.texWidth;
+        splatUv[i * 2 + 1] = (Math.floor(i / this.texWidth) + 0.5) / this.texHeight;
+      }
+      const splatGeom = new THREE.BufferGeometry();
+      splatGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(this.particleCount * 3), 3));
+      splatGeom.setAttribute('aParticleUv', new THREE.BufferAttribute(splatUv, 2));
+      this.mediumSplatMaterial = new THREE.ShaderMaterial({
+        vertexShader: mediumSplatVertexShader,
+        fragmentShader: mediumSplatFragmentShader,
+        uniforms: {
+          uPositionTexture: { value: null },
+          uVelocityTexture: { value: null },
+          uMediumMin: { value: new THREE.Vector2(-1400, -1400) },
+          uMediumMax: { value: new THREE.Vector2(1400, 1400) },
+          uMediumPlane: { value: 0.0 },
+          uSplatGain: { value: 1.0 },
+        },
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        depthTest: false,
+        depthWrite: false,
+      });
+      this.splatPoints = new THREE.Points(splatGeom, this.mediumSplatMaterial);
+      this.splatPoints.frustumCulled = false;
+      this.splatScene.add(this.splatPoints);
+    }
+
+    // Solver quad materials (created eagerly; no GPU work until a pass renders).
+    const unitTexel = () => new THREE.Vector2(1 / 192, 1 / 192);
+    this.mediumAdvectMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: mediumAdvectShader,
+      uniforms: {
+        uMediumVelocity: { value: null },
+        uDelta: { value: 0.016 },
+        uDissipation: { value: 0.97 },
+        uMediumExtent: { value: 2800.0 },
+        uTexel: { value: unitTexel() },
+      },
+      depthTest: false,
+      depthWrite: false,
+    });
+    this.mediumDivergenceMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: mediumDivergenceShader,
+      uniforms: { uMediumVelocity: { value: null }, uTexel: { value: unitTexel() } },
+      depthTest: false,
+      depthWrite: false,
+    });
+    this.mediumPressureMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: mediumPressureShader,
+      uniforms: {
+        uPressure: { value: null },
+        uDivergence: { value: null },
+        uTexel: { value: unitTexel() },
+        uPressureDecay: { value: MEDIUM_PRESSURE_DECAY },
+      },
+      depthTest: false,
+      depthWrite: false,
+    });
+    this.mediumGradientMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: mediumGradientSubtractShader,
+      uniforms: {
+        uPressure: { value: null },
+        uMediumVelocity: { value: null },
+        uTexel: { value: unitTexel() },
+      },
+      depthTest: false,
+      depthWrite: false,
+    });
   }
 
   /**
@@ -330,6 +472,35 @@ export class GPGPUSimulator {
       vU.uEntityTransform.value[i].copy(u.transforms[i]);
     }
     (vU.uTexSize.value as THREE.Vector2).set(this.texWidth, this.texHeight);
+    // The position pass resolves partitions for the SDF hard projection (no depth/normalization need).
+    const pU = this.posMaterial.uniforms;
+    pU.uEntityCount.value = vU.uEntityCount.value;
+    (pU.uEntityBounds.value as Float32Array).set(u.bounds.subarray(0, 10));
+    (pU.uEntityMorph.value as Float32Array).set(u.morph.subarray(0, 10));
+    const pC = pU.uEntityCenter.value as THREE.Vector4[];
+    for (let i = 0; i < 10; i++) {
+      pC[i].copy(u.centers[i]);
+      pU.uEntityTransform.value[i].copy(u.transforms[i]);
+    }
+    (pU.uTexSize.value as THREE.Vector2).set(this.texWidth, this.texHeight);
+  }
+
+  /**
+   * Upload the glyph SDF atlas (one texture per bake cycle) plus per-partition
+   * tile rects (uv origin x/y, tile width u, enabled). Scalar collision physics
+   * are config-driven in step().
+   */
+  public setCollisionState(tiles: Float32Array, texture: THREE.Texture | null) {
+    const vU = this.velMaterial.uniforms;
+    const pU = this.posMaterial.uniforms;
+    const vTiles = vU.uCollisionTile.value as THREE.Vector4[];
+    const pTiles = pU.uCollisionTile.value as THREE.Vector4[];
+    for (let i = 0; i < 10; i++) {
+      vTiles[i].fromArray(tiles, i * 4);
+      pTiles[i].copy(vTiles[i]);
+    }
+    vU.uSdfAtlas.value = texture;
+    pU.uSdfAtlas.value = texture;
   }
 
   public setForceEmitters(emitters: readonly ForceEmitterState[]) {
@@ -432,12 +603,13 @@ export class GPGPUSimulator {
   ) {
     if (!(dt > 0)) return;
     this.stepCount++;
+    const clampedDt = Math.min(dt, 0.033);
     // 1. Update uniforms for velocity simulation
     const vUniforms = this.velMaterial.uniforms;
     vUniforms.uPositionTexture.value = this.currentPosTarget.texture;
     vUniforms.uVelocityTexture.value = this.currentVelTarget.texture;
     vUniforms.uMorphProgress.value = morphProgress;
-    vUniforms.uDelta.value = Math.min(dt, 0.033);
+    vUniforms.uDelta.value = clampedDt;
     vUniforms.uTime.value = time;
 
     vUniforms.uCurlScale.value = config.fluid.curlScale;
@@ -504,6 +676,45 @@ export class GPGPUSimulator {
     vUniforms.uGravityFalloff.value = rel?.gravityFalloff ?? 1.45;
     vUniforms.uSwirlRadius.value = rel?.swirlRadius ?? 500.0;
 
+    // Shared medium: scalar physics are config-driven; textures bind the last
+    // completed solver state. Atlas tiles arrive through setCollisionState.
+    const medium = config.medium;
+    const mediumEnabled = !!(medium && medium.enabled);
+    vUniforms.uMediumEnabled.value = mediumEnabled ? 1.0 : 0.0;
+    if (mediumEnabled && medium) {
+      const mediumExtent = Math.max(200, Math.min(20000, medium.extent ?? 1400));
+      const mediumRes = Math.max(16, Math.min(1024, Math.round(medium.gridRes ?? 192)));
+      this.ensureMediumTargets(mediumRes);
+      const compPlane = vUniforms.uCompPlane.value as number;
+      vUniforms.uMediumPressureGain.value = Math.max(0, medium.pressure ?? 4);
+      vUniforms.uMediumCoupling.value = Math.max(0, medium.coupling ?? 0.8);
+      (vUniforms.uMediumMin.value as THREE.Vector2).set(-mediumExtent, -mediumExtent);
+      (vUniforms.uMediumMax.value as THREE.Vector2).set(mediumExtent, mediumExtent);
+      (vUniforms.uMediumTexel.value as THREE.Vector2).set(1 / mediumRes, 1 / mediumRes);
+      vUniforms.uMediumGridRes.value = mediumRes;
+      // 'world3d' pins the medium to the XZ world floor; otherwise it follows the composition plane.
+      vUniforms.uMediumPlane.value = medium.plane === 'world3d' ? 1.0 : compPlane;
+      vUniforms.uMediumVelTexture.value = this.mediumVelRead!.texture;
+      vUniforms.uMediumPressureTexture.value = this.mediumPressureRead!.texture;
+    }
+
+    const collision = config.collision;
+    const collisionEnabled = !!(collision && collision.enabled);
+    vUniforms.uCollisionEnabled.value = collisionEnabled ? 1.0 : 0.0;
+    this.posMaterial.uniforms.uCollisionEnabled.value = collisionEnabled ? 1.0 : 0.0;
+    if (collisionEnabled && collision) {
+      const modeVal = collision.mode === 'vessel' ? 1.0 : 0.0;
+      const integrity = Math.max(0, collision.integrity ?? 0.5);
+      vUniforms.uCollisionMode.value = modeVal;
+      vUniforms.uCollisionRestitution.value = Math.max(0, Math.min(1, collision.restitution ?? 0.35));
+      vUniforms.uCollisionFriction.value = Math.max(0, Math.min(1, collision.friction ?? 0.1));
+      vUniforms.uCollisionBand.value = Math.max(1, collision.band ?? 40);
+      vUniforms.uCollisionStrength.value = Math.max(0, collision.strength ?? 4);
+      vUniforms.uCollisionIntegrity.value = integrity;
+      this.posMaterial.uniforms.uCollisionMode.value = modeVal;
+      this.posMaterial.uniforms.uCollisionIntegrity.value = integrity;
+    }
+
     vUniforms.uPointerPos.value.copy(pointerPos);
     vUniforms.uPointerZ.value = pointerZ;
     vUniforms.uPointerVelocity.value.copy(pointerVel).multiplyScalar(config.interaction.velocityInfluence ?? 1.0);
@@ -529,7 +740,7 @@ export class GPGPUSimulator {
     const pUniforms = this.posMaterial.uniforms;
     pUniforms.uPositionTexture.value = this.currentPosTarget.texture;
     pUniforms.uVelocityTexture.value = this.currentVelTarget.texture;
-    pUniforms.uDelta.value = Math.min(dt, 0.033);
+    pUniforms.uDelta.value = clampedDt;
     pUniforms.uMorphTrajectory.value = tm && tm.enabled !== false && tm.trajectory !== 'linear' ? 1.0 : 0.0;
     pUniforms.uZDepthRetention.value = tm?.enabled ? 1.0 : 0.0;
     pUniforms.uZConfinement.value = config.fluid.zConfinement ?? 1.0;
@@ -544,8 +755,134 @@ export class GPGPUSimulator {
     this.currentPosTarget = this.nextPosTarget;
     this.nextPosTarget = tempPos;
 
+    // 5. Shared medium update: splat → advect → diverge → Jacobi pressure → gradient
+    // subtract. Every pass is skipped when the medium is disabled.
+    if (mediumEnabled && medium) this.stepMedium(clampedDt, medium);
+
     // Reset render target
     this.renderer.setRenderTarget(null);
+  }
+
+  // ------------------------------------------------------------------ shared medium
+  /** Allocate (or reallocate at a new gridRes) the medium solver targets. */
+  private ensureMediumTargets(res: number) {
+    if (this.mediumRes === res && this.mediumVel0) return;
+    this.disposeMediumTargets();
+    const isWebGL2 = this.renderer.capabilities.isWebGL2;
+    const floatType = isWebGL2 ? THREE.FloatType : THREE.HalfFloatType;
+    // Bilinear filtering keeps semi-Lagrangian lookups smooth when the device can
+    // filter float textures; otherwise sampling falls back to nearest (blocky but valid).
+    const filter = isWebGL2 && this.renderer.extensions.has('OES_texture_float_linear')
+      ? THREE.LinearFilter
+      : THREE.NearestFilter;
+    const options: THREE.RenderTargetOptions = {
+      type: floatType,
+      format: THREE.RGBAFormat,
+      minFilter: filter,
+      magFilter: filter,
+      wrapS: THREE.ClampToEdgeWrapping,
+      wrapT: THREE.ClampToEdgeWrapping,
+      generateMipmaps: false,
+      stencilBuffer: false,
+      depthBuffer: false,
+    };
+    this.mediumVel0 = new THREE.WebGLRenderTarget(res, res, options);
+    this.mediumVel1 = new THREE.WebGLRenderTarget(res, res, options);
+    this.mediumDivergenceTarget = new THREE.WebGLRenderTarget(res, res, options);
+    this.mediumPressure0 = new THREE.WebGLRenderTarget(res, res, options);
+    this.mediumPressure1 = new THREE.WebGLRenderTarget(res, res, options);
+    this.mediumVelRead = this.mediumVel0;
+    this.mediumVelWrite = this.mediumVel1;
+    this.mediumPressureRead = this.mediumPressure0;
+    this.mediumPressureWrite = this.mediumPressure1;
+    this.mediumRes = res;
+    const texel = new THREE.Vector2(1 / res, 1 / res);
+    (this.mediumAdvectMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
+    (this.mediumDivergenceMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
+    (this.mediumPressureMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
+    (this.mediumGradientMaterial.uniforms.uTexel.value as THREE.Vector2).copy(texel);
+  }
+
+  private swapMediumVel() {
+    const t = this.mediumVelRead;
+    this.mediumVelRead = this.mediumVelWrite;
+    this.mediumVelWrite = t;
+  }
+
+  private swapMediumPressure() {
+    const t = this.mediumPressureRead;
+    this.mediumPressureRead = this.mediumPressureWrite;
+    this.mediumPressureWrite = t;
+  }
+
+  /** One medium frame: momentum injection, advection + dissipation, pressure projection. */
+  private stepMedium(dt: number, medium: MediumConfig) {
+    if (!this.mediumVelRead || !this.mediumVelWrite || !this.mediumDivergenceTarget || !this.mediumPressureRead || !this.mediumPressureWrite) return;
+    const vUniforms = this.velMaterial.uniforms;
+
+    // Splat: additive render of every particle into the existing velocity field
+    // (no clear — the previous field must survive).
+    const sU = this.mediumSplatMaterial.uniforms;
+    sU.uPositionTexture.value = this.currentPosTarget.texture;
+    sU.uVelocityTexture.value = this.currentVelTarget.texture;
+    sU.uMediumPlane.value = vUniforms.uMediumPlane.value;
+    (sU.uMediumMin.value as THREE.Vector2).copy(vUniforms.uMediumMin.value as THREE.Vector2);
+    (sU.uMediumMax.value as THREE.Vector2).copy(vUniforms.uMediumMax.value as THREE.Vector2);
+    sU.uSplatGain.value = Math.max(0, medium.splatGain ?? 1);
+    const prevAutoClear = this.renderer.autoClear;
+    this.renderer.autoClear = false;
+    this.renderer.setRenderTarget(this.mediumVelRead);
+    this.renderer.render(this.splatScene, this.quadCamera);
+    this.renderer.autoClear = prevAutoClear;
+
+    // Advect: semi-Lagrangian self-advection with dt-scaled dissipation.
+    const aU = this.mediumAdvectMaterial.uniforms;
+    aU.uMediumVelocity.value = this.mediumVelRead.texture;
+    aU.uDelta.value = dt;
+    aU.uDissipation.value = Math.pow(Math.max(0, Math.min(1.05, medium.persistence ?? 0.97)), dt * 60);
+    aU.uMediumExtent.value = ((vUniforms.uMediumMax.value as THREE.Vector2).x - (vUniforms.uMediumMin.value as THREE.Vector2).x) || 1;
+    this.quadMesh.material = this.mediumAdvectMaterial;
+    this.renderer.setRenderTarget(this.mediumVelWrite);
+    this.renderer.render(this.quadScene, this.quadCamera);
+    this.swapMediumVel();
+
+    // Divergence of the advected field.
+    this.mediumDivergenceMaterial.uniforms.uMediumVelocity.value = this.mediumVelRead.texture;
+    this.quadMesh.material = this.mediumDivergenceMaterial;
+    this.renderer.setRenderTarget(this.mediumDivergenceTarget);
+    this.renderer.render(this.quadScene, this.quadCamera);
+
+    // Jacobi pressure iterations (warm-started, under-relaxed).
+    const iterations = Math.max(1, Math.min(12, Math.round(medium.iterations ?? 4)));
+    this.mediumPressureMaterial.uniforms.uDivergence.value = this.mediumDivergenceTarget.texture;
+    for (let i = 0; i < iterations; i++) {
+      this.mediumPressureMaterial.uniforms.uPressure.value = this.mediumPressureRead.texture;
+      this.quadMesh.material = this.mediumPressureMaterial;
+      this.renderer.setRenderTarget(this.mediumPressureWrite);
+      this.renderer.render(this.quadScene, this.quadCamera);
+      this.swapMediumPressure();
+    }
+
+    // Gradient subtract: project the field toward divergence-free flow.
+    this.mediumGradientMaterial.uniforms.uMediumVelocity.value = this.mediumVelRead.texture;
+    this.mediumGradientMaterial.uniforms.uPressure.value = this.mediumPressureRead.texture;
+    this.quadMesh.material = this.mediumGradientMaterial;
+    this.renderer.setRenderTarget(this.mediumVelWrite);
+    this.renderer.render(this.quadScene, this.quadCamera);
+    this.swapMediumVel();
+  }
+
+  private disposeMediumTargets() {
+    this.mediumVel0?.dispose();
+    this.mediumVel1?.dispose();
+    this.mediumDivergenceTarget?.dispose();
+    this.mediumPressure0?.dispose();
+    this.mediumPressure1?.dispose();
+    this.mediumVel0 = this.mediumVel1 = this.mediumDivergenceTarget = null;
+    this.mediumPressure0 = this.mediumPressure1 = null;
+    this.mediumVelRead = this.mediumVelWrite = null;
+    this.mediumPressureRead = this.mediumPressureWrite = null;
+    this.mediumRes = 0;
   }
 
   public destroy() {
@@ -555,5 +892,12 @@ export class GPGPUSimulator {
     this.velTarget1.dispose();
     this.posMaterial.dispose();
     this.velMaterial.dispose();
+    this.disposeMediumTargets();
+    this.mediumSplatMaterial.dispose();
+    this.mediumAdvectMaterial.dispose();
+    this.mediumDivergenceMaterial.dispose();
+    this.mediumPressureMaterial.dispose();
+    this.mediumGradientMaterial.dispose();
+    this.splatPoints.geometry.dispose();
   }
 }
