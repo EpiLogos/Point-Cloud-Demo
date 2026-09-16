@@ -279,6 +279,9 @@ export function migrateConfig(
     relational: src.relational
       ? { ...DEFAULT_CONFIG.relational!, ...src.relational, enabled: src.relational.enabled === true }
       : { ...DEFAULT_CONFIG.relational!, enabled: false },
+    pairwise: src.pairwise
+      ? { ...DEFAULT_CONFIG.pairwise!, ...src.pairwise, enabled: src.pairwise.enabled === true }
+      : { ...DEFAULT_CONFIG.pairwise!, enabled: false },
     chaining: src.chaining
       ? {
           ...DEFAULT_CONFIG.chaining!,

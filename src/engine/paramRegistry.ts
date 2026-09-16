@@ -114,6 +114,12 @@ export const PARAM_REGISTRY: ParamDef[] = [
   P('relational.gravitySoftening', 'Gravity Softening', 'Relational', 1, 500, 1, 100000, 1, { unit: 'px', scale: 'log' }),
   P('relational.gravityFalloff', 'Gravity Falloff', 'Relational', 0.5, 3, 0.1, 10, 0.01),
   P('relational.swirlRadius', 'Swirl Radius', 'Relational', 20, 3000, 5, 100000, 10, { unit: 'px', scale: 'log' }),
+  // ---- Pairwise (sorted-grid DEM collisions; toggled by pairwise.enabled, not numeric) ----
+  P('pairwise.radius', 'Collision Radius', 'Pairwise', 2, 80, 0.5, 500, 0.5, { unit: 'px', hint: 'Interaction radius h; cells are at least this wide. ~5-15px matches typical baked slot spacing' }),
+  P('pairwise.stiffness', 'Collision Stiffness', 'Pairwise', 0, 10, 0, 100, 0.05, { hint: 'Separation spring scaled by overlap depth' }),
+  P('pairwise.restitution', 'Restitution', 'Pairwise', 0, 1, 0, 1, 0.01, { hint: 'Normal damping applied to approaching neighbours' }),
+  P('pairwise.viscosity', 'Pairwise Viscosity', 'Pairwise', 0, 1, 0, 1, 0.01, { hint: 'Tangential relative-velocity smoothing between neighbours' }),
+  P('pairwise.extent', 'Grid Extent', 'Pairwise', 200, 5000, 50, 20000, 25, { unit: 'px', scale: 'log', hint: 'Half-extent of the fixed collision grid around the world origin' }),
   // ---- Color ----
   P('color.cycleSpeed', 'Cycle Speed', 'Color', -10, 10, -1000, 1000, 0.1),
   P('color.hueShiftSpeed', 'Hue Shift Speed', 'Color', -6, 6, -1000, 1000, 0.05),

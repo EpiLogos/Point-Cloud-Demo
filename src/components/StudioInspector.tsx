@@ -334,6 +334,7 @@ export const StudioInspector: React.FC<StudioInspectorProps> = ({
     particles: false,
     interaction: false,
     relational: false,
+    pairwise: false,
     automation: false,
     profiles: true,
     entities: true,
@@ -918,6 +919,34 @@ export const StudioInspector: React.FC<StudioInspectorProps> = ({
                 <RegistryRow path="relational.gravitySoftening" config={config} onChange={onChange} />
                 <RegistryRow path="relational.gravityFalloff" config={config} onChange={onChange} />
                 <RegistryRow path="relational.swirlRadius" config={config} onChange={onChange} />
+              </div>
+            )}
+          </div>
+
+          {/* Pairwise */}
+          <div>
+            <button type="button" onClick={() => toggleSection('pairwise')} className={accordionBtn}>
+              <div className="flex items-center gap-1.5 text-lime-400">
+                <Orbit className="w-3 h-3" />
+                <span>Pairwise Collisions</span>
+              </div>
+              {openSections.pairwise ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+            </button>
+            {openSections.pairwise && (
+              <div className="p-3 space-y-1.5">
+                <div className="flex items-center justify-between py-0.5">
+                  <span className="text-[10px] font-mono uppercase opacity-70">Collisions Active</span>
+                  <button
+                    type="button"
+                    onClick={() => onChange({ pairwise: { ...config.pairwise, enabled: !config.pairwise?.enabled } })}
+                    className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase border ${config.pairwise?.enabled ? 'bg-lime-400 text-black border-lime-400' : 'border-inherit opacity-60'}`}
+                  >
+                    {config.pairwise?.enabled ? 'Active' : 'Off'}
+                  </button>
+                </div>
+                {PARAM_REGISTRY.filter((p) => p.group === 'Pairwise').map((p) => (
+                  <RegistryRow key={p.path} path={p.path} config={config} onChange={onChange} />
+                ))}
               </div>
             )}
           </div>

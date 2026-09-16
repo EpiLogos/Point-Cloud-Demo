@@ -15,6 +15,7 @@ import {
   CompositionTelemetry,
   MediumConfig,
   CollisionConfig,
+  PairwiseConfig,
 } from './types';
 import { applyAutomations, createAutomationRuntime, AutomationRuntime, AutomationLiveValue } from './automation';
 import { GPGPUSimulator } from './GPGPUSimulator';
@@ -129,6 +130,15 @@ export const DEFAULT_COLLISION_CONFIG: CollisionConfig = {
   integrity: 0.5,
 };
 
+/** Sorted-grid pairwise collisions; default-off (see types.ts PairwiseConfig). */
+export const DEFAULT_PAIRWISE_CONFIG: PairwiseConfig = {
+  enabled: false,
+  radius: 14,
+  stiffness: 1.0,
+  restitution: 0.2,
+  viscosity: 0.3,
+  extent: 1400,
+};
 export {computeMorphDrive} from './morphSignal';
 import {computeMorphDrive,MorphDriveState} from './morphSignal';
 
@@ -190,6 +200,7 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
     gravityFalloff: 1.45,
     swirlRadius: 500,
   },
+  pairwise: DEFAULT_PAIRWISE_CONFIG,
   chaining: {
     enabled: false,
     chain: ['▲', '■', '⬟', '⬢', '⯎', '◉'],
@@ -393,6 +404,7 @@ export class PointCloudField {
       fluid: { ...base.fluid, ...override.fluid },
       interaction: { ...base.interaction, ...override.interaction },
       relational: { enabled:false, ...base.relational, ...override.relational },
+      pairwise: { enabled:false, ...base.pairwise, ...override.pairwise },
       color: {
         ...(base.color || DEFAULT_COLOR_CONFIG),
         ...(override.color || {}),

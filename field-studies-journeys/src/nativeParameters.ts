@@ -29,7 +29,7 @@ const aliases:Record<string,[string,number?,string?]>={
  'composition.orchestration.dwell':['focusDwell',1,'composition.focusDwell'],
  'composition.orchestration.glide':['focusGlide',1,'composition.focusDuration'],
 };
-const groups:Record<string,string>={Fluid:'motion','Physics+':'physics',Particles:'material',Morph:'morph',Interaction:'pointer',Relational:'relational',Color:'color',Cymatics:'resonance',Composition:'composition',Material:'material',Paper:'color',Medium:'medium',Collision:'collision'};
+const groups:Record<string,string>={Fluid:'motion','Physics+':'physics',Particles:'material',Morph:'morph',Interaction:'pointer',Relational:'relational',Color:'color',Cymatics:'resonance',Composition:'composition',Material:'material',Paper:'color',Medium:'medium',Collision:'collision',Pairwise:'pairwise'};
 const defaults:Record<string,number>={'cymatics.sweep.glideS':8,'cymatics.sweep.dwellS':2,'cymatics.modeCount':64,'color.cycleSpeed':0,'color.turbulenceModulation':0,'color.speedReactiveIntensity':0,'color.densityWeight':0,'composition.entityTintWeight':1,'composition.orchestration.dwell':0};
 export const NATIVE_BINDINGS:NativeBinding[]=PARAM_REGISTRY.map(p=>{
  const a=aliases[p.path], key=a?.[0]??'native_'+p.path.replaceAll('.','__'),factor=a?.[1]??1;
