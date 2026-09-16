@@ -16,7 +16,10 @@ import {
   MediumConfig,
   CollisionConfig,
   PairwiseConfig,
+  GlyphVolumeConfig,
+  DepthRenderConfig,
 } from './types';
+import { DEFAULT_GLYPH_VOLUME } from './glyphVolume';
 import { applyAutomations, createAutomationRuntime, AutomationRuntime, AutomationLiveValue } from './automation';
 import { GPGPUSimulator } from './GPGPUSimulator';
 import { GlyphSampler } from './GlyphSampler';
@@ -145,6 +148,25 @@ import {computeMorphDrive,MorphDriveState} from './morphSignal';
 
 export type SpatialGridMode = 'off' | 'axis' | 'grid';
 
+/**
+ * Depth presentation defaults. Projection stays orthographic so the instrument
+ * opens exactly as it did; the depth system is switched on from the studio,
+ * where the projection, attenuation and aerial-perspective knobs live.
+ */
+export const DEFAULT_DEPTH_CONFIG: DepthRenderConfig = {
+  projection: 'orthographic',
+  fov: 38,
+  distance: 800,
+  sizeAttenuation: 1,
+  sizeAttenuationCurve: 1,
+  aerialFade: 0.55,
+  aerialRange: 2.2,
+  sizeDepthBias: 0,
+  depthTintWeight: 0,
+  depthTintColor: '#101018',
+  occlusion: false,
+};
+
 export const DEFAULT_CONFIG: PointCloudConfig = {
   glyph: ['O', 'I'],
   particleCount: 200000,
@@ -177,6 +199,8 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
     maxSpeed: 35000,
     zConfinement: 1.0,
     timeScale: 1.0,
+    vortex3d: 0,
+    dispersion3d: 0,
   },
   interaction: {
     radius: 180,
@@ -217,6 +241,8 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
   toroidalMorph: DEFAULT_TOROIDAL_CONFIG,
   medium: DEFAULT_MEDIUM_CONFIG,
   collision: DEFAULT_COLLISION_CONFIG,
+  glyphVolume: DEFAULT_GLYPH_VOLUME,
+  depth: DEFAULT_DEPTH_CONFIG,
   automations: [],
   entities: [
     makeFormation({
@@ -248,7 +274,19 @@ export class PointCloudField {
 
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
-  private camera: THREE.OrthographicCamera;
+  /**
+   * Two projections, one rig. The orbit controller drives both cameras
+   * identically; `depth.projection` selects which one draws. Orthographic is the
+   * original drawing instrument — parallel lines stay parallel and a glyph is
+   * seen face-on. Perspective adds the convergence that makes depth legible, and
+   * is what the true-3D glyph bodies are authored against.
+   */
+  private orthoCamera: THREE.OrthographicCamera;
+  private perspCamera: THREE.PerspectiveCamera;
+  private get camera(): THREE.Camera {
+    return this.cameraProjection === 'perspective' ? this.perspCamera : this.orthoCamera;
+  }
+  private cameraProjection: DepthRenderConfig['projection'] = 'orthographic';
   private gridGroup: THREE.Group | null = null;
   private axisGroup: THREE.Group | null = null;
   private gridMode: SpatialGridMode = 'off';
@@ -350,9 +388,11 @@ export class PointCloudField {
     const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
     this.renderer.setSize(width, height, false);
 
-    // 2. Scene + orthographic orbit camera + scaffolds
+    // 2. Scene + orbit camera rig + scaffolds
     this.scene = new THREE.Scene();
-    this.camera = new THREE.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, -3000, 4000);
+    this.orthoCamera = new THREE.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, -3000, 4000);
+    this.perspCamera = new THREE.PerspectiveCamera(DEFAULT_DEPTH_CONFIG.fov, width / Math.max(1, height), 1, 100000);
+    this.cameraProjection = this.config.depth?.projection === 'perspective' ? 'perspective' : 'orthographic';
     this.updateCameraTransform();
     this.initGridAndAxes();
     this.pinLayer = new PinMarkerLayer(this.scene);
@@ -422,6 +462,8 @@ export class PointCloudField {
       toroidalMorph: override.toroidalMorph !== undefined ? { ...DEFAULT_TOROIDAL_CONFIG, ...override.toroidalMorph } : base.toroidalMorph,
       medium: { ...DEFAULT_MEDIUM_CONFIG, ...base.medium, ...override.medium },
       collision: { ...DEFAULT_COLLISION_CONFIG, ...base.collision, ...override.collision },
+      glyphVolume: { ...DEFAULT_GLYPH_VOLUME, ...(base.glyphVolume || {}), ...(override.glyphVolume || {}) } as GlyphVolumeConfig,
+      depth: { ...DEFAULT_DEPTH_CONFIG, ...(base.depth || {}), ...(override.depth || {}) } as DepthRenderConfig,
       entities: override.entities !== undefined ? override.entities : base.entities,
       composition: comp,
       cymatics: { ...(base.cymatics || DEFAULT_CYMATIC_MEDIUM), ...(override.cymatics || {}) } as CymaticMedium,
@@ -458,6 +500,7 @@ export class PointCloudField {
       this.entities.collisionTexture.needsUpdate = true;
     }
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
+    this.entities.setVolume(cfg.glyphVolume);
     this.entities.layout(cfg.entities || []);
     const resolved = this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
     this.lastPoses = resolved.poses;
@@ -574,6 +617,20 @@ export class PointCloudField {
         uPixelRatio: { value: dpr },
         uCanvasSize: { value: new THREE.Vector2(width, height) },
         uTime: { value: 0.0 },
+
+        // Depth presentation (see types.ts DepthRenderConfig): perspective
+        // attenuation and aerial perspective. Pushed from pushDepthUniforms().
+        uDepthEnabled: { value: 0 },
+        uPerspective: { value: 0 },
+        uCameraDistance: { value: this.orbitDistance() },
+        uViewHeight: { value: height },
+        uSizeAttenuation: { value: DEFAULT_DEPTH_CONFIG.sizeAttenuation },
+        uSizeAttenuationCurve: { value: DEFAULT_DEPTH_CONFIG.sizeAttenuationCurve },
+        uSizeDepthBias: { value: DEFAULT_DEPTH_CONFIG.sizeDepthBias },
+        uAerialFade: { value: DEFAULT_DEPTH_CONFIG.aerialFade },
+        uAerialRange: { value: DEFAULT_DEPTH_CONFIG.aerialRange },
+        uDepthTintWeight: { value: DEFAULT_DEPTH_CONFIG.depthTintWeight },
+        uDepthTint: { value: new THREE.Color(DEFAULT_DEPTH_CONFIG.depthTintColor) },
 
         // Procedural Color Field Uniforms
         uColorEnabled: { value: col.enabled ? 1.0 : 0.0 },
@@ -723,22 +780,62 @@ export class PointCloudField {
     this.lastPointerPos.set(-99999, -99999);
   }
 
+  /** Distance from the orbit target to the eye, for the active projection. */
+  private orbitDistance(): number {
+    return Math.max(1, this.config.depth?.distance ?? DEFAULT_DEPTH_CONFIG.distance);
+  }
+
+  /**
+   * Applies the viewport to whichever camera draws. Orthographic keeps its
+   * original framebuffer-pixel frustum; perspective derives its aspect from the
+   * viewport and frames the target plane so that the two projections cover a
+   * comparable world extent at zoom 1 — switching projection should not jump the
+   * subject's scale.
+   */
+  private applyProjection(width: number, height: number) {
+    const depth = this.config.depth ?? DEFAULT_DEPTH_CONFIG;
+    const aspect = width / Math.max(1, height);
+
+    this.orthoCamera.left = -width / 2;
+    this.orthoCamera.right = width / 2;
+    this.orthoCamera.top = height / 2;
+    this.orthoCamera.bottom = -height / 2;
+    this.orthoCamera.near = -3000;
+    this.orthoCamera.far = 4000;
+    this.orthoCamera.zoom = this.cameraState.zoom;
+    this.orthoCamera.updateProjectionMatrix();
+
+    const fov = Math.max(4, Math.min(120, depth.fov ?? DEFAULT_DEPTH_CONFIG.fov));
+    this.perspCamera.fov = fov;
+    this.perspCamera.aspect = aspect;
+    this.perspCamera.near = Math.max(0.1, this.orbitDistance() * 0.01);
+    this.perspCamera.far = this.orbitDistance() * 40 + 20000;
+    this.perspCamera.zoom = this.cameraState.zoom;
+    this.perspCamera.updateProjectionMatrix();
+  }
+
+  /**
+   * World height of the viewport at the target plane, for the active camera.
+   * Callers that only care about framing extent (capture, aspect fitting) can
+   * stay projection-agnostic through this.
+   */
+  private viewHeight(): number {
+    if (this.cameraProjection === 'perspective') {
+      const fov = (this.perspCamera.fov * Math.PI) / 180;
+      return 2 * this.orbitDistance() * Math.tan(fov / 2) / Math.max(0.0001, this.perspCamera.zoom);
+    }
+    return this.orthoCamera.top - this.orthoCamera.bottom;
+  }
+
   public updateCameraTransform() {
-    if (!this.canvas || !this.camera) return;
+    if (!this.canvas) return;
     const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
     const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
     const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
 
-    this.camera.left = -width / 2;
-    this.camera.right = width / 2;
-    this.camera.top = height / 2;
-    this.camera.bottom = -height / 2;
-    this.camera.near = -3000;
-    this.camera.far = 4000;
-    this.camera.zoom = this.cameraState.zoom;
-    this.camera.updateProjectionMatrix();
+    this.applyProjection(width, height);
 
-    const D = 800;
+    const D = this.orbitDistance();
     const { pitch, yaw, panX, panY } = this.cameraState;
 
     const targetX = panX;
@@ -754,15 +851,45 @@ export class PointCloudField {
     const camY = targetY + D * sinPitch;
     const camZ = targetZ + D * cosPitch * cosYaw;
 
-    this.camera.position.set(camX, camY, camZ);
-
-    if (Math.abs(cosPitch) < 0.01) {
-      this.camera.up.set(0, 0, pitch > 0 ? -1 : 1);
-    } else {
-      this.camera.up.set(0, 1, 0);
+    // The rig is shared: both cameras sit at the same eye and look at the same
+    // target, so a projection switch is only a change of lens.
+    for (const cam of [this.orthoCamera, this.perspCamera]) {
+      cam.position.set(camX, camY, camZ);
+      if (Math.abs(cosPitch) < 0.01) {
+        cam.up.set(0, 0, pitch > 0 ? -1 : 1);
+      } else {
+        cam.up.set(0, 1, 0);
+      }
+      cam.lookAt(targetX, targetY, targetZ);
+      cam.updateMatrixWorld(true);
     }
 
-    this.camera.lookAt(targetX, targetY, targetZ);
+    this.pushDepthUniforms();
+  }
+
+  /**
+   * Depth presentation state the shader needs to size and tone marks by
+   * distance. The eye distance is a uniform rather than a shader-side guess so
+   * the attenuation curve is anchored to the same rig the physics sees.
+   */
+  private pushDepthUniforms() {
+    if (!this.particleMaterial) return;
+    const u = this.particleMaterial.uniforms;
+    const depth = this.config.depth ?? DEFAULT_DEPTH_CONFIG;
+    const persp = this.cameraProjection === 'perspective';
+    const fov = (this.perspCamera.fov * Math.PI) / 180;
+    const viewH = persp ? this.viewHeight() : 0;
+    u.uDepthEnabled.value = persp || depth.aerialFade > 0.0001 || depth.sizeDepthBias !== 0 ? 1 : 0;
+    u.uPerspective.value = persp ? 1 : 0;
+    u.uCameraDistance.value = this.orbitDistance();
+    u.uViewHeight.value = viewH;
+    u.uSizeAttenuation.value = Math.max(0, depth.sizeAttenuation ?? 0);
+    u.uSizeAttenuationCurve.value = Math.max(0.01, depth.sizeAttenuationCurve ?? 1);
+    u.uSizeDepthBias.value = Math.max(-1, Math.min(1, depth.sizeDepthBias ?? 0));
+    u.uAerialFade.value = Math.max(0, Math.min(1, depth.aerialFade ?? 0));
+    u.uAerialRange.value = Math.max(0.1, depth.aerialRange ?? DEFAULT_DEPTH_CONFIG.aerialRange);
+    u.uDepthTintWeight.value = Math.max(0, Math.min(1, depth.depthTintWeight ?? 0));
+    u.uDepthTint.value.set(depth.depthTintColor ?? DEFAULT_DEPTH_CONFIG.depthTintColor);
   }
 
   public setCameraOrbit(pitch: number, yaw: number) {
@@ -1087,7 +1214,24 @@ export class PointCloudField {
     const styleChanged = prev.style !== cfg.style || prev.fontFamily !== cfg.fontFamily || prev.fontWeight !== cfg.fontWeight;
     if (styleChanged) this.glyphSampler.clearCache();
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
+    const volumeChanged = this.entities.setVolume(cfg.glyphVolume);
     if ((prev.composition || DEFAULT_COMPOSITION).plane !== comp.plane) this.simulator.setCompositionPlane(comp.plane);
+
+    // Projection and depth presentation: a change here is a change of lens, not of
+    // scene, so the rig is simply re-applied (and the shader uniforms refreshed)
+    // rather than reseeding anything.
+    const prevDepth = prev.depth ?? DEFAULT_DEPTH_CONFIG;
+    const nextDepth = cfg.depth ?? DEFAULT_DEPTH_CONFIG;
+    const depthChanged = JSON.stringify(prevDepth) !== JSON.stringify(nextDepth);
+    if (depthChanged) {
+      this.cameraProjection = nextDepth.projection === 'perspective' ? 'perspective' : 'orthographic';
+      this.updateCameraTransform();
+    }
+    if (volumeChanged && prev.glyphVolume?.enabled !== cfg.glyphVolume?.enabled) {
+      // The body lives in the target texture, so switching the law on or off has
+      // to reseed from the freshly baked targets or particles keep the old depth.
+      this.seedCurrentTargets();
+    }
 
     // Entity edits: partition layout is recomputed; bakes happen lazily in the next tick only for
     // partitions whose shapes changed. Positions / forces / tints are uniforms — no bake, no reseed.
@@ -1280,12 +1424,27 @@ export class PointCloudField {
     const right = new THREE.Vector3(...view.right as [number,number,number]);
     const up = new THREE.Vector3(...view.up as [number,number,number]);
     const normal = new THREE.Vector3().crossVectors(right, up).normalize();
-    this.camera.left = -originX / s; this.camera.right = (width - originX) / s;
-    this.camera.top = originY / s; this.camera.bottom = -(height - originY) / s;
-    this.camera.near = 0.1; this.camera.far = 20000; this.camera.zoom = 1;
-    this.camera.position.copy(normal).multiplyScalar(5000);
-    this.camera.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(right, up, normal));
-    this.camera.updateProjectionMatrix(); this.camera.updateMatrixWorld(true);
+    this.orthoCamera.left = -originX / s; this.orthoCamera.right = (width - originX) / s;
+    this.orthoCamera.top = originY / s; this.orthoCamera.bottom = -(height - originY) / s;
+    this.orthoCamera.near = 0.1; this.orthoCamera.far = 20000; this.orthoCamera.zoom = 1;
+    this.orthoCamera.updateProjectionMatrix();
+
+    // The host asks for an exact world scale per output pixel. Perspective can
+    // honour that scale at the workplane by choosing the eye distance that makes
+    // the frustum cover the same pixel pitch — the two projections then frame
+    // identically at z = 0 and diverge only in convergence, which is the point.
+    const fov = (this.perspCamera.fov * Math.PI) / 180;
+    const distance = (height / Math.max(0.0001, s) * 0.5) / Math.max(0.0001, Math.tan(fov / 2));
+    this.perspCamera.near = 0.1; this.perspCamera.far = 20000; this.perspCamera.zoom = 1;
+    this.perspCamera.updateProjectionMatrix();
+
+    const planar = this.cameraProjection !== 'perspective';
+    const eyeDistance = planar ? 5000 : distance;
+    const cam = this.camera as THREE.OrthographicCamera | THREE.PerspectiveCamera;
+    cam.position.copy(normal).multiplyScalar(eyeDistance);
+    cam.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(right, up, normal));
+    cam.updateProjectionMatrix(); cam.updateMatrixWorld(true);
+    this.pushDepthUniforms();
     this.particleMaterial.uniforms.uPixelRatio.value = dpr;
     this.particleMaterial.uniforms.uCanvasSize.value.set(width, height);
   }
@@ -1340,16 +1499,28 @@ export class PointCloudField {
     const visibility=this.scene.children.map(o=>[o,o.visible] as const);
     this.particleMaterial.uniforms.uEditHasSelection.value=0;for(const [o] of visibility)if(o!==this.particlePoints)o.visible=false;
     const pixelRatio = this.particleMaterial.uniforms.uPixelRatio.value;
-    const camera = this.camera.clone();
-    const aspect = width / height, oldAspect = (camera.right-camera.left)/(camera.top-camera.bottom);
-    const cx = (camera.left+camera.right)/2, cy=(camera.top+camera.bottom)/2;
-    let w=camera.right-camera.left, h=camera.top-camera.bottom;
-    if (aspect < oldAspect) w=h*aspect; else h=w/aspect;
-    camera.left=cx-w/2; camera.right=cx+w/2; camera.top=cy+h/2; camera.bottom=cy-h/2;
-    camera.updateProjectionMatrix();
+    const camera = (this.camera as THREE.OrthographicCamera | THREE.PerspectiveCamera).clone();
+    const aspect = width / height;
     const cssHeight = this.renderer.getSize(new THREE.Vector2()).y;
-    const originalHeight = this.camera.top-this.camera.bottom;
-    this.particleMaterial.uniforms.uPixelRatio.value = height/cssHeight * originalHeight/h;
+    let sizeScale = height / cssHeight;
+    const persp = camera as THREE.PerspectiveCamera;
+    if (persp.isPerspectiveCamera) {
+      // A perspective lens resizes by aspect, not by cropping the frustum, so
+      // the world-per-pixel at the workplane is unchanged and only the output
+      // pixel scale applies.
+      persp.aspect = aspect;
+      persp.updateProjectionMatrix();
+    } else {
+      const ortho = camera as THREE.OrthographicCamera;
+      const oldAspect = (ortho.right - ortho.left) / (ortho.top - ortho.bottom);
+      const cx = (ortho.left + ortho.right) / 2, cy = (ortho.top + ortho.bottom) / 2;
+      let w = ortho.right - ortho.left, h = ortho.top - ortho.bottom;
+      if (aspect < oldAspect) w = h * aspect; else h = w / aspect;
+      ortho.left = cx - w / 2; ortho.right = cx + w / 2; ortho.top = cy + h / 2; ortho.bottom = cy - h / 2;
+      ortho.updateProjectionMatrix();
+      sizeScale *= this.viewHeight() / h;
+    }
+    this.particleMaterial.uniforms.uPixelRatio.value = sizeScale;
     try {
       this.renderer.setRenderTarget(target); this.renderer.clear(); this.renderer.render(this.scene,camera);
       const bytes=new Uint8Array(width*height*4);this.renderer.readRenderTargetPixels(target,0,0,width,height,bytes);

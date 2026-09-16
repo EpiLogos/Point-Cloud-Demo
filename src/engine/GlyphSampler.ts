@@ -17,6 +17,28 @@ import {
 import {renderChladniPlate,sampleVolumetric3DNodalPoints,deriveCymaticTemplateModes} from './cymatics';
 import {CHAKRA_CYMATIC_PROFILES} from './legacy/chakraCymaticProfiles'
 import { sampleImageSource, sampleAlphaSource, SOURCE_WORK_MAX, type SourceAnalysis } from './sourceSampling';
+import {
+  buildGlyphDepthFields,
+  cellVolumeShape,
+  applyGlyphVolume,
+  hashString,
+  DEFAULT_GLYPH_VOLUME,
+  type GlyphDepthFields,
+  type GlyphVolumeStats,
+} from './glyphVolume';
+import type {GlyphVolumeConfig} from './types';
+
+/** A sampled cell. `hz`/`cw` carry the 3D body: half-thickness and flank weight. */
+export interface SampleCandidate {
+  x: number;
+  y: number;
+  z?: number;
+  density: number;
+  /** Half-thickness of the glyph body at this cell, in stage units. */
+  hz?: number;
+  /** 0..1 flank weight (1 at the contour). Present only when volume is on. */
+  cw?: number;
+}
 
 export interface BakeResult {
   textureA: THREE.DataTexture;
@@ -53,6 +75,44 @@ export class GlyphSampler {
       throw new Error('Failed to create offscreen 2D canvas context for glyph rasterization');
     }
     this.ctx = context;
+  }
+
+  /**
+   * The true-3D body law. Set by the field; when enabled, every rasterized
+   * letterform carries a real half-thickness per cell instead of z micro-noise.
+   */
+  private volume: GlyphVolumeConfig = DEFAULT_GLYPH_VOLUME;
+  private volumeSignature = 'off';
+  private depthFieldsCache = new Map<string, GlyphDepthFields>();
+  public lastVolumeStats: GlyphVolumeStats | null = null;
+
+  public setVolume(config: GlyphVolumeConfig | undefined): boolean {
+    const next = config ?? DEFAULT_GLYPH_VOLUME;
+    const sig = [
+      next.enabled ? 1 : 0,
+      next.depth,
+      next.profile,
+      next.referenceFalloff,
+      next.wallShare,
+      next.faceBias,
+      next.interiorFill,
+      next.jitter,
+      next.densityDepth,
+      next.surfaceThickness,
+      next.wallBand,
+      next.outsideTaper,
+    ].join('|');
+    if (sig === this.volumeSignature) return false;
+    this.volumeSignature = sig;
+    this.volume = next;
+    // Thickness is baked into the candidate pool, so a law change invalidates it.
+    this.depthFieldsCache.clear();
+    this.clearCache();
+    return true;
+  }
+
+  public getVolume(): GlyphVolumeConfig {
+    return this.volume;
   }
 
   public clearCache() {
@@ -355,6 +415,21 @@ export class GlyphSampler {
         data[i * 4 + 2] = (Math.random() - 0.5) * 8.0;
         data[i * 4 + 3] = chosen.density;
       }
+    }
+
+    // True 3D body: replace the flat z micro-noise above with a real, measured
+    // thickness over the same x/y footprint. Applied last so the planar law —
+    // and therefore the face-on drawing — is untouched.
+    if (this.volume.enabled && this.volume.depth > 0) {
+      const fields = buildGlyphDepthFields(pixels, w, h);
+      this.lastVolumeStats = applyGlyphVolume(
+        data,
+        particleCount,
+        fields,
+        worldScale,
+        this.volume,
+        hashString(`${glyphText}|${particleCount}|${style}`)
+      );
     }
 
     const result = { data, center, subCenters };
@@ -822,7 +897,7 @@ export class GlyphSampler {
     fontFamily: string = FALLBACK_FONT_STACK,
     fontWeight: string | number = 900,
     variant: 'yantraA' | 'yantraB' = 'yantraA'
-  ): { candidates: Array<{ x: number; y: number; z?: number; density: number }> } {
+  ): { candidates: SampleCandidate[] } {
     const w = this.canvas.width;
     const h = this.canvas.height;
     const ctx = this.ctx;
@@ -830,6 +905,7 @@ export class GlyphSampler {
 
     const cx = w / 2;
     const cy = h / 2;
+    const shapeKey = `${node.shape}|${node.glyphText ?? ''}|${node.id}|${fontWeight}|${fontFamily}`;
 
     if (node.shape === 'glyph') {
       // Free glyph / word anchor: render text scaled to the anchor cell
@@ -853,18 +929,49 @@ export class GlyphSampler {
 
     const imgData = ctx.getImageData(0, 0, w, h);
     const pixels = imgData.data;
-    const candidates: Array<{ x: number; y: number; z?: number; density: number }> = [];
+    const candidates: SampleCandidate[] = [];
+
+    // True 3D body: a distance transform of the drawn mark gives every cell its
+    // penetration depth, which becomes a real half-thickness. Off by default, so
+    // the classic flat pool is unchanged.
+    const volumeOn = this.volume.enabled && this.volume.depth > 0;
+    let fields: GlyphDepthFields | null = null;
+    if (volumeOn) {
+      const cacheKey = `${shapeKey}|${w}x${h}`;
+      fields = this.depthFieldsCache.get(cacheKey) ?? null;
+      if (!fields) {
+        fields = buildGlyphDepthFields(pixels, w, h);
+        this.depthFieldsCache.set(cacheKey, fields);
+        if (this.depthFieldsCache.size > 12) {
+          const oldest = this.depthFieldsCache.keys().next().value;
+          if (oldest !== undefined) this.depthFieldsCache.delete(oldest);
+        }
+      }
+    }
 
     for (let y = 0; y < h; y += 3) {
       for (let x = 0; x < w; x += 3) {
         const idx = (y * w + x) * 4;
         const alpha = pixels[idx + 3] / 255.0;
         if (alpha > 0.05) {
-          candidates.push({
+          const cand: SampleCandidate = {
             x: x - cx,
             y: -(y - cy),
             density: alpha,
-          });
+          };
+          if (fields) {
+            const cell = y * w + x;
+            const shape = cellVolumeShape(
+              fields.distInside[cell],
+              fields.distToInk[cell],
+              fields.referenceThickness,
+              alpha,
+              this.volume
+            );
+            cand.hz = shape.half;
+            cand.cw = shape.contourness;
+          }
+          candidates.push(cand);
         }
       }
     }

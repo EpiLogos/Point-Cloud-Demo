@@ -68,6 +68,33 @@ vec3 sdfWorldNormal(vec2 grad, vec3 transform, float co, float si, float compPla
   vec3 nWorld = (compPlane > 0.5) ? vec3(nRot.x, 0.0, -nRot.y) : vec3(nRot.x, nRot.y, 0.0);
   return nWorld / max(length(nWorld), 0.00001);
 }
+
+// Local coordinate along the extrusion axis (the slab normal). The 2D section
+// lives in the composition plane; the body's thickness runs along this axis.
+float sdfLocalZ(vec3 world, vec3 center, float depthScale, float compPlane) {
+  vec3 rel = world - center;
+  float axis = (compPlane > 0.5) ? rel.y : rel.z;
+  return axis / max(depthScale, 0.001);
+}
+
+// Local half-thickness of the extruded body at a point (G channel, local units).
+float sdfHalfThickness(vec2 local, vec4 tile, float blend) {
+  vec2 uvA = sdfTileUv(local, tile, 0.0);
+  vec2 uvB = sdfTileUv(local, tile, 1.0);
+  return mix(texture2D(uSdfAtlas, uvA).y, texture2D(uSdfAtlas, uvB).y, blend) * ${SDF_DISTANCE_SCALE}.0;
+}
+
+// Distance to the extruded solid: the Minkowski combination of the 2D section
+// with a segment of half-length h. Within the slab the answer is the 2D field;
+// past a face it is the distance to that face plane. This is the genuine
+// boundary of a body with thickness, not a silhouette that ignores z.
+float slabDistance(float d2d, float z, float half) {
+  float dz = abs(z) - half;
+  float o2 = max(d2d, 0.0);
+  float oz = max(dz, 0.0);
+  if (o2 == 0.0 && oz == 0.0) return max(d2d, dz);
+  return length(vec2(o2, oz));
+}
 `;
 
 export const simulationVertexShader = /* glsl */ `
@@ -91,6 +118,8 @@ uniform float uCompPlane;        // 0 = vertical (XY facing camera), 1 = horizon
 uniform float uMorphTrajectory;
 uniform float uZDepthRetention;
 uniform float uZConfinement;
+/** 1 = glyphs are real 3D bodies; their baked depth must not be damped away. */
+uniform float uDepthGeometry;
 
 // Glyph SDF colliders (see velocitySimulationShader): the position pass only
 // hard-projects obstacle interiors around non-resident particles.
@@ -167,6 +196,19 @@ void main() {
       float dT;
       vec2 tGrad;
       sdfSample(tLocal, tile, morph, dT, tGrad);
+      // Extruded body: a particle laterally inside the letterform but past a face
+      // is outside the solid through the thickness, and must leave along the face
+      // normal. Without this the wall is a silhouette and depth is not collision.
+      if (uDepthGeometry > 0.5) {
+        float half = sdfHalfThickness(local, tile, morph);
+        float dz = sdfLocalZ(pos, uEntityCenter[eIdx].xyz, uEntityDepthScale[eIdx], uCompPlane);
+        if (abs(dz) > half && d < 0.0) {
+          float sgn = dz > 0.0 ? 1.0 : -1.0;
+          vec3 nFace = (uCompPlane > 0.5) ? vec3(0.0, sgn, 0.0) : vec3(0.0, 0.0, sgn);
+          float wall = 1.0 / (1.0 + uCollisionIntegrity * velData.w * 0.01);
+          pos -= nFace * ((abs(dz) - half) * wall);
+        }
+      }
       if (dT >= 0.0 && d < 0.0) {
         vec3 nWorld = sdfWorldNormal(grad, uEntityTransform[eIdx], co, si, uCompPlane);
         // Integrity uses the post-integration speed (velData.w is the velocity magnitude).
@@ -179,7 +221,13 @@ void main() {
   // Mild z-plane dampening only in pure 2D planar mode to preserve flat typography clarity.
   // In Toroidal Hopf (uMorphTrajectory > 0.5) or 3D horizontal chakra mode,
   // Z is the authentic 3D spatial depth coordinate, so preserve full 3D volumetric depth!
-  if (uCompPlane < 0.5 && uMorphTrajectory < 0.5) {
+  //
+  // With true-3D letterform bodies the depth axis IS the geometry (glyphVolume.ts):
+  // damping it here would crush a solid back into a card within a second, which is
+  // exactly what kept the field a 2D drawing. The main spring already targets the
+  // baked z, so it is what holds the body; the planar damping stays available for
+  // flat compositions that want it.
+  if (uDepthGeometry < 0.5 && uCompPlane < 0.5 && uMorphTrajectory < 0.5) {
     float zDecay = 1.0 - 0.015 * uZConfinement * (1.0 - clamp(uZDepthRetention, 0.0, 1.0));
     pos.z *= pow(max(0.0,zDecay), uDelta * 60.0);
   }
@@ -209,6 +257,12 @@ uniform float uCurlSpeed;
 uniform float uTurbulence;
 uniform float uVortexStrength;
 uniform vec2 uVortexCenter;
+/** 1 = real 3D bodies: the depth axis is geometry, so forces act through it. */
+uniform float uDepthGeometry;
+/** 0 = swirl in the picture plane, 1 = a genuine helical vortex about the depth axis. */
+uniform float uVortex3d;
+/** 0 = dispersion stays in the plane, 1 = it carries into the depth axis. */
+uniform float uDispersion3d;
 uniform float uViscosity;
 uniform float uReturnSpeed;
 uniform float uDispersion;
@@ -463,6 +517,10 @@ void main() {
   vec3 fCurl = curl * (uTurbulence * 85.0 * curlFalloff);
 
   // --- 3. Field vortex (global) ---
+  // The planar field swirls in the composition plane. With true 3D bodies the same
+  // strength becomes a vortex about a real axis, so the swirl turns *through* the
+  // letterform instead of sliding the whole cloud sideways in the picture plane —
+  // the cue that separates a flat drawing from a solid.
   vec3 fVortex = vec3(0.0);
   {
     vec2 rVort = pos.xy - uVortexCenter;
@@ -470,7 +528,23 @@ void main() {
     vec2 vTangent = vec2(-rVort.y, rVort.x) / (rLen + 25.0);
     float vortRadius = max(5.0, uVortexRadius);
     float vortFactor = exp(- (rLen * rLen) / (2.0 * vortRadius * vortRadius));
-    fVortex = vec3(vTangent * (uVortexStrength * 160.0 * vortFactor), 0.0);
+    vec3 fPlanar = vec3(vTangent * (uVortexStrength * 160.0 * vortFactor), 0.0);
+
+    if (uDepthGeometry > 0.5 && uVortex3d > 0.0001) {
+      // Radial distance measured in the full 3D frame, so the falloff is a shell
+      // rather than a cylinder and the vortex decays through the thickness.
+      vec3 r = vec3(rVort, pos.z);
+      float r3 = max(0.001, length(r));
+      float fall3 = exp(- (r3 * r3) / (2.0 * vortRadius * vortRadius));
+      float axis3 = (uCompPlane > 0.5) ? 1.0 : -1.0;
+      // Swirl about the depth axis, plus a pitch term along it: a helix.
+      vec3 swirl = vec3(-r.y, r.x, 0.0) / (r3 + 25.0);
+      vec3 pitch = vec3(0.0, 0.0, axis3 * -r.y) / (r3 + 25.0);
+      vec3 f3 = (swirl + pitch * 0.75) * (uVortexStrength * 160.0 * fall3);
+      fVortex = mix(fPlanar, f3, clamp(uVortex3d, 0.0, 1.0));
+    } else {
+      fVortex = fPlanar;
+    }
   }
 
   // --- 3B. Unified persistent force emitters: formations and pins share one physical path ---
@@ -510,14 +584,23 @@ void main() {
   }
 
   // --- 4. Inter-Glyph Directional Dispersion ---
+  // The bridge between two letterforms disperses along the curl field. With 3D
+  // bodies the same bridge also opens through the thickness, so the two forms
+  // interpenetrate in depth rather than only sliding past each other.
   vec3 fDisperse = vec3(0.0);
   if (abs(uDispersion) > 0.0001) {
     float bridgeFactor = smoothstep(0.05, 0.95, sMorph) * (1.0 - targetDensity * 0.4);
-    fDisperse = vec3(
+    vec3 fPlanar = vec3(
       uDispersion * 75.0 * (curl.x * 0.8 + 0.6) * bridgeFactor,
       uDispersion * 35.0 * curl.y * bridgeFactor,
       0.0
     );
+    if (uDepthGeometry > 0.5 && uDispersion3d > 0.0001) {
+      vec3 f3 = vec3(fPlanar.xy, uDispersion * 75.0 * curl.z * bridgeFactor);
+      fDisperse = mix(fPlanar, f3, clamp(uDispersion3d, 0.0, 1.0));
+    } else {
+      fDisperse = fPlanar;
+    }
   }
 
   // --- 5. Free Relational System: Multi-Attractor Gravity & Orbital Whirlpools ---
@@ -734,6 +817,19 @@ void main() {
       vec3 cN = sdfWorldNormal(cGrad, transform, co, si, uCompPlane);
       float cBand = max(1.0, uCollisionBand);
       float cWorld = cD * ${SDF_DISTANCE_SCALE}.0;
+      // Extruded body: the boundary is the Minkowski combination of the 2D section
+      // with the local thickness, so a particle can no longer pass straight through
+      // a letterform's depth and the wall normal turns to face the near surface.
+      if (uDepthGeometry > 0.5) {
+        float cHalf = sdfHalfThickness(local, tile, cMorph);
+        float cDz = sdfLocalZ(pos, entityCenter, uEntityDepthScale[eIdx], uCompPlane);
+        cWorld = slabDistance(cWorld, cDz, cHalf);
+        float over = abs(cDz) - cHalf;
+        if (over > 0.0) {
+          float sgn = cDz > 0.0 ? 1.0 : -1.0;
+          cN = (uCompPlane > 0.5) ? vec3(0.0, sgn, 0.0) : vec3(0.0, 0.0, sgn);
+        }
+      }
       // Contact falloff: full strength at the surface, decaying outward across the band.
       float cFalloff = exp(-max(0.0, cWorld) / cBand);
       float cSpeed = length(vel);

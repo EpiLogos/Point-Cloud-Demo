@@ -153,6 +153,8 @@ export class GPGPUSimulator {
         uMorphTrajectory: { value: 0.0 },
         uZDepthRetention: { value: 0.0 },
         uZConfinement: { value: 1.0 },
+        // True-3D letterform bodies: keeps the baked depth axis from being damped away.
+        uDepthGeometry: { value: 0.0 },
         // Glyph SDF colliders (hard projection out of obstacle interiors)
         uCollisionEnabled: { value: 0.0 },
         uCollisionMode: { value: 0.0 },
@@ -193,6 +195,9 @@ export class GPGPUSimulator {
         uCurlSpeed: { value: 0.8 },
         uTurbulence: { value: 1.0 },
         uVortexStrength: { value: 1.2 },
+        uDepthGeometry: { value: 0.0 },
+        uVortex3d: { value: 0.0 },
+        uDispersion3d: { value: 0.0 },
         uVortexCenter: { value: new THREE.Vector2(0, 0) },
         uViscosity: { value: 0.94 },
         uReturnSpeed: { value: 1.0 },
@@ -825,6 +830,12 @@ export class GPGPUSimulator {
     vUniforms.uCurlSpeed.value = config.fluid.curlSpeed;
     vUniforms.uTurbulence.value = config.fluid.turbulence ?? 1.0;
     vUniforms.uVortexStrength.value = config.fluid.vortexStrength;
+    // Depth geometry: the vortex and dispersion gain a real depth component, so
+    // forces turn through the body rather than sliding it in the picture plane.
+    const depthGeometry = (config.glyphVolume?.enabled && (config.glyphVolume?.depth ?? 0) > 0) ? 1.0 : 0.0;
+    vUniforms.uDepthGeometry.value = depthGeometry;
+    vUniforms.uVortex3d.value = Math.max(0, Math.min(1, config.fluid.vortex3d ?? 0));
+    vUniforms.uDispersion3d.value = Math.max(0, Math.min(1, config.fluid.dispersion3d ?? 0));
     vUniforms.uViscosity.value = config.fluid.viscosity;
     vUniforms.uReturnSpeed.value = config.fluid.returnSpeed;
     vUniforms.uDispersion.value = config.fluid.dispersion ?? 0.5;
@@ -957,6 +968,7 @@ export class GPGPUSimulator {
     pUniforms.uMorphTrajectory.value = tm && tm.enabled !== false && tm.trajectory !== 'linear' ? 1.0 : 0.0;
     pUniforms.uZDepthRetention.value = tm?.enabled ? 1.0 : 0.0;
     pUniforms.uZConfinement.value = config.fluid.zConfinement ?? 1.0;
+    pUniforms.uDepthGeometry.value = (config.glyphVolume?.enabled && (config.glyphVolume?.depth ?? 0) > 0) ? 1.0 : 0.0;
     // Residency classification needs the same baked slots the velocity pass sees.
     pUniforms.uTargetATexture.value = vUniforms.uTargetATexture.value;
     pUniforms.uTargetBTexture.value = vUniforms.uTargetBTexture.value;

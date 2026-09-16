@@ -36,8 +36,9 @@ import {
   effectiveLinks,
   MAX_FORMATIONS,
 } from './fieldModel';
-import { SpatialChakraNode } from './types';
+import { SpatialChakraNode, type GlyphVolumeConfig } from './types';
 import { resolveEntityPose, type EvaluatedEntityPose } from './entityPose';
+import { drawVolumeZ, mulberry32, DEFAULT_GLYPH_VOLUME } from './glyphVolume';
 
 /** World px per canvas px at entity.scale = 1 (a glyph fills ≈ 400 px) */
 const BASE_SCALE = 0.56;
@@ -47,6 +48,10 @@ interface Candidate {
   y: number;
   z?: number;
   density: number;
+  /** Half-thickness of the glyph body at this cell, in stage units (volume law). */
+  hz?: number;
+  /** 0..1 flank weight: 1 at the letterform contour, 0 well inside it. */
+  cw?: number;
 }
 
 export interface EntityFrame {
@@ -90,6 +95,8 @@ export class EntityRuntime {
   private baseSig = '';
   private templateGeometry: 'square'|'circular'|'volumetric3D' = 'square';
   private templateDimension: '2D'|'3D' = '2D';
+  /** Active true-3D letterform law; mirrored onto the sampler that builds pools. */
+  private volume: GlyphVolumeConfig = DEFAULT_GLYPH_VOLUME;
 
   // Glyph SDF atlas: 2 columns (state A|B) x 10 rows (stable entity slots), RGBA float.
   // Uploaded alongside the targets at bake time; never rewritten during steady-state frames.
@@ -173,6 +180,27 @@ export class EntityRuntime {
     }
   }
 
+  /**
+   * True 3D letterform bodies. Thickness is baked into the candidate pool, so a
+   * change to the law has to invalidate both the pool and every partition built
+   * from it — otherwise a slider in the studio would move nothing. Returns true
+   * when the law actually changed.
+   */
+  public setVolume(config: GlyphVolumeConfig | undefined): boolean {
+    const next = config ?? DEFAULT_GLYPH_VOLUME;
+    const changed = this.sampler.setVolume(next);
+    this.volume = next;
+    if (changed) {
+      this.candidateCache.clear();
+      this.bakeSig.clear();
+    }
+    return changed;
+  }
+
+  public getVolume(): GlyphVolumeConfig {
+    return this.volume;
+  }
+
   /** Image / ASCII sources: override a formation's shape with an explicit candidate pool. */
   public setCustomCandidates(entityId: string, candidates: Candidate[] | null, linkId?:string) {
     const key=linkId?entityId+':'+linkId:entityId;
@@ -252,6 +280,13 @@ export class EntityRuntime {
   ) {
     const n = cands.length;
     if(!n){target.fill(0,start*4,end*4);for(let i=start;i<end;i++){this.noiseData[i*4+channel]=0;this.noiseData[i*4+channel+1]=0;}return;}
+    // Depth is drawn per particle from the cell's own body thickness, so a single
+    // pool spans the whole solid instead of one sheet per raster cell. The stream
+    // is seeded per bake, so a re-bake reproduces the same body rather than
+    // re-rolling it into visible flicker.
+    const volume = this.volume;
+    const volumeOn = volume.enabled && volume.depth > 0;
+    const rand = volumeOn ? mulberry32(this.bakeGeneration * 2654435761 + (channel + 1) * 40503) : null;
     for (let i = start; i < end; i++) {
       // The raster pool is scanline ordered. A prefix would crop low-share
       // allocations to the top of a glyph. A low-discrepancy stride covers the
@@ -262,7 +297,10 @@ export class EntityRuntime {
       this.noiseData[i*4+channel]=jx;this.noiseData[i*4+channel+1]=jy;
       const lx = c.x * scale;
       const ly = c.y * scale;
-      const lz = (c.z ?? 0) * scale;
+      let lz = (c.z ?? 0) * scale;
+      if (volumeOn && rand && c.hz !== undefined) {
+        lz = drawVolumeZ(Math.max(0, c.hz) * scale, c.cw ?? 0, volume, rand).z;
+      }
       const o = i * 4;
       if (plane === 'horizontal') {
         target[o] = lx;

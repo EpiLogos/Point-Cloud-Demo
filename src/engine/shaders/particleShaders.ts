@@ -60,6 +60,22 @@ uniform vec4 uGrainA;
 uniform vec4 uGrainB;
 uniform vec4 uGrainC;
 uniform float uGrainEnabled;
+
+// Depth presentation. Orthographic rendering has no convergence, so distance
+// could never change a mark's size or tone; these uniforms let a perspective
+// camera's depth read as distance instead of being collapsed by the projection.
+uniform float uDepthEnabled;
+uniform float uPerspective;
+uniform float uCameraDistance;      // orbit radius of the eye
+uniform float uViewHeight;          // world height of the frustum at the target plane
+uniform float uSizeAttenuation;     // strength of the 1/w size falloff (0 = none)
+uniform float uSizeAttenuationCurve;// exponent shaping how fast far marks shrink
+uniform float uSizeDepthBias;       // extra linear size ramp with depth (-1..1)
+uniform float uAerialFade;          // how strongly distance dims the ink
+uniform float uAerialRange;         // falloff reach, as a multiple of uCameraDistance
+uniform vec3 uDepthTint;            // colour far ink shifts toward
+uniform float uDepthTintWeight;
+
 varying vec2 vSimUv;
 varying float vDensity;
 varying float vSpeed;
@@ -67,6 +83,7 @@ varying float vJitter;
 varying vec3 vColor;
 varying float vTinted;
 varying float vEditAlpha;
+varying float vDepth;               // 0 at the near limit, 1 at the far limit
 
 // High-speed pseudo-random generator
 float hash(vec2 p) {
@@ -315,9 +332,33 @@ void main() {
     baseSize*=mix(1.0,band,uGrainB.w*.35);
     baseSize*=1.0+uGrainC.z*(1.0-density);
   }
-  // Orthographic point size scaling
+  // --- Depth presentation ---
+  // gl_PointSize is in device pixels, so a perspective camera only reads as
+  // depth if the mark's size is divided by its view distance. Distance is
+  // normalized against the orbit radius and the frustum's world height, which
+  // keeps the curve stable across zoom, resize and output resolution.
+  vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+  gl_Position = projectionMatrix * mvPosition;
+
+  float viewZ = max(0.0, -mvPosition.z);
+  float farReach = max(1.0, uCameraDistance * max(0.1, uAerialRange));
+  vDepth = clamp((viewZ - (uCameraDistance - farReach)) / (2.0 * farReach), 0.0, 1.0);
+
+  if (uDepthEnabled > 0.5) {
+    if (uPerspective > 0.5 && uSizeAttenuation > 0.0) {
+      // Physical 1/w falloff, anchored at the orbit radius so strength 1 is
+      // exactly the perspective law and >1 exaggerates the separation.
+      float w = max(uCameraDistance * 0.05, viewZ);
+      float ratio = uCameraDistance / w;
+      baseSize *= pow(max(0.0, ratio), uSizeAttenuation * uSizeAttenuationCurve);
+    }
+    if (abs(uSizeDepthBias) > 0.0001) {
+      // Linear depth ramp on top: near marks larger, far smaller (or inverted).
+      baseSize *= 1.0 + uSizeDepthBias * (0.5 - vDepth);
+    }
+  }
+
   gl_PointSize = max(1.0, baseSize * uPixelRatio);
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }
 `;
 
@@ -343,6 +384,12 @@ varying float vJitter;
 varying vec3 vColor;
 varying float vTinted;
 varying float vEditAlpha;
+varying float vDepth;
+
+uniform float uDepthEnabled;
+uniform float uAerialFade;
+uniform vec3 uDepthTint;
+uniform float uDepthTintWeight;
 
 void main() {
   vec2 coord = gl_PointCoord - vec2(0.5);
@@ -390,6 +437,19 @@ void main() {
   }
 
   vec3 finalColor = (uColorEnabled > 0.5 || vTinted > 0.001) ? vColor : uParticleColor;
+
+  // Aerial perspective: distant ink loses contrast and drifts toward the depth
+  // tint, which is how a real volume of marks separates front from back. The
+  // bias is one-sided — the near limit is never brightened — so the drawing's
+  // overall weight is preserved rather than washed out.
+  if (uDepthEnabled > 0.5) {
+    if (uAerialFade > 0.0001) {
+      inkAlpha *= mix(1.0, 1.0 - uAerialFade * vDepth, clamp(vDepth * 2.0, 0.0, 1.0));
+    }
+    if (uDepthTintWeight > 0.0001) {
+      finalColor = mix(finalColor, uDepthTint, clamp(uDepthTintWeight * vDepth, 0.0, 1.0));
+    }
+  }
 
   gl_FragColor = vec4(finalColor, inkAlpha * vEditAlpha);
 }

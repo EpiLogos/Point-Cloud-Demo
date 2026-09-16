@@ -181,7 +181,7 @@ test('collisionSystem: a plus-sign mask yields negative distances inside strokes
   assert.ok(at(29, 16) < at(32, 16), 'outside distances grow away from the wall');
 });
 
-test('collisionSystem: buildSdfTile encodes R = local units / 100 with the mask in G', () => {
+test('collisionSystem: buildSdfTile encodes R = distance / 100 and G = half-thickness / 100', () => {
   // A dense candidate line (the way glyph pools are sampled) forms a continuous bar.
   const cands: SdfCandidate[] = [];
   for (let t = -60; t <= 60; t += 3) cands.push({ x: t, y: 0, density: 1 });
@@ -192,15 +192,33 @@ test('collisionSystem: buildSdfTile encodes R = local units / 100 with the mask 
   assert.ok(centre < 0 && centre > -1, `the bar centre is shallowly inside, got ${centre}`);
   const far = tile[idx(120, 120)];
   assert.ok(far > 0.5, `the far corner is well outside, got ${far}`);
-  assert.equal(tile[idx(0, 0) + 1], 1, 'G holds the mask inside');
-  assert.equal(tile[idx(120, 120) + 1], 0, 'G is 0 outside');
   assert.equal(tile[idx(0, 0) + 3], 1, 'A is 1');
   assert.equal(centre * SDF_DISTANCE_SCALE, centre * 100, 'R is scaled local units');
+  // G carries the 3D body thickness. A flat pool (no hz) has none.
+  assert.equal(tile[idx(0, 0) + 1], 0, 'G is 0 for a pool with no thickness');
+  assert.equal(tile[idx(120, 120) + 1], 0, 'G is 0 outside');
 
   const empty = buildSdfTile([], 1);
   let minR = Infinity;
   for (let i = 0; i < SDF_GRID * SDF_GRID; i++) minR = Math.min(minR, empty[i * 4]);
   assert.ok(minR > 0, 'an empty candidate pool never produces a boundary');
+});
+
+test('collisionSystem: G encodes the 3D body half-thickness so the wall can true a slab', () => {
+  // The same bar, now a solid of half-thickness 40 local units. The wall must be
+  // able to recover that thickness per cell, which is what turns a 2D silhouette
+  // into the boundary of an extruded letterform.
+  const cands: SdfCandidate[] = [];
+  for (let t = -60; t <= 60; t += 3) cands.push({ x: t, y: 0, density: 1, hz: 40 });
+  const tile = buildSdfTile(cands, 1);
+  const cell = (2 * SDF_EXTENT) / SDF_GRID;
+  const idx = (lx: number, ly: number) => (Math.round(ly / cell + SDF_GRID / 2) * SDF_GRID + Math.round(lx / cell + SDF_GRID / 2)) * 4;
+  const g = tile[idx(0, 0) + 1];
+  assert.ok(Math.abs(g * SDF_DISTANCE_SCALE - 40) < 1e-6, `G holds the half-thickness in local units, got ${g * SDF_DISTANCE_SCALE}`);
+  assert.equal(tile[idx(120, 120) + 1], 0, 'far from the bar there is no body');
+  // Scale is applied to the thickness exactly as it is to the stamped coordinates.
+  const scaled = buildSdfTile(cands, 0.5);
+  assert.ok(Math.abs(scaled[idx(0, 0) + 1] * SDF_DISTANCE_SCALE - 20) < 1e-6, 'G follows the stamp scale');
 });
 
 test('collisionSystem: tiles blit into the atlas at the documented slot offsets', () => {
