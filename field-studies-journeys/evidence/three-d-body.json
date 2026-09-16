@@ -49,7 +49,7 @@
     {
       "ok": true,
       "name": "before: the glyph is a flat card (depth is noise, not geometry)",
-      "detail": "z span 11.75 on 62000 particles"
+      "detail": "z span 13.21 on 62000 particles"
     },
     {
       "ok": true,
@@ -59,22 +59,22 @@
     {
       "ok": true,
       "name": "the volume control settles into a body",
-      "detail": "settled span 45.10"
+      "detail": "settled span 51.82"
     },
     {
       "ok": true,
       "name": "after: the body has real thickness",
-      "detail": "z span 11.75 \u2192 45.10"
+      "detail": "z span 13.21 \u2192 51.82"
     },
     {
       "ok": true,
       "name": "after: the depth is a body, not a dither",
-      "detail": "mean |z| 0.80 \u2192 9.31"
+      "detail": "mean |z| 0.78 \u2192 10.73"
     },
     {
       "ok": true,
       "name": "the planar drawing is preserved (x/y are untouched)",
-      "detail": "mean |x|+|y| 170.8 \u2192 171.0"
+      "detail": "mean |x|+|y| 170.8 \u2192 170.9"
     },
     {
       "ok": true,
@@ -89,12 +89,12 @@
     {
       "ok": true,
       "name": "the larger depth settles",
-      "detail": "settled span 234.98"
+      "detail": "settled span 243.49"
     },
     {
       "ok": true,
       "name": "the Body Depth slider drives real thickness",
-      "detail": "depth 40 \u2192 span 65.5; depth 400 \u2192 span 235.0"
+      "detail": "depth 40 \u2192 span 69.6; depth 400 \u2192 span 243.5"
     },
     {
       "ok": true,
@@ -109,12 +109,12 @@
     {
       "ok": true,
       "name": "the renderer keeps drawing after the depth changes",
-      "detail": "19 frames in 1.5s"
+      "detail": "17 frames in 1.5s"
     },
     {
       "ok": true,
       "name": "the 3D path is in the same performance order as the flat path",
-      "detail": "13.1 \u2192 11.4 fps on software WebGL (not a hardware measurement)"
+      "detail": "11.9 \u2192 10.5 fps on software WebGL (not a hardware measurement)"
     },
     {
       "ok": true,

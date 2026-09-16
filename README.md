@@ -160,25 +160,24 @@ follows it:
   from "every mark draws" to depth-buffered occlusion where near bodies win the
   pixel.
 
-## Depth lamination — the sequence's spatial dual
+## Layers — the object's body in depth
 
-A formation's sequence composes states in time. **Laminate in depth** composes
-them in space: every state of the sequence renders *simultaneously* as one
-depth layer of a single laminated 3D body. The formation's particle allocation
-is subdivided across the states, and each state draws its glyph, image, ASCII
-drawing, primitive or plate in the depth band it occupies — its authored depth
-(the sequence editor's per-state **Depth** field, or placing the state on the
-XZ workplane), or an even spread across the **Lamination span**. Fronts and
-backs of one construct — say a head — nest to any depth, each layer still a
-full source with its own body-law thickness, and the collision wall becomes the
-bounding solid of the whole stack. The sequence clock stops while laminated:
-lamination composes in space, not in time.
+A formation's sequence composes states in time; its **layers** compose the
+object in space. The formation panel's **Layers** editor stacks any number of
+glyph, ASCII-drawing or image layers at authored depths — a face toward the
+camera, a lattice at the core, a second face behind — and the engine bakes the
+whole stack as one laminated body: the particle allocation is subdivided across
+the layers, each layer carries its own measured body-law thickness, and the
+collision wall becomes the bounding solid of the stack.
 
-Two formations placed at different depths already compose as separate
-laminae (depth placement via the XZ workplane, and the **Arrangement →
-laminate** layout stacks the selected centres through the layout plane's
-normal); sequence lamination builds the same formalism *inside* one formation,
-sharing one allocation, tint and force set.
+Layers are object composition, parallel to the sequence and independent of it:
+a layered body's sources always load and always render, whether or not any
+sequence plays. And the whole layered body then runs through the sequence and
+morph system as one object — states glide, turn, scale and tint it through the
+ordinary uniforms, so a laminated head can drift and rotate between poses
+without its layers coming apart. The **Arrangement → laminate** layout stacks
+selected formations through the layout plane's normal, composing layered
+formations into larger depth structures.
 
 ## The medium is the space; the resonator fills it
 
@@ -217,7 +216,8 @@ the studio controls and read settled GPU particle state back
 twelve-mask image study, `field-studies-journeys/tests/three_d_forces_browser.mjs`
 for the 3D force layer — relational, pairwise, resonator, medium, occlusion —
 and `field-studies-journeys/tests/lamination_browser.mjs` for depth
-lamination).
+lamination — the donut verdict: a laminated showcase must show its sampled
+face layers, not the base glyph).
 
 ## Semantic field
 

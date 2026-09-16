@@ -4,11 +4,13 @@
  */
 
 /**
- * Depth lamination — the sequence's spatial dual. A laminated formation renders
- * every link simultaneously as one depth layer of a single laminated body: the
- * partition is subdivided across the layers, each layer bakes A=B (the sequence
- * clock composes in space, not time), authored link z is a layer depth (never a
- * glide offset), and the collision wall is the union solid of the stack.
+ * Lamination — the spatial composition of an object. An entity's layers are
+ * its makeup in depth: the particle allocation is subdivided across the
+ * layers, each layer draws its own shape or loaded source at its own depth
+ * with its own measured thickness, and the whole layered body bakes A=B — one
+ * static object the sequence then transforms as a whole. Layers are object
+ * composition, parallel to the sequence's temporal one; neither gates the
+ * other.
  */
 
 import assert from 'node:assert/strict';
@@ -18,33 +20,29 @@ import { GlyphSampler } from '../src/engine/GlyphSampler.ts';
 import {
   makeFormation,
   makeLink,
+  makeLayer,
   DEFAULT_SEQUENCE,
   DEFAULT_COMPOSITION,
 } from '../src/engine/fieldModel.ts';
-import { resolveEntityPose } from '../src/engine/entityPose.ts';
 import { SDF_DISTANCE_SCALE } from '../src/engine/sdfField.ts';
 
 const runtime = () => new EntityRuntime({ setVolume: () => false } as unknown as GlyphSampler);
 
-/** A flat candidate pool: a small square patch of `density`, distinct per layer via `side`. */
+/** A flat candidate pool: a square patch, sized per layer via `side`. */
 function patch(side: number, density = 1) {
   const pool = [];
   for (let j = 0; j < side; j++) for (let i = 0; i < side; i++) pool.push({ x: i - side / 2, y: j - side / 2, density });
   return pool;
 }
 
-type LinkSpec = [Parameters<typeof makeLink>[0], Parameters<typeof makeLink>[1]];
-
-function laminated(links: LinkSpec[], span = 240, pools = [8, 8, 8]) {
+function laminated(layers: Array<{ z: number; scale?: number }>, pools = [8, 8, 8]) {
   const rt = runtime();
   rt.allocate(3000, 50, 60);
-  const entity = makeFormation({
-    sequence: { ...DEFAULT_SEQUENCE, links: [], laminate: { span } },
-  });
-  entity.sequence.links = links.map(([shape, pos], i) => makeLink(shape, pos));
+  const entity = makeFormation({});
+  entity.layers = layers.map(({ z, scale }) => makeLayer(z, { kind: 'glyph', text: 'O' }, scale !== undefined ? { scale } : {}));
   rt.layout([entity]);
-  entity.sequence.links.forEach((link, i) => {
-    rt.setCustomCandidates(entity.id + ':' + link.id, patch(pools[i % pools.length]));
+  entity.layers.forEach((layer, i) => {
+    rt.setCustomCandidates(entity.id + ':' + layer.id, patch(pools[i % pools.length]));
   });
   rt.update([entity], DEFAULT_COMPOSITION, 0, 0, 0, 1);
   return { rt, entity };
@@ -57,27 +55,18 @@ const zOf = (rt: EntityRuntime, which: 'A' | 'B' = 'A') => {
   return out;
 };
 
-test('lamination: three links bake as three distinct depth bands', () => {
-  const { rt } = laminated([
-    [{ kind: 'glyph', text: 'A' }, undefined],
-    [{ kind: 'glyph', text: 'B' }, undefined],
-    [{ kind: 'glyph', text: 'C' }, undefined],
-  ]);
+test('layers: three layers bake as three distinct depth bands', () => {
+  const { rt } = laminated([{ z: -120 }, { z: 0 }, { z: 120 }]);
   const zs = zOf(rt);
   const bands = new Set(zs.map((z) => z.toFixed(1)));
   assert.equal(bands.size, 3, `three layers, three bands — got ${[...bands].join(', ')}`);
-  // Even spread across the 240 span: slot centres at −80, 0, +80.
-  for (const expected of [-80, 0, 80]) {
+  for (const expected of [-120, 0, 120]) {
     assert.ok(bands.has(expected.toFixed(1)), `band at ${expected} present`);
   }
 });
 
-test('lamination: the allocation subdivides evenly across the layers', () => {
-  const { rt } = laminated([
-    [{ kind: 'glyph', text: 'A' }, undefined],
-    [{ kind: 'glyph', text: 'B' }, undefined],
-    [{ kind: 'glyph', text: 'C' }, undefined],
-  ]);
+test('layers: the allocation subdivides evenly across the layers', () => {
+  const { rt } = laminated([{ z: -120 }, { z: 0 }, { z: 120 }]);
   const counts = new Map<number, number>();
   for (const z of zOf(rt)) counts.set(z, (counts.get(z) ?? 0) + 1);
   const sizes = [...counts.values()].sort((a, b) => b - a);
@@ -85,27 +74,32 @@ test('lamination: the allocation subdivides evenly across the layers', () => {
   assert.ok(sizes[0] - sizes[2] <= 1, `even subdivision — ${sizes.join('/')}`);
 });
 
-test('lamination: authored link z overrides the even spread, and layers carry A=B', () => {
-  const { rt, entity } = laminated([
-    [{ kind: 'glyph', text: 'A' }, { z: 55 }],
-    [{ kind: 'glyph', text: 'B' }, undefined],
-  ], 240, [8, 8]);
-  const zs = zOf(rt);
-  const bands = new Set(zs.map((z) => z.toFixed(1)));
-  assert.ok(bands.has('55.0'), `authored depth 55 honoured — bands: ${[...bands].join(', ')}`);
+test('layers: each layer bakes A=B — one body the clock does not touch', () => {
+  const { rt } = laminated([{ z: 55 }, { z: -55 }]);
   const za = zOf(rt, 'A');
   const zb = zOf(rt, 'B');
-  for (let i = 0; i < za.length; i++) assert.equal(za[i], zb[i], `A=B at ${i} — a laminated layer is clock-inert`);
+  for (let i = 0; i < za.length; i++) assert.equal(za[i], zb[i], `A=B at ${i}`);
+  const bands = new Set(za.map((z) => z.toFixed(1)));
+  assert.ok(bands.has('55.0') && bands.has('-55.0'), `authored depths honoured — ${[...bands].join(', ')}`);
+});
+
+test('layers: layer scale multiplies the pool in-plane and in thickness', () => {
+  const { rt, entity } = laminated([{ z: 0, scale: 2 }, { z: 120 }], [8, 8]);
+  const data = rt.textureA!.image.data as Float32Array;
+  // Layer 0 occupies the first half of the partition: its x spread is doubled.
+  const half = 1500;
+  const xInLayer0: number[] = [];
+  for (let i = 0; i < half; i++) xInLayer0.push(data[i * 4]);
+  const spread0 = Math.max(...xInLayer0) - Math.min(...xInLayer0);
+  // Unscaled patch span is 7 units; at BASE_SCALE 0.56 and layer scale 2 → 7.84.
+  assert.ok(Math.abs(spread0 - 7 * 2 * 0.56) < 0.2, `scaled layer spans twice the base patch (${spread0.toFixed(2)} ≠ ${(7 * 2 * 0.56).toFixed(2)})`);
   void entity;
 });
 
-test('lamination: the collision wall is the union solid spanning the lamination', () => {
-  const { rt } = laminated([
-    [{ kind: 'glyph', text: 'A' }, undefined],
-    [{ kind: 'glyph', text: 'B' }, undefined],
-  ], 240, [8, 8]);
-  // The union tile's thickness channel carries the span: hz = span/2 · scale.
-  const expected = (240 / 2) * 0.56 / SDF_DISTANCE_SCALE;
+test('layers: the collision wall is the union solid spanning the stack', () => {
+  const { rt } = laminated([{ z: -200 }, { z: 200 }]);
+  // The union tile's thickness channel carries the reach: 200 · scale / 100.
+  const expected = (200 * 0.56) / SDF_DISTANCE_SCALE;
   const tile = rt.collisionTexture!.image.data as Float32Array;
   let found = 0;
   for (let i = 0; i < tile.length; i += 4) {
@@ -114,28 +108,25 @@ test('lamination: the collision wall is the union solid spanning the lamination'
   assert.ok(found > 20, `thickness envelope ≈ ${expected.toFixed(2)} stamped (${found} cells)`);
 });
 
-test('lamination: editing the span or layer depths re-bakes the stack', () => {
-  const { rt, entity } = laminated([
-    [{ kind: 'glyph', text: 'A' }, undefined],
-    [{ kind: 'glyph', text: 'B' }, undefined],
-  ], 240, [8, 8]);
-  const zs240 = zOf(rt);
-  entity.sequence.laminate = { span: 480 };
+test('layers: editing depths or scales re-bakes the stack', () => {
+  const { rt, entity } = laminated([{ z: -120 }, { z: 120 }]);
+  const zsBefore = zOf(rt);
+  entity.layers![1].z = 240;
   rt.update([entity], DEFAULT_COMPOSITION, 0, 0, 0, 1);
-  const zs480 = zOf(rt);
-  const bands480 = new Set(zs480.map((z) => z.toFixed(1)));
-  const bands240 = new Set(zs240.map((z) => z.toFixed(1)));
-  assert.ok(zs480.some((z, i) => z !== zs240[i]), `the span change re-baked the bands — 240: ${[...bands240].join(', ')} / 480: ${[...bands480].join(', ')}`);
-  // Two layers at span 480: slot centres ±120.
-  assert.ok(bands480.has('-120.0') && bands480.has('120.0'), `span 480 spreads wider — ${[...bands480].join(', ')}`);
+  const zsAfter = zOf(rt);
+  const before = new Set(zsBefore.map((z) => z.toFixed(1)));
+  const after = new Set(zsAfter.map((z) => z.toFixed(1)));
+  assert.ok(zsAfter.some((z, i) => z !== zsBefore[i]), 'the depth change re-baked the bands');
+  assert.ok(after.has('240.0') && !before.has('240.0'), `new band present — ${[...after].join(', ')}`);
 });
 
-test('lamination: link coordinates are layer depths, never glide offsets', () => {
-  const entity = makeFormation({
-    z: -40,
-    sequence: { ...DEFAULT_SEQUENCE, links: [], laminate: { span: 200 } },
-  });
-  entity.sequence.links = [makeLink({ kind: 'glyph', text: 'A' }, { z: 90 })];
-  const pose = resolveEntityPose(entity, 0, 0, 0, 1);
-  assert.equal(pose.z, -40, 'the pose stays at the entity centre; the bake owns layer depth');
+test('layers: a layered body still sequences — states transform the whole stack', () => {
+  const { rt, entity } = laminated([{ z: -120 }, { z: 120 }]);
+  // The layered bake is A=B: a state's progress cannot reshuffle the layers,
+  // and the ordinary uniforms (placement/size/tint) carry the whole body.
+  entity.sequence = { ...DEFAULT_SEQUENCE, links: [makeLink({ kind: 'glyph', text: 'O' })] };
+  rt.update([entity], DEFAULT_COMPOSITION, 0.5, 0, 0, 1);
+  const zs = zOf(rt);
+  const bands = new Set(zs.map((z) => z.toFixed(1)));
+  assert.ok(bands.has('-120.0') && bands.has('120.0'), 'the layered body persists under a running sequence');
 });

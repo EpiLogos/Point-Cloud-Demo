@@ -27,6 +27,7 @@ import {
 } from './sdfField';
 import {
   Entity,
+  EntityLayer,
   Shape,
   Composition,
   Partition,
@@ -355,10 +356,16 @@ export class EntityRuntime {
       ?? (custom && linkIndex === 0 ? custom : this.candidatesFor(link.shape, fontFamily, fontWeight));
   }
 
+  /** A layer's candidate pool: its loaded image/ASCII source, else its shape. */
+  private layerCandidates(e: Entity, layer: EntityLayer, custom: Candidate[] | undefined, fontFamily?: string, fontWeight?: string | number): Candidate[] {
+    return this.customCandidates.get(e.id+':'+layer.id)
+      ?? this.candidatesFor(layer.shape, fontFamily, fontWeight);
+  }
+
   private bakePartition(p: Partition, e: Entity, linkIndex: number, nextIndex: number, plane: Composition['plane'], fontFamily?: string, fontWeight?: string | number) {
     const links = effectiveLinks(e);
-    if (e.sequence.laminate) {
-      this.bakeLamination(p, e, links, plane, fontFamily, fontWeight);
+    if (e.layers?.length) {
+      this.bakeLayers(p, e, plane, fontFamily, fontWeight);
       return;
     }
     const custom = this.customCandidates.get(e.id);
@@ -389,47 +396,50 @@ export class EntityRuntime {
   }
 
   /**
-   * Depth lamination — the sequence's spatial dual. Every link renders
-   * simultaneously as one layer of a laminated body: the formation's particle
-   * allocation is subdivided across the links, and layer k draws link k's shape
-   * in the depth band link k occupies — its authored z offset, or an even
-   * spread across the lamination span centred on the entity. Each layer bakes
-   * A=B, so the sequence clock's A→B blend is inert: lamination composes in
-   * space, not in time. Fronts and backs of one construct, nestable to any
-   * depth, each layer still a full glyph / image / shape source.
+   * A laminated object: the entity's layers are its spatial composition, and
+   * the formation's particle allocation is subdivided across them. Layer k
+   * draws its shape — or its loaded image/ASCII pool, keyed per layer — in the
+   * depth band its z occupies, with its own in-plane scale and measured body
+   * thickness. Both channels bake the same union, so the whole layered body is
+   * one static object that the sequence then transforms as a whole (placement,
+   * size, rotation, tint, forces ride the ordinary uniforms).
    */
-  private bakeLamination(p: Partition, e: Entity, links: SequenceLink[], plane: Composition['plane'], fontFamily?: string, fontWeight?: string | number) {
+  private bakeLayers(p: Partition, e: Entity, plane: Composition['plane'], fontFamily?: string, fontWeight?: string | number) {
+    const layers = e.layers!;
     const custom = this.customCandidates.get(e.id);
-    const span = Math.max(0, e.sequence.laminate?.span ?? 240);
-    const K = Math.max(1, links.length);
-    const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
+    const baseScale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
     const normalized = !!e.extent && e.extent.normalized !== false;
+    const K = Math.max(1, layers.length);
     const per = Math.floor((p.end - p.start) / K);
+    // The union collision envelope reaches across the whole stack: from the
+    // outermost layer edge to the opposite one.
+    const reach = Math.max(...layers.map((l) => Math.abs(l.z)), 0);
 
     const union: Candidate[] = [];
-    for (let k = 0; k < K; k++) {
-      const link = links[k];
-      // A link with no authored z sits at its even slot in the span; an authored
-      // z (from depth placement on the link) overrides the spread.
-      const depth = link.z ?? (K > 1 ? -span / 2 + (span * (k + 0.5)) / K : 0);
+    layers.forEach((layer: EntityLayer, k: number) => {
+      const pool = this.presetPool(e, this.layerCandidates(e, layer, custom, fontFamily, fontWeight)).map((c) => {
+        const ls = Math.max(0.001, layer.scale ?? 1);
+        const scaled: Candidate = {...c, x: c.x * ls, y: c.y * ls};
+        if (c.hz !== undefined) scaled.hz = c.hz * ls;
+        return scaled;
+      });
       const start = p.start + k * per;
       const end = k === K - 1 ? p.end : start + per;
-      const pool = this.presetPool(e, this.linkCandidates(e, link, k, custom, fontFamily, fontWeight));
       this.bakeGeneration++;
-      this.writeCandidates(this.dataA, start, end, pool, scale, plane, 2, 0, normalized, depth);
+      this.writeCandidates(this.dataA, start, end, pool, baseScale, plane, 2, 0, normalized, layer.z);
       this.bakeGeneration++;
-      this.writeCandidates(this.dataB, start, end, pool, scale, plane, 2, 2, normalized, depth);
-      // Collision: one union section whose thickness envelope reaches across the
-      // whole lamination, so the wall is the bounding solid of the stack.
-      for (const c of pool) union.push({...c, hz: Math.max(c.hz ?? 0, span * 0.5)});
-    }
+      this.writeCandidates(this.dataB, start, end, pool, baseScale, plane, 2, 2, normalized, layer.z);
+      // Collision: one union section whose thickness envelope reaches across
+      // the whole lamination, so the wall is the bounding solid of the stack.
+      for (const c of pool) union.push({...c, hz: Math.max(c.hz ?? 0, reach)});
+    });
     if (this.noiseTexture) this.noiseTexture.needsUpdate = true;
     if (this.textureA) this.textureA.needsUpdate = true;
     if (this.textureB) this.textureB.needsUpdate = true;
     if (this.collisionTexture) {
       const slot = this.collisionSlot(e.id);
       if (slot >= 0) {
-        const tile = buildSdfTile(union, scale);
+          const tile = buildSdfTile(union, baseScale);
         writeSdfTile(this.collisionData, slot, 0, tile);
         writeSdfTile(this.collisionData, slot, 1, tile);
         this.collisionTexture.needsUpdate = true;
@@ -478,19 +488,20 @@ export class EntityRuntime {
       const pose = poseById.get(e.id)!;
       const state = pose.sequence;
       const links = effectiveLinks(e);
-      // A laminated body bakes once from every link, so its signature covers the
-      // whole stack — link order, shapes, authored depth offsets, the span and
-      // which layers carry custom sources — and the clock never advances it.
-      const sig = e.sequence.laminate
-        ? `laminate|${e.sequence.laminate.span ?? ''}|${links.map((l) => `${l.id}:${this.shapeSignature(l.shape)}:${l.z ?? ''}:${this.customCandidates.has(e.id + ':' + l.id) ? (this.customCandidates.get(e.id + ':' + l.id) as {length:number}).length : (this.customCandidates.has(e.id) && l === links[0] ? 'o' : '')}`).join(',')}|${!!e.extent && e.extent.normalized !== false}`
-        : `${links[state.linkIndex].id}:${links[state.nextIndex].id}|${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
+      // A layered body bakes once from every layer, so its signature covers the
+      // whole stack — layer order, shapes, depths, scales and which layers
+      // carry custom sources — and the sequence clock never rebuilds it.
+      const layersSig = e.layers?.length
+        ? `layers|${e.layers.map((l) => `${l.id}:${l.z}:${l.scale ?? 1}:${this.shapeSignature(l.shape)}:${this.customCandidates.has(e.id + ':' + l.id) ? (this.customCandidates.get(e.id + ':' + l.id) as {length:number}).length : ''}`).join(',')}|${!!e.extent && e.extent.normalized !== false}`
+        : '';
+      const sig = layersSig || `${links[state.linkIndex].id}:${links[state.nextIndex].id}|${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
       const prevStep = this.lastStep.get(e.id);
       if (this.bakeSig.get(e.id) !== sig) {
         this.bakePartition(p, e, state.linkIndex, state.nextIndex, comp.plane, fontFamily, fontWeight);
         this.bakeSig.set(e.id, sig);
         rebaked = true;
       }
-      if (!e.sequence.laminate && prevStep !== undefined && prevStep !== state.step && e.sequence.impulse > 0) impulses.push(e.sequence.impulse);
+      if (prevStep !== undefined && prevStep !== state.step && e.sequence.impulse > 0) impulses.push(e.sequence.impulse);
       this.lastStep.set(e.id, state.step);
 
       // Every subsystem consumes the same evaluated pose — centre, per-link object

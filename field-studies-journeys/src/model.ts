@@ -15,13 +15,15 @@ export type Tool = 'select'|'interact'|'pin'|'formation'|'text'|'orbit';
 export type Shape = 'text'|'ring'|'disc'|'square'|'triangle'|'yantra'|'cymatic';
 export type Material = 'ink'|'print'|'round';
 export interface SequenceStep {source?:Entity['source'];name?:string;objectState?:Pick<Entity,'size'|'rotation'|'scale'|'tint'|'tintWeight'|'force'>;holdOverride?:boolean;transitionOverride?:boolean;native?:NativeLink;yantraId?:string;templateFrequency?:number;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';id:string;text:string;shape:Shape;hold:number;transition:number;position:Vec3|null}
+export interface EntityLayer {id:string;text:string;z:number;scale?:number;source?:{kind:'image';image:CustomImageConfig}|{kind:'ascii';ascii:AsciiGlyphConfig}}
 export interface Entity {
  source?:{kind:'image';image:CustomImageConfig}|{kind:'ascii';ascii:AsciiGlyphConfig};
  scale?:number;native?: NativeEntity;yantraId?:string;templateFrequency?:number;templateGeometry?:'square'|'circular'|'volumetric3D';templateDimension?:'2D'|'3D';enabled?:boolean;
  id:string;name:string;kind:'formation'|'pin';position:Vec3;size:{x:number;y:number};rotation:number;
  shape:Shape;text:string;share:number;tint:string;tintWeight:number;locked:boolean;
  force:{kind:'none'|'attract'|'repel'|'vortex';strength:number;radius:number;spin:number};station:number|null;
- sequence:{sourcesVersion?:1;enabled:boolean;clock:'seconds'|'morph';steps:SequenceStep[];manual?:boolean;hold?:number;transition?:number;order?:'loop'|'pingpong'|'random';easing?:'linear'|'smoothstep'|'kineticSnap'|'whip';jitter?:number;impulse?:number;rateMul?:number;phaseOffset?:number;laminate?:{span?:number}};
+ layers?:EntityLayer[];
+ sequence:{sourcesVersion?:1;enabled:boolean;clock:'seconds'|'morph';steps:SequenceStep[];manual?:boolean;hold?:number;transition?:number;order?:'loop'|'pingpong'|'random';easing?:'linear'|'smoothstep'|'kineticSnap'|'whip';jitter?:number;impulse?:number;rateMul?:number;phaseOffset?:number;};
 }
 export interface TextLayer {id:string;visible:boolean;kicker:string;title:string;italic:string;body:string;x:number;y:number;width:number;size:number;align:'left'|'center'|'right'}
 export interface AutomationLane {clockId?:string;syncWith?:string;easing?:AutomationEasing;nativeId?:string;nativePath?:string;entityId?:string;id:string;enabled:boolean;target:string;type:'lfo'|'ramp';wave:'sine'|'triangle'|'square'|'saw'|'steps'|'smooth'|'morph';min:number;max:number;rate:number;phase:number;blend:'replace'|'add'|'multiply';duration:number;delay:number;loop:'once'|'loop'|'pingpong';firedAt:number|null}
@@ -45,7 +47,6 @@ export interface Journey {shared?:SharedSettings;savedScenes?:Record<string,Scen
 /** structuredClone is several times cheaper than a JSON round-trip on source-heavy documents. */
 export const clone=<T>(v:T):T=>typeof structuredClone==='function'?structuredClone(v):JSON.parse(JSON.stringify(v));
 /** Depth lamination default span, stage units (×400 = native world px). ~half the stage: a clear front/back separation. */
-export const LAMINATION_SPAN=.5;
 export const uid=(prefix='id')=>prefix+'-'+(globalThis.crypto?.randomUUID?.()??Math.random().toString(36).slice(2,12));
 export const clamp=(x:number,a:number,b:number)=>Math.max(a,Math.min(b,x));
 export const DEFAULT_PARAMS:Record<string,number>={
@@ -125,7 +126,7 @@ export function validateJourney(value:unknown):Journey {
    if(!e.force||!['none','attract','repel','vortex'].includes(e.force.kind)||!finite(e.force.strength,-1000,1000)||!finite(e.force.radius,.001,125)||!finite(e.force.spin,-1000,1000)||!(e.station===null||Number.isInteger(e.station)&&e.station>=0&&e.station<7))throw new Error('Invalid entity influence.');
    validateSource(e.source);
    if(!e.sequence||e.sequence.sourcesVersion!==undefined&&e.sequence.sourcesVersion!==1||typeof e.sequence.enabled!=='boolean'||!['seconds','morph'].includes(e.sequence.clock)||!Array.isArray(e.sequence.steps)||e.sequence.steps.length>32)throw new Error('Invalid sequence.');
-   if(e.sequence.laminate!==undefined&&(e.sequence.laminate===null||typeof e.sequence.laminate!=='object'||Array.isArray(e.sequence.laminate)||e.sequence.laminate.span!==undefined&&!finite(e.sequence.laminate.span,0,100)))throw new Error('Invalid sequence lamination.');
+   for(const l of e.layers??[])if(typeof l.id!=='string'||!l.id||!finite(l.z,-100,100)||(l.scale!==undefined&&!finite(l.scale,.01,10))||typeof l.text!=='string')throw new Error('Invalid layer.');
    for(const step of e.sequence.steps){validateSource(step.source);if(step.name!==undefined&&!str(step.name,500))throw new Error('Invalid state name');if(step.objectState){const v=step.objectState;if(!v.size||!finite(v.size.x,.001,100)||!finite(v.size.y,.001,100)||!finite(v.rotation,-36000,36000)||v.scale!==undefined&&!finite(v.scale,.001,1000)||!color(v.tint)||!finite(v.tintWeight,0,1)||!v.force||!['none','attract','repel','vortex'].includes(v.force.kind)||!finite(v.force.radius,.001,125)||!finite(v.force.strength,-1000,1000)||!finite(v.force.spin,-1000,1000))throw new Error('Invalid object state');}if(!safeId(step.id)||!str(step.text,120)||!['text','ring','disc','square','triangle','yantra','cymatic'].includes(step.shape)||!finite(step.hold,0,3600)||!finite(step.transition,0,3600)||step.position!==null&&(!step.position||!['x','y','z'].every(k=>finite(step.position![k as keyof Vec3],-100,100))))throw new Error('Invalid sequence step.');}
   }
   for(const t of s.text){if(!safeId(t.id)||!str(t.kicker,300)||!str(t.title,300)||!str(t.italic,300)||!str(t.body)||!finite(t.x,-.5,1.5)||!finite(t.y,-.5,1.5)||!finite(t.width,60,1000)||!finite(t.size,14,150)||!['left','center','right'].includes(t.align)||typeof t.visible!=='boolean')throw new Error('Invalid page text.');}

@@ -105,28 +105,33 @@ function twelveFaces():Journey{
  return j;
 }
 
-/** Depth lamination: the sequence's spatial dual. Three states — a face, a
- * typed lattice, and a second face — render simultaneously as front, core and
- * back of one laminated head. The clock rests; the layers hold. */
+/** Lamination: layers are the object's body in depth — a face toward the
+ * camera, a typed lattice at the core, a second face behind. The layered body
+ * is one object, and the sequence below runs that whole object: it drifts and
+ * turns between two poses while the layers stand. */
 function laminated():Journey{
- const s=studyScene('Laminated head','Front and back of one head, a typed lattice between — three states composed in depth at once.');
+ const s=studyScene('Laminated head','A face toward the camera, a typed lattice at the core, a second face behind — one layered body, sequenced as a whole.');
  const mask=s.entities[0];
  mask.name='Laminated head';
  mask.size={x:1.35,y:1.35};
- const face=(id:string,z:number,dataUrl:string,name:string):SequenceStep=>({id,text:'O',shape:'text',hold:4,transition:3,position:{x:0,y:0,z},source:{kind:'image',image:{mode:'luminance',threshold:.19,invert:false,scale:1,dataUrl,name}}});
- mask.sequence={...mask.sequence,enabled:false,manual:false,laminate:{span:1.1},steps:[
+ const face=(id:string,z:number,dataUrl:string,name:string)=>({id,text:'O',z,scale:1,source:{kind:'image' as const,image:{mode:'luminance' as const,threshold:.19,invert:false,scale:1,dataUrl,name}}});
+ mask.layers=[
   face('lam-front',.38,FACES_DATA_URLS[1],'face-front'),
-  {id:'lam-core',text:'O',shape:'text',hold:4,transition:3,position:{x:0,y:0,z:0},source:{kind:'ascii',ascii:{text:['        # ######## #','      ###        ###','    ###  ##  ##  ###','   ##   ##    ##   ##','   ##    ##  ##    ##','   ##     ##      ##','    #             #'].join('\n'),fontFamily:'monospace'}},name:'typed lattice'},
+  {id:'lam-core',text:'O',z:0,scale:.8,source:{kind:'ascii' as const,ascii:{text:['        # ######## #','      ###        ###','    ###  ##  ##  ###','   ##   ##    ##   ##','   ##    ##  ##    ##','   ##     ##      ##','    #             #'].join('\n'),fontFamily:'monospace'}}},
   face('lam-back',-.38,FACES_DATA_URLS[9],'face-back'),
+ ];
+ const pose=(id:string,text:string,z:number,rotation:number,scale:number,tint:string):SequenceStep=>({id,text,shape:'text',hold:3.5,transition:3,position:{x:0,y:0,z},objectState:{size:{x:1.35,y:1.35},rotation,scale,tint,tintWeight:.35,force:{kind:'attract',strength:0,radius:.45,spin:0}}});
+ mask.sequence={...mask.sequence,enabled:true,clock:'seconds',steps:[
+  pose('head-near','head · near',0,0,1,'#9fd8e8'),
+  pose('head-turned','head · turned',-.08,180,.88,'#6fd8e8'),
  ]};
- mask.tint='#9fd8e8';
  s.engine.volumeEnabled=true;
  s.field.background='#0a0f1c';
  s.field.palette=['#e8fbff','#6fd8e8','#2e7fa8'];
  s.engine.inkMode='whiteOnBlack';
  s.engine.backgroundMode='ambientGlow';
  Object.assign(s.field.params,{count:62000,size:2.25,opacity:.92,contrast:.82,warp:.1,dispersion:.04,jitter:.4,speed:.42,turbulence:.12});
- const j:Journey={schema:'oi.journey' as const,version:1,id:'source-laminate-head',name:'Laminate · head, front and back',description:'Depth lamination: three states hold at once as front, core and back of one head. The sequence clock rests; the layers stand.',loop:true,scenes:[s],updatedAt:new Date().toISOString()};
+ const j:Journey={schema:'oi.journey' as const,version:1,id:'source-laminate-head',name:'Laminate · head, front and back',description:'Layers are the body: two faces and a typed lattice hold in depth at once, and the sequence turns the whole head between two poses.',loop:true,scenes:[s],updatedAt:new Date().toISOString()};
  return j;
 }
 

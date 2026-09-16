@@ -33,9 +33,9 @@ function shapeOf(e:Pick<Entity,'shape'|'text'|'yantraId'|'templateFrequency'|'te
  if(e.shape==='text')return {...native,kind:'glyph',text:e.text.trim()||'O'};
  return {kind:'primitive',primitive:e.shape};
 }
-/** Depth lamination rides the same unit law as every position: studio span (stage units) ⇄ native span (world px), like link z. */
-const toNativeLaminate=(l:Entity['sequence']['laminate'])=>l?{span:l.span===undefined?undefined:clamp(l.span,0,100)*WORLD_SCALE}:undefined;
-const fromNativeLaminate=(l:NativeEntity['sequence']['laminate'])=>l?{span:l.span===undefined?undefined:clamp(l.span,0,100*WORLD_SCALE)/WORLD_SCALE}:undefined;
+/** Layers are the object's spatial composition. Their depth rides the same unit law as every position: studio z (stage units) ⇄ native z (world px), like link z. */
+const toNativeLayers=(ls:Entity['layers']):NativeEntity['layers']|undefined=>ls?.length?ls.map(l=>({id:l.id,z:clamp(l.z,-100,100)*WORLD_SCALE,scale:l.scale,shape:{kind:'glyph' as const,text:l.text.trim()||'O'}})):undefined;
+const fromNativeLayers=(ls:NativeEntity['layers']):Entity['layers']|undefined=>ls?.length?ls.map(l=>({id:l.id,z:clamp(l.z,-100*WORLD_SCALE,100*WORLD_SCALE)/WORLD_SCALE,scale:l.scale,text:l.shape.text??'O'})):undefined;
 export function toNativeEntity(e:Entity,semanticAuthority=false):NativeEntity{
  const original=e.native;
  const {enabled,clock,steps,manual,...nativeSequence}=e.sequence;
@@ -45,14 +45,13 @@ export function toNativeEntity(e:Entity,semanticAuthority=false):NativeEntity{
  return {...original,id:e.id,name:e.name,kind:e.kind,enabled:e.enabled!==false,x:e.position.x*WORLD_SCALE,y:e.position.y*WORLD_SCALE,z:e.position.z*WORLD_SCALE,
   scale:e.scale??1,extent:{width:e.size.x*WORLD_SCALE,height:e.size.y*WORLD_SCALE,rotation:e.rotation*Math.PI/180,normalized:original?original.extent?.normalized??!!original.extent:true},
   share:e.kind==='pin'?0:e.share,shape:shapeOf(e,original?.shape),
+  layers:e.kind==='pin'?undefined:toNativeLayers(e.layers),
   sequence:{...sequence,hold,transition,advance:e.sequence.enabled?(e.sequence.clock==='morph'?'morphCycle':'time'):'off',
-   // Lamination stops the clock (advance 'off') but still needs every layer link; span scales like link z.
-   laminate:e.kind==='pin'?undefined:toNativeLaminate(e.sequence.laminate),
-   links:e.kind==='pin'?[]:e.sequence.enabled||e.sequence.manual||!!e.sequence.laminate?e.sequence.steps.map(k=>({...k.native,id:k.id,name:k.name,source:k.source?clone(k.source):undefined,state:k.objectState?{scale:k.objectState.scale??1,extent:{width:k.objectState.size.x*WORLD_SCALE,height:k.objectState.size.y*WORLD_SCALE,rotation:k.objectState.rotation*Math.PI/180,normalized:true},tint:k.objectState.tint,tintWeight:k.objectState.tintWeight,forces:{mode:k.objectState.force.kind,strength:k.objectState.force.strength,radius:k.objectState.force.radius*WORLD_SCALE,spin:k.objectState.force.spin}}:undefined,shape:shapeOf(k,k.native?.shape),
+   links:e.kind==='pin'?[]:e.sequence.enabled||e.sequence.manual?e.sequence.steps.map(k=>({...k.native,id:k.id,name:k.name,source:k.source?clone(k.source):undefined,state:k.objectState?{scale:k.objectState.scale??1,extent:{width:k.objectState.size.x*WORLD_SCALE,height:k.objectState.size.y*WORLD_SCALE,rotation:k.objectState.rotation*Math.PI/180,normalized:true},tint:k.objectState.tint,tintWeight:k.objectState.tintWeight,forces:{mode:k.objectState.force.kind,strength:k.objectState.force.strength,radius:k.objectState.force.radius*WORLD_SCALE,spin:k.objectState.force.spin}}:undefined,shape:shapeOf(k,k.native?.shape),
     hold:k.holdOverride?k.hold:e.sequence.hold===undefined&&k.hold!==hold?k.hold:undefined,transition:k.transitionOverride?k.transition:e.sequence.transition===undefined&&k.transition!==transition?k.transition:undefined,
     x:k.position?k.position.x*WORLD_SCALE:undefined,y:k.position?k.position.y*WORLD_SCALE:undefined,z:k.position?k.position.z*WORLD_SCALE:undefined})):[{id:e.id+'_base',source:e.source?clone(e.source):undefined,shape:shapeOf(e,original?.shape)}]},
   forces:{...DEFAULT_FORCES,...original?.forces,mode:e.force.kind,strength:e.force.strength,radius:e.force.radius*WORLD_SCALE,spin:e.force.spin},
-  authoringSource:e.sequence.enabled||e.sequence.manual||!!e.sequence.laminate?(stateSource(e,0)?clone(stateSource(e,0)):undefined):e.source?clone(e.source):undefined,
+  authoringSource:e.sequence.enabled||e.sequence.manual?(stateSource(e,0)?clone(stateSource(e,0)):undefined):e.source?clone(e.source):undefined,
   tint:e.tint,tintWeight:e.tintWeight,stationIndex:semanticAuthority?original?.stationIndex:e.station??original?.stationIndex,
   chakraId:semanticAuthority?original?.chakraId:original?.chakraId,
  };
@@ -128,7 +127,8 @@ export function fromNativeEntity(e:NativeEntity):Entity{
  out.size=e.extent?{x:e.extent.width/WORLD_SCALE,y:e.extent.height/WORLD_SCALE}:{x:1,y:1};
  out.rotation=(e.extent?.rotation??0)*180/Math.PI;out.share=e.kind==='pin'?0:e.share;out.tint=e.tint;out.tintWeight=e.tintWeight;
  out.force={kind:e.forces.mode,strength:e.forces.strength,radius:e.forces.radius/WORLD_SCALE,spin:e.forces.spin};out.station=e.stationIndex??null;
- out.sequence={...e.sequence,manual:e.sequence.laminate?false:e.sequence.advance==='off'&&e.sequence.links.length>1,enabled:e.sequence.advance!=='off',clock:e.sequence.advance==='morphCycle'?'morph':'seconds',laminate:fromNativeLaminate(e.sequence.laminate),steps:(e.sequence.links.length?e.sequence.links:[{id:e.id+'_base',source:e.authoringSource?clone(e.authoringSource):undefined,shape:e.shape}]).map(k=>({id:k.id,name:k.name,source:k.source?clone(k.source):undefined,objectState:k.state?{scale:k.state.scale,size:{x:(k.state.extent?.width??400)/WORLD_SCALE,y:(k.state.extent?.height??400)/WORLD_SCALE},rotation:(k.state.extent?.rotation??0)*180/Math.PI,tint:k.state.tint,tintWeight:k.state.tintWeight,force:{kind:k.state.forces.mode,strength:k.state.forces.strength,radius:k.state.forces.radius/WORLD_SCALE,spin:k.state.forces.spin}}:undefined,native:clone(k),holdOverride:k.hold!==undefined,transitionOverride:k.transition!==undefined,text:k.shape.text??'',shape:shellShape(k.shape),yantraId:k.shape.yantraId,templateFrequency:k.shape.frequencyHz,templateGeometry:k.shape.plateGeometry,templateDimension:k.shape.dimension,hold:k.hold??e.sequence.hold,transition:k.transition??e.sequence.transition,
+ out.layers=fromNativeLayers(e.layers);
+ out.sequence={...e.sequence,manual:e.sequence.advance==='off'&&e.sequence.links.length>1,enabled:e.sequence.advance!=='off',clock:e.sequence.advance==='morphCycle'?'morph':'seconds',steps:(e.sequence.links.length?e.sequence.links:[{id:e.id+'_base',source:e.authoringSource?clone(e.authoringSource):undefined,shape:e.shape}]).map(k=>({id:k.id,name:k.name,source:k.source?clone(k.source):undefined,objectState:k.state?{scale:k.state.scale,size:{x:(k.state.extent?.width??400)/WORLD_SCALE,y:(k.state.extent?.height??400)/WORLD_SCALE},rotation:(k.state.extent?.rotation??0)*180/Math.PI,tint:k.state.tint,tintWeight:k.state.tintWeight,force:{kind:k.state.forces.mode,strength:k.state.forces.strength,radius:k.state.forces.radius/WORLD_SCALE,spin:k.state.forces.spin}}:undefined,native:clone(k),holdOverride:k.hold!==undefined,transitionOverride:k.transition!==undefined,text:k.shape.text??'',shape:shellShape(k.shape),yantraId:k.shape.yantraId,templateFrequency:k.shape.frequencyHz,templateGeometry:k.shape.plateGeometry,templateDimension:k.shape.dimension,hold:k.hold??e.sequence.hold,transition:k.transition??e.sequence.transition,
  position:k.x!==undefined||k.y!==undefined||k.z!==undefined?{x:(k.x??0)/WORLD_SCALE,y:(k.y??0)/WORLD_SCALE,z:(k.z??0)/WORLD_SCALE}:null}))};
  if(e.authoringSource)out.source=clone(e.authoringSource);return out;
 }
