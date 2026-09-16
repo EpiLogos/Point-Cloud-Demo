@@ -133,10 +133,10 @@ export const DEFAULT_COLLISION_CONFIG: CollisionConfig = {
 /** Sorted-grid pairwise collisions; default-off (see types.ts PairwiseConfig). */
 export const DEFAULT_PAIRWISE_CONFIG: PairwiseConfig = {
   enabled: false,
-  radius: 14,
+  radius: 2.2,
   stiffness: 1.0,
-  restitution: 0.2,
-  viscosity: 0.3,
+  restitution: 0.12,
+  viscosity: 0.06,
   extent: 1400,
 };
 export {computeMorphDrive} from './morphSignal';

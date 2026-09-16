@@ -159,6 +159,10 @@ export class GPGPUSimulator {
         uCollisionIntegrity: { value: 0.5 },
         uSdfAtlas: { value: null },
         uCollisionTile: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0.5, 0)) },
+        uTargetATexture: { value: null },
+        uTargetBTexture: { value: null },
+        uPairwiseEnabled: { value: 0.0 },
+        uPairwiseCorrectionTexture: { value: null },
         uEntityCount: { value: 0 },
         uEntityBounds: { value: new Float32Array(10) },
         uEntityCenter: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)) },
@@ -412,11 +416,11 @@ export class GPGPUSimulator {
       uSlots: { value: 1.0 },
       uParticleCount: { value: this.particleCount },
       uExtent: { value: 1400.0 },
-      uCellSize: { value: 14.0 },
-      uRadius: { value: 14.0 },
+      uCellSize: { value: 2.2 },
+      uRadius: { value: 2.2 },
       uStiffness: { value: 1.0 },
-      uRestitution: { value: 0.2 },
-      uPairViscosity: { value: 0.3 },
+      uRestitution: { value: 0.12 },
+      uPairViscosity: { value: 0.06 },
       uCompPlane: { value: 0.0 },
       uDelta: { value: 0.016 },
       uPartner: { value: 1.0 },
@@ -695,7 +699,7 @@ export class GPGPUSimulator {
   ): void {
     const side = sortSideForParticleTexSide(this.texWidth);
     if (side === null) return; // caller has already warned once
-    const radius = Math.max(0.5, pw.radius ?? 14);
+    const radius = Math.max(0.5, pw.radius ?? 2.2);
     const extent = Math.max(1, pw.extent ?? 1400);
     const grid = cellGridDims(extent, radius);
 
@@ -769,8 +773,8 @@ export class GPGPUSimulator {
     forceU.uCellSize.value = grid.cellSize;
     forceU.uRadius.value = radius;
     forceU.uStiffness.value = Math.max(0, pw.stiffness ?? 1);
-    forceU.uRestitution.value = Math.max(0, Math.min(1, pw.restitution ?? 0.2));
-    forceU.uPairViscosity.value = Math.max(0, Math.min(1, pw.viscosity ?? 0.3));
+    forceU.uRestitution.value = Math.max(0, Math.min(1, pw.restitution ?? 0.12));
+    forceU.uPairViscosity.value = Math.max(0, Math.min(1, pw.viscosity ?? 0.06));
     forceU.uCompPlane.value = compPlane;
     forceU.uParticleCount.value = this.particleCount;
     forceU.uDelta.value = dt;
@@ -945,10 +949,17 @@ export class GPGPUSimulator {
     const pUniforms = this.posMaterial.uniforms;
     pUniforms.uPositionTexture.value = this.currentPosTarget.texture;
     pUniforms.uVelocityTexture.value = this.currentVelTarget.texture;
+    pUniforms.uPairwiseEnabled.value = pwEnabled ? 1.0 : 0.0;
+    pUniforms.uPairwiseCorrectionTexture.value = pwEnabled && this.pairForceTarget
+      ? this.pairForceTarget.texture
+      : this.pairForceFallback;
     pUniforms.uDelta.value = clampedDt;
     pUniforms.uMorphTrajectory.value = tm && tm.enabled !== false && tm.trajectory !== 'linear' ? 1.0 : 0.0;
     pUniforms.uZDepthRetention.value = tm?.enabled ? 1.0 : 0.0;
     pUniforms.uZConfinement.value = config.fluid.zConfinement ?? 1.0;
+    // Residency classification needs the same baked slots the velocity pass sees.
+    pUniforms.uTargetATexture.value = vUniforms.uTargetATexture.value;
+    pUniforms.uTargetBTexture.value = vUniforms.uTargetBTexture.value;
 
     // 4. Render position simulation pass
     this.quadMesh.material = this.posMaterial;

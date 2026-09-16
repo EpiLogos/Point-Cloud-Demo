@@ -30,10 +30,10 @@ test('pairwise migration: an old config without the section gains disabled defau
   assert.ok(migrated.pairwise, 'pairwise section must be present after migration');
   assert.equal(migrated.pairwise!.enabled, false);
   assert.deepEqual(migrated.pairwise, { ...DEFAULT_PAIRWISE_CONFIG, enabled: false });
-  assert.equal(migrated.pairwise!.radius, 14);
+  assert.equal(migrated.pairwise!.radius, 2.2);
   assert.equal(migrated.pairwise!.stiffness, 1);
-  assert.equal(migrated.pairwise!.restitution, 0.2);
-  assert.equal(migrated.pairwise!.viscosity, 0.3);
+  assert.equal(migrated.pairwise!.restitution, 0.12);
+  assert.equal(migrated.pairwise!.viscosity, 0.06);
   assert.equal(migrated.pairwise!.extent, 1400);
 });
 

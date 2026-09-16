@@ -13,13 +13,18 @@
  *   3. range   — per-cell binary search over the sorted keys -> (1-based start,
  *                count) in a cell-table texture sized to the cell grid
  *   4. force   — each particle texel sums contact response over its 3x3 cell
- *                neighbourhood directly in particle-index space
+ *                neighbourhood directly in particle-index space. Output:
+ *                xy = position correction (px, applied by the position pass),
+ *                zw = velocity delta (px/s, applied by the velocity pass).
+ *                Separation lives at the position level (a bounded projection
+ *                cannot pump energy into a dense packing); velocity change is
+ *                reserved for genuine approach/recession between pairs.
  *
  * All indices/keys are exact integers held in highp floats (<= 2**24). The force
  * pass writes every texel, so no clear pass is needed anywhere in the chain.
  */
 
-import { PAIRWISE_CELL_CAPACITY, PAIRWISE_FORCE_SCALE, PAIRWISE_KEY_SENTINEL, PAIRWISE_MIN_DELTA, PAIRWISE_SEARCH_ITERATIONS } from '../pairwiseSchedule';
+import { PAIRWISE_CELL_CAPACITY, PAIRWISE_KEY_SENTINEL, PAIRWISE_SEARCH_ITERATIONS } from '../pairwiseSchedule';
 
 /** Pass 1: (cellKey, particleLinearIndex) per texel; unused/padded texels get the sentinel key. */
 export const pairwiseCellIdShader = /* glsl */ `
@@ -139,7 +144,6 @@ uniform float uRestitution;
 uniform float uPairViscosity;
 uniform float uCompPlane;
 uniform float uParticleCount;
-uniform float uDelta;
 
 varying vec2 vUv;
 
@@ -153,17 +157,21 @@ vec2 particleUv(float i) {
 
 void main() {
   float pIndex = floor(vUv.y * uTexSize.y) * uTexSize.x + floor(vUv.x * uTexSize.x);
-  vec2 f2 = vec2(0.0);
+  vec2 corr = vec2(0.0);
+  vec2 dv = vec2(0.0);
   if (pIndex < uParticleCount) {
     vec3 pos = texture2D(uPositionTexture, vUv).xyz;
     vec3 vel = texture2D(uVelocityTexture, vUv).xyz;
     vec2 p2 = (uCompPlane < 0.5) ? pos.xy : pos.xz;
     vec2 v2 = (uCompPlane < 0.5) ? vel.xy : vel.xz;
     vec2 c = clamp(floor((p2 + uExtent) / uCellSize), vec2(0.0), uCells - 1.0);
-    float invDt = 1.0 / max(uDelta, ${PAIRWISE_MIN_DELTA});
     float cap = float(${PAIRWISE_CELL_CAPACITY});
+    float responded = 0.0;
+    bool stop = false;
     for (int dy = -1; dy <= 1; dy++) {
+      if (stop) break;
       for (int dx = -1; dx <= 1; dx++) {
+        if (stop) break;
         vec2 cn = c + vec2(float(dx), float(dy));
         if (cn.x < 0.0 || cn.y < 0.0 || cn.x >= uCells.x || cn.y >= uCells.y) continue;
         vec2 range = texture2D(uCellTable, (cn + 0.5) / uCells).rg;
@@ -179,21 +187,31 @@ void main() {
           vec2 d = p2 - q2;
           float dist = length(d);
           if (dist >= uRadius || dist < 0.0001) continue;
+          // Total-response cap: glyph packing puts hundreds of particles inside h;
+          // the nearest CAP contacts define the interaction. Slot visits stay
+          // bounded by 9 x CAP either way.
+          if (responded >= cap) { stop = true; break; }
+          responded += 1.0;
           vec2 n = d / dist;
-          float overlap = uRadius - dist;
-          // Hooke separation + normal damping (equal masses: half impulse per side)
-          f2 += n * (uStiffness * overlap * float(${PAIRWISE_FORCE_SCALE}));
+          float x = 1.0 - dist / uRadius;
+          // Position-level separation: a relaxed projection (fraction of the
+          // overlap) that cannot add kinetic energy, so a dense packing stays
+          // quiet at rest instead of pre-pressurising the field.
+          corr += n * (x * x * uRadius * 0.35 * uStiffness);
           vec2 relV = v2 - w2;
           float vn = dot(relV, n);
-          if (vn < 0.0) f2 += n * (-vn * (1.0 + uRestitution) * 0.5 * invDt);
-          // Tangential relative-velocity smoothing
-          f2 -= (relV - n * vn) * (uPairViscosity * 0.5 * invDt);
+          // Normal restitution only for approaching pairs; tangential smoothing.
+          if (vn < 0.0) dv += n * (-vn * (1.0 + uRestitution) * 0.5);
+          dv -= (relV - n * vn) * (uPairViscosity * 0.5);
         }
       }
     }
+    // Bound the total projection so dense piles correct, never teleport.
+    float cLen = length(corr);
+    float cMax = 2.0 * uRadius;
+    if (cLen > cMax) corr *= cMax / cLen;
   }
-  // Forces live in the composition plane; the third axis carries no contact response.
-  vec3 f3 = (uCompPlane < 0.5) ? vec3(f2.x, f2.y, 0.0) : vec3(f2.x, 0.0, f2.y);
-  gl_FragColor = vec4(f3, 0.0);
+  // Corrections live in the composition plane; the consumer picks its two axes.
+  gl_FragColor = vec4(corr, dv);
 }
 `;

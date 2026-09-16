@@ -18,14 +18,18 @@ export const PAIRWISE_KEY_SENTINEL = 1e9;      // pad keys sort to the very end
 /** Sort render targets are padded power-of-two squares, capped at 1024x1024. */
 export const PAIRWISE_MAX_SORT_SIDE = 1024;
 export const PAIRWISE_MAX_PARTICLES = PAIRWISE_MAX_SORT_SIDE * PAIRWISE_MAX_SORT_SIDE;
-/** Hard per-cell neighbour cap in the force pass (bounded 9 x CAP work). */
+/** Hard total-neighbour cap per particle per frame in the force pass. Glyph packing
+ *  density puts hundreds of particles inside h; without a total cap the summed
+ *  impulses explode the cloud (bounded work stays 9 x CAP slot visits). */
 export const PAIRWISE_CELL_CAPACITY = 32;
 /** Cell-table texture is capped at this many cells per axis (memory bound). */
 export const PAIRWISE_MAX_CELLS_PER_SIDE = 512;
 /** Separation spring scale mapping stiffness*overlap (px) into engine acceleration units. */
-export const PAIRWISE_FORCE_SCALE = 60;
-/** Fraction of fluid.maxSpeed a single-step pairwise velocity change may reach. */
-export const PAIRWISE_MAX_SPEED_FRACTION = 0.15;
+export const PAIRWISE_FORCE_SCALE = 8;
+/** Fraction of fluid.maxSpeed a single-step pairwise velocity change may reach.
+ *  Kept small: crowd piles must jostle, not launch (a frame at the default clamp
+ *  is ~0.02 x 35000 = 700 px/s). */
+export const PAIRWISE_MAX_SPEED_FRACTION = 0.02;
 /** Binary search iterations over the sorted list: ceil(log2(1024**2)) = 20. */
 export const PAIRWISE_SEARCH_ITERATIONS = 20;
 /** Guarded denominator for impulse/dt terms. */

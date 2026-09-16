@@ -93,10 +93,16 @@ uniform float uZDepthRetention;
 uniform float uZConfinement;
 
 // Glyph SDF colliders (see velocitySimulationShader): the position pass only
-// hard-projects obstacle interiors.
+// hard-projects obstacle interiors around non-resident particles.
 uniform float uCollisionEnabled;
 uniform float uCollisionMode;    // 0 = obstacle, 1 = vessel
 uniform float uCollisionIntegrity;
+uniform sampler2D uTargetATexture;
+uniform sampler2D uTargetBTexture;
+
+// Pairwise contact separation (xy = position correction in the composition plane).
+uniform float uPairwiseEnabled;
+uniform sampler2D uPairwiseCorrectionTexture;
 
 // Partition geometry so a particle can resolve its own entity (mirrors the velocity pass).
 uniform int uEntityCount;
@@ -118,10 +124,18 @@ void main() {
   // Integrate position
   pos += vel * uDelta;
 
+  // --- Pairwise contact separation: bounded projection written by the force pass ---
+  if (uPairwiseEnabled > 0.5) {
+    vec2 pc = texture2D(uPairwiseCorrectionTexture, vUv).xy;
+    if (uCompPlane < 0.5) pos.xy += pc; else pos.xz += pc;
+  }
+
   // --- Glyph SDF colliders: hard projection out of solid stroke interiors ---
   // Constraint: only particles strictly below the surface are evicted, so resting
   // particles near d≈0 are not fought; integrity lets energetic particles punch
-  // deeper before the wall heals as they calm down.
+  // deeper before the wall heals as they calm down. Residency (the particle's own
+  // slot lies in the solid) exempts a particle from its own formation's obstacle
+  // wall — without it the formation hollows into a shell at the stroke edges.
   if (uCollisionEnabled > 0.5 && uEntityCount > 0) {
     float pIndex = floor(vUv.y * uTexSize.y) * uTexSize.x + floor(vUv.x * uTexSize.x);
     int eIdx = 0;
@@ -134,11 +148,26 @@ void main() {
     if (tile.w > 0.5 && uCollisionMode < 0.5) {
       float co = cos(uEntityTransform[eIdx].z);
       float si = sin(uEntityTransform[eIdx].z);
+      float morph = clamp(uEntityMorph[eIdx], 0.0, 1.0);
       vec2 local = sdfLocalPos(pos, uEntityCenter[eIdx].xyz, uEntityTransform[eIdx], co, si, uCompPlane);
       float d;
       vec2 grad;
-      sdfSample(local, tile, clamp(uEntityMorph[eIdx], 0.0, 1.0), d, grad);
-      if (d < 0.0) {
+      sdfSample(local, tile, morph, d, grad);
+      // Residency from the particle's own baked slot (un-noised core is exact enough:
+      // jitter is small against stroke thickness, and the classification only gates
+      // the wall, it does not shape it).
+      vec4 tA = texture2D(uTargetATexture, vUv);
+      vec4 tB = texture2D(uTargetBTexture, vUv);
+      vec3 tMix = mix(tA.xyz, tB.xyz, morph);
+      vec2 tPlaneIn = (uCompPlane < 0.5) ? tMix.xy : vec2(tMix.x, -tMix.z);
+      vec2 tScaled = tPlaneIn * uEntityTransform[eIdx].xy;
+      vec2 tRot = vec2(tScaled.x * co - tScaled.y * si, tScaled.x * si + tScaled.y * co);
+      vec3 tWorld = (uCompPlane < 0.5) ? vec3(tRot, tMix.z) : vec3(tRot.x, tMix.y, -tRot.y);
+      vec2 tLocal = sdfLocalPos(tWorld, uEntityCenter[eIdx].xyz, uEntityTransform[eIdx], co, si, uCompPlane);
+      float dT;
+      vec2 tGrad;
+      sdfSample(tLocal, tile, morph, dT, tGrad);
+      if (dT >= 0.0 && d < 0.0) {
         vec3 nWorld = sdfWorldNormal(grad, uEntityTransform[eIdx], co, si, uCompPlane);
         // Integrity uses the post-integration speed (velData.w is the velocity magnitude).
         float wall = 1.0 / (1.0 + uCollisionIntegrity * velData.w * 0.01);
@@ -685,14 +714,23 @@ void main() {
   // obstacle mode pushes along +grad and vessel mode along -grad. Integrity is a
   // constraint, not a decoration: wall strength decays with the contact speed, so
   // energetic particles buy passage and the wall heals as things calm down.
+  // Residency: a wall never fights a particle whose own slot lives in the solid —
+  // obstacle walls stop visitors only, vessel walls contain residents only. Without
+  // this the formation hollows itself into a wireframe shell.
   vec3 fCollision = vec3(0.0);
   if (uCollisionEnabled > 0.5) {
     vec4 tile = uCollisionTile[eIdx];
     if (tile.w > 0.5) {
+      float cMorph = sMorph;
       vec2 local = sdfLocalPos(pos, entityCenter, transform, co, si, uCompPlane);
       float cD;
       vec2 cGrad;
-      sdfSample(local, tile, sMorph, cD, cGrad);
+      sdfSample(local, tile, cMorph, cD, cGrad);
+      vec2 tLocal = sdfLocalPos(targetPos, entityCenter, transform, co, si, uCompPlane);
+      float dT;
+      vec2 tGrad;
+      sdfSample(tLocal, tile, cMorph, dT, tGrad);
+      bool resident = dT < 0.0;
       vec3 cN = sdfWorldNormal(cGrad, transform, co, si, uCompPlane);
       float cBand = max(1.0, uCollisionBand);
       float cWorld = cD * ${SDF_DISTANCE_SCALE}.0;
@@ -705,9 +743,9 @@ void main() {
       float cVn = dot(cPlane, cN.xy);
       vec2 cTan = cPlane - cN.xy * cVn;
       if (uCollisionMode < 0.5) {
-        // Obstacle: strokes are solid; the exp term grows with penetration depth
-        // (bounded at e^2) so deep intruders are evicted harder.
-        if (cWorld < cBand) {
+        // Obstacle: strokes are solid to visitors; the exp term grows with penetration
+        // depth (bounded at e^2) so deep intruders are evicted harder.
+        if (!resident && cWorld < cBand) {
           float push = uCollisionStrength * 400.0 * exp(clamp(-cWorld / cBand, -1.0, 2.0));
           fCollision += cN * (push * cW);
           if (cVn < 0.0) {
@@ -717,9 +755,9 @@ void main() {
           }
         }
       } else {
-        // Vessel: stroke interiors are containers. Thin strokes make this degenerate
-        // (band overlaps both walls); the falloff blend keeps the response finite.
-        if (cWorld > -cBand && cWorld < cBand * 4.0) {
+        // Vessel: stroke interiors contain their residents. Thin strokes make this
+        // degenerate (band overlaps both walls); the falloff blend keeps the response finite.
+        if (resident && cWorld > -cBand && cWorld < cBand * 4.0) {
           float push = uCollisionStrength * 400.0 * cFalloff;
           fCollision -= cN * (push * cW);
           if (cVn > 0.0) {
@@ -738,11 +776,11 @@ void main() {
   vec3 fPairwise = vec3(0.0);
   if (uPairwiseEnabled > 0.5) {
     vec4 pw = texture2D(uPairwiseForceTexture, vUv);
-    vec3 pairAccel = (uCompPlane < 0.5) ? vec3(pw.x, pw.y, 0.0) : vec3(pw.x, 0.0, pw.y);
-    vec3 pairDv = pairAccel * uDelta;
+    vec2 pairDv = pw.zw;
     float pairDvLen = length(pairDv);
     if (pairDvLen > uPairMaxDelta) pairDv *= uPairMaxDelta / pairDvLen;
-    fPairwise = pairDv / max(uDelta, 0.0001);
+    vec3 pairAccel = (uCompPlane < 0.5) ? vec3(pairDv, 0.0) : vec3(pairDv.x, 0.0, pairDv.y);
+    fPairwise = pairAccel / max(uDelta, 0.0001);
   }
 
   // --- 8. Total Acceleration & Viscous Integration ---
