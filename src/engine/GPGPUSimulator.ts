@@ -11,6 +11,20 @@ import {
   positionSimulationShader,
   velocitySimulationShader,
 } from './shaders/simulationShaders';
+import {
+  pairwiseCellIdShader,
+  pairwiseForceShader,
+  pairwiseRangeShader,
+  pairwiseSortShader,
+} from './shaders/pairwiseShaders';
+import {
+  bitonicSchedule,
+  cellGridDims,
+  PAIRWISE_MAX_PARTICLES,
+  PAIRWISE_MAX_SPEED_FRACTION,
+  PairwiseSortPass,
+  sortSideForParticleTexSide,
+} from './pairwiseSchedule';
 
 export class GPGPUSimulator {
   private renderer: THREE.WebGLRenderer;
@@ -40,6 +54,22 @@ export class GPGPUSimulator {
   private posMaterial: THREE.ShaderMaterial;
   private velMaterial: THREE.ShaderMaterial;
 
+  // Sorted-grid pairwise collision passes (allocated lazily; zero draw calls while disabled)
+  private pairCellIdMaterial: THREE.ShaderMaterial;
+  private pairSortMaterial: THREE.ShaderMaterial;
+  private pairRangeMaterial: THREE.ShaderMaterial;
+  private pairForceMaterial: THREE.ShaderMaterial;
+  private pairSortA: THREE.WebGLRenderTarget | null = null;
+  private pairSortB: THREE.WebGLRenderTarget | null = null;
+  private pairCellTable: THREE.WebGLRenderTarget | null = null;
+  private pairForceTarget: THREE.WebGLRenderTarget | null = null;
+  private pairForceFallback: THREE.DataTexture;
+  private pairSchedule: PairwiseSortPass[] | null = null;
+  private pairSide = 0;
+  private pairCells = new THREE.Vector2(0, 0);
+  private pairWarned = false;
+  private rtTemplate: THREE.RenderTargetOptions;
+
   constructor(renderer: THREE.WebGLRenderer, particleCount: number = 200000) {
     this.renderer = renderer;
 
@@ -65,6 +95,7 @@ export class GPGPUSimulator {
       stencilBuffer: false,
       depthBuffer: false,
     };
+    this.rtTemplate = rtOptions;
 
     this.posTarget0 = new THREE.WebGLRenderTarget(this.texWidth, this.texHeight, rtOptions);
     this.posTarget1 = new THREE.WebGLRenderTarget(this.texWidth, this.texHeight, rtOptions);
@@ -188,6 +219,11 @@ export class GPGPUSimulator {
         uResPlane: { value: 0.0 },
         uResDriveScale: { value: 1.0 },
 
+        // Sorted-grid pairwise collisions (bound to a 1x1 zero texture while disabled)
+        uPairwiseForceTexture: { value: null },
+        uPairwiseEnabled: { value: 0.0 },
+        uPairMaxDelta: { value: 5000.0 },
+
         // Dual-Phase Toroidal/Poloidal Morph & Inverse Hopf Fibration System
         uMorphTrajectory: { value: 1.0 },
         uFiberPhaseOffset: { value: 0.0 },
@@ -221,6 +257,61 @@ export class GPGPUSimulator {
 
     this.quadMesh = new THREE.Mesh(quadGeom, this.posMaterial);
     this.quadScene.add(this.quadMesh);
+
+    // Pairwise materials share the quad; targets are created on first enabled frame.
+    const pwUniforms = () => ({
+      uPositionTexture: { value: null },
+      uVelocityTexture: { value: null },
+      uSortTexture: { value: null },
+      uCellTable: { value: null },
+      uTexSize: { value: new THREE.Vector2(this.texWidth, this.texHeight) },
+      uCells: { value: new THREE.Vector2(1, 1) },
+      uSide: { value: 1.0 },
+      uSlots: { value: 1.0 },
+      uParticleCount: { value: this.particleCount },
+      uExtent: { value: 1400.0 },
+      uCellSize: { value: 14.0 },
+      uRadius: { value: 14.0 },
+      uStiffness: { value: 1.0 },
+      uRestitution: { value: 0.2 },
+      uPairViscosity: { value: 0.3 },
+      uCompPlane: { value: 0.0 },
+      uDelta: { value: 0.016 },
+      uPartner: { value: 1.0 },
+      uBlock: { value: 2.0 },
+    });
+    this.pairCellIdMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: pairwiseCellIdShader,
+      uniforms: pwUniforms(),
+      depthTest: false,
+      depthWrite: false,
+    });
+    this.pairSortMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: pairwiseSortShader,
+      uniforms: pwUniforms(),
+      depthTest: false,
+      depthWrite: false,
+    });
+    this.pairRangeMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: pairwiseRangeShader,
+      uniforms: pwUniforms(),
+      depthTest: false,
+      depthWrite: false,
+    });
+    this.pairForceMaterial = new THREE.ShaderMaterial({
+      vertexShader: simulationVertexShader,
+      fragmentShader: pairwiseForceShader,
+      uniforms: pwUniforms(),
+      depthTest: false,
+      depthWrite: false,
+    });
+
+    this.pairForceFallback = new THREE.DataTexture(new Float32Array([0, 0, 0, 0]), 1, 1, THREE.RGBAFormat, THREE.FloatType);
+    this.pairForceFallback.needsUpdate = true;
+    this.velMaterial.uniforms.uPairwiseForceTexture.value = this.pairForceFallback;
   }
 
   /**
@@ -421,6 +512,104 @@ export class GPGPUSimulator {
     this.velMaterial.uniforms.uBurstSpin.value = spin;
   }
 
+  /**
+   * Sorted-grid neighbour search + DEM contact response.
+   * cellId -> bitonic sort (schedule-driven ping-pong) -> cell ranges -> force.
+   * The force pass runs in particle-index space, so no scatter-back pass is needed.
+   */
+  private runPairwisePasses(
+    pw: { radius?: number; stiffness?: number; restitution?: number; viscosity?: number; extent?: number },
+    compPlane: number,
+    dt: number
+  ): void {
+    const side = sortSideForParticleTexSide(this.texWidth);
+    if (side === null) return; // caller has already warned once
+    const radius = Math.max(0.5, pw.radius ?? 14);
+    const extent = Math.max(1, pw.extent ?? 1400);
+    const grid = cellGridDims(extent, radius);
+
+    if (!this.pairSortA || !this.pairSortB || this.pairSide !== side) {
+      this.pairSortA?.dispose();
+      this.pairSortB?.dispose();
+      this.pairSortA = new THREE.WebGLRenderTarget(side, side, this.rtTemplate);
+      this.pairSortB = new THREE.WebGLRenderTarget(side, side, this.rtTemplate);
+      this.pairSide = side;
+      this.pairSchedule = null;
+    }
+    if (!this.pairSchedule) this.pairSchedule = bitonicSchedule(side);
+    if (!this.pairCellTable || this.pairCells.x !== grid.cellsX || this.pairCells.y !== grid.cellsY) {
+      this.pairCellTable?.dispose();
+      this.pairCellTable = new THREE.WebGLRenderTarget(grid.cellsX, grid.cellsY, this.rtTemplate);
+      this.pairCells.set(grid.cellsX, grid.cellsY);
+    }
+    if (!this.pairForceTarget) {
+      this.pairForceTarget = new THREE.WebGLRenderTarget(this.texWidth, this.texHeight, this.rtTemplate);
+    }
+
+    // 1. Cell keys
+    const idU = this.pairCellIdMaterial.uniforms;
+    idU.uPositionTexture.value = this.currentPosTarget.texture;
+    idU.uTexSize.value.set(this.texWidth, this.texHeight);
+    idU.uParticleCount.value = this.particleCount;
+    idU.uExtent.value = extent;
+    idU.uCellSize.value = grid.cellSize;
+    idU.uCells.value.set(grid.cellsX, grid.cellsY);
+    idU.uCompPlane.value = compPlane;
+    let sorted = this.pairSortA;
+    this.quadMesh.material = this.pairCellIdMaterial;
+    this.renderer.setRenderTarget(sorted);
+    this.renderer.render(this.quadScene, this.quadCamera);
+
+    // 2. Bitonic sort network: one material, (stage, substage) uniforms per draw
+    const sortU = this.pairSortMaterial.uniforms;
+    sortU.uSide.value = side;
+    sortU.uSlots.value = side * side;
+    for (const pass of this.pairSchedule) {
+      sortU.uSortTexture.value = sorted.texture;
+      sortU.uPartner.value = pass.partner;
+      sortU.uBlock.value = pass.block;
+      const other = sorted === this.pairSortA ? this.pairSortB : this.pairSortA;
+      this.quadMesh.material = this.pairSortMaterial;
+      this.renderer.setRenderTarget(other);
+      this.renderer.render(this.quadScene, this.quadCamera);
+      sorted = other;
+    }
+
+    // 3. Per-cell (start, count) via binary search over the sorted keys
+    const rangeU = this.pairRangeMaterial.uniforms;
+    rangeU.uSortTexture.value = sorted.texture;
+    rangeU.uSide.value = side;
+    rangeU.uSlots.value = side * side;
+    rangeU.uCells.value.set(grid.cellsX, grid.cellsY);
+    this.quadMesh.material = this.pairRangeMaterial;
+    this.renderer.setRenderTarget(this.pairCellTable);
+    this.renderer.render(this.quadScene, this.quadCamera);
+
+    // 4. Contact forces straight into particle-index space
+    const forceU = this.pairForceMaterial.uniforms;
+    forceU.uPositionTexture.value = this.currentPosTarget.texture;
+    forceU.uVelocityTexture.value = this.currentVelTarget.texture;
+    forceU.uSortTexture.value = sorted.texture;
+    forceU.uCellTable.value = this.pairCellTable.texture;
+    forceU.uTexSize.value.set(this.texWidth, this.texHeight);
+    forceU.uCells.value.set(grid.cellsX, grid.cellsY);
+    forceU.uSide.value = side;
+    forceU.uExtent.value = extent;
+    forceU.uCellSize.value = grid.cellSize;
+    forceU.uRadius.value = radius;
+    forceU.uStiffness.value = Math.max(0, pw.stiffness ?? 1);
+    forceU.uRestitution.value = Math.max(0, Math.min(1, pw.restitution ?? 0.2));
+    forceU.uPairViscosity.value = Math.max(0, Math.min(1, pw.viscosity ?? 0.3));
+    forceU.uCompPlane.value = compPlane;
+    forceU.uParticleCount.value = this.particleCount;
+    forceU.uDelta.value = dt;
+    this.quadMesh.material = this.pairForceMaterial;
+    this.renderer.setRenderTarget(this.pairForceTarget);
+    this.renderer.render(this.quadScene, this.quadCamera);
+
+    this.velMaterial.uniforms.uPairwiseForceTexture.value = this.pairForceTarget.texture;
+  }
+
   public step(
     dt: number,
     time: number,
@@ -432,8 +621,25 @@ export class GPGPUSimulator {
   ) {
     if (!(dt > 0)) return;
     this.stepCount++;
+    const clampedDt = Math.min(dt, 0.033);
+
+    // 0. Sorted-grid pairwise collision passes (entirely skipped while disabled)
+    const pw = config.pairwise;
+    const pwEnabled = !!(pw && pw.enabled) && this.particleCount <= PAIRWISE_MAX_PARTICLES;
+    if (pw && pw.enabled && this.particleCount > PAIRWISE_MAX_PARTICLES && !this.pairWarned) {
+      this.pairWarned = true;
+      console.warn(
+        `pairwise: ${this.particleCount} particles exceed the ${PAIRWISE_MAX_PARTICLES} sort capacity; the collision system stays disabled.`
+      );
+    }
+    if (pwEnabled) {
+      this.runPairwisePasses(pw!, this.velMaterial.uniforms.uCompPlane.value as number, clampedDt);
+    }
+
     // 1. Update uniforms for velocity simulation
     const vUniforms = this.velMaterial.uniforms;
+    vUniforms.uPairwiseEnabled.value = pwEnabled ? 1.0 : 0.0;
+    vUniforms.uPairMaxDelta.value = Math.max(1.0, PAIRWISE_MAX_SPEED_FRACTION * (config.fluid.maxSpeed ?? 35000.0));
     vUniforms.uPositionTexture.value = this.currentPosTarget.texture;
     vUniforms.uVelocityTexture.value = this.currentVelTarget.texture;
     vUniforms.uMorphProgress.value = morphProgress;
@@ -555,5 +761,14 @@ export class GPGPUSimulator {
     this.velTarget1.dispose();
     this.posMaterial.dispose();
     this.velMaterial.dispose();
+    this.pairSortA?.dispose();
+    this.pairSortB?.dispose();
+    this.pairCellTable?.dispose();
+    this.pairForceTarget?.dispose();
+    this.pairForceFallback.dispose();
+    this.pairCellIdMaterial.dispose();
+    this.pairSortMaterial.dispose();
+    this.pairRangeMaterial.dispose();
+    this.pairForceMaterial.dispose();
   }
 }
