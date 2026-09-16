@@ -36,11 +36,14 @@ export function resolveEntityPose(
   const mix = (x: number, y: number) => x + (y - x) * t;
   const sa = a?.state, sb = b?.state;
   const fa = sa?.forces ?? entity.forces, fb = sb?.forces ?? entity.forces;
+  // A laminated formation's per-link coordinates are layer depths, not glide
+  // targets: the pose stays at the entity centre and the bake owns the offsets.
+  const laminated = !!entity.sequence.laminate;
   return {
     entityId: entity.id,
-    x: entity.x + (a?.x ?? 0) * (1 - t) + (b?.x ?? 0) * t,
-    y: entity.y + (a?.y ?? 0) * (1 - t) + (b?.y ?? 0) * t,
-    z: entity.z + (a?.z ?? 0) * (1 - t) + (b?.z ?? 0) * t,
+    x: entity.x + (laminated ? 0 : (a?.x ?? 0) * (1 - t) + (b?.x ?? 0) * t),
+    y: entity.y + (laminated ? 0 : (a?.y ?? 0) * (1 - t) + (b?.y ?? 0) * t),
+    z: entity.z + (laminated ? 0 : (a?.z ?? 0) * (1 - t) + (b?.z ?? 0) * t),
     scale: mix(sa?.scale ?? entity.scale, sb?.scale ?? entity.scale),
     extent: {
       width: mix(sa?.extent?.width ?? entity.extent?.width ?? 400, sb?.extent?.width ?? entity.extent?.width ?? 400),

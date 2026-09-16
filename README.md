@@ -160,6 +160,26 @@ follows it:
   from "every mark draws" to depth-buffered occlusion where near bodies win the
   pixel.
 
+## Depth lamination — the sequence's spatial dual
+
+A formation's sequence composes states in time. **Laminate in depth** composes
+them in space: every state of the sequence renders *simultaneously* as one
+depth layer of a single laminated 3D body. The formation's particle allocation
+is subdivided across the states, and each state draws its glyph, image, ASCII
+drawing, primitive or plate in the depth band it occupies — its authored depth
+(the sequence editor's per-state **Depth** field, or placing the state on the
+XZ workplane), or an even spread across the **Lamination span**. Fronts and
+backs of one construct — say a head — nest to any depth, each layer still a
+full source with its own body-law thickness, and the collision wall becomes the
+bounding solid of the whole stack. The sequence clock stops while laminated:
+lamination composes in space, not in time.
+
+Two formations placed at different depths already compose as separate
+laminae (depth placement via the XZ workplane, and the **Arrangement →
+laminate** layout stacks the selected centres through the layout plane's
+normal); sequence lamination builds the same formalism *inside* one formation,
+sharing one allocation, tint and force set.
+
 ## The medium is the space; the resonator fills it
 
 The shared Eulerian medium has a 3D mode (**Collision & medium → Medium space →
@@ -195,7 +215,9 @@ the studio controls and read settled GPU particle state back
 (`field-studies-journeys/tests/three_d_body_browser.py` for letterforms,
 `field-studies-journeys/tests/three_d_source_body_browser.py` for the
 twelve-mask image study, `field-studies-journeys/tests/three_d_forces_browser.mjs`
-for the 3D force layer — relational, pairwise, resonator, medium, occlusion).
+for the 3D force layer — relational, pairwise, resonator, medium, occlusion —
+and `field-studies-journeys/tests/lamination_browser.mjs` for depth
+lamination).
 
 ## Semantic field
 
@@ -295,7 +317,10 @@ subject is cropped from its margins, and the shape is projected into the field
 with its true aspect. Three readings are available: ink luminance (density
 follows brightness), Sobel edges, and a silhouette cutout whose flood fill only
 claims enclosed regions large enough to be the subject — the sealed cells of a
-wireframe stay open. The panel shows a WYSIWYG preview of the exact cutout plus
+wireframe stay open. ASCII drawings aggregate per character cell, and the cell
+bounds are kept integral against the real (fractional) font metrics — a
+fractional pixel index once read the ink field as `undefined` and NaN'd the
+whole formation. The panel shows a WYSIWYG preview of the exact cutout plus
 a detected-polarity/coverage/point-count readout; the engine status line
 reports the same analysis after it samples. Sources travel inside expressions
 and portable artifacts.

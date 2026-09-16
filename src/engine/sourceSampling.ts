@@ -537,16 +537,21 @@ function candidatesFromAlphaCells(
 		: null;
 	const out: SourceCandidatePool = Object.assign([], { norm: 'stage400' as const });
 	const cols = Math.ceil(cw / cell.w);
-	for (let row = 0; row * cell.h < ch; row++) {
+	const rows = Math.ceil(ch / cell.h);
+	for (let row = 0; row < rows; row++) {
+		// Cell bounds are integral: cell.w/h are fractional (fontSize·0.6/·1.15),
+		// and a fractional pixel index would read the ink field as `undefined`
+		// and poison the quadrant mean with NaN.
+		const ry0 = crop.y0 + Math.round(row * cell.h);
+		const ry1 = Math.min(crop.y1 + 1, crop.y0 + Math.round((row + 1) * cell.h));
+		const rym = (ry0 + ry1) >> 1;
 		for (let col = 0; col < cols; col++) {
-			const x0 = crop.x0 + col * cell.w;
-			const y0 = crop.y0 + row * cell.h;
-			for (const [dx0, dx1] of [[0, 0.5], [0.5, 1]] as const) {
-				for (const [dy0, dy1] of [[0, 0.5], [0.5, 1]] as const) {
-					const qx0 = x0 + Math.floor(dx0 * cell.w);
-					const qx1 = Math.min(x0 + Math.ceil(dx1 * cell.w), crop.x1 + 1);
-					const qy0 = y0 + Math.floor(dy0 * cell.h);
-					const qy1 = Math.min(y0 + Math.ceil(dy1 * cell.h), crop.y1 + 1);
+			const cx0 = crop.x0 + Math.round(col * cell.w);
+			const cx1 = Math.min(crop.x1 + 1, crop.x0 + Math.round((col + 1) * cell.w));
+			if (cx1 <= cx0 || ry1 <= ry0) continue;
+			const cxm = (cx0 + cx1) >> 1;
+			for (const [qx0, qx1] of [[cx0, cxm], [cxm, cx1]] as const) {
+				for (const [qy0, qy1] of [[ry0, rym], [rym, ry1]] as const) {
 					let sum = 0, count = 0;
 					for (let y = qy0; y < qy1; y++) {
 						for (let x = qx0; x < qx1; x++) {

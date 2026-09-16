@@ -49,7 +49,7 @@
     {
       "ok": true,
       "name": "before: the glyph is a flat card (depth is noise, not geometry)",
-      "detail": "z span 11.67 on 62000 particles"
+      "detail": "z span 11.75 on 62000 particles"
     },
     {
       "ok": true,
@@ -59,22 +59,22 @@
     {
       "ok": true,
       "name": "the volume control settles into a body",
-      "detail": "settled span 45.17"
+      "detail": "settled span 45.10"
     },
     {
       "ok": true,
       "name": "after: the body has real thickness",
-      "detail": "z span 11.67 \u2192 45.17"
+      "detail": "z span 11.75 \u2192 45.10"
     },
     {
       "ok": true,
       "name": "after: the depth is a body, not a dither",
-      "detail": "mean |z| 0.79 \u2192 9.31"
+      "detail": "mean |z| 0.80 \u2192 9.31"
     },
     {
       "ok": true,
       "name": "the planar drawing is preserved (x/y are untouched)",
-      "detail": "mean |x|+|y| 170.9 \u2192 170.9"
+      "detail": "mean |x|+|y| 170.8 \u2192 171.0"
     },
     {
       "ok": true,
@@ -89,12 +89,12 @@
     {
       "ok": true,
       "name": "the larger depth settles",
-      "detail": "settled span 235.88"
+      "detail": "settled span 234.98"
     },
     {
       "ok": true,
       "name": "the Body Depth slider drives real thickness",
-      "detail": "depth 40 \u2192 span 63.9; depth 400 \u2192 span 235.9"
+      "detail": "depth 40 \u2192 span 65.5; depth 400 \u2192 span 235.0"
     },
     {
       "ok": true,
@@ -109,12 +109,12 @@
     {
       "ok": true,
       "name": "the renderer keeps drawing after the depth changes",
-      "detail": "11 frames in 1.5s"
+      "detail": "19 frames in 1.5s"
     },
     {
       "ok": true,
       "name": "the 3D path is in the same performance order as the flat path",
-      "detail": "7.6 \u2192 7.7 fps on software WebGL (not a hardware measurement)"
+      "detail": "13.1 \u2192 11.4 fps on software WebGL (not a hardware measurement)"
     },
     {
       "ok": true,
@@ -125,7 +125,7 @@
       "ok": true,
       "name": "no page errors were reported",
       "detail": [
-        "console[http://localhost:4173/favicon.ico]: Failed to load resource: the server responded with a status of 404 (Not Found)"
+        "console[http://localhost:3001/favicon.ico]: Failed to load resource: the server responded with a status of 404 (Not Found)"
       ]
     },
     {
@@ -140,7 +140,7 @@
     }
   ],
   "browserErrors": [
-    "console[http://localhost:4173/favicon.ico]: Failed to load resource: the server responded with a status of 404 (Not Found)"
+    "console[http://localhost:3001/favicon.ico]: Failed to load resource: the server responded with a status of 404 (Not Found)"
   ],
   "badResponses": []
 }

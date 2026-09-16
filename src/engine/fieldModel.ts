@@ -81,6 +81,15 @@ export interface EntitySequence {
   impulse: number;        // fluid burst on link change
   phaseOffset: number;    // cycles, shifts this entity's timeline relative to the global drive
   rateMul: number;        // timeline speed multiplier
+  /**
+   * Depth lamination — the spatial dual of the sequence. When set, every link
+   * renders simultaneously as one layer of a laminated body: the formation's
+   * particle allocation is subdivided across the links, and link k draws its
+   * shape in the depth band it occupies (its authored z offset, or an even
+   * spread across `span` world px centred on the entity). The sequence clock
+   * stops animating; lamination composes in space, not in time.
+   */
+  laminate?: { span?: number };
 }
 
 export type EntityForceMode = 'none' | 'attract' | 'repel' | 'vortex';

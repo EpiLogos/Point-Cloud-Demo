@@ -30,6 +30,7 @@ import {
   Shape,
   Composition,
   Partition,
+  SequenceLink,
   SequenceState,
   layoutPartitions,
   resolveSequence,
@@ -293,7 +294,8 @@ export class EntityRuntime {
     plane: Composition['plane'],
     jitterPx: number,
     channel: 0 | 2,
-    normalized: boolean
+    normalized: boolean,
+    depthOffset: number = 0
   ) {
     const n = cands.length;
     if(!n){target.fill(0,start*4,end*4);for(let i=start;i<end;i++){this.noiseData[i*4+channel]=0;this.noiseData[i*4+channel+1]=0;}return;}
@@ -318,6 +320,9 @@ export class EntityRuntime {
       if (volumeOn && rand && c.hz !== undefined) {
         lz = drawVolumeZ(Math.max(0, c.hz) * scale, c.cw ?? 0, volume, rand).z;
       }
+      // Layer depth (lamination) offsets the extrusion axis after the body law,
+      // so a laminated layer carries both its own thickness and its band.
+      lz += depthOffset;
       const o = i * 4;
       if (plane === 'horizontal') {
         target[o] = lx;
@@ -332,28 +337,40 @@ export class EntityRuntime {
     }
   }
 
+  /** Stage-box normalization shared by every pool path: glyph-law pools are
+   *  stretched to the 400-unit square; stage400 pools (image/ASCII) keep their
+   *  true aspect. */
+  private presetPool(e: Entity, cands: Candidate[]): Candidate[] {
+    if (!e.extent || e.extent.normalized === false) return cands;
+    const core = cands.filter(c=>c.density>.25);
+    let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    for (const c of (core.length ? core : cands)) {x0=Math.min(x0,c.x);x1=Math.max(x1,c.x);y0=Math.min(y0,c.y);y1=Math.max(y1,c.y);}
+    const sx=400/Math.max(1,x1-x0),sy=400/Math.max(1,y1-y0);
+    return cands.map(c=>({...c,x:(c.x-(x0+x1)/2)*sx,y:(c.y-(y0+y1)/2)*sy}));
+  }
+
+  /** A link's candidate pool: per-link custom source, the entity-wide override on link 0, else the shape. */
+  private linkCandidates(e: Entity, link: SequenceLink, linkIndex: number, custom: Candidate[] | undefined, fontFamily?: string, fontWeight?: string | number): Candidate[] {
+    return this.customCandidates.get(e.id+':'+link.id)
+      ?? (custom && linkIndex === 0 ? custom : this.candidatesFor(link.shape, fontFamily, fontWeight));
+  }
+
   private bakePartition(p: Partition, e: Entity, linkIndex: number, nextIndex: number, plane: Composition['plane'], fontFamily?: string, fontWeight?: string | number) {
     const links = effectiveLinks(e);
+    if (e.sequence.laminate) {
+      this.bakeLamination(p, e, links, plane, fontFamily, fontWeight);
+      return;
+    }
     const custom = this.customCandidates.get(e.id);
-    const candA = this.customCandidates.get(e.id+':'+links[linkIndex].id) ?? (custom && linkIndex === 0 ? custom : this.candidatesFor(links[linkIndex].shape, fontFamily, fontWeight));
-    const candB = this.customCandidates.get(e.id+':'+links[nextIndex].id) ?? (custom && nextIndex === 0 ? custom : this.candidatesFor(links[nextIndex].shape, fontFamily, fontWeight));
+    const candA = this.linkCandidates(e, links[linkIndex], linkIndex, custom, fontFamily, fontWeight);
+    const candB = this.linkCandidates(e, links[nextIndex], nextIndex, custom, fontFamily, fontWeight);
     this.bakeGeneration++;
-    const normalize = (cands: Candidate[]) => {
-      if (!e.extent || e.extent.normalized === false) return cands;
-      const core = cands.filter(c=>c.density>.25);
-      let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
-      for (const c of (core.length ? core : cands)) {x0=Math.min(x0,c.x);x1=Math.max(x1,c.x);y0=Math.min(y0,c.y);y1=Math.max(y1,c.y);}
-      const sx=400/Math.max(1,x1-x0),sy=400/Math.max(1,y1-y0);
-      return cands.map(c=>({...c,x:(c.x-(x0+x1)/2)*sx,y:(c.y-(y0+y1)/2)*sy}));
-    };
-    // Image/ASCII pools arrive already normalized to the 400-unit stage box with
-    // their true aspect preserved. The glyph law would stretch them to a square.
-    const preset = (cands: Candidate[]) => (cands as {norm?:string}).norm === 'stage400' ? cands : normalize(cands);
     const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
-    const poolA = preset(candA);
-    const poolB = preset(candB);
-    this.writeCandidates(this.dataA, p.start, p.end, poolA, scale, plane, 2, 0, !!e.extent && e.extent.normalized !== false);
-    this.writeCandidates(this.dataB, p.start, p.end, poolB, scale, plane, 2, 2, !!e.extent && e.extent.normalized !== false);
+    const normalized = !!e.extent && e.extent.normalized !== false;
+    const poolA = this.presetPool(e, candA);
+    const poolB = this.presetPool(e, candB);
+    this.writeCandidates(this.dataA, p.start, p.end, poolA, scale, plane, 2, 0, normalized);
+    this.writeCandidates(this.dataB, p.start, p.end, poolB, scale, plane, 2, 2, normalized);
     if (this.noiseTexture) this.noiseTexture.needsUpdate = true;
     if (this.textureA) this.textureA.needsUpdate = true;
     if (this.textureB) this.textureB.needsUpdate = true;
@@ -366,6 +383,55 @@ export class EntityRuntime {
       if (slot >= 0) {
         writeSdfTile(this.collisionData, slot, 0, buildSdfTile(poolA, scale));
         writeSdfTile(this.collisionData, slot, 1, buildSdfTile(poolB, scale));
+        this.collisionTexture.needsUpdate = true;
+      }
+    }
+  }
+
+  /**
+   * Depth lamination — the sequence's spatial dual. Every link renders
+   * simultaneously as one layer of a laminated body: the formation's particle
+   * allocation is subdivided across the links, and layer k draws link k's shape
+   * in the depth band link k occupies — its authored z offset, or an even
+   * spread across the lamination span centred on the entity. Each layer bakes
+   * A=B, so the sequence clock's A→B blend is inert: lamination composes in
+   * space, not in time. Fronts and backs of one construct, nestable to any
+   * depth, each layer still a full glyph / image / shape source.
+   */
+  private bakeLamination(p: Partition, e: Entity, links: SequenceLink[], plane: Composition['plane'], fontFamily?: string, fontWeight?: string | number) {
+    const custom = this.customCandidates.get(e.id);
+    const span = Math.max(0, e.sequence.laminate?.span ?? 240);
+    const K = Math.max(1, links.length);
+    const scale = e.extent && e.extent.normalized !== false ? 1 : BASE_SCALE;
+    const normalized = !!e.extent && e.extent.normalized !== false;
+    const per = Math.floor((p.end - p.start) / K);
+
+    const union: Candidate[] = [];
+    for (let k = 0; k < K; k++) {
+      const link = links[k];
+      // A link with no authored z sits at its even slot in the span; an authored
+      // z (from depth placement on the link) overrides the spread.
+      const depth = link.z ?? (K > 1 ? -span / 2 + (span * (k + 0.5)) / K : 0);
+      const start = p.start + k * per;
+      const end = k === K - 1 ? p.end : start + per;
+      const pool = this.presetPool(e, this.linkCandidates(e, link, k, custom, fontFamily, fontWeight));
+      this.bakeGeneration++;
+      this.writeCandidates(this.dataA, start, end, pool, scale, plane, 2, 0, normalized, depth);
+      this.bakeGeneration++;
+      this.writeCandidates(this.dataB, start, end, pool, scale, plane, 2, 2, normalized, depth);
+      // Collision: one union section whose thickness envelope reaches across the
+      // whole lamination, so the wall is the bounding solid of the stack.
+      for (const c of pool) union.push({...c, hz: Math.max(c.hz ?? 0, span * 0.5)});
+    }
+    if (this.noiseTexture) this.noiseTexture.needsUpdate = true;
+    if (this.textureA) this.textureA.needsUpdate = true;
+    if (this.textureB) this.textureB.needsUpdate = true;
+    if (this.collisionTexture) {
+      const slot = this.collisionSlot(e.id);
+      if (slot >= 0) {
+        const tile = buildSdfTile(union, scale);
+        writeSdfTile(this.collisionData, slot, 0, tile);
+        writeSdfTile(this.collisionData, slot, 1, tile);
         this.collisionTexture.needsUpdate = true;
       }
     }
@@ -412,14 +478,19 @@ export class EntityRuntime {
       const pose = poseById.get(e.id)!;
       const state = pose.sequence;
       const links = effectiveLinks(e);
-      const sig = `${links[state.linkIndex].id}:${links[state.nextIndex].id}|${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
+      // A laminated body bakes once from every link, so its signature covers the
+      // whole stack — link order, shapes, authored depth offsets, the span and
+      // which layers carry custom sources — and the clock never advances it.
+      const sig = e.sequence.laminate
+        ? `laminate|${e.sequence.laminate.span ?? ''}|${links.map((l) => `${l.id}:${this.shapeSignature(l.shape)}:${l.z ?? ''}:${this.customCandidates.has(e.id + ':' + l.id) ? (this.customCandidates.get(e.id + ':' + l.id) as {length:number}).length : (this.customCandidates.has(e.id) && l === links[0] ? 'o' : '')}`).join(',')}|${!!e.extent && e.extent.normalized !== false}`
+        : `${links[state.linkIndex].id}:${links[state.nextIndex].id}|${this.shapeSignature(links[state.linkIndex].shape)}>${this.shapeSignature(links[state.nextIndex].shape)}|${!!e.extent && e.extent.normalized !== false}|${this.customCandidates.has(e.id) ? `c:${state.linkIndex === 0}:${state.nextIndex === 0}` : ''}`;
       const prevStep = this.lastStep.get(e.id);
       if (this.bakeSig.get(e.id) !== sig) {
         this.bakePartition(p, e, state.linkIndex, state.nextIndex, comp.plane, fontFamily, fontWeight);
         this.bakeSig.set(e.id, sig);
         rebaked = true;
       }
-      if (prevStep !== undefined && prevStep !== state.step && e.sequence.impulse > 0) impulses.push(e.sequence.impulse);
+      if (!e.sequence.laminate && prevStep !== undefined && prevStep !== state.step && e.sequence.impulse > 0) impulses.push(e.sequence.impulse);
       this.lastStep.set(e.id, state.step);
 
       // Every subsystem consumes the same evaluated pose — centre, per-link object

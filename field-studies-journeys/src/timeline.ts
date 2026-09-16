@@ -25,6 +25,9 @@ export function arrange(entities:Entity[],layout:string,plane:'XY'|'XZ'|'YZ'='XY
  const n=entities.length;if(!n)return;
  const axes:('x'|'y'|'z')[]=plane==='XY'?['x','y']:plane==='XZ'?['x','z']:['y','z'];
  if(layout.startsWith('align-')||layout.startsWith('distribute-')){const axis=axes[layout.endsWith('x')?0:1];const ordered=[...entities].sort((a,b)=>a.position[axis]-b.position[axis]);const lo=ordered[0].position[axis],hi=ordered.at(-1)!.position[axis],mean=ordered.reduce((v,e)=>v+e.position[axis],0)/n;ordered.forEach((e,i)=>e.position[axis]=layout.startsWith('align-')?mean:lo+(hi-lo)*i/Math.max(1,n-1));return;}
+ // laminate: stack the selected centres through depth — the layout plane's normal — centred on their mean,
+ // spanning the same .6 stage-unit pitch a grid row uses. Pair with each formation's own sequence lamination.
+ if(layout==='laminate'){const axis=plane==='XY'?'z':plane==='XZ'?'y':'x';const ordered=[...entities].sort((a,b)=>a.position[axis]-b.position[axis]);const mean=ordered.reduce((v,e)=>v+e.position[axis],0)/n;ordered.forEach((e,i)=>e.position[axis]=mean+(n>1?(i/(n-1)-.5)*.6:0));return;}
  entities.forEach((e,i)=>{let x=0,y=0;const f=n===1?.5:i/(n-1);if(layout==='line'){x=(f-.5)*1.8;}else if(layout==='column'){y=(.5-f)*1.8;}else if(layout==='ring'){const a=i/n*TAU;x=Math.cos(a)*.72;y=Math.sin(a)*.72;}else if(layout==='spiral'){const a=i/n*TAU*1.5,r=.15+f*.7;x=Math.cos(a)*r;y=Math.sin(a)*r;}else if(layout==='grid'){const cols=Math.ceil(Math.sqrt(n)),rows=Math.ceil(n/cols);x=(i%cols-(cols-1)/2)*.6;y=((rows-1)/2-Math.floor(i/cols))*.6;}else return;
  if(plane==='XY'){e.position.x=x;e.position.y=y;}else if(plane==='XZ'){e.position.x=x;e.position.z=y;}else{e.position.y=x;e.position.z=y;}
  });
