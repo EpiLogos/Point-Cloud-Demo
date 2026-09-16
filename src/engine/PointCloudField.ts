@@ -49,6 +49,16 @@ import {
   resolveFocus,
 } from './fieldModel';
 
+/** A retained image/ASCII source, kept so the pool can be re-derived against a new true-3D law. */
+interface CustomSourceRecord {
+  kind: 'image' | 'ascii';
+  entityId: string;
+  linkId?: string;
+  /** The decoded element (image) or the raw text (ASCII) the pool was sampled from. */
+  input: CanvasImageSource | ImageData | string;
+  options: Record<string, unknown>;
+}
+
 export function getColorModeIndex(mode?: string): number {
   switch (mode) {
     case 'monochrome': return 0;
@@ -1215,6 +1225,11 @@ export class PointCloudField {
     if (styleChanged) this.glyphSampler.clearCache();
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
     const volumeChanged = this.entities.setVolume(cfg.glyphVolume);
+    if (volumeChanged) {
+      // Every planar source re-measures its body against the new law, exactly
+      // as the glyph pools do; the next update() bakes the fresh pools.
+      this.rederiveCustomSources();
+    }
     if ((prev.composition || DEFAULT_COMPOSITION).plane !== comp.plane) this.simulator.setCompositionPlane(comp.plane);
 
     // Projection and depth presentation: a change here is a change of lens, not of
@@ -1308,12 +1323,42 @@ export class PointCloudField {
     return id ? this.sourceAnalyses.get(id) : undefined;
   }
 
+  /** Keyed exactly like the runtime's custom candidate pools. */
+  private static sourceKey(entityId: string, linkId?: string): string {
+    return linkId ? `${entityId}:${linkId}` : entityId;
+  }
+
+  private customSourceInputs = new Map<string, CustomSourceRecord>();
+
+  private retainCustomSource(record: CustomSourceRecord) {
+    this.customSourceInputs.set(PointCloudField.sourceKey(record.entityId, record.linkId), record);
+  }
+
+  /**
+   * Re-derives every retained image/ASCII pool against the current true-3D law.
+   * Glyph pools re-rasterize when the law changes; the masks must follow, or a
+   * law toggled after loading would leave half the scene flat.
+   */
+  private rederiveCustomSources() {
+    if (!this.customSourceInputs.size) return;
+    for (const record of [...this.customSourceInputs.values()]) {
+      if (record.kind === 'image') {
+        if (typeof record.input === 'string') continue;
+        this.loadCustomImage(record.input, record.options, record.entityId, record.linkId);
+      } else {
+        if (typeof record.input !== 'string') continue;
+        this.loadAsciiArt(record.input, record.options, record.entityId, record.linkId);
+      }
+    }
+  }
+
   public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string, linkId?:string): SourceAnalysis | null {
     const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
     if (!target) return null;
     const { candidates, analysis } = this.glyphSampler.rasterizeCustomImage(img, options);
     if (entityId) this.sourceAnalyses.set(entityId, analysis);
     this.entities.setCustomCandidates(target.id, candidates,linkId);
+    this.retainCustomSource({ kind: 'image', entityId: target.id, linkId, input: img, options });
     return analysis;
   }
 
@@ -1323,6 +1368,7 @@ export class PointCloudField {
     const { candidates, analysis } = this.glyphSampler.rasterizeAscii(asciiText, options);
     if (entityId) this.sourceAnalyses.set(entityId, analysis);
     this.entities.setCustomCandidates(target.id, candidates,linkId);
+    this.retainCustomSource({ kind: 'ascii', entityId: target.id, linkId, input: asciiText, options });
     return analysis;
   }
 
@@ -1330,6 +1376,7 @@ export class PointCloudField {
     const id = entityId ?? this.formations()[0]?.id;
     if (id) {
       this.sourceAnalyses.delete(id);
+      this.customSourceInputs.delete(PointCloudField.sourceKey(id, linkId));
       this.entities.setCustomCandidates(id, null,linkId);
     }
   }

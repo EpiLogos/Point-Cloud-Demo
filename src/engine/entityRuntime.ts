@@ -38,7 +38,7 @@ import {
 } from './fieldModel';
 import { SpatialChakraNode, type GlyphVolumeConfig } from './types';
 import { resolveEntityPose, type EvaluatedEntityPose } from './entityPose';
-import { drawVolumeZ, mulberry32, DEFAULT_GLYPH_VOLUME } from './glyphVolume';
+import { drawVolumeZ, mulberry32, buildDepthFieldsFromMask, cellVolumeShape, DEFAULT_GLYPH_VOLUME } from './glyphVolume';
 
 /** World px per canvas px at entity.scale = 1 (a glyph fills ≈ 400 px) */
 const BASE_SCALE = 0.56;
@@ -244,6 +244,23 @@ export class EntityRuntime {
         const r=Math.hypot(x,y);
         const inside=kind==='square' || kind==='disc'&&r<=200 || kind==='ring'&&r>=140&&r<=200 || kind==='triangle'&&y>=-200&&y<=200&&Math.abs(x)<=(200-y)/2;
         if (inside) out.push({x,y,density:1});
+      }
+      // True 3D body: primitives extrude by the same measured law as every
+      // other planar pool — the mask they were generated from is the source.
+      if (this.volume.enabled && this.volume.depth > 0 && out.length) {
+        const G=192, mask=new Uint8Array(G*G);
+        for (const c of out) {
+          const gx=Math.round((c.x+200)/400*(G-1));
+          const gy=Math.round((200-c.y)/400*(G-1));
+          mask[gy*G+gx]=1;
+        }
+        const fields=buildDepthFieldsFromMask(mask,G,G);
+        for (const c of out) {
+          const gx=Math.max(0,Math.min(G-1,Math.round((c.x+200)/400*(G-1))));
+          const gy=Math.max(0,Math.min(G-1,Math.round((200-c.y)/400*(G-1))));
+          const s=cellVolumeShape(fields.distInside[gy*G+gx],fields.distToInk[gy*G+gx],fields.referenceThickness,c.density,this.volume);
+          c.hz=s.half;c.cw=s.contourness;
+        }
       }
     } else if (shape.kind === 'cymatic') {
       out = this.sampler.sampleCymaticTemplate({frequencyHz:shape.frequencyHz??396,plateGeometry:shape.plateGeometry??this.templateGeometry,dimension:shape.dimension??this.templateDimension}).candidates;

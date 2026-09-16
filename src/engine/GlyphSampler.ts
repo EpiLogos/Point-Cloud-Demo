@@ -1003,8 +1003,12 @@ export class GlyphSampler {
     if(dimension==='3D'||geometry==='volumetric3D'){return{candidates:sampleVolumetric3DNodalPoints(12000,l,m,n,coherence,chaos,280),is3D:true};}
     const w=this.canvas.width,h=this.canvas.height,ctx=this.ctx;
     renderChladniPlate(ctx,w,h,geometry,m,n,a,b,coherence,chaos);
-    const pixels=ctx.getImageData(0,0,w,h).data,candidates:Array<{x:number;y:number;z?:number;density:number}>=[],cx=w/2,cy=h/2;
-    for(let y=0;y<h;y+=3)for(let x=0;x<w;x+=3){const idx=(y*w+x)*4,alpha=pixels[idx+3]/255;if(alpha>.05)candidates.push({x:x-cx,y:-(y-cy),z:0,density:alpha});}
+    const pixels=ctx.getImageData(0,0,w,h).data,candidates:Array<{x:number;y:number;z?:number;density:number;hz?:number;cw?:number}>=[],cx=w/2,cy=h/2;
+    // True 3D body over the standing-wave pattern: the nodal lines extrude with
+    // the same measured thickness law as letterforms and image masks.
+    const volumeOn=this.volume.enabled&&this.volume.depth>0;
+    const fields=volumeOn?buildGlyphDepthFields(pixels,w,h):null;
+    for(let y=0;y<h;y+=3)for(let x=0;x<w;x+=3){const idx=(y*w+x)*4,alpha=pixels[idx+3]/255;if(alpha>.05){const cand:{x:number;y:number;z?:number;density:number;hz?:number;cw?:number}={x:x-cx,y:-(y-cy),z:0,density:alpha};if(fields){const shape=cellVolumeShape(fields.distInside[y*w+x],fields.distToInk[y*w+x],fields.referenceThickness,alpha,this.volume);cand.hz=shape.half;cand.cw=shape.contourness;}candidates.push(cand);}}
     if(!candidates.length)for(let i=0;i<500;i++){const ang=i/500*Math.PI*2;candidates.push({x:Math.cos(ang)*120,y:Math.sin(ang)*120,z:0,density:.8});}
     return{candidates,is3D:false};
   }
@@ -1348,6 +1352,8 @@ export class GlyphSampler {
   /**
    * Samples pixel density from a custom user image through the shared
    * normalization law (background estimate, polarity, crop, mode shaping).
+   * When the true-3D body law is on, candidates carry the measured thickness
+   * of the image mask, so an image extrudes exactly like a letterform.
    */
   public rasterizeCustomImage(
     img: CanvasImageSource | ImageData,
@@ -1358,12 +1364,12 @@ export class GlyphSampler {
       scale?: number;
     } = {}
   ): {
-    candidates: Array<{ x: number; y: number; density: number }>;
+    candidates: Array<{ x: number; y: number; density: number; hz?: number; cw?: number }>;
     center: THREE.Vector2;
     analysis: SourceAnalysis;
   } {
     const { px, w, h } = this.drawToWorkBuffer(img);
-    const sampled = sampleImageSource(px, w, h, options);
+    const sampled = sampleImageSource(px, w, h, { ...options, volume: this.volume });
     return { candidates: sampled.candidates, center: new THREE.Vector2(0, 0), analysis: sampled.analysis };
   }
 
@@ -1403,7 +1409,7 @@ export class GlyphSampler {
       invert?: boolean;
     } = {}
   ): {
-    candidates: Array<{ x: number; y: number; density: number }>;
+    candidates: Array<{ x: number; y: number; density: number; hz?: number; cw?: number }>;
     center: THREE.Vector2;
     analysis: SourceAnalysis;
   } {
@@ -1432,6 +1438,7 @@ export class GlyphSampler {
     const imgData = ctx.getImageData(0, 0, w, h);
     const sampled = sampleAlphaSource(imgData.data, w, h, {
       invert: options.invert,
+      volume: this.volume,
       // Preserve the actual typed contours, including sparse strokes and spaces.
       cell: { w: charWidth, h: lineHeight },
     });

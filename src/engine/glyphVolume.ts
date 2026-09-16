@@ -146,22 +146,16 @@ export function hashString(value: string): number {
 }
 
 /**
- * Builds the depth fields for one rasterized glyph. `alpha` is the RGBA buffer
- * from the glyph canvas; anything above `threshold` counts as ink.
+ * Builds the depth fields for one binary ink mask — the source-agnostic form
+ * of the law. Character glyphs pass their rasterized alpha through
+ * `buildGlyphDepthFields`; image, ASCII, primitive and cymatic pools pass the
+ * thresholded mask their candidates were selected from. One distance
+ * transform, one body law, every object type.
  */
-export function buildGlyphDepthFields(
-  alpha: Uint8ClampedArray,
-  w: number,
-  h: number,
-  threshold = 26
-): GlyphDepthFields {
-  const ink = new Uint8Array(w * h);
+export function buildDepthFieldsFromMask(inkMask: Uint8Array, w: number, h: number): GlyphDepthFields {
+  const ink = inkMask;
   const empty = new Uint8Array(w * h);
-  for (let i = 0; i < w * h; i++) {
-    const on = alpha[i * 4 + 3] > threshold ? 1 : 0;
-    ink[i] = on;
-    empty[i] = on ? 0 : 1;
-  }
+  for (let i = 0; i < w * h; i++) empty[i] = ink[i] ? 0 : 1;
 
   // distInside seeds on the empty cells (so ink cells measure inward distance),
   // distToInk seeds on the ink cells (so empty cells measure outward distance).
@@ -185,6 +179,23 @@ export function buildGlyphDepthFields(
   const referenceThickness = Math.max(1, pick);
 
   return {w, h, distToInk, distInside, referenceThickness};
+}
+
+/**
+ * Builds the depth fields for one rasterized glyph. `alpha` is the RGBA buffer
+ * from the glyph canvas; anything above `threshold` counts as ink.
+ */
+export function buildGlyphDepthFields(
+  alpha: Uint8ClampedArray,
+  w: number,
+  h: number,
+  threshold = 26
+): GlyphDepthFields {
+  const ink = new Uint8Array(w * h);
+  for (let i = 0; i < w * h; i++) {
+    ink[i] = alpha[i * 4 + 3] > threshold ? 1 : 0;
+  }
+  return buildDepthFieldsFromMask(ink, w, h);
 }
 
 /**
