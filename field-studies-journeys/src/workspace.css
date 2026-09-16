@@ -159,6 +159,11 @@ body.night{--ui-surface:#000;--ui-ink:#ededed;--ui-muted:#a6a6a6;--ui-line:#333;
 .motion-content{display:block}.motion-content>section{margin-bottom:24px}
 .inspector-search{display:flex}
 .inspector-actions{display:flex;align-items:center;gap:8px}.inspector-actions button{font-size:10px;white-space:nowrap}
+/* The automation transport: play/replay of the scene's one-shot lanes, plus a loop latch. */
+#studio-play{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--ui-line);border-radius:5px;background:var(--ui-input);color:var(--ui-ink)}
+#studio-play svg{width:11px;height:11px}
+#studio-play[aria-pressed=true]{background:var(--ui-wash)}
+#automation-loop:hover,#automation-loop:focus-visible,#automation-loop[aria-pressed=true]{opacity:1;background:var(--ui-wash)}
 .studio-sections{display:none}
 .range-label .number-wrap input,.number-field input,.depth-field input{background:var(--ui-input);border:1px solid var(--ui-line);border-radius:4px;min-width:76px;max-width:none;width:86px;padding:6px 7px;color:var(--ui-ink);font-variant-numeric:tabular-nums;text-align:right;font-size:12px}
 .number-field input{width:100%;text-align:left}.range-label label{max-width:none;flex:1}.range-label{gap:8px;align-items:center}.range-label .number-wrap{flex-shrink:0;flex-wrap:wrap;max-width:55%}
@@ -372,7 +377,7 @@ body.night #app select{color-scheme:dark}
 .inspector-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center}
 .inspector-center .icon-button{width:28px;height:28px;min-width:28px;padding:6px;opacity:.5}
 .inspector-center .icon-button:hover,.inspector-center .icon-button:focus-visible,.inspector-center .icon-button[aria-pressed=true]{opacity:1;background:var(--ui-wash)}
-#inspector.is-studio.docked{left:auto;right:30px;top:60px;bottom:auto;display:flex;flex-direction:column;grid-template-columns:none;width:var(--panel-width,280px);max-width:min(var(--panel-width,280px),calc(100vw - 24px));height:var(--panel-height,600px);max-height:calc(100vh - 60px - var(--field-line) - var(--automation-height,0px))}
+#inspector.is-studio.docked{left:auto;right:30px;top:60px;bottom:auto;display:flex;flex-direction:column;grid-template-columns:none;width:var(--belt-panel-width,280px);max-width:min(var(--belt-panel-width,280px),calc(100vw - 24px));height:var(--belt-panel-height,calc(100vh - 60px - var(--field-line) - var(--automation-height,0px)));max-height:calc(100vh - 60px - var(--field-line) - var(--automation-height,0px))}
 #inspector.is-studio.docked .inspector-heading{grid-column:auto;flex:none}
 #inspector.is-studio.docked .studio-sections{grid-column:auto;grid-row:auto;flex-direction:row;flex-wrap:nowrap;flex-shrink:0;gap:2px;padding:6px;border-right:0;border-bottom:1px solid var(--ui-line);overflow:auto}
 #inspector.is-studio.docked .studio-sections button{white-space:nowrap;padding:8px;font-size:10px}
@@ -386,6 +391,7 @@ body.night #app select{color-scheme:dark}
 /* Programmatic panel edits commit in place; smooth scrolling must not fight them. */
 .context-content,.inspector-content{scroll-behavior:auto}
 @media(max-width:620px){#inspector.is-studio.docked{right:12px}}
+@media(max-width:850px){#inspector.is-studio.docked{width:var(--belt-panel-width,260px);max-width:min(var(--belt-panel-width,260px),calc(100vw - 24px))}}
 
 /* The cycle instrument: two pages, and it docks inside the toolbelt. */
 .automation-monitor{flex-direction:column;align-items:stretch;height:auto;min-height:0;gap:8px}

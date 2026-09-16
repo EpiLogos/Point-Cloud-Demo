@@ -1,6 +1,7 @@
 """Acceptance: the true-3D glyph volume, driven through the real studio UI.
 
-Loads the actual Expression route, opens the studio's Colour & material section,
+Loads the actual Expression route, opens the studio's dedicated 3D body & depth
+section,
 ticks the volume and projection controls the way an author would, and reads real
 GPU particle state back through the engine's own diagnostics. The claims under
 test are the ones the feature makes: the panel is reachable and wired, a flat
@@ -76,7 +77,7 @@ with browser_session({'width': 1280, 'height': 900}) as (_, ctx, page):
     page.evaluate("window.__FIELD_STUDIES__.openEditor('field')")
     page.wait_for_timeout(600)
     page.evaluate("""() => {
-      const b = document.querySelector('[data-action="studio-section"][data-value="appearance"]');
+      const b = document.querySelector('[data-action="studio-section"][data-value="volume"]');
       if (b) b.click();
     }""")
     page.wait_for_timeout(900)
