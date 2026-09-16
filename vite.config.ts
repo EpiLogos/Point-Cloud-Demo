@@ -11,7 +11,7 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
-    build: {rollupOptions: {input: {main:path.resolve(__dirname,'index.html'),legacy:path.resolve(__dirname,'legacy.html')}}},
+    build: {rollupOptions: {input: {main:path.resolve(__dirname,'index.html'),legacy:path.resolve(__dirname,'legacy.html'),render:path.resolve(__dirname,'render.html')}}},
     server: {
       // HMR can be disabled via DISABLE_HMR (the retired AI Studio hosting
       // path); file watching is disabled with it to prevent flicker during
