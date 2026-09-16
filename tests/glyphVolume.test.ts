@@ -349,16 +349,45 @@ test('glyphVolume: slabDistance is the exact boundary of an extruded solid', () 
   assert.ok(slabDistance(0, 12, 5) > slabDistance(0, 12, 20), 'thickness genuinely moves the wall');
 });
 
-test('glyphVolume: the default law is off, so nothing changes until it is switched on', () => {
-  assert.equal(DEFAULT_GLYPH_VOLUME.enabled, false, 'volume is opt-in');
+test('glyphVolume: the law never writes outside its own thickness envelope', () => {
+  // A two-particle sample is a coin flip, not a test: with the default family
+  // split a single draw can land in the interior band and read as almost flat.
+  // The invariant that actually holds is per-particle and needs a real sample.
+  const w = 64;
+  const h = 64;
+  const fields = buildGlyphDepthFields(blockAlpha(w, h, 16, 47), w, h);
+  const count = 6000;
+  const data = new Float32Array(count * 4);
+  for (let i = 0; i < count; i++) {
+    const px = 16 + ((i * 7) % 32);
+    const py = 16 + ((i * 11) % 32);
+    data[i * 4] = px - w / 2;
+    data[i * 4 + 1] = -(py - h / 2);
+    data[i * 4 + 3] = 0.9;
+  }
+  const cfg = { ...DEFAULT_GLYPH_VOLUME, enabled: false };
+  const stats = applyGlyphVolume(data, count, fields, 1, cfg, 7777);
+
+  // Nothing may sit further from the plane than the body is thick at its
+  // thickest, plus the configured jitter.
+  const limit = stats.maxHalfThickness + cfg.jitter;
+  let worst = 0;
+  for (let i = 0; i < count; i++) worst = Math.max(worst, Math.abs(data[i * 4 + 2]));
+  assert.ok(worst <= limit + 1e-9, `every sample stays inside the body: worst |z| ${worst} vs limit ${limit}`);
+
+  // The thickness itself is the requested depth, scaled by the density term.
+  const expectedHalf = (cfg.depth / 2) * Math.max(0, 1 + cfg.densityDepth * (0.9 - 0.5) * 2);
+  assert.ok(
+    Math.abs(stats.maxHalfThickness - expectedHalf) < expectedHalf * 1e-3,
+    `the medial axis reaches the configured half-thickness, got ${stats.maxHalfThickness} vs ${expectedHalf}`
+  );
+
+  // And the regime is opt-in: the engine never reaches this law unless enabled.
+  assert.equal(DEFAULT_GLYPH_VOLUME.enabled, false, 'volume is off by default');
   assert.ok(DEFAULT_GLYPH_VOLUME.depth > 0, 'and carries a usable default thickness when enabled');
   assert.ok(DEFAULT_GLYPH_VOLUME.wallShare > 0, 'extruded flanks are part of the default body');
-  const w = 32;
-  const h = 32;
-  const fields = buildGlyphDepthFields(blockAlpha(w, h, 8, 23), w, h);
-  const data = new Float32Array([0, 0, 3.5, 1, 0, 0, -3.5, 1]);
-  const stats = applyGlyphVolume(data, 2, fields, 1, {...DEFAULT_GLYPH_VOLUME, enabled: false}, 1);
-  // The function still reports what it did; callers gate on `enabled`, and the
-  // engine's own gate is asserted in the sampler/bake tests.
-  assert.ok(stats.maxZ <= 0.5 * DEFAULT_GLYPH_VOLUME.depth, 'it writes within the configured thickness');
+  assert.ok(
+    DEFAULT_GLYPH_VOLUME.wallBand >= 20,
+    'the flank band is a real fraction of a bold stroke, not a hairline at the contour'
+  );
 });

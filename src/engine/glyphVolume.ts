@@ -319,7 +319,12 @@ export const DEFAULT_GLYPH_VOLUME: GlyphVolumeConfig = {
   jitter: 2,
   densityDepth: 0.35,
   surfaceThickness: 6,
-  wallBand: 10,
+  // The contour band is measured in raster pixels against strokes whose
+  // half-width runs to ~100px on a bold letterform. A narrow band confines the
+  // flank to a hairline at the very edge — where every profile has tapered to
+  // almost nothing — and the body never grows a visible side wall. The band is
+  // therefore a substantial fraction of the stroke, so the extrusion has depth.
+  wallBand: 42,
   outsideTaper: 0.6,
 };
 

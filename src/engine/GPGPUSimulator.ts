@@ -169,6 +169,9 @@ export class GPGPUSimulator {
         uEntityBounds: { value: new Float32Array(10) },
         uEntityCenter: { value: Array.from({ length: 10 }, () => new THREE.Vector4(0, 0, 0, 200)) },
         uEntityMorph: { value: new Float32Array(10) },
+        // Depth scale of each partition: the slab axis conversion for the
+        // extruded-body boundary test.
+        uEntityDepthScale: { value: new Float32Array(10).fill(1) },
         uEntityTransform: { value: Array.from({ length: 10 }, () => new THREE.Vector3(1, 1, 0)) },
         uTexSize: { value: new THREE.Vector2(1, 1) },
       },
@@ -577,6 +580,7 @@ export class GPGPUSimulator {
     pU.uEntityCount.value = vU.uEntityCount.value;
     (pU.uEntityBounds.value as Float32Array).set(u.bounds.subarray(0, 10));
     (pU.uEntityMorph.value as Float32Array).set(u.morph.subarray(0, 10));
+    (pU.uEntityDepthScale.value as Float32Array).set(u.depthScales ?? new Float32Array(10).fill(1));
     const pC = pU.uEntityCenter.value as THREE.Vector4[];
     for (let i = 0; i < 10; i++) {
       pC[i].copy(u.centers[i]);

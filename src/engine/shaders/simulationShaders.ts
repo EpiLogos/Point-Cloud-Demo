@@ -88,8 +88,9 @@ float sdfHalfThickness(vec2 local, vec4 tile, float blend) {
 // with a segment of half-length h. Within the slab the answer is the 2D field;
 // past a face it is the distance to that face plane. This is the genuine
 // boundary of a body with thickness, not a silhouette that ignores z.
-float slabDistance(float d2d, float z, float half) {
-  float dz = abs(z) - half;
+// (The name "half" is itself reserved in GLSL, hence h.)
+float slabDistance(float d2d, float z, float h) {
+  float dz = abs(z) - h;
   float o2 = max(d2d, 0.0);
   float oz = max(dz, 0.0);
   if (o2 == 0.0 && oz == 0.0) return max(d2d, dz);
@@ -139,6 +140,7 @@ uniform float uEntityBounds[10];
 uniform vec4 uEntityCenter[10];
 uniform float uEntityMorph[10];
 uniform vec3 uEntityTransform[10];
+uniform float uEntityDepthScale[10];
 uniform vec2 uTexSize;
 
 varying vec2 vUv;
@@ -200,13 +202,13 @@ void main() {
       // is outside the solid through the thickness, and must leave along the face
       // normal. Without this the wall is a silhouette and depth is not collision.
       if (uDepthGeometry > 0.5) {
-        float half = sdfHalfThickness(local, tile, morph);
+        float halfT = sdfHalfThickness(local, tile, morph);
         float dz = sdfLocalZ(pos, uEntityCenter[eIdx].xyz, uEntityDepthScale[eIdx], uCompPlane);
-        if (abs(dz) > half && d < 0.0) {
+        if (abs(dz) > halfT && d < 0.0) {
           float sgn = dz > 0.0 ? 1.0 : -1.0;
           vec3 nFace = (uCompPlane > 0.5) ? vec3(0.0, sgn, 0.0) : vec3(0.0, 0.0, sgn);
           float wall = 1.0 / (1.0 + uCollisionIntegrity * velData.w * 0.01);
-          pos -= nFace * ((abs(dz) - half) * wall);
+          pos -= nFace * ((abs(dz) - halfT) * wall);
         }
       }
       if (dT >= 0.0 && d < 0.0) {

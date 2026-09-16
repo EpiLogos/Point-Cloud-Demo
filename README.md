@@ -105,6 +105,55 @@ rename. Current covers come from native capture; other cards use labelled static
 composition previews loaded as they come into view. Optional text in existing
 user documents is preserved.
 
+## True-3D glyph bodies
+
+By default a glyph is a flat card: the sampling law gives it x, y and ink
+density, and its z is micro-noise. What reads as depth in the face-on view is
+the stipple scatter's density falloff, not shape — turn the camera and the
+illusion fails, because there is nothing there.
+
+**Studio → Colour & material → 3D body & depth** switches the letterform into a
+real solid. Each particle's depth comes from an exact distance transform of the
+rasterized glyph: how deep it sits inside the stroke sets the body's
+half-thickness through a chosen profile, then the sample is placed either on the
+extruded flanks at the contour, on the front and back sheets, or in the interior
+band. **Body Depth** is the thickness, **Flank Share / Face Share / Interior
+Fill** are the split between those families, and **Depth Profile** picks the
+cross-section (slab, bevel, round, dome, taper).
+
+Depth is then real geometry, not a rendering trick, and the rest of the engine
+follows it:
+
+- Physics stops flattening the depth axis, so the body holds its thickness. The
+  global vortex and the inter-glyph bridge can be given a depth component
+  (**Depth in the swirl**, **Depth in the bridge**), turning them through the
+  body rather than sliding it in the picture plane.
+- With **Collision & medium** walls enabled, the boundary becomes the extruded
+  solid rather than its 2D silhouette: a particle can no longer pass straight
+  through a letterform's thickness, and the wall normal turns to face the near
+  surface.
+- **Projection & aerial depth** adds the lens that makes any of it legible.
+  Orthographic has no convergence, so distance cannot change a mark's size or
+  tone. Perspective restores it, with **Size Attenuation** for the physical 1/w
+  law, **Aerial Fade** for distance dimming the ink, and **Depth Tint** for the
+  colour distant marks drift toward.
+
+Two projections share one orbit rig, so switching is a change of lens and not of
+scene. Capture and host framing stay exact under both: the host's requested world
+scale per pixel is honoured at the workplane, and the projections diverge only in
+convergence.
+
+Everything is opt-in and independent. A composition that never enables either
+control bakes and draws exactly as before — the depth law is deterministic, so a
+re-bake reproduces the same body rather than re-rolling it. Thickness costs
+particle budget like anything else: raise **Body Depth** and drop **Particle
+Count** if a device struggles.
+
+The law lives in `src/engine/glyphVolume.ts`; its behaviour is pinned by
+`tests/glyphVolume.test.ts` and by a real-browser acceptance run that drives the
+studio controls and reads settled GPU particle state back
+(`field-studies-journeys/tests/three_d_body_browser.py`).
+
 ## Semantic field
 
 The continuous cymatic resonator is physically independent from chakra meaning.
@@ -131,6 +180,7 @@ python -m playwright install chromium
 npm run test:gpu
 npm run test:browser
 npm run test:workspace
+python field-studies-journeys/tests/three_d_body_browser.py
 python field-studies-journeys/tests/semantic_field_browser.py
 python field-studies-journeys/tests/module_browser.py
 ```
@@ -227,6 +277,7 @@ python -m playwright install chromium
 npm run test:gpu
 npm run test:browser
 npm run test:workspace
+python field-studies-journeys/tests/three_d_body_browser.py
 python field-studies-journeys/tests/semantic_field_browser.py
 python field-studies-journeys/tests/module_browser.py
 ```
