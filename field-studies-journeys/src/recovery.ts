@@ -2,10 +2,10 @@ import {Journey,validateJourney} from './model';
 import {Camera} from './camera';
 import {TransportState,validateTransport} from '../../src/engine/transportState';
 export const SESSION_KEY='oi.expression-session.v1';
-export interface SessionState {version:1;journeyId:string;sceneId:string;selected:string[];stepIndex:number;sceneElapsed:number;simTime:number;playing:boolean;journeyPlaying:boolean;camera:Camera;transport?:TransportState}
+export interface SessionState {version:1;journeyId:string;sceneId:string;selected:string[];stepIndex:number;sceneElapsed:number;simTime:number;playing:boolean;journeyPlaying:boolean;camera:Camera;transport?:TransportState;scenePlaying?:boolean;fieldPaused?:boolean}
 export function validateSession(value:unknown,j:Journey):SessionState|undefined{
  const s=value as SessionState;if(!s||s.version!==1||s.journeyId!==j.id||!j.scenes.some(v=>v.id===s.sceneId))return;
- const c=s.camera;if(!c||!['2d','3d'].includes(c.mode)||!['XY','XZ','YZ'].includes(c.plane)||![c.yaw,c.pitch,c.zoom,c.panX,c.panY,c.depth].every(n=>Number.isFinite(n)&&Math.abs(n)<1e7)||typeof c.grid!=='boolean'||typeof c.snap!=='boolean'||c.zoom<=0||c.zoom>100||![s.sceneElapsed,s.simTime,s.stepIndex].every(n=>Number.isFinite(n)&&n>=0)||s.sceneElapsed>3600||s.simTime>1e12||!Number.isInteger(s.stepIndex)||s.stepIndex>31||!Array.isArray(s.selected)||s.selected.length>32||!s.selected.every(id=>typeof id==='string')||typeof s.playing!=='boolean'||typeof s.journeyPlaying!=='boolean')return;
+ const c=s.camera;if(!c||!['2d','3d'].includes(c.mode)||!['XY','XZ','YZ'].includes(c.plane)||![c.yaw,c.pitch,c.zoom,c.panX,c.panY,c.depth].every(n=>Number.isFinite(n)&&Math.abs(n)<1e7)||typeof c.grid!=='boolean'||typeof c.snap!=='boolean'||c.zoom<=0||c.zoom>100||![s.sceneElapsed,s.simTime,s.stepIndex].every(n=>Number.isFinite(n)&&n>=0)||s.sceneElapsed>3600||s.simTime>1e12||!Number.isInteger(s.stepIndex)||s.stepIndex>31||!Array.isArray(s.selected)||s.selected.length>32||!s.selected.every(id=>typeof id==='string')||typeof s.playing!=='boolean'||typeof s.journeyPlaying!=='boolean'||s.scenePlaying!==undefined&&typeof s.scenePlaying!=='boolean'||s.fieldPaused!==undefined&&typeof s.fieldPaused!=='boolean')return;
  try{return {...s,transport:s.transport?validateTransport(s.transport):undefined};}catch{return {...s,transport:undefined};}
 }
 let database:Promise<IDBDatabase>|undefined;

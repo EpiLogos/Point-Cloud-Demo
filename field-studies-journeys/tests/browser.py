@@ -40,7 +40,7 @@ try:
     p.on('pageerror',lambda err:errors.append(str(err)))
     load(p)
     opening=doc(p)
-    check('Opening: WebGL, named Ink scene, inspector closed, oversized O/I',lambda:require(p.evaluate("!!document.querySelector('#field-canvas').getContext('webgl')") and current(p)['name']=='Ink' and not p.locator('#inspector').is_visible() and [e['text'] for e in current(p)['entities']]==['O','I']))
+    check('Opening: WebGL, named Ink scene, inspector closed, oversized O/I',lambda:require(p.evaluate("!!(document.querySelector('#field-canvas').getContext('webgl2')??document.querySelector('#field-canvas').getContext('webgl'))") and current(p)['name']=='Ink' and not p.locator('#inspector').is_visible() and [e['text'] for e in current(p)['entities']]==['O','I']))
     screenshot(p,'opening-desktop.png')
     clock=state(p)['simTime'];p.keyboard.press('e');act(p,'tab','[data-value="field"]');act(p,'tab','[data-value="scene"]')
     check('Inspector navigation does not reset or advance paused simulation',lambda:require(state(p)['simTime']==clock))
