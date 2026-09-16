@@ -35,3 +35,22 @@ test('native handoff: legacy density gradient keeps its native primary/accent/se
 test('native handoff: old placed-point capacity rejects before truncation',()=>{const cfg=clone(DEFAULT_CONFIG);delete cfg.entities;cfg.interaction.placedPoints=Array.from({length:9},(_,i)=>({id:'old'+i,x:i,y:0,z:0,radius:100,strength:1,mode:'attract' as const,active:true}));assert.throws(()=>nativeSnapshotToJourney({config:cfg}),/capacity/);});
 
 test('native handoff: library writes retain unreadable entries and more than 24 journeys',()=>{const original=Object.getOwnPropertyDescriptor(globalThis,'localStorage');const data:Record<string,string>={};Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(k:string)=>data[k]??null,setItem:(k:string,v:string)=>data[k]=v}});try{const all=Array.from({length:26},(_,i)=>({...blankJourney(),id:'keep'+i})),future={schema:'oi.journey',version:999,id:'future'};data[STORAGE_KEY]=JSON.stringify([...all,future]);saveToLibrary({...blankJourney(),id:'new'});assert.equal(JSON.parse(data[STORAGE_KEY]).length,28);assert.deepEqual(JSON.parse(data[STORAGE_KEY]).at(-1),future);assert.equal(readLibraryDetailed().errors.length,1);data[STORAGE_KEY]='malformed';assert.throws(()=>saveToLibrary(blankJourney()),/not been overwritten/);assert.equal(data[STORAGE_KEY],'malformed');}finally{if(original)Object.defineProperty(globalThis,'localStorage',original);else delete (globalThis as any).localStorage;}});
+
+test('native handoff: collision system toggles project, persist and recover',()=>{
+ const s=fieldStudies().scenes[0];
+ s.engine.mediumEnabled=true;s.engine.collisionEnabled=true;s.engine.collisionMode='vessel';s.engine.pairwiseEnabled=true;
+ const c=toNativeConfig(s);
+ assert.equal(c.medium!.enabled,true);assert.equal(c.collision!.enabled,true);assert.equal(c.collision!.mode,'vessel');assert.equal(c.pairwise!.enabled,true);
+ assert.equal(c.medium!.pressure,4,'untouched numerics keep their defaults through projection');
+ // Authored numerics flow through the generic binding (document home -> config path).
+ bindValue(s,'field.params.native_pairwise__radius',5.5);
+ assert.equal(toNativeConfig(s).pairwise!.radius,5.5);
+ // Disabled by default for scenes that predate the sections.
+ const plain=fieldStudies().scenes[0],plainCfg=toNativeConfig(plain);
+ assert.equal(plainCfg.medium!.enabled,false);assert.equal(plainCfg.collision!.mode,'obstacle');assert.equal(plainCfg.pairwise!.enabled,false);
+ // Full document round-trip through the native snapshot.
+ const back=nativeSnapshotToJourney(nativeExport(s)).scenes[0];
+ assert.equal(back.engine.mediumEnabled,true);assert.equal(back.engine.collisionEnabled,true);
+ assert.equal(back.engine.collisionMode,'vessel');assert.equal(back.engine.pairwiseEnabled,true);
+ assert.equal(back.engine.pairwiseEnabled===true?toNativeConfig(back).pairwise!.radius:0,5.5);
+});

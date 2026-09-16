@@ -3,7 +3,7 @@ import {resolvedAutomation,automationLeader} from './automationLinks';
 import {applyNativeDelta} from './nativeDelta';
 /** Document → existing production engine. No renderer, scheduler, DOM or storage writes. */
 import type {PointCloudConfig,AutomationLane as NativeLane} from '../../src/engine/types';
-import {DEFAULT_CONFIG,DEFAULT_COLOR_CONFIG,DEFAULT_TOROIDAL_CONFIG} from '../../src/engine/PointCloudField';
+import {DEFAULT_CONFIG,DEFAULT_COLOR_CONFIG,DEFAULT_TOROIDAL_CONFIG,DEFAULT_MEDIUM_CONFIG,DEFAULT_COLLISION_CONFIG,DEFAULT_PAIRWISE_CONFIG} from '../../src/engine/PointCloudField';
 import {DEFAULT_SEQUENCE,DEFAULT_FORCES,DEFAULT_COMPOSITION,DEFAULT_CYMATIC_MEDIUM,MAX_FORMATIONS,MAX_PINS,type Entity as NativeEntity,type Shape as NativeShape} from '../../src/engine/fieldModel';
 import {makeSemanticChakraEntities} from '../../src/engine/semantics/chakraPresets';
 import {migrateSnapshot,CONFIG_SCHEMA_VERSION} from '../../src/engine/configMigration';
@@ -84,6 +84,9 @@ function projectNativeConfig(s:Scene):PointCloudConfig{
  else if(s.composition.frequencyDriver!=='focus')cfg.resonanceDrive={kind:'frequency'};
  else cfg.resonanceDrive=undefined;
  cfg.relational={...cfg.relational!,enabled:s.engine.relationalEnabled,mode:s.engine.relationalMode as any};
+ cfg.medium={...DEFAULT_MEDIUM_CONFIG,...cfg.medium,enabled:s.engine.mediumEnabled===true};
+ cfg.collision={...DEFAULT_COLLISION_CONFIG,...cfg.collision,enabled:s.engine.collisionEnabled===true,mode:s.engine.collisionMode??'obstacle'};
+ cfg.pairwise={...DEFAULT_PAIRWISE_CONFIG,...cfg.pairwise,enabled:s.engine.pairwiseEnabled===true};
  cfg.interaction={...cfg.interaction,mode:s.engine.pointerMode,clickMode:s.engine.pointerClick??'pulse',placedPoints:[]};
  cfg.automations=s.automation.map(authored=>{const l=resolvedAutomation(s.automation,authored),leader=automationLeader(s.automation,authored);
   const b=automationTarget(s,l.target);if(!b)return l.nativePath?{...original?.automations?.find(a=>a.id===l.nativeId),id:l.nativeId??l.id,path:l.nativePath,enabled:false,type:l.type==='lfo'?'lfo':'oneShot'} as NativeLane:null;
@@ -126,7 +129,7 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  const cfg=snapshot.config,s=blankScene(snapshot.name),j=blankJourney();
  const completeNative=Number(value.schemaVersion)>=4&&Number(value.schemaVersion)<=CONFIG_SCHEMA_VERSION&&source.fluid&&source.interaction&&source.particleSize&&typeof source.particleCount==='number'&&Array.isArray(source.entities);
  s.native={config:clone(completeNative?source:cfg),original:clone(raw)};s.text=[];
- s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',pointerMode:cfg.interaction.mode,pointerClick:cfg.interaction.clickMode??'pulse',pointerClickStrength:cfg.interaction.clickStrength??2.2,pointerClickRadius:(cfg.interaction.clickRadius??180)/400,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent'};
+ s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',mediumEnabled:cfg.medium?.enabled??false,collisionEnabled:cfg.collision?.enabled??false,collisionMode:cfg.collision?.mode as any??'obstacle',pairwiseEnabled:cfg.pairwise?.enabled??false,pointerMode:cfg.interaction.mode,pointerClick:cfg.interaction.clickMode??'pulse',pointerClickStrength:cfg.interaction.clickStrength??2.2,pointerClickRadius:(cfg.interaction.clickRadius??180)/400,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent'};
  s.field.background=cfg.backgroundColor??cfg.color?.backgroundColor??'#f4f2eb';s.field.material=cfg.style==='halftone'?'print':'ink';
  s.field.palette=cfg.color?.customPaletteColors?.length?cfg.color.customPaletteColors.slice(0,8):[cfg.color?.primaryColor??'#252720',cfg.color?.accentColor??'#252720',cfg.color?.secondaryColor??'#252720'];
  for(const b of NATIVE_BINDINGS){const v=readPath(cfg,b.path);if(typeof v==='number')bindValue(s,b.bind,v/b.factor);}
