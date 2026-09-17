@@ -14,7 +14,7 @@ export interface InspectorContext {scene:Scene;journey:Journey;selected:string[]
 const button=(action:string,label:string,ico?:string,extra='')=>`<button class="secondary" data-action="${action}" ${extra}>${ico?icon(ico):''}${label}</button>`;
 const heading=(s:string,sub='')=>`<div class="section-heading"><h3>${s}</h3>${sub?`<span>${sub}</span>`:''}</div>`;
 export const text=(label:string,path:string,value:string,options='')=>`<label class="control"><span>${label}</span><input type="text" data-bind="${path}" value="${esc(value)}" ${options}></label>`;
-export const area=(label:string,path:string,value:string)=>`<label class="control"><span>${label}</span><textarea data-bind="${path}" rows="3">${esc(value)}</textarea></label>`;
+export const area=(label:string,path:string,value:string,options='')=>`<label class="control"><span>${label}</span><textarea data-bind="${path}" rows="3" ${options}>${esc(value)}</textarea></label>`;
 export const numeric=(label:string,path:string,value:number,min:number,max:number,step=.1)=>`<label class="number-field"><span>${label}</span><input type="number" data-bind="${path}" value="${Number(value.toPrecision(12))}" min="${min}" max="${max}" step="${step}"></label>`;
 export const toggle=(label:string,path:string,value:boolean,sub='')=>`<label class="toggle-row"><span>${label}${sub?`<small>${sub}</small>`:''}</span><input type="checkbox" data-bind="${path}" ${value?'checked':''}><i aria-hidden="true"></i></label>`;
 export const select=(label:string,path:string,value:string,options:[string,string][])=>`<label class="control"><span>${label}</span><select data-bind="${path}">${options.map(([v,l])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(l)}</option>`).join('')}</select></label>`;
@@ -53,12 +53,12 @@ export function inspectorHTML(c:InspectorContext){const s=c.scene,e=s.entities.f
  if(c.tab==='scene'){const t=s.text.find(t=>t.id===c.textId)??s.text[0];return `
  ${heading('Scene settings','Scene '+(c.journey.scenes.indexOf(s)+1))}
  ${text('Scene name','name',s.name,'maxlength="160"')}
- ${area('Character','character',s.character)}
+ ${area('Character','character',s.character,'maxlength="5000"')}
  <div class="two-col">${numeric('Duration (seconds)','duration',s.duration,1,3600,1)}${numeric('Transition (seconds)','transition',s.transition,0,30,.1)}</div>
  <p class="control-note">The scene name belongs to the whole composition. Duration includes transition timing; field, objects, motion and text stay together.</p>
  ${group('Text layers',`
  <div class="text-layer-list">${s.text.map(t=>`<button data-action="select-text" data-id="${t.id}" class="layer-choice ${t.id===(c.textId??s.text[0]?.id)?'active':''}">${icon('text')} ${esc(t.title||'Text block')}${!t.visible?' · hidden':''}</button>`).join('')}</div>
- ${t?`${toggle('Show this text block','text.visible',t.visible)}${text('Small heading','text.kicker',t.kicker,'maxlength="300"')}${text('Title','text.title',t.title,'maxlength="300"')}${text('Italic line','text.italic',t.italic,'maxlength="300"')}${area('Supporting text','text.body',t.body)}
+ ${t?`${toggle('Show this text block','text.visible',t.visible)}${text('Small heading','text.kicker',t.kicker,'maxlength="300"')}${text('Title','text.title',t.title,'maxlength="300"')}${text('Italic line','text.italic',t.italic,'maxlength="300"')}${area('Supporting text','text.body',t.body,'maxlength="5000"')}
  <div class="two-col">${numeric('Type size','text.size',t.size,14,150,1)}${numeric('Block width','text.width',t.width,60,1000,5)}</div>
  ${select('Alignment','text.align',t.align,[['left','Left'],['center','Centre'],['right','Right']])}
  <div class="two-col">${numeric('Page X · 0–1','text.x',t.x,-.5,1.5,.01)}${numeric('Page Y · 0–1','text.y',t.y,-.5,1.5,.01)}</div>
@@ -66,7 +66,7 @@ export function inspectorHTML(c:InspectorContext){const s=c.scene,e=s.entities.f
  ${button('add-text','Add a text block','plus')}
  <p class="control-note">Text is part of the scene, not the editor chrome. It can remain visible in presentations and captures.</p>`,true,'page-text')}
  ${group('Scene view',`<p class="control-note">Store this camera setup for this scene only. Working planes and guides stay editor-only.</p><div class="button-row">${button('keep-view','Set scene view','check')}${button('restore-view','Reset scene view','undo')}</div>`)}
- ${group('Expression settings',`${text('Expression title','journey.name',c.journey.name,'maxlength="160"')}${area('Description','journey.description',c.journey.description)}${toggle('Loop the expression','journey.loop',c.journey.loop)}<div class="button-row">${button('open-timeline','Scene strip','layers')}${button('new-scene','Add scene','plus')}</div>`,false,'journey')}
+ ${group('Expression settings',`${text('Expression title','journey.name',c.journey.name,'maxlength="160"')}${area('Description','journey.description',c.journey.description,'maxlength="5000"')}${toggle('Loop the expression','journey.loop',c.journey.loop)}<div class="button-row">${button('open-timeline','Scene strip','layers')}${button('new-scene','Add scene','plus')}</div>`,false,'journey')}
  `;}
 
  if(c.tab==='objects')return objects(c,e);

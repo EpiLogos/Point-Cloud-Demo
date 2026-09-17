@@ -8,7 +8,7 @@
     "build": "npm run build:journeys && vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit && tsc --noEmit -p field-studies-journeys/tsconfig.json",
+    "lint": "npm run build:journeys && tsc --noEmit && tsc --noEmit -p field-studies-journeys/tsconfig.json",
     "test": "tsx tests/run.ts",
     "predev": "npm run build:journeys",
     "build:journeys": "node field-studies-journeys/scripts/build.mjs",
