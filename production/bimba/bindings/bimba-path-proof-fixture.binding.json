@@ -1,0 +1,20 @@
+{
+  "artifact": "path-proof/bimba-path-proof-fixture.journey.json",
+  "family": "path-proof",
+  "worker": "pointcloud-parent",
+  "profile_lineage": [],
+  "source_revision": null,
+  "pointcloud_revision": "a39cf5f",
+  "scenes": [
+    { "scene_id": "bimba-path-proof-s1", "source_ref": "M2-5-9 / C0-Bimba (representative coordinate labels; not a source binding)" },
+    { "scene_id": "bimba-path-proof-s2", "source_ref": "cymatic 396 Hz square plate" }
+  ],
+  "assets": [
+    { "kind": "glyph", "ref": "#M2-5-9, #C0-Bimba (inline text)", "provenance": "authored" },
+    { "kind": "yantra", "ref": "anahata", "provenance": "authored" },
+    { "kind": "cymatic", "ref": "396 Hz square 2D", "provenance": "authored" }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "PATH-PROOF FIXTURE — engineering evidence for the namespace path (model API → validateJourney → write → importDocuments), not admitted corpus content and not a source binding. Provenance facts above describe the fixture's own shapes, not Bimba source authority."
+}
