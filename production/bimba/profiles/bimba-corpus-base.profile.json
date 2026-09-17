@@ -1,0 +1,45 @@
+{
+  "profile_id": "bimba-corpus-base",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "QL-MEF #201, lane 3 (Bimba Expression production), 2026-09-17",
+  "lineage_chain": "O:I global → Epi global → bimba-corpus-base (this file) → family profile (M-subsystem-grounded) → branch variant → scene override",
+  "source_ground": {
+    "registry": "QL-MEF fixtures/kernel/m-tree-v1.json (ql.m-tree/v1, 1876 nodes / 21083 relations / 6 roots)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287 (C-Experiments, source-lock data/epi-bimba-map/source-lock.json)",
+    "ql_commit_consumed": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "alignment": "docs/integrations/epi-logos/K-AW-EXPRESSION-PRODUCTION-ALIGNMENT.md §5-6; docs/L5-TECHNE-DUAL-READING-LOCK.md §6-13"
+  },
+  "source_law": [
+    "coordinates are carried verbatim in label text and binding records — compound #N-k, #N.k and #N-k-j/l forms exactly as the registry writes them",
+    "artifact/scene/entity ids use a mangled form (separators folded to '-') because the engine id grammar excludes '#' and '/' (Point-Cloud-Demo #6); the exact ref always also appears in name/text and in the binding record",
+    "a visual relation never manufactures graph truth; only registry relation refs (bimba:relation:*) may be cited as source relations, and structural membership is cited as membership (registry node id + parent), never dressed up as a typed relation",
+    "layout is presentation: constellation grain and graph membership come from the registry, never from where formations are placed",
+    "colour and material encode presentation families only; a repeated colour association is never a claimed source relation",
+    "one artifact is one editable oi.journey v1 document; no new scene schema, no runtime"
+  ],
+  "corpus_baseline": {
+    "field": {
+      "material": "ink",
+      "background": "#f4f2eb",
+      "palette": ["#252720", "#252720"],
+      "params": { "count": 62000, "size": 2.8, "opacity": 0.92, "contrast": 0.93, "speed": 0.7, "note": "engine defaults for the remaining params unless the coordinate's own structure warrants otherwise" }
+    },
+    "engine": { "inkMode": "blackOnWhite", "backgroundMode": "solid", "fontFamily": "system-ui, -apple-system, sans-serif", "fontWeight": 900 },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 12, "transition": 1.5, "note": "a scene holds long enough for its coordinate to be read" },
+    "entities": {
+      "governing_formation": "one per scene unless the coordinate's own structure carries more (poles, anchors, centres, stages)",
+      "label_grammar": "each formation names its exact coordinate in text/name; entity ids use the mangled form"
+    }
+  },
+  "inheritance": {
+    "what_children_receive": ["field/engine/view baseline", "label grammar", "source law (identity, relation-citation, no-manufactured-graph)", "scene rhythm defaults"],
+    "what_families_may_vary": ["ground/palette accents (declared per family)", "formation shapes (text/ring/disc/triangle/yantra/cymatic)", "sequence order and pacing", "force kinds where the source structure warrants them (poles, orbits, centres)", "2d/3d view where situated depth is the point"]
+  },
+  "instrument_binding": {
+    "m_prime_note": "every artifact names its M′ instrument relation (alignment §1-2, lock §13 cross-cut bridges) in its description and binding record",
+    "depth_note": "first corpus cut uses real registry depths only: depth-2 branch families (the profiles), depth-3 leaves (the artifacts), plus the registry's own '/' aperture notation at depth 3 — no invented depth ontology",
+    "runtime_seam": "O-I #366 (runtime Wiki→Expression materialisation) is the named gate; until it lands, source identity travels in artifact descriptions + bindings/bimba-*.binding.json"
+  }
+}
