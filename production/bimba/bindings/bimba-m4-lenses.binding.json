@@ -1,0 +1,100 @@
+{
+  "artifact": "nara/bimba-m4-lenses.journey.json",
+  "family": "nara",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-nara-situated"
+  ],
+  "m_prime": {
+    "instrument": "M4′ Places/World ↔ Nara/EarthBody/current situated Expression",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §10/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#4.4",
+        "registry_node": "2a916f3ef445f8c5",
+        "name": "Context & Lenses"
+      },
+      {
+        "coordinate": "#4.4.0",
+        "registry_node": "aa8a6e8a89d3f499",
+        "name": "Gebser Lens"
+      },
+      {
+        "coordinate": "#4.4.3",
+        "registry_node": "fcd145eb87445a89",
+        "name": "Jungian Depth Psychology Lens"
+      },
+      {
+        "coordinate": "#4.4.4",
+        "registry_node": "808db8dbc7a26bdc",
+        "name": "Phenomenological Lens"
+      },
+      {
+        "coordinate": "#4.4.5",
+        "registry_node": "c7c034d744f01401",
+        "name": "Trika/Kashmir Śaivism Lens"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#4",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#4.4",
+      "ref": "bimba:relation:814eb220174bffd513ee3aa5"
+    },
+    {
+      "from": "#4.4",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#4.4.0",
+      "ref": "bimba:relation:a127ad852e615c1db6e5d270"
+    },
+    {
+      "from": "#4.4",
+      "kind": "DEVELOPS_INTO",
+      "to": "#4.5",
+      "ref": "bimba:relation:1e76badc3d7943ef9cecdc94"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m4-lenses-s0",
+      "source_ref": "#4.4 (the ground all lenses frame)"
+    },
+    {
+      "scene_id": "bimba-m4-lenses-s1",
+      "source_ref": "#4.4.0 (Gebser Lens)"
+    },
+    {
+      "scene_id": "bimba-m4-lenses-s2",
+      "source_ref": "#4.4.3 (Jungian Depth Psychology Lens)"
+    },
+    {
+      "scene_id": "bimba-m4-lenses-s3",
+      "source_ref": "#4.4.4 (Phenomenological Lens)"
+    },
+    {
+      "scene_id": "bimba-m4-lenses-s4",
+      "source_ref": "#4.4.5 (Trika/Kashmir Śaivism Lens)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "The registry writes this branch with the dot separator (#4.4.k) — carried verbatim. Ground is byte-identical across lens scenes; only the lens formation changes (profile lens_grammar)."
+}

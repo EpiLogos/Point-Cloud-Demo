@@ -1,0 +1,544 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "bimba-m4-seven-centres-earth",
+  "name": "M4 · Seven centres above their earth",
+  "description": "Bimba M4′ situated-body artifact. Coordinates: #2-5-0/1 Sun branch — Planet Earth #2-5-0/1-0 as the anchor, with centres #2-5-0/1-1 Mūlādhāra, #2-5-0/1-2 Svādhiṣṭhāna, #2-5-0/1-3 Maṇipūra, #2-5-0/1-4 Anāhata, #2-5-0/1-5 Viśuddha, #2-5-0/1-6 Ājñā, #2-5-0/1-7 Sahasrāra. M′ instrument: M4′ Places/World ↔ Nara/EarthBody/current situated Expression (L5-TECHNE-DUAL-READING-LOCK §10/§13) — the earth anchor and the rising centre column as the situated body; the scale chain earth → body is presented, no astronomy is recomputed. Inherited profile: bimba-corpus-base → family-nara-situated (centre_grammar + station_law). Variation (source-backed): column order is registry child order bottom-up; tints are the engine's canonical seven-tint presentation set; per engine law no station/chakraId authority is set on any formation — ordering is position and label only. Relations cited: bimba:relation:7807d0fe76579be0955192a5 (#2-5-0/1 → #2-5-0/1-0, GENERATES_TERRESTRIAL_GROUNDING), bimba:relation:197fe32e18a21c7581d7f8ec (#2-5-0/1 → #2-5-0/1-1), bimba:relation:0096a0db822c13f70276d6ae (#2-5-0/1 → #2-5-0/1-7, DIVINE_NAMES_CHAKRAL_RECEPTION). Sources: registry_revision 259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4 at QL-MEF e87d6bcef81d005e848b978a11a0ab53b7739973. Binding record: bindings/bimba-m4-seven-centres-earth.binding.json.",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "bimba-m4-centres-s1",
+      "name": "The situated body",
+      "character": "Earth anchor below; the seven centres rise above it.",
+      "duration": 20,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#f4f2eb",
+        "palette": [
+          "#252720",
+          "#5898a4"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.7,
+          "circulation": 1,
+          "turbulence": 0.22,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-2-5-0-1-0",
+          "name": "Planet Earth #2-5-0/1-0",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": -0.88,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-0-t",
+          "name": "Planet Earth",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.74,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#2-5-0/1-0 · Planet Earth",
+          "share": 1,
+          "tint": "#252720",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-0-t-step-1",
+                "text": "#2-5-0/1-0 · Planet Earth",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-1",
+          "name": "Mūlādhāra",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.5,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Mūlādhāra — #2-5-0/1-1",
+          "share": 1,
+          "tint": "#a94138",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-1-step-1",
+                "text": "Mūlādhāra — #2-5-0/1-1",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-2",
+          "name": "Svādhiṣṭhāna",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.31,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Svādhiṣṭhāna — #2-5-0/1-2",
+          "share": 1,
+          "tint": "#c67c46",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-2-step-1",
+                "text": "Svādhiṣṭhāna — #2-5-0/1-2",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-3",
+          "name": "Maṇipūra",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.12,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Maṇipūra — #2-5-0/1-3",
+          "share": 1,
+          "tint": "#c2a852",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-3-step-1",
+                "text": "Maṇipūra — #2-5-0/1-3",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-4",
+          "name": "Anāhata",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.07000000000000006,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Anāhata — #2-5-0/1-4",
+          "share": 1,
+          "tint": "#638c69",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-4-step-1",
+                "text": "Anāhata — #2-5-0/1-4",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-5",
+          "name": "Viśuddha",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.26,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Viśuddha — #2-5-0/1-5",
+          "share": 1,
+          "tint": "#5898a4",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-5-step-1",
+                "text": "Viśuddha — #2-5-0/1-5",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-6",
+          "name": "Ājñā",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.44999999999999996,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Ājñā — #2-5-0/1-6",
+          "share": 1,
+          "tint": "#737599",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-6-step-1",
+                "text": "Ājñā — #2-5-0/1-6",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-2-5-0-1-7",
+          "name": "Sahasrāra",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.6400000000000001,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.24
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Sahasrāra — #2-5-0/1-7",
+          "share": 1,
+          "tint": "#a590b0",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-2-5-0-1-7-step-1",
+                "text": "Sahasrāra — #2-5-0/1-7",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    }
+  ],
+  "updatedAt": "2026-09-17T00:00:00.000Z"
+}

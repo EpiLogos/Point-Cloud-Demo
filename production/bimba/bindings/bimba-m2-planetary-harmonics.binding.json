@@ -1,0 +1,82 @@
+{
+  "artifact": "parashakti/bimba-m2-planetary-harmonics.journey.json",
+  "family": "parashakti",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-parashakti-resonance"
+  ],
+  "m_prime": {
+    "instrument": "M2′ Relation Field/Timeline ↔ M2 resonance/dynamic/material Expression capacity",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §8/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#2-5",
+        "registry_node": "2810fa2968eb75ac",
+        "name": "Planetary Harmonic Integration"
+      },
+      {
+        "coordinate": "#2-5-0/1",
+        "registry_node": "11a998cf5731a05a",
+        "name": "Sun"
+      },
+      {
+        "coordinate": "#2-5-5",
+        "registry_node": "6e19f8d6726f28e1",
+        "name": "Saturn"
+      },
+      {
+        "coordinate": "#2-5-6",
+        "registry_node": "617286c55c852728",
+        "name": "Jupiter"
+      },
+      {
+        "coordinate": "#2-5-9",
+        "registry_node": "19afdde1ee1b532c",
+        "name": "Pluto"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#2",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#2-5",
+      "ref": "bimba:relation:107e78a1c77bdecf2904aa75"
+    },
+    {
+      "from": "#2-5-0/1",
+      "kind": "GENERATES_TERRESTRIAL_GROUNDING",
+      "to": "#2-5-0/1-0",
+      "ref": "bimba:relation:7807d0fe76579be0955192a5"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m2-planetary-s1",
+      "source_ref": "#2-5-0/1 (Sun) over #2-5"
+    },
+    {
+      "scene_id": "bimba-m2-planetary-s2",
+      "source_ref": "#2-5-5, #2-5-6, #2-5-9 about #2-5-0/1"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "No typed registry relation rows exist between #2-5 and its planetary leaves (#2-5-9 included) — membership is structural (registry node ids + parent) and is cited as membership, never dressed as a typed relation. Orbital radii increase with registry child order (#5 Saturn, #6 Jupiter, #9 Pluto) as declared presentation."
+}
