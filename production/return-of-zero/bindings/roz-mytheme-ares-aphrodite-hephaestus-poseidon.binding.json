@@ -1,0 +1,148 @@
+{
+  "artifact": "mytheme/roz-mytheme-ares-aphrodite-hephaestus-poseidon.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme",
+    "family-hellenic"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-ares-aphrodite-hephaestus-poseidon",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/hellenic/ares-aphrodite-hephaestus-poseidon/WHOLE.md",
+        "sha256": "b41b556514a41fd21854ddbf70ff8c03c1523eb478b1444f71563b62b3cf334c"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-ares-0-song",
+      "phase": "#0 the song, the bed, and the gods at the door",
+      "relations": "anchor ares-source-song; Demodocus/Helios occurrences; source: Odyssey 8.266–366 paraphrase"
+    },
+    {
+      "scene_id": "m-ares-0b-bonds",
+      "phase": "#0 the bonds and the feigned departure",
+      "relations": "anchor ares-source-song; δεσμοὶ τεχνήεντες; Lemnos; Ares' watch; Helios' second report"
+    },
+    {
+      "scene_id": "m-ares-1-genealogies",
+      "phase": "#1 the children belong to their own tellings",
+      "relations": "anchor ares-distinct-genealogies; Theogony 933–937, 975–978, 116–122, 176–206; Simonides scholia variant"
+    },
+    {
+      "scene_id": "m-ares-2-difference",
+      "phase": "#2 the difference that can meet; the bow that is also a lyre",
+      "relations": "anchor ares-generative-difference, ares-bow-lyre-hamartia; A13, A12, A15; C23–C25; Q27 hamartia (human-amplified)"
+    },
+    {
+      "scene_id": "m-ares-3-apparatus",
+      "phase": "#3 what the apparatus gathers — stalled at its own limit",
+      "relations": "anchor ares-capture-gaze; C25 counterfeit gathering; C27; A20; the Gestell comparison is the essay's own"
+    },
+    {
+      "scene_id": "m-ares-4-surety",
+      "phase": "#4 the word that takes on the debt",
+      "relations": "anchor ares-guarantee-release; A23, A25, A27; C48"
+    },
+    {
+      "scene_id": "m-ares-5-return",
+      "phase": "#5→0 the relation after release",
+      "relations": "anchor ares-field-return; returns-to M22, M40, M46; A18 eightfold; A28–A32, A35, A36"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "Demodocus' lyre / dancers' circle",
+      "occurrence": "#0 opening of the song at the Phaeacian court"
+    },
+    {
+      "figure": "Helios",
+      "occurrence": "#0 first and second reports; #3 member of the capture/display apparatus"
+    },
+    {
+      "figure": "the spider's-web bonds / bed / beams",
+      "occurrence": "#0 fabrication; #3 the public exhibit"
+    },
+    {
+      "figure": "Lemnos",
+      "occurrence": "#0 the feigned departure to the Sintians"
+    },
+    {
+      "figure": "Harmonia, Deimos, Phobos, Eros",
+      "occurrence": "#1 distinct genealogies (Theogony; Simonides scholia) — outside the release scene; #2 offices in the authored relation"
+    },
+    {
+      "figure": "the gateway audience / laughter / Hermes' quip / Apollo's question",
+      "occurrence": "#0, #3 the spectators inside the apparatus"
+    },
+    {
+      "figure": "Poseidon's ἐγγύη",
+      "occurrence": "#4 the undertaking: first promise refused, self-answerable liability accepted"
+    },
+    {
+      "figure": "Thrace / Paphos / the Graces",
+      "occurrence": "#5→0 the paths beyond the image; bathing, anointing, clothing as source events"
+    },
+    {
+      "action": "the same hands binding and loosening",
+      "occurrence": "#0 and #4 technē retains the capacity in both offices"
+    },
+    {
+      "motif": "the unnarrated payment",
+      "occurrence": "#4–#5→0 the open liability the returned account must carry"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "Ares/Aphrodite/Harmonia/Eros productive-difference relation",
+      "flag": "yes"
+    },
+    {
+      "relation": "the complete capture/display apparatus; counterfeit gathering; Gestell comparison",
+      "flag": "yes"
+    },
+    {
+      "relation": "Poseidon's guarantee; trust beyond technical capture",
+      "flag": "yes"
+    },
+    {
+      "relation": "native eightfold and shared archetypal ground",
+      "flag": "yes"
+    },
+    {
+      "relation": "symbol/account/trust and apportionment returns; M22/M40/M46",
+      "flag": "yes"
+    },
+    {
+      "relation": "Graces' re-clothing as symbolic transformation of shame",
+      "flag": "no — source events, no appointed amplification"
+    }
+  ],
+  "cross_story_relations": [
+    "Indra's jewel net (mytheme-indra-net): the declared double-net comparison distinguishes mutual implication from capture organised as public evidence; neither net supplies the other a missing episode (Offered).",
+    "Shared archetypal ground with mytheme-neumann-images and mytheme-uroboros-trickster via the A18 return links."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-ares-aphrodite-hephaestus-poseidon.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: the scene deliberately stalls at the apparatus (scene m-ares-3-apparatus): exposure without payment, display without release — the record's own limit is staged rather than narratively resolved. Forge scenes use the family-hellenic forge palette; the surety scene uses the sea palette. Word-formations (\"Ares\", \"Aphrodite\") render as particle glyphs at draft count and remain legible at authored count. Editor defects listed below are shared, returned for one repair. E0 acceptance repair: title/field collision fixed on m-ares-0-song, m-ares-0b-bonds, m-ares-1-genealogies, m-ares-2-difference, m-ares-3-apparatus, m-ares-4-surety, m-ares-5-return (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

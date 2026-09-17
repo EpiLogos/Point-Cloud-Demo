@@ -1,0 +1,54 @@
+{
+  "profile_id": "register-symbolon",
+  "standing": "craft baseline only — presentation continuity for the E5 symbolon lane; never a semantic claim",
+  "owner": "E5 worker (symbolon), issue #65, 2026-09-17",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base → register-symbolon (this file) → artifact scene override",
+  "register": {
+    "name": "symbolon",
+    "vak_office": "parā — the whole unsayable form",
+    "note": "Symbolon is the CONTAINING whole AND a participant in the four-register articulation. The field is kept deepest of the four registers so the held register presences read as held, not as siblings beside it."
+  },
+  "corpus_baseline": {
+    "field": {
+      "material": "ink",
+      "background": "#14161a",
+      "palette": ["#e9e5d9", "#e9e5d9"],
+      "params": {
+        "count": 62000,
+        "size": 2.8,
+        "opacity": 0.9,
+        "contrast": 0.94,
+        "dispersion": 0.07,
+        "speed": 0.6,
+        "note": "quiet default; per-scene variation only where the record's own operation asks for it"
+      }
+    },
+    "engine": {
+      "inkMode": "whiteOnBlack",
+      "backgroundMode": "solid",
+      "fontFamily": "system-ui, -apple-system, sans-serif",
+      "fontWeight": 900
+    },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 12, "transition": 1.5, "note": "reading pace; the spine-index mandala holds longer (14s)" }
+  },
+  "presence_tints": {
+    "note": "presentation policy only — held-register presence tints so the three registers stay distinct within the one whole; no colour correspondence is claimed",
+    "whole_parā": "#e9e5d9",
+    "matheme_paśyantī": "#9fb4c8",
+    "mytheme_madhyamā": "#c9ad7a",
+    "episteme_vaikharī": "#9aa89b"
+  },
+  "containment_grammar": {
+    "mandala": "canonical concentric layout per ql-expression-grammar.md §III: centre = the 0/1 threshold (the relation, never a summary badge); four cardinal stations = the explicate four #1–#4 (N ?/!, E −/+, S X/x, W AM/IS, per the theorem §II(a) degree table); enclosing ring = the #0/#5 envelope as circumference, frame never content",
+    "depth_remnant": "every depth scene (root, head) keeps a small faint ring retained in the upper left — the whole as point of departure; the route back is declared in the scene text and in the binding record, never invented",
+    "thresholds": "−/− opens above the centre, 1/0 returns at the ring's rim — the (4+2)+2 brackets staged as positions on the envelope, not as extra interior stations"
+  },
+  "rules": [
+    "notation is locked: backticked tokens appear exactly as the records write them (−/+ with U+2212, ∞/dx, Ø); no paraphrase of a locked expression",
+    "claim-status band on every scene: the record's own claim_status (Derived / Argued), stated once in the scene text",
+    "register presences are held presences — names and Vāk offices only; register records are other workers' outputs and are referenced, never restaged",
+    "quiet records stay quiet; the darkest field in the corpus carries the least ornament",
+    "geometry stages containment, never a new ontology: the layout is the ratified mandala grammar, the sequence is the record's own traversal order"
+  ]
+}

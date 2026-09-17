@@ -1,0 +1,104 @@
+{
+  "artifact": "mytheme/roz-mytheme-mother-assumption-chiasm.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme",
+    "family-frank-taylor"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-mother-assumption-chiasm",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/frank-taylor/mother-assumption-chiasm/WHOLE.md",
+        "sha256": "c4f8178e1da6419587d843e93873fa048d3e791991b2bf6d59d753de7ccfb7f7"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-mot-0-cope",
+      "phase": "#0 the encounter at Skenfrith",
+      "relations": "anchor mother-encounter; the Skenfrith dialogue source; Q27 Mother-flow correction governs"
+    },
+    {
+      "scene_id": "m-mot-1-chiasm",
+      "phase": "#1–#2 the incarnation–Assumption chiasm",
+      "relations": "anchor mother-body-received, mother-chiasm, mother-three-recognised; CW11 §§609–628, 746–757 attributed paraphrase; A05/C13"
+    },
+    {
+      "scene_id": "m-mot-3-wings",
+      "phase": "#3–#4 wheels, wings, eagle",
+      "relations": "anchor mother-wheels-wings, mother-eagle-valence; the corrected blockwise folds; (-1)/(+1); A11/C49, A16, A13/C50"
+    },
+    {
+      "scene_id": "m-mot-5-return",
+      "phase": "#5→0 the completed constellation returns",
+      "relations": "anchor mother-native-return, mother-image-recognition-return, mother-bearing-return, mother-comparison-return; A18–A21, A23, A25, A27, A29, A35, A36; Homology and Symbol/Account fields"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "Mary — receiving matrix and received body",
+      "occurrence": "#0 the cope image; #1 the assumption-of return"
+    },
+    {
+      "figure": "the perceived rabbits / identified angels",
+      "occurrence": "#0 the ambiguity answerable to the object — no symbolism assigned"
+    },
+    {
+      "figure": "the two wheels",
+      "occurrence": "#0 encountered; #3 the 0/1→1/0→(0/1)/(1/0) sequence"
+    },
+    {
+      "figure": "the six wings (6+6′)",
+      "occurrence": "#0 encountered; #3 the corrected blockwise recognition (2↔5, 3↔0 rejected)"
+    },
+    {
+      "figure": "the two-headed eagle",
+      "occurrence": "#0 encountered; #4 the (-1)/(+1) signed-power correction; the 1/1 reconciliation refused"
+    },
+    {
+      "figure": "Jung's Sophia/Mary sequence",
+      "occurrence": "#1 attributed reception with paragraph locators; §§626–627 critique retained"
+    },
+    {
+      "motif": "3:1 = 3:3",
+      "occurrence": "#0 stated; #5→0 the one as unitive condition of the three"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "the chiasm and assumption-of movement; the explicit wheel sequence; the reported sixfold and corrected blockwise recognition; the signed-power correction; the 3:1=3:3 appointment; the Śakti comparative inquiry; the A05/A09, A19–A21, A23, A25, A27, A29, A35, A36 recovered relations",
+      "flag": "yes"
+    },
+    {
+      "relation": "the fixed Sophia–Logos–Śakti three-office allocation; the rejected 2↔5/3↔0 pairings; the Levinasian need/Desire identity; treating assistant elaborations as an accepted iconographic programme",
+      "flag": "no"
+    }
+  ],
+  "cross_story_relations": [
+    "Neumann shared maternal structuration grounds without supplying the Assumption's historical telling; the cope's object history remains a separate task."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-mother-assumption-chiasm.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: the cope scene lays out all five encountered image-families (Mary, rabbits/angels, wheels, wings, eagle) so the later corrected scenes visibly re-read the same encounter. Correction-vs-elaboration authority from the dialogue source is carried into the hm table verbatim."
+}

@@ -1,0 +1,64 @@
+{
+  "artifact": "symbolon/roz-symbolon-whole.journey.json",
+  "family": "symbolon",
+  "worker": "E5",
+  "profile_lineage": ["roz-corpus-base", "register-symbolon"],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b17",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "symbolon-root",
+        "path": "submission-package/essay/symbolon/README.md",
+        "sha256": "d6b2d32165e7c1ba75053643587ae63abfd10b1d4a1c0ea2a9c801912c963426",
+        "note": "publication-root README; carries the whole/register relation this artifact stages. Not one of the 13 T25 census records (those are the twelvefold roots + spine-index, bound by roz-symbolon-spine); hash recorded here at capture for exactness."
+      }
+    ],
+    "referenced_not_bound": [
+      "submission-package/essay/symbolon/matheme/README.md (d1121877b5c43ea8…)",
+      "submission-package/essay/symbolon/mytheme/README.md (a9af4a1c248fafc3…)",
+      "submission-package/essay/symbolon/episteme/README.md (b0e05a207e10d5dc…)"
+    ]
+  },
+  "pointcloud_revision": "a39cf5f",
+  "scenes": [
+    {
+      "scene_id": "whole-root",
+      "source_ref": "symbolon-root (README, opening paragraphs)",
+      "relations": "root relation `0/1`, obverse `1/0`, equality `0/1 = 1/0`; Symbolon as whole form and self-nesting 3+1 holding Matheme/Mytheme/Episteme without becoming a fourth bucket"
+    },
+    {
+      "scene_id": "held-matheme",
+      "source_ref": "symbolon-root → Matheme register (paśyantī)",
+      "relations": "register presence and office only; full equation `0/1 = 4+2 = 5→0 = 1/0 = 4′+2′ = 5′→0′ = 0/1` quoted from README; register records referenced (E4 Expression), not restaged"
+    },
+    {
+      "scene_id": "held-mytheme",
+      "source_ref": "symbolon-root → Mytheme register (madhyamā)",
+      "relations": "register presence and office only; images perform operations, not decorative equivalents of equations; register wholes referenced (E6), not restaged"
+    },
+    {
+      "scene_id": "held-episteme",
+      "source_ref": "symbolon-root → Episteme register (vaikharī)",
+      "relations": "register presence and office only; instituted knowledge (source houses, histories, etymologies, lenses, dossiers); register records referenced (E3), not restaged"
+    },
+    {
+      "scene_id": "whole-held",
+      "source_ref": "symbolon-root (self-nesting 3+1; four reading movements)",
+      "relations": "the containment scene: three held presences distinct within one whole, slash active between them, no fusion, no fourth-sibling placement"
+    },
+    {
+      "scene_id": "whole-return",
+      "source_ref": "symbolon-root (root relation, obverse direction)",
+      "relations": "`0/1 = 1/0` — the registers returned without fusion; orientation reversed relative to whole-root (return at centre, first orientation at rim); hands on to roz-symbolon-spine"
+    }
+  ],
+  "assets": [
+    { "kind": "glyph", "ref": "notation glyphs 0/1, 1/0, / (authored formations)", "provenance": "authored" },
+    { "kind": "diagram", "ref": "envelope ring as the whole (parā); cymatic circular template as mytheme presence; square as episteme presence", "provenance": "authored" }
+  ],
+  "capture": "symbolon/roz-symbolon-whole.cover.png",
+  "status": "captured",
+  "notes": "Craft: register-symbolon baseline (deepest field, near-black #14161a, whiteOnBlack ink, ink material); whole scenes use backgroundMode vignette, held scenes solid. Presence tints (matheme #9fb4c8, mytheme #c9ad7a, episteme #9aa89b) are presentation policy only — no colour correspondence is claimed. All 6 scenes inspected at draft count (8000) and at authored count (62000). Revised during inspection: envelope ring 2.05→1.9 and rim marks moved from ±1.24 to ±0.96 (they fell outside the visible extent at ±~1.05); mytheme presence switched from default cymatic (renders as a square slab) to templateGeometry circular + templateFrequency 3 at size 0.85 (reads as a formed image); whole-held presences shrunk to stay inside the ring. Covers captured with authored params (no count override) through the real engine. Honest remainers: scene text layers are compressed refractions with source-of-record lines, never replacements for the canonical pages; backticked tokens are kept verbatim; register records are other workers' outputs and are deliberately not restaged here."
+}

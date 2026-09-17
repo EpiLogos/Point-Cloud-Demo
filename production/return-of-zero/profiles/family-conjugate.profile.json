@@ -1,0 +1,62 @@
+{
+  "profile_id": "family-conjugate",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E2 (arguments worker), issue #65, 2026-09-17",
+  "family": "conjugates-a-prime (A01′–A36′ canonical conjugate arguments)",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base → family-conjugate (this file) → record variant → scene override",
+  "attitude": "the A′ family is the technological face of its A operation: the same underlying grammar (family-argument) re-sited on instituted, inspectable surfaces — the lattice, not the manuscript",
+  "grammar": {
+    "shares": "family-argument: one governing formation shaped by the record's operation; one editorial text layer (kicker '<record id> · <CLAIM_STATUS>' / title / italic relations / body compressed from the record); same scene rhythm; same status encoding",
+    "field": {
+      "material": "print",
+      "background": "#e9ece7",
+      "palette_base": [
+        "#20262b"
+      ],
+      "params_base": {
+        "count": 62000,
+        "size": 2.6,
+        "opacity": 0.9,
+        "contrast": 0.82,
+        "speed": 0.45,
+        "dispersion": 0.035,
+        "roundness": 0.2
+      }
+    },
+    "engine": {
+      "inkMode": "blackOnWhite",
+      "backgroundMode": "solid",
+      "fontFamily": "system-ui, -apple-system, sans-serif",
+      "fontWeight": 900
+    },
+    "view": {
+      "mode": "2d",
+      "zoom": 1
+    },
+    "scene_rhythm": {
+      "duration": 12,
+      "transition": 1.5
+    },
+    "text_layers": {
+      "title_card": "layer 1: kicker '<record id> · <CLAIM_STATUS>' + record title, left margin (x .033, width 340)",
+      "relations": "layer 2: the declared relation line as its own italic layer (x .033, y .26, width 290) — wraps fully in the left margin, clear of the field's left edge (E0 acceptance repair)",
+      "body": "layer 3: the record's own governing proposition and operation, compressed from the record only (x .033, y .50, width 600)"
+    }
+  },
+  "material_treatment": {
+    "note": "print material on a cooler paper ground: the registered treatment distinguishing the technological face from the A family's ink-on-warm-paper, while scene construction, entity vocabulary and text grammar stay shared",
+    "reason": "the conjugate records re-site each A operation at the technological register; the instituted lattice reads as print — an imperfect, checkable surface"
+  },
+  "status_encoding": {
+    "note": "presentation-only encoding of the record's frontmatter claim_status; identical values to family-argument",
+    "Argued": "#20262b",
+    "Derived": "#33424e",
+    "Offered": "#7a3b2e"
+  },
+  "variation_rules": [
+    "each A′ scene mirrors its A partner's operation (the record declares the re-siting), not a bespoke invention",
+    "per-scene variation is explicit and small: one or two field params, palette accent, formation shape/sequence",
+    "no ornament without an argumentative job; a quiet record stays quiet",
+    "venue citations carried by A′ records (brief q-references, scenario modality) stay inside text layers and bindings — never attributed to the field itself"
+  ]
+}

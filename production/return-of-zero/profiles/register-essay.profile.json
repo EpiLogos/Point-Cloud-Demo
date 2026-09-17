@@ -1,0 +1,33 @@
+{
+  "profile_id": "register-essay",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E1 essay-rooms, issue #65, 2026-09-17",
+  "inherits": "roz-corpus-base",
+  "register": "essay_rooms — the sovereign reading surface (THE-RETURN-OF-ZERO.md + its section/station reading path)",
+  "baseline": {
+    "field": {
+      "material": "ink",
+      "background": "#f4f2eb",
+      "palette": ["#252720", "#252720"],
+      "params": { "count": 62000, "size": 2.8, "opacity": 0.92, "contrast": 0.93 }
+    },
+    "engine": { "inkMode": "blackOnWhite", "backgroundMode": "solid", "fontFamily": "system-ui, -apple-system, sans-serif", "fontWeight": 900 },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 14, "transition": 1.5, "note": "station scenes hold slightly longer than movement scenes: a station is entered, read, and left" }
+  },
+  "grammar": {
+    "path": "nine scenes: eight station scenes (ids = canonical room slugs) in reading order §0/1 → §0 → §1 → §2 → §3 → §4 → §5 → §5→0, then one closing return scene (08-the-return) carrying the M48 → M01 Return",
+    "form": "one governing formation per station; the formation encodes the station's own burden (open disc at the threshold, yantra at the tattvic descent, ring at the zero, inverse pair at the two logics, wound rings at the substrate, two discs at the psychoid, six discs at the products, nested rings at the instrument)",
+    "text_layers": "layer 1 editorial: kicker (reading path + station number + movements range), title (canonical station name), italic (station burden, verbatim from the reading root), body (first movement, room release line, previous/next station); layer 2 route: movements range + room slug pointer",
+    "withholdings": "no mechanism imagery before station 07; no 0/1 glyphs before station 03 (earned at §1 · #5→0 = M18); the crossed zero Ø is not restaged at station level (its one job lives in room 02 movement-16)"
+  },
+  "overrides": {
+    "closing_return_scene": "dark ground #161a17, inkMode whiteOnBlack, light palette — the closing return is the root symbolon earned; corpus-base symbolon register policy; the journey loops back to the lit threshold",
+    "station_07": "dark ground — the earned instrument is read at night ('a late instrument whose dial becomes readable only after the cosmology is understood')"
+  },
+  "craft_notes": [
+    "the reading path is one continuous path: scene order is the reading order, not a card grid",
+    "withholdings are enacted by the imagery, not announced as captions alone",
+    "claim statuses travel as data in scene text (italic = claim_status verbatim from each source frontmatter)"
+  ]
+}

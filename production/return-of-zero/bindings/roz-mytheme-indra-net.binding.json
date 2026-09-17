@@ -1,0 +1,125 @@
+{
+  "artifact": "mytheme/roz-mytheme-indra-net.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme",
+    "family-frank-taylor"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-indra-net",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/chinese-huayan/indra-net/WHOLE.md",
+        "sha256": "1cfa960f75399bbbe8c06cb5269e9bc44993ec83b71de9c4144c674ef5be94fd",
+        "sha256_receipt_stale": "a8b35f4e88bfc1a06456ad512adc72cc0969f1397fb7f6139bc8788cd4a9ba1e"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-indra-0-net",
+      "phase": "#0 a jewel is chosen within the net",
+      "relations": "anchor indra-selected-telling; Dushun-attributed source house; Cleary 2000 excerpt"
+    },
+    {
+      "scene_id": "m-indra-1-entry",
+      "phase": "#1 entering the others without leaving this one",
+      "relations": "anchor indra-recursive-entry; the two interlocutor questions and replies"
+    },
+    {
+      "scene_id": "m-indra-1b-dot",
+      "phase": "#1 the ink-dot test",
+      "relations": "anchor indra-recursive-entry; T45 no. 1867, 513a20–513c16"
+    },
+    {
+      "scene_id": "m-indra-2-simile",
+      "phase": "#2 the image teaches where its own likeness ends",
+      "relations": "anchor indra-simile-and-distinctness; Van Norden–Jones §1.3, §3; C24 fusion; Homologia/Analogia field"
+    },
+    {
+      "scene_id": "m-indra-3-native",
+      "phase": "#3 the definite jewel carries its constituting field",
+      "relations": "anchor indra-native-relation; A11/C49, A12, A08/C18, A05/C13, A18, A13/C50"
+    },
+    {
+      "scene_id": "m-indra-4-account",
+      "phase": "#4 a reflection becomes answerable for its use",
+      "relations": "anchor indra-account-and-consequence; Symbol/Account/Trust field; A20, C38, A26, A23, A27, A30/C42"
+    },
+    {
+      "scene_id": "m-indra-5-return",
+      "phase": "#5→0 return to the jewel whose brightness depends on the others",
+      "relations": "anchor indra-whole-return; A29, C54, C62, A35, A36; returns-to M10, M22, M46"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "the southwest jewel",
+      "occurrence": "#0 selection; #5→0 the returned starting place"
+    },
+    {
+      "figure": "the reflections including reflections",
+      "occurrence": "#0–#1 recursive entry with no final image"
+    },
+    {
+      "figure": "the ink dot",
+      "occurrence": "#1 the mark appearing throughout the field; #4 the precise source image of an inspectable return"
+    },
+    {
+      "figure": "the questioner and answering contemplative voice",
+      "occurrence": "#1 the two objections and replies"
+    },
+    {
+      "figure": "the separate jewel substances",
+      "occurrence": "#2 the simile's self-limitation immediately after the dot test"
+    },
+    {
+      "figure": "Vairocana's closing verses",
+      "occurrence": "#2 formless reality manifesting forms"
+    },
+    {
+      "place": "the net's absence of a privileged centre",
+      "occurrence": "#0 begin elsewhere and the same relation holds"
+    },
+    {
+      "action": "entering all while remaining here",
+      "occurrence": "#1 remaining as the condition of entry"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "recursive-whole/retained-distinctness relation; the apoha braid; Mono/Poly and Dia/Syn crossing; double-net comparison; declared A/C/E/M returns",
+      "flag": "yes"
+    },
+    {
+      "relation": "the source's self-limiting simile applied to the Etymology field's comparison test (newly developed)",
+      "flag": "no"
+    }
+  ],
+  "cross_story_relations": [
+    "Ares–Aphrodite–Hephaestus–Poseidon (mytheme-ares-aphrodite-hephaestus-poseidon): the declared double-net comparison — mutual implication vs capture organised as public evidence; only after the positive whole unfolds (scene m-indra-4-account note).",
+    "Shared Neumann archetypal ground, without dating transmission or establishing doctrinal ancestry."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-indra-net.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: jade/lotus night palette throughout (huayan key); the dot scene puts the dark mark at the field's centre of reflection. The simile scene separates two jewel discs (substances) from the ring of entering images — staging the source's own restriction. Amplification standing carried verbatim into the hm table; the source boundary (uncollated Cleary print wording; Barnstone–Meyer lead) noted in the record and preserved here. | E0 correction 2026-09-17: receipt-era sha256 replaced with actual-bytes hash at dbf3b17 (prior value kept as sha256_receipt_stale). E0 acceptance repair: title/field collision fixed on m-indra-0-net, m-indra-1-entry, m-indra-1b-dot, m-indra-2-simile, m-indra-3-native, m-indra-5-return (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

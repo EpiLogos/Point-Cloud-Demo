@@ -1,0 +1,109 @@
+{
+  "artifact": "mytheme/roz-mytheme-meal-epistemic-metabolism.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme",
+    "family-frank-taylor"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-meal-epistemic-metabolism",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/frank-taylor/meal-epistemic-metabolism/WHOLE.md",
+        "sha256": "8af5938eca8cce3917effabe3a02444d7261a91f7fd8d7050f19d5f0a1d266f0"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-meal-0-hunger",
+      "phase": "#0 information without nourishment",
+      "relations": "the authored outline; the quilt's logos-health appointment (yes)"
+    },
+    {
+      "scene_id": "m-meal-1-plate",
+      "phase": "#1 the plate and its five preparations",
+      "relations": "raw/cooked/processed/junk/fermented; A29"
+    },
+    {
+      "scene_id": "m-meal-2-chew",
+      "phase": "#2 taste and chewing",
+      "relations": "the fourfold discrimination; the pathologies; the taste/knowing routes"
+    },
+    {
+      "scene_id": "m-meal-3-table",
+      "phase": "#3–#4 the container; the shared table",
+      "relations": "Symbolon Dynamics; A30; the microbiome image; companions are not food; the Apportionment and Encounter fields"
+    },
+    {
+      "scene_id": "m-meal-5-return",
+      "phase": "#5→0 satiety, rest, renewed hunger; the coda",
+      "relations": "anchor meal-satiety-and-new-hunger, meal-logos-health-return, meal-source-registers; A21, A29, A30, A35; the Symbol/Account/Trust and Arbitration fields"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "the feed",
+      "occurrence": "#0 attention occupied, question unfelt; #5→0 the emptied rite as its sacramental image"
+    },
+    {
+      "figure": "the display case and the disposal",
+      "occurrence": "#0 the two failure images"
+    },
+    {
+      "figure": "the five preparations",
+      "occurrence": "#1 roles in the authored ecology, not dietary ranking"
+    },
+    {
+      "figure": "the ant, the reed, the eagle, the tower — absent here by design",
+      "occurrence": "no: those belong to the Eros/Psyche whole; this meal's helpers are the outline's own"
+    },
+    {
+      "figure": "the epistemic microbiome",
+      "occurrence": "#4 constitutive assistance beyond solitary agency; biological claims kept to their own sources"
+    },
+    {
+      "figure": "bread in the hands of companions; loaves and fishes",
+      "occurrence": "#5→0 the outline's explicit wink — no derivation of 4+2"
+    },
+    {
+      "motif": "companions are not food",
+      "occurrence": "#4 the social boundary of the nourishing metaphor"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "the existing authored relation (assimilation letting received material change the receiver and return to the shared field); logos-health and its prescribed returns to A29/A30/A35",
+      "flag": "yes"
+    },
+    {
+      "relation": "demonstrating a therapeutic, biological or institutional outcome; clinical vocabulary as medical evidence; historical explanations of the coda's traditions",
+      "flag": "no"
+    }
+  ],
+  "cross_story_relations": [
+    "Neumann metabolism grounds the nourishing/devouring distinction (the uroboros whole owns the developed bodily drama); Jung Aion's Leviathan-as-food kept distinct."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-meal-epistemic-metabolism.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: five scenes with a warming palette toward the table; the failure images (display case, disposal) sit in scene 1's corners so the meal's stakes read before the plate arrives. No public-document allegation reproduced. E0 acceptance repair: title/field collision fixed on m-meal-3-table (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}
