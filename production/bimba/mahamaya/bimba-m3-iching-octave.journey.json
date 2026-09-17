@@ -1,0 +1,443 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "bimba-m3-iching-octave",
+  "name": "M3 · I-Ching octave",
+  "description": "Bimba M3′ form/clock artifact. Coordinates: #3-1 I-Ching System with trigrams #3-1-0 Qian, #3-1-1 Kun, #3-1-2 Zhen, #3-1-3 Xun, #3-1-4 Kan, #3-1-5 Li, #3-1-6 Gen, #3-1-7 Dui. M′ instrument: M3′ Journey/Scenes ↔ real Expression Scenes (L5-TECHNE-DUAL-READING-LOCK §9/§13) — the family members are traversed as an ordered, source-backed sequence of one body. Inherited profile: bimba-corpus-base → family-mahamaya-transcription (sequence_grammar: registry child order). Variation (source-backed): step order is the registry's own trigram order 0→7; per-step rotation presents the octave as inscription and claims no source geometry. Relations cited: bimba:relation:0c985d83b04688291aeb918c (#3-5-2 South Cardinal Anchor → #3-1-0 Qian, EMBODIES_EARLIER_HEAVEN — the wheel relation that grounds this system in #3-5). Sources: registry_revision 259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4 at QL-MEF e87d6bcef81d005e848b978a11a0ab53b7739973. Binding record: bindings/bimba-m3-iching-octave.binding.json.",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "bimba-m3-iching-s1",
+      "name": "Eight trigrams",
+      "character": "#3-1-0 … #3-1-7 — the octave as ordered inscription.",
+      "duration": 26,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#f4f2eb",
+        "palette": [
+          "#252720",
+          "#7a3b2e"
+        ],
+        "material": "print",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.7,
+          "circulation": 1,
+          "turbulence": 0.22,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-3-1-gov",
+          "name": "I-Ching octave",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.1,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#252720",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": true,
+            "clock": "seconds",
+            "manual": false,
+            "order": "loop",
+            "easing": "smoothstep",
+            "steps": [
+              {
+                "id": "bimba-3-1-gov-step-1",
+                "text": "Qian — #3-1-0",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 0,
+                  "tint": "#252720",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-2",
+                "text": "Kun — #3-1-1",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 45,
+                  "tint": "#7a3b2e",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-3",
+                "text": "Zhen — #3-1-2",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 90,
+                  "tint": "#252720",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-4",
+                "text": "Xun — #3-1-3",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 135,
+                  "tint": "#7a3b2e",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-5",
+                "text": "Kan — #3-1-4",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 180,
+                  "tint": "#252720",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-6",
+                "text": "Li — #3-1-5",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 225,
+                  "tint": "#7a3b2e",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-7",
+                "text": "Gen — #3-1-6",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 270,
+                  "tint": "#252720",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              },
+              {
+                "id": "bimba-3-1-gov-step-8",
+                "text": "Dui — #3-1-7",
+                "shape": "disc",
+                "hold": 2,
+                "transition": 0.8,
+                "position": null,
+                "objectState": {
+                  "size": {
+                    "x": 0.46,
+                    "y": 0.46
+                  },
+                  "rotation": 315,
+                  "tint": "#7a3b2e",
+                  "tintWeight": 0.95,
+                  "force": {
+                    "kind": "none",
+                    "strength": 0,
+                    "radius": 0.45,
+                    "spin": 0
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-pin",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-pin-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "bimba-3-1-t1",
+          "visible": true,
+          "kicker": "#3-1 · I-Ching System",
+          "title": "The eight trigrams",
+          "italic": "registry order 0 → 7",
+          "body": "Qian · Kun · Zhen · Xun · Kan · Li · Gen · Dui — each step names its exact ref.",
+          "x": 0.5,
+          "y": 0.84,
+          "width": 620,
+          "size": 30,
+          "align": "center"
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    }
+  ],
+  "updatedAt": "2026-09-17T00:00:00.000Z"
+}

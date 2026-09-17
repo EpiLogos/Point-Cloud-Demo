@@ -1,0 +1,113 @@
+{
+  "artifact": "mytheme/roz-mytheme-valentinian-sophia-horos-achamoth.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-valentinian-sophia-horos-achamoth",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/late-antique-gnostic/valentinian-sophia-horos-achamoth/WHOLE.md",
+        "sha256": "fd39f4553cd2e9843013d06c8373bec63525768502c1c75d8a80b8a78c9e4526"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-val-0-ogdoad",
+      "phase": "#0 the fullness in conjunction",
+      "relations": "I.1.1–I.2.1; the thirty Aeons in fifteen syzygies"
+    },
+    {
+      "scene_id": "m-val-1-horos",
+      "phase": "#1 Sophia reaches; Horos restores",
+      "relations": "I.2.2–I.2.4, I.3.5; the variant kept distinct; upper Sophia not exiled twice"
+    },
+    {
+      "scene_id": "m-val-2-soter",
+      "phase": "#2 teaching, thanksgiving, the common fruit",
+      "relations": "I.2.5–I.2.6, I.3.1's distinction of the two named Christs"
+    },
+    {
+      "scene_id": "m-val-3-achamoth",
+      "phase": "#3 Achamoth receives form twice",
+      "relations": "I.4.1–I.4.5; the translation tension retained; Irenaeus's sweat satire as speaker-change"
+    },
+    {
+      "scene_id": "m-val-4-demiurge",
+      "phase": "#4 the maker who does not know his mother",
+      "relations": "I.5.1–I.5.6; the second affect table; I.6 under polemic; I.7.2's \"some\""
+    },
+    {
+      "scene_id": "m-val-5-return",
+      "phase": "#5→0 bridal return and what remains outside",
+      "relations": "I.7.1, I.7.5; variants I.11–I.12, I.15.1, I.17.1, I.21; the Offered founding comparison; A13, A19 (human-amplified: no); Neumann shared ground"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "the fifteen syzygies",
+      "occurrence": "#0 the Ogdoad, Decad, Duodecad with repeated-but-distinct names"
+    },
+    {
+      "figure": "Horos / Stauros",
+      "occurrence": "#1 sustaining and separating functions of one power; two Horoi belonging to Valentinus's variant"
+    },
+    {
+      "figure": "the enthymesis / Achamoth",
+      "occurrence": "#1 excluded with its passion; #3 the lower Sophia formed twice"
+    },
+    {
+      "figure": "the earlier Christ and the collective Soter",
+      "occurrence": "#2–#3 teacher and common fruit, distinct despite the shared name"
+    },
+    {
+      "figure": "the Demiurge",
+      "occurrence": "#4 effective, ignorant of Achamoth's agency; #5→0 learning at the Saviour's advent, restored to the intermediate place"
+    },
+    {
+      "figure": "the two affect-to-cosmos accounts",
+      "occurrence": "#3 tears/smile/grief and #4 fear/grief/earth-water-air-fire — both retained, constraining comparison"
+    },
+    {
+      "figure": "the spiritual seed",
+      "occurrence": "#3 conceived in the angels' likeness; #4 placed within the Demiurge unknowingly; #5→0 maturing into the bridal union"
+    },
+    {
+      "motif": "the royal mosaic rearranged into a fox",
+      "occurrence": "#5→0 Irenaeus's own refutation image, kept as his"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "the three interpretive relations (founding 0/1→4+2 comparison; Dia/Syn return; Demiurge/resituated local authority) — all Offered with human-amplified: no",
+      "flag": "no — preserved as recovered candidates; no new ratification"
+    }
+  ],
+  "cross_story_relations": [
+    "Distinct from the Hypostasis of the Archons whole; no historical identity across the shared Sophia name."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-valentinian-sophia-horos-achamoth.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: six scenes; the two Christs are staged as separate glyphs so I.3.1's distinction stays visible; the founding-compression caveat (\"Sophia with the Limit makes the elements\" as comparative compression, not replacement account) is carried in scene 6 text. Hostile-testimony standing (Irenaeus; Roberts–Rambaut 1885) preserved. E0 acceptance repair: title/field collision fixed on m-val-0-ogdoad, m-val-5-return (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

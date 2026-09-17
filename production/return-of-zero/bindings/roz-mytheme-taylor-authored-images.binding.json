@@ -1,0 +1,117 @@
+{
+  "artifact": "mytheme/roz-mytheme-taylor-authored-images.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme",
+    "family-frank-taylor"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-taylor-authored-images",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/frank-taylor/taylor-authored-images/WHOLE.md",
+        "sha256": "405f33917088b7c2e698e08d3df1d414a526e80de21cafb38328f8c56bd3af8f"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-tay-0-poems",
+      "phase": "#0–#1 the earlier poems",
+      "relations": "FT-P01–P10 complete witnesses from the corpus"
+    },
+    {
+      "scene_id": "m-tay-1-roads",
+      "phase": "#2 two roads, six works",
+      "relations": "FT-P11–P16; the P3/P4 complementary lean (human-amplified: yes)"
+    },
+    {
+      "scene_id": "m-tay-3-prose",
+      "phase": "#4 the prose images",
+      "relations": "fish, cage/window, kaleidoscope, Necker cube, centres, broken token, erased dots; A01, C21, A06, A04, A22, A26, A23, A13"
+    },
+    {
+      "scene_id": "m-tay-4-blacksun",
+      "phase": "#4 the black sun and the radiating star",
+      "relations": "the adopted social-power unit; Work/Play inversion; four rings; A29, A24, A25, A32"
+    },
+    {
+      "scene_id": "m-tay-5-return",
+      "phase": "#5→0 keeping the opening in the form",
+      "relations": "anchor taylor-authored-images-return; A11, A01, A06, A27; recursive Bimba; the four alterity operators"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "checkmate / another game",
+      "occurrence": "FT-P01; #5→0 the replayed opening"
+    },
+    {
+      "figure": "the husk",
+      "occurrence": "FT-P02 knowing fixed on its object"
+    },
+    {
+      "figure": "the fork rows 2→0 and 4+2",
+      "occurrence": "FT-P11; #1 the whole poem printed in two rows"
+    },
+    {
+      "figure": "the loop's fall (ring around the Rosie)",
+      "occurrence": "FT-P14; #5→0 the ending that changes perfection's meaning"
+    },
+    {
+      "figure": "the fish, the cage/window",
+      "occurrence": "#4 Draft 3's faithful definition"
+    },
+    {
+      "figure": "the broken token and the erased dots",
+      "occurrence": "#4 kept fracture vs erased reciprocity (A23, A13)"
+    },
+    {
+      "figure": "the black sun / radiating star; four rings",
+      "occurrence": "#4 the adopted capture/circulation unit; no allegations reproduced"
+    },
+    {
+      "figure": "God as Other; shadow; friend; alien/enemy",
+      "occurrence": "#5→0 the four operators returning-to A27"
+    },
+    {
+      "motif": "the returned shoe",
+      "occurrence": "FT-P23 the ending qualifying the work"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "the fish/definition, cage/window, kaleidoscope orbital operation, Necker contextual operation, nested-internality, fracture-as-recognition, two-dot/one-dot/no-dot, Bohr bounded complementarity, black sun capture/rings/false-accounting, four-office ecology, sequence corrections (FT-P19/21/22) and boots correction",
+      "flag": "yes"
+    },
+    {
+      "relation": "fixed mythic identity for FT-P18's brothers or FT-P22's figures; the Venus–Lucifer–Christ genealogy; any Blake quotation beyond the named allusion",
+      "flag": "no"
+    }
+  ],
+  "cross_story_relations": [
+    "Neumann shared structuration qualifies emergence/differentiation/renewed interplay; meal whole's devouring contrast recalls the black sun's capture without merging the units."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-taylor-authored-images.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: five scenes carry 23 poems + 14 images by grouping per the record's own sections; the numerical poem is quoted in scene text exactly as printed rows. The raw site file's absence and the unmined vectors are named as remainers."
+}

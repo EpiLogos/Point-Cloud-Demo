@@ -1,0 +1,53 @@
+{
+  "profile_id": "register-matheme",
+  "standing": "craft baseline only — presentation continuity for the E4 matheme lane; never a semantic claim",
+  "owner": "E4 worker (matheme), issue #65, 2026-09-17",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base → register-matheme (this file) → artifact scene override",
+  "register": {
+    "name": "matheme",
+    "vak_office": "paśyantī — the visionary operative logic; formal seeing before speech",
+    "note": "Dark ground with white ink: the derivation is seen as form before it is said. Every scene stages the record's own operation (a count, an inversion, a quotient, a reduction, a traversal) using the engine's material capacities — glyph formations, step sequences, cymatic resonators, ASCII diagrams — not static text illustration."
+  },
+  "corpus_baseline_overrides": {
+    "field": {
+      "material": "ink",
+      "background": "#101216",
+      "palette": ["#e8e4d8", "#9fb4c8"],
+      "palette_policy": "palette[0] bone-white ink carries the governing derivation; palette[1] paśyantī blue-grey is presentation-only secondary for the inverse/seam/return face of a relation; no semantic colour correspondence is claimed",
+      "params": {
+        "count": 62000,
+        "size": 2.8,
+        "opacity": 0.92,
+        "contrast": 0.93,
+        "speed": 0.6,
+        "turbulence": 0.14,
+        "dispersion": 0.07,
+        "jitter": 0.5,
+        "note": "calmer than the corpus ink default so a derivation stays legible in capture; scene-local variation only where the record's own operation asks (cymatics scenes raise excitation; crossed-zero sequence lengthens holds)"
+      }
+    },
+    "engine": {
+      "inkMode": "whiteOnBlack",
+      "backgroundMode": "solid",
+      "fontFamily": "system-ui, -apple-system, sans-serif",
+      "fontWeight": 900
+    },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 12, "transition": 1.5, "note": "mandala plates and the two Spanda equations hold 14s — they are the register's load-bearing figures" }
+  },
+  "scene_grammar": {
+    "kicker": "MATHENE · <record_id> · <CLAIM_STATUS> — the claim-status band travels with the formal content on every scene",
+    "text_layers": "kicker carries record id + status; title is the record's own title; italic carries the one-line operation; body carries the record's governing derivation compressed FROM THE RECORD — locked first-use sequences in full, backticked-token typography, defined/undefined seam kept visible",
+    "shapes": "text glyphs for tokens and relations; ring for the #0/#5 envelope and completed circuits; square for the fundamental polygon and held fields; disc for poles; triangle for the catuskoti/diadic cornering; yantra for structured wholes; cymatic where the record is itself about resonance",
+    "sequences": "entity step sequences are used only where the record's own operation is a directed passage: the crossed-zero recognition sequence, both Spanda equations, the 64/36→16/9→9/8→2/1 reduction chain, the phase-flip F→R(F) pulse, dia's operator changes, Laws-of-Form oscillation, Gödel's fixed-point ladder, group completion",
+    "mandala": "concentric mandala per ql-expression-grammar.md §III is the canonical QL-unit plate: centre = the 0/1 threshold and governing proposition (never a summary badge); four cardinal stations #1–#4 at N/E/W/S per the theorem degree table (N 0° · E 90° · W 270° · S 180°); enclosing ring = the #0/#5 envelope, frame never content; −/− opens above the centre, 1/0 returns at the rim — the (4+2)+2 brackets staged on the envelope; the mandala is the torus's flat projection (derived warrant, usable as scene geometry)"
+  },
+  "rules": [
+    "notation is locked: backticked tokens appear exactly as the records write them (−/+ with U+2212, ∞/dx, Ø, 9/8, 4+2, 5→0); Unicode inside tokens, never LaTeX",
+    "the two logics appear in their locked full expressions on first use per surface: dia-ballein `(-1)/(+1)`, sym-ballein `(0/1)/(1/0)`",
+    "never invent math: every derivation a scene shows is the record's own; the defined/undefined seam of ordinary arithmetic stays visible wherever a record states it",
+    "mathematical correctness beats visual flourish; a scene fails if it decorates instead of showing the operation",
+    "content-required glyphs/diagrams are authored here and retained with provenance 'authored' in the binding record",
+    "quiet records stay quiet: a one-relation record gets one governing formation"
+  ]
+}

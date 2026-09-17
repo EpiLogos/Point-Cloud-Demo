@@ -1,0 +1,117 @@
+{
+ "artifact": "matheme/roz-matheme-logics.journey.json",
+ "family": "matheme",
+ "worker": "E4",
+ "profile_lineage": [
+  "roz-corpus-base",
+  "register-matheme"
+ ],
+ "source_revision": {
+  "repo": "EpiLogos/Antykathera-Essay-Work",
+  "commit": "dbf3b17",
+  "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+  "records": [
+   {
+    "record_id": "matheme-dia-syn-dia",
+    "path": "submission-package/essay/symbolon/matheme/dia-syn/dia.md",
+    "sha256": "c24c28d4d5d8124375270b6902e56d65d447e2292ccd4f31add4a297c8c8e470"
+   },
+   {
+    "record_id": "matheme-dia-syn-syn",
+    "path": "submission-package/essay/symbolon/matheme/dia-syn/syn.md",
+    "sha256": "c2129a70488233c7a68a9f7152fdbd93b15b4606400baafcb64ca6e478479d24"
+   },
+   {
+    "record_id": "matheme-dia-syn-chronic",
+    "path": "submission-package/essay/symbolon/matheme/dia-syn/chronic.md",
+    "sha256": "79464c4b8a37d53438ac4f01a38d269cdde506af0eb6866a094d6dc8f9f13d84"
+   },
+   {
+    "record_id": "matheme-mono-poly-mono",
+    "path": "submission-package/essay/symbolon/matheme/mono-poly/mono.md",
+    "sha256": "6e3685da959c21ae9ee07f0a421e8ec5aa11b75a9a8ed83ac1080a7c9bbdeedb"
+   },
+   {
+    "record_id": "matheme-mono-poly-poly",
+    "path": "submission-package/essay/symbolon/matheme/mono-poly/poly.md",
+    "sha256": "ae28c505e9945e082990776e100aec9c354391de2f3117edc455a7bbf9a893cf"
+   },
+   {
+    "record_id": "matheme-mono-poly-translations",
+    "path": "submission-package/essay/symbolon/matheme/mono-poly/translations.md",
+    "sha256": "131427ef6103dc00786930b999aeac5f7b690b4b3e6d7cb122d4172893ae5917"
+   }
+  ]
+ },
+ "pointcloud_revision": "f257de5",
+ "scenes": [
+  {
+   "scene_id": "dia",
+   "source_ref": "matheme-dia-syn-dia",
+   "claim_status": "argued",
+   "relations": "returns-to A13, C50; Sheffer stroke distinct; chronic keeps temporal readings"
+  },
+  {
+   "scene_id": "syn",
+   "source_ref": "matheme-dia-syn-syn",
+   "claim_status": "argued",
+   "relations": "returns-to A13, A12, C50; binary-of-binary states construction; translations states conversions"
+  },
+  {
+   "scene_id": "chronic",
+   "source_ref": "matheme-dia-syn-chronic",
+   "claim_status": "argued",
+   "relations": "returns-to A13, C50, X/x; Symbolon Dynamics sources landscape/trajectory"
+  },
+  {
+   "scene_id": "mono",
+   "source_ref": "matheme-mono-poly-mono",
+   "claim_status": "argued",
+   "relations": "returns-to A12, C50, root mono-poly; A11 defines offices"
+  },
+  {
+   "scene_id": "poly",
+   "source_ref": "matheme-mono-poly-poly",
+   "claim_status": "argued",
+   "relations": "returns-to A12, C50, Syn; eight-determinations table; chromatic substrates"
+  },
+  {
+   "scene_id": "translations",
+   "source_ref": "matheme-mono-poly-translations",
+   "claim_status": "argued",
+   "relations": "returns-to A12, A18, Spanda equations; von Neumann singleton; CRT bijection"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored token glyphs throughout (QL notation: 0/1, 1/0, −/−, ?/!, −/+, X/x, AM/IS, ∞/dx, Ø, 4+2, 5→0, 9/8, 16/9, (0/1)/(1/0), T² = ℝ²/ℤ², π₁ ≅ ℤ×ℤ, 531441/524288 …)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "concentric mandala plate (ql-eight-determinations) per ql-expression-grammar.md §III",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "crossed-zero recognition sequence as entity step sequence (ql-crossed-zero)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "ascii",
+   "ref": "tetraktys dot diagram (har-tetraktys-triangle, four rows 1·2·3·4)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "fundamental square + torus ring plates (quilt-topology, top-torus-cover-winding)",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "matheme/roz-matheme-logics.cover.png",
+ "status": "authored",
+ "notes": "dia stages the locked operator changes (−1)+(+1)=0, (−1)−(+1)=−2, (+1)−(−1)=+2 against the retained polarity (−1)/(+1); syn holds the (0/1)/(1/0) seam; mono carries BOTH chains (short definition/quilt chain and full process/music chain) so their difference stays an operation, not a typo. Scene bodies carry bare tokens: the corpus backtick convention is an essay-surface rendering rule; inside the Expression the raw backticks render literally and were dropped (notation itself unchanged). ",
+ "description": "The two logics: dia/syn (cut and gathering, locked expressions / = −/− → (−1)/(+1) → (−1)+/−(+1), (0/1)/(1/0)) and mono/poly (one field through many notations).",
+ "scene_count": 6
+}

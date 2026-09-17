@@ -1,0 +1,78 @@
+{
+  "artifact": "anuttara/bimba-m0-siva-shakti-apertures.journey.json",
+  "family": "anuttara",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-anuttara-language"
+  ],
+  "m_prime": {
+    "instrument": "M0′ Project/Wiki/Graph ↔ Expression graph/source depth",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §6/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#0-5",
+        "registry_node": "c2424584fbe5268e",
+        "name": "Siva-Shakti Unity"
+      },
+      {
+        "coordinate": "#0-5-0/1",
+        "registry_node": "4b48975fbc23eacb",
+        "name": "Siva - Unconscious Resonant Medium of Space"
+      },
+      {
+        "coordinate": "#0-5-5/0",
+        "registry_node": "ce5772d8bd693f09",
+        "name": "Shakti - Dynamic Psyche of Duration/Lived Time"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#0-5",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#0-5-0/1",
+      "ref": "bimba:relation:2dea75288afce9054bcb1f3e"
+    },
+    {
+      "from": "#0-5",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#0-5-5/0",
+      "ref": "bimba:relation:07c7b9faf4d8647bd04c5437"
+    },
+    {
+      "from": "#0-5-0/1",
+      "kind": "OPERATES_THROUGH",
+      "to": "#0-3-0/1",
+      "ref": "bimba:relation:04595204d0868fa3d513ac53"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m0-siva-shakti-s1",
+      "source_ref": "#0-5-0/1, #0-5-5/0"
+    },
+    {
+      "scene_id": "bimba-m0-siva-shakti-s2",
+      "source_ref": "#0-5"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "Siva (still medium of space) holds; Shakti (dynamic psyche of duration) carries a slow two-state breathing sequence. Force law kept at none/weak per family profile — the dynamism is timing, not force."
+}

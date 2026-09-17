@@ -1,0 +1,150 @@
+{
+ "artifact": "matheme/roz-matheme-ql-spanda.journey.json",
+ "family": "matheme",
+ "worker": "E4",
+ "profile_lineage": [
+  "roz-corpus-base",
+  "register-matheme"
+ ],
+ "source_revision": {
+  "repo": "EpiLogos/Antykathera-Essay-Work",
+  "commit": "dbf3b17",
+  "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+  "records": [
+   {
+    "record_id": "matheme-primordial-symbolon",
+    "path": "submission-package/essay/symbolon/matheme/ql/primordial-symbolon.md",
+    "sha256": "e19164edd3b98ec15b070e3f35e0cc9f0f45840e1c38427700849474beb36e91"
+   },
+   {
+    "record_id": "matheme-two-ones",
+    "path": "submission-package/essay/symbolon/matheme/ql/two-ones.md",
+    "sha256": "b7f86cd44b011dea7d957ebaf84f1d00262a4d7b17b873240af8a7ee9b3d77dd"
+   },
+   {
+    "record_id": "matheme-slash-and-or",
+    "path": "submission-package/essay/symbolon/matheme/ql/slash-and-or.md",
+    "sha256": "208ceeca0ecc488db19f0cd3129e259a843c8c7a21b7ce6d8e54a8084f1414f4"
+   },
+   {
+    "record_id": "matheme-eight-determinations",
+    "path": "submission-package/essay/symbolon/matheme/ql/eight-determinations.md",
+    "sha256": "d9ec2f1c06eebce1ad5b8168f76fe13b3918ecf222f96721b40ea0a7de0c5ab6"
+   },
+   {
+    "record_id": "matheme-binary-and-binary-of-binary",
+    "path": "submission-package/essay/symbolon/matheme/ql/binary-and-binary-of-binary.md",
+    "sha256": "63d1c09b84eda489ad7e123258c140d05160849525e8766b632da21ac7660dff"
+   },
+   {
+    "record_id": "matheme-crossed-zero-re-entry",
+    "path": "submission-package/essay/symbolon/matheme/ql/crossed-zero-re-entry.md",
+    "sha256": "c042ada9dfbcf2e93e60d35f4aa66dfd4a0bf979d1bcb8b57d3092668ce56013"
+   },
+   {
+    "record_id": "matheme-x-x",
+    "path": "submission-package/essay/symbolon/matheme/ql/x-x.md",
+    "sha256": "9376d8928693aa0e95b9f250d159c421d002276d96609668049d487dcf159ef9"
+   },
+   {
+    "record_id": "matheme-complex-orientation",
+    "path": "submission-package/essay/symbolon/matheme/ql/complex-orientation.md",
+    "sha256": "18a2d56e6de29f44bbd99533cd1e8756d6745e269754d5a94921a430daedec7c"
+   },
+   {
+    "record_id": "matheme-spanda-equations",
+    "path": "submission-package/essay/symbolon/matheme/spanda/spanda-equations.md",
+    "sha256": "3793af502c7aea110674c2c6b554ed9db06c6b06be467e4d64e37e5de98030eb"
+   }
+  ]
+ },
+ "pointcloud_revision": "f257de5",
+ "scenes": [
+  {
+   "scene_id": "ql-primordial-symbolon",
+   "source_ref": "matheme-primordial-symbolon",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-two-ones",
+   "source_ref": "matheme-two-ones",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-slash-and-or",
+   "source_ref": "matheme-slash-and-or",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-eight-determinations",
+   "source_ref": "matheme-eight-determinations",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-binary-of-binary",
+   "source_ref": "matheme-binary-and-binary-of-binary",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-crossed-zero",
+   "source_ref": "matheme-crossed-zero-re-entry",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-x-x",
+   "source_ref": "matheme-x-x",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "ql-complex-orientation",
+   "source_ref": "matheme-complex-orientation",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "spanda-equations",
+   "source_ref": "matheme-spanda-equations",
+   "claim_status": "derived",
+   "relations": "sources: core spine §I, Binary Explication Process §3′, musical v3, Scholtz; returns-to Movement26, extends Movement29; A11, A12, A18, A05, A15, A36"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored token glyphs throughout (QL notation: 0/1, 1/0, −/−, ?/!, −/+, X/x, AM/IS, ∞/dx, Ø, 4+2, 5→0, 9/8, 16/9, (0/1)/(1/0), T² = ℝ²/ℤ², π₁ ≅ ℤ×ℤ, 531441/524288 …)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "concentric mandala plate (ql-eight-determinations) per ql-expression-grammar.md §III",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "crossed-zero recognition sequence as entity step sequence (ql-crossed-zero)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "ascii",
+   "ref": "tetraktys dot diagram (har-tetraktys-triangle, four rows 1·2·3·4)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "fundamental square + torus ring plates (quilt-topology, top-torus-cover-winding)",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "matheme/roz-matheme-ql-spanda.cover.png",
+ "status": "authored",
+ "notes": "Load-bearing plates: ql-eight-determinations is the canonical concentric mandala (centre 0/1; N ?/!, E −/+, W X/x, S AM/IS per the theorem degree table N 0°/E 90°/W 270°/S 180°; ring = #0/#5 envelope; −/− opens above centre, 1/0 at the rim; the mandala as the torus flat projection is carried in the body text as derived warrant). ql-crossed-zero runs the full recognition sequence 0 → Ø → X → Ø/X → (0/Ø)/(1/X) → 1 ↷ 0/1 as a step sequence. spanda-equations runs both Spanda equations as parallel step sequences (shortened stage tokens; the full equations are carried verbatim in the scene body). The defined/undefined seam of ordinary arithmetic is kept visible on every scene that touches 1/0. Craft: sequenced glyphs need wide entity boxes — the engine rasterises sequenced step text fit-to-box, so narrow boxes shrank equations to mush; boxes sized to the natural string width (this was the main capture-revision loop). Draft captures at reduced count are too sparse to judge thin equation glyphs; all review captures were taken at the authored 62000. ",
+ "description": "The native QL derivation and both Spanda equations: 0/1 ↔ 1/0, 2+2² = 4+2 = 6, the crossed-zero recognition sequence, the concentric mandala plate.",
+ "scene_count": 9
+}

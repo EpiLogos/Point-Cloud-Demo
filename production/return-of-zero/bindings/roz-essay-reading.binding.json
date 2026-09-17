@@ -1,0 +1,161 @@
+{
+  "artifact": "essay/roz-essay-reading.journey.json",
+  "family": "essay",
+  "worker": "E1",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-essay"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b17",
+    "note": "publication surfaces outside the 288-record census receipt; sha256 computed at authoring time (2026-09-17)",
+    "records": [
+      {
+        "path": "submission-package/essay/THE-RETURN-OF-ZERO.md",
+        "sha256": "6268ebb478e701a3a23b2e3f15521ee92245f132ca94c0c1449465aabca0bfdd"
+      },
+      {
+        "path": "submission-package/essay/README.md",
+        "sha256": "f15eb4f7ea7591b0acb59fcac860de55aba60e37a3d6095f1749a7a8e8a00793"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/README.md",
+        "sha256": "e8423f198abf79026fda8de68ace60dc70d6a9c7f14ebb9566e79a6a9672df2d"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/00-integral-threshold/ROOM.md",
+        "sha256": "cb5f1aa43ee69f127de09561768ee3ec02e7b4fce624b376486fbb6bf8fddb2c"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/00-integral-threshold/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "c24377951a2c55086f1ea1c245e5a5349ce528f06fee56c583a511ebdff8a791"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/01-differentiating-mind/ROOM.md",
+        "sha256": "9e75af9563613dbb61293c01b669d9a9512c076e8bf52562f0385b9a73413438"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/01-differentiating-mind/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "869159e26694407749d88e0adafe77b4f21fc143a9347fbe221be6ce088afc09"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/02-return-of-zero/ROOM.md",
+        "sha256": "a844e41ad2fb8cb15a8d8e82dd9cf1e27135408af1bf9a8267327934638e71cc"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/02-return-of-zero/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "5019fd721937429c9bd1c177f7f10292a6affc99ccb8aeefa1550c9246c004a5"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/03-two-logics/ROOM.md",
+        "sha256": "9a8d46c3c5a674d652dbca8ea0e05218b47201d1e23bbe47772545553de05ca0"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/03-two-logics/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "8f017c8815d166a2817f34c169bebcc1707c94e3f7c010efafda52a7d8400c5f"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/04-mathematical-substrate/ROOM.md",
+        "sha256": "8bd7d7cd7d31bc608398c597ea76957c2a3c8e663cf22b2b9c2ee80a1d0fe230"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/04-mathematical-substrate/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "4b657d4ad8700c211b6b0ea24dc7cb878cab2cc6b9103394b910477a2303c455"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/05-psychoid-flowering/ROOM.md",
+        "sha256": "615f25e7946cf5fa74b9f7f304b11351f71c860c6846ad0003930320a958a614"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/05-psychoid-flowering/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "0cbbc0ce02feefd0cfcb3cb40117de67e1b788bfe46207be4a3054dddadec14d"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/06-objective-internality/ROOM.md",
+        "sha256": "0d45caf3a1bd19d159f5bf1cc90f5826caa99c5d99d34c820d29125544ed2056"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/06-objective-internality/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "2f8c03cfc0db406466b33451e04abe9417d211548b6f53978300316242d52cb9"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/07-instrument-returns/ROOM.md",
+        "sha256": "76c6014947a1555ca2caa00d85233a40aac308f5ac290927b07ef9997752a299"
+      },
+      {
+        "path": "submission-package/essay/section-rooms/07-instrument-returns/P1-CANONICAL-ALIGNMENT.md",
+        "sha256": "874b538026cbb3ca71a6da5ae384ad40fb6546d3edbc2743fc35935048199585"
+      }
+    ]
+  },
+  "pointcloud_revision": "f257de5",
+  "scenes": [
+    {
+      "scene_id": "00-integral-threshold",
+      "source_ref": "submission-package/essay/section-rooms/00-integral-threshold/",
+      "relations": "station door: section-rooms/00-integral-threshold/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 01–06) · reading path: next station 01-differentiating-mind · withholding announced as promise (M01 claim): the mechanism enters only at §5→0"
+    },
+    {
+      "scene_id": "01-differentiating-mind",
+      "source_ref": "submission-package/essay/section-rooms/01-differentiating-mind/",
+      "relations": "station door: section-rooms/01-differentiating-mind/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 07–12) · reading path: next station 02-return-of-zero"
+    },
+    {
+      "scene_id": "02-return-of-zero",
+      "source_ref": "submission-package/essay/section-rooms/02-return-of-zero/",
+      "relations": "station door: section-rooms/02-return-of-zero/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 13–18) · reading path: next station 03-two-logics"
+    },
+    {
+      "scene_id": "03-two-logics",
+      "source_ref": "submission-package/essay/section-rooms/03-two-logics/",
+      "relations": "station door: section-rooms/03-two-logics/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 19–24) · reading path: next station 04-mathematical-substrate"
+    },
+    {
+      "scene_id": "04-mathematical-substrate",
+      "source_ref": "submission-package/essay/section-rooms/04-mathematical-substrate/",
+      "relations": "station door: section-rooms/04-mathematical-substrate/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 25–30) · reading path: next station 05-psychoid-flowering"
+    },
+    {
+      "scene_id": "05-psychoid-flowering",
+      "source_ref": "submission-package/essay/section-rooms/05-psychoid-flowering/",
+      "relations": "station door: section-rooms/05-psychoid-flowering/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 31–36) · reading path: next station 06-objective-internality"
+    },
+    {
+      "scene_id": "06-objective-internality",
+      "source_ref": "submission-package/essay/section-rooms/06-objective-internality/",
+      "relations": "station door: section-rooms/06-objective-internality/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 37–42) · reading path: next station 07-instrument-returns"
+    },
+    {
+      "scene_id": "07-instrument-returns",
+      "source_ref": "submission-package/essay/section-rooms/07-instrument-returns/",
+      "relations": "station door: section-rooms/07-instrument-returns/ROOM.md (+P1-CANONICAL-ALIGNMENT.md, movements 43–48) · reading path: final station; next is the closing return"
+    },
+    {
+      "scene_id": "08-the-return",
+      "source_ref": "submission-package/essay/section-rooms/07-instrument-returns/movements/48-s50-p5-ahi-planetary-return.md",
+      "relations": "closing return: M48 (section-rooms/07-instrument-returns/movements/48-s50-p5-ahi-planetary-return.md) returns to M01 (section-rooms/00-integral-threshold/movements/01-s01-p0-question-before-mechanism.md); the journey loops back to the threshold scene"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "diagram",
+      "ref": "engine-native formations and text glyphs only (station forms: open disc+repelled observer, yantra, zero ring, 0/1↔1/0 pair, wound rings, twin discs, six-product hexagon, nested instrument rings, root symbolon 0/1); no external imagery",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "essay/roz-essay-reading.cover.png",
+  "capture_note": "cover = the threshold station scene at authored particle count 62000 through the real engine (tools/capture.mjs, port 47911)",
+  "status": "captured",
+  "notes": [
+    "E0 acceptance repair: text/field collision fixed on 00-integral-threshold (flagged cover: italic subtitle and reading-root line overprinting the field) and the same class on all nine scenes — station formations shifted right-of-centre (group centre +0.3) and trimmed (disc/yantra/ring to 1.5, return ring 2.6→1.9, instrument rings 2.25→1.75), editorial column 350 (320 station 3), metadata (ROOM DOOR / THE LOOP) moved to a stacked top-left block; all nine covers re-captured at authored count.",
+    "scene order IS the reading path: §0/1 → §0 → §1 → §2 → §3 → §4 → §5 → §5→0 → the closing return; one continuous path, not cards",
+    "station titles, burdens, release lines, first movements and station chain are verbatim from the reading root and room surfaces",
+    "withholdings hold in the imagery: the mechanism appears only at station 07 (earned, M45); no 0/1 glyphs before station 03 (earned at §1·#5→0 = M18); the crossed zero is not restaged at station level (its one job lives in rooms/roz-room-02-return-of-zero movement-16)",
+    "closing return scene on deep ground with the earned root symbolon 0/1; loop:true returns the night to the lit threshold",
+    "SHARED CAPTURE DEFECT (for Point-Cloud #6): tools/capture.mjs --all-scenes drifts — from the third scene on, screenshots show an earlier scene than requested (openScene + 2500ms does not settle; DOM text confirms the wrong scene). Single-scene captures (one-scene document, default first-scene path) are reliable; all E1 per-scene inspection and all covers used the reliable path. Tool file untouched by E1.",
+    "SCHEMA NOTE (for Point-Cloud #6): TextLayer.size minimum is 14 (finite(t.size,14,150)); a 13px route layer fails validation with the generic message \"Invalid page text.\" — a range-specific message would help authoring.",
+    "OBSERVATION: on dark scenes (room 07, essay return scene) the editorial body text renders dim grey on near-black; legible but low-contrast. No text-colour field exists on TextLayer — presentation is engine-owned.",
+    "OBSERVATION: sequence scenes are temporal; a cover/inspection screenshot shows one phase of the traversal (movement-25 and movement-34 covers/captures catch a settled step or a mid-morph). The artifact, not the still, carries the full sequence."
+  ]
+}

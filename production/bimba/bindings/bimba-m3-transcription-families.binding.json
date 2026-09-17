@@ -1,0 +1,81 @@
+{
+  "artifact": "mahamaya/bimba-m3-transcription-families.journey.json",
+  "family": "mahamaya",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-mahamaya-transcription"
+  ],
+  "m_prime": {
+    "instrument": "M3′ Journey/Scenes ↔ real Expression Scenes",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §9/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#3-3",
+        "registry_node": "b60c0db37684e157",
+        "name": "Mahamaya Universal Transcription Engine"
+      },
+      {
+        "coordinate": "#3-3-0",
+        "registry_node": "a1fb9609fdb8d6c0",
+        "name": "Non-Dual Codon Relations"
+      },
+      {
+        "coordinate": "#3-3-3",
+        "registry_node": "c3f14575a48dc401",
+        "name": "RNA Transcription Family"
+      },
+      {
+        "coordinate": "#3-3-4",
+        "registry_node": "00f217ea6b5179c1",
+        "name": "Amino Acid Architecture"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#3-3",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#3-3-3",
+      "ref": "bimba:relation:03d09cdebc2dd58d5a74b221"
+    },
+    {
+      "from": "#3-3",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#3-3-4",
+      "ref": "bimba:relation:8ce09f29136b781c608c5393"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m3-transcription-s1",
+      "source_ref": "#3-3-0"
+    },
+    {
+      "scene_id": "bimba-m3-transcription-s2",
+      "source_ref": "#3-3-3"
+    },
+    {
+      "scene_id": "bimba-m3-transcription-s3",
+      "source_ref": "#3-3-4"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "One scene per transcription family; each scene is a real, independently loadable Scene ref for the M3′ bridge."
+}

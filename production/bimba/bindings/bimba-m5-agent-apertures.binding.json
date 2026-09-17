@@ -1,0 +1,76 @@
+{
+  "artifact": "epii/bimba-m5-agent-apertures.journey.json",
+  "family": "epii",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-epii-return"
+  ],
+  "m_prime": {
+    "instrument": "M5′ Palace/integral articulation ↔ Epii/Agent depth and Return",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §11/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#5-4",
+        "registry_node": "ba3d62caf9678466",
+        "name": "Siva-Shakti"
+      },
+      {
+        "coordinate": "#5-4.0",
+        "registry_node": "ca27ca7ed7763bb9",
+        "name": "Anuttara Agent"
+      },
+      {
+        "coordinate": "#5-4.5",
+        "registry_node": "11ce7eb9c1c9f538",
+        "name": "Epii Agent"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#5-4",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#5-4.0",
+      "ref": "bimba:relation:3bf6e5e8a6e0332cb8c7c558"
+    },
+    {
+      "from": "#5-4",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#5-4.5",
+      "ref": "bimba:relation:774495b2b5b908008355a55c"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m5-agents-s0",
+      "source_ref": "#5-4 (the aperture ground)"
+    },
+    {
+      "scene_id": "bimba-m5-agents-s1",
+      "source_ref": "#5-4.0 (Anuttara Agent)"
+    },
+    {
+      "scene_id": "bimba-m5-agents-s6",
+      "source_ref": "#5-4.5 (Epii Agent)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "These are coordinate apertures — the depth where an agent may be summoned — not agent instances. No roster is minted (AW alignment §4): the artifact stages apertures only."
+}

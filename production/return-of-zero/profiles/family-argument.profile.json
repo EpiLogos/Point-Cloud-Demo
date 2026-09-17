@@ -1,0 +1,60 @@
+{
+  "profile_id": "family-argument",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E2 (arguments worker), issue #65, 2026-09-17",
+  "family": "arguments-a (A01–A36 canonical semantic Arguments)",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base → family-argument (this file) → record variant → scene override",
+  "attitude": "the A family is the argued semantic face of the conjugate field: definition, cut, derivation and return performed as readable argument on the reading surface",
+  "grammar": {
+    "field": {
+      "material": "ink",
+      "background": "#f4f2eb",
+      "palette_base": [
+        "#252720"
+      ],
+      "params_base": {
+        "count": 62000,
+        "size": 2.8,
+        "opacity": 0.92,
+        "contrast": 0.93,
+        "speed": 0.7,
+        "dispersion": 0.09
+      }
+    },
+    "engine": {
+      "inkMode": "blackOnWhite",
+      "backgroundMode": "solid",
+      "fontFamily": "system-ui, -apple-system, sans-serif",
+      "fontWeight": 900
+    },
+    "view": {
+      "mode": "2d",
+      "zoom": 1
+    },
+    "scene_rhythm": {
+      "duration": 12,
+      "transition": 1.5
+    },
+    "entities": {
+      "governing_formation": "one per scene, shaped and sequenced by the record's own operation; the record's load-bearing notation may appear as the formation's text source (e.g. A13 '/ = −/−', A18's eight-determination traversal)",
+      "support_entities": "only where the record's declared structure carries them (poles, offices, partners); quiet records keep one formation"
+    },
+    "text_layers": {
+      "title_card": "layer 1: kicker '<record id> · <CLAIM_STATUS>' + record title, left margin (x .033, width 340)",
+      "relations": "layer 2: the declared relation line as its own italic layer (x .033, y .26, width 290) — wraps fully in the left margin, clear of the field's left edge (E0 acceptance repair)",
+      "body": "layer 3: the record's own governing proposition and operation, compressed from the record only (x .033, y .50, width 600)"
+    }
+  },
+  "status_encoding": {
+    "note": "presentation-only encoding of the record's frontmatter claim_status; a repeated colour association is never a claimed source relation",
+    "Argued": "#252720",
+    "Derived": "#33424e",
+    "Offered": "#7a3b2e"
+  },
+  "variation_rules": [
+    "per-scene variation is explicit and small: one or two field params, palette accent, formation shape/sequence",
+    "notation tokens appear only where the record's own notation is load-bearing",
+    "no ornament without an argumentative job; a quiet record stays quiet",
+    "the A′ conjugate family reuses this grammar under family-conjugate's material treatment — the two faces share one grammar"
+  ]
+}
