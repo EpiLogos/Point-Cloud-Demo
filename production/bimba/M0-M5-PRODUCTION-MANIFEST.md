@@ -98,3 +98,39 @@ npx tsx scripts/production-inventory.ts    # cross-namespace floor: every journe
 ```
 
 Results recorded in the tranche return; no shared code was touched, so `npm test`/lint coverage of engine behaviour is unchanged.
+
+## 7. Second cut — depth 3→4 widening (2026-09-17, next pass)
+
+Six authored variations, one per family profile, each covering a real depth-3 branch with its real depth-4 children. Every variation is declared in the artifact's description (inherited → varied → why); only `bimba:relation:*` refs count as relations; registry node ids are pinned in the binding records (`cut: widening-2-depth-3-to-4`).
+
+| Family | Branch → children (real registry rows) | Artifact | Declared variation |
+|---|---|---|---|
+| anuttara | `#0-2-9` Paramesvara — Principle 9 → 9 virtue leaves (`#0-2-9-0…8`; 5 GENERATIVE_SYNTAX_FLOW + 4 HAS_VIRTUE_COMPONENT) | `anuttara/bimba-m0-paramesvara-virtues.journey.json` | ninefold ring instead of aperture pairs; scene 2 selects only the four HAS_VIRTUE_COMPONENT leaves |
+| paramasiva | `#1-3-4` Contextual Flowering → `.0/1` dynamic sixfold, `.0000` static void frame, `.4.0-4.4/5` nested synthesis, `.5/0` recursive integration | `paramasiva/bimba-m1-dynamic-process.journey.json` | widens the first cut's own Spanda branch to its depth-4 frames; the source's dynamic/static naming drives circulation, not force |
+| parashakti | `#2-1-0` Archetypal-Numerical Foundation → six HAS_SUB_LENS cause lenses (`#2-1-0-0…5`: potential/what/how/who/when-where/why) | `parashakti/bimba-m2-archetypal-lenses.journey.json` | lens-row grammar instead of planetary/maqamat rows; the six-cause framing is the source's own |
+| mahamaya | `#3-1-0` Qian → eight hexagram rows (`#3-1-0-0…7`) | `mahamaya/bimba-m3-qian-octave.journey.json` | widens INTO the octave head staged from above in the first cut; square template + registry-order walk; **no typed relations exist** — membership is structural only |
+| nara | `#4.3-2` Dialogical & Inquiry Containers → three CONTAINS_MODALITY practices (`#4.3-2.0 Bohmian Dialogue`, `#4.3-2.1 Native Talking Circle`, `#4.3-2.2 Diamond Approach Inquiry`) | `nara/bimba-m4-dialogue-containers.journey.json` | opens the untouched `#4.3` branch; three containers held apart; no personal subject present or simulated |
+| epii | `#5-1` Epi-Logos → six HAS_POSITION positions (`#5-1-0…5`) | `epii/bimba-m5-epilogos-positions.journey.json` | **honest depth**: `#5` has no depth-4 leaves; the deepest unexplored real row is used and says so; position 0 return is presented, not claimed as the operative Return |
+
+### 7.1 Runtime receipts — every widening coordinate through the production M′ source
+
+The QL side of this pass landed `ql techne reading` (QL-MEF `98216fa`): the production `WikiTechneAdapter` (registry provider + shape-aware refraction engine, store-free) as a CLI surface. Each featured branch was emitted as a `WikiRefractionTarget` (shape binding attached where the member row admits a constellation grain) and read through the adapter. Receipts + the exact input targets live beside their binding records in `bindings/` (`<slug>.target.json`, `<slug>.techne-reading.json`):
+
+| Coordinate | Target input | Reading result |
+|---|---|---|
+| `#0-2-9` (9 members) | `bindings/bimba-m0-paramesvara-virtues.target.json` | ground disclosed; **no whole** — canvas honestly unavailable (9 members admit no constellation grain) |
+| `#1-3-4.0/1` (leaf) | `bindings/bimba-m1-dynamic-process.target.json` | ground disclosed; canvas honestly unavailable |
+| `#2-1-0` (6 members) | `bindings/bimba-m2-archetypal-lenses.target.json` | ground + canvas; whole `anchor:#2-1-0`, `ql:shape:1.0.0:constellation:sixfold`, members = the six real cause lenses |
+| `#3-1-0` (8 untyped members) | `bindings/bimba-m3-qian-octave.target.json` | ground disclosed; canvas honestly unavailable |
+| `#4.3-2` (3 members) | `bindings/bimba-m4-dialogue-containers.target.json` | ground + canvas; whole `anchor:#4.3-2`, `ql:shape:1.0.0:constellation:threefold-123` |
+| `#5-1` (6 members) | `bindings/bimba-m5-epilogos-positions.target.json` | ground + canvas; whole `anchor:#5-1`, `ql:shape:1.0.0:constellation:sixfold` |
+
+Shape-binding provenance in the receipts is `PROPOSED` (test/widening-scoped binding of real children into QL positions), never canon; member subject refs are the exact registry children.
+
+### 7.2 Widening validation
+
+```sh
+npx tsx /tmp/bimba-mprime-widening.ts     # 6/6 validateJourney + importDocuments ok
+npx tsx scripts/production-inventory.ts   # cross-namespace floor: 72 journeys, namespaces disjoint
+cd /Users/admin/Central/Work/Quaternal-Logic && cargo test -p ql-cli --test techne_reading  # 2/2 (adapter surface)
+```

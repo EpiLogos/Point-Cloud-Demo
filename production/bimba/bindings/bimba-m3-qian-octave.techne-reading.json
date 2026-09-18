@@ -1,0 +1,130 @@
+{
+  "contract": "ql.techne/v1",
+  "reading": {
+    "actions": [],
+    "contract": "ql.techne/v1",
+    "disclosure": {
+      "degraded": [],
+      "instruments": [
+        {
+          "available": true,
+          "instrument": "project",
+          "m_prime": 0,
+          "reading": "4:2-deep",
+          "reason": null
+        },
+        {
+          "available": false,
+          "instrument": "canvas",
+          "m_prime": 1,
+          "reading": "4:2-deep",
+          "reason": "no validated shape binding discloses a bounded local whole for this subject"
+        },
+        {
+          "available": false,
+          "instrument": "timeline",
+          "m_prime": 2,
+          "reading": "4:2-deep",
+          "reason": "no live temporal producer is attached to this subject (native owner: Factory/AIKit T1)"
+        },
+        {
+          "available": false,
+          "instrument": "journey",
+          "m_prime": 3,
+          "reading": "4:2-deep",
+          "reason": "no source-backed Expression Scenes are composed for this subject"
+        },
+        {
+          "available": false,
+          "instrument": "place",
+          "m_prime": 4,
+          "reading": "4:2-deep",
+          "reason": "no place facets are disclosed for this subject"
+        },
+        {
+          "available": false,
+          "instrument": "palace",
+          "m_prime": 5,
+          "reading": "4:2-deep",
+          "reason": "Palace producer is not landed (native owner: O-I #218)"
+        },
+        {
+          "available": false,
+          "instrument": "expressions",
+          "m_prime": null,
+          "reading": "3:3-conjugate",
+          "reason": "no Expression binding is disclosed for this subject"
+        }
+      ],
+      "suggestions": []
+    },
+    "expressions": [],
+    "provenance": [
+      {
+        "evidence_refs": [],
+        "native_owner": "ql-mef/wiki",
+        "selector": null,
+        "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json",
+        "source_revision": null,
+        "standing": null
+      }
+    ],
+    "ql": {
+      "address": "#3-1-0",
+      "constellation_ref": null,
+      "context_frame_ref": null,
+      "derivation_refs": [],
+      "geometric_reading": null,
+      "harmonic_reading": null,
+      "lens_ref": "mef:lens:L1@1",
+      "refraction_summary": "Causal refractive reading of #3-1-0:complete",
+      "shape_ref": null,
+      "sublens_ref": null,
+      "vak_source_ref": null,
+      "warrant": {
+        "evidence_refs": [
+          "ql-mef:reading:registry:-3-1-0:L1"
+        ],
+        "provenance_ref": "ql-mef:provider:registry-disclosure:1.0.0",
+        "result_class": "deterministic"
+      }
+    },
+    "reading_ref": "ql.techne/v1:ql-mef:reading:registry:-3-1-0:L1",
+    "snapshot": {
+      "basis_ref": "sha256:m-tree-v1:#3-1-0",
+      "revision": null
+    },
+    "spatial": [],
+    "subject": {
+      "kind": "MEF-derived",
+      "native_owner": "ql-mef/wiki",
+      "native_revision": null,
+      "readings": [
+        {
+          "ref": "ql-mef:reading:registry:-3-1-0:L1",
+          "revision": null
+        }
+      ],
+      "standing": null,
+      "subject_ref": "#3-1-0"
+    },
+    "temporal": [],
+    "whole": null
+  },
+  "selections": [
+    {
+      "agent_session_ref": null,
+      "coordinate_ref": "#3-1-0",
+      "disclosure_ref": "ql.techne/v1:ql-mef:reading:registry:-3-1-0:L1",
+      "focus_refs": [],
+      "instrument": "project",
+      "reading_ref": "mef:lens:L1@1",
+      "selection_ref": "ql.techne/v1:ql-mef:reading:registry:-3-1-0:L1:ground",
+      "selection_standing": null,
+      "snapshot_revision": null,
+      "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json",
+      "source_revision": null,
+      "subject_ref": "#3-1-0"
+    }
+  ]
+}

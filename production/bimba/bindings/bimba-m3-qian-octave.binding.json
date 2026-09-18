@@ -1,0 +1,99 @@
+{
+  "artifact": "mahamaya/bimba-m3-qian-octave.journey.json",
+  "family": "mahamaya",
+  "worker": "ql-parent-next-cut-widening",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-mahamaya-transcription"
+  ],
+  "cut": "widening-2-depth-3-to-4",
+  "variation": {
+    "declared_in": "journey.description (Variation field)",
+    "law": "source-backed variation only; inherited grammar otherwise (profiles/family-*.profile.json)"
+  },
+  "m_prime": {
+    "instrument": "M3′ Journey/Scenes ↔ real Expression Scenes",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §9/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "98216fa",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#3-1",
+        "registry_node": "60ffed1ff25afc76",
+        "name": "I-Ching System"
+      },
+      {
+        "coordinate": "#3-1-0",
+        "registry_node": "900a3a6209fcca05",
+        "name": "Qian"
+      },
+      {
+        "coordinate": "#3-1-0-0",
+        "registry_node": "5c0417db351231f6",
+        "name": "Qian"
+      },
+      {
+        "coordinate": "#3-1-0-1",
+        "registry_node": "8931c578fe85ae3e",
+        "name": "Tai"
+      },
+      {
+        "coordinate": "#3-1-0-2",
+        "registry_node": "17c3941674e237fa",
+        "name": "Da Zhuang"
+      },
+      {
+        "coordinate": "#3-1-0-3",
+        "registry_node": "dba785e224b45cbe",
+        "name": "Xiao Chu"
+      },
+      {
+        "coordinate": "#3-1-0-4",
+        "registry_node": "9dea73e6b7280562",
+        "name": "Xu"
+      },
+      {
+        "coordinate": "#3-1-0-5",
+        "registry_node": "d5257b40f151a313",
+        "name": "Da You"
+      },
+      {
+        "coordinate": "#3-1-0-6",
+        "registry_node": "b43851e411302bd8",
+        "name": "Da Chu"
+      },
+      {
+        "coordinate": "#3-1-0-7",
+        "registry_node": "fe9993215f0ef5c3",
+        "name": "Guai"
+      }
+    ]
+  },
+  "relations": [],
+  "pointcloud_revision": "7599fd1ed99886c289ff44a753b1b1950b6c7374",
+  "scenes": [
+    {
+      "scene_id": "bimba-m3-qian-s1",
+      "source_ref": "#3-1-0 with #3-1-0-0…#3-1-0-7 (square template)"
+    },
+    {
+      "scene_id": "bimba-m3-qian-s2",
+      "source_ref": "#3-1-0-0…#3-1-0-7 in registry order (sequence walk)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "The registry holds NO typed relation rows between #3-1-0 and its eight rows — membership is cited structurally (node ids + parent), never dressed as typed relations. The square template and the ordered walk are the transcription/clock grammar of the mahamaya family applied to a source row that is itself an octave sequence."
+}

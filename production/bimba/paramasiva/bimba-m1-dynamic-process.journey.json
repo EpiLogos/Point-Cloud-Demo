@@ -1,0 +1,1163 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "bimba-m1-dynamic-process",
+  "name": "M1 · Contextual Flowering — the dynamic and static frames",
+  "description": "Bimba M1′ topology artifact (widening cut, depth 3→4). Coordinates: #1-3 Spanda → #1-3-4 Contextual Flowering → #1-3-4.0/1 6-Fold Dynamic Process, #1-3-4.0000 4-Fold Static Framework (Void Frame), #1-3-4.4.0-4.4/5 Contextual Flowering Synthesis (Nested Frame), #1-3-4.5/0 Transcendent Integration (Recursive Frame). M′ instrument: M1′ Canvas/Constellation ↔ M1 topology/geometry/material Expression capacity (L5-TECHNE-DUAL-READING-LOCK §7/§13); accepted M1 state remains the numerical/formal owner — presentation only. Inherited profile: bimba-corpus-base → family-paramasiva-topology. Variation (source-backed): the first cut staged the static pole pair of #1-3-1/#1-3-2; this artifact widens the same branch to its depth-4 frames and lets the source's own dynamic/static naming drive the grammar — circulation high in the dynamic sixfold, near-zero in the static void frame. Relations cited: bimba:relation:26200b022d513b266741df11 (#1-3 → #1-3-4, CONTAINS_SPANDA_STAGE); HAS_NESTED_SUBSTAGE edges #1-3-4 → #1-3-4.0/1 (bimba:relation:6fe15a7fd0b41a25caed56a7), → #1-3-4.0000 (bimba:relation:0ed3191dc6345f72c5d6ba31), → #1-3-4.4.0-4.4/5 (bimba:relation:0ae8e18860967ac4f2446aa2); HAS_NESTED_STAGE #1-3-4 → #1-3-4.5/0 (bimba:relation:6dd0ab29b5e3e3e761f98a48). Sources: registry_revision 259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4 at QL-MEF (session branch 98216fa; registry unchanged from main dbff5cc). Second-cut widening pass — one authored variation per family profile at real depth 3→4. Binding record: bindings/bimba-m1-dynamic-process.binding.json.",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack"
+      },
+      "id": "bimba-m1-dynproc-s1",
+      "name": "Dynamic sixfold",
+      "character": "#1-3-4.0/1 — six positions in circulation.",
+      "duration": 14,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#3d4b8f",
+          "#e8e6df"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.45,
+          "circulation": 0.8,
+          "turbulence": 0.1,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-1-3-4-0-1-p0",
+          "name": "pos 0",
+          "kind": "formation",
+          "position": {
+            "x": 3.367778697655222e-17,
+            "y": -0.55,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.0/1 · dynamic position 0",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-p0-step-1",
+                "text": "#1-3-4.0/1 · dynamic position 0",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0-1-p1",
+          "name": "pos 1",
+          "kind": "formation",
+          "position": {
+            "x": 0.4763139720814413,
+            "y": -0.275,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.0/1 · dynamic position 1",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-p1-step-1",
+                "text": "#1-3-4.0/1 · dynamic position 1",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0-1-p2",
+          "name": "pos 2",
+          "kind": "formation",
+          "position": {
+            "x": 0.47631397208144133,
+            "y": 0.2749999999999999,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.0/1 · dynamic position 2",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-p2-step-1",
+                "text": "#1-3-4.0/1 · dynamic position 2",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0-1-p3",
+          "name": "pos 3",
+          "kind": "formation",
+          "position": {
+            "x": 3.367778697655222e-17,
+            "y": 0.55,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.0/1 · dynamic position 3",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-p3-step-1",
+                "text": "#1-3-4.0/1 · dynamic position 3",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0-1-p4",
+          "name": "pos 4",
+          "kind": "formation",
+          "position": {
+            "x": -0.4763139720814412,
+            "y": 0.2750000000000002,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.0/1 · dynamic position 4",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-p4-step-1",
+                "text": "#1-3-4.0/1 · dynamic position 4",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0-1-p5",
+          "name": "pos 5",
+          "kind": "formation",
+          "position": {
+            "x": -0.4763139720814413,
+            "y": -0.2750000000000001,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.0/1 · dynamic position 5",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-p5-step-1",
+                "text": "#1-3-4.0/1 · dynamic position 5",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-pin-s1",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-pin-s1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "bimba-m1-dynproc-t1",
+          "visible": true,
+          "kicker": "M1′ · depth 3→4",
+          "title": "#1-3-4.0/1 — 6-Fold Dynamic Process",
+          "italic": "The source names it dynamic; circulation is the presentation of that name.",
+          "body": "#1-3-4 Contextual Flowering → #1-3-4.0/1 (HAS_NESTED_SUBSTAGE, bimba:relation:6fe15a7fd0b41a25caed56a7)",
+          "x": 0.5,
+          "y": 0.78,
+          "width": 620,
+          "size": 30,
+          "align": "center"
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack"
+      },
+      "id": "bimba-m1-dynproc-s2",
+      "name": "Static void frame",
+      "character": "#1-3-4.0000 — the fourfold at rest, against the sixfold.",
+      "duration": 14,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#5d7052",
+          "#3d4b8f"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.3,
+          "circulation": 0.05,
+          "turbulence": 0.05,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-1-3-4-0000-p0",
+          "name": "void 0",
+          "kind": "formation",
+          "position": {
+            "x": 3.061616997868383e-17,
+            "y": -0.5,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#5d7052",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0000-p0-step-1",
+                "text": "#1-3-4.0000 · static position 0",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0000-p1",
+          "name": "void 1",
+          "kind": "formation",
+          "position": {
+            "x": 0.5,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#5d7052",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0000-p1-step-1",
+                "text": "#1-3-4.0000 · static position 1",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0000-p2",
+          "name": "void 2",
+          "kind": "formation",
+          "position": {
+            "x": 3.061616997868383e-17,
+            "y": 0.5,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#5d7052",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0000-p2-step-1",
+                "text": "#1-3-4.0000 · static position 2",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0000-p3",
+          "name": "void 3",
+          "kind": "formation",
+          "position": {
+            "x": -0.5,
+            "y": 6.123233995736766e-17,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#5d7052",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0000-p3-step-1",
+                "text": "#1-3-4.0000 · static position 3",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-0-1-s2",
+          "name": "dynamic sixfold",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#3d4b8f",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-0-1-s2-step-1",
+                "text": "#1-3-4.0/1",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-pin-s2",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-pin-s2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack"
+      },
+      "id": "bimba-m1-dynproc-s3",
+      "name": "Synthesis and integration",
+      "character": "The nested and recursive frames close the flowering.",
+      "duration": 12,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#3d4b8f",
+          "#a8893d"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.35,
+          "circulation": 0.4,
+          "turbulence": 0.08,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-1-3-4-4-0",
+          "name": "Nested synthesis",
+          "kind": "formation",
+          "position": {
+            "x": -0.4,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.4.0-4.4/5 · Contextual Flowering Synthesis (Nested Frame)",
+          "share": 1,
+          "tint": "#a8893d",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-4-0-step-1",
+                "text": "#1-3-4.4.0-4.4/5 · Contextual Flowering Synthesis (Nested Frame)",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-5-0",
+          "name": "Recursive integration",
+          "kind": "formation",
+          "position": {
+            "x": 0.4,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#1-3-4.5/0 · Transcendent Integration (Recursive Frame)",
+          "share": 1,
+          "tint": "#a8893d",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-5-0-step-1",
+                "text": "#1-3-4.5/0 · Transcendent Integration (Recursive Frame)",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-1-3-4-pin-s3",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-1-3-4-pin-s3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    }
+  ],
+  "updatedAt": "2026-09-17T12:00:00.000Z"
+}

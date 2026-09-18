@@ -1,0 +1,154 @@
+{
+  "artifact": "anuttara/bimba-m0-paramesvara-virtues.journey.json",
+  "family": "anuttara",
+  "worker": "ql-parent-next-cut-widening",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-anuttara-language"
+  ],
+  "cut": "widening-2-depth-3-to-4",
+  "variation": {
+    "declared_in": "journey.description (Variation field)",
+    "law": "source-backed variation only; inherited grammar otherwise (profiles/family-*.profile.json)"
+  },
+  "m_prime": {
+    "instrument": "M0′ Project/Wiki/Graph ↔ Expression graph/source depth",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §6/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "98216fa",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#0-2-9",
+        "registry_node": "4b96d6cfb1af82d6",
+        "name": "Paramesvara - Principle 9"
+      },
+      {
+        "coordinate": "#0-2-9-0",
+        "registry_node": "d3a8113e634cb0e8",
+        "name": "Love/Peace - Foundational Essence"
+      },
+      {
+        "coordinate": "#0-2-9-1",
+        "registry_node": "2161ee6c21dbbcb9",
+        "name": "Truth - Structural Foundation"
+      },
+      {
+        "coordinate": "#0-2-9-2",
+        "registry_node": "e57f5cf228c6fe0f",
+        "name": "Openness/Creativity - Structural Fusion"
+      },
+      {
+        "coordinate": "#0-2-9-3",
+        "registry_node": "fdd55237a0797753",
+        "name": "Joy/Play - Creation Virtue"
+      },
+      {
+        "coordinate": "#0-2-9-4",
+        "registry_node": "baf1c2e3ca5f61c9",
+        "name": "Goodness - Sustenance Virtue"
+      },
+      {
+        "coordinate": "#0-2-9-5",
+        "registry_node": "5327359ed7ce7fa4",
+        "name": "Beauty - Dissolution Virtue"
+      },
+      {
+        "coordinate": "#0-2-9-6",
+        "registry_node": "692cce9ba6d00d6e",
+        "name": "Life/Nature - Veiling Virtue"
+      },
+      {
+        "coordinate": "#0-2-9-7",
+        "registry_node": "aaa5f1856e7ccad9",
+        "name": "Wisdom - Grace Virtue"
+      },
+      {
+        "coordinate": "#0-2-9-8",
+        "registry_node": "b0b53540ea728865",
+        "name": "Reality - Completion Virtue"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#0-2-9",
+      "kind": "GENERATIVE_SYNTAX_FLOW",
+      "to": "#0-2-9-0",
+      "ref": "bimba:relation:bc3d988e3735cc95c9711cdd"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "GENERATIVE_SYNTAX_FLOW",
+      "to": "#0-2-9-1",
+      "ref": "bimba:relation:04e19e3c92b86bc85922b37a"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "HAS_VIRTUE_COMPONENT",
+      "to": "#0-2-9-2",
+      "ref": "bimba:relation:7a288381e173ef121cc9a093"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "HAS_VIRTUE_COMPONENT",
+      "to": "#0-2-9-3",
+      "ref": "bimba:relation:2bdc0c15627668b9a2bf47e6"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "GENERATIVE_SYNTAX_FLOW",
+      "to": "#0-2-9-4",
+      "ref": "bimba:relation:1deac0b2344822b5b1ac7f74"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "GENERATIVE_SYNTAX_FLOW",
+      "to": "#0-2-9-5",
+      "ref": "bimba:relation:11d8f73b48ea7e26f24c81cf"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "GENERATIVE_SYNTAX_FLOW",
+      "to": "#0-2-9-6",
+      "ref": "bimba:relation:29115f2b095f5d20200be932"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "HAS_VIRTUE_COMPONENT",
+      "to": "#0-2-9-7",
+      "ref": "bimba:relation:130b777d00bd920da5c2267d"
+    },
+    {
+      "from": "#0-2-9",
+      "kind": "HAS_VIRTUE_COMPONENT",
+      "to": "#0-2-9-8",
+      "ref": "bimba:relation:381bc473790b071b68d7622d"
+    }
+  ],
+  "pointcloud_revision": "7599fd1ed99886c289ff44a753b1b1950b6c7374",
+  "scenes": [
+    {
+      "scene_id": "bimba-m0-virtues-s1",
+      "source_ref": "#0-2-9 with #0-2-9-0…#0-2-9-8"
+    },
+    {
+      "scene_id": "bimba-m0-virtues-s2",
+      "source_ref": "#0-2-9-1, #0-2-9-3, #0-2-9-7, #0-2-9-8 (the four HAS_VIRTUE_COMPONENT leaves)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "Depth-3→4 widening of the anuttara family: the source row is itself a ninefold enumeration, so the ring stages nine named leaves (first cut staged aperture pairs). The second scene selects only the four leaves the registry types HAS_VIRTUE_COMPONENT — a source-backed selection, not a stylistic one."
+}

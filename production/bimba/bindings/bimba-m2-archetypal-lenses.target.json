@@ -1,0 +1,65 @@
+{
+  "kind": "node-local",
+  "target_ref": "#2-1-0",
+  "target_snapshot_hash": "sha256:m-tree-v1:#2-1-0",
+  "provenance": [
+    {
+      "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json"
+    }
+  ],
+  "extensions": {
+    "ql-mef/shape-binding/v1": {
+      "subject_ref": "#2-1-0",
+      "shape_ref": "ql:shape:1.0.0:constellation:sixfold",
+      "whole_ref": "anchor:#2-1-0",
+      "basis_refs": [
+        "#2-1-0-0",
+        "#2-1-0-1",
+        "#2-1-0-2",
+        "#2-1-0-3",
+        "#2-1-0-4",
+        "#2-1-0-5"
+      ],
+      "members": [
+        {
+          "subject_ref": "#2-1-0-0",
+          "position": 0,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#2-1-0-1",
+          "position": 1,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#2-1-0-2",
+          "position": 2,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#2-1-0-3",
+          "position": 3,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#2-1-0-4",
+          "position": 4,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#2-1-0-5",
+          "position": 5,
+          "face": "direct"
+        }
+      ],
+      "return_refs": [
+        "return:#2-1-0"
+      ],
+      "provenance": {
+        "caller_ref": "ql-parent-next-cut:bimba-m2-archetypal-lenses",
+        "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json",
+        "standing_ref": "PROPOSED"
+      }
+    }
+  }
+}
