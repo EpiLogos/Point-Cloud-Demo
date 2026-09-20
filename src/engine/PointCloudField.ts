@@ -2043,7 +2043,13 @@ export class PointCloudField {
     return this.latestResonatorTelemetry;
   }
 
-  public destroy() {
+  /** Recovery/StrictMode may reuse the canvas. Its terminal owner opts into context release. */
+  public destroy({releaseContext = false}: {releaseContext?: boolean} = {}) {
+    if (!this.isDestroyed) this.disposeResources();
+    if (releaseContext && !this.renderer.getContext().isContextLost()) this.renderer.forceContextLoss();
+  }
+
+  private disposeResources() {
     this.isDestroyed = true;
     if (this.animFrameId !== null) {
       cancelAnimationFrame(this.animFrameId);

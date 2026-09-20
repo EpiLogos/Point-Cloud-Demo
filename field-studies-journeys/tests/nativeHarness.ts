@@ -4,6 +4,8 @@ import {toNativeConfig,nativeSnapshotToJourney,importDocuments,nativeChakras} fr
 import {defaultCamera,project,unproject} from '../src/camera';
 import {PointCloudField} from '../../src/engine/PointCloudField';
 import {COMPOSITION_PRESETS} from '../../src/engine/compositionPresets';
-import {makePin as makeNativePin} from '../../src/engine/fieldModel';
+import {makePin as makeNativePin,makeFormation,makeLink,DEFAULT_COMPOSITION} from '../../src/engine/fieldModel';
+import {GlyphSampler} from '../../src/engine/GlyphSampler';
+import {EntityRuntime} from '../../src/engine/entityRuntime';
 import {migrateConfig} from '../../src/engine/configMigration';
-(window as any).NATIVE_TEST={ProductionAdapter,PointCloudField,fieldStudies,blankScene,blankJourney,entity,pin,clone,toNativeConfig,nativeSnapshotToJourney,importDocuments,nativeChakras,COMPOSITION_PRESETS,makeNativePin,migrateConfig,defaultCamera,project,unproject};
+(window as any).NATIVE_TEST={ProductionAdapter,PointCloudField,fieldStudies,blankScene,blankJourney,entity,pin,clone,toNativeConfig,nativeSnapshotToJourney,importDocuments,nativeChakras,COMPOSITION_PRESETS,makeNativePin,makeFormation,makeLink,DEFAULT_COMPOSITION,GlyphSampler,EntityRuntime,migrateConfig,defaultCamera,project,unproject};

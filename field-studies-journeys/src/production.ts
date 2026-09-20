@@ -18,6 +18,9 @@ export class ProductionAdapter implements FieldEngineAdapter {
  readonly capabilities={name:'Native particle field',kind:'production' as const,parameters:[...NATIVE_BINDINGS.map(p=>p.key),...MATERIAL_KEYS,'grain'],physicalResonance:true,runtimeCheckpoints:false,exactSeek:false,
  notes:['GPU particle dynamics and continuous modal resonance. One simulation clock.','10 formations / 8 pins. Configuration saves are not runtime checkpoints.','Live video and native-resolution PNG. Offline controlled clip rendering is not available.']};
  private engine:PointCloudField|null=null;
+ // Recovery disposes GPU objects before the next render replaces them, but the
+ // adapter still owns the canvas context if it is disposed during that gap.
+ private contextOwner:PointCloudField|null=null;
  private width=innerWidth;private height=innerHeight;private dpr=devicePixelRatio||1;
  private dirty=false;private signature='';private sceneId='';private target:PointCloudConfig|null=null;
  private from:PointCloudConfig|null=null;private transitionStart=0;private duration=0;
@@ -61,7 +64,7 @@ export class ProductionAdapter implements FieldEngineAdapter {
   this.dirty=false;
   if(this.contextLost)throw new Error('GPU context was lost. Your expression is retained. Restore the field explicitly; its physical state must be reseeded.');
   const config=this.configuration(frame);
-  if(!this.engine){this.engine=new PointCloudField(this.canvas,config,true);this.seedRecoveredSources=true;}
+  if(!this.engine){this.engine=new PointCloudField(this.canvas,config,true);this.contextOwner=this.engine;this.seedRecoveredSources=true;}
   else if(config!==this.applied)this.engine.replaceConfig(config);
   if(config!==this.applied)this.syncSources(frame.scene);this.applied=config;
   this.engine.setSelection(frame.selectedIds);this.engine.setGridMode(frame.scaffold??'off');
@@ -123,5 +126,5 @@ export class ProductionAdapter implements FieldEngineAdapter {
   }else this.engine.fireAutomation(command.id,command.delay??0);
   this.dirty=true;
  }
- dispose(){this.canvas.removeEventListener('webglcontextlost',this.lost);this.engine?.destroy();this.engine=null;}
+ dispose(){this.canvas.removeEventListener('webglcontextlost',this.lost);this.contextOwner?.destroy({releaseContext:true});this.engine=null;this.contextOwner=null;}
 }
