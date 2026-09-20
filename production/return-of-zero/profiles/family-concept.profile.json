@@ -1,0 +1,40 @@
+{
+  "profile_id": "family-concept",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E3 (episteme worker), issue #65, 2026-09-17",
+  "family": "episteme C01–C64 (canonical concepts), carried in roz-c-concepts-1 and roz-c-concepts-2",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base → family-concept (this file) → record variant → scene override",
+  "attitude": "the C family is instituted knowledge as a lattice: each concept one addressable scene on the episteme print ground, one governing formation shaped by the concept's own operation, one definitional card",
+  "grammar": {
+    "shares": "one construction repeated 64 times; per-scene variation only in the governing formation, its support entities, and one or two field params",
+    "field": {
+      "material": "print",
+      "background": "#e9ece7",
+      "palette_base": ["#20262b", "#5c6a74"],
+      "params_base": { "count": 62000, "size": 2.6, "opacity": 0.9, "contrast": 0.82, "speed": 0.45, "dispersion": 0.035, "roundness": 0.2 }
+    },
+    "engine": { "inkMode": "blackOnWhite", "backgroundMode": "solid", "fontFamily": "system-ui, -apple-system, sans-serif", "fontWeight": 900 },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 12, "transition": 1.5 },
+    "entities": {
+      "governing_formation": "one per scene, shaped by the concept's operation (ring of appearing, cut, sealed square, broken token, merged disc, focal disc with satellites…); the record's own notation may appear as a short text glyph only where the record states it (C48 '0/1', C49 '/', C03 '/')",
+      "support_entities": "at most 4 besides the governing formation, and only where the record's declared structure carries them; 6 of 64 scenes use a pin as a gather point",
+      "entity_ceiling": "never more than 10 formations per scene (native field import limit; 6 is this family's max)"
+    },
+    "text_layers": {
+      "editorial_card": "one layer at (0.033, 0.055, w 470, size 27): kicker '<record id> · <CLAIM_STATUS uppercase>' · title = record title · italic = declared relations (argument_consumers, concept links, source_ids — capped with '+n more'; exact lists live in the binding)",
+      "body": "one layer at (0.033, 0.455, w 620, size 15): the record's governing proposition, compressed from the record's own opening only, no new claims"
+    }
+  },
+  "status_encoding": {
+    "note": "presentation-only encoding of the record's frontmatter claim_status; a repeated colour association is never a claimed source relation",
+    "Argued": "#20262b",
+    "Derived": "#33424e",
+    "Offered": "#7a3b2e"
+  },
+  "variation_rules": [
+    "per-scene variation is explicit and small: formation shape/support, one or two field params (e.g. cymatic scenes slow speed to 0.3)",
+    "notation tokens appear only where the record's own notation is load-bearing",
+    "no ornament without an argumentative job; a quiet concept stays quiet"
+  ]
+}

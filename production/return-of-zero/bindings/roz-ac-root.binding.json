@@ -1,0 +1,122 @@
+{
+ "artifact": "episteme/roz-ac-root.journey.json",
+ "family": "episteme-ac-root",
+ "worker": "E3",
+ "date": "2026-09-17",
+ "profile_lineage": [
+  "roz-corpus-base",
+  "family-concept"
+ ],
+ "source_revision": {
+  "repo": "EpiLogos/Antykathera-Essay-Work",
+  "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+  "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+  "census_caveat": "receipt sha256 values predate the 5c22906 content landing; current sha256 computed at dbf3b17",
+  "records": [
+   {
+    "record_id": "A/C",
+    "path": "submission-package/essay/symbolon/episteme/conjugate/AC.md",
+    "sha256": "1afdc69d30554add810b753a7c9f3d5fa9bf69dd4270f4a86f92e32fd39a1f2d",
+    "sha256_census_receipt": "3243978521525ca115da622223eb034e8ef73b858bd353e8fd4c4226e4c7aa1a",
+    "hash_note": "receipt hash stale, current-bytes hash used"
+   }
+  ]
+ },
+ "pointcloud_revision": "f257de5",
+ "journey": {
+  "id": "roz-ac-root",
+  "name": "Return of Zero — A/C, Root of the Conjugate Field",
+  "scenes": 5,
+  "validated": "node tools/validate.mjs — VALID (oi.journey v1, schema validateJourney)"
+ },
+ "scenes": [
+  {
+   "scene_id": "ac-root",
+   "source_ref": "A/C",
+   "source_path": "submission-package/essay/symbolon/episteme/conjugate/AC.md",
+   "sha256": "1afdc69d30554add810b753a7c9f3d5fa9bf69dd4270f4a86f92e32fd39a1f2d",
+   "hash_note": "receipt hash stale, current-bytes hash used",
+   "claim_status": "Argued",
+   "relations": {
+    "declared_field": "hangs beneath it: A01–A36, A01′–A36′, C01–C64 (the 137-record shared suite); S bodies extend the field to 144"
+   },
+   "form": "the one field: ring + 0/1 glyph — self-describing root"
+  },
+  {
+   "scene_id": "ac-a-face",
+   "source_ref": "A/C",
+   "source_path": "submission-package/essay/symbolon/episteme/conjugate/AC.md",
+   "sha256": "1afdc69d30554add810b753a7c9f3d5fa9bf69dd4270f4a86f92e32fd39a1f2d",
+   "hash_note": "receipt hash stale, current-bytes hash used",
+   "claim_status": "Argued",
+   "relations": {
+    "frozen_ethic": "Respect for Experience: right form and clear intention — carried by reference to /Users/admin/Central/Control/agents/now/agents/experience-law-pstack/respect-for-experience.proposed.md; linked, never rewritten or restated in the artifact",
+    "six_movements_named_by_reference": [
+     "Life is awareness, experience",
+     "Form gives experience a world",
+     "Intention takes effect",
+     "Law carries entrusted power",
+     "The common world is apportioned",
+     "Experience renews the form"
+    ],
+    "grounding": "C01, A01, A05, A06, A14, A32, A34, C13, C14, C38, C43, C49, C50, C51, C55, C56, C60 (the record's key grounding links)"
+   },
+   "form": "frozen plate inside a faint unfrozen envelope — the ethic stays frozen, the ruling lives around it"
+  },
+  {
+   "scene_id": "ac-crossed-zero",
+   "source_ref": "A/C",
+   "source_path": "submission-package/essay/symbolon/episteme/conjugate/AC.md",
+   "sha256": "1afdc69d30554add810b753a7c9f3d5fa9bf69dd4270f4a86f92e32fd39a1f2d",
+   "hash_note": "receipt hash stale, current-bytes hash used",
+   "claim_status": "Argued",
+   "relations": {
+    "sequence": "0 → Ø → X → Ø/X → (0/Ø)/(1/X) → 1 ↺ 0/1",
+    "alignments": [
+     "§1 · #3 The Crossed Zero",
+     "§4 · #3 Lacan, Matheme, and Mytheme"
+    ]
+   },
+   "form": "six tokens as static stations around the ring — the recognition sequence staged as arc"
+  },
+  {
+   "scene_id": "ac-c-face",
+   "source_ref": "A/C",
+   "source_path": "submission-package/essay/symbolon/episteme/conjugate/AC.md",
+   "sha256": "1afdc69d30554add810b753a7c9f3d5fa9bf69dd4270f4a86f92e32fd39a1f2d",
+   "hash_note": "receipt hash stale, current-bytes hash used",
+   "claim_status": "Argued",
+   "relations": {
+    "primitive_field": "O Core Primitive Field v2 — constitutional sixfold #0–#5, rows S + S0–S5, recursive law: QL determines at every level relative to that level"
+   },
+   "form": "six discs on the constitutional envelope"
+  },
+  {
+   "scene_id": "ac-close",
+   "source_ref": "A/C",
+   "source_path": "submission-package/essay/symbolon/episteme/conjugate/AC.md",
+   "sha256": "1afdc69d30554add810b753a7c9f3d5fa9bf69dd4270f4a86f92e32fd39a1f2d",
+   "hash_note": "receipt hash stale, current-bytes hash used",
+   "claim_status": "Argued",
+   "relations": {
+    "claim": "A/C is the thing that is its own condition; the conjugate field read as the essay's 1/0; (0/1)/(1/0) held together"
+   },
+   "form": "two overlapping face-rings + (0/1)/(1/0) glyph"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "inline entity text sources (0/1, Ø, X, Ø/X, (0/Ø)/(1/X), 1 ↺ 0/1 — the record's own sequence tokens)",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "episteme/roz-ac-root.cover.png",
+ "capture_detail": "final cover via tools/capture.mjs at authored params (count 62000, first scene); all 5 scenes drafted at count 8000 and read (/tmp/roz-e3-drafts)",
+ "status": "reviewed",
+ "notes": [
+  "The frozen *Respect for Experience* ethic is carried by reference only: the scene names its title and six movement names exactly as the record itself lists them, states that the body stays frozen at its path, and does not restate or alter the ethic.",
+  "ac-crossed-zero was first authored as a live step sequence on one formation; captures showed the sequenced-glyph rasterisation blows single-character steps up to the entity-box width (known engine hazard, E4 also hit it). Reworked as a static token arc — the full sequence stays verbatim in the scene body.",
+  "All scene text compressed from AC.md only; no new claims."
+ ]
+}

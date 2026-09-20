@@ -3,13 +3,14 @@ import {resolvedAutomation,automationLeader} from './automationLinks';
 import {applyNativeDelta} from './nativeDelta';
 /** Document → existing production engine. No renderer, scheduler, DOM or storage writes. */
 import type {PointCloudConfig,AutomationLane as NativeLane} from '../../src/engine/types';
-import {DEFAULT_CONFIG,DEFAULT_COLOR_CONFIG,DEFAULT_TOROIDAL_CONFIG} from '../../src/engine/PointCloudField';
+import {DEFAULT_CONFIG,DEFAULT_COLOR_CONFIG,DEFAULT_TOROIDAL_CONFIG,DEFAULT_MEDIUM_CONFIG,DEFAULT_COLLISION_CONFIG,DEFAULT_PAIRWISE_CONFIG,DEFAULT_DEPTH_CONFIG} from '../../src/engine/PointCloudField';
+import {DEFAULT_GLYPH_VOLUME} from '../../src/engine/glyphVolume';
 import {DEFAULT_SEQUENCE,DEFAULT_FORCES,DEFAULT_COMPOSITION,DEFAULT_CYMATIC_MEDIUM,MAX_FORMATIONS,MAX_PINS,type Entity as NativeEntity,type Shape as NativeShape} from '../../src/engine/fieldModel';
 import {makeSemanticChakraEntities} from '../../src/engine/semantics/chakraPresets';
 import {migrateSnapshot,CONFIG_SCHEMA_VERSION} from '../../src/engine/configMigration';
 import {writePath,readPath} from '../../src/engine/automation';
 import {NATIVE_BINDINGS,WORLD_SCALE,baseValue,bindValue,nativeBinding,automationTarget,entityTargets,stableNativeTarget} from './nativeParameters';
-import {clone,blankJourney,blankScene,entity,validateJourney,DEFAULT_ENGINE_SETTINGS,type Scene,type Entity,type Journey,type SequenceStep,type Shape} from './model';
+import {clone,blankJourney,blankScene,entity,validateJourney,DEFAULT_ENGINE_SETTINGS,clamp,type Scene,type Entity,type Journey,type SequenceStep,type Shape} from './model';
 
 export const MATERIAL_KEYS=['sizeBias','opacity','roundness','softness','irregularity','elongation','orientation','contrast','densityScale','densityPhase','edgeWeight','halo'] as const;
 export function assertSafe(value:unknown,depth=0):void{
@@ -32,6 +33,9 @@ function shapeOf(e:Pick<Entity,'shape'|'text'|'yantraId'|'templateFrequency'|'te
  if(e.shape==='text')return {...native,kind:'glyph',text:e.text.trim()||'O'};
  return {kind:'primitive',primitive:e.shape};
 }
+/** Layers are the object's spatial composition. Their depth rides the same unit law as every position: studio z (stage units) ⇄ native z (world px), like link z. */
+const toNativeLayers=(ls:Entity['layers']):NativeEntity['layers']|undefined=>ls?.length?ls.map(l=>({id:l.id,z:clamp(l.z,-100,100)*WORLD_SCALE,scale:l.scale,shape:{kind:'glyph' as const,text:l.text.trim()||'O'}})):undefined;
+const fromNativeLayers=(ls:NativeEntity['layers']):Entity['layers']|undefined=>ls?.length?ls.map(l=>({id:l.id,z:clamp(l.z,-100*WORLD_SCALE,100*WORLD_SCALE)/WORLD_SCALE,scale:l.scale,text:l.shape.text??'O'})):undefined;
 export function toNativeEntity(e:Entity,semanticAuthority=false):NativeEntity{
  const original=e.native;
  const {enabled,clock,steps,manual,...nativeSequence}=e.sequence;
@@ -41,6 +45,7 @@ export function toNativeEntity(e:Entity,semanticAuthority=false):NativeEntity{
  return {...original,id:e.id,name:e.name,kind:e.kind,enabled:e.enabled!==false,x:e.position.x*WORLD_SCALE,y:e.position.y*WORLD_SCALE,z:e.position.z*WORLD_SCALE,
   scale:e.scale??1,extent:{width:e.size.x*WORLD_SCALE,height:e.size.y*WORLD_SCALE,rotation:e.rotation*Math.PI/180,normalized:original?original.extent?.normalized??!!original.extent:true},
   share:e.kind==='pin'?0:e.share,shape:shapeOf(e,original?.shape),
+  layers:e.kind==='pin'?undefined:toNativeLayers(e.layers),
   sequence:{...sequence,hold,transition,advance:e.sequence.enabled?(e.sequence.clock==='morph'?'morphCycle':'time'):'off',
    links:e.kind==='pin'?[]:e.sequence.enabled||e.sequence.manual?e.sequence.steps.map(k=>({...k.native,id:k.id,name:k.name,source:k.source?clone(k.source):undefined,state:k.objectState?{scale:k.objectState.scale??1,extent:{width:k.objectState.size.x*WORLD_SCALE,height:k.objectState.size.y*WORLD_SCALE,rotation:k.objectState.rotation*Math.PI/180,normalized:true},tint:k.objectState.tint,tintWeight:k.objectState.tintWeight,forces:{mode:k.objectState.force.kind,strength:k.objectState.force.strength,radius:k.objectState.force.radius*WORLD_SCALE,spin:k.objectState.force.spin}}:undefined,shape:shapeOf(k,k.native?.shape),
     hold:k.holdOverride?k.hold:e.sequence.hold===undefined&&k.hold!==hold?k.hold:undefined,transition:k.transitionOverride?k.transition:e.sequence.transition===undefined&&k.transition!==transition?k.transition:undefined,
@@ -84,6 +89,18 @@ function projectNativeConfig(s:Scene):PointCloudConfig{
  else if(s.composition.frequencyDriver!=='focus')cfg.resonanceDrive={kind:'frequency'};
  else cfg.resonanceDrive=undefined;
  cfg.relational={...cfg.relational!,enabled:s.engine.relationalEnabled,mode:s.engine.relationalMode as any};
+ cfg.medium={...DEFAULT_MEDIUM_CONFIG,...cfg.medium,enabled:s.engine.mediumEnabled===true,dimension:s.engine.mediumDimension==='3D'?'3D':'2D'};
+ cfg.collision={...DEFAULT_COLLISION_CONFIG,...cfg.collision,enabled:s.engine.collisionEnabled===true,mode:s.engine.collisionMode??'obstacle'};
+ cfg.pairwise={...DEFAULT_PAIRWISE_CONFIG,...cfg.pairwise,enabled:s.engine.pairwiseEnabled===true};
+ // True-3D glyph bodies and depth presentation. Projection is a lens choice, not
+ // a scene change, so it rides the engine settings alongside the other toggles.
+ cfg.glyphVolume={...DEFAULT_GLYPH_VOLUME,...cfg.glyphVolume,enabled:s.engine.volumeEnabled===true,profile:(s.engine.volumeProfile??cfg.glyphVolume?.profile??DEFAULT_GLYPH_VOLUME.profile) as any};
+ cfg.depth={...DEFAULT_DEPTH_CONFIG,...cfg.depth,projection:s.engine.depthPerspective===true?'perspective':'orthographic',occlusion:s.engine.depthOcclusion===true||String(s.engine.depthOcclusion)==='on',depthTintColor:s.engine.depthTintColor??cfg.depth?.depthTintColor??DEFAULT_DEPTH_CONFIG.depthTintColor};
+ // Depth in the swirl/bridge: the sliders are explicit overrides. Absent values
+ // stay absent so the engine can derive the default from the body law (engage
+ // when true-3D bodies are on, planar otherwise) instead of a silent 0.
+ cfg.fluid={...cfg.fluid,vortex3d:s.engine.vortex3d??cfg.fluid.vortex3d,dispersion3d:s.engine.dispersion3d??cfg.fluid.dispersion3d};
+
  cfg.interaction={...cfg.interaction,mode:s.engine.pointerMode,clickMode:s.engine.pointerClick??'pulse',placedPoints:[]};
  cfg.automations=s.automation.map(authored=>{const l=resolvedAutomation(s.automation,authored),leader=automationLeader(s.automation,authored);
   const b=automationTarget(s,l.target);if(!b)return l.nativePath?{...original?.automations?.find(a=>a.id===l.nativeId),id:l.nativeId??l.id,path:l.nativePath,enabled:false,type:l.type==='lfo'?'lfo':'oneShot'} as NativeLane:null;
@@ -110,6 +127,7 @@ export function fromNativeEntity(e:NativeEntity):Entity{
  out.size=e.extent?{x:e.extent.width/WORLD_SCALE,y:e.extent.height/WORLD_SCALE}:{x:1,y:1};
  out.rotation=(e.extent?.rotation??0)*180/Math.PI;out.share=e.kind==='pin'?0:e.share;out.tint=e.tint;out.tintWeight=e.tintWeight;
  out.force={kind:e.forces.mode,strength:e.forces.strength,radius:e.forces.radius/WORLD_SCALE,spin:e.forces.spin};out.station=e.stationIndex??null;
+ out.layers=fromNativeLayers(e.layers);
  out.sequence={...e.sequence,manual:e.sequence.advance==='off'&&e.sequence.links.length>1,enabled:e.sequence.advance!=='off',clock:e.sequence.advance==='morphCycle'?'morph':'seconds',steps:(e.sequence.links.length?e.sequence.links:[{id:e.id+'_base',source:e.authoringSource?clone(e.authoringSource):undefined,shape:e.shape}]).map(k=>({id:k.id,name:k.name,source:k.source?clone(k.source):undefined,objectState:k.state?{scale:k.state.scale,size:{x:(k.state.extent?.width??400)/WORLD_SCALE,y:(k.state.extent?.height??400)/WORLD_SCALE},rotation:(k.state.extent?.rotation??0)*180/Math.PI,tint:k.state.tint,tintWeight:k.state.tintWeight,force:{kind:k.state.forces.mode,strength:k.state.forces.strength,radius:k.state.forces.radius/WORLD_SCALE,spin:k.state.forces.spin}}:undefined,native:clone(k),holdOverride:k.hold!==undefined,transitionOverride:k.transition!==undefined,text:k.shape.text??'',shape:shellShape(k.shape),yantraId:k.shape.yantraId,templateFrequency:k.shape.frequencyHz,templateGeometry:k.shape.plateGeometry,templateDimension:k.shape.dimension,hold:k.hold??e.sequence.hold,transition:k.transition??e.sequence.transition,
  position:k.x!==undefined||k.y!==undefined||k.z!==undefined?{x:(k.x??0)/WORLD_SCALE,y:(k.y??0)/WORLD_SCALE,z:(k.z??0)/WORLD_SCALE}:null}))};
  if(e.authoringSource)out.source=clone(e.authoringSource);return out;
@@ -126,7 +144,7 @@ export function nativeSnapshotToJourney(raw:unknown,index=0):Journey{
  const cfg=snapshot.config,s=blankScene(snapshot.name),j=blankJourney();
  const completeNative=Number(value.schemaVersion)>=4&&Number(value.schemaVersion)<=CONFIG_SCHEMA_VERSION&&source.fluid&&source.interaction&&source.particleSize&&typeof source.particleCount==='number'&&Array.isArray(source.entities);
  s.native={config:clone(completeNative?source:cfg),original:clone(raw)};s.text=[];
- s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',pointerMode:cfg.interaction.mode,pointerClick:cfg.interaction.clickMode??'pulse',pointerClickStrength:cfg.interaction.clickStrength??2.2,pointerClickRadius:(cfg.interaction.clickRadius??180)/400,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent'};
+ s.engine={...DEFAULT_ENGINE_SETTINGS,inkMode:cfg.colorMode,templateGeometry:cfg.cymatics?.plateGeometry,templateDimension:cfg.cymatics?.dimension,resonanceEnabled:cfg.cymatics?.enabled??false,morphEnabled:cfg.toroidalMorph?.enabled??false,autoOscillate:cfg.toroidalMorph?.autoOscillate??true,trajectory:cfg.toroidalMorph?.trajectory??'linear',driveShape:cfg.toroidalMorph?.driveShape??'sine',relationalEnabled:cfg.relational?.enabled??false,relationalMode:cfg.relational?.mode as any??'orbital',mediumEnabled:cfg.medium?.enabled??false,mediumDimension:cfg.medium?.dimension??'2D',collisionEnabled:cfg.collision?.enabled??false,collisionMode:cfg.collision?.mode as any??'obstacle',pairwiseEnabled:cfg.pairwise?.enabled??false,pointerMode:cfg.interaction.mode,pointerClick:cfg.interaction.clickMode??'pulse',pointerClickStrength:cfg.interaction.clickStrength??2.2,pointerClickRadius:(cfg.interaction.clickRadius??180)/400,colorMode:cfg.color?.mode??'monochrome',colorEnabled:cfg.color?.enabled??false,mediumPlane:cfg.composition?.plane??'vertical',autoSweep:cfg.cymatics?.sweep?.enabled??cfg.cymatics?.autoSweep??false,sweepDirection:cfg.cymatics?.sweep?.direction??'ascent',volumeEnabled:cfg.glyphVolume?.enabled??false,volumeProfile:cfg.glyphVolume?.profile??DEFAULT_GLYPH_VOLUME.profile,depthPerspective:(cfg.depth?.projection??DEFAULT_DEPTH_CONFIG.projection)==='perspective',depthOcclusion:cfg.depth?.occlusion??DEFAULT_DEPTH_CONFIG.occlusion,vortex3d:cfg.fluid?.vortex3d??0,dispersion3d:cfg.fluid?.dispersion3d??0,depthTintColor:cfg.depth?.depthTintColor??DEFAULT_DEPTH_CONFIG.depthTintColor};
  s.field.background=cfg.backgroundColor??cfg.color?.backgroundColor??'#f4f2eb';s.field.material=cfg.style==='halftone'?'print':'ink';
  s.field.palette=cfg.color?.customPaletteColors?.length?cfg.color.customPaletteColors.slice(0,8):[cfg.color?.primaryColor??'#252720',cfg.color?.accentColor??'#252720',cfg.color?.secondaryColor??'#252720'];
  for(const b of NATIVE_BINDINGS){const v=readPath(cfg,b.path);if(typeof v==='number')bindValue(s,b.bind,v/b.factor);}

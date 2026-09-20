@@ -1,0 +1,32 @@
+{
+  "profile_id": "roz-corpus-base",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E0 parent session, issue #65, 2026-09-17",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base (this file) → register profile → family profile → record variant → scene override",
+  "corpus_baseline": {
+    "field": {
+      "material": "ink",
+      "background": "#f4f2eb",
+      "palette": ["#252720", "#252720"],
+      "params": { "count": 62000, "size": 2.8, "opacity": 0.92, "contrast": 0.93, "jitter": 0.8, "speed": 0.7, "damping_note": "use engine defaults for damping/recovery/circulation unless the scene's content requires otherwise" }
+    },
+    "engine": { "inkMode": "blackOnWhite", "backgroundMode": "solid", "fontFamily": "system-ui, -apple-system, sans-serif", "fontWeight": 900 },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 12, "transition": 1.5, "note": "reading pace: a scene holds long enough to be read; transitions complete without hurry" },
+    "entities": { "note": "one governing formation per scene where the record is one relation; more only when the record's own structure carries them" }
+  },
+  "register_differentiations": {
+    "note": "M-branch colour/material policy: presentation policy, kept distinct from source-backed colour correspondence",
+    "essay_rooms": "warm paper, ink material — the reading surface",
+    "episteme": "print material or cooler paper — instituted knowledge, the lattice",
+    "matheme": "dark ground, whiteOnBlack inkMode — paśyantī, the visionary operative logic",
+    "mytheme": "round material, richer palette — madhyamā, lived images",
+    "symbolon": "deepest field (near-black paper or dark ground) — parā, the holding whole"
+  },
+  "rules": [
+    "quiet records stay quiet — no ornament without argumentative job",
+    "repeated families reuse their family profile; variation is explicit and recorded",
+    "forms arise from content; provenance recorded for anything external",
+    "a repeated colour association never becomes a claimed source relation"
+  ]
+}

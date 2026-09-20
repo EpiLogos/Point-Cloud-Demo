@@ -1,0 +1,33 @@
+{
+  "profile_id": "family-history",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E3 (episteme worker), issue #65, 2026-09-17",
+  "family": "episteme register histories (10 HISTORY.md records), carried in roz-histories",
+  "lineage_chain": "O:I global → Epi global → roz-corpus-base → family-history (this file) → record variant → scene override",
+  "attitude": "a history is a stream of the Logos in time: one stream-line with stations marking the record's own sections; the record's opening movement is the body",
+  "grammar": {
+    "field": {
+      "material": "print",
+      "background": "#e9ece7",
+      "palette_base": ["#20262b", "#5c6a74"],
+      "params_base": { "count": 62000, "size": 2.6, "opacity": 0.9, "contrast": 0.82, "speed": 0.5, "dispersion": 0.035, "roundness": 0.2 }
+    },
+    "engine": { "inkMode": "blackOnWhite", "backgroundMode": "solid", "fontFamily": "system-ui, -apple-system, sans-serif", "fontWeight": 900 },
+    "view": { "mode": "2d", "zoom": 1 },
+    "scene_rhythm": { "duration": 12, "transition": 1.5 },
+    "entities": {
+      "stream": "one wide thin square as the stream-line",
+      "stations": "3–5 discs, one per leading section of the record (capped at 5), placed along the stream in record order",
+      "entity_ceiling": "never more than 10 formations per scene (native limit; 6 is this family's max)"
+    },
+    "text_layers": {
+      "editorial_card": "kicker '<record_id> · HISTORY' (these HISTORY.md records declare no claim_status frontmatter — their DEVELOPMENT companions carry Argued; kicker says HISTORY rather than inventing a status) · title · italic = declared movement refs (frontmatter movement_ids, capped '+n more'; exact list in the binding) + domain",
+      "body": "the record's opening movement, compressed from the record only"
+    }
+  },
+  "variation_rules": [
+    "stream accent varies by domain (presentation only, recorded per scene in the binding)",
+    "station count follows the record's own sections; never padded",
+    "no ornament without an argumentative job"
+  ]
+}

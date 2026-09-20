@@ -24,6 +24,10 @@ export interface PointCloudFluidConfig {
   maxSpeed?: number;       // Hard velocity clamp (default 35000)
   zConfinement?: number;   // Per-frame Z decay toward the plane in flat modes (0 = free, 1 = classic, default 1)
   timeScale?: number;      // Simulation time multiplier (default 1)
+  /** How far the global vortex becomes a true helical swirl about the depth axis (0..1, default 0). */
+  vortex3d?: number;
+  /** How far inter-glyph dispersion carries into the depth axis (0..1, default 0). */
+  dispersion3d?: number;
 }
 
 export interface PlacedInteractionPoint {
@@ -68,10 +72,119 @@ export interface PointCloudRelationalConfig {
   swirlRadius?: number;       // Gaussian radius of the orbital swirl around each attractor (default 500)
 }
 
+/**
+ * Sorted-grid pairwise particle collisions (DEM-style contact response).
+ * Default-off: absent or enabled=false reproduces the classic simulation exactly.
+ */
+export interface PairwiseConfig {
+  enabled: boolean;
+  radius?: number;      // Interaction radius h in world px (2..80, default 14; ~baked slot spacing)
+  stiffness?: number;   // Separation spring strength (0..10, default 1)
+  restitution?: number; // Normal damping on approach (0..1, default 0.2)
+  viscosity?: number;   // Tangential relative-velocity smoothing (0..1, default 0.3)
+  extent?: number;      // Collision-grid half-extent in world px (200..5000, default 1400)
+}
+
 export type ChainTraversalMode = 'loop' | 'pingpong' | 'randomWalk' | 'chaos' | 'shuffle';
 export type ChainEasing = 'smoothstep' | 'linear' | 'kineticSnap' | 'whip';
 /** 'time' = classic hold/transition timeline. 'morphCycle' = the morph oscillator is the clock: one toroidal cycle = one link. */
 export type ChainAdvanceMode = 'time' | 'morphCycle';
+
+/**
+ * Shared Eulerian medium: a coarse grid fluid that particles inject momentum into
+ * and are pushed around by (see mediumShaders.ts). Absent or `enabled: false`
+ * keeps the simulation numerically identical to the classic engine.
+ */
+export interface MediumConfig {
+  enabled: boolean;
+  pressure?: number;      // pressure-gradient crowd repulsion gain (0..20, default 4)
+  coupling?: number;      // velocity drag into the medium flow (0..4, default 0.8)
+  persistence?: number;   // medium velocity retained per frame at 60fps (0.8..1.0, default 0.97)
+  iterations?: number;    // Jacobi pressure steps per frame (1..12, default 4)
+  gridRes?: number;       // square solver grid resolution (default 192)
+  splatGain?: number;     // momentum injection scale (0..4, default 1)
+  extent?: number;        // world half-extent the grid covers (200..5000, default 1400)
+  plane?: 'compositionPlane' | 'world3d'; // media axes follow the composition plane, or always the XZ world floor
+  dimension?: '2D' | '3D'; // solver topology: '2D' sheet (legacy default) or '3D' voxel volume (see mediumGrid.ts)
+}
+
+/**
+ * Glyph SDF colliders: each formation's letterform acts as a solid boundary with
+ * restitution/friction and energy-dependent integrity (fast particles punch
+ * through; the wall heals as things calm down).
+ */
+export interface CollisionConfig {
+  enabled: boolean;
+  mode?: 'obstacle' | 'vessel'; // strokes solid vs strokes as containers
+  restitution?: number;   // normal bounce on contact (0..1, default 0.35)
+  friction?: number;      // tangential loss on contact (0..1, default 0.1)
+  band?: number;          // influence band around the surface in px (5..200, default 40)
+  strength?: number;      // soft push gain (0..20, default 4)
+  integrity?: number;     // energy-dependent wall weakening (0..4, default 0.5)
+}
+
+/**
+ * True 3D letterforms. When enabled, glyph targets are baked as a solid body
+ * with real thickness instead of a flat card with z micro-noise (see
+ * glyphVolume.ts for the law). Off by default: an existing composition bakes
+ * byte-identically until this is switched on.
+ */
+export interface GlyphVolumeConfig {
+  enabled: boolean;
+  /** Full thickness of the body in stage units (the depth axis span). */
+  depth: number;
+  /** How thickness varies from the contour to the medial axis. */
+  profile: 'slab' | 'bevel' | 'round' | 'dome' | 'taper';
+  /** Scales the auto-derived stroke half-width that normalizes the profile. */
+  referenceFalloff: number;
+  /** Share of samples placed on the extruded side walls at the contour. */
+  wallShare: number;
+  /** Of the non-wall remainder, how much pins to the front/back faces. */
+  faceBias: number;
+  /** How far into the interior the body fill spreads (fraction of half-depth). */
+  interiorFill: number;
+  /** Micro-noise on the final z, in stage units. */
+  jitter: number;
+  /** -1..1: denser ink reads thicker (positive) or thinner (negative). */
+  densityDepth: number;
+  /** Face sheets occupy this many units inside the surface, keeping them crisp. */
+  surfaceThickness: number;
+  /** Contour band, in px, over which flank placement falls off inward. */
+  wallBand: number;
+  /** How far the outside stipple spray keeps any thickness, in reference widths. */
+  outsideTaper: number;
+}
+
+/**
+ * Depth presentation. The field renders orthographically by default, which is
+ * why a real z body still reads flat: an orthographic camera has no
+ * convergence, so distance cannot change size. These are the knobs that make
+ * depth legible (see particleShaders.ts).
+ */
+export interface DepthRenderConfig {
+  /** 'orthographic' keeps the planar drawing; 'perspective' gives real convergence. */
+  projection: 'orthographic' | 'perspective';
+  /** Vertical field of view in degrees (perspective only). */
+  fov: number;
+  /** Orbit radius of the camera, in world units. */
+  distance: number;
+  /** Strength of perspective point-size attenuation (0 = none, ortho-like). */
+  sizeAttenuation: number;
+  /** Exponent on the attenuation curve; >1 keeps far marks larger. */
+  sizeAttenuationCurve: number;
+  /** Aerial perspective: how strongly distance dims ink (0..1). */
+  aerialFade: number;
+  /** How far the falloff reaches, as a multiple of the orbit distance. */
+  aerialRange: number;
+  /** Extra size ramp with depth: near marks larger, far smaller (−1..1). */
+  sizeDepthBias: number;
+  /** Depth tone shift weight (0..1); mixed toward the fade colour. */
+  depthTintWeight: number;
+  /** Ink colour distant marks shift toward. */
+  depthTintColor: string;
+  /** Reversed-Z depth buffer so near bodies occlude far ones. */
+  occlusion: boolean;
+}
 
 export interface PointCloudChainingConfig {
   enabled: boolean;                      // Sequenced morph chaining mode toggle
@@ -414,6 +527,14 @@ export interface PointCloudConfig {
   /** Semantic interpretation/expression layer. Physics remains independent when absent/disabled. */
   semanticField?: import('./semantics/semanticTypes').SemanticFieldConfig;
   resonanceDrive?: import('./resonanceDrive').ResonanceDriveConfig;
+  /** Shared Eulerian medium (default off; absent = disabled with defaults). */
+  medium?: MediumConfig;
+  /** Glyph SDF collision boundaries (default off; absent = disabled with defaults). */
+  collision?: CollisionConfig;
+  /** True 3D letterform bodies (default off; absent = flat cards with z noise). */
+  glyphVolume?: GlyphVolumeConfig;
+  /** Depth presentation: projection, attenuation and aerial perspective. */
+  depth?: DepthRenderConfig;
 
   /** @deprecated legacy — migrated into entities[0] (kept only as migration input) */
   glyph: string | string[];           // e.g., ["O", "I"] or "OI" or "✦ ✧"
@@ -431,6 +552,7 @@ export interface PointCloudConfig {
   fluid: PointCloudFluidConfig;
   interaction: PointCloudInteractionConfig;
   relational?: PointCloudRelationalConfig;
+  pairwise?: PairwiseConfig;
   chaining?: PointCloudChainingConfig;
   spatialChakra?: SpatialChakraConfig;
   toroidalMorph?: ToroidalMorphConfig;

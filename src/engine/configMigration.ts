@@ -19,6 +19,7 @@
  *   3  unified morph (dual-phase), extended physics, anchors with shape, automation lanes
  *   4  first-class entities / composition / cymatic medium (legacy glyph, chaining, spatialChakra migrated)
  *   5  semantic field bindings + explicit resonance driver; chakra meaning no longer lives in physics objects
+ *      (still v5, additive: optional `medium` / `collision` physics sections, disabled when absent)
  */
 
 import {
@@ -28,6 +29,8 @@ import {
   CameraOrbState,
   PlacedInteractionPoint,
   AutomationLane,
+  MediumConfig,
+  CollisionConfig,
 } from './types';
 import { DEFAULT_CONFIG, DEFAULT_COLOR_CONFIG, DEFAULT_TOROIDAL_CONFIG } from './PointCloudField';
 import { createDefaultChakraConfig } from './chakraSystem';
@@ -146,6 +149,29 @@ function migrateToroidal(raw: Partial<ToroidalMorphConfig> | undefined): Toroida
   return { ...DEFAULT_TOROIDAL_CONFIG, ...raw, enabled: raw.enabled === true };
 }
 
+/** Shared medium / glyph colliders: optional sections default to disabled; unknown enum values fall back. */
+function migrateMedium(raw: Partial<MediumConfig> | undefined): MediumConfig {
+  const base = { ...DEFAULT_CONFIG.medium! };
+  if (!raw) return { ...base, enabled: false };
+  return {
+    ...base,
+    ...raw,
+    enabled: raw.enabled === true,
+    plane: raw.plane === 'world3d' ? 'world3d' : 'compositionPlane',
+  };
+}
+
+function migrateCollision(raw: Partial<CollisionConfig> | undefined): CollisionConfig {
+  const base = { ...DEFAULT_CONFIG.collision! };
+  if (!raw) return { ...base, enabled: false };
+  return {
+    ...base,
+    ...raw,
+    enabled: raw.enabled === true,
+    mode: raw.mode === 'vessel' ? 'vessel' : 'obstacle',
+  };
+}
+
 function cloneSemanticField(raw: SemanticFieldConfig): SemanticFieldConfig {
   return {
     ...raw,
@@ -253,6 +279,9 @@ export function migrateConfig(
     relational: src.relational
       ? { ...DEFAULT_CONFIG.relational!, ...src.relational, enabled: src.relational.enabled === true }
       : { ...DEFAULT_CONFIG.relational!, enabled: false },
+    pairwise: src.pairwise
+      ? { ...DEFAULT_CONFIG.pairwise!, ...src.pairwise, enabled: src.pairwise.enabled === true }
+      : { ...DEFAULT_CONFIG.pairwise!, enabled: false },
     chaining: src.chaining
       ? {
           ...DEFAULT_CONFIG.chaining!,
@@ -277,6 +306,8 @@ export function migrateConfig(
         }
       : { ...chakraDefaults, enabled: false },
     toroidalMorph: migrateToroidal(src.toroidalMorph),
+    medium: migrateMedium(src.medium),
+    collision: migrateCollision(src.collision),
     color: migrateColor(src.color, fromVersion, bg),
     automations: migrateAutomations(src.automations),
     entities: field.entities,

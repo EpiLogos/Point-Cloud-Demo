@@ -129,7 +129,7 @@ export class PinMarkerLayer {
     activeId: string | null,
     ghost: PinGhostState | null,
     isLight: boolean,
-    _camera: THREE.OrthographicCamera
+    _camera: THREE.Camera
   ): void {
     const signature = JSON.stringify({
       p: points.map((p) => [p.id, r1(p.x), r1(p.y), r1(p.z ?? 0), r1(p.radius), p.mode, p.active]),

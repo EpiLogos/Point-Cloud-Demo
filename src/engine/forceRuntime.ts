@@ -23,7 +23,8 @@ export interface ForceEmitterState {
 export function compileEntityForceEmitters(
   entities: Entity[],
   poses: readonly EvaluatedEntityPose[],
-  legacyPoints: readonly PlacedInteractionPoint[] = []
+  legacyPoints: readonly PlacedInteractionPoint[] = [],
+  formationMetric: ForceEmitterMetric = 'compositionPlane'
 ): ForceEmitterState[] {
   const poseById = new Map(poses.map((pose) => [pose.entityId, pose] as const));
   const emitters: ForceEmitterState[] = [];
@@ -45,8 +46,10 @@ export function compileEntityForceEmitters(
       strength:forces.mode === 'none' ? 0 : forces.strength,
       radius:Math.max(5, forces.radius),
       spin:forces.spin,
-      // Preserve the existing laws exactly: formation forces are planar; pin forces are 3D.
-      metric:entity.kind === 'pin' ? 'world3d' : 'compositionPlane',
+      // Formations inherit the caller's metric: planar for flat compositions,
+      // full 3D once the true-3D body law is on (their force then acts through
+      // the body). Pins are always full 3D.
+      metric: entity.kind === 'pin' ? 'world3d' : formationMetric,
       enabled:true,
     });
   }

@@ -1,0 +1,83 @@
+{
+  "artifact": "anuttara/bimba-m0-mirror-frame-operator.journey.json",
+  "family": "anuttara",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-anuttara-language"
+  ],
+  "m_prime": {
+    "instrument": "M0′ Project/Wiki/Graph ↔ Expression graph/source depth",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §6/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#0-3",
+        "registry_node": "75b4f96f2c8f4aeb",
+        "name": "Archetypal Number Language"
+      },
+      {
+        "coordinate": "#0-3-0/1",
+        "registry_node": "fa7a7435b8a8cfce",
+        "name": "The Mirror"
+      },
+      {
+        "coordinate": "#0-3-0/1-0",
+        "registry_node": "a0308bf43b409553",
+        "name": "The Frame"
+      },
+      {
+        "coordinate": "#0-3-0/1-1",
+        "registry_node": "1acf68b0ec611631",
+        "name": "The Operator"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#0-3",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#0-3-0/1",
+      "ref": "bimba:relation:11a4c005bdd88c7d3c12bc66"
+    },
+    {
+      "from": "#0-3-0/1",
+      "kind": "HAS_CONSTITUENT",
+      "to": "#0-3-0/1-0",
+      "ref": "bimba:relation:5dec0943d4104ed265559b35"
+    },
+    {
+      "from": "#0-3-0/1",
+      "kind": "HAS_CONSTITUENT",
+      "to": "#0-3-0/1-1",
+      "ref": "bimba:relation:a152d3619bafbc2065f8fb93"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m0-mirror-s1",
+      "source_ref": "#0-3-0/1 (with #0-3-0/1-0, #0-3-0/1-1)"
+    },
+    {
+      "scene_id": "bimba-m0-mirror-s2",
+      "source_ref": "#0-3"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "First M0′ cut. The aperture pair (-0/1) is presented as a mirrored pair about a still centre because the coordinate itself is an aperture pair; the Operator carries the accent tint as the first distinction. Depth-3 aperture notation carried verbatim."
+}

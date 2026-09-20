@@ -1,0 +1,72 @@
+{
+  "artifact": "epii/bimba-m5-logos-return.journey.json",
+  "family": "epii",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-epii-return"
+  ],
+  "m_prime": {
+    "instrument": "M5′ Palace/integral articulation ↔ Epii/Agent depth and Return (closes into M0)",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §11/§12/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#5-5",
+        "registry_node": "828a9ee07bba8b16",
+        "name": "Integral Identity"
+      },
+      {
+        "coordinate": "#5-5-0",
+        "registry_node": "4e7e6e3808e1bde8",
+        "name": "#0 A-logos"
+      },
+      {
+        "coordinate": "#5-5-5",
+        "registry_node": "c36e158e43a218f0",
+        "name": "#5 An-a-logos"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#5-5",
+      "kind": "HAS_LOGOS_STAGE",
+      "to": "#5-5-0",
+      "ref": "bimba:relation:15483063837bd993f5caf04b"
+    },
+    {
+      "from": "#5-5",
+      "kind": "HAS_LOGOS_STAGE",
+      "to": "#5-5-5",
+      "ref": "bimba:relation:053f75da913c8aeecb2cb344"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m5-logos-s1",
+      "source_ref": "#5-5-0 … #5-5-5 (ordered logos stages)"
+    },
+    {
+      "scene_id": "bimba-m5-logos-s2",
+      "source_ref": "#5-5 (the whole, after the stages)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "The Return scene lifts to the M0 void palette — the declared presentation form of \"M5 closes into M0 through Recognition/Return\" (lock §11). No new formations appear in it (profile return_grammar)."
+}

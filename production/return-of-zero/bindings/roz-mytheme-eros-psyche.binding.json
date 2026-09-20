@@ -1,0 +1,118 @@
+{
+  "artifact": "mytheme/roz-mytheme-eros-psyche.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-eros-psyche",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/roman-latin/eros-psyche/WHOLE.md",
+        "sha256": "2a7c31a84f8a560505023641513926b4c17858c7543ebdd4fd3de4eaeaf60ef6"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-psy-0-oracle",
+      "phase": "#0 displaced worship; the bridal exposure; Zephyr",
+      "relations": "Apuleius 4.28–4.35 (q001)"
+    },
+    {
+      "scene_id": "m-psy-1-palace",
+      "phase": "#1 the palace of invisible service",
+      "relations": "Apuleius 5.1–5.21 (q001)"
+    },
+    {
+      "scene_id": "m-psy-2-lamp",
+      "phase": "#2 the lamp: truth seen, wound dealt",
+      "relations": "Apuleius 5.22–5.31; anchor psyche-lamp-and-separation"
+    },
+    {
+      "scene_id": "m-psy-3-labours",
+      "phase": "#3 the four labours",
+      "relations": "Apuleius 6.1–6.16.1 (q002); anchor psyche-sanctuaries-and-helpers"
+    },
+    {
+      "scene_id": "m-psy-4-descent",
+      "phase": "#4 the descent, the box, and the waking",
+      "relations": "Apuleius 6.16.2–6.21.4, waking at 6.21.3 (q003); anchor psyche-descent-and-waking"
+    },
+    {
+      "scene_id": "m-psy-5-marriage",
+      "phase": "#5→0 marriage without merger; the possession idiom retained",
+      "relations": "Apuleius 6.22–6.24 (q004); anchor psyche-marriage-and-voluptas, psyche-native-return; movement 33 supplementary plate; A03, A20, A31, A35, A23, A27, A36"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "Venus / Cupid / Zephyr",
+      "occurrence": "#0 the affront, the sent son, the carrying wind; #2 the self-wounding disclosure"
+    },
+    {
+      "figure": "the sisters",
+      "occurrence": "#1 the incompatible accounts and serpent story; #2 their deaths at the rock"
+    },
+    {
+      "figure": "the blade and the covered lamp",
+      "occurrence": "#1 prescribed; #2 the blade losing its object, the oil falling"
+    },
+    {
+      "figure": "the ant, the reed, the eagle, the tower",
+      "occurrence": "#3–#4 the helpers — particular, not universal psychic faculties"
+    },
+    {
+      "figure": "the two cakes and two coins",
+      "occurrence": "#4 the exact reserves making the descent a round trip"
+    },
+    {
+      "figure": "the arrow-prick waking",
+      "occurrence": "#4 at 6.21.3 — no kiss performs it"
+    },
+    {
+      "figure": "Voluptas",
+      "occurrence": "#5→0 born at full term of a conception preceding the ordeals"
+    },
+    {
+      "motif": "sic rite Psyche convenit in manum Cupidinis",
+      "occurrence": "#5→0 the legal possession formula kept in view against merger-reading"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "the plan/Draft 3 appointment: unseen union, exposure, separation, four labours, descent, waking, marriage, Voluptas as return through traversed tension; the ānanda crossing",
+      "flag": "yes"
+    },
+    {
+      "relation": "assigning helpers universal psychic faculties; reading Apuleius as teaching anti-possession; kiss-substitutions; fixed Cupid/Psyche = Self/ego identities",
+      "flag": "no"
+    }
+  ],
+  "cross_story_relations": [
+    "Returns-to Movement 33 as the admitted supplementary plate — the Ares–Aphrodite–Harmonia office stays with that movement and A13.",
+    "Uroboros return keeps achieved continuation open within the shared field; Neumann structuration via the declared A27 route."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-eros-psyche.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: the descent scene is the darkest (infernal palette) and carries the nested-return warning (the fourth labour contains its own descent) in text. Marriage scene keeps the ⚖ glyph so the possession idiom is visible in the frame, per the record's friction requirement. E0 acceptance repair: title/field collision fixed on m-psy-1-palace, m-psy-5-marriage (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

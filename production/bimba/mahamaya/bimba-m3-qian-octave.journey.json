@@ -1,0 +1,1108 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "bimba-m3-qian-octave",
+  "name": "M3 · Qian — the octave head and its eight rows",
+  "description": "Bimba M3′ transcription artifact (widening cut, depth 3→4). Coordinates: #3-1 I-Ching System → #3-1-0 Qian with rows #3-1-0-0 Qian, #3-1-0-1 Tai, #3-1-0-2 Da Zhuang, #3-1-0-3 Xiao Chu, #3-1-0-4 Xu, #3-1-0-5 Da You, #3-1-0-6 Da Chu, #3-1-0-7 Guai. M′ instrument: M3′ Journey/Scenes ↔ real Expression Scenes (L5-TECHNE-DUAL-READING-LOCK §9/§13); the accepted M3 state remains the clock/transcription owner — presentation only. Inherited profile: bimba-corpus-base → family-mahamaya-transcription. Variation (source-backed): the first cut staged the octave and the 360 wheel from above; this artifact widens INTO the octave head's own eight rows. The registry types no relation between #3-1-0 and its rows, so membership is structural (node ids in the binding record) — the square template and registry-order walk are declared presentation of an enumeration, not graph claims. Relations cited: none — no typed relation rows exist for #3-1-0 → rows; membership is parent+node-id structural citation only. Sources: registry_revision 259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4 at QL-MEF (session branch 98216fa; registry unchanged from main dbff5cc). Second-cut widening pass — one authored variation per family profile at real depth 3→4. Binding record: bindings/bimba-m3-qian-octave.binding.json.",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack",
+        "templateGeometry": "square"
+      },
+      "id": "bimba-m3-qian-s1",
+      "name": "The eight rows",
+      "character": "#3-1-0 Qian — octave head, rows in a square template.",
+      "duration": 14,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#a8893d",
+          "#e8e6df"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.35,
+          "circulation": 0.3,
+          "turbulence": 0.07,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-3-1-0-0",
+          "name": "Qian",
+          "kind": "formation",
+          "position": {
+            "x": -0.66,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-0 · Qian",
+          "share": 1,
+          "tint": "#a8893d",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-0-step-1",
+                "text": "#3-1-0-0 · Qian",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-1",
+          "name": "Tai",
+          "kind": "formation",
+          "position": {
+            "x": -0.22000000000000003,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-1 · Tai",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-1-step-1",
+                "text": "#3-1-0-1 · Tai",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-2",
+          "name": "Da Zhuang",
+          "kind": "formation",
+          "position": {
+            "x": 0.21999999999999997,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-2 · Da Zhuang",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-2-step-1",
+                "text": "#3-1-0-2 · Da Zhuang",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-3",
+          "name": "Xiao Chu",
+          "kind": "formation",
+          "position": {
+            "x": 0.66,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-3 · Xiao Chu",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-3-step-1",
+                "text": "#3-1-0-3 · Xiao Chu",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-4",
+          "name": "Xu",
+          "kind": "formation",
+          "position": {
+            "x": -0.66,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-4 · Xu",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-4-step-1",
+                "text": "#3-1-0-4 · Xu",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-5",
+          "name": "Da You",
+          "kind": "formation",
+          "position": {
+            "x": -0.22000000000000003,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-5 · Da You",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-5-step-1",
+                "text": "#3-1-0-5 · Da You",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-6",
+          "name": "Da Chu",
+          "kind": "formation",
+          "position": {
+            "x": 0.21999999999999997,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-6 · Da Chu",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-6-step-1",
+                "text": "#3-1-0-6 · Da Chu",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-7",
+          "name": "Guai",
+          "kind": "formation",
+          "position": {
+            "x": 0.66,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-7 · Guai",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-7-step-1",
+                "text": "#3-1-0-7 · Guai",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-pin-s1",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-pin-s1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "bimba-m3-qian-t1",
+          "visible": true,
+          "kicker": "M3′ · depth 3→4",
+          "title": "#3-1-0 Qian — the octave head",
+          "italic": "Eight rows; the registry cites membership structurally.",
+          "body": "#3-1-0-0 Qian · #3-1-0-1 Tai · #3-1-0-2 Da Zhuang · #3-1-0-3 Xiao Chu · #3-1-0-4 Xu · #3-1-0-5 Da You · #3-1-0-6 Da Chu · #3-1-0-7 Guai",
+          "x": 0.5,
+          "y": 0.78,
+          "width": 620,
+          "size": 30,
+          "align": "center"
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack",
+        "templateGeometry": "square"
+      },
+      "id": "bimba-m3-qian-s2",
+      "name": "The walk",
+      "character": "The rows in registry order — a transcription, not a claim.",
+      "duration": 16,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#a8893d",
+          "#e8e6df"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.35,
+          "circulation": 0.3,
+          "turbulence": 0.07,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-3-1-0-0",
+          "name": "Qian",
+          "kind": "formation",
+          "position": {
+            "x": -0.66,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-0 · Qian",
+          "share": 1,
+          "tint": "#a8893d",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-0-step-1",
+                "text": "#3-1-0-0 · Qian",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-1",
+          "name": "Tai",
+          "kind": "formation",
+          "position": {
+            "x": -0.22000000000000003,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-1 · Tai",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-1-step-1",
+                "text": "#3-1-0-1 · Tai",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-2",
+          "name": "Da Zhuang",
+          "kind": "formation",
+          "position": {
+            "x": 0.21999999999999997,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-2 · Da Zhuang",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-2-step-1",
+                "text": "#3-1-0-2 · Da Zhuang",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-3",
+          "name": "Xiao Chu",
+          "kind": "formation",
+          "position": {
+            "x": 0.66,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-3 · Xiao Chu",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-3-step-1",
+                "text": "#3-1-0-3 · Xiao Chu",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-4",
+          "name": "Xu",
+          "kind": "formation",
+          "position": {
+            "x": -0.66,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-4 · Xu",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-4-step-1",
+                "text": "#3-1-0-4 · Xu",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-5",
+          "name": "Da You",
+          "kind": "formation",
+          "position": {
+            "x": -0.22000000000000003,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-5 · Da You",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-5-step-1",
+                "text": "#3-1-0-5 · Da You",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-6",
+          "name": "Da Chu",
+          "kind": "formation",
+          "position": {
+            "x": 0.21999999999999997,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-6 · Da Chu",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-6-step-1",
+                "text": "#3-1-0-6 · Da Chu",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-7",
+          "name": "Guai",
+          "kind": "formation",
+          "position": {
+            "x": 0.66,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.38,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#3-1-0-7 · Guai",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-7-step-1",
+                "text": "#3-1-0-7 · Guai",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-3-1-0-pin-s2",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-3-1-0-pin-s2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "bimba-m3-qian-t2",
+          "visible": true,
+          "kicker": "Registry order",
+          "title": "Qian → Tai → Da Zhuang → Xiao Chu → Xu → Da You → Da Chu → Guai",
+          "italic": "The walk order is the registry's own child order.",
+          "body": "Sequence is presentation timing over an enumeration; no sequential relation is asserted by the corpus.",
+          "x": 0.5,
+          "y": 0.78,
+          "width": 620,
+          "size": 30,
+          "align": "center"
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    }
+  ],
+  "updatedAt": "2026-09-17T12:00:00.000Z"
+}

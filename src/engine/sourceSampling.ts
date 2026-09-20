@@ -22,10 +22,21 @@
  *  5. Candidate emission in stage units: the content bbox is mapped uniformly
  *     to a 400-unit box (`norm:'stage400'`), centred on the origin, y up.
  *     Entity width/height then carry the display aspect, exactly as for glyphs.
+ *  6. True-3D body — when the glyph volume law is on, every emitted candidate
+ *     also carries its place in the solid (`hz` half-thickness, `cw` flank
+ *     weight), measured by the same distance transform letterforms use. An
+ *     image mask or typed drawing therefore extrudes exactly like a glyph.
  *
  * The module is DOM-free so the engine and the Node test-suite share one law.
  * DOM decoding lives with the callers (GlyphSampler, UI preview).
  */
+
+import {
+  buildDepthFieldsFromMask,
+  cellVolumeShape,
+  type GlyphDepthFields,
+} from './glyphVolume';
+import type {GlyphVolumeConfig} from './types';
 
 export type SourceMode = 'luminance' | 'edgeSobel' | 'silhouette';
 /** Internal mode: ink equals alpha (ASCII drawings rasterized white-on-transparent). */
@@ -41,7 +52,22 @@ export interface SourceSampleOptions {
 	scale?: number;
 	/** Soft cap on emitted candidates. */
 	maxCandidates?: number;
+	/** True-3D body law: when enabled and `depth > 0`, candidates carry `hz`/`cw`. */
+	volume?: GlyphVolumeConfig;
 }
+
+/** One sampled source point. `hz`/`cw` are present only under the volume law. */
+export interface SourceCandidatePoint {
+	x: number;
+	y: number;
+	density: number;
+	/** Half-thickness of the solid at this cell, in body-law units. */
+	hz?: number;
+	/** 0..1 flank weight: 1 at the contour, 0 well inside it. */
+	cw?: number;
+}
+
+export type SourceCandidatePool = Array<SourceCandidatePoint> & { norm?: 'stage400' };
 
 export interface SourceAnalysis {
 	mode: InternalMode;
@@ -61,7 +87,7 @@ export interface SourceAnalysis {
 }
 
 export interface SampledSource {
-	candidates: Array<{ x: number; y: number; density: number }> & { norm?: 'stage400' };
+	candidates: SourceCandidatePool;
 	analysis: SourceAnalysis;
 }
 
@@ -299,6 +325,25 @@ function silhouetteInk(ink: Float32Array, w: number, h: number, threshold: numbe
 	return out;
 }
 
+/**
+ * The source-agnostic half of the body law: threshold the shaped ink into the
+ * exact mask the candidates are selected from, then measure it with the same
+ * distance transform letterforms use. Returns null when the law is off, so the
+ * emitted pool stays exactly the classic flat one.
+ */
+function sourceVolume(
+	shaped: Float32Array,
+	w: number,
+	h: number,
+	threshold: number,
+	volume: GlyphVolumeConfig | undefined
+): { law: GlyphVolumeConfig; fields: GlyphDepthFields } | null {
+	if (!volume || !volume.enabled || !(volume.depth > 0)) return null;
+	const mask = new Uint8Array(w * h);
+	for (let i = 0; i < w * h; i++) if (shaped[i] >= threshold) mask[i] = 1;
+	return { law: volume, fields: buildDepthFieldsFromMask(mask, w, h) };
+}
+
 function coverageOf(ink: Float32Array, w: number, h: number, crop: InkField['crop'], threshold: number): number {
 	const cw = crop.x1 - crop.x0 + 1, ch = crop.y1 - crop.y0 + 1;
 	let inked = 0, total = 0;
@@ -315,11 +360,13 @@ function coverageOf(ink: Float32Array, w: number, h: number, crop: InkField['cro
  * Emits deterministic candidate points from an ink field. The content box is
  * mapped uniformly into a centred 400-unit stage box; density carries the ink
  * strength so the material's own size/density response follows the image.
+ * Under the volume law each point also carries its measured place in the
+ * solid, so images extrude exactly like letterforms.
  */
 export function candidatesFromInkField(
 	field: InkField,
 	options: SourceSampleOptions & { threshold: number }
-): Array<{ x: number; y: number; density: number }> & { norm: 'stage400' } {
+): SourceCandidatePool {
 	const { width: w, height: h, ink, crop } = field;
 	const mode = options.mode ?? 'luminance';
 	const threshold = options.threshold;
@@ -330,23 +377,35 @@ export function candidatesFromInkField(
 	if (mode === 'edgeSobel') shaped = sobelInk(ink, w, h);
 	else if (mode === 'silhouette') shaped = silhouetteInk(ink, w, h, threshold);
 
+	const volume = sourceVolume(shaped, w, h, threshold, options.volume);
+	const law = volume?.law;
+	const fields = volume?.fields;
+
 	const cw = crop.x1 - crop.x0 + 1, ch = crop.y1 - crop.y0 + 1;
 	const cx = (crop.x0 + crop.x1 + 1) / 2;
 	const cy = (crop.y0 + crop.y1 + 1) / 2;
 	const unit = (400 * scale) / Math.max(cw, ch);
 	const step = Math.max(1, Math.round(Math.max(cw, ch) / 220));
 
-	const out: Array<{ x: number; y: number; density: number }> & { norm: 'stage400' } = Object.assign([], { norm: 'stage400' as const });
+	const out: SourceCandidatePool = Object.assign([], { norm: 'stage400' as const });
 	const stride = Math.max(1, Math.ceil((((cw / step) | 0) * ((ch / step) | 0)) / maxCandidates));
 	for (let y = crop.y0, row = 0; y <= crop.y1; y += step, row++) {
 		for (let x = crop.x0 + (row % stride) * step; x <= crop.x1; x += step * stride) {
 			const v = shaped[y * w + x];
 			if (v < threshold) continue;
-			out.push({
+			const density = mode === 'silhouette' ? 1 : mode === 'edgeSobel' ? clamp01(v * 1.4) : clamp01(v);
+			const point: SourceCandidatePoint = {
 				x: (x + 0.5 - cx) * unit,
 				y: -(y + 0.5 - cy) * unit,
-				density: mode === 'silhouette' ? 1 : mode === 'edgeSobel' ? clamp01(v * 1.4) : clamp01(v),
-			});
+				density,
+			};
+			if (fields && law) {
+				const cell = y * w + x;
+				const shape = cellVolumeShape(fields.distInside[cell], fields.distToInk[cell], fields.referenceThickness, density, law);
+				point.hz = shape.half;
+				point.cw = shape.contourness;
+			}
+			out.push(point);
 		}
 	}
 	return out;
@@ -354,7 +413,7 @@ export function candidatesFromInkField(
 
 const FALLBACK_RING = 500;
 
-function visibilityRing(): Array<{ x: number; y: number; density: number }> {
+function visibilityRing(): SourceCandidatePool {
 	const ring: Array<{ x: number; y: number; density: number }> = [];
 	for (let i = 0; i < FALLBACK_RING; i++) {
 		const ang = (i / FALLBACK_RING) * Math.PI * 2;
@@ -375,7 +434,7 @@ export function sampleImageSource(
 	if (mode === 'edgeSobel') threshold = Math.max(0.02, threshold * 0.55);
 
 	const field = computeInkField(px, w, h, options);
-	let candidates: Array<{ x: number; y: number; density: number }> = candidatesFromInkField(field, { ...options, threshold });
+	let candidates: SourceCandidatePool = candidatesFromInkField(field, { ...options, threshold });
 	let coverage = coverageOf(field.ink, w, h, field.crop, threshold);
 
 	// Auto-recovery: a threshold that collects almost nothing starves the
@@ -428,7 +487,7 @@ export function sampleAlphaSource(
 	// mark crisp in the particle lattice.
 	const threshold = 0.3;
 	const candidates = options.cell && options.cell.w >= 3 && options.cell.h >= 3
-		? candidatesFromAlphaCells(field, options.cell, threshold, options.scale ?? 1)
+		? candidatesFromAlphaCells(field, options.cell, threshold, options.scale ?? 1, options.volume)
 		: candidatesFromInkField(field, { ...options, threshold, mode: 'alpha' });
 	const coverage = coverageOf(field.ink, w, h, field.crop, threshold);
 	return {
@@ -452,31 +511,47 @@ export function sampleAlphaSource(
 /**
  * Per-character aggregation for ASCII sources: each character cell contributes
  * up to four quadrant candidates weighted by mean alpha, anchored on the ink
- * crop so typed marks stay crisp at any raster size.
+ * crop so typed marks stay crisp at any raster size. Under the volume law each
+ * quadrant is measured against the drawing's own distance transform, so a
+ * typed stroke extrudes like a letterform of the same weight.
  */
 function candidatesFromAlphaCells(
 	field: InkField,
 	cell: { w: number; h: number },
 	threshold: number,
-	scale: number
-): Array<{ x: number; y: number; density: number }> & { norm: 'stage400' } {
+	scale: number,
+	volume?: GlyphVolumeConfig
+): SourceCandidatePool {
 	const { width: w, height: h, ink, crop } = field;
 	const cw = crop.x1 - crop.x0 + 1, ch = crop.y1 - crop.y0 + 1;
 	const cx = (crop.x0 + crop.x1 + 1) / 2;
 	const cy = (crop.y0 + crop.y1 + 1) / 2;
 	const unit = (400 * scale) / Math.max(cw, ch);
-	const out: Array<{ x: number; y: number; density: number }> & { norm: 'stage400' } = Object.assign([], { norm: 'stage400' as const });
+	const volumeLaw = volume?.enabled && volume.depth > 0 ? volume : null;
+	const fields = volumeLaw
+		? buildDepthFieldsFromMask(
+				Uint8Array.from(ink, (v) => (v >= threshold ? 1 : 0)),
+				w,
+				h
+			)
+		: null;
+	const out: SourceCandidatePool = Object.assign([], { norm: 'stage400' as const });
 	const cols = Math.ceil(cw / cell.w);
-	for (let row = 0; row * cell.h < ch; row++) {
+	const rows = Math.ceil(ch / cell.h);
+	for (let row = 0; row < rows; row++) {
+		// Cell bounds are integral: cell.w/h are fractional (fontSize·0.6/·1.15),
+		// and a fractional pixel index would read the ink field as `undefined`
+		// and poison the quadrant mean with NaN.
+		const ry0 = crop.y0 + Math.round(row * cell.h);
+		const ry1 = Math.min(crop.y1 + 1, crop.y0 + Math.round((row + 1) * cell.h));
+		const rym = (ry0 + ry1) >> 1;
 		for (let col = 0; col < cols; col++) {
-			const x0 = crop.x0 + col * cell.w;
-			const y0 = crop.y0 + row * cell.h;
-			for (const [dx0, dx1] of [[0, 0.5], [0.5, 1]] as const) {
-				for (const [dy0, dy1] of [[0, 0.5], [0.5, 1]] as const) {
-					const qx0 = x0 + Math.floor(dx0 * cell.w);
-					const qx1 = Math.min(x0 + Math.ceil(dx1 * cell.w), crop.x1 + 1);
-					const qy0 = y0 + Math.floor(dy0 * cell.h);
-					const qy1 = Math.min(y0 + Math.ceil(dy1 * cell.h), crop.y1 + 1);
+			const cx0 = crop.x0 + Math.round(col * cell.w);
+			const cx1 = Math.min(crop.x1 + 1, crop.x0 + Math.round((col + 1) * cell.w));
+			if (cx1 <= cx0 || ry1 <= ry0) continue;
+			const cxm = (cx0 + cx1) >> 1;
+			for (const [qx0, qx1] of [[cx0, cxm], [cxm, cx1]] as const) {
+				for (const [qy0, qy1] of [[ry0, rym], [rym, ry1]] as const) {
 					let sum = 0, count = 0;
 					for (let y = qy0; y < qy1; y++) {
 						for (let x = qx0; x < qx1; x++) {
@@ -487,11 +562,20 @@ function candidatesFromAlphaCells(
 					if (!count) continue;
 					const mean = sum / count;
 					if (mean < threshold) continue;
-					out.push({
+					const density = clamp01(mean * 1.6);
+					const point: SourceCandidatePoint = {
 						x: ((qx0 + qx1) / 2 - cx) * unit,
 						y: -((qy0 + qy1) / 2 - cy) * unit,
-						density: clamp01(mean * 1.6),
-					});
+						density,
+					};
+					if (fields && volumeLaw) {
+						const px = Math.max(0, Math.min(w - 1, Math.round((qx0 + qx1) / 2)));
+						const py = Math.max(0, Math.min(h - 1, Math.round((qy0 + qy1) / 2)));
+						const shape = cellVolumeShape(fields.distInside[py * w + px], fields.distToInk[py * w + px], fields.referenceThickness, density, volumeLaw);
+						point.hz = shape.half;
+						point.cw = shape.contourness;
+					}
+					out.push(point);
 				}
 			}
 		}

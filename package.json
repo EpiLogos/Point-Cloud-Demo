@@ -8,7 +8,7 @@
     "build": "npm run build:journeys && vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit && tsc --noEmit -p field-studies-journeys/tsconfig.json",
+    "lint": "npm run build:journeys && tsc --noEmit && tsc --noEmit -p field-studies-journeys/tsconfig.json",
     "test": "tsx tests/run.ts",
     "predev": "npm run build:journeys",
     "build:journeys": "node field-studies-journeys/scripts/build.mjs",
@@ -18,7 +18,12 @@
     "test:workspace": "python field-studies-journeys/tests/workspace_browser.py",
     "test:parity": "tsx tests/parity/independent.ts && tsx tests/parity/inventory.ts && node tests/parity/build.mjs",
     "test:parity:browser": "python field-studies-journeys/tests/parity_gpu.py && python field-studies-journeys/tests/parity_browser.py && python field-studies-journeys/tests/parity_lifecycle.py",
-    "test:reference-apps": "node tests/parity/reference-apps.mjs && python field-studies-journeys/tests/reference_apps.py"
+    "test:reference-apps": "node tests/parity/reference-apps.mjs && python field-studies-journeys/tests/reference_apps.py",
+    "start": "node server/index.mjs",
+    "test:physis": "node --test tests/service.test.mjs",
+    "test:physis:browser": "playwright test",
+    "desktop:build": "python3 scripts/build-overlay.py",
+    "install:desktop": "python3 scripts/install.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -43,6 +48,7 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "@playwright/test": "^1.58.2"
   }
 }

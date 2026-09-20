@@ -1,0 +1,115 @@
+{
+  "artifact": "mytheme/roz-mytheme-antikythera-attunement.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme",
+    "family-frank-taylor"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-antikythera-attunement",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/frank-taylor/antikythera-attunement/WHOLE.md",
+        "sha256": "c7140d70bf131da9c0135b3e18d4a45234711f12d71a39a323c9336b292336df"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-ant-0-sky",
+      "phase": "#0 the sky exceeds the hand",
+      "relations": "Taylor's attunement image; Freeth 2006 paraphrase; find-place distinct from workshop"
+    },
+    {
+      "scene_id": "m-ant-1-gearing",
+      "phase": "#1 gearing, scale, inscription, reader",
+      "relations": "the distributed source of intelligibility; the reader within the read world"
+    },
+    {
+      "scene_id": "m-ant-2-cycles",
+      "phase": "#2 coordinated cycles keep their differences",
+      "relations": "anchor antikythera-coordinated-cycles; Metonic/Antikythera matheme; A16"
+    },
+    {
+      "scene_id": "m-ant-3-wreck",
+      "phase": "#3 the damaged instrument makes answerability unavoidable",
+      "relations": "anchor antikythera-reconstruction; Freeth 2021 q001 (p.2) and q002 (p.12 no-replica limit)"
+    },
+    {
+      "scene_id": "m-ant-4-native",
+      "phase": "#4 the shared archetypal return",
+      "relations": "anchor antikythera-native-archetypal-return; Neumann whole; Taylor core field; Symbolon Dynamics; Homologia/Analogia"
+    },
+    {
+      "scene_id": "m-ant-5-return",
+      "phase": "#5→0 the instrument returns to making",
+      "relations": "anchor antikythera-instrument-returns; Heidegger 1977 q003 / 1966 q004; A32; Bratton q029/q038; Symbol/Account/Trust; Movement 45"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "Sun and Moon indications",
+      "occurrence": "#0, #2 different questions answered together at the dial"
+    },
+    {
+      "figure": "gear train, scale, inscription",
+      "occurrence": "#1 motion, mark, interpretation as distinct offices"
+    },
+    {
+      "figure": "the Metonic and Saros operations with their residual",
+      "occurrence": "#2 the matheme owns the quantities"
+    },
+    {
+      "figure": "the 82 surviving fragments",
+      "occurrence": "#3 the reverse direction: fragment toward arrangement"
+    },
+    {
+      "figure": "the nine-output front display (2021)",
+      "occurrence": "#3 the proposal with its no-replica limit"
+    },
+    {
+      "figure": "the reader at the dial",
+      "occurrence": "#0, #1, #5→0 the living exterior of the finished instrument"
+    },
+    {
+      "place": "Antikythera",
+      "occurrence": "#0 the shipwreck find-place — not the workshop, not the research programme"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "existing ratified attunement operation and the commissioned shared archetypal refraction",
+      "flag": "yes"
+    },
+    {
+      "relation": "new archaeological, causal or historical identity",
+      "flag": "no — excluded by the record's amplification_scope"
+    }
+  ],
+  "cross_story_relations": [
+    "The mirror whole (mytheme-mirror-that-moves-first): A32's threshold — the moving mirror adds an instrument that can initiate disclosure of its own conditions; causal influence is necessary middle, not the completed vocation.",
+    "Withholding law (alignment §III.5): the mechanism is withheld by the essay until §5→0 · #2; this artifact notes that standing in its final scene and binding rather than rendering the dial earlier."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-antikythera-attunement.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Standing note carried: withheld-until-§5→0 is an active promise of the essay; the artifact is sequenced whole but binds the withholding in its last scene text. Craft: brass-on-night palette for the dial scenes; the wreck scene uses a fragments→yantra sequence to stage reconstruction and its stated limit. E0 acceptance repair: title/field collision fixed on m-ant-0-sky, m-ant-1-gearing, m-ant-2-cycles, m-ant-4-native, m-ant-5-return (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

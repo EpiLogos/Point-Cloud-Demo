@@ -1,0 +1,146 @@
+{
+  "results": [
+    {
+      "ok": true,
+      "name": "the Expression route boots its engine",
+      "detail": "Native particle field"
+    },
+    {
+      "ok": true,
+      "name": "the studio exposes a \"3D body & depth\" group",
+      "detail": "3D body & depth"
+    },
+    {
+      "ok": true,
+      "name": "it carries the volume master toggle",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "name": "it carries the projection toggle",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "name": "it carries the volume body controls",
+      "detail": "20 sliders"
+    },
+    {
+      "ok": true,
+      "name": "it carries the depth presentation controls",
+      "detail": "16 sliders"
+    },
+    {
+      "ok": true,
+      "name": "the depth profiles are all selectable",
+      "detail": [
+        "slab",
+        "bevel",
+        "round",
+        "dome",
+        "taper"
+      ]
+    },
+    {
+      "ok": true,
+      "name": "the field runs a real particle allocation",
+      "detail": 62000
+    },
+    {
+      "ok": true,
+      "name": "before: the glyph is a flat card (depth is noise, not geometry)",
+      "detail": "z span 13.21 on 62000 particles"
+    },
+    {
+      "ok": true,
+      "name": "the volume toggle is clickable",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "name": "the volume control settles into a body",
+      "detail": "settled span 51.82"
+    },
+    {
+      "ok": true,
+      "name": "after: the body has real thickness",
+      "detail": "z span 13.21 \u2192 51.82"
+    },
+    {
+      "ok": true,
+      "name": "after: the depth is a body, not a dither",
+      "detail": "mean |z| 0.78 \u2192 10.73"
+    },
+    {
+      "ok": true,
+      "name": "the planar drawing is preserved (x/y are untouched)",
+      "detail": "mean |x|+|y| 170.8 \u2192 170.9"
+    },
+    {
+      "ok": true,
+      "name": "the volume change re-baked the targets",
+      "detail": "2 \u2192 4"
+    },
+    {
+      "ok": true,
+      "name": "the body depth slider is present",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "name": "the larger depth settles",
+      "detail": "settled span 243.49"
+    },
+    {
+      "ok": true,
+      "name": "the Body Depth slider drives real thickness",
+      "detail": "depth 40 \u2192 span 69.6; depth 400 \u2192 span 243.5"
+    },
+    {
+      "ok": true,
+      "name": "the projection toggle is clickable",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "name": "perspective projection is engaged",
+      "detail": true
+    },
+    {
+      "ok": true,
+      "name": "the renderer keeps drawing after the depth changes",
+      "detail": "17 frames in 1.5s"
+    },
+    {
+      "ok": true,
+      "name": "the 3D path is in the same performance order as the flat path",
+      "detail": "11.9 \u2192 10.5 fps on software WebGL (not a hardware measurement)"
+    },
+    {
+      "ok": true,
+      "name": "no WebGL/shader errors were reported",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "no page errors were reported",
+      "detail": [
+        "console[http://localhost:3001/favicon.ico]: Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    {
+      "ok": true,
+      "name": "every asset the app requests loads",
+      "detail": []
+    },
+    {
+      "ok": true,
+      "name": "the console is free of unexpected errors",
+      "detail": []
+    }
+  ],
+  "browserErrors": [
+    "console[http://localhost:3001/favicon.ico]: Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "badResponses": []
+}

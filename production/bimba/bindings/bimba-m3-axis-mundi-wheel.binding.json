@@ -1,0 +1,108 @@
+{
+  "artifact": "mahamaya/bimba-m3-axis-mundi-wheel.journey.json",
+  "family": "mahamaya",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-mahamaya-transcription"
+  ],
+  "m_prime": {
+    "instrument": "M3′ Journey/Scenes — the 3:3/4:2 crossing artifact (ordered source-backed Scenes)",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §9/§12/§13 (M3 is the strongest formal hinge)"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#3-5",
+        "registry_node": "73f1f3c0f7eb45c3",
+        "name": "The 360° Mythic Synthesis Wheel"
+      },
+      {
+        "coordinate": "#3-5-5/0",
+        "registry_node": "f0c7dcb383d337ff",
+        "name": "Axis Mundi - Central Unity Origin"
+      },
+      {
+        "coordinate": "#3-5-5/0-0/360",
+        "registry_node": "9bfcc279633903ba",
+        "name": "Alpha-Omega Point"
+      },
+      {
+        "coordinate": "#3-5-1",
+        "registry_node": "ece8b41da57ee30e",
+        "name": "North Cardinal Anchor"
+      },
+      {
+        "coordinate": "#3-5-2",
+        "registry_node": "26d00d7aba062661",
+        "name": "South Cardinal Anchor"
+      },
+      {
+        "coordinate": "#3-5-3",
+        "registry_node": "46438bb0c027a092",
+        "name": "East Cardinal Anchor"
+      },
+      {
+        "coordinate": "#3-5-4",
+        "registry_node": "ab9cd68c010af874",
+        "name": "West Cardinal Anchor"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#3-5",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#3-5-5/0",
+      "ref": "bimba:relation:3560ab427ec0539c02abbf5e"
+    },
+    {
+      "from": "#3-5",
+      "kind": "HAS_INTERNAL_COMPONENT",
+      "to": "#3-5-1",
+      "ref": "bimba:relation:851f7f0ee11a86f2fe3ebc02"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m3-wheel-s1",
+      "source_ref": "#3-5-5/0-0/360 (Alpha-Omega)"
+    },
+    {
+      "scene_id": "bimba-m3-wheel-s2",
+      "source_ref": "#3-5-1 (North)"
+    },
+    {
+      "scene_id": "bimba-m3-wheel-s3",
+      "source_ref": "#3-5-3 (East)"
+    },
+    {
+      "scene_id": "bimba-m3-wheel-s4",
+      "source_ref": "#3-5-2 (South)"
+    },
+    {
+      "scene_id": "bimba-m3-wheel-s5",
+      "source_ref": "#3-5-4 (West)"
+    },
+    {
+      "scene_id": "bimba-m3-wheel-s6",
+      "source_ref": "#3-5-5/0 (Axis Mundi — return)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "The M3′ bridge artifact: six ordered scenes, each frame naming the coordinate it stands on; the walk goes Alpha-Omega → N → E → S → W → return to Axis Mundi (loop). The wheel's 360 leaves stay represented by their Alpha-Omega ref — the engine caps a journey at 64 scenes, so the full ring is never staged leaf-by-leaf (honest limitation, recorded in the manifest)."
+}

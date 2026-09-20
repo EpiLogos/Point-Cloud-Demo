@@ -1,0 +1,1008 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "bimba-m0-paramesvara-virtues",
+  "name": "M0 · Paramesvara — the ninefold virtue row",
+  "description": "Bimba M0′ source-depth artifact (widening cut, depth 3→4). Coordinates: #0-2-9 Paramesvara — Principle 9 with children #0-2-9-0 Love/Peace, #0-2-9-1 Truth, #0-2-9-2 Openness/Creativity, #0-2-9-3 Joy/Play, #0-2-9-4 Goodness, #0-2-9-5 Beauty, #0-2-9-6 Life/Nature, #0-2-9-7 Wisdom, #0-2-9-8 Reality. M′ instrument: M0′ Project/Wiki/Graph ↔ Expression graph/source depth (L5-TECHNE-DUAL-READING-LOCK §6/§13). Inherited profile: bimba-corpus-base → family-anuttara-language. Variation (source-backed): the row is a ninefold enumeration, so the ring stages nine named leaves where the first cut staged aperture pairs. Scene 2 selects exactly the four leaves the registry types HAS_VIRTUE_COMPONENT (#0-2-9-2, #0-2-9-3, #0-2-9-7, #0-2-9-8) — selection follows typed relations, not taste. Relations cited: nine edges #0-2-9 → children, five GENERATIVE_SYNTAX_FLOW (bimba:relation:bc3d988e3735cc95c9711cdd, 04e19e3c92b86bc85922b37a, 1deac0b2344822b5b1ac7f74, 11d8f73b48ea7e26f24c81cf, 29115f2b095f5d20200be932) and four HAS_VIRTUE_COMPONENT (bimba:relation:7a288381e173ef121cc9a093, 2bdc0c15627668b9a2bf47e6, 130b777d00bd920da5c2267d, 381bc473790b071b68d7622d). Sources: registry_revision 259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4 at QL-MEF (session branch 98216fa; registry unchanged from main dbff5cc). Second-cut widening pass — one authored variation per family profile at real depth 3→4. Binding record: bindings/bimba-m0-paramesvara-virtues.binding.json.",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack"
+      },
+      "id": "bimba-m0-virtues-s1",
+      "name": "The nine",
+      "character": "#0-2-9 — the principle and its nine virtues.",
+      "duration": 16,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#e8e6df",
+          "#8f3d52"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.3,
+          "circulation": 0.3,
+          "turbulence": 0.06,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-0-2-9-0",
+          "name": "Love/Peace",
+          "kind": "formation",
+          "position": {
+            "x": 3.796405077356795e-17,
+            "y": -0.62,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-0 · Love/Peace",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-0-step-1",
+                "text": "#0-2-9-0 · Love/Peace",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-1",
+          "name": "Truth",
+          "kind": "formation",
+          "position": {
+            "x": 0.3985283180056544,
+            "y": -0.4749475547337664,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-1 · Truth",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-1-step-1",
+                "text": "#0-2-9-1 · Truth",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-2",
+          "name": "Openness/Creativity",
+          "kind": "formation",
+          "position": {
+            "x": 0.610580806867569,
+            "y": -0.10766187015349682,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-2 · Openness/Creativity",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-2-step-1",
+                "text": "#0-2-9-2 · Openness/Creativity",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-3",
+          "name": "Joy/Play",
+          "kind": "formation",
+          "position": {
+            "x": 0.536935750346352,
+            "y": 0.3099999999999999,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-3 · Joy/Play",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-3-step-1",
+                "text": "#0-2-9-3 · Joy/Play",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-4",
+          "name": "Goodness",
+          "kind": "formation",
+          "position": {
+            "x": 0.21205248886191466,
+            "y": 0.5826094248872632,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-4 · Goodness",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-4-step-1",
+                "text": "#0-2-9-4 · Goodness",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-5",
+          "name": "Beauty",
+          "kind": "formation",
+          "position": {
+            "x": -0.2120524888619146,
+            "y": 0.5826094248872632,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-5 · Beauty",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-5-step-1",
+                "text": "#0-2-9-5 · Beauty",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-6",
+          "name": "Life/Nature",
+          "kind": "formation",
+          "position": {
+            "x": -0.5369357503463519,
+            "y": 0.3100000000000002,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-6 · Life/Nature",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-6-step-1",
+                "text": "#0-2-9-6 · Life/Nature",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-7",
+          "name": "Wisdom",
+          "kind": "formation",
+          "position": {
+            "x": -0.610580806867569,
+            "y": -0.10766187015349661,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-7 · Wisdom",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-7-step-1",
+                "text": "#0-2-9-7 · Wisdom",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-8",
+          "name": "Reality",
+          "kind": "formation",
+          "position": {
+            "x": -0.39852831800565447,
+            "y": -0.4749475547337663,
+            "z": 0
+          },
+          "size": {
+            "x": 0.44,
+            "y": 0.26
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-8 · Reality",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-8-step-1",
+                "text": "#0-2-9-8 · Reality",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-ring",
+          "name": "",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e8e6df",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-ring-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-pin-s1",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-pin-s1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "bimba-m0-virtues-t1",
+          "visible": true,
+          "kicker": "M0′ · depth 3→4",
+          "title": "#0-2-9 Paramesvara — Principle 9",
+          "italic": "Nine leaves, enumerated by the source itself.",
+          "body": "#0-2-9-0 Love/Peace · #0-2-9-1 Truth · #0-2-9-2 Openness/Creativity · #0-2-9-3 Joy/Play · #0-2-9-4 Goodness · #0-2-9-5 Beauty · #0-2-9-6 Life/Nature · #0-2-9-7 Wisdom · #0-2-9-8 Reality",
+          "x": 0.5,
+          "y": 0.78,
+          "width": 620,
+          "size": 30,
+          "align": "center"
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "inkMode": "whiteOnBlack"
+      },
+      "id": "bimba-m0-virtues-s2",
+      "name": "Virtue components",
+      "character": "The four the registry types HAS_VIRTUE_COMPONENT.",
+      "duration": 12,
+      "transition": 1.5,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1218",
+        "palette": [
+          "#e8e6df",
+          "#8f3d52"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 62000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.3,
+          "circulation": 0.3,
+          "turbulence": 0.06,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "bimba-0-2-9-2",
+          "name": "Openness/Creativity",
+          "kind": "formation",
+          "position": {
+            "x": -0.45,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-2 · Openness/Creativity — Structural Fusion",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-2-step-1",
+                "text": "#0-2-9-2 · Openness/Creativity — Structural Fusion",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-3",
+          "name": "Joy/Play",
+          "kind": "formation",
+          "position": {
+            "x": 0.45,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-3 · Joy/Play — Creation Virtue",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-3-step-1",
+                "text": "#0-2-9-3 · Joy/Play — Creation Virtue",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-7",
+          "name": "Wisdom",
+          "kind": "formation",
+          "position": {
+            "x": -0.45,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-7 · Wisdom — Grace Virtue",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-7-step-1",
+                "text": "#0-2-9-7 · Wisdom — Grace Virtue",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-8",
+          "name": "Reality",
+          "kind": "formation",
+          "position": {
+            "x": 0.45,
+            "y": -0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "#0-2-9-8 · Reality — Completion Virtue",
+          "share": 1,
+          "tint": "#8f3d52",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "none",
+            "strength": 0,
+            "radius": 0.4,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-8-step-1",
+                "text": "#0-2-9-8 · Reality — Completion Virtue",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "bimba-0-2-9-pin-s2",
+          "name": "Still centre",
+          "kind": "pin",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "",
+          "share": 0,
+          "tint": "#252720",
+          "tintWeight": 0,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 1,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "bimba-0-2-9-pin-s2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    }
+  ],
+  "updatedAt": "2026-09-17T12:00:00.000Z"
+}

@@ -5,7 +5,7 @@
 
 import assert from 'node:assert/strict';
 import { test } from './harness.ts';
-import { CymaticResonator, RESONATOR_STATION_COUNT } from '../src/engine/cymaticResonator.ts';
+import { CymaticResonator, RESONATOR_STATION_COUNT, resonatorModeIndex3D, RESONATOR_MODE_TOTAL } from '../src/engine/cymaticResonator.ts';
 
 test('CymaticResonator: exposes 7 stations with ascending frequencies and distinct (m,n) shapes', () => {
   const r = new CymaticResonator();
@@ -113,4 +113,99 @@ test('CymaticResonator.sweepFrequency: continuous across the cycle and visits al
 
   assert.ok(maxDelta < band * 0.05, `max frame-to-frame jump (${maxDelta}) must stay below 5% of the band (${band * 0.05})`);
   assert.equal(visited.size, freqs.length, 'sweep must visit every station frequency during one full cycle');
+});
+
+// ------------------------------------------------------------------ 3D volumetric cavity
+
+test('CymaticResonator 3D: mode indexing round-trips as i = ((m-1)*4 + (n-1))*4 + (p-1) over all 64 slots', () => {
+  const r = new CymaticResonator({ dimension: '3D' });
+  const states = r.getModalState();
+  assert.equal(states.length, RESONATOR_MODE_TOTAL);
+
+  const seen = new Set<number>();
+  for (const s of states) {
+    for (const axis of [s.m, s.n, s.p]) {
+      assert.ok(axis >= 1 && axis <= 4, `3D mode indices must lie in [1..4], got (${s.m},${s.n},${s.p})`);
+    }
+    assert.equal(
+      resonatorModeIndex3D(s.m, s.n, s.p),
+      s.modeIndex,
+      `slot ${s.modeIndex} carries (${s.m},${s.n},${s.p}) but the index law disagrees`
+    );
+    seen.add(s.modeIndex);
+  }
+  assert.equal(seen.size, RESONATOR_MODE_TOTAL, 'the 3D lattice must fill every slot exactly once');
+
+  // Switching back to the 2D plate restores the original 8x8 table bit for bit.
+  const twoDee = new CymaticResonator();
+  r.configure({ dimension: '2D' });
+  const restored = r.getModalState();
+  const original = twoDee.getModalState();
+  for (let i = 0; i < RESONATOR_MODE_TOTAL; i++) {
+    assert.equal(restored[i].m, original[i].m, `2D table m must be restored at slot ${i}`);
+    assert.equal(restored[i].n, original[i].n, `2D table n must be restored at slot ${i}`);
+    assert.ok(Math.abs(restored[i].frequencyHz - original[i].frequencyHz) < 1e-9, `2D dispersion must be restored at slot ${i}`);
+  }
+  assert.equal(r.getStations().length, RESONATOR_STATION_COUNT, '2D station count survives the round trip');
+});
+
+test('CymaticResonator 3D: box dispersion f = f0*sqrt(m^2+n^2+p^2), and driving at the fundamental locks onto (1,1,1)', () => {
+  const f0 = 40;
+  const r = new CymaticResonator({ dimension: '3D', baseFrequency: f0 });
+  const states = r.getModalState();
+
+  // The whole spectrum must follow the 3D wave-equation dispersion law, hence be ordered
+  // by sqrt(m^2+n^2+p^2): modes near a drive frequency are exactly the low-detuning ones.
+  for (const s of states) {
+    const expected = f0 * Math.sqrt(s.m * s.m + s.n * s.n + s.p * s.p);
+    assert.ok(
+      Math.abs(s.frequencyHz - expected) < 1e-4,
+      `slot ${s.modeIndex} (${s.m},${s.n},${s.p}) frequency ${s.frequencyHz} must equal f0*sqrt(m^2+n^2+p^2) = ${expected}`
+    );
+  }
+
+  // Fundamental (1,1,1): unique lowest mode, f = f0*sqrt(3). Driving there for 6s must
+  // select it as the dominant mode (the +sqrt(3)-detuned neighbours are far off-resonance).
+  const fundamental = f0 * Math.sqrt(3);
+  const dt = 1 / 60;
+  let telemetry = r.step(dt, fundamental);
+  for (let i = 1; i < 360; i++) telemetry = r.step(dt, fundamental);
+
+  assert.equal(telemetry.dominantModeIndex, resonatorModeIndex3D(1, 1, 1), 'the fundamental drive must select the (1,1,1) cavity mode');
+  assert.equal(telemetry.dominantP, 1);
+  assert.ok(telemetry.dominantM === 1 && telemetry.dominantN === 1);
+
+  // The seven anchors remain the strongly-coupled, mutually-distinct eigenmodes, here over
+  // the 3D spectrum, each carrying its depth index and ascending in frequency.
+  const stations = r.getStations();
+  assert.equal(stations.length, RESONATOR_STATION_COUNT);
+  const seen = new Set<string>();
+  for (let i = 0; i < stations.length; i++) {
+    const s = stations[i];
+    assert.ok(s.p !== undefined, '3D stations must carry their depth mode p');
+    const key = [s.m, s.n, s.p!].sort((a, b) => a - b).join(':');
+    assert.ok(!seen.has(key), `3D station shapes must be mutually distinct, duplicate at ${key}`);
+    seen.add(key);
+    if (i > 0) assert.ok(s.frequencyHz > stations[i - 1].frequencyHz, '3D stations must ascend in frequency');
+  }
+});
+
+test('CymaticResonator 3D: envelopes stay bounded and finite under sustained on-resonance drive', () => {
+  const f0 = 40;
+  const r = new CymaticResonator({ dimension: '3D', baseFrequency: f0 });
+  const drive = f0 * Math.sqrt(3); // fundamental: the largest steady-state gain in the spectrum
+  const dt = 1 / 60;
+
+  // Analytic ceiling: |A| <= driveStrength * |coupling| / (2*zeta) = Q * driveStrength
+  // (couplings are cosine products, so |coupling| <= 1). Add a hair of headroom.
+  const bound = r.params.dampingQ * r.params.driveStrength + 1e-3;
+
+  let telemetry = r.step(dt, drive);
+  for (let i = 1; i < 600; i++) telemetry = r.step(dt, drive); // 10s on-resonance
+
+  for (let i = 0; i < r.re.length; i++) {
+    assert.ok(Number.isFinite(r.re[i]) && Number.isFinite(r.im[i]), `envelope at slot ${i} must stay finite`);
+    assert.ok(Math.abs(r.re[i]) <= bound && Math.abs(r.im[i]) <= bound, `envelope at slot ${i} exceeded the analytic ceiling ${bound}`);
+  }
+  assert.ok(Number.isFinite(telemetry.totalEnergy) && telemetry.totalEnergy > 0, 'total energy must be finite and positive while driven');
 });

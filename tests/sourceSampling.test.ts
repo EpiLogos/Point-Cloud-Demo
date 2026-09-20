@@ -180,6 +180,25 @@ test('alpha source (ASCII drawing) samples drawn marks and reports mode alpha', 
 	assert.match(summary, /ASCII source active/);
 });
 
+test('fractional character cells (real font metrics) keep every candidate finite', () => {
+	// The live pipeline passes cell.w = fontSize·0.6 and cell.h = fontSize·1.15 —
+	// fractional for most font sizes. Fractional quadrant bounds once indexed the
+	// ink field non-integrally (undefined → NaN density) and NaN'd the whole
+	// formation. This case pins the fix.
+	const px = new Uint8ClampedArray(120 * 60 * 4);
+	for (let y = 12; y < 48; y++) for (let x = 10; x < 110; x++) {
+		const i = (y * 120 + x) * 4;
+		px[i] = 255; px[i + 1] = 255; px[i + 2] = 255; px[i + 3] = 255;
+	}
+	const { candidates, analysis } = sampleAlphaSource(px, 120, 60, { cell: { w: 43.199999999999996, h: 82.8 } });
+	assert.ok(candidates.length >= 12, `quadrant lattice sampled (${candidates.length})`);
+	for (const c of candidates) {
+		assert.ok(Number.isFinite(c.x) && Number.isFinite(c.y) && Number.isFinite(c.density),
+			`candidate is finite: ${JSON.stringify(c)}`);
+	}
+	assert.equal(analysis.mode, 'alpha');
+});
+
 test('analysis stays within declared bounds for pathological inputs', () => {
 	const tiny = canvas(6, 6);
 	tiny.rect(2, 2, 4, 4, [0, 0, 0]);

@@ -108,12 +108,30 @@ export interface Entity {
   scale: number;          // formation size multiplier (yantra/glyph rasters are normalised to ~1)
   share: number;          // relative particle share among enabled formations (weight, default 1)
   shape: Shape;           // base shape (also link 0 when the sequence is empty)
+  /** Laminated composition: when present, the body is the union of these layers. */
+  layers?: EntityLayer[];
   sequence: EntitySequence;
   forces: EntityForces;
   tint: string;           // hex colour contributed to this entity's particles
   tintWeight: number;     // 0..1 how strongly the tint overrides the field palette
   stationIndex?: number;  // link to a cymatic resonator station (0..6) — used by focus/followFocus
   chakraId?: string;      // provenance when created from the canonical chakra body
+}
+
+/**
+ * One layer of a laminated object. Layers are the spatial composition of an
+ * entity — parallel to its sequence, which is the temporal one. The formation's
+ * particle allocation is subdivided across the layers, and each layer draws its
+ * shape (or its loaded image/ASCII source, via the per-layer custom pool) in
+ * the depth band its `z` occupies, with its own measured body thickness. The
+ * whole layered body then sequences and morphs as one object: states transform
+ * it (size, rotation, tint, forces, placement) through the ordinary uniforms.
+ */
+export interface EntityLayer {
+  id: string;
+  z: number;              // depth band centre, world px, relative to the entity
+  shape: Shape;           // geometry when no image/ASCII source is loaded for this layer
+  scale?: number;         // in-plane multiplier on the layer's pool
 }
 
 export type OrchestrationMode = 'parallel' | 'focus';
@@ -187,6 +205,13 @@ export const DEFAULT_CYMATIC_MEDIUM: CymaticMedium = {
 export function makeLink(shape: Shape, pos?: { x?: number; y?: number; z?: number }): SequenceLink {
   return { id: newId('link'), shape: { ...shape }, ...(pos || {}) };
 }
+
+export const makeLayer = (z: number, shape: Shape, overrides: Partial<EntityLayer> = {}): EntityLayer => ({
+  id: newId('layer'),
+  z,
+  shape: { ...shape },
+  ...overrides,
+});
 
 export function makeFormation(overrides: Partial<Entity> = {}): Entity {
   return {

@@ -1,0 +1,54 @@
+{
+  "profile_id": "family-section-room",
+  "standing": "presentation baseline only — craft continuity, never semantic truth",
+  "owner": "E1 essay-rooms, issue #65, 2026-09-17",
+  "inherits": ["roz-corpus-base", "register-essay"],
+  "register": "essay_rooms — the eight section rooms; this ONE grammar is shared by all eight room journeys (that repetition is the family grammar)",
+  "grammar": {
+    "artifact_shape": "one journey per room, six scenes, scene ids = global movement numbers (movement-01 … movement-48); scene order is the reading order",
+    "positional_form": "the raw station-internal chassis carries a fixed formation grammar: #0 → disc (ground opens), #1 → text glyph (determinate mark), #2 → triangle (force/polarity), #3 → yantra (pattern), #4 → square (contextual 360° holding), #5 and #5→0 → ring (return)",
+    "chassis_tokens": "text-glyph scenes carry the raw chassis token (#1, #3) as the formation glyph; station-internal structure is the canonical raw chassis with locally derived meanings, so the token itself is the canonical mark",
+    "text_layers": "layer 1 editorial: kicker 'MOVEMENT NN OF 48 · <station> · <position> · ROOM <slug>', title (canonical movement title with chassis prefix, exactly as authored), italic (claim_status verbatim from the movement frontmatter), body (the movement's own claim line + previous/next carriers with exact titles; M48 carries the Return to M01); layer 2 route: 'P1-MNN → …' the canonical A/C route from the room's authored P1-CANONICAL-ALIGNMENT, as data (routes reference the A/A′/C records; the records are never restaged here)",
+    "scene_rhythm": { "duration": 12, "transition": 1.5 },
+    "layout_rule": "E0 acceptance repair: formations sit right-of-centre (single-formation group centre +0.2, station scenes +0.3) so the editorial text column owns the left; oversized formations trimmed (ring 1.7→1.55, Ø 1.7×2.1→1.5×1.9, instrument rings 2.25→1.75, commons/field rings lowered/trimmed); text column 360 (320 on the two inverse-pair scenes); route/metadata layers stacked top-left (route y 0.05, room door y 0.155) — verified clear at authored count on covers and spot-checked scenes"
+  },
+  "room_surfaces": {
+    "00-integral-threshold": { "material": "ink", "palette": ["#252720", "#252720"], "note": "threshold: pure ink, withholding held — no notation glyphs, no mechanism" },
+    "01-differentiating-mind": { "material": "round", "palette": ["#252720", "#a94138"], "note": "Śaiva/mytheme carriers admitted: round material, one warm second colour" },
+    "02-return-of-zero": { "material": "ink", "palette": ["#252720", "#3d5a80"], "note": "matheme carrier tint (deep blue) admitted from M13; 0/1 glyphs only from M18; Ø one job at movement-16" },
+    "03-two-logics": { "material": "ink", "palette": ["#252720", "#a94138"], "note": "two accountings: ink and the red of Ares–Aphrodite–Harmonia" },
+    "04-mathematical-substrate": { "material": "print", "palette": ["#252720", "#3d5a80"], "note": "the derivational braid as lattice: print material, matheme tint" },
+    "05-psychoid-flowering": { "material": "ink", "palette": ["#252720", "#a94138", "#3d5a80"], "note": "psyche/matter: two descriptions across one seam — red and blue on ink" },
+    "06-objective-internality": { "material": "print", "palette": ["#252720", "#638c69"], "note": "instituted products: print material, episteme tint" },
+    "07-instrument-returns": { "material": "ink", "palette": ["#eee9d9", "#b08d4f"], "background": "#161a17", "inkMode": "whiteOnBlack", "note": "the earned night: the whole final room on deep ground; brass tint reserved for the instrument" }
+  },
+  "carrier_tints_policy": "the second/third palette colours (mytheme #a94138, matheme #3d5a80, episteme #638c69, instrument brass #b08d4f) are presentation policy only; a repeated colour association never becomes a claimed source relation",
+  "recorded_variations": [
+    "movement-13: two-step sign sequence (blank place → numeral) — the sign migrates",
+    "movement-15: von Neumann steps ∅ → {∅} → {∅,{∅}} — standard set theory, distinct from the crossed zero",
+    "movement-16: the Ø glyph, one job — the mediating stroke fused into the zero it crosses",
+    "movement-18: first 0/1 ↔ 1/0 pair — the loan returns, notation earned",
+    "movement-20: signed poles (−1)/(+1) around a retained axis pin",
+    "movement-21: 0/1 and 1/0 as inverse tilted orientations",
+    "movement-22: two attractor pins and a vortex — war, love, and the bearing of Harmonia; Hephaestus's net is the movement's own content here",
+    "movement-25: eight-step traversal sequence −/− → 0/1 → ?/! → −/+ → X/x → AM/IS → ∞/dx → 1/0 (overrides #0 disc; the traversal is the movement)",
+    "movement-27: triangle with quarter-turn rotation steps 1 → i → −1 → −i → 1",
+    "movement-29: two offset rings — the torus, one of the two native displays",
+    "movement-30: ring + disc — field and quotient",
+    "movement-31: two overlapping discs — two descriptions across one seam",
+    "movement-32: X and x as two glyphs of one letter — the authorial matheme",
+    "movement-33: square instead of triangle — quaternity, not polarity",
+    "movement-34: six-step recognition sequence 0 → Ø → X → Ø/X → (0/Ø)/(1/X) → 1 (full sequence earned here)",
+    "movement-36: ring + two small lenses — spectroscopy of one light",
+    "movement-38: text glyph S1 — the product token; product tokens appear only where the source names them",
+    "movement-42: position is #5 (not #5→0) exactly as authored; ring form retained for Transcendent Relation",
+    "movement-45: nested rings + centre pin — the Antikythera mechanism enters here and nowhere earlier (withholding paid off)",
+    "movement-46: commons ring above three local-ground discs — the movement's own federation figure",
+    "movement-47: square (the local map) held inside a ring (the field it cannot finally map)"
+  ],
+  "craft_notes": [
+    "room identity, movement identity, and previous/next travel in scene text exactly as authored",
+    "claim statuses travel as data (italic layer), never as visual emphasis",
+    "each room journey's cover is its first movement — the room door"
+  ]
+}

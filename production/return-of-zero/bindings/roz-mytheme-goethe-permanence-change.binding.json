@@ -1,0 +1,108 @@
+{
+  "artifact": "mytheme/roz-mytheme-goethe-permanence-change.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-goethe-permanence-change",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/german-literature/goethe-permanence-change/WHOLE.md",
+        "sha256": "b4be3bd1b591099736120c869ee2a6d85e83ba02ccd8e78dd0bca6647065a347",
+        "sha256_receipt_stale": "532c4b27a5b051c490f84e581266059c925105eb5cd31690791a9e5e265f1e7a"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-goe-0-blossom",
+      "phase": "#0 the wish and the west wind",
+      "relations": "Dauer im Wechsel lines 1–8; Klett witness; Nims uncollated"
+    },
+    {
+      "scene_id": "m-goe-1-river",
+      "phase": "#1 fruit, valley, river",
+      "relations": "lines 9–16"
+    },
+    {
+      "scene_id": "m-goe-2-body",
+      "phase": "#2–#3 the changing eyes; lip, foot, hand; the wave",
+      "relations": "lines 17–32"
+    },
+    {
+      "scene_id": "m-goe-4-muses",
+      "phase": "#4 beginning and end joined; content and form",
+      "relations": "lines 33–40 (q002 German closing words); anchor goethe-two-ones-return; A11, A12, A36; Homology field"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "the blossom-shower",
+      "occurrence": "#0 the loss within the flourishing weather"
+    },
+    {
+      "figure": "the west wind",
+      "occurrence": "#0 the gentle force of loss"
+    },
+    {
+      "figure": "the fruit and overlapping germination",
+      "occurrence": "#1 the prompt reaching"
+    },
+    {
+      "figure": "the rains on the beloved valley",
+      "occurrence": "#1 affection without exemption"
+    },
+    {
+      "figure": "the river / the second swim",
+      "occurrence": "#1; echoed by the wave at #3"
+    },
+    {
+      "figure": "the lip, the chamois-foot on the cliff, the doing-good hand",
+      "occurrence": "#2–#3 the bodily powers remembered through their acts"
+    },
+    {
+      "figure": "the name remaining; the wave hurrying to the element",
+      "occurrence": "#3 designation across a succession it cannot arrest"
+    },
+    {
+      "figure": "the Muses; Gehalt im Busen / Form im Geist",
+      "occurrence": "#4 the gathered ending with distinct offices"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "the appointed One-in-change relation returning to the Two Ones; the deepening through the content/form distinction (declared by the source house's A12/A36 routes)",
+      "flag": "yes"
+    },
+    {
+      "relation": "equating poetic water with QL's 0; word-for-word pairing of the German closing with the two Ones",
+      "flag": "no"
+    }
+  ],
+  "cross_story_relations": [
+    "Neumann whole grounds the A11/A12/A36 return through achieved differentiation and renewed articulation."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-goethe-permanence-change.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: four scenes carry the full forty-line arc; the blossom scene stages fall-and-return so the ending can qualify it. Witness limits preserved: the German whole is used; no Nims wording reproduced. | E0 correction 2026-09-17: receipt-era sha256 replaced with actual-bytes hash at dbf3b17 (prior value kept as sha256_receipt_stale). E0 acceptance repair: title/field collision fixed on m-goe-1-river, m-goe-2-body (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

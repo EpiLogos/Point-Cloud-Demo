@@ -1,0 +1,65 @@
+{
+  "kind": "node-local",
+  "target_ref": "#5-1",
+  "target_snapshot_hash": "sha256:m-tree-v1:#5-1",
+  "provenance": [
+    {
+      "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json"
+    }
+  ],
+  "extensions": {
+    "ql-mef/shape-binding/v1": {
+      "subject_ref": "#5-1",
+      "shape_ref": "ql:shape:1.0.0:constellation:sixfold",
+      "whole_ref": "anchor:#5-1",
+      "basis_refs": [
+        "#5-1-0",
+        "#5-1-1",
+        "#5-1-2",
+        "#5-1-3",
+        "#5-1-4",
+        "#5-1-5"
+      ],
+      "members": [
+        {
+          "subject_ref": "#5-1-0",
+          "position": 0,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#5-1-1",
+          "position": 1,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#5-1-2",
+          "position": 2,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#5-1-3",
+          "position": 3,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#5-1-4",
+          "position": 4,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#5-1-5",
+          "position": 5,
+          "face": "direct"
+        }
+      ],
+      "return_refs": [
+        "return:#5-1"
+      ],
+      "provenance": {
+        "caller_ref": "ql-parent-next-cut:bimba-m5-epilogos-positions",
+        "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json",
+        "standing_ref": "PROPOSED"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "node-local",
+  "target_ref": "#4.3-2",
+  "target_snapshot_hash": "sha256:m-tree-v1:#4.3-2",
+  "provenance": [
+    {
+      "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json"
+    }
+  ],
+  "extensions": {
+    "ql-mef/shape-binding/v1": {
+      "subject_ref": "#4.3-2",
+      "shape_ref": "ql:shape:1.0.0:constellation:threefold-123",
+      "whole_ref": "anchor:#4.3-2",
+      "basis_refs": [
+        "#4.3-2.0",
+        "#4.3-2.1",
+        "#4.3-2.2"
+      ],
+      "members": [
+        {
+          "subject_ref": "#4.3-2.0",
+          "position": 1,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#4.3-2.1",
+          "position": 2,
+          "face": "direct"
+        },
+        {
+          "subject_ref": "#4.3-2.2",
+          "position": 3,
+          "face": "direct"
+        }
+      ],
+      "return_refs": [
+        "return:#4.3-2"
+      ],
+      "provenance": {
+        "caller_ref": "ql-parent-next-cut:bimba-m4-dialogue-containers",
+        "source_ref": "Idea/Bimba/Map/datasets/low-detail/nodes_hash.json",
+        "standing_ref": "PROPOSED"
+      }
+    }
+  }
+}

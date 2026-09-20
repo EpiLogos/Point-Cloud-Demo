@@ -83,7 +83,13 @@ export class ProductionAdapter implements FieldEngineAdapter {
   return {...t,drive,params,config:cfg,sourceStatus:{...this.sourceStatus},live:this.engine.getEvaluation().live,background:cfg.backgroundColor??'#f4f2eb',palette:cfg.color?.customPaletteColors??[cfg.color!.primaryColor,cfg.color!.accentColor,cfg.color!.secondaryColor],transition:this.from?Math.min(1,(t.simTime-this.transitionStart)/Math.max(.001,this.duration)):1};
  }
  private syncSources(scene:EngineFrame['scene']){
-  const requests=scene.entities.filter(e=>e.kind==='formation').flatMap(e=>e.sequence.enabled||e.sequence.manual?e.sequence.steps.flatMap((k,i)=>{const source=stateSource(e,i);return source?[{entityId:e.id,linkId:k.id,source}]:[]}):e.source?[{entityId:e.id,linkId:e.id+'_base',source:e.source}]:[]);
+  // Layers are the object's spatial composition: their sources always load,
+  // regardless of any transport state — a laminated body exists whether or not
+  // its sequence plays.
+  const requests=scene.entities.filter(e=>e.kind==='formation').flatMap(e=>[
+   ...(e.layers??[]).flatMap(l=>l.source?[{entityId:e.id,linkId:l.id,source:l.source}]:[]),
+   ...(e.sequence.enabled||e.sequence.manual?e.sequence.steps.flatMap((k,i)=>{const source=stateSource(e,i);return source?[{entityId:e.id,linkId:k.id,source}]:[]}):e.source?[{entityId:e.id,linkId:e.id+'_base',source:e.source}]:[]),
+  ]);
   const ids=new Set(requests.map(r=>JSON.stringify([r.entityId,r.linkId])));
   for(const key of this.sources.keys())if(!ids.has(key)){const [entityId,linkId]=JSON.parse(key);this.engine?.clearCustomSource(entityId,linkId);this.sources.delete(key);delete this.sourceStatus[key];}
   for(const {entityId,linkId,source} of requests){const key=JSON.stringify([entityId,linkId]),signature=JSON.stringify(source);if(this.sources.get(key)===signature)continue;this.sources.set(key,signature);this.engine?.clearCustomSource(entityId,linkId);delete this.sourceStatus[key];

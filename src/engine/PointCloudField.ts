@@ -13,7 +13,13 @@ import {
   MorphTelemetry,
   PlacedInteractionPoint,
   CompositionTelemetry,
+  MediumConfig,
+  CollisionConfig,
+  PairwiseConfig,
+  GlyphVolumeConfig,
+  DepthRenderConfig,
 } from './types';
+import { DEFAULT_GLYPH_VOLUME } from './glyphVolume';
 import { applyAutomations, createAutomationRuntime, AutomationRuntime, AutomationLiveValue } from './automation';
 import { GPGPUSimulator } from './GPGPUSimulator';
 import { GlyphSampler } from './GlyphSampler';
@@ -42,6 +48,16 @@ import {
   makeLink,
   resolveFocus,
 } from './fieldModel';
+
+/** A retained image/ASCII source, kept so the pool can be re-derived against a new true-3D law. */
+interface CustomSourceRecord {
+  kind: 'image' | 'ascii';
+  entityId: string;
+  linkId?: string;
+  /** The decoded element (image) or the raw text (ASCII) the pool was sampled from. */
+  input: CanvasImageSource | ImageData | string;
+  options: Record<string, unknown>;
+}
 
 export function getColorModeIndex(mode?: string): number {
   switch (mode) {
@@ -105,11 +121,62 @@ export const DEFAULT_TOROIDAL_CONFIG: ToroidalMorphConfig = {
 const TAU = Math.PI * 2;
 const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
 
+export const DEFAULT_MEDIUM_CONFIG: MediumConfig = {
+  enabled: false,
+  pressure: 4,
+  coupling: 0.8,
+  persistence: 0.97,
+  iterations: 4,
+  gridRes: 192,
+  splatGain: 1,
+  extent: 1400,
+  plane: 'compositionPlane',
+  dimension: '2D',
+};
+
+export const DEFAULT_COLLISION_CONFIG: CollisionConfig = {
+  enabled: false,
+  mode: 'obstacle',
+  restitution: 0.35,
+  friction: 0.1,
+  band: 40,
+  strength: 4,
+  integrity: 0.5,
+};
+
+/** Sorted-grid pairwise collisions; default-off (see types.ts PairwiseConfig). */
+export const DEFAULT_PAIRWISE_CONFIG: PairwiseConfig = {
+  enabled: false,
+  radius: 2.2,
+  stiffness: 1.0,
+  restitution: 0.12,
+  viscosity: 0.06,
+  extent: 1400,
+};
 export {computeMorphDrive} from './morphSignal';
 import {computeMorphDrive,MorphDriveState} from './morphSignal';
 
 
 export type SpatialGridMode = 'off' | 'axis' | 'grid';
+
+/**
+ * Depth presentation defaults. Projection stays orthographic so the instrument
+ * opens exactly as it did; the depth system is switched on from the studio,
+ * where the projection, attenuation and aerial-perspective knobs live.
+ */
+export const DEFAULT_DEPTH_CONFIG: DepthRenderConfig = {
+  projection: 'orthographic',
+  fov: 38,
+  distance: 800,
+  sizeAttenuation: 1,
+  sizeAttenuationCurve: 1,
+  aerialFade: 0.55,
+  aerialRange: 2.2,
+  sizeDepthBias: 0,
+  depthTintWeight: 0,
+  depthTintColor: '#101018',
+  occlusion: false,
+};
 
 export const DEFAULT_CONFIG: PointCloudConfig = {
   glyph: ['O', 'I'],
@@ -143,6 +210,8 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
     maxSpeed: 35000,
     zConfinement: 1.0,
     timeScale: 1.0,
+    vortex3d: 0,
+    dispersion3d: 0,
   },
   interaction: {
     radius: 180,
@@ -166,6 +235,7 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
     gravityFalloff: 1.45,
     swirlRadius: 500,
   },
+  pairwise: DEFAULT_PAIRWISE_CONFIG,
   chaining: {
     enabled: false,
     chain: ['▲', '■', '⬟', '⬢', '⯎', '◉'],
@@ -180,6 +250,10 @@ export const DEFAULT_CONFIG: PointCloudConfig = {
   },
   color: DEFAULT_COLOR_CONFIG,
   toroidalMorph: DEFAULT_TOROIDAL_CONFIG,
+  medium: DEFAULT_MEDIUM_CONFIG,
+  collision: DEFAULT_COLLISION_CONFIG,
+  glyphVolume: DEFAULT_GLYPH_VOLUME,
+  depth: DEFAULT_DEPTH_CONFIG,
   automations: [],
   entities: [
     makeFormation({
@@ -211,7 +285,19 @@ export class PointCloudField {
 
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
-  private camera: THREE.OrthographicCamera;
+  /**
+   * Two projections, one rig. The orbit controller drives both cameras
+   * identically; `depth.projection` selects which one draws. Orthographic is the
+   * original drawing instrument — parallel lines stay parallel and a glyph is
+   * seen face-on. Perspective adds the convergence that makes depth legible, and
+   * is what the true-3D glyph bodies are authored against.
+   */
+  private orthoCamera: THREE.OrthographicCamera;
+  private perspCamera: THREE.PerspectiveCamera;
+  private get camera(): THREE.Camera {
+    return this.cameraProjection === 'perspective' ? this.perspCamera : this.orthoCamera;
+  }
+  private cameraProjection: DepthRenderConfig['projection'] = 'orthographic';
   private gridGroup: THREE.Group | null = null;
   private axisGroup: THREE.Group | null = null;
   private gridMode: SpatialGridMode = 'off';
@@ -313,9 +399,11 @@ export class PointCloudField {
     const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
     this.renderer.setSize(width, height, false);
 
-    // 2. Scene + orthographic orbit camera + scaffolds
+    // 2. Scene + orbit camera rig + scaffolds
     this.scene = new THREE.Scene();
-    this.camera = new THREE.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, -3000, 4000);
+    this.orthoCamera = new THREE.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, -3000, 4000);
+    this.perspCamera = new THREE.PerspectiveCamera(DEFAULT_DEPTH_CONFIG.fov, width / Math.max(1, height), 1, 100000);
+    this.cameraProjection = this.config.depth?.projection === 'perspective' ? 'perspective' : 'orthographic';
     this.updateCameraTransform();
     this.initGridAndAxes();
     this.pinLayer = new PinMarkerLayer(this.scene);
@@ -367,6 +455,7 @@ export class PointCloudField {
       fluid: { ...base.fluid, ...override.fluid },
       interaction: { ...base.interaction, ...override.interaction },
       relational: { enabled:false, ...base.relational, ...override.relational },
+      pairwise: { enabled:false, ...base.pairwise, ...override.pairwise },
       color: {
         ...(base.color || DEFAULT_COLOR_CONFIG),
         ...(override.color || {}),
@@ -382,6 +471,10 @@ export class PointCloudField {
           : undefined,
       },
       toroidalMorph: override.toroidalMorph !== undefined ? { ...DEFAULT_TOROIDAL_CONFIG, ...override.toroidalMorph } : base.toroidalMorph,
+      medium: { ...DEFAULT_MEDIUM_CONFIG, ...base.medium, ...override.medium },
+      collision: { ...DEFAULT_COLLISION_CONFIG, ...base.collision, ...override.collision },
+      glyphVolume: { ...DEFAULT_GLYPH_VOLUME, ...(base.glyphVolume || {}), ...(override.glyphVolume || {}) } as GlyphVolumeConfig,
+      depth: { ...DEFAULT_DEPTH_CONFIG, ...(base.depth || {}), ...(override.depth || {}) } as DepthRenderConfig,
       entities: override.entities !== undefined ? override.entities : base.entities,
       composition: comp,
       cymatics: { ...(base.cymatics || DEFAULT_CYMATIC_MEDIUM), ...(override.cymatics || {}) } as CymaticMedium,
@@ -411,13 +504,22 @@ export class PointCloudField {
     const cfg = this.config;
     const comp = cfg.composition || DEFAULT_COMPOSITION;
     this.entities.allocate(this.simulator.particleCount, this.simulator.texWidth, this.simulator.texHeight);
+    // Bilinear SDF sampling when the device can filter float textures (smooth distance falloff).
+    if (this.entities.collisionTexture && this.renderer.capabilities.isWebGL2 && this.renderer.extensions.has('OES_texture_float_linear')) {
+      this.entities.collisionTexture.minFilter = THREE.LinearFilter;
+      this.entities.collisionTexture.magFilter = THREE.LinearFilter;
+      this.entities.collisionTexture.needsUpdate = true;
+    }
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
+    this.entities.setVolume(cfg.glyphVolume);
     this.entities.layout(cfg.entities || []);
     const resolved = this.entities.update(cfg.entities || [], comp, this.simTime, this.lastDrive?.theta ?? 0, this.morphProgress, cfg.toroidalMorph?.holdRatio ?? 0, cfg.fontFamily, cfg.fontWeight);
     this.lastPoses = resolved.poses;
-    this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], resolved.poses, cfg.interaction.placedPoints || []);
+    const depthForms = !!(cfg.glyphVolume?.enabled && (cfg.glyphVolume?.depth ?? 0) > 0);
+    this.lastForceEmitters = compileEntityForceEmitters(cfg.entities || [], resolved.poses, cfg.interaction.placedPoints || [], depthForms ? 'world3d' : 'compositionPlane');
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
+    this.simulator.setCollisionState(this.entities.collisionTiles, this.entities.collisionTexture);
     this.simulator.setForceEmitters(this.lastForceEmitters);
     this.simulator.setCompositionPlane(comp.plane);
     if (seed) { this.seedGeneration++; this.simulator.seedInitialState(this.entities.buildSeed()); }
@@ -527,6 +629,20 @@ export class PointCloudField {
         uPixelRatio: { value: dpr },
         uCanvasSize: { value: new THREE.Vector2(width, height) },
         uTime: { value: 0.0 },
+
+        // Depth presentation (see types.ts DepthRenderConfig): perspective
+        // attenuation and aerial perspective. Pushed from pushDepthUniforms().
+        uDepthEnabled: { value: 0 },
+        uPerspective: { value: 0 },
+        uCameraDistance: { value: this.orbitDistance() },
+        uViewHeight: { value: height },
+        uSizeAttenuation: { value: DEFAULT_DEPTH_CONFIG.sizeAttenuation },
+        uSizeAttenuationCurve: { value: DEFAULT_DEPTH_CONFIG.sizeAttenuationCurve },
+        uSizeDepthBias: { value: DEFAULT_DEPTH_CONFIG.sizeDepthBias },
+        uAerialFade: { value: DEFAULT_DEPTH_CONFIG.aerialFade },
+        uAerialRange: { value: DEFAULT_DEPTH_CONFIG.aerialRange },
+        uDepthTintWeight: { value: DEFAULT_DEPTH_CONFIG.depthTintWeight },
+        uDepthTint: { value: new THREE.Color(DEFAULT_DEPTH_CONFIG.depthTintColor) },
 
         // Procedural Color Field Uniforms
         uColorEnabled: { value: col.enabled ? 1.0 : 0.0 },
@@ -676,22 +792,62 @@ export class PointCloudField {
     this.lastPointerPos.set(-99999, -99999);
   }
 
+  /** Distance from the orbit target to the eye, for the active projection. */
+  private orbitDistance(): number {
+    return Math.max(1, this.config.depth?.distance ?? DEFAULT_DEPTH_CONFIG.distance);
+  }
+
+  /**
+   * Applies the viewport to whichever camera draws. Orthographic keeps its
+   * original framebuffer-pixel frustum; perspective derives its aspect from the
+   * viewport and frames the target plane so that the two projections cover a
+   * comparable world extent at zoom 1 — switching projection should not jump the
+   * subject's scale.
+   */
+  private applyProjection(width: number, height: number) {
+    const depth = this.config.depth ?? DEFAULT_DEPTH_CONFIG;
+    const aspect = width / Math.max(1, height);
+
+    this.orthoCamera.left = -width / 2;
+    this.orthoCamera.right = width / 2;
+    this.orthoCamera.top = height / 2;
+    this.orthoCamera.bottom = -height / 2;
+    this.orthoCamera.near = -3000;
+    this.orthoCamera.far = 4000;
+    this.orthoCamera.zoom = this.cameraState.zoom;
+    this.orthoCamera.updateProjectionMatrix();
+
+    const fov = Math.max(4, Math.min(120, depth.fov ?? DEFAULT_DEPTH_CONFIG.fov));
+    this.perspCamera.fov = fov;
+    this.perspCamera.aspect = aspect;
+    this.perspCamera.near = Math.max(0.1, this.orbitDistance() * 0.01);
+    this.perspCamera.far = this.orbitDistance() * 40 + 20000;
+    this.perspCamera.zoom = this.cameraState.zoom;
+    this.perspCamera.updateProjectionMatrix();
+  }
+
+  /**
+   * World height of the viewport at the target plane, for the active camera.
+   * Callers that only care about framing extent (capture, aspect fitting) can
+   * stay projection-agnostic through this.
+   */
+  private viewHeight(): number {
+    if (this.cameraProjection === 'perspective') {
+      const fov = (this.perspCamera.fov * Math.PI) / 180;
+      return 2 * this.orbitDistance() * Math.tan(fov / 2) / Math.max(0.0001, this.perspCamera.zoom);
+    }
+    return this.orthoCamera.top - this.orthoCamera.bottom;
+  }
+
   public updateCameraTransform() {
-    if (!this.canvas || !this.camera) return;
+    if (!this.canvas) return;
     const hostSize = this.hosted ? this.renderer.getSize(new THREE.Vector2()) : null;
     const width = hostSize?.x ?? (this.canvas.clientWidth || window.innerWidth);
     const height = hostSize?.y ?? (this.canvas.clientHeight || window.innerHeight);
 
-    this.camera.left = -width / 2;
-    this.camera.right = width / 2;
-    this.camera.top = height / 2;
-    this.camera.bottom = -height / 2;
-    this.camera.near = -3000;
-    this.camera.far = 4000;
-    this.camera.zoom = this.cameraState.zoom;
-    this.camera.updateProjectionMatrix();
+    this.applyProjection(width, height);
 
-    const D = 800;
+    const D = this.orbitDistance();
     const { pitch, yaw, panX, panY } = this.cameraState;
 
     const targetX = panX;
@@ -707,15 +863,53 @@ export class PointCloudField {
     const camY = targetY + D * sinPitch;
     const camZ = targetZ + D * cosPitch * cosYaw;
 
-    this.camera.position.set(camX, camY, camZ);
-
-    if (Math.abs(cosPitch) < 0.01) {
-      this.camera.up.set(0, 0, pitch > 0 ? -1 : 1);
-    } else {
-      this.camera.up.set(0, 1, 0);
+    // The rig is shared: both cameras sit at the same eye and look at the same
+    // target, so a projection switch is only a change of lens.
+    for (const cam of [this.orthoCamera, this.perspCamera]) {
+      cam.position.set(camX, camY, camZ);
+      if (Math.abs(cosPitch) < 0.01) {
+        cam.up.set(0, 0, pitch > 0 ? -1 : 1);
+      } else {
+        cam.up.set(0, 1, 0);
+      }
+      cam.lookAt(targetX, targetY, targetZ);
+      cam.updateMatrixWorld(true);
     }
 
-    this.camera.lookAt(targetX, targetY, targetZ);
+    this.pushDepthUniforms();
+  }
+
+  /**
+   * Depth presentation state the shader needs to size and tone marks by
+   * distance. The eye distance is a uniform rather than a shader-side guess so
+   * the attenuation curve is anchored to the same rig the physics sees.
+   */
+  private pushDepthUniforms() {
+    if (!this.particleMaterial) return;
+    const u = this.particleMaterial.uniforms;
+    const depth = this.config.depth ?? DEFAULT_DEPTH_CONFIG;
+    const persp = this.cameraProjection === 'perspective';
+    const fov = (this.perspCamera.fov * Math.PI) / 180;
+    const viewH = persp ? this.viewHeight() : 0;
+    // The tint is depth presentation too — without it in the gate, Depth Tint
+    // silently dies in orthographic when fade and bias are zero.
+    u.uDepthEnabled.value = persp || depth.aerialFade > 0.0001 || depth.sizeDepthBias !== 0 || (depth.depthTintWeight ?? 0) > 0 ? 1 : 0;
+    // Surfaces occlude: near marks win the pixel through the depth buffer and
+    // far marks are rejected. Off — the original instrument — every mark draws.
+    // Legacy 'on'/'off' strings predate the boolean coercion and are honoured.
+    const occlude = depth.occlusion === true || (depth.occlusion as unknown as string) === 'on';
+    this.particleMaterial.depthTest = occlude;
+    this.particleMaterial.depthWrite = occlude;
+    u.uPerspective.value = persp ? 1 : 0;
+    u.uCameraDistance.value = this.orbitDistance();
+    u.uViewHeight.value = viewH;
+    u.uSizeAttenuation.value = Math.max(0, depth.sizeAttenuation ?? 0);
+    u.uSizeAttenuationCurve.value = Math.max(0.01, depth.sizeAttenuationCurve ?? 1);
+    u.uSizeDepthBias.value = Math.max(-1, Math.min(1, depth.sizeDepthBias ?? 0));
+    u.uAerialFade.value = Math.max(0, Math.min(1, depth.aerialFade ?? 0));
+    u.uAerialRange.value = Math.max(0.1, depth.aerialRange ?? DEFAULT_DEPTH_CONFIG.aerialRange);
+    u.uDepthTintWeight.value = Math.max(0, Math.min(1, depth.depthTintWeight ?? 0));
+    u.uDepthTint.value.set(depth.depthTintColor ?? DEFAULT_DEPTH_CONFIG.depthTintColor);
   }
 
   public setCameraOrbit(pitch: number, yaw: number) {
@@ -1040,7 +1234,29 @@ export class PointCloudField {
     const styleChanged = prev.style !== cfg.style || prev.fontFamily !== cfg.fontFamily || prev.fontWeight !== cfg.fontWeight;
     if (styleChanged) this.glyphSampler.clearCache();
     this.entities.setBaseContext(cfg.style, cfg.fontFamily, cfg.fontWeight, comp.plane, cfg.cymatics);
+    const volumeChanged = this.entities.setVolume(cfg.glyphVolume);
+    if (volumeChanged) {
+      // Every planar source re-measures its body against the new law, exactly
+      // as the glyph pools do; the next update() bakes the fresh pools.
+      this.rederiveCustomSources();
+    }
     if ((prev.composition || DEFAULT_COMPOSITION).plane !== comp.plane) this.simulator.setCompositionPlane(comp.plane);
+
+    // Projection and depth presentation: a change here is a change of lens, not of
+    // scene, so the rig is simply re-applied (and the shader uniforms refreshed)
+    // rather than reseeding anything.
+    const prevDepth = prev.depth ?? DEFAULT_DEPTH_CONFIG;
+    const nextDepth = cfg.depth ?? DEFAULT_DEPTH_CONFIG;
+    const depthChanged = JSON.stringify(prevDepth) !== JSON.stringify(nextDepth);
+    if (depthChanged) {
+      this.cameraProjection = nextDepth.projection === 'perspective' ? 'perspective' : 'orthographic';
+      this.updateCameraTransform();
+    }
+    if (volumeChanged && prev.glyphVolume?.enabled !== cfg.glyphVolume?.enabled) {
+      // The body lives in the target texture, so switching the law on or off has
+      // to reseed from the freshly baked targets or particles keep the old depth.
+      this.seedCurrentTargets();
+    }
 
     // Entity edits: partition layout is recomputed; bakes happen lazily in the next tick only for
     // partitions whose shapes changed. Positions / forces / tints are uniforms — no bake, no reseed.
@@ -1117,12 +1333,42 @@ export class PointCloudField {
     return id ? this.sourceAnalyses.get(id) : undefined;
   }
 
+  /** Keyed exactly like the runtime's custom candidate pools. */
+  private static sourceKey(entityId: string, linkId?: string): string {
+    return linkId ? `${entityId}:${linkId}` : entityId;
+  }
+
+  private customSourceInputs = new Map<string, CustomSourceRecord>();
+
+  private retainCustomSource(record: CustomSourceRecord) {
+    this.customSourceInputs.set(PointCloudField.sourceKey(record.entityId, record.linkId), record);
+  }
+
+  /**
+   * Re-derives every retained image/ASCII pool against the current true-3D law.
+   * Glyph pools re-rasterize when the law changes; the masks must follow, or a
+   * law toggled after loading would leave half the scene flat.
+   */
+  private rederiveCustomSources() {
+    if (!this.customSourceInputs.size) return;
+    for (const record of [...this.customSourceInputs.values()]) {
+      if (record.kind === 'image') {
+        if (typeof record.input === 'string') continue;
+        this.loadCustomImage(record.input, record.options, record.entityId, record.linkId);
+      } else {
+        if (typeof record.input !== 'string') continue;
+        this.loadAsciiArt(record.input, record.options, record.entityId, record.linkId);
+      }
+    }
+  }
+
   public loadCustomImage(img: CanvasImageSource | ImageData, options: { mode?: 'luminance' | 'edgeSobel' | 'silhouette'; threshold?: number; invert?: boolean; scale?: number } = {}, entityId?: string, linkId?:string): SourceAnalysis | null {
     const target = entityId ? this.formations().find(e=>e.id===entityId) : this.formations()[0];
     if (!target) return null;
     const { candidates, analysis } = this.glyphSampler.rasterizeCustomImage(img, options);
     if (entityId) this.sourceAnalyses.set(entityId, analysis);
     this.entities.setCustomCandidates(target.id, candidates,linkId);
+    this.retainCustomSource({ kind: 'image', entityId: target.id, linkId, input: img, options });
     return analysis;
   }
 
@@ -1132,6 +1378,7 @@ export class PointCloudField {
     const { candidates, analysis } = this.glyphSampler.rasterizeAscii(asciiText, options);
     if (entityId) this.sourceAnalyses.set(entityId, analysis);
     this.entities.setCustomCandidates(target.id, candidates,linkId);
+    this.retainCustomSource({ kind: 'ascii', entityId: target.id, linkId, input: asciiText, options });
     return analysis;
   }
 
@@ -1139,6 +1386,7 @@ export class PointCloudField {
     const id = entityId ?? this.formations()[0]?.id;
     if (id) {
       this.sourceAnalyses.delete(id);
+      this.customSourceInputs.delete(PointCloudField.sourceKey(id, linkId));
       this.entities.setCustomCandidates(id, null,linkId);
     }
   }
@@ -1156,6 +1404,7 @@ export class PointCloudField {
   /** Queued click-effect impulse, consumed by the velocity shader and decayed each step. */
   private burstVelocity = new THREE.Vector2();
   private burstPosition = new THREE.Vector2();
+  private burstZ = 0;
   private burstRadius = 150;
   private burstRadial = 0;
   private burstSpin = 0;
@@ -1165,14 +1414,16 @@ export class PointCloudField {
     this.burstRadial = 0;
     this.burstSpin = 0;
     this.burstPosition.copy(this.pointerPos.x > -90000 ? this.pointerPos : this.entities.fieldCentre());
+    this.burstZ = this.pointerPos.x > -90000 ? this.hostPointerZ : this.entities.fieldCentreZ();
   }
 
   /** Momentary pointer click effect. Coordinates are native world pixels. */
-  public triggerPointerEffect(kind: 'pulse' | 'implode' | 'vortex' | 'shove', x: number, y: number, strength = 1, radius = 150) {
-    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(strength) || !Number.isFinite(radius)) {
+  public triggerPointerEffect(kind: 'pulse' | 'implode' | 'vortex' | 'shove', x: number, y: number, strength = 1, radius = 150, z = 0) {
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(strength) || !Number.isFinite(radius) || !Number.isFinite(z)) {
       throw new Error('Invalid pointer effect');
     }
     this.burstPosition.set(x, y);
+    this.burstZ = z;
     this.burstRadius = Math.max(8, Math.abs(radius));
     this.burstVelocity.set(0, 0);
     const power = 950 * strength;
@@ -1233,12 +1484,27 @@ export class PointCloudField {
     const right = new THREE.Vector3(...view.right as [number,number,number]);
     const up = new THREE.Vector3(...view.up as [number,number,number]);
     const normal = new THREE.Vector3().crossVectors(right, up).normalize();
-    this.camera.left = -originX / s; this.camera.right = (width - originX) / s;
-    this.camera.top = originY / s; this.camera.bottom = -(height - originY) / s;
-    this.camera.near = 0.1; this.camera.far = 20000; this.camera.zoom = 1;
-    this.camera.position.copy(normal).multiplyScalar(5000);
-    this.camera.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(right, up, normal));
-    this.camera.updateProjectionMatrix(); this.camera.updateMatrixWorld(true);
+    this.orthoCamera.left = -originX / s; this.orthoCamera.right = (width - originX) / s;
+    this.orthoCamera.top = originY / s; this.orthoCamera.bottom = -(height - originY) / s;
+    this.orthoCamera.near = 0.1; this.orthoCamera.far = 20000; this.orthoCamera.zoom = 1;
+    this.orthoCamera.updateProjectionMatrix();
+
+    // The host asks for an exact world scale per output pixel. Perspective can
+    // honour that scale at the workplane by choosing the eye distance that makes
+    // the frustum cover the same pixel pitch — the two projections then frame
+    // identically at z = 0 and diverge only in convergence, which is the point.
+    const fov = (this.perspCamera.fov * Math.PI) / 180;
+    const distance = (height / Math.max(0.0001, s) * 0.5) / Math.max(0.0001, Math.tan(fov / 2));
+    this.perspCamera.near = 0.1; this.perspCamera.far = 20000; this.perspCamera.zoom = 1;
+    this.perspCamera.updateProjectionMatrix();
+
+    const planar = this.cameraProjection !== 'perspective';
+    const eyeDistance = planar ? 5000 : distance;
+    const cam = this.camera as THREE.OrthographicCamera | THREE.PerspectiveCamera;
+    cam.position.copy(normal).multiplyScalar(eyeDistance);
+    cam.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(right, up, normal));
+    cam.updateProjectionMatrix(); cam.updateMatrixWorld(true);
+    this.pushDepthUniforms();
     this.particleMaterial.uniforms.uPixelRatio.value = dpr;
     this.particleMaterial.uniforms.uCanvasSize.value.set(width, height);
   }
@@ -1293,16 +1559,28 @@ export class PointCloudField {
     const visibility=this.scene.children.map(o=>[o,o.visible] as const);
     this.particleMaterial.uniforms.uEditHasSelection.value=0;for(const [o] of visibility)if(o!==this.particlePoints)o.visible=false;
     const pixelRatio = this.particleMaterial.uniforms.uPixelRatio.value;
-    const camera = this.camera.clone();
-    const aspect = width / height, oldAspect = (camera.right-camera.left)/(camera.top-camera.bottom);
-    const cx = (camera.left+camera.right)/2, cy=(camera.top+camera.bottom)/2;
-    let w=camera.right-camera.left, h=camera.top-camera.bottom;
-    if (aspect < oldAspect) w=h*aspect; else h=w/aspect;
-    camera.left=cx-w/2; camera.right=cx+w/2; camera.top=cy+h/2; camera.bottom=cy-h/2;
-    camera.updateProjectionMatrix();
+    const camera = (this.camera as THREE.OrthographicCamera | THREE.PerspectiveCamera).clone();
+    const aspect = width / height;
     const cssHeight = this.renderer.getSize(new THREE.Vector2()).y;
-    const originalHeight = this.camera.top-this.camera.bottom;
-    this.particleMaterial.uniforms.uPixelRatio.value = height/cssHeight * originalHeight/h;
+    let sizeScale = height / cssHeight;
+    const persp = camera as THREE.PerspectiveCamera;
+    if (persp.isPerspectiveCamera) {
+      // A perspective lens resizes by aspect, not by cropping the frustum, so
+      // the world-per-pixel at the workplane is unchanged and only the output
+      // pixel scale applies.
+      persp.aspect = aspect;
+      persp.updateProjectionMatrix();
+    } else {
+      const ortho = camera as THREE.OrthographicCamera;
+      const oldAspect = (ortho.right - ortho.left) / (ortho.top - ortho.bottom);
+      const cx = (ortho.left + ortho.right) / 2, cy = (ortho.top + ortho.bottom) / 2;
+      let w = ortho.right - ortho.left, h = ortho.top - ortho.bottom;
+      if (aspect < oldAspect) w = h * aspect; else h = w / aspect;
+      ortho.left = cx - w / 2; ortho.right = cx + w / 2; ortho.top = cy + h / 2; ortho.bottom = cy - h / 2;
+      ortho.updateProjectionMatrix();
+      sizeScale *= this.viewHeight() / h;
+    }
+    this.particleMaterial.uniforms.uPixelRatio.value = sizeScale;
     try {
       this.renderer.setRenderTarget(target); this.renderer.clear(); this.renderer.render(this.scene,camera);
       const bytes=new Uint8Array(width*height*4);this.renderer.readRenderTargetPixels(target,0,0,width,height,bytes);
@@ -1470,6 +1748,7 @@ export class PointCloudField {
     if (delta > 0) for (const imp of res.impulses) this.triggerDisperse(imp);
     this.simulator.setTargetTextures(this.entities.textureA!, this.entities.textureB!, this.entities.fieldCentre(), this.entities.noiseTexture!);
     this.simulator.setEntityState(this.entities.uniforms);
+    this.simulator.setCollisionState(this.entities.collisionTiles, this.entities.collisionTexture);
     this.morphProgress = res.frames[0]?.state.progress ?? manual;
 
     // 2. Composition focus (pure function of time) → focus tint + cymatic station follow
@@ -1503,35 +1782,46 @@ export class PointCloudField {
     this.pointerVel.multiplyScalar(Math.pow(0.92, delta * 60));
 
     // 5. Relational multi-attractors retain their own physical law, but expose carrier telemetry.
+    // Attractors live in the field's real 3D centre; once the body law is on they also
+    // trace tilted orbits through the depth axis, so a whirlpool organises a solid
+    // instead of dragging it flat toward the picture plane.
     this.lastRelationalCarriers = [];
     if (cfg.relational?.enabled) {
       const rel = cfg.relational;
       const count = Math.max(1, Math.min(10, rel.attractorCount ?? 3));
       const eu = this.entities.uniforms;
-      const baseCenters: THREE.Vector2[] = [];
-      for (let i = 0; i < Math.max(1, eu.count); i++) baseCenters.push(new THREE.Vector2(eu.centers[i].x, eu.centers[i].y));
+      const baseCenters: Array<{x:number;y:number;z:number}> = [];
+      for (let i = 0; i < Math.max(1, eu.count); i++) baseCenters.push({x: eu.centers[i].x, y: eu.centers[i].y, z: eu.centers[i].z});
       const vCenter = this.entities.fieldCentre();
+      let centreZ = 0;
+      for (const c of baseCenters) centreZ += c.z;
+      centreZ /= Math.max(1, baseCenters.length);
+      const depthForms = !!(cfg.glyphVolume?.enabled && (cfg.glyphVolume?.depth ?? 0) > 0);
       const dynamicAttractors: THREE.Vector4[] = [];
       const dynamicSpins: number[] = [];
       const carrierPositions: Array<{x:number;y:number;z:number}> = [];
       for (let i = 0; i < 10; i++) {
         if (i < count) {
-          const basePt = baseCenters[i % baseCenters.length] || new THREE.Vector2(0, 0);
+          const basePt = baseCenters[i % baseCenters.length] || {x: 0, y: 0, z: 0};
           const initialAngle = (i / count) * Math.PI * 2;
           const currentAngle = initialAngle + elapsedTime * (rel.orbitSpeed ?? 0.8);
           const radius = rel.orbitRadius ?? 240;
+          const phase = (i / count) * Math.PI * 2;
           let posX = 0;
           let posY = 0;
+          let posZ = centreZ;
           if (rel.mode === 'chaos') {
             const wx = Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.4 + i * 2.1) * radius * 0.7;
             const wy = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) * 1.1 + i * 1.7) * radius * 0.5;
             posX = basePt.x + wx;
             posY = basePt.y + wy;
+            if (depthForms) posZ += Math.sin(elapsedTime * (rel.wanderSpeed ?? 0.5) * 0.9 + i * 1.3) * radius * 0.35;
           } else if (rel.mode === 'nbody') {
             const t = elapsedTime * (rel.orbitSpeed ?? 0.8) + i * ((Math.PI * 2) / count);
             const denom = 1 + Math.cos(t) * Math.cos(t);
             posX = vCenter.x + (Math.sin(t) / denom) * radius * 1.4;
             posY = vCenter.y + ((Math.sin(t) * Math.cos(t)) / denom) * radius * 1.4;
+            if (depthForms) posZ += (Math.cos(t) / denom) * radius * 0.55;
           } else {
             const rx = Math.cos(currentAngle) * radius;
             const ry = Math.sin(currentAngle) * radius * 0.75;
@@ -1539,11 +1829,12 @@ export class PointCloudField {
             const driftY = Math.cos(elapsedTime * (rel.wanderSpeed ?? 0.5) + i) * 35;
             posX = vCenter.x + rx + driftX;
             posY = vCenter.y + ry + driftY;
+            if (depthForms) posZ += Math.sin(currentAngle + phase) * radius * 0.6;
           }
           const spin = (i % 2 === 0 ? 1.0 : -1.0) * (1.0 + i * 0.2);
-          dynamicAttractors.push(new THREE.Vector4(posX, posY, 0, 1.0));
+          dynamicAttractors.push(new THREE.Vector4(posX, posY, posZ, 1.0));
           dynamicSpins.push(spin);
-          carrierPositions.push({x:posX,y:posY,z:0});
+          carrierPositions.push({x:posX,y:posY,z:posZ});
         } else {
           dynamicAttractors.push(new THREE.Vector4(-99999, -99999, 0, 0));
           dynamicSpins.push(0);
@@ -1580,7 +1871,7 @@ export class PointCloudField {
     this.syncSemanticColorUniforms(comp);
 
     // Runtime burst input survives UI/pointer clearing and is consumed only by physics.
-    this.simulator.setBurst(this.burstPosition, this.burstVelocity, this.burstRadius, this.burstRadial, this.burstSpin);
+    this.simulator.setBurst(this.burstPosition, this.burstVelocity, this.burstRadius, this.burstRadial, this.burstSpin, this.burstZ);
     if (delta > 0) {
       const decay = Math.pow(0.92, delta * 60);
       this.burstVelocity.multiplyScalar(decay);
@@ -1610,7 +1901,7 @@ export class PointCloudField {
     if (!this.resonatorActive) return;
     this.resonatorActive = false;
     const zero = new Float32Array(64);
-    this.simulator.setResonatorState(false, 0, zero, zero, 700, 0, 0, 0, 0, 1);
+    this.simulator.setResonatorState(false, 0, zero, zero, 700, 0, 0, 0, 0, 1, false);
   }
 
   /**
@@ -1625,12 +1916,17 @@ export class PointCloudField {
       this.lastResonanceDrive = { kind:'frequency', targetHz:cym?.frequencyHz ?? this.cymaticFreqCurrent, bound:true };
       return;
     }
+    // The two existing dim/plane keys are the single source of truth for the volumetric
+    // mode: either '3D' dimension or the volumetric3D plate geometry turns the resonator
+    // into a standing-wave cavity (4x4x4 mode lattice instead of the 8x8 plate grid).
+    const volumetric = cym.dimension === '3D' || cym.plateGeometry === 'volumetric3D';
     const params = {
       plateSize: cym.plateSize ?? 700,
       baseFrequency: cym.baseFrequency ?? 40,
       dampingQ: cym.dampingQFactor ?? 4.5,
       driveStrength: cym.driveStrength ?? 1.0,
       modeCount: Math.max(1, Math.min(64, Math.round(cym.modeCount ?? 64))),
+      dimension: volumetric ? ('3D' as const) : ('2D' as const),
     };
     if (!this.cymaticResonator) this.cymaticResonator = new CymaticResonator(params);
     else this.cymaticResonator.configure(params);
@@ -1691,7 +1987,8 @@ export class PointCloudField {
       cym.agitation ?? 0.3,
       cym.boundaryStrength ?? 6.0,
       comp.plane === 'horizontal' ? 0.0 : 1.0,
-      cym.driveScale ?? 1.0
+      cym.driveScale ?? 1.0,
+      volumetric
     );
     this.simulator.setResonatorDominance(cym.dominance ?? 1.0);
   }

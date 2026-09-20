@@ -1,0 +1,71 @@
+{
+  "artifact": "paramasiva/bimba-m1-ananda-matrices.journey.json",
+  "family": "paramasiva",
+  "worker": "ql-lane-3-bimba-expression-production",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-paramasiva-topology"
+  ],
+  "m_prime": {
+    "instrument": "M1′ Canvas/Constellation ↔ M1 topology/geometry/material Expression capacity",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §7/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "e87d6bcef81d005e848b978a11a0ab53b7739973",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#1-2",
+        "registry_node": "17b2d4e993cc3b30",
+        "name": "Ananda"
+      },
+      {
+        "coordinate": "#1-2-0",
+        "registry_node": "5b4cad5aa95822ce",
+        "name": "Matrix 0: The Original (Bimba)"
+      },
+      {
+        "coordinate": "#1-2-1",
+        "registry_node": "b4925fd299466a8b",
+        "name": "Matrix 1: The Offset (Pratibimba)"
+      },
+      {
+        "coordinate": "#1-2-5",
+        "registry_node": "3f8a0a0732c03e11",
+        "name": "Matrix 5: Non-Dual Quintessence (Paradox Holder)"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#1-2",
+      "kind": "CONTAINS_ANANDA_COMPONENT",
+      "to": "#1-2-0",
+      "ref": "bimba:relation:1e8cc4ee0a543064f9908e19"
+    }
+  ],
+  "pointcloud_revision": "c0502649691bb01a3b2d862befddc821f093b016",
+  "scenes": [
+    {
+      "scene_id": "bimba-m1-ananda-s1",
+      "source_ref": "#1-2-0 … #1-2-5 (ordered matrix sequence)"
+    },
+    {
+      "scene_id": "bimba-m1-ananda-s2",
+      "source_ref": "#1-2-0, #1-2-1"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "Matrix 1 and 5 registry node ids are recorded in the manifest (the generator cites only nodes it read); the six matrices run as sequence states of one body per family matrix_grammar."
+}

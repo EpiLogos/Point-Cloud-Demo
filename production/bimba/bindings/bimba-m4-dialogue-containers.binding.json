@@ -1,0 +1,88 @@
+{
+  "artifact": "nara/bimba-m4-dialogue-containers.journey.json",
+  "family": "nara",
+  "worker": "ql-parent-next-cut-widening",
+  "profile_lineage": [
+    "bimba-corpus-base",
+    "family-nara-situated"
+  ],
+  "cut": "widening-2-depth-3-to-4",
+  "variation": {
+    "declared_in": "journey.description (Variation field)",
+    "law": "source-backed variation only; inherited grammar otherwise (profiles/family-*.profile.json)"
+  },
+  "m_prime": {
+    "instrument": "M4′ Places/World ↔ Nara/EarthBody/current situated Expression",
+    "bridge": "L5-TECHNE-DUAL-READING-LOCK.md §10/§13"
+  },
+  "source_revision": {
+    "repo": "QL-MEF (local /Users/admin/Central/Work/Quaternal-Logic, branch session/k-aw-expression-production-2026-09-17)",
+    "commit": "98216fa",
+    "registry": "fixtures/kernel/m-tree-v1.json (ql.m-tree/v1)",
+    "registry_revision": "259a2f496c5f3a76d31e5c480dc9afdb45ad1282a7034cc28c528c39a71442e4",
+    "source_revision": "daa660cbc1b8c5da83828698665a753852cb0287",
+    "records": [
+      {
+        "coordinate": "#4.3-2",
+        "registry_node": "856138251e11ec7e",
+        "name": "Dialogical & Inquiry Containers"
+      },
+      {
+        "coordinate": "#4.3-2.0",
+        "registry_node": "1a0d5fa7225391ec",
+        "name": "Bohmian Dialogue"
+      },
+      {
+        "coordinate": "#4.3-2.1",
+        "registry_node": "a2b824e86fa633ef",
+        "name": "Native Talking Circle"
+      },
+      {
+        "coordinate": "#4.3-2.2",
+        "registry_node": "d34403e6255c9801",
+        "name": "Diamond Approach Inquiry"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "from": "#4.3-2",
+      "kind": "CONTAINS_MODALITY",
+      "to": "#4.3-2.0",
+      "ref": "bimba:relation:5b242565709f1a6f790614d9"
+    },
+    {
+      "from": "#4.3-2",
+      "kind": "CONTAINS_MODALITY",
+      "to": "#4.3-2.1",
+      "ref": "bimba:relation:0ed6b82bbe0e5a729c1fc4ec"
+    },
+    {
+      "from": "#4.3-2",
+      "kind": "CONTAINS_MODALITY",
+      "to": "#4.3-2.2",
+      "ref": "bimba:relation:094b312ff13edde9bee96c2e"
+    }
+  ],
+  "pointcloud_revision": "7599fd1ed99886c289ff44a753b1b1950b6c7374",
+  "scenes": [
+    {
+      "scene_id": "bimba-m4-dialogue-s1",
+      "source_ref": "#4.3-2 with #4.3-2.0…#4.3-2.2"
+    },
+    {
+      "scene_id": "bimba-m4-dialogue-s2",
+      "source_ref": "#4.3-2.0 (Bohmian Dialogue featured)"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "glyph",
+      "ref": "inline text labels — exact registry refs, authored",
+      "provenance": "authored"
+    }
+  ],
+  "capture": null,
+  "status": "authored",
+  "notes": "Widens the nara family from the first cut's #4.4 lens/centres material into the untouched #4.3 transformation-context branch. The three CONTAINS_MODALITY children are distinct practice containers — staged as three held-apart containers, no merge, per the family profile's protected-personal discipline (nothing personal is simulated; these are source-named modalities)."
+}

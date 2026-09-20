@@ -1,0 +1,106 @@
+{
+ "artifact": "matheme/roz-matheme-computation.journey.json",
+ "family": "matheme",
+ "worker": "E4",
+ "profile_lineage": [
+  "roz-corpus-base",
+  "register-matheme"
+ ],
+ "source_revision": {
+  "repo": "EpiLogos/Antykathera-Essay-Work",
+  "commit": "dbf3b17",
+  "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+  "records": [
+   {
+    "record_id": "matheme-softmax-argmax",
+    "path": "submission-package/essay/symbolon/matheme/computation/softmax-argmax.md",
+    "sha256": "51290c2dfd988e22d02ff1c95cc52840bb6587da100dc449e4bc0b2d967ce6fc"
+   },
+   {
+    "record_id": "matheme-preference-gauge",
+    "path": "submission-package/essay/symbolon/matheme/computation/preference-gauge.md",
+    "sha256": "15323374335cb2834a8d837eeb7808f2ded3a7ea8d694dc42c9450ff64369ee0"
+   },
+   {
+    "record_id": "matheme-j-space",
+    "path": "submission-package/essay/symbolon/matheme/computation/j-space.md",
+    "sha256": "b6fe5e0cd29142b89af18c52050e9095800d1f0a15014f81379b6ae82407711a"
+   },
+   {
+    "record_id": "matheme-ebm-resonance",
+    "path": "submission-package/essay/symbolon/matheme/computation/ebm-resonance.md",
+    "sha256": "0b2226a938407080fe7b2d7e5ff5e8d0b634d35344264cbc70523c71b7187340"
+   },
+   {
+    "record_id": "matheme-operational-parity",
+    "path": "submission-package/essay/symbolon/matheme/computation/operational-parity.md",
+    "sha256": "736781a36f8f0f698d8d0d5d10a67833824626abdcd89673127c3e1dc943591d"
+   }
+  ]
+ },
+ "pointcloud_revision": "f257de5",
+ "scenes": [
+  {
+   "scene_id": "comp-softmax-argmax",
+   "source_ref": "matheme-softmax-argmax",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "comp-preference-gauge",
+   "source_ref": "matheme-preference-gauge",
+   "claim_status": "derived",
+   "relations": ""
+  },
+  {
+   "scene_id": "comp-j-space",
+   "source_ref": "matheme-j-space",
+   "claim_status": "offered",
+   "relations": ""
+  },
+  {
+   "scene_id": "comp-ebm-resonance",
+   "source_ref": "matheme-ebm-resonance",
+   "claim_status": "offered",
+   "relations": ""
+  },
+  {
+   "scene_id": "comp-operational-parity",
+   "source_ref": "matheme-operational-parity",
+   "claim_status": "offered",
+   "relations": ""
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored token glyphs throughout (QL notation: 0/1, 1/0, −/−, ?/!, −/+, X/x, AM/IS, ∞/dx, Ø, 4+2, 5→0, 9/8, 16/9, (0/1)/(1/0), T² = ℝ²/ℤ², π₁ ≅ ℤ×ℤ, 531441/524288 …)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "concentric mandala plate (ql-eight-determinations) per ql-expression-grammar.md §III",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "crossed-zero recognition sequence as entity step sequence (ql-crossed-zero)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "ascii",
+   "ref": "tetraktys dot diagram (har-tetraktys-triangle, four rows 1·2·3·4)",
+   "provenance": "authored"
+  },
+  {
+   "kind": "diagram",
+   "ref": "fundamental square + torus ring plates (quilt-topology, top-torus-cover-winding)",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "matheme/roz-matheme-computation.cover.png",
+ "status": "authored",
+ "notes": "Claim statuses travel: softmax/argmax and preference gauge Derived, J-space/EBM/operational-parity Offered. The gauge experiment separation (shift-inert vs reference-acts) is staged as the scene glyph. No scene claims an implemented system; each body keeps the record’s own Open/Offered boundary. ",
+ "description": "Computation mathemes: softmax/argmax, preference gauge and reference policy, J-space, energy-based inference, the six operational-parity tests.",
+ "scene_count": 5
+}

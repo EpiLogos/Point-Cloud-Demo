@@ -260,6 +260,12 @@ body:has(#live-workspace[hidden]) #orbit-control{top:auto;bottom:76px}
 #inspector.is-studio :is(.range-control,.material-card,.shape-choices button,.layout-grid button){background:transparent;background-image:none}
 #inspector.is-studio :is(.range-control,.material-card,.shape-choices button,.layout-grid button):is(:hover,:focus-within){background:var(--hud-solid)}
 .automation-intro{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}.automation-intro h3{font:500 14px var(--sans);margin:0 0 5px}.automation-intro p{font-size:11px;color:var(--ui-muted);line-height:1.5;margin:0}.automation-intro>button{flex-shrink:0;font-size:11px}
+/* Master automation transport: play fires every one-shot, pause holds groups at base, loop latches. */
+.automation-transport{display:flex;align-items:center;gap:2px;flex-shrink:0}
+.automation-transport button{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-radius:5px}
+.automation-transport button svg{width:13px;height:13px}
+.automation-transport button:hover,.automation-transport button:focus-visible{background:var(--ui-wash)}
+.automation-transport button[aria-pressed=true]{background:var(--ui-ink);color:var(--ui-surface)}
 .automation-content{display:flex;flex-direction:column;gap:8px}.is-studio .automation-lane{padding:0;border:1px solid var(--ui-line);border-radius:6px;min-width:0}.automation-lane>summary{display:flex;align-items:center;gap:10px;padding:12px;cursor:pointer;list-style:none;font-size:12px}.automation-lane>summary::-webkit-details-marker{display:none}.automation-lane>summary>span:nth-child(2){flex:1}.automation-lane summary small{display:block;font-size:9px;color:var(--ui-muted);margin-top:4px}.automation-lane summary strong{font:11px var(--sans);font-variant-numeric:tabular-nums}.automation-lane summary svg{width:12px;height:12px;transition:transform .2s}.automation-lane[open]>summary>svg{transform:rotate(180deg)}.lane-dot{width:5px;height:5px;border-radius:50%;background:var(--ui-muted);opacity:.3}.lane-dot.running{opacity:1;background:var(--ui-ink)}.lane-content{padding:0 12px 12px;border-top:1px solid var(--ui-line)}.lane-primary{display:flex;align-items:center;justify-content:space-between;padding-top:10px}.lane-primary .toggle-row{margin:0}.lane-primary>button{font-size:10px}.lane-content .control{margin:12px 0}.lane-content .control>label{font-size:10px}.lane-content select,.lane-content input{min-width:0;width:100%;font-size:11px;background:transparent}.lane-content :is(input,select):focus{background:var(--hud-solid)}.lane-content .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.lane-advanced{margin:8px 0 14px}.lane-advanced>summary{font-size:10px;color:var(--ui-muted);cursor:pointer}.lane-content .button-row{display:flex;flex-wrap:wrap;gap:8px}.lane-content .button-row button{font-size:10px;padding:7px}.recorded-tracks{margin:20px 0 0;padding-top:14px;border-top:1px solid var(--ui-line);border-bottom:0}.recorded-tracks>summary{font-size:11px;cursor:pointer;margin-bottom:12px}
 #toolbelt-panel{max-height:calc(100vh - var(--footer-height,44px) - 108px - var(--automation-height,0px))}
 .automation-monitor{position:fixed;right:30px;top:calc(var(--belt-bottom,660px) + 8px);width:var(--belt-panel-width,280px);height:112px;display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--ui-line);border-radius:7px;background:var(--hud-glass);backdrop-filter:blur(3px);color:var(--ui-ink);z-index:34}.cycle-dial{width:66px;flex-shrink:0;position:relative}.cycle-dial svg{width:64px;height:64px;fill:none;stroke:var(--ui-line);stroke-width:1}.cycle-dial .cycle-progress{stroke:var(--ui-ink);stroke-width:2;stroke-dasharray:0 100;transform:rotate(-90deg);transform-origin:center}.cycle-dial line{stroke:var(--ui-ink)}.cycle-dial>span{display:block;text-align:center;font-size:9px;color:var(--ui-muted);font-variant-numeric:tabular-nums}.cycle-info{min-width:0;flex:1}.cycle-info select{width:100%;font-size:11px;background:transparent;border:0;padding:3px 0;color:inherit;text-overflow:ellipsis}.cycle-info>div{display:flex;align-items:baseline;gap:8px;margin-top:8px}.cycle-info strong{font-size:16px;font-weight:400;font-variant-numeric:tabular-nums}.cycle-info small,.cycle-actions span{font-size:9px;color:var(--ui-muted)}.cycle-info .cycle-actions{align-items:center;gap:9px}.cycle-actions button{font-size:10px;padding:2px}.cycle-actions svg{width:12px;height:12px}.cycle-info select:focus,.cycle-actions button:hover{background:var(--hud-solid)}
@@ -372,7 +378,7 @@ body.night #app select{color-scheme:dark}
 .inspector-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center}
 .inspector-center .icon-button{width:28px;height:28px;min-width:28px;padding:6px;opacity:.5}
 .inspector-center .icon-button:hover,.inspector-center .icon-button:focus-visible,.inspector-center .icon-button[aria-pressed=true]{opacity:1;background:var(--ui-wash)}
-#inspector.is-studio.docked{left:auto;right:30px;top:60px;bottom:auto;display:flex;flex-direction:column;grid-template-columns:none;width:var(--panel-width,280px);max-width:min(var(--panel-width,280px),calc(100vw - 24px));height:var(--panel-height,600px);max-height:calc(100vh - 60px - var(--field-line) - var(--automation-height,0px))}
+#inspector.is-studio.docked{left:auto;right:30px;top:60px;bottom:auto;display:flex;flex-direction:column;grid-template-columns:none;width:var(--belt-panel-width,280px);max-width:min(var(--belt-panel-width,280px),calc(100vw - 24px));height:var(--belt-panel-height,calc(100vh - 60px - var(--field-line) - var(--automation-height,0px)));max-height:calc(100vh - 60px - var(--field-line) - var(--automation-height,0px))}
 #inspector.is-studio.docked .inspector-heading{grid-column:auto;flex:none}
 #inspector.is-studio.docked .studio-sections{grid-column:auto;grid-row:auto;flex-direction:row;flex-wrap:nowrap;flex-shrink:0;gap:2px;padding:6px;border-right:0;border-bottom:1px solid var(--ui-line);overflow:auto}
 #inspector.is-studio.docked .studio-sections button{white-space:nowrap;padding:8px;font-size:10px}
@@ -386,6 +392,7 @@ body.night #app select{color-scheme:dark}
 /* Programmatic panel edits commit in place; smooth scrolling must not fight them. */
 .context-content,.inspector-content{scroll-behavior:auto}
 @media(max-width:620px){#inspector.is-studio.docked{right:12px}}
+@media(max-width:850px){#inspector.is-studio.docked{width:var(--belt-panel-width,260px);max-width:min(var(--belt-panel-width,260px),calc(100vw - 24px))}}
 
 /* The cycle instrument: two pages, and it docks inside the toolbelt. */
 .automation-monitor{flex-direction:column;align-items:stretch;height:auto;min-height:0;gap:8px}
@@ -406,3 +413,10 @@ body.night #app select{color-scheme:dark}
 .monitor-ops button{font-size:10px;padding:5px 8px;display:inline-flex;gap:4px;align-items:center}
 .automation-monitor.docked{position:static;width:auto;height:auto;margin:8px 12px;flex:none}
 @media(max-width:620px){.automation-monitor.docked{margin:6px 8px}}
+/* Optional Physis panel follows the existing capture controls. */
+#physis-panel{max-height:calc(100vh - 100px);overflow:auto;z-index:45}
+#physis-panel .button-row{flex-wrap:wrap}
+#physis-panel .physis-media{display:grid;gap:8px;font-size:11px;margin-top:14px}
+#physis-panel .physis-media a{color:var(--ink);text-decoration:none}
+#physis-panel .control{margin-top:14px}
+body.presentation #physis-panel,body.library-open #physis-panel{display:none}

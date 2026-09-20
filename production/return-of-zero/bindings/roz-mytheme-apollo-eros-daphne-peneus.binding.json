@@ -1,0 +1,119 @@
+{
+  "artifact": "mytheme/roz-mytheme-apollo-eros-daphne-peneus.journey.json",
+  "family": "mytheme",
+  "worker": "E6 (mytheme-wholes)",
+  "profile_lineage": [
+    "roz-corpus-base",
+    "register-mytheme"
+  ],
+  "source_revision": {
+    "repo": "EpiLogos/Antykathera-Essay-Work",
+    "commit": "dbf3b1771724bd56663e4e3410df13e9d3ae681b",
+    "census": "working/pre-manuscript-refinement-2026-09-10/T25-current-census-acceptance.json",
+    "records": [
+      {
+        "record_id": "mytheme-apollo-eros-daphne-peneus",
+        "path": "submission-package/essay/symbolon/mytheme/worlds/roman-latin/apollo-eros-daphne-peneus/WHOLE.md",
+        "sha256": "5a24300768dbf44881d1d2bdbc362ae940f113a921f60e44ff53bca1d68b1389",
+        "sha256_receipt_stale": "f4837d9f88f1d663677b36aff002ea6e49752dafa23390c6c7006e7ca00ba4a9"
+      }
+    ]
+  },
+  "pointcloud_revision": "a39cf5f5fa45cd6526d1c8af432dad711c9758ec",
+  "scenes": [
+    {
+      "scene_id": "m-ovid-0-python",
+      "phase": "#0 Python, the games, and the boast",
+      "relations": "Met. 1.416–465 (q001)"
+    },
+    {
+      "scene_id": "m-ovid-1-arrows",
+      "phase": "#1 two contrary arrows; Daphne's wish granted",
+      "relations": "Met. 1.466–489 (q001); order of narration preserved"
+    },
+    {
+      "scene_id": "m-ovid-2-pursuit",
+      "phase": "#2 the pursuit",
+      "relations": "Met. 1.490–542 (q002); the failed self-cure; hound/hare"
+    },
+    {
+      "scene_id": "m-ovid-3-tree",
+      "phase": "#3 the transformation and the shrinking wood",
+      "relations": "Met. 1.543–556 (q002, q003); Miller 1.556 quoted exactly"
+    },
+    {
+      "scene_id": "m-ovid-4-laurel",
+      "phase": "#4 the laurel's public office",
+      "relations": "Met. 1.557–567 (q003); recoil + seeming assent retained together"
+    },
+    {
+      "scene_id": "m-ovid-5-return",
+      "phase": "#5→0 appropriation after withdrawal",
+      "relations": "the ratified whole seam; A20, A27 (yes); C21, C27; A04, A19, A24, A26 (yes); A08, A09, A21, A25, A29, A31, A32, A35, C14, C18, C38, C47, C53 (no); movement 35"
+    }
+  ],
+  "occurrence_index": [
+    {
+      "figure": "Python",
+      "occurrence": "#0 slain with the deer-goat bow; Pythian games with oak leaves, no laurel"
+    },
+    {
+      "figure": "Cupid's two arrows",
+      "occurrence": "#1 golden to Apollo's marrow, leaden to Daphne — one retaliatory intervention"
+    },
+    {
+      "figure": "Peneus",
+      "occurrence": "#1 grants perpetual virginity; #3 the addressed rescue; #4 distinct from Apollo's later appointment"
+    },
+    {
+      "figure": "the beating heart under bark",
+      "occurrence": "#3 resistance retained in the changed body"
+    },
+    {
+      "figure": "\"even the wood shrank from his kisses\" (1.556)",
+      "occurrence": "#3 quoted exactly; the recoil kept with the seeming nod"
+    },
+    {
+      "figure": "the laurel at triumphs and Augustus's doorposts",
+      "occurrence": "#4 the emblem's divine, artistic, martial, political life"
+    },
+    {
+      "place": "Delphi, Claros, Tenedos, Patara",
+      "occurrence": "#2 Apollo's self-listing during the pursuit"
+    },
+    {
+      "action": "the slower-pursuit proposal",
+      "occurrence": "#2 means changed, end protected (A31 comparison, human-amplified: no)"
+    }
+  ],
+  "human_amplified": [
+    {
+      "relation": "Apollo figures measure/illumination/form; Cupid's opposed charges as fallen accounting; appropriation after withdrawal; A20, A27, C21, C27, C09 returns; movement 35",
+      "flag": "yes"
+    },
+    {
+      "relation": "AM/IS and X/x local refractions; A08, A09, A21, A25, A29, A31, A32, A35 comparisons; C14, C18, C38, C47, C53; Python→Eros→Peneus→laurel constellation",
+      "flag": "no — visible proposals, not ratified correspondences"
+    }
+  ],
+  "cross_story_relations": [
+    "Daphne ↔ the Apollo/Dionysus bracket (movement 35 keeps its own relation; no resolution imported into Ovid's ending).",
+    "Avatar-image-mask-idol whole figures the laurel as emblematic possession after withdrawal; this whole retains the fuller telling."
+  ],
+  "assets": [
+    {
+      "kind": "ascii",
+      "ref": "entity glyphs and word-formations inside the journey file (all scene text traces to the record)",
+      "provenance": "authored"
+    },
+    {
+      "kind": "diagram",
+      "ref": "scene compositions (net, torus, dial, egg-sequence, quaternio) staged with the engine shapes ring/disc/square/triangle/yantra/cymatic",
+      "provenance": "authored"
+    }
+  ],
+  "capture": "mytheme/roz-mytheme-apollo-eros-daphne-peneus.cover.png",
+  "capture_notes": "Cover captured through tools/capture.mjs at authored params (scene 1 of the journey). Draft pass at --count 8000 across all scenes; final cover at authored count.",
+  "status": "reviewed",
+  "notes": "Craft: the transformation scene is the journey's centre — Daphne's name-form cycles into the tree triangle and back, with the heart glyph held above the trunk. The recoil and the nod are both named in scene 4 so neither can be cut away without visible loss. | E0 correction 2026-09-17: receipt-era sha256 replaced with actual-bytes hash at dbf3b17 (prior value kept as sha256_receipt_stale). E0 acceptance repair: title/field collision fixed on m-ovid-0-python, m-ovid-4-laurel, m-ovid-5-return (title width 560; formations iteratively scaled and dropped clear of the title band); cover re-captured."
+}

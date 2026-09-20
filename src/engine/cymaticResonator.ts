@@ -4,12 +4,16 @@
  */
 
 /**
- * CymaticResonator — a single continuously-driven, damped modal resonator for a square
- * free Chladni plate, evaluated on the CPU in the ENVELOPE domain.
+ * CymaticResonator — a single continuously-driven, damped modal resonator, evaluated on the
+ * CPU in the ENVELOPE domain. Two mode sets share the same 64-slot state arrays and the same
+ * per-mode oscillator math:
+ *
+ *   - '2D' (default): the classic square free Chladni plate, a K x K grid of mode shapes.
+ *   - '3D': a volumetric standing-wave cavity (box resonator), a 4 x 4 x 4 mode lattice.
  *
  * Physical model
  * ---------------
- * The plate supports a K x K grid of mode shapes (classic Chladni approximation for a
+ * The 2D plate supports a K x K grid of mode shapes (classic Chladni approximation for a
  * free square plate):
  *
  *   phi_mn(x, y) = cos(m*pi*x/L) * cos(n*pi*y/L) + s * cos(n*pi*x/L) * cos(m*pi*y/L)
@@ -17,9 +21,18 @@
  *
  * Kirchhoff-plate eigenfrequencies:  f_mn = f0 * (m^2 + n^2)
  *
+ * The 3D cavity supports box standing waves with rigid walls:
+ *
+ *   phi_mnp(x, y, z) = cos(m*pi*x/L) * cos(n*pi*y/L) * cos(p*pi*z/L)
+ *   m, n, p in [1..4], x/y/z in [-L/2, L/2], flat index i = ((m-1)*4 + (n-1))*4 + (p-1)
+ *
+ * Wave-equation eigenfrequencies:    f_mnp = f0 * sqrt(m^2 + n^2 + p^2)
+ * (omega_mnp = c*pi*sqrt(m^2+n^2+p^2)/L; f0 absorbs c*pi/L, exactly as f0 absorbs the
+ * plate-dispersion constant in 2D).
+ *
  * A single point excitation at the drive point couples into every mode with coupling
- * coefficient c_mn = phi_mn(driveX, driveY) — symmetric modes couple strongest, which is
- * genuine plate physics, not a picked shape.
+ * coefficient c_mn = phi_mn(driveX, driveY) (3D: phi_mnp(driveX, driveY, driveZ)) —
+ * symmetric modes couple strongest, which is genuine physics, not a picked shape.
  *
  * REAL-TIME APPROXIMATION (explicitly identified, per the brief): rather than integrating
  * the full wave equation at audio rates, each mode is treated as a damped driven harmonic
@@ -47,15 +60,22 @@
  * systems may interpret these anchors; this physical model deliberately does not.
  */
 
-export const RESONATOR_K = 8; // mode grid side (K x K = 64 modes)
+export const RESONATOR_K = 8; // 2D mode grid side (K x K = 64 modes)
 export const RESONATOR_MODE_TOTAL = RESONATOR_K * RESONATOR_K;
 export const RESONATOR_STATION_COUNT = 7;
+export const RESONATOR_K3 = 4; // 3D cavity modes per axis (4^3 = 64 modes, same slots)
+
+/** Flat 3D slot for mode (m,n,p), m,n,p in [1..RESONATOR_K3]: i = ((m-1)*4 + (n-1))*4 + (p-1). */
+export function resonatorModeIndex3D(m: number, n: number, p: number): number {
+  return ((m - 1) * RESONATOR_K3 + (n - 1)) * RESONATOR_K3 + (p - 1);
+}
 
 export interface ResonanceAnchor {
   id: string;
   index: number;       // ascending physical frequency order
   m: number;
   n: number;
+  p?: number;          // 3D cavity depth mode; undefined in 2D
   frequencyHz: number;
   modeIndex: number;   // flat index into the 64-mode arrays
 }
@@ -66,6 +86,7 @@ export interface ModalState {
   modeIndex:number;
   m:number;
   n:number;
+  p:number;            // 3D cavity depth mode (1 = no z structure, the 2D plate value)
   frequencyHz:number;
   coupling:number;
   active:boolean;
@@ -88,6 +109,7 @@ export interface ResonatorTelemetry {
   totalEnergy: number;
   dominantM: number;
   dominantN: number;
+  dominantP: number;               // 3D cavity depth mode of the dominant mode (1 in 2D)
   dominantModeIndex: number;
   nearestStationIndex: number;
   nearestStationProximity: number; // 1.0 = exactly on station, 0.0 = at lock-band edge or beyond
@@ -102,6 +124,8 @@ export interface ResonatorParams {
   modeCount: number;     // how many of the 64 modes actively participate (<=64), ranked by coupling
   driveX: number;        // drive point, fraction of L from center (default 0.11)
   driveY: number;        // drive point, fraction of L from center (default 0.07)
+  driveZ: number;        // drive point depth fraction, 3D cavity only (default 0.05)
+  dimension: '2D' | '3D';// mode set: '2D' square plate (8x8) | '3D' volumetric cavity (4x4x4)
 }
 
 export const DEFAULT_RESONATOR_PARAMS: ResonatorParams = {
@@ -112,6 +136,8 @@ export const DEFAULT_RESONATOR_PARAMS: ResonatorParams = {
   modeCount: RESONATOR_MODE_TOTAL,
   driveX: 0.11,
   driveY: 0.07,
+  driveZ: 0.05,
+  dimension: '2D',
 };
 
 export type SweepDirection = 'ascent' | 'descent' | 'pingpong';
@@ -130,6 +156,11 @@ function modeShapeNormalized(m: number, n: number, u: number, v: number): number
   return a + s * b;
 }
 
+/** phi_mnp(x, y, z) for the standing-wave box cavity, x/y/z already normalized by L. */
+function modeShape3DNormalized(m: number, n: number, p: number, u: number, v: number, w: number): number {
+  return Math.cos(m * Math.PI * u) * Math.cos(n * Math.PI * v) * Math.cos(p * Math.PI * w);
+}
+
 /**
  * One continuously-driven damped modal resonator. Call `configure()` when plate/drive
  * parameters change (cheap, O(64)); call `step(dt, frequencyHz)` once per simulation frame.
@@ -137,12 +168,14 @@ function modeShapeNormalized(m: number, n: number, u: number, v: number): number
  * frequency sweeps, dwells, and detunes happen with no reset.
  */
 export class CymaticResonator {
-  // Per-mode state, flat K*K arrays, i = (m-1)*K + (n-1), m,n in [1..K]
+  // Per-mode state, flat 64-slot arrays. 2D: i = (m-1)*K + (n-1), m,n in [1..K].
+  // 3D: i = ((m-1)*4 + (n-1))*4 + (p-1), m,n,p in [1..4]. Same re/im arrays either way.
   public re: Float32Array = new Float32Array(RESONATOR_MODE_TOTAL);
   public im: Float32Array = new Float32Array(RESONATOR_MODE_TOTAL);
 
   private modeM: Int32Array = new Int32Array(RESONATOR_MODE_TOTAL);
   private modeN: Int32Array = new Int32Array(RESONATOR_MODE_TOTAL);
+  private modeP: Int32Array = new Int32Array(RESONATOR_MODE_TOTAL);
   private modeFreq: Float32Array = new Float32Array(RESONATOR_MODE_TOTAL);
   private modeCoupling: Float32Array = new Float32Array(RESONATOR_MODE_TOTAL);
   private modeActive: Uint8Array = new Uint8Array(RESONATOR_MODE_TOTAL);
@@ -155,13 +188,7 @@ export class CymaticResonator {
 
   constructor(params: Partial<ResonatorParams> = {}) {
     this.params = { ...DEFAULT_RESONATOR_PARAMS, ...params };
-    for (let m = 1; m <= RESONATOR_K; m++) {
-      for (let n = 1; n <= RESONATOR_K; n++) {
-        const i = (m - 1) * RESONATOR_K + (n - 1);
-        this.modeM[i] = m;
-        this.modeN[i] = n;
-      }
-    }
+    this.rebuildModeTable();
     this.recompute();
     this.lastTelemetry = {
       frequencyHz: this.params.baseFrequency,
@@ -169,6 +196,7 @@ export class CymaticResonator {
       totalEnergy: 0,
       dominantM: 1,
       dominantN: 1,
+      dominantP: 1,
       dominantModeIndex: 0,
       nearestStationIndex: 0,
       nearestStationProximity: 0,
@@ -178,18 +206,58 @@ export class CymaticResonator {
 
   /** Update plate/drive parameters. Envelope state (re/im) is preserved. */
   public configure(next: Partial<ResonatorParams>) {
+    const dimensionChanged = (next.dimension ?? this.params.dimension) !== this.params.dimension;
     this.params = { ...this.params, ...next };
+    // The mode table itself depends on the dimension; frequencies/coupling always do.
+    if (dimensionChanged) this.rebuildModeTable();
     this.recompute();
+  }
+
+  /** Fills the (m,n[,p]) lattice for the active dimension into the flat 64-slot arrays. */
+  private rebuildModeTable() {
+    if (this.params.dimension === '3D') {
+      for (let m = 1; m <= RESONATOR_K3; m++) {
+        for (let n = 1; n <= RESONATOR_K3; n++) {
+          for (let p = 1; p <= RESONATOR_K3; p++) {
+            const i = resonatorModeIndex3D(m, n, p);
+            this.modeM[i] = m;
+            this.modeN[i] = n;
+            this.modeP[i] = p;
+          }
+        }
+      }
+    } else {
+      for (let m = 1; m <= RESONATOR_K; m++) {
+        for (let n = 1; n <= RESONATOR_K; n++) {
+          const i = (m - 1) * RESONATOR_K + (n - 1);
+          this.modeM[i] = m;
+          this.modeN[i] = n;
+          this.modeP[i] = 1; // the 2D plate is uniform along the (unused) depth axis
+        }
+      }
+    }
   }
 
   /** Recomputes eigenfrequencies, coupling coefficients, station picks and active-mode ranking. */
   private recompute() {
-    const { plateSize: L, baseFrequency: f0, driveX, driveY } = this.params;
-    for (let i = 0; i < RESONATOR_MODE_TOTAL; i++) {
-      const m = this.modeM[i];
-      const n = this.modeN[i];
-      this.modeFreq[i] = f0 * (m * m + n * n);
-      this.modeCoupling[i] = modeShapeNormalized(m, n, driveX, driveY);
+    const { baseFrequency: f0, driveX, driveY } = this.params;
+    if (this.params.dimension === '3D') {
+      const driveZ = this.params.driveZ ?? DEFAULT_RESONATOR_PARAMS.driveZ;
+      for (let i = 0; i < RESONATOR_MODE_TOTAL; i++) {
+        const m = this.modeM[i];
+        const n = this.modeN[i];
+        const p = this.modeP[i];
+        // Box standing wave: omega = c*pi*sqrt(m^2+n^2+p^2)/L -> f0 absorbs c*pi/L.
+        this.modeFreq[i] = f0 * Math.sqrt(m * m + n * n + p * p);
+        this.modeCoupling[i] = modeShape3DNormalized(m, n, p, driveX, driveY, driveZ);
+      }
+    } else {
+      for (let i = 0; i < RESONATOR_MODE_TOTAL; i++) {
+        const m = this.modeM[i];
+        const n = this.modeN[i];
+        this.modeFreq[i] = f0 * (m * m + n * n);
+        this.modeCoupling[i] = modeShapeNormalized(m, n, driveX, driveY);
+      }
     }
 
     // Rank all modes by |coupling| descending; the top `modeCount` remain active.
@@ -202,7 +270,7 @@ export class CymaticResonator {
       this.modeActive[this.orderByCoupling[k]] = 1;
     }
 
-    this.stations = this.selectStations(L);
+    this.stations = this.selectStations();
     // Guarantee the modes underlying the seven stations are always active, regardless of modeCount.
     for (const st of this.stations) {
       this.modeActive[st.modeIndex] = 1;
@@ -212,11 +280,13 @@ export class CymaticResonator {
   /**
    * Selects seven physical stability anchors: the mutually-distinct, most strongly-coupled
    * eigenmodes of THIS instrument, ordered ascending by frequency across the band. Distinct
-   * shape = distinct unordered {m,n} pair (on a free square plate, (m,n) and (n,m) are the
-   * same nodal pattern up to an overall sign, so only one representative per pair is kept).
+   * shape = distinct unordered {m,n} pair in 2D (on a free square plate, (m,n) and (n,m) are
+   * the same nodal pattern up to an overall sign) and distinct unordered {m,n,p} triple in 3D
+   * (triple permutations are frequency-degenerate, axis-relabelled versions of one pattern).
    */
-  private selectStations(_L: number): ResonanceAnchor[] {
+  private selectStations(): ResonanceAnchor[] {
     const f0 = this.params.baseFrequency;
+    if (this.params.dimension === '3D') return this.selectStations3D();
     // The instrument's working band: f_11 = f0*2 (lowest mode) up to f0*27.5, which with the
     // default f0=40 reproduces the ~80-1100Hz band the physical model is tuned for. Restricting
     // candidates to this band (rather than the full 64-mode spectrum up to f0*128) is what makes
@@ -250,6 +320,49 @@ export class CymaticResonator {
       frequencyHz: c.f,
       modeIndex: c.modeIndex,
     }));
+  }
+
+  /**
+   * 3D counterpart over the cavity spectrum f = f0*sqrt(m^2+n^2+p^2) in
+   * [f0*sqrt(3), f0*sqrt(48)]; the band [f0*1.5, f0*7.5] covers all of it (sqrt(48)~6.93),
+   * so the seven stations are drawn from the whole volume rather than clustering at one end.
+   */
+  private selectStations3D(): ResonanceAnchor[] {
+    const f0 = this.params.baseFrequency;
+    const bandLow = f0 * 1.5;
+    const bandHigh = f0 * 7.5;
+
+    const seen = new Set<string>();
+    const candidates: { modeIndex: number; m: number; n: number; p: number; f: number; absC: number }[] = [];
+    for (let i = 0; i < RESONATOR_MODE_TOTAL; i++) {
+      const m = this.modeM[i];
+      const n = this.modeN[i];
+      const p = this.modeP[i];
+      const f = this.modeFreq[i];
+      if (f < bandLow || f > bandHigh) continue;
+      const key = [m, n, p].sort((a, b) => a - b).join(':');
+      if (seen.has(key)) continue;
+      seen.add(key);
+      candidates.push({ modeIndex: i, m, n, p, f, absC: Math.abs(this.modeCoupling[i]) });
+    }
+    // Best drive coupling first...
+    candidates.sort((a, b) => b.absC - a.absC);
+    const chosen = candidates.slice(0, RESONATOR_STATION_COUNT);
+    // ...then presented ascending by frequency (Root -> Crown).
+    chosen.sort((a, b) => a.f - b.f);
+
+    return chosen.map((c, idx) => {
+      const sorted = [c.m, c.n, c.p].sort((a, b) => a - b);
+      return {
+        id: `mode:${sorted[0]}:${sorted[1]}:${sorted[2]}`,
+        index: idx,
+        m: c.m,
+        n: c.n,
+        p: c.p,
+        frequencyHz: c.f,
+        modeIndex: c.modeIndex,
+      };
+    });
   }
 
   /**
@@ -321,6 +434,7 @@ export class CymaticResonator {
       totalEnergy,
       dominantM: this.modeM[domIndex],
       dominantN: this.modeN[domIndex],
+      dominantP: this.modeP[domIndex],
       dominantModeIndex: domIndex,
       nearestStationIndex: nearestIdx,
       nearestStationProximity: proximity,
@@ -347,6 +461,7 @@ export class CymaticResonator {
       modeIndex,
       m:this.modeM[modeIndex],
       n:this.modeN[modeIndex],
+      p:this.modeP[modeIndex],
       frequencyHz:this.modeFreq[modeIndex],
       coupling:this.modeCoupling[modeIndex],
       active:this.modeActive[modeIndex]===1,

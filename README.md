@@ -105,6 +105,120 @@ rename. Current covers come from native capture; other cards use labelled static
 composition previews loaded as they come into view. Optional text in existing
 user documents is preserved.
 
+## True-3D glyph bodies
+
+By default a glyph is a flat card: the sampling law gives it x, y and ink
+density, and its z is micro-noise. What reads as depth in the face-on view is
+the stipple scatter's density falloff, not shape — turn the camera and the
+illusion fails, because there is nothing there.
+
+**Studio → Colour & material → 3D body & depth** switches the letterform into a
+real solid. Each particle's depth comes from an exact distance transform of the
+rasterized glyph: how deep it sits inside the stroke sets the body's
+half-thickness through a chosen profile, then the sample is placed either on the
+extruded flanks at the contour, on the front and back sheets, or in the interior
+band. **Body Depth** is the thickness, **Flank Share / Face Share / Interior
+Fill** are the split between those families, and **Depth Profile** picks the
+cross-section (slab, bevel, round, dome, taper).
+
+The law is one law for every planar object type. Image masks, ASCII drawings,
+primitives and 2D cymatic plates measure their bodies with the same distance
+transform — a sampled photograph or a typed drawing extrudes exactly like a
+letterform of the same settings, and the collision wall extrudes with it.
+Toggling the law re-derives every already-loaded source pool against the new
+setting, so a scene of masks gains (or loses) its bodies without re-uploading
+anything.
+
+Depth is then real geometry, not a rendering trick, and the rest of the engine
+follows it:
+
+- Physics stops flattening the depth axis, so the body holds its thickness. The
+  global vortex and the inter-glyph bridge gain their depth component **by
+  default** once the body law is on (**Depth in the swirl**, **Depth in the
+  bridge** blend from planar to through-the-body; until touched they follow the
+  body law, so an author opts out by lowering them, not by discovering them).
+  With **Collision & medium** walls enabled, the boundary becomes the extruded
+  solid rather than its 2D silhouette: contacts reflect through the depth axis,
+  so a face is as hard as a flank.
+- **Relational forces live in the same space as the body.** Attractors orbit
+  around the field's real 3D centre and, with bodies on, trace tilted orbits
+  through the depth; the whirlpool torque turns about the depth axis instead of
+  dragging everything back toward the picture plane. Formation forces take the
+  full-3D metric with the body law; pins always had it.
+- **Pairwise contacts are true 3D**: overlap, separation and restitution use the
+  full offset, so the front and back sheets of a letter no longer shove each
+  other sideways and the interior stops pressurizing the faces off their planes.
+  The spatial hash stays planar; the depth axis joins in the contact response.
+- Pointer vortices and click effects (pulse, implode, vortex, shove) measure and
+  act in the full frame: a pulse is a spherical shock, a whirl turns about the
+  depth axis through the pointer.
+- **Projection & aerial depth** adds the lens that makes any of it legible.
+  Orthographic has no convergence, so distance cannot change a mark's size or
+  tone. Perspective restores it, with **Size Attenuation** for the physical 1/w
+  law, **Aerial Fade** for distance dimming the ink, and **Depth Tint** for the
+  colour distant marks drift toward. **Surfaces occlude** switches the drawing
+  from "every mark draws" to depth-buffered occlusion where near bodies win the
+  pixel.
+
+## Layers — the object's body in depth
+
+A formation's sequence composes states in time; its **layers** compose the
+object in space. The formation panel's **Layers** editor stacks any number of
+glyph, ASCII-drawing or image layers at authored depths — a face toward the
+camera, a lattice at the core, a second face behind — and the engine bakes the
+whole stack as one laminated body: the particle allocation is subdivided across
+the layers, each layer carries its own measured body-law thickness, and the
+collision wall becomes the bounding solid of the stack.
+
+Layers are object composition, parallel to the sequence and independent of it:
+a layered body's sources always load and always render, whether or not any
+sequence plays. And the whole layered body then runs through the sequence and
+morph system as one object — states glide, turn, scale and tint it through the
+ordinary uniforms, so a laminated head can drift and rotate between poses
+without its layers coming apart. The **Arrangement → laminate** layout stacks
+selected formations through the layout plane's normal, composing layered
+formations into larger depth structures.
+
+## The medium is the space; the resonator fills it
+
+The shared Eulerian medium has a 3D mode (**Collision & medium → Medium space →
+3D · volume**): an N³ voxel grid tiled into a single texture, with the classic
+splat → advect → divergence → Jacobi → gradient-subtract pipeline running
+through the full depth. Particles inject momentum in 3D, pressure waves travel
+through the volume, and a body at any depth is entrained as a solid rather than
+a decal on a sheet. The 2D sheet remains the default and is unchanged.
+
+The continuous cymatic resonator likewise gains a volumetric mode
+(**Resonator dimension → 3D volumetric field**): box modes (m,n,p) of a cubic
+cavity replace the plate modes, transport slides particles down the full 3D
+intensity gradient into 3D nodal lobes, and the plate's hard normal-axis pin is
+gone — the volume boundary is the only cage, so the resonator organises and
+entrains a whole 3D body instead of flattening it. The 2D plate is preserved
+exactly for existing compositions.
+
+Two projections share one orbit rig, so switching is a change of lens and not of
+scene. Capture and host framing stay exact under both: the host's requested world
+scale per pixel is honoured at the workplane, and the projections diverge only in
+convergence.
+
+Everything is opt-in and independent. A composition that never enables either
+control bakes and draws exactly as before — the depth law is deterministic, so a
+re-bake reproduces the same body rather than re-rolling it. Thickness costs
+particle budget like anything else: raise **Body Depth** and drop **Particle
+Count** if a device struggles.
+
+The law lives in `src/engine/glyphVolume.ts`; its behaviour is pinned by
+`tests/glyphVolume.test.ts`, by the source-uniformity suite
+`tests/sourceVolume.test.ts`, and by real-browser acceptance runs that drive
+the studio controls and read settled GPU particle state back
+(`field-studies-journeys/tests/three_d_body_browser.py` for letterforms,
+`field-studies-journeys/tests/three_d_source_body_browser.py` for the
+twelve-mask image study, `field-studies-journeys/tests/three_d_forces_browser.mjs`
+for the 3D force layer — relational, pairwise, resonator, medium, occlusion —
+and `field-studies-journeys/tests/lamination_browser.mjs` for depth
+lamination — the donut verdict: a laminated showcase must show its sampled
+face layers, not the base glyph).
+
 ## Semantic field
 
 The continuous cymatic resonator is physically independent from chakra meaning.
@@ -131,6 +245,8 @@ python -m playwright install chromium
 npm run test:gpu
 npm run test:browser
 npm run test:workspace
+python field-studies-journeys/tests/three_d_body_browser.py
+python field-studies-journeys/tests/three_d_source_body_browser.py
 python field-studies-journeys/tests/semantic_field_browser.py
 python field-studies-journeys/tests/module_browser.py
 ```
@@ -201,7 +317,10 @@ subject is cropped from its margins, and the shape is projected into the field
 with its true aspect. Three readings are available: ink luminance (density
 follows brightness), Sobel edges, and a silhouette cutout whose flood fill only
 claims enclosed regions large enough to be the subject — the sealed cells of a
-wireframe stay open. The panel shows a WYSIWYG preview of the exact cutout plus
+wireframe stay open. ASCII drawings aggregate per character cell, and the cell
+bounds are kept integral against the real (fractional) font metrics — a
+fractional pixel index once read the ink field as `undefined` and NaN'd the
+whole formation. The panel shows a WYSIWYG preview of the exact cutout plus
 a detected-polarity/coverage/point-count readout; the engine status line
 reports the same analysis after it samples. Sources travel inside expressions
 and portable artifacts.
@@ -227,6 +346,7 @@ python -m playwright install chromium
 npm run test:gpu
 npm run test:browser
 npm run test:workspace
+python field-studies-journeys/tests/three_d_body_browser.py
 python field-studies-journeys/tests/semantic_field_browser.py
 python field-studies-journeys/tests/module_browser.py
 ```
@@ -252,3 +372,8 @@ The toolbelt is shared by every scene in an expression. A property's globe makes
 Working drafts use IndexedDB so image-heavy expressions are not limited by the smaller localStorage library. Recovery restores the active expression and scene, working configuration, camera, paused/playing state, and driver clocks. Active property takes are checkpointed while recording. Named scene saves remain independent. Particle positions and velocities are regenerated from the current targets after a crash; they are not physical checkpoints. Storage errors retain the export fallback.
 
 Regression coverage: `npm test`, `npm run test:journeys`, and `npm run lint`. With the development server running, open `/field-studies-journeys/tests/workflow.html` for five additional checks using actual image decoding, WebGL floating-point readback, fresh-engine LFO recovery, and IndexedDB. This page creates and removes its own temporary draft, without editing library expressions.
+## Physis desktop integration
+
+This checkout also provides the local `physis` command, an Omarchy bar toggle,
+transparent desktop rendering, and direct capture-to-screensaver storage. See
+[PHYSIS.md](PHYSIS.md) for installation, controls and desktop-specific validation.
