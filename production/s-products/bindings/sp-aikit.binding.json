@@ -1,0 +1,126 @@
+{
+ "artifact": "aikit/sp-aikit.journey.json",
+ "family": "family-aikit",
+ "worker": "S-register correction pass (wave 1, S-seeded)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-aikit"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S2",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census; this corrects the P1 map’s withdrawn \"no admission disposition\" claim",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S2",
+     "path": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md",
+     "sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-aikit.json (frozen-census-basis, 104 records)",
+  "source_revision": {
+   "repo": "EpiLogos/ai-kit",
+   "branch": "techne/agency-mint",
+   "commit": "23dea8563e0c882237ea29adceb88759d8fc8a6f",
+   "published_note": "every consumed record byte-identical to published EpiLogos/ai-kit origin/main 2a1706a8a8ad3c56602fda187a30ee4886788c0e (re-hashed from git object storage and compared 2026-09-21; ai-kit README.md had drifted on main and was replaced in selection by docs/v2/01-PRODUCT-AND-OWNERSHIP.md)"
+  },
+  "records_bound": [
+   {
+    "path": "docs/v2/01-PRODUCT-AND-OWNERSHIP.md",
+    "sha256": "b7d10d42e8a061c2c8c382f1d25e66611521c94f5d360c9ac448cf0229cd58ba"
+   },
+   {
+    "path": "docs/v2/15-MODEL-ROSTER-CAPABILITY-FIT.md",
+    "sha256": "36033f60a806f35f57d2d40b7193e48878999b940ae55b5f4d1a7ce89d62884c"
+   },
+   {
+    "path": "docs/adr/0003-user-baselines-and-skill-usage-overlays.md",
+    "sha256": "8d62cf74f61b90bcf2d8b413cc65d7dc5fc4a3132c55fa3158785d934a426290"
+   },
+   {
+    "path": "docs/v2/02-RESOLUTION-AND-CONTEXT-COGNITION.md",
+    "sha256": "b3eff370b93a0320d57e0b5997e1f01d4750120fccb47691977c6bf9a23e8b1f"
+   },
+   {
+    "path": "docs/v2/HARNESS-ADMISSION-AND-ADAPTER-SDK.md",
+    "sha256": "98cef1822921cfe0744d7be0198362eb5187cb811295ebebd119866e41a8f8be"
+   },
+   {
+    "path": "docs/v2/21-PROJECT-REFLECTION-AND-LOCAL-ARTICULATION.md",
+    "sha256": "15d0d3912b3cdb128d1141182500aac438fdb6e85c1d5f17866aba1f1c633303"
+   }
+  ],
+  "coverage": "6 of 104 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+ },
+ "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
+ "scenes": [
+  {
+   "scene_id": "s2-m0-horizon",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md :: #0 — The horizon of what a Life can bring to bear",
+   "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+   "material_source_ref": "EpiLogos/ai-kit@23dea8563:docs/v2/01-PRODUCT-AND-OWNERSHIP.md",
+   "sha256": "b7d10d42e8a061c2c8c382f1d25e66611521c94f5d360c9ac448cf0229cd58ba",
+   "staged": "what the product is and owns; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s2-m1-capacity-absence",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md :: #1 — L2 Logical: capacity includes absence, ambiguity and silence",
+   "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+   "material_source_ref": "EpiLogos/ai-kit@23dea8563:docs/v2/15-MODEL-ROSTER-CAPABILITY-FIT.md",
+   "sha256": "36033f60a806f35f57d2d40b7193e48878999b940ae55b5f4d1a7ce89d62884c",
+   "staged": "capability fitness across the model roster; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s2-m2-powers-temporal",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md :: #2 — L3′ Chronological: powers arise, mature, recede and return",
+   "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+   "material_source_ref": "EpiLogos/ai-kit@23dea8563:docs/adr/0003-user-baselines-and-skill-usage-overlays.md",
+   "sha256": "8d62cf74f61b90bcf2d8b413cc65d7dc5fc4a3132c55fa3158785d934a426290",
+   "staged": "usage overlays: capacity developing through use; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s2-m3-possession-disclosure",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md :: #3 — Scope, context and the difference between possession and disclosure",
+   "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+   "material_source_ref": "EpiLogos/ai-kit@23dea8563:docs/v2/02-RESOLUTION-AND-CONTEXT-COGNITION.md",
+   "sha256": "b3eff370b93a0320d57e0b5997e1f01d4750120fccb47691977c6bf9a23e8b1f",
+   "staged": "resolution and context cognition; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s2-m4-trust-power",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md :: #4 — Potency, trust and entrusted power",
+   "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+   "material_source_ref": "EpiLogos/ai-kit@23dea8563:docs/v2/HARNESS-ADMISSION-AND-ADAPTER-SDK.md",
+   "sha256": "98cef1822921cfe0744d7be0198362eb5187cb811295ebebd119866e41a8f8be",
+   "staged": "what is admitted into a harness field; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s2-m5-horizon-returns",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md :: #5→0 — The horizon returns changed",
+   "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+   "material_source_ref": "EpiLogos/ai-kit@23dea8563:docs/v2/21-PROJECT-REFLECTION-AND-LOCAL-ARTICULATION.md",
+   "sha256": "15d0d3912b3cdb128d1141182500aac438fdb6e85c1d5f17866aba1f1c633303",
+   "staged": "reflection reorganising the field; the movement’s own named terms as a glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "aikit/sp-aikit.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Whole-first: the S2 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S2 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+}

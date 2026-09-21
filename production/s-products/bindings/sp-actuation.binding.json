@@ -1,0 +1,126 @@
+{
+ "artifact": "actuation/sp-actuation.journey.json",
+ "family": "family-actuation",
+ "worker": "S-register correction pass (wave 1, S-seeded)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-actuation"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S1",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census; this corrects the P1 map’s withdrawn \"no admission disposition\" claim",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S1",
+     "path": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md",
+     "sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-actuation.json (frozen-census-basis, 157 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Actuation",
+   "branch": "techne/deep-conjugate-allowance",
+   "commit": "0ac23bfe95d99387bf77cd101b702e4c0a219d96",
+   "published_note": "every consumed record byte-identical to published EpiLogos/Actuation origin/main 36bbf93b7896550f11186f6240b8f018208ab3b2 (re-hashed from git object storage and compared 2026-09-21)"
+  },
+  "records_bound": [
+   {
+    "path": "docs/ACTUATION-CONSTITUTION.md",
+    "sha256": "8124d313346c34333036d098a839de893956497f5163d512e31d969556d7ef1a"
+   },
+   {
+    "path": "docs/ACTUATION-STREAM.md",
+    "sha256": "750c6ed62a661ea2b6ab72b5236a565a175155b829a5ccbf40c83002c5faec7d"
+   },
+   {
+    "path": "docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md",
+    "sha256": "e9f65644c4d90ce94e849aa8d6c1c79184056535f97e02241b544cb5bf0c37f9"
+   },
+   {
+    "path": "docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md",
+    "sha256": "c983836b79ca52d1b4d409fe7b311aa95c1591cc4c9ba003b82b74622f8e7ae7"
+   },
+   {
+    "path": "docs/ACTUATION-RELATION.md",
+    "sha256": "2f85e93b90f81a16499aeaf5df2bbecbef2ce8b05f7e23a98c53ef0434b07bb1"
+   },
+   {
+    "path": "docs/REALISED-ACTUATION-LOOP.md",
+    "sha256": "61658a13900e72448e970317fbec3abf2fc38749022ff046612ea2fd55642871"
+   }
+  ],
+  "coverage": "6 of 157 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+ },
+ "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
+ "scenes": [
+  {
+   "scene_id": "s1-m0-articulation",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md :: #0 — An internality articulates itself",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@0ac23bfe9:docs/ACTUATION-CONSTITUTION.md",
+   "sha256": "8124d313346c34333036d098a839de893956497f5163d512e31d969556d7ef1a",
+   "staged": "the product’s constitution of the act; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s1-m1-freedom-event",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md :: #1 — From freedom into an event — L1 Causal",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@0ac23bfe9:docs/ACTUATION-STREAM.md",
+   "sha256": "750c6ed62a661ea2b6ab72b5236a565a175155b829a5ccbf40c83002c5faec7d",
+   "staged": "the actuation stream: determination in sequence; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s1-m2-act-knowledge",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md :: #2 — An act becoming knowledge — L4′ Scientific",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@0ac23bfe9:docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md",
+   "sha256": "e9f65644c4d90ce94e849aa8d6c1c79184056535f97e02241b544cb5bf0c37f9",
+   "staged": "epistemic cultivation and the model interior; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s1-m3-judgment-world",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md :: #3 — A model differentiates a world of possible judgments",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@0ac23bfe9:docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md",
+   "sha256": "c983836b79ca52d1b4d409fe7b311aa95c1591cc4c9ba003b82b74622f8e7ae7",
+   "staged": "model-bearing agency and its materialisation; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s1-m4-constitution-return",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md :: #4 — Actuation's local constitution and return",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@0ac23bfe9:docs/ACTUATION-RELATION.md",
+   "sha256": "2f85e93b90f81a16499aeaf5df2bbecbef2ce8b05f7e23a98c53ef0434b07bb1",
+   "staged": "the product’s relation in the suite; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s1-m5-returned-judgment",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md :: #5→0 — Returned judgment and its retained model depth",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@0ac23bfe9:docs/REALISED-ACTUATION-LOOP.md",
+   "sha256": "61658a13900e72448e970317fbec3abf2fc38749022ff046612ea2fd55642871",
+   "staged": "the realised loop of returned acts; the movement’s own named terms as a glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "actuation/sp-actuation.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Whole-first: the S1 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S1 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+}

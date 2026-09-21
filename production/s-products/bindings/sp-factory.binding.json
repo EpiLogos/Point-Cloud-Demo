@@ -1,0 +1,126 @@
+{
+ "artifact": "factory/sp-factory.journey.json",
+ "family": "family-factory",
+ "worker": "S-register correction pass (wave 1, S-seeded)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-factory"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S3",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census; this corrects the P1 map’s withdrawn \"no admission disposition\" claim",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S3",
+     "path": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md",
+     "sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-factory.json (frozen-census-basis, 230 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Factory",
+   "branch": "techne/telemetry-watch-compare-settings",
+   "commit": "fbabaaad39490b135bc7c66244a5c0ad767171e1",
+   "published_note": "every consumed record byte-identical to published EpiLogos/Factory origin/main f59368de67a4bac32d344099aa827c31a7e6107b (re-hashed from git object storage and compared 2026-09-21)"
+  },
+  "records_bound": [
+   {
+    "path": "README.md",
+    "sha256": "a404dbbd3e89d9c4748532462faf12f1ff897e57755abba460f35871d06464bd"
+   },
+   {
+    "path": "docs/canon/PRAXIS-PRIMITIVES.md",
+    "sha256": "f9e4f73dc7b2d7b27ab057924d5d688bb3ca6e17fbf54e766ef3602034b3cea2"
+   },
+   {
+    "path": "docs/canon/QL-SOFTWARE-FACTORY-PRIMITIVE-RELATIONS.md",
+    "sha256": "171fc11e1fecc1ce20e9bcbef036fbce2aaa606208ab2ba6636707908358b773"
+   },
+   {
+    "path": "docs/canon/RUN-CLOSURE-VERIFICATION-ALIGNMENT.md",
+    "sha256": "147d749de60c13a57c0300268ec85ab3c5d21aa0643fa0b92edd8a9ca11f5b1f"
+   },
+   {
+    "path": "docs/canon/FACTORY-SELF-HOSTING-COMMISSION.md",
+    "sha256": "6f143e9f2591537766fad001cfb32c3d0bab9e55dc15025f2f3295d944b16523"
+   },
+   {
+    "path": "docs/canon/PROJECT-DEVELOPMENT-ORIENTATION-AND-RETURN.md",
+    "sha256": "d466e11554cfc0a350c20fe31fdbf0938bd6e8fb3915a98305929eebc8ea3a72"
+   }
+  ],
+  "coverage": "6 of 230 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+ },
+ "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
+ "scenes": [
+  {
+   "scene_id": "s3-m0-becoming",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md :: #0 — Becoming otherwise",
+   "s_record_sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d",
+   "material_source_ref": "EpiLogos/Factory@fbabaaad3:README.md",
+   "sha256": "a404dbbd3e89d9c4748532462faf12f1ff897e57755abba460f35871d06464bd",
+   "staged": "the product's own front ground; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s3-m1-desire-actuality",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md :: #1 — L3 Processual: desire enters actuality",
+   "s_record_sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d",
+   "material_source_ref": "EpiLogos/Factory@fbabaaad3:docs/canon/PRAXIS-PRIMITIVES.md",
+   "sha256": "f9e4f73dc7b2d7b27ab057924d5d688bb3ca6e17fbf54e766ef3602034b3cea2",
+   "staged": "the praxis primitives of development; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s3-m2-material-grammar",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md :: #2 — L2′ Alchemical-Elemental: transformation has a material grammar",
+   "s_record_sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d",
+   "material_source_ref": "EpiLogos/Factory@fbabaaad3:docs/canon/QL-SOFTWARE-FACTORY-PRIMITIVE-RELATIONS.md",
+   "sha256": "171fc11e1fecc1ce20e9bcbef036fbce2aaa606208ab2ba6636707908358b773",
+   "staged": "the factory’s primitive relations; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s3-m3-gate-recognition",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md :: #3 — Gate, Recognition and the authority to change the commission",
+   "s_record_sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d",
+   "material_source_ref": "EpiLogos/Factory@fbabaaad3:docs/canon/RUN-CLOSURE-VERIFICATION-ALIGNMENT.md",
+   "sha256": "147d749de60c13a57c0300268ec85ab3c5d21aa0643fa0b92edd8a9ca11f5b1f",
+   "staged": "run closure and verification alignment; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s3-m4-labour-power",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md :: #4 — Labour, Power and developmental consequence",
+   "s_record_sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d",
+   "material_source_ref": "EpiLogos/Factory@fbabaaad3:docs/canon/FACTORY-SELF-HOSTING-COMMISSION.md",
+   "sha256": "6f143e9f2591537766fad001cfb32c3d0bab9e55dc15025f2f3295d944b16523",
+   "staged": "the self-hosting commission; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s3-m5-changed-field",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md :: #5→0 — The product of development is a changed field",
+   "s_record_sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d",
+   "material_source_ref": "EpiLogos/Factory@fbabaaad3:docs/canon/PROJECT-DEVELOPMENT-ORIENTATION-AND-RETURN.md",
+   "sha256": "d466e11554cfc0a350c20fe31fdbf0938bd6e8fb3915a98305929eebc8ea3a72",
+   "staged": "development orientation and return; the movement’s own named terms as a glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "factory/sp-factory.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Whole-first: the S3 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S3 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+}

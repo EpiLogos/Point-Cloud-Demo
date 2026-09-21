@@ -1,0 +1,64 @@
+{
+  "id": "family-workcell",
+  "corpus": "s-products",
+  "kind": "family",
+  "date": "2026-09-21",
+  "lineage": [
+    "s-products-corpus-base"
+  ],
+  "seed_record": {
+    "record_id": "S4",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "mef_pair": "L4 Phenomenological / L1′ Phenomenal",
+    "section5_movement": "41",
+    "canonical_home": "Antykathera-Essay-Work submission-package/essay/symbolon/episteme/products/S4-Workcell.md",
+    "product_office": "Workcell is situated existence: the concrete here with its resistance and availability; reachability does not grant permission, exposure does not abolish alterity."
+  },
+  "family_grammar": {
+    "ground": "product-atelier",
+    "tint_pair": {
+      "stage_ink": "#e0e8d5",
+      "tint": "#5f7a4f"
+    },
+    "whole_first": "the S4 record's own movement path (#0 → #5→0) is the journey's whole; six scenes in the record's order, no epilogue text",
+    "scene_per_movement": true,
+    "scene_id": "s4-m<N>-<movement-slug> (slug from the S record's own heading)",
+    "structure_staging": "each scene stages the movement's own named terms as a glyph row over a ground disc, plus one glyph naming the movement's bound material record",
+    "bound_slice": "one inventoried record per movement, 6 of 30; the movement-to-record mapping follows the S record's own named tasks (constitution, lens, constitution-of-return, relation, realised loop)",
+    "character_line": "the scene character compresses the S record movement’s claim; page body carries it plus the bound record’s identity and public-identity note"
+  },
+  "movements": [
+    {
+      "scene_id": "s4-m0-somewhere",
+      "essay_heading": "#0 — A Life is somewhere",
+      "bound_record": "README.md"
+    },
+    {
+      "scene_id": "s4-m1-thrown-world",
+      "essay_heading": "#1 — L4 Phenomenological: thrown into a world",
+      "bound_record": "docs/ARCHITECTURE.md"
+    },
+    {
+      "scene_id": "s4-m2-aperture",
+      "essay_heading": "#2 — L1′ Phenomenal: the aperture of encounter",
+      "bound_record": "docs/VISUAL-PRODUCT-UNDERSTANDING.md"
+    },
+    {
+      "scene_id": "s4-m3-demand-offer",
+      "essay_heading": "#3 — Material demand, offer and realised world",
+      "bound_record": "docs/CANDIDATE-MATERIALISATION.md"
+    },
+    {
+      "scene_id": "s4-m4-availability",
+      "essay_heading": "#4 — Availability to others",
+      "bound_record": "docs/CROSS-CELL-CONNECTIONS.md"
+    },
+    {
+      "scene_id": "s4-m5-evidence-returns",
+      "essay_heading": "#5→0 — Material evidence returns to meaning",
+      "bound_record": "docs/LIFECYCLE-RECONCILIATION.md"
+    }
+  ],
+  "note": "One journey per product; product cross-relations live in the S records' own argument/concept relations and are not duplicated as graph edges. Wave-1 slice, not corpus-complete."
+}

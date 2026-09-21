@@ -1,0 +1,64 @@
+{
+  "id": "family-actuation",
+  "corpus": "s-products",
+  "kind": "family",
+  "date": "2026-09-21",
+  "lineage": [
+    "s-products-corpus-base"
+  ],
+  "seed_record": {
+    "record_id": "S1",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "mef_pair": "L1 Causal / L4′ Scientific",
+    "section5_movement": "38",
+    "canonical_home": "Antykathera-Essay-Work submission-package/essay/symbolon/episteme/products/S1-Actuation.md",
+    "product_office": "Actuation is living articulation: the event-substance of an internality, with authority, delegation and composition as developed organisations of that articulation."
+  },
+  "family_grammar": {
+    "ground": "product-atelier",
+    "tint_pair": {
+      "stage_ink": "#f2ded2",
+      "tint": "#c8724a"
+    },
+    "whole_first": "the S1 record's own movement path (#0 → #5→0) is the journey's whole; six scenes in the record's order, no epilogue text",
+    "scene_per_movement": true,
+    "scene_id": "s1-m<N>-<movement-slug> (slug from the S record's own heading)",
+    "structure_staging": "each scene stages the movement's own named terms as a glyph row over a ground disc, plus one glyph naming the movement's bound material record",
+    "bound_slice": "one inventoried record per movement, 6 of 157; the movement-to-record mapping follows the S record's own named tasks (constitution, lens, constitution-of-return, relation, realised loop)",
+    "character_line": "the scene character compresses the S record movement’s claim; page body carries it plus the bound record’s identity and public-identity note"
+  },
+  "movements": [
+    {
+      "scene_id": "s1-m0-articulation",
+      "essay_heading": "#0 — An internality articulates itself",
+      "bound_record": "docs/ACTUATION-CONSTITUTION.md"
+    },
+    {
+      "scene_id": "s1-m1-freedom-event",
+      "essay_heading": "#1 — From freedom into an event — L1 Causal",
+      "bound_record": "docs/ACTUATION-STREAM.md"
+    },
+    {
+      "scene_id": "s1-m2-act-knowledge",
+      "essay_heading": "#2 — An act becoming knowledge — L4′ Scientific",
+      "bound_record": "docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md"
+    },
+    {
+      "scene_id": "s1-m3-judgment-world",
+      "essay_heading": "#3 — A model differentiates a world of possible judgments",
+      "bound_record": "docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md"
+    },
+    {
+      "scene_id": "s1-m4-constitution-return",
+      "essay_heading": "#4 — Actuation's local constitution and return",
+      "bound_record": "docs/ACTUATION-RELATION.md"
+    },
+    {
+      "scene_id": "s1-m5-returned-judgment",
+      "essay_heading": "#5→0 — Returned judgment and its retained model depth",
+      "bound_record": "docs/REALISED-ACTUATION-LOOP.md"
+    }
+  ],
+  "note": "One journey per product; product cross-relations live in the S records' own argument/concept relations and are not duplicated as graph edges. Wave-1 slice, not corpus-complete."
+}
