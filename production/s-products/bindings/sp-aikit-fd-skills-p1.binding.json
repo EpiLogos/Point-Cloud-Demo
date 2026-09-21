@@ -1,0 +1,185 @@
+{
+  "artifact": "aikit/sp-aikit-fd-skills-p1.journey.json",
+  "family": "family-aikit-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-aikit",
+    "family-aikit-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S2",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-aikit and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S2",
+          "path": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md",
+          "sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-aikit.json (frozen-census-basis, 104 records; all 104 sha256 re-verified byte-exact from git object storage at EpiLogos/ai-kit@23dea85 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/ai-kit",
+      "branch": "techne/agency-mint",
+      "commit": "23dea8563e0c882237ea29adceb88759d8fc8a6f",
+      "published_note": "bound bytes are published origin/main ace1496a277d69047e4cead073f4f1bd67932f31 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "registry/capsules/guidance/aikit/living-project-collaboration/payload/guidance.md",
+        "sha256": "d8635e9bdead5491476871e0fa8f4461ba3b1d8fcfca02366f30290a2775644d",
+        "census_sha256": "d8635e9bdead5491476871e0fa8f4461ba3b1d8fcfca02366f30290a2775644d",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/guidance/aikit/world-situated-agency/payload/guidance.md",
+        "sha256": "3f478dfd4e69a3c5f8740c5b6a0737ddc0d9cdf9473452e7d5fecc3131e99bc0",
+        "census_sha256": "3f478dfd4e69a3c5f8740c5b6a0737ddc0d9cdf9473452e7d5fecc3131e99bc0",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/component-surface-authoring/payload/SKILL.md",
+        "sha256": "fcf1b4133dddd17b9f49407c1761cb32b6de64a567e20ffa4ddeae59ceb08944",
+        "census_sha256": "fcf1b4133dddd17b9f49407c1761cb32b6de64a567e20ffa4ddeae59ceb08944",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/experience-campaign/payload/SKILL.md",
+        "sha256": "8e1bd8146bfedaf539505f01af68b98de4af21b2ad1d66f6dc7f46bfe76fab8a",
+        "census_sha256": "8e1bd8146bfedaf539505f01af68b98de4af21b2ad1d66f6dc7f46bfe76fab8a",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/harness-adapter-authoring/payload/SKILL.md",
+        "sha256": "bdf84e716b4c9292672a9f253abc50f36d71b09341ea106f8e994dd95b9b684c",
+        "census_sha256": "bdf84e716b4c9292672a9f253abc50f36d71b09341ea106f8e994dd95b9b684c",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/html-account/payload/SKILL.md",
+        "sha256": "858158d10d1ddb94cb6c5206b5ff4f62ec9dd76206f08f59061b2ba362fa8246",
+        "census_sha256": "858158d10d1ddb94cb6c5206b5ff4f62ec9dd76206f08f59061b2ba362fa8246",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/knowledge-navigation/payload/SKILL.md",
+        "sha256": "e13b11a7a5dd440250d14b31eb2f2689fb30499debc695e716e6c3365d54624a",
+        "census_sha256": "0fe78458d609055ea55d82e7b725cc3d71026465a28973b7def38404d884b8ca",
+        "status": "main-bytes-drifted",
+        "note": "drifted on main since the census freeze; bound at current origin/main bytes"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/meta-harness-craft/payload/SKILL.md",
+        "sha256": "771b916760175c9ba5f360149661e10c60bcbb853be3a11f95a44515277d6a0e",
+        "census_sha256": "771b916760175c9ba5f360149661e10c60bcbb853be3a11f95a44515277d6a0e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/operation/payload/SKILL.md",
+        "sha256": "5e92005d4c024705e58b2bdef84163ed049009f5577927a2902c2a0ca6bb1b58",
+        "census_sha256": "5e92005d4c024705e58b2bdef84163ed049009f5577927a2902c2a0ca6bb1b58",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/capsules/skill/aikit/product-understanding/payload/SKILL.md",
+        "sha256": "ad5f7d8d123b64dae6b19dc952d3bdfe61826768e1879ecf6e7f445ff492fde6",
+        "census_sha256": "ad5f7d8d123b64dae6b19dc952d3bdfe61826768e1879ecf6e7f445ff492fde6",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "10 of the 104-record inventory at full depth in this journey (family “skills”, part 1); 6 records were bound by wave-1 sp-aikit and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s2-fd-skills-p1-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/guidance/aikit/living-project-collaboration/payload/guidance.md",
+      "sha256": "d8635e9bdead5491476871e0fa8f4461ba3b1d8fcfca02366f30290a2775644d",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/guidance/aikit/world-situated-agency/payload/guidance.md",
+      "sha256": "3f478dfd4e69a3c5f8740c5b6a0737ddc0d9cdf9473452e7d5fecc3131e99bc0",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/component-surface-authoring/payload/SKILL.md",
+      "sha256": "fcf1b4133dddd17b9f49407c1761cb32b6de64a567e20ffa4ddeae59ceb08944",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/experience-campaign/payload/SKILL.md",
+      "sha256": "8e1bd8146bfedaf539505f01af68b98de4af21b2ad1d66f6dc7f46bfe76fab8a",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/harness-adapter-authoring/payload/SKILL.md",
+      "sha256": "bdf84e716b4c9292672a9f253abc50f36d71b09341ea106f8e994dd95b9b684c",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/html-account/payload/SKILL.md",
+      "sha256": "858158d10d1ddb94cb6c5206b5ff4f62ec9dd76206f08f59061b2ba362fa8246",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/knowledge-navigation/payload/SKILL.md",
+      "sha256": "e13b11a7a5dd440250d14b31eb2f2689fb30499debc695e716e6c3365d54624a",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-08",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/meta-harness-craft/payload/SKILL.md",
+      "sha256": "771b916760175c9ba5f360149661e10c60bcbb853be3a11f95a44515277d6a0e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-09",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/operation/payload/SKILL.md",
+      "sha256": "5e92005d4c024705e58b2bdef84163ed049009f5577927a2902c2a0ca6bb1b58",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-skills-p1-10",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/capsules/skill/aikit/product-understanding/payload/SKILL.md",
+      "sha256": "ad5f7d8d123b64dae6b19dc952d3bdfe61826768e1879ecf6e7f445ff492fde6",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "artifact": "quaternal-logic/sp-ql-fd-skills.journey.json",
+  "family": "family-ql-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-ql",
+    "family-ql-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S5",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S5",
+          "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
+          "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/Quaternal-Logic",
+      "branch": "session/k-aw-expression-production-2026-09-17",
+      "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
+      "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "skills/README.md",
+        "sha256": "1ea9f48d68a533bde105496725eed98b7387110a049effaa95fc286f3d09d11e",
+        "census_sha256": "1ea9f48d68a533bde105496725eed98b7387110a049effaa95fc286f3d09d11e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/bimba-cypher/SKILL.md",
+        "sha256": "25dd40ce11911c28a7f7130a271f331a67d68714c74d8e73176cd5f1111bd1a7",
+        "census_sha256": "25dd40ce11911c28a7f7130a271f331a67d68714c74d8e73176cd5f1111bd1a7",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/ql-evidence-report/SKILL.md",
+        "sha256": "bda375ec8acc3f7a3ad1f47b6f093f90409940f4154571202479ad2396ee8817",
+        "census_sha256": "bda375ec8acc3f7a3ad1f47b6f093f90409940f4154571202479ad2396ee8817",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/ql-experience-prepare/SKILL.md",
+        "sha256": "87f0cf0ee7157d3a759b21afe3b50602fde8f66cc9c5d7e1d0dadd059967ce89",
+        "census_sha256": "87f0cf0ee7157d3a759b21afe3b50602fde8f66cc9c5d7e1d0dadd059967ce89",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/ql-experience-walk/SKILL.md",
+        "sha256": "7cc4604522734c5755cc5d394367f15e844a7d44636e74cd106f78d93bee00e9",
+        "census_sha256": "7cc4604522734c5755cc5d394367f15e844a7d44636e74cd106f78d93bee00e9",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/ql-foundations/SKILL.md",
+        "sha256": "2baa31839b186f2114e6bd55412987b4acd75cad8e421fae3d08822c81cd2a76",
+        "census_sha256": "2baa31839b186f2114e6bd55412987b4acd75cad8e421fae3d08822c81cd2a76",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/ql-operation/SKILL.md",
+        "sha256": "11ed875f790d0c8fe73211870f5bf5edbb2e62eb35df6449d8c42fe9b743a93e",
+        "census_sha256": "11ed875f790d0c8fe73211870f5bf5edbb2e62eb35df6449d8c42fe9b743a93e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "skills/refraction-adapter-authoring/SKILL.md",
+        "sha256": "7ca6a25bcc6f6f3e2f3ede7d9c52b880ca3c3803606618e7271a4a25cc4de3c1",
+        "census_sha256": "7ca6a25bcc6f6f3e2f3ede7d9c52b880ca3c3803606618e7271a4a25cc4de3c1",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "8 of the 148-record inventory at full depth in this journey (family “skills”); 6 records were bound by wave-1 sp-ql and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s5-fd-skills-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/README.md",
+      "sha256": "1ea9f48d68a533bde105496725eed98b7387110a049effaa95fc286f3d09d11e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/bimba-cypher/SKILL.md",
+      "sha256": "25dd40ce11911c28a7f7130a271f331a67d68714c74d8e73176cd5f1111bd1a7",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/ql-evidence-report/SKILL.md",
+      "sha256": "bda375ec8acc3f7a3ad1f47b6f093f90409940f4154571202479ad2396ee8817",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/ql-experience-prepare/SKILL.md",
+      "sha256": "87f0cf0ee7157d3a759b21afe3b50602fde8f66cc9c5d7e1d0dadd059967ce89",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/ql-experience-walk/SKILL.md",
+      "sha256": "7cc4604522734c5755cc5d394367f15e844a7d44636e74cd106f78d93bee00e9",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/ql-foundations/SKILL.md",
+      "sha256": "2baa31839b186f2114e6bd55412987b4acd75cad8e421fae3d08822c81cd2a76",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/ql-operation/SKILL.md",
+      "sha256": "11ed875f790d0c8fe73211870f5bf5edbb2e62eb35df6449d8c42fe9b743a93e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-skills-08",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:skills/refraction-adapter-authoring/SKILL.md",
+      "sha256": "7ca6a25bcc6f6f3e2f3ede7d9c52b880ca3c3803606618e7271a4a25cc4de3c1",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}

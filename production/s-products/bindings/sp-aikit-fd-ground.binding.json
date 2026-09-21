@@ -1,0 +1,143 @@
+{
+  "artifact": "aikit/sp-aikit-fd-ground.journey.json",
+  "family": "family-aikit-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-aikit",
+    "family-aikit-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S2",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-aikit and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S2",
+          "path": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md",
+          "sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-aikit.json (frozen-census-basis, 104 records; all 104 sha256 re-verified byte-exact from git object storage at EpiLogos/ai-kit@23dea85 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/ai-kit",
+      "branch": "techne/agency-mint",
+      "commit": "23dea8563e0c882237ea29adceb88759d8fc8a6f",
+      "published_note": "bound bytes are published origin/main ace1496a277d69047e4cead073f4f1bd67932f31 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "9edca0e55b8184c4c776544abbe5f6df72617d720547fe3b10a66a39cdaee176",
+        "census_sha256": "9edca0e55b8184c4c776544abbe5f6df72617d720547fe3b10a66a39cdaee176",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "CONTEXT.md",
+        "sha256": "6d051076fe8de037c4c7dae6c8f0eeaad1d0f07cd0c9d32c40d691a2048d31ce",
+        "census_sha256": "6d051076fe8de037c4c7dae6c8f0eeaad1d0f07cd0c9d32c40d691a2048d31ce",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "sha256": "6ee4ab56693e95e2c0598d635d2aeb64dfa2b73c47bf800477291508dff2fa26",
+        "census_sha256": "6ee4ab56693e95e2c0598d635d2aeb64dfa2b73c47bf800477291508dff2fa26",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "ProjectCentral/user/capability-matrix.md",
+        "sha256": "c09f161ac7aaa87e5d863d9b626f3ae9fab6d621f6480763a760bd850bc7830c",
+        "census_sha256": "c09f161ac7aaa87e5d863d9b626f3ae9fab6d621f6480763a760bd850bc7830c",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "README.md",
+        "sha256": "3092263f314390821771ed7204ec55f6f0ef4dbc6e60db61fecbddcedcb55a39",
+        "census_sha256": "c5404b5ecdc618360cca237011a590c0a247e26412b19458139769809b5b52ef",
+        "status": "main-bytes-drifted",
+        "note": "drifted on main since the census freeze; bound at current origin/main bytes"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "79fa3b1e3bfb0030a92cfdb70ec980727d02fc460b8482fc34478c1a95567a41",
+        "census_sha256": "79fa3b1e3bfb0030a92cfdb70ec980727d02fc460b8482fc34478c1a95567a41",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "STANDARDS.md",
+        "sha256": "ffa6433a87ecad647a22c6ba6300e342688a3ce00ce546f8fe374375ba0de931",
+        "census_sha256": "ffa6433a87ecad647a22c6ba6300e342688a3ce00ce546f8fe374375ba0de931",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "7 of the 104-record inventory at full depth in this journey (family “ground”); 6 records were bound by wave-1 sp-aikit and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s2-fd-ground-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:AGENTS.md",
+      "sha256": "9edca0e55b8184c4c776544abbe5f6df72617d720547fe3b10a66a39cdaee176",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-ground-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:CONTEXT.md",
+      "sha256": "6d051076fe8de037c4c7dae6c8f0eeaad1d0f07cd0c9d32c40d691a2048d31ce",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-ground-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:CONTRIBUTING.md",
+      "sha256": "6ee4ab56693e95e2c0598d635d2aeb64dfa2b73c47bf800477291508dff2fa26",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-ground-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:ProjectCentral/user/capability-matrix.md",
+      "sha256": "c09f161ac7aaa87e5d863d9b626f3ae9fab6d621f6480763a760bd850bc7830c",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-ground-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:README.md",
+      "sha256": "3092263f314390821771ed7204ec55f6f0ef4dbc6e60db61fecbddcedcb55a39",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-ground-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:SECURITY.md",
+      "sha256": "79fa3b1e3bfb0030a92cfdb70ec980727d02fc460b8482fc34478c1a95567a41",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-ground-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:STANDARDS.md",
+      "sha256": "ffa6433a87ecad647a22c6ba6300e342688a3ce00ce546f8fe374375ba0de931",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}

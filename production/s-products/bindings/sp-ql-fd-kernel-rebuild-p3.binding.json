@@ -1,0 +1,157 @@
+{
+  "artifact": "quaternal-logic/sp-ql-fd-kernel-rebuild-p3.journey.json",
+  "family": "family-ql-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-ql",
+    "family-ql-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S5",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S5",
+          "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
+          "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/Quaternal-Logic",
+      "branch": "session/k-aw-expression-production-2026-09-17",
+      "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
+      "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "docs/kernel-rebuild/M3-SOURCE-PARITY.md",
+        "sha256": "e1e0fc6a38bad7afc2c71d19326eb4065312dc21a3960ea805527b8d1b22fc39",
+        "census_sha256": "e1e0fc6a38bad7afc2c71d19326eb4065312dc21a3960ea805527b8d1b22fc39",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/OPTIMISATION-AND-LEARNING.md",
+        "sha256": "bd46131b5e42dfbca96ad9041cfa1f008536ae49ad4134769b0056df46839e9e",
+        "census_sha256": "bd46131b5e42dfbca96ad9041cfa1f008536ae49ad4134769b0056df46839e9e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/PARENT-SURFACES-INTEGRATION.md",
+        "sha256": "5b78109c51e95718d788ce6b4cb96014f0369d3dee6524a0d4345b0c530dcab7",
+        "census_sha256": "5b78109c51e95718d788ce6b4cb96014f0369d3dee6524a0d4345b0c530dcab7",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/PRE-K8-AGENT-WORLD-LOCK.md",
+        "sha256": "43ebcbca9f65b966776607809eb3fcd0ce38bd400009ca0efa373425da823d2b",
+        "census_sha256": "43ebcbca9f65b966776607809eb3fcd0ce38bd400009ca0efa373425da823d2b",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/UX-INTENT-SOURCE-MINUTE.md",
+        "sha256": "9404268e1333b2439ed369ea6a1c1b07a355eb80da1bec2ec281ca38cdc98b1d",
+        "census_sha256": "9404268e1333b2439ed369ea6a1c1b07a355eb80da1bec2ec281ca38cdc98b1d",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/UX-SPINE-RECONCILIATION.md",
+        "sha256": "8c26b55617713ed90de00276a75ebc5b9e5784290d471c0bf72c83b09ad7de6c",
+        "census_sha256": "9bf791ae6e38e445c50ded9ad179db2ef47fca2513d84c256c3c6cec2b62f55b",
+        "status": "main-bytes-drifted",
+        "note": "drifted on main since the census freeze; bound at current origin/main bytes"
+      },
+      {
+        "path": "docs/kernel-rebuild/VAK-OIKONOMIA-KNOWLEDGE-RETURN.md",
+        "sha256": "08976a03c143651627500886bb9871ee914c33b7531bb48288e6ccdeb53a375a",
+        "census_sha256": "08976a03c143651627500886bb9871ee914c33b7531bb48288e6ccdeb53a375a",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/m2-engine-v1.md",
+        "sha256": "a3e1f9a2e9f21fd67397c84080bf498293ffb0bb1aab46250e9f4057d63fc108",
+        "census_sha256": "a3e1f9a2e9f21fd67397c84080bf498293ffb0bb1aab46250e9f4057d63fc108",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "8 of the 148-record inventory at full depth in this journey (family “kernel-rebuild”, part 3); 6 records were bound by wave-1 sp-ql and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/M3-SOURCE-PARITY.md",
+      "sha256": "e1e0fc6a38bad7afc2c71d19326eb4065312dc21a3960ea805527b8d1b22fc39",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/OPTIMISATION-AND-LEARNING.md",
+      "sha256": "bd46131b5e42dfbca96ad9041cfa1f008536ae49ad4134769b0056df46839e9e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/PARENT-SURFACES-INTEGRATION.md",
+      "sha256": "5b78109c51e95718d788ce6b4cb96014f0369d3dee6524a0d4345b0c530dcab7",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/PRE-K8-AGENT-WORLD-LOCK.md",
+      "sha256": "43ebcbca9f65b966776607809eb3fcd0ce38bd400009ca0efa373425da823d2b",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/UX-INTENT-SOURCE-MINUTE.md",
+      "sha256": "9404268e1333b2439ed369ea6a1c1b07a355eb80da1bec2ec281ca38cdc98b1d",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/UX-SPINE-RECONCILIATION.md",
+      "sha256": "8c26b55617713ed90de00276a75ebc5b9e5784290d471c0bf72c83b09ad7de6c",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/VAK-OIKONOMIA-KNOWLEDGE-RETURN.md",
+      "sha256": "08976a03c143651627500886bb9871ee914c33b7531bb48288e6ccdeb53a375a",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p3-08",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/m2-engine-v1.md",
+      "sha256": "a3e1f9a2e9f21fd67397c84080bf498293ffb0bb1aab46250e9f4057d63fc108",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "family-aikit-fulldepth",
+  "corpus": "s-products",
+  "kind": "family",
+  "date": "2026-09-21",
+  "lineage": [
+    "s-products-corpus-base",
+    "family-aikit"
+  ],
+  "full_depth_grammar": {
+    "whole_first": "the wave-1 corpus-root journey sp-aikit remains the whole (S2's movement path); full-depth journeys bind the remaining inventoried records and never duplicate the movement path",
+    "journey_unit": "one oi.journey per inventory family (the census's own directory grouping), at most 12 scenes per journey; larger families split into sequential parts",
+    "scene_unit": "one scene per bound record: ground disc + up to four term glyphs drawn from the record's own heading words + one glyph naming the record (6 formations, under the 10-formation runtime limit; 7 entities incl. disc, under the 32-entity schema limit)",
+    "text_relation": "same margin-column page relation as wave-1 (right side, x 0.78, width 300, size 17; plain text body — shared defect #8)",
+    "privacy": "every bound record byte-identical to published origin/main at pass time; records drifted on main since the census freeze are bound at current main bytes with the delta named in their binding record; dirty working trees never read",
+    "classification": "full depth stipulated: every authored census record enters; exclusions (build outputs, lockfiles, generated/derived state, CI templates) are disclosed with reasons in the receipt, never silent"
+  },
+  "journeys": [
+    {
+      "artifact": "aikit/sp-aikit-fd-adr-implementation.journey.json",
+      "family": "adr-implementation",
+      "scenes": 9
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-docs-p1.journey.json",
+      "family": "docs",
+      "scenes": 9
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-docs-p2.journey.json",
+      "family": "docs",
+      "scenes": 8
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-ground.journey.json",
+      "family": "ground",
+      "scenes": 7
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-periphery.journey.json",
+      "family": "periphery",
+      "scenes": 11
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-plans.journey.json",
+      "family": "plans",
+      "scenes": 10
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-skills-p1.journey.json",
+      "family": "skills",
+      "scenes": 10
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-skills-p2.journey.json",
+      "family": "skills",
+      "scenes": 10
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-v2-p1.journey.json",
+      "family": "v2",
+      "scenes": 12
+    },
+    {
+      "artifact": "aikit/sp-aikit-fd-v2-p2.journey.json",
+      "family": "v2",
+      "scenes": 11
+    }
+  ],
+  "note": "Craft baselines only. No profile claim here is a semantic claim about the corpus's meaning."
+}
