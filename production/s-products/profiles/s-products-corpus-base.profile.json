@@ -1,0 +1,36 @@
+{
+  "id": "s-products-corpus-base",
+  "corpus": "s-products",
+  "kind": "corpus-base",
+  "date": "2026-09-21",
+  "lineage": [],
+  "craft_baselines": {
+    "grounds": {
+      "product-atelier": {
+        "background": "#14120e",
+        "palette": ["<per-product stage ink>", "<per-product tint>"],
+        "material": "ink",
+        "params": { "count": 46000, "speed": 0.5, "turbulence": 0.12, "opacity": 0.92, "contrast": 0.93 },
+        "note": "one shared atelier ground; each product keeps its own tint/ink pair so the six artifacts read as one field with six voices"
+      }
+    },
+    "product_tints": {
+      "central": "#5b7bd5", "actuation": "#c8724a", "aikit": "#2e6f6c",
+      "factory": "#b0763c", "workcell": "#5f7a4f", "quaternal-logic": "#7a5ca8",
+      "note": "presentation-only; no tint is a semantic claim"
+    },
+    "text_relation": "one margin-column page per scene (right side, x 0.78, width 300, size 17) against the staged field on the left — the reliable text/field relation the E0 pass consolidated; page body is plain text (shared defect #8: markdown renders literally)",
+    "scene_rhythm": { "duration": 14, "transition": 2 },
+    "entity_grain": "a ground disc + one glyph per movement term (the S record's own named terms) + one glyph naming the bound material record — 8 formations maximum, under the 10-formation runtime limit (shared defect #1)"
+  },
+  "source_law": [
+    "admission boundary: the essay's S register (record S, product-field, members S0..S5; records S0..S5, product) in the frozen 288-record T25 census, register episteme",
+    "whole-first: a product's journey stages its S record's own movement path #0 -> #5->0 in the record's order",
+    "every scene binds (a) its S record by exact movement heading + sha256 at Antykathera-Essay-Work 7d96ada2 and (b) one material record by path + sha256 from the frozen P1-census-*.json inventory",
+    "bound material records must be byte-identical to the product repo's published origin/main (verified 2026-09-21; drifted files are replaced in selection, not bound)",
+    "scene ids derive from the S record's movement headings; scene texts compress and quote, never invent claims; no manufactured graph edges",
+    "product repos are read-only: records are hashed from git object storage at the frozen commits; dirty working trees are never read or frozen",
+    "presentation mappings are declared craft, not source claims"
+  ],
+  "note": "Craft baselines only. No profile claim here is a semantic claim about the corpus's meaning."
+}

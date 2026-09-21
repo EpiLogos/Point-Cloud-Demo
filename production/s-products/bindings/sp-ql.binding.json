@@ -1,0 +1,126 @@
+{
+ "artifact": "ql/sp-ql.journey.json",
+ "family": "family-ql",
+ "worker": "S-register correction pass (wave 1, S-seeded)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-ql"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S5",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census; this corrects the P1 map’s withdrawn \"no admission disposition\" claim",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S5",
+     "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
+     "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Quaternal-Logic",
+   "branch": "session/k-aw-expression-production-2026-09-17",
+   "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
+   "published_note": "every consumed record byte-identical to published EpiLogos/Quaternal-Logic origin/main 5970757e25532c7329f07f4819273155c4f3f135 (re-hashed from git object storage and compared 2026-09-21)"
+  },
+  "records_bound": [
+   {
+    "path": "README.md",
+    "sha256": "c9283e67611ea05213c5fa2097282fe6842f2afac79093449d425a1c4fb3523c"
+   },
+   {
+    "path": "docs/QL-VAK-KERNEL-RECONCILIATION.md",
+    "sha256": "512b100955c0422b2ea49485c32f572ccb940a29f0a39f14ee44e9c3b520a4ef"
+   },
+   {
+    "path": "docs/KERNEL-RECURSIVE-M-REGISTRY.md",
+    "sha256": "6388f3e2851c23346f15fe87f75a260a7dc0feadfca65a59c18d59e8b53574d5"
+   },
+   {
+    "path": "docs/HOLOGRAPHIC-KERNEL-FORMAL-REFERENCE.md",
+    "sha256": "e6efe6a33451c98a2a75c8e48d372e21f1d8102927387c690992572644b10c66"
+   },
+   {
+    "path": "docs/QL-STRUCTURAL-CARRIER-CONTRACT-V1.md",
+    "sha256": "fa3cd85698a51b38c39ae6bcc66fbe8ede0bd65eaca20c233b2d51ecb077efbe"
+   },
+   {
+    "path": "docs/L5-TECHNE-INTEGRATED-DEVELOPMENT-WAYFINDER.md",
+    "sha256": "cf3d2371d388ff3e0777d594c173920d16991942ac5535a95fa240b68694f4b1"
+   }
+  ],
+  "coverage": "6 of 148 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+ },
+ "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
+ "scenes": [
+  {
+   "scene_id": "s5-m0-exceeding-relation",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md :: #0 — Relation which exceeds the present determination",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af154:README.md",
+   "sha256": "c9283e67611ea05213c5fa2097282fe6842f2afac79093449d425a1c4fb3523c",
+   "staged": "the product's own front ground; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s5-m1-para-vak",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md :: #1 — L5 Para Vāk: articulation from the unconditioned toward manifest distinction",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af154:docs/QL-VAK-KERNEL-RECONCILIATION.md",
+   "sha256": "512b100955c0422b2ea49485c32f572ccb940a29f0a39f14ee44e9c3b520a4ef",
+   "staged": "Vāk and the kernel reconciled; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s5-m2-articulated-whole",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md :: #2 — L0′ Archetypal-Numerical: one becomes articulated whole",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af154:docs/KERNEL-RECURSIVE-M-REGISTRY.md",
+   "sha256": "6388f3e2851c23346f15fe87f75a260a7dc0feadfca65a59c18d59e8b53574d5",
+   "staged": "the recursive M registry: wholes becoming parts; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s5-m3-dia-syn",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md :: #3 — Dia and syn: difference retained rather than erased or possessed",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af154:docs/HOLOGRAPHIC-KERNEL-FORMAL-REFERENCE.md",
+   "sha256": "e6efe6a33451c98a2a75c8e48d372e21f1d8102927387c690992572644b10c66",
+   "staged": "the holographic kernel formal reference; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s5-m4-formal-constitution",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md :: #4 — Local formal constitution: address, operator, relation, context, return",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af154:docs/QL-STRUCTURAL-CARRIER-CONTRACT-V1.md",
+   "sha256": "fa3cd85698a51b38c39ae6bcc66fbe8ede0bd65eaca20c233b2d51ecb077efbe",
+   "staged": "the structural carrier contract; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s5-m5-co-internality",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md :: #5→0 — Co-internality and the return beyond enclosure",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af154:docs/L5-TECHNE-INTEGRATED-DEVELOPMENT-WAYFINDER.md",
+   "sha256": "cf3d2371d388ff3e0777d594c173920d16991942ac5535a95fa240b68694f4b1",
+   "staged": "the integrated development wayfinder across products; the movement’s own named terms as a glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "ql/sp-ql.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Whole-first: the S5 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S5 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+}

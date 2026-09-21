@@ -1,0 +1,126 @@
+{
+ "artifact": "central/sp-central.journey.json",
+ "family": "family-central",
+ "worker": "S-register correction pass (wave 1, S-seeded)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-central"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S0",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census; this corrects the P1 map’s withdrawn \"no admission disposition\" claim",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S0",
+     "path": "submission-package/essay/symbolon/episteme/products/S0-Central.md",
+     "sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-central.json (frozen-census-basis, 61 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Central",
+   "branch": "main",
+   "commit": "87341be43801c04657b12ccfee6af22bfb0ff839",
+   "published_note": "every consumed record byte-identical to published EpiLogos/Central origin/main 48568e54df6b06f0f57118593e42ebf7cab71768 (re-hashed from git object storage and compared 2026-09-21)"
+  },
+  "records_bound": [
+   {
+    "path": "README.md",
+    "sha256": "d9a57b3c98e7981c0ed975f96cca25e6f31efc130f2c731f78e975d6fc8fecbe"
+   },
+   {
+    "path": "docs/PRODUCT-GROUND-CONVENTION.md",
+    "sha256": "809b64f089749cf40fed6fdea747d497608330091540819947e6cee4e0e2a09a"
+   },
+   {
+    "path": "docs/SOURCE-RETURN.md",
+    "sha256": "48ab040a1ddbd71e8394caa486d7ee310dfe15aa470acd802330ec8d6029a242"
+   },
+   {
+    "path": "docs/PROJECTCENTRAL-AUTHORED-GROUND.md",
+    "sha256": "cfeef78dce8c7d19d4543b4e0756cf6af68a25abe94e14145516662a4953181a"
+   },
+   {
+    "path": "docs/PERSONAL-WORLD-PROJECTION.md",
+    "sha256": "8f698aeafed9b1159c4b4ff7cec3a961fc09f52450a0d3d17d33bb4857c58413"
+   },
+   {
+    "path": "docs/RECOVERY-PROTOCOL.md",
+    "sha256": "cb94beaabbdde49c2dc0f98aea3c38d3d61ceb56a3f686b1bee4ac78350ae3fe"
+   }
+  ],
+  "coverage": "6 of 61 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+ },
+ "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
+ "scenes": [
+  {
+   "scene_id": "s0-m0-ground",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md :: #0 — The intelligible ground a Life carries",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@87341be43:README.md",
+   "sha256": "d9a57b3c98e7981c0ed975f96cca25e6f31efc130f2c731f78e975d6fc8fecbe",
+   "staged": "the product's own front ground; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s0-m1-sayable-ground",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md :: #1 — L0 Quaternal: ground becomes sayable",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@87341be43:docs/PRODUCT-GROUND-CONVENTION.md",
+   "sha256": "809b64f089749cf40fed6fdea747d497608330091540819947e6cee4e0e2a09a",
+   "staged": "how a product ground is declared and kept sayable; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s0-m2-disclosure-return",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md :: #2 — L5′ Divine Logos: ground lives by disclosure and return",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@87341be43:docs/SOURCE-RETURN.md",
+   "sha256": "48ab040a1ddbd71e8394caa486d7ee310dfe15aa470acd802330ec8d6029a242",
+   "staged": "the disclosure-and-return law for sources; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s0-m3-authorship",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md :: #3 — Authorship without enclosure",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@87341be43:docs/PROJECTCENTRAL-AUTHORED-GROUND.md",
+   "sha256": "cfeef78dce8c7d19d4543b4e0756cf6af68a25abe94e14145516662a4953181a",
+   "staged": "authored ground and its authorship path; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s0-m4-carried-world",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md :: #4 — Bimba, Pratibimba and the carried world",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@87341be43:docs/PERSONAL-WORLD-PROJECTION.md",
+   "sha256": "8f698aeafed9b1159c4b4ff7cec3a961fc09f52450a0d3d17d33bb4857c58413",
+   "staged": "the carried personal world and its projection; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s0-m5-revisable-continuity",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md :: #5→0 — Continuity completes itself by becoming revisable",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@87341be43:docs/RECOVERY-PROTOCOL.md",
+   "sha256": "cb94beaabbdde49c2dc0f98aea3c38d3d61ceb56a3f686b1bee4ac78350ae3fe",
+   "staged": "how ground is recovered and revised; the movement’s own named terms as a glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "central/sp-central.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Whole-first: the S0 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S0 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+}

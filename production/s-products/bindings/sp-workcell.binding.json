@@ -1,0 +1,126 @@
+{
+ "artifact": "workcell/sp-workcell.journey.json",
+ "family": "family-workcell",
+ "worker": "S-register correction pass (wave 1, S-seeded)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-workcell"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S4",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census; this corrects the P1 map’s withdrawn \"no admission disposition\" claim",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S4",
+     "path": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md",
+     "sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-workcell.json (frozen-census-basis, 30 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Workcell",
+   "branch": "main",
+   "commit": "5ddf156d3617675e1e8b07593777c705fc788f26",
+   "published_note": "every consumed record byte-identical to published EpiLogos/Workcell origin/main d911bfd9597f126df6c818cec9641023a06034b1 (re-hashed from git object storage and compared 2026-09-21)"
+  },
+  "records_bound": [
+   {
+    "path": "README.md",
+    "sha256": "d990a4ca7c55219fc10b2067b674a02cba0775ebed0f2af2d8392428c97df771"
+   },
+   {
+    "path": "docs/ARCHITECTURE.md",
+    "sha256": "7713aee6010c591e1d1a2d7dbfa0f93a22baf5936cef02c638f3c37bb05a49ca"
+   },
+   {
+    "path": "docs/VISUAL-PRODUCT-UNDERSTANDING.md",
+    "sha256": "51b0a4ab03a460b5ba32d8c2bbff573812445098ff24eaa318a6af913fbf804d"
+   },
+   {
+    "path": "docs/CANDIDATE-MATERIALISATION.md",
+    "sha256": "b090c18fea868ae783abffc2c72f0a768d10a68c35626e11c569e3e0ede5f446"
+   },
+   {
+    "path": "docs/CROSS-CELL-CONNECTIONS.md",
+    "sha256": "da336d68a6bf8fa6dba32b91f17d4ec96f988ae20a1eae3eaa76efe86a891fce"
+   },
+   {
+    "path": "docs/LIFECYCLE-RECONCILIATION.md",
+    "sha256": "db60f6a0706d732ec993db8d91df89038c776d53ae45da7cbe6d9596506839c1"
+   }
+  ],
+  "coverage": "6 of 30 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+ },
+ "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
+ "scenes": [
+  {
+   "scene_id": "s4-m0-somewhere",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md :: #0 — A Life is somewhere",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@5ddf156d3:README.md",
+   "sha256": "d990a4ca7c55219fc10b2067b674a02cba0775ebed0f2af2d8392428c97df771",
+   "staged": "the product's own front ground; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s4-m1-thrown-world",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md :: #1 — L4 Phenomenological: thrown into a world",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@5ddf156d3:docs/ARCHITECTURE.md",
+   "sha256": "7713aee6010c591e1d1a2d7dbfa0f93a22baf5936cef02c638f3c37bb05a49ca",
+   "staged": "the inherited substrate architecture; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s4-m2-aperture",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md :: #2 — L1′ Phenomenal: the aperture of encounter",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@5ddf156d3:docs/VISUAL-PRODUCT-UNDERSTANDING.md",
+   "sha256": "51b0a4ab03a460b5ba32d8c2bbff573812445098ff24eaa318a6af913fbf804d",
+   "staged": "how the product is visually understood; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s4-m3-demand-offer",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md :: #3 — Material demand, offer and realised world",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@5ddf156d3:docs/CANDIDATE-MATERIALISATION.md",
+   "sha256": "b090c18fea868ae783abffc2c72f0a768d10a68c35626e11c569e3e0ede5f446",
+   "staged": "candidate materialisation: demand meeting offer; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s4-m4-availability",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md :: #4 — Availability to others",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@5ddf156d3:docs/CROSS-CELL-CONNECTIONS.md",
+   "sha256": "da336d68a6bf8fa6dba32b91f17d4ec96f988ae20a1eae3eaa76efe86a891fce",
+   "staged": "cross-cell connections and their boundaries; the movement’s own named terms as a glyph row over the ground disc"
+  },
+  {
+   "scene_id": "s4-m5-evidence-returns",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md :: #5→0 — Material evidence returns to meaning",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@5ddf156d3:docs/LIFECYCLE-RECONCILIATION.md",
+   "sha256": "db60f6a0706d732ec993db8d91df89038c776d53ae45da7cbe6d9596506839c1",
+   "staged": "lifecycle reconciliation: observed state returning; the movement’s own named terms as a glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "workcell/sp-workcell.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Whole-first: the S4 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S4 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+}

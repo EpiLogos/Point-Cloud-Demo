@@ -29,6 +29,7 @@ is **not** corpus output; accepted artifacts live here as files.
 | `production/bimba/` | Bimba / QL Expressions | QL-MEF #201 | `bimba/README.md` |
 | `production/return-of-zero/` | Return-of-Zero Expressions | Antykathera-Essay-Work #65 | `return-of-zero/README.md` |
 | `production/epii-antichrist/` | Epii M5-1 / Antichrist Expressions | O-I #65 corpus programme (source: EpiLogos/research-canvas) | `epii-antichrist/README.md` |
+| `production/s-products/` | Six-products S-seeded Expressions (S0–S5) | O-I #65 corpus programme (admission: the essay's S register; product repos read-only) | `s-products/README.md` |
 
 Each namespace's own README defines its internal layout (family directories,
 binding records, profiles, tools). The root law above is the part every
