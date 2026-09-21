@@ -1,0 +1,40 @@
+{
+  "id": "epii-antichrist-corpus-base",
+  "corpus": "epii-antichrist",
+  "kind": "corpus-base",
+  "date": "2026-09-21",
+  "lineage": [],
+  "craft_baselines": {
+    "grounds": {
+      "vault-reading": {
+        "background": "#171310",
+        "palette": ["#e8dfc9", "#c8a24a"],
+        "material": "ink",
+        "params": { "count": 46000, "speed": 0.45, "turbulence": 0.12, "opacity": 0.85, "contrast": 0.8 }
+      },
+      "episode-stage": {
+        "background": "#1d1812",
+        "palette": ["#efe6d0", "#c8724a"],
+        "material": "ink",
+        "params": { "count": 46000, "speed": 0.6, "turbulence": 0.12, "opacity": 0.85, "contrast": 0.8 }
+      },
+      "occlusion": {
+        "background": "#14161a",
+        "palette": ["#9aa2ad", "#5a616c"],
+        "material": "ink",
+        "note": "the deficiency register: the same image under a cold, dimmed medium"
+      }
+    },
+    "text_relation": "one margin-column page per scene (right side, x 0.78, width 300, size 17) against the staged field on the left — the reliable text/field relation the E0 pass consolidated",
+    "scene_rhythm": { "duration": 14, "transition": 2 },
+    "entity_grain": "text glyphs sized 0.12-0.62 by role; formations (disc/ring/square) as structure; pins only where a force needs an anchor"
+  },
+  "source_law": [
+    "the knowledge manifest's admitted sources[] are the corpus admission boundary",
+    "scene ids are canonical identities (unit slugs, movement ids), never invented",
+    "relations are staged only where the source names them; no manufactured graph edges",
+    "presentation mappings are declared craft, not source claims",
+    "bindings pin repo, branch, commit and per-record sha256; a source move invalidates only affected artifacts"
+  ],
+  "note": "Craft baselines only. No profile claim here is a semantic claim about the corpus's meaning."
+}
