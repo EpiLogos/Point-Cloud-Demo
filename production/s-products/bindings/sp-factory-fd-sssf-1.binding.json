@@ -1,0 +1,247 @@
+{
+ "artifact": "factory/sp-factory-fd-sssf-1.journey.json",
+ "family": "family-factory",
+ "worker": "S3 full-depth fan-out (wave 2, S-seeded products)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-factory"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S3",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products' authored admission is the essay's S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S3",
+     "path": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md",
+     "sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-factory.json (frozen-census-basis, 230 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Factory",
+   "branch": "main",
+   "commit": "f59368de67a4bac32d344099aa827c31a7e6107b",
+   "published_note": "every consumed record hashed from git object storage at published origin/main f59368de67a4bac32d344099aa827c31a7e6107b on 2026-09-21; 227 of 230 census records are byte-identical to the census freeze at fbabaaad (branch techne/telemetry-watch-compare-settings); moved records are bound at current committed bytes with the delta named in the entry"
+  },
+  "family": "Super Simple Software Factory skill",
+  "records_bound": [
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/SKILL.md",
+    "sha256": "2674bb79e9ad76130cefbef02dd53b5e3837c35f15fba36cff8f3303b0519862",
+    "census_sha256": "2674bb79e9ad76130cefbef02dd53b5e3837c35f15fba36cff8f3303b0519862",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/create_adw.md",
+    "sha256": "ecb3935c4591b3cf1a404d47a7d6b2c8132fc3ad577a2387e6c240745b11fcf6",
+    "census_sha256": "ecb3935c4591b3cf1a404d47a7d6b2c8132fc3ad577a2387e6c240745b11fcf6",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/create_config.md",
+    "sha256": "1e9acb63e34f5ddaeaa3afac19153d3451427ac66be16fc4108aad9af89b662d",
+    "census_sha256": "1e9acb63e34f5ddaeaa3afac19153d3451427ac66be16fc4108aad9af89b662d",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/how_to_prompt_for_the_eng.md",
+    "sha256": "3540f826e9c8644b0b541e29c2e8735591d83d42d49212aeb8c658d6250ecc7d",
+    "census_sha256": "3540f826e9c8644b0b541e29c2e8735591d83d42d49212aeb8c658d6250ecc7d",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/install.md",
+    "sha256": "d6a495a796d07d7179b9cc023993aede41452f9a8b5415e51f3381144a709590",
+    "census_sha256": "d6a495a796d07d7179b9cc023993aede41452f9a8b5415e51f3381144a709590",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/run_adw.md",
+    "sha256": "9b9375a5d43c00e8c5b344b61c1cb3209c7d2ec76e57e91c918bb22c4cae5caa",
+    "census_sha256": "9b9375a5d43c00e8c5b344b61c1cb3209c7d2ec76e57e91c918bb22c4cae5caa",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/sssf_overview.md",
+    "sha256": "8105d2b59ef1b4dd66391361c36bd289826838eccee88c9b8c913d895d15a42a",
+    "census_sha256": "8105d2b59ef1b4dd66391361c36bd289826838eccee88c9b8c913d895d15a42a",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/update_adw.md",
+    "sha256": "a38a387e87af1424d995f4b2764db5316b3ba9d6222272a49397a7c97e53c45a",
+    "census_sha256": "a38a387e87af1424d995f4b2764db5316b3ba9d6222272a49397a7c97e53c45a",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/update_config.md",
+    "sha256": "c34e60045e6b77656ff6c70799a11b2c1ae18b9f17c2734851efe3182be5b0df",
+    "census_sha256": "c34e60045e6b77656ff6c70799a11b2c1ae18b9f17c2734851efe3182be5b0df",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/cookbooks/update_modules.md",
+    "sha256": "d117b0aa0d213e02469f181df5c703abcb54b4d1e308b2d05fdb98b1cd0d31c1",
+    "census_sha256": "d117b0aa0d213e02469f181df5c703abcb54b4d1e308b2d05fdb98b1cd0d31c1",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/references/config.md",
+    "sha256": "cc54620e39e375fa8672d5d04940bd1d7d36085a7e56f76d27be4416ae523b74",
+    "census_sha256": "cc54620e39e375fa8672d5d04940bd1d7d36085a7e56f76d27be4416ae523b74",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/references/handoff.md",
+    "sha256": "87938a3f3a0d2a8305deed8d12926f52da8f11a6ee87c90d05b179d5fb6b1f66",
+    "census_sha256": "87938a3f3a0d2a8305deed8d12926f52da8f11a6ee87c90d05b179d5fb6b1f66",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/references/observability.md",
+    "sha256": "1240cd6b68d74271698ca108fb7e089d695d6988c547957ef2975add1c8ef374",
+    "census_sha256": "1240cd6b68d74271698ca108fb7e089d695d6988c547957ef2975add1c8ef374",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/templates/prompt_engineering/builder/system.md",
+    "sha256": "b18a7c426a3fbb680a1e6f0a22769391059b69e7f665eb6ae5f45ae725a7492c",
+    "census_sha256": "b18a7c426a3fbb680a1e6f0a22769391059b69e7f665eb6ae5f45ae725a7492c",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/templates/prompt_engineering/builder/user.md",
+    "sha256": "08c2fc3f54ab051a140afb2f24045a82a83fde3a423362b247a43d17f9a898de",
+    "census_sha256": "08c2fc3f54ab051a140afb2f24045a82a83fde3a423362b247a43d17f9a898de",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "super-simple-software-factory/.claude/skills/sssf/templates/prompt_engineering/documenter/system.md",
+    "sha256": "6a9ef78af751e4e33391dfbf003c9879c3779403d16ec62e4520aa4a52d89af7",
+    "census_sha256": "6a9ef78af751e4e33391dfbf003c9879c3779403d16ec62e4520aa4a52d89af7",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   }
+  ],
+  "coverage": "16 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-r001-skill",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/SKILL.md",
+   "sha256": "2674bb79e9ad76130cefbef02dd53b5e3837c35f15fba36cff8f3303b0519862",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r002-create-adw",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/create_adw.md",
+   "sha256": "ecb3935c4591b3cf1a404d47a7d6b2c8132fc3ad577a2387e6c240745b11fcf6",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r003-create-config",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/create_config.md",
+   "sha256": "1e9acb63e34f5ddaeaa3afac19153d3451427ac66be16fc4108aad9af89b662d",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r004-how-to-prompt-for-the-eng",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/how_to_prompt_for_the_eng.md",
+   "sha256": "3540f826e9c8644b0b541e29c2e8735591d83d42d49212aeb8c658d6250ecc7d",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r005-install",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/install.md",
+   "sha256": "d6a495a796d07d7179b9cc023993aede41452f9a8b5415e51f3381144a709590",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r006-run-adw",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/run_adw.md",
+   "sha256": "9b9375a5d43c00e8c5b344b61c1cb3209c7d2ec76e57e91c918bb22c4cae5caa",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r007-sssf-overview",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/sssf_overview.md",
+   "sha256": "8105d2b59ef1b4dd66391361c36bd289826838eccee88c9b8c913d895d15a42a",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r008-update-adw",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/update_adw.md",
+   "sha256": "a38a387e87af1424d995f4b2764db5316b3ba9d6222272a49397a7c97e53c45a",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r009-update-config",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/update_config.md",
+   "sha256": "c34e60045e6b77656ff6c70799a11b2c1ae18b9f17c2734851efe3182be5b0df",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r010-update-modules",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/cookbooks/update_modules.md",
+   "sha256": "d117b0aa0d213e02469f181df5c703abcb54b4d1e308b2d05fdb98b1cd0d31c1",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r011-config",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/references/config.md",
+   "sha256": "cc54620e39e375fa8672d5d04940bd1d7d36085a7e56f76d27be4416ae523b74",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r012-handoff",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/references/handoff.md",
+   "sha256": "87938a3f3a0d2a8305deed8d12926f52da8f11a6ee87c90d05b179d5fb6b1f66",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r013-observability",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/references/observability.md",
+   "sha256": "1240cd6b68d74271698ca108fb7e089d695d6988c547957ef2975add1c8ef374",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r014-system",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/templates/prompt_engineering/builder/system.md",
+   "sha256": "b18a7c426a3fbb680a1e6f0a22769391059b69e7f665eb6ae5f45ae725a7492c",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r015-user",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/templates/prompt_engineering/builder/user.md",
+   "sha256": "08c2fc3f54ab051a140afb2f24045a82a83fde3a423362b247a43d17f9a898de",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r016-system",
+   "material_source_ref": "EpiLogos/Factory@f59368de:super-simple-software-factory/.claude/skills/sssf/templates/prompt_engineering/documenter/system.md",
+   "sha256": "6a9ef78af751e4e33391dfbf003c9879c3779403d16ec62e4520aa4a52d89af7",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "factory/sp-factory-fd-sssf-1.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base."
+}

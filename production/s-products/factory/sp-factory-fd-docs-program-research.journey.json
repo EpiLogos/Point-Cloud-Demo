@@ -1,0 +1,3540 @@
+{
+ "schema": "oi.journey",
+ "version": 1,
+ "savedScenes": {},
+ "id": "sp-factory-fd-docs-program-research",
+ "name": "S3 Factory full depth — programme, pstack reduction, research",
+ "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the programme, pstack reduction, research slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
+ "loop": true,
+ "scenes": [
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-docs-program-research-whole",
+   "name": "the Factory whole — programme, pstack reduction, research",
+   "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-docs-program-research-whole-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-docs-program-research-whole-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-docs-program-research-whole-w1",
+     "name": "the Factory whole",
+     "kind": "formation",
+     "position": {
+      "x": -0.5,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.544,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "the Factory whole",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-docs-program-research-whole-w1-step-1",
+        "text": "the Factory whole",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-docs-program-research-whole-w2",
+     "name": "S3 · full depth",
+     "kind": "formation",
+     "position": {
+      "x": 0.42,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.48,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "S3 · full depth",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-docs-program-research-whole-w2-step-1",
+        "text": "S3 · full depth",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-docs-program-research-whole-page",
+     "kicker": "S3 Software Factory · full depth · whole",
+     "title": "programme, pstack reduction, research",
+     "italic": "whole-first — reference, not duplication",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the programme, pstack reduction, research slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r001-bounded-agency-foundation",
+   "name": "Bounded agency foundation",
+   "character": "Standing: implementation account and remaining design obligations, 2026-09-06. The experience-governance statement remains a human-ground proposal. This document does not adopt it or turn an acceptance fixture into a pro",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r001-bounded-agency-foundation-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-bounded-agency-foundation-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-bounded-agency-foundation-title",
+     "name": "Bounded agency foundation",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Bounded agency foundation",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-bounded-agency-foundation-title-step-1",
+        "text": "Bounded agency foundation",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-bounded-agency-foundation-rec",
+     "name": "BOUNDED-AGENCY-FOUNDATION",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "BOUNDED-AGENCY-FOUNDATION",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-bounded-agency-foundation-rec-step-1",
+        "text": "BOUNDED-AGENCY-FOUNDATION",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r001-bounded-agency-foundation-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Bounded agency foundation",
+     "italic": "docs/program/BOUNDED-AGENCY-FOUNDATION.md",
+     "body": "Standing: implementation account and remaining design obligations, 2026-09-06. The experience-governance statement remains a human-ground proposal. This document does not adopt it or turn an acceptance fixture into a production de\n\nBound material — docs/program/BOUNDED-AGENCY-FOUNDATION.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 7c60a396d862… (full-depth record 1 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r002-coordinated-build-execution",
+   "name": "Coordinated Software Factory Build Execution Programme",
+   "character": "Status: planning / execution-map draft — no broad implementation authorised.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r002-coordinated-build-execution-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-coordinated-build-execution-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-coordinated-build-execution-title",
+     "name": "Coordinated Software Factory Build Execution Programme",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Coordinated Software Factory Build Execution Programme",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-coordinated-build-execution-title-step-1",
+        "text": "Coordinated Software Factory Build Execution Programme",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-coordinated-build-execution-rec",
+     "name": "COORDINATED-BUILD-EXECUTION-PROGRAMM",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "COORDINATED-BUILD-EXECUTION-PROGRAMM",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-coordinated-build-execution-rec-step-1",
+        "text": "COORDINATED-BUILD-EXECUTION-PROGRAMM",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r002-coordinated-build-execution-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Coordinated Software Factory Build Execution Programme",
+     "italic": "docs/program/COORDINATED-BUILD-EXECUTION-PROGRAMME-2026-08-13.md",
+     "body": "Status: planning / execution-map draft — no broad implementation authorised.\n\nBound material — docs/program/COORDINATED-BUILD-EXECUTION-PROGRAMME-2026-08-13.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 6c8b23fa6668… (full-depth record 2 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r003-execution-intelligence-build",
+   "name": "Root Build Programme Amendment — Execution Intelligence",
+   "character": "Status: CURRENT DESIGN — executable programme amendment",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r003-execution-intelligence-build-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-execution-intelligence-build-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-execution-intelligence-build-title",
+     "name": "Root Build Programme Amendment — Execution Intelligence",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Root Build Programme Amendment — Execution Intelligence",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-execution-intelligence-build-title-step-1",
+        "text": "Root Build Programme Amendment — Execution Intelligence",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-execution-intelligence-build-rec",
+     "name": "EXECUTION-INTELLIGENCE-BUILD-AMENDME",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "EXECUTION-INTELLIGENCE-BUILD-AMENDME",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-execution-intelligence-build-rec-step-1",
+        "text": "EXECUTION-INTELLIGENCE-BUILD-AMENDME",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r003-execution-intelligence-build-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Root Build Programme Amendment — Execution Intelligence",
+     "italic": "docs/program/EXECUTION-INTELLIGENCE-BUILD-AMENDMENT.md",
+     "body": "Status: CURRENT DESIGN — executable programme amendment\n\nBound material — docs/program/EXECUTION-INTELLIGENCE-BUILD-AMENDMENT.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 98e95763d363… (full-depth record 3 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r004-ql-software-factory-root-bui",
+   "name": "QL Software Factory — Root Build Program",
+   "character": "File: QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r004-ql-software-factory-root-bui-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-ql-software-factory-root-bui-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-ql-software-factory-root-bui-title",
+     "name": "QL Software Factory — Root Build Program",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "QL Software Factory — Root Build Program",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-ql-software-factory-root-bui-title-step-1",
+        "text": "QL Software Factory — Root Build Program",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-ql-software-factory-root-bui-rec",
+     "name": "QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGR",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGR",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-ql-software-factory-root-bui-rec-step-1",
+        "text": "QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGR",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r004-ql-software-factory-root-bui-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "QL Software Factory — Root Build Program",
+     "italic": "docs/program/QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md",
+     "body": "File: QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md\n\nBound material — docs/program/QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 d3705ef26d2a… (full-depth record 4 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r005-workcell-repository-handoff",
+   "name": "Workcell Repository Handoff",
+   "character": "Date: 2026-08-14",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r005-workcell-repository-handoff-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-workcell-repository-handoff-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-workcell-repository-handoff-title",
+     "name": "Workcell Repository Handoff",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Workcell Repository Handoff",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-workcell-repository-handoff-title-step-1",
+        "text": "Workcell Repository Handoff",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-workcell-repository-handoff-rec",
+     "name": "WORKCELL-REPOSITORY-HANDOFF",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "WORKCELL-REPOSITORY-HANDOFF",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-workcell-repository-handoff-rec-step-1",
+        "text": "WORKCELL-REPOSITORY-HANDOFF",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r005-workcell-repository-handoff-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Workcell Repository Handoff",
+     "italic": "docs/program/WORKCELL-REPOSITORY-HANDOFF.md",
+     "body": "Date: 2026-08-14\n\nBound material — docs/program/WORKCELL-REPOSITORY-HANDOFF.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 51866dbbe94e… (full-depth record 5 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r006-core-semantic-review",
+   "name": "Core semantic review",
+   "character": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99. Ten core sources and 141 outgoing edges received manual overrides. Each edge retains its exact source line and excerpt in core-semantic-review.json.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r006-core-semantic-review-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-core-semantic-review-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-core-semantic-review-title",
+     "name": "Core semantic review",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Core semantic review",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-core-semantic-review-title-step-1",
+        "text": "Core semantic review",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-core-semantic-review-rec",
+     "name": "core-semantic-review",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.6,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "core-semantic-review",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-core-semantic-review-rec-step-1",
+        "text": "core-semantic-review",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r006-core-semantic-review-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Core semantic review",
+     "italic": "docs/pstack-reduction/core-semantic-review.md",
+     "body": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99. Ten core sources and 141 outgoing edges received manual overrides. Each edge retains its exact source line and excerpt in core-semantic-review.json.\n\nBound material — docs/pstack-reduction/core-semantic-review.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 926e2d12916c… (full-depth record 6 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r007-edge-accounting",
+   "name": "Source-edge accounting",
+   "character": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99; 572 exact source-line candidate relations, with 442 operative relations and 16 explicit nonrelations. Every edge retains source, line, excerpt and relation. manua",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r007-edge-accounting-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-edge-accounting-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-edge-accounting-title",
+     "name": "Source-edge accounting",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Source-edge accounting",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-edge-accounting-title-step-1",
+        "text": "Source-edge accounting",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-edge-accounting-rec",
+     "name": "edge-accounting",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.45,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "edge-accounting",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-edge-accounting-rec-step-1",
+        "text": "edge-accounting",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r007-edge-accounting-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Source-edge accounting",
+     "italic": "docs/pstack-reduction/edge-accounting.md",
+     "body": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99; 572 exact source-line candidate relations, with 442 operative relations and 16 explicit nonrelations. Every edge retains source, line, excerpt and relation. manual-core-\n\nBound material — docs/pstack-reduction/edge-accounting.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 55f155c2dc57… (full-depth record 7 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r008-source-accounting",
+   "name": "Individual source accounting",
+   "character": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99. Every source has an individual account. Status is per-source: manual core review is curated semantic review; static-accounted is source-specific reduction to a na",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r008-source-accounting-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-source-accounting-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-source-accounting-title",
+     "name": "Individual source accounting",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Individual source accounting",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-source-accounting-title-step-1",
+        "text": "Individual source accounting",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-source-accounting-rec",
+     "name": "source-accounting",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.51,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "source-accounting",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-source-accounting-rec-step-1",
+        "text": "source-accounting",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r008-source-accounting-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Individual source accounting",
+     "italic": "docs/pstack-reduction/source-accounting.md",
+     "body": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99. Every source has an individual account. Status is per-source: manual core review is curated semantic review; static-accounted is source-specific reduction to a native\n\nBound material — docs/pstack-reduction/source-accounting.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 7fe346a22259… (full-depth record 8 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r009-support-prompt-map",
+   "name": "Curated support-prompt map",
+   "character": "Every one of the 32 support prompts has a distinct caller, operation, input/output and standing. Support prompts are never independently invoked.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r009-support-prompt-map-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-support-prompt-map-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-support-prompt-map-title",
+     "name": "Curated support-prompt map",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Curated support-prompt map",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-support-prompt-map-title-step-1",
+        "text": "Curated support-prompt map",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-support-prompt-map-rec",
+     "name": "support-prompt-map",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.54,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "support-prompt-map",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-support-prompt-map-rec-step-1",
+        "text": "support-prompt-map",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r009-support-prompt-map-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Curated support-prompt map",
+     "italic": "docs/pstack-reduction/support-prompt-map.md",
+     "body": "Every one of the 32 support prompts has a distinct caller, operation, input/output and standing. Support prompts are never independently invoked.\n\nBound material — docs/pstack-reduction/support-prompt-map.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 4e3e9b2c2ca4… (full-depth record 9 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r010-raw-extraction",
+   "name": "QL Software Factory — Graph Engineering Principles",
+   "character": "Status: cross-cutting principles companion — extracted 2026-08-12, generalised, and re-expressed in Factory terms.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r010-raw-extraction-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-raw-extraction-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-raw-extraction-title",
+     "name": "QL Software Factory — Graph Engineering Principles",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "QL Software Factory — Graph Engineering Principles",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-raw-extraction-title-step-1",
+        "text": "QL Software Factory — Graph Engineering Principles",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-raw-extraction-rec",
+     "name": "RAW-EXTRACTION",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.42,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "RAW-EXTRACTION",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-raw-extraction-rec-step-1",
+        "text": "RAW-EXTRACTION",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r010-raw-extraction-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "QL Software Factory — Graph Engineering Principles",
+     "italic": "docs/research/graph-engineering/RAW-EXTRACTION.md",
+     "body": "Status: cross-cutting principles companion — extracted 2026-08-12, generalised, and re-expressed in Factory terms.\n\nBound material — docs/research/graph-engineering/RAW-EXTRACTION.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 186c39841884… (full-depth record 10 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r011-readme",
+   "name": "Graph Engineering Research",
+   "character": "Status: RESEARCH / COMPARATIVE CLAIM-SET.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r011-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-readme-title",
+     "name": "Graph Engineering Research",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Graph Engineering Research",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-readme-title-step-1",
+        "text": "Graph Engineering Research",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r011-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Graph Engineering Research",
+     "italic": "docs/research/graph-engineering/README.md",
+     "body": "Status: RESEARCH / COMPARATIVE CLAIM-SET.\n\nBound material — docs/research/graph-engineering/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 bda1cf5cc5b9… (full-depth record 11 of 11; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  }
+ ],
+ "updatedAt": "2026-09-21T00:00:00.000Z"
+}

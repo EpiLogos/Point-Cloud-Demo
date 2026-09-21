@@ -1,0 +1,4128 @@
+{
+ "schema": "oi.journey",
+ "version": 1,
+ "savedScenes": {},
+ "id": "sp-factory-fd-ql-core",
+ "name": "S3 Factory full depth — QL agent experiments — core and foundation",
+ "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the QL agent experiments — core and foundation slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
+ "loop": true,
+ "scenes": [
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-ql-core-whole",
+   "name": "the Factory whole — QL agent experiments — core and foundation",
+   "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-ql-core-whole-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-ql-core-whole-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-ql-core-whole-w1",
+     "name": "the Factory whole",
+     "kind": "formation",
+     "position": {
+      "x": -0.5,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.544,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "the Factory whole",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-ql-core-whole-w1-step-1",
+        "text": "the Factory whole",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-ql-core-whole-w2",
+     "name": "S3 · full depth",
+     "kind": "formation",
+     "position": {
+      "x": 0.42,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.48,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "S3 · full depth",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-ql-core-whole-w2-step-1",
+        "text": "S3 · full depth",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-ql-core-whole-page",
+     "kicker": "S3 Software Factory · full depth · whole",
+     "title": "QL agent experiments — core and foundation",
+     "italic": "whole-first — reference, not duplication",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the QL agent experiments — core and foundation slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r001-loop-closure-clarification",
+   "name": "Loop and Closure Clarification",
+   "character": "Status: normative clarification for the QL agent specification and development protocol.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r001-loop-closure-clarification-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-loop-closure-clarification-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-loop-closure-clarification-title",
+     "name": "Loop and Closure Clarification",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Loop and Closure Clarification",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-loop-closure-clarification-title-step-1",
+        "text": "Loop and Closure Clarification",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-loop-closure-clarification-rec",
+     "name": "LOOP-CLOSURE-CLARIFICATION",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "LOOP-CLOSURE-CLARIFICATION",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-loop-closure-clarification-rec-step-1",
+        "text": "LOOP-CLOSURE-CLARIFICATION",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r001-loop-closure-clarification-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Loop and Closure Clarification",
+     "italic": "ql-agent-experiments/LOOP-CLOSURE-CLARIFICATION.md",
+     "body": "Status: normative clarification for the QL agent specification and development protocol.\n\nBound material — ql-agent-experiments/LOOP-CLOSURE-CLARIFICATION.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 397aedbddc1f… (full-depth record 1 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r002-status",
+   "name": "STATUS",
+   "character": "Reserved by #95. Activation follows Foundation Freeze.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r002-status-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-status-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-status-title",
+     "name": "STATUS",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.192,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "STATUS",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-status-title-step-1",
+        "text": "STATUS",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-status-rec",
+     "name": "STATUS",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "STATUS",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-status-rec-step-1",
+        "text": "STATUS",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r002-status-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "STATUS",
+     "italic": "ql-agent-experiments/comparison/STATUS.md",
+     "body": "Reserved by #95. Activation follows Foundation Freeze.\n\nBound material — ql-agent-experiments/comparison/STATUS.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 714d51ba598c… (full-depth record 2 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r003-readme",
+   "name": "Deep QL workbench — reserved",
+   "character": "This directory is part of the #95 programme workspace only. No Deep QL implementation begins on ql/runtime-foundation.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r003-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-readme-title",
+     "name": "Deep QL workbench — reserved",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Deep QL workbench — reserved",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-readme-title-step-1",
+        "text": "Deep QL workbench — reserved",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r003-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Deep QL workbench — reserved",
+     "italic": "ql-agent-experiments/deep-ql/README.md",
+     "body": "This directory is part of the #95 programme workspace only. No Deep QL implementation begins on ql/runtime-foundation.\n\nBound material — ql-agent-experiments/deep-ql/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 6086f8a355cc… (full-depth record 3 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r004-foundation-blocker",
+   "name": "Foundation Freeze blocker — resolved",
+   "character": "The historical publication and CI blocker is resolved. This file is retained only as a record of that superseded condition.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r004-foundation-blocker-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-foundation-blocker-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-foundation-blocker-title",
+     "name": "Foundation Freeze blocker — resolved",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Foundation Freeze blocker — resolved",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-foundation-blocker-title-step-1",
+        "text": "Foundation Freeze blocker — resolved",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-foundation-blocker-rec",
+     "name": "FOUNDATION-BLOCKER",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.54,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "FOUNDATION-BLOCKER",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-foundation-blocker-rec-step-1",
+        "text": "FOUNDATION-BLOCKER",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r004-foundation-blocker-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Foundation Freeze blocker — resolved",
+     "italic": "ql-agent-experiments/foundation/FOUNDATION-BLOCKER.md",
+     "body": "The historical publication and CI blocker is resolved. This file is retained only as a record of that superseded condition.\n\nBound material — ql-agent-experiments/foundation/FOUNDATION-BLOCKER.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 39cf449f679d… (full-depth record 4 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r005-readme",
+   "name": "QL Agent Runtime Foundation",
+   "character": "This directory is the portable Foundation Freeze surface for issues #95–#100.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r005-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-readme-title",
+     "name": "QL Agent Runtime Foundation",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "QL Agent Runtime Foundation",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-readme-title-step-1",
+        "text": "QL Agent Runtime Foundation",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r005-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "QL Agent Runtime Foundation",
+     "italic": "ql-agent-experiments/foundation/README.md",
+     "body": "This directory is the portable Foundation Freeze surface for issues #95–#100.\n\nBound material — ql-agent-experiments/foundation/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 67bd263f6195… (full-depth record 5 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r006-readme",
+   "name": "Classic runtime",
+   "character": "This directory owns the deliberately small non-QL control condition for #96. It uses the shared RuntimeHost boundary and ordinary model/capability/follow-up recurrence. It must not acquire QL position, residue, determina",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r006-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-readme-title",
+     "name": "Classic runtime",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.48,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Classic runtime",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-readme-title-step-1",
+        "text": "Classic runtime",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r006-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Classic runtime",
+     "italic": "ql-agent-experiments/foundation/classic-runtime/README.md",
+     "body": "This directory owns the deliberately small non-QL control condition for #96. It uses the shared RuntimeHost boundary and ordinary model/capability/follow-up recurrence. It must not acquire QL position, residue, determination or cl\n\nBound material — ql-agent-experiments/foundation/classic-runtime/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 720c2f621636… (full-depth record 6 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r007-readme",
+   "name": "Foundation fixtures",
+   "character": "This directory owns the deterministic #99 Foundation Freeze fixture gate. The target subset is QLF-001/002/003/004/005, QLF-006..010, QLF-011/012/013/014, QLF-017, QLF-018, and QLN-001/002/003/004/006/007. The runner use",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r007-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-readme-title",
+     "name": "Foundation fixtures",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.608,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Foundation fixtures",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-readme-title-step-1",
+        "text": "Foundation fixtures",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r007-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Foundation fixtures",
+     "italic": "ql-agent-experiments/foundation/fixtures/README.md",
+     "body": "This directory owns the deterministic #99 Foundation Freeze fixture gate. The target subset is QLF-001/002/003/004/005, QLF-006..010, QLF-011/012/013/014, QLF-017, QLF-018, and QLN-001/002/003/004/006/007. The runner uses scripted\n\nBound material — ql-agent-experiments/foundation/fixtures/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 4cc2ae88076b… (full-depth record 7 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r008-readme",
+   "name": "Foundation optics",
+   "character": "This directory owns the #98 shared run manifest and observation surface: stable run identity, held-variable manifests, separate raw host events and runtime-semantic events, replay without a live session, and matched clas",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r008-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-readme-title",
+     "name": "Foundation optics",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.544,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Foundation optics",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-readme-title-step-1",
+        "text": "Foundation optics",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r008-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Foundation optics",
+     "italic": "ql-agent-experiments/foundation/optics/README.md",
+     "body": "This directory owns the #98 shared run manifest and observation surface: stable run identity, held-variable manifests, separate raw host events and runtime-semantic events, replay without a live session, and matched classic vers\n\nBound material — ql-agent-experiments/foundation/optics/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 211f241a1d24… (full-depth record 8 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r009-readme",
+   "name": "Direct Core QL runtime",
+   "character": "This directory owns the #97 Direct Core recurrence semantics behind the shared LoopRuntime seam.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r009-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-readme-title",
+     "name": "Direct Core QL runtime",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Direct Core QL runtime",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-readme-title-step-1",
+        "text": "Direct Core QL runtime",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r009-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Direct Core QL runtime",
+     "italic": "ql-agent-experiments/foundation/ql-core-runtime/README.md",
+     "body": "This directory owns the #97 Direct Core recurrence semantics behind the shared LoopRuntime seam.\n\nBound material — ql-agent-experiments/foundation/ql-core-runtime/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 ddbbea5fa1df… (full-depth record 9 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r010-readme",
+   "name": "Runtime contract",
+   "character": "The shared contract standardises only the seam required to replace recurrence beneath one host.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r010-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-readme-title",
+     "name": "Runtime contract",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.512,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Runtime contract",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-readme-title-step-1",
+        "text": "Runtime contract",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r010-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Runtime contract",
+     "italic": "ql-agent-experiments/foundation/runtime-contract/README.md",
+     "body": "The shared contract standardises only the seam required to replace recurrence beneath one host.\n\nBound material — ql-agent-experiments/foundation/runtime-contract/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 94932f1865f3… (full-depth record 10 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r011-ql-agent-development-protoco",
+   "name": "`ql-agent-development-protocol`",
+   "character": "Date: 2026-08-13",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r011-ql-agent-development-protoco-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-ql-agent-development-protoco-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-ql-agent-development-protoco-title",
+     "name": "`ql-agent-development-protocol`",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "`ql-agent-development-protocol`",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-ql-agent-development-protoco-title-step-1",
+        "text": "`ql-agent-development-protocol`",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-ql-agent-development-protoco-rec",
+     "name": "ql-agent-development-protocol-08-13-",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "ql-agent-development-protocol-08-13-",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-ql-agent-development-protoco-rec-step-1",
+        "text": "ql-agent-development-protocol-08-13-",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r011-ql-agent-development-protoco-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "`ql-agent-development-protocol`",
+     "italic": "ql-agent-experiments/ql-agent-development-protocol-08-13-2026.md",
+     "body": "Date: 2026-08-13\n\nBound material — ql-agent-experiments/ql-agent-development-protocol-08-13-2026.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 ae91470a9b58… (full-depth record 11 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r012-ql-agent-development-protoco",
+   "name": "QL Agent Development Protocol — Closure Amendment",
+   "character": "Date: 2026-08-13",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r012-ql-agent-development-protoco-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-ql-agent-development-protoco-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r012-ql-agent-development-protoco-title",
+     "name": "QL Agent Development Protocol — Closure Amendment",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "QL Agent Development Protocol — Closure Amendment",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-ql-agent-development-protoco-title-step-1",
+        "text": "QL Agent Development Protocol — Closure Amendment",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r012-ql-agent-development-protoco-rec",
+     "name": "ql-agent-development-protocol-closur",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "ql-agent-development-protocol-closur",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-ql-agent-development-protoco-rec-step-1",
+        "text": "ql-agent-development-protocol-closur",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r012-ql-agent-development-protoco-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "QL Agent Development Protocol — Closure Amendment",
+     "italic": "ql-agent-experiments/ql-agent-development-protocol-closure-amendment-08-13-2026.md",
+     "body": "Date: 2026-08-13\n\nBound material — ql-agent-experiments/ql-agent-development-protocol-closure-amendment-08-13-2026.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 395325509d22… (full-depth record 12 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r013-ql-agent-spec-08-13-2026",
+   "name": "**`ql-agent-spec`**",
+   "character": "Specification version: 0.1.0-experimental",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r013-ql-agent-spec-08-13-2026-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-ql-agent-spec-08-13-2026-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r013-ql-agent-spec-08-13-2026-title",
+     "name": "**`ql-agent-spec`**",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.608,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "**`ql-agent-spec`**",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-ql-agent-spec-08-13-2026-title-step-1",
+        "text": "**`ql-agent-spec`**",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r013-ql-agent-spec-08-13-2026-rec",
+     "name": "ql-agent-spec-08-13-2026",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "ql-agent-spec-08-13-2026",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-ql-agent-spec-08-13-2026-rec-step-1",
+        "text": "ql-agent-spec-08-13-2026",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r013-ql-agent-spec-08-13-2026-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "**`ql-agent-spec`**",
+     "italic": "ql-agent-experiments/ql-agent-spec-08-13-2026.md",
+     "body": "Specification version: 0.1.0-experimental\n\nBound material — ql-agent-experiments/ql-agent-spec-08-13-2026.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 c71c243c6662… (full-depth record 13 of 13; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  }
+ ],
+ "updatedAt": "2026-09-21T00:00:00.000Z"
+}

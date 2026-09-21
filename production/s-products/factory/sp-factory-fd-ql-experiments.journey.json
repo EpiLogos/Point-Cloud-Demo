@@ -1,0 +1,4716 @@
+{
+ "schema": "oi.journey",
+ "version": 1,
+ "savedScenes": {},
+ "id": "sp-factory-fd-ql-experiments",
+ "name": "S3 Factory full depth — QL agent experiments — experiment records",
+ "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the QL agent experiments — experiment records slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
+ "loop": true,
+ "scenes": [
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-ql-experiments-whole",
+   "name": "the Factory whole — QL agent experiments — experiment records",
+   "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-ql-experiments-whole-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-ql-experiments-whole-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-ql-experiments-whole-w1",
+     "name": "the Factory whole",
+     "kind": "formation",
+     "position": {
+      "x": -0.5,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.544,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "the Factory whole",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-ql-experiments-whole-w1-step-1",
+        "text": "the Factory whole",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-ql-experiments-whole-w2",
+     "name": "S3 · full depth",
+     "kind": "formation",
+     "position": {
+      "x": 0.42,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.48,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "S3 · full depth",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-ql-experiments-whole-w2-step-1",
+        "text": "S3 · full depth",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-ql-experiments-whole-page",
+     "kicker": "S3 Software Factory · full depth · whole",
+     "title": "QL agent experiments — experiment records",
+     "italic": "whole-first — reference, not duplication",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the QL agent experiments — experiment records slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r001-readme",
+   "name": "Native experiment",
+   "character": "Issue 103 baseline is active over the frozen runtime foundation.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r001-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-readme-title",
+     "name": "Native experiment",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.544,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Native experiment",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-readme-title-step-1",
+        "text": "Native experiment",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r001-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Native experiment",
+     "italic": "ql-agent-experiments/experiments/native/README.md",
+     "body": "Issue 103 baseline is active over the frozen runtime foundation.\n\nBound material — ql-agent-experiments/experiments/native/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 ed60543f8288… (full-depth record 1 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r002-readme",
+   "name": "Native classic condition",
+   "character": "Active issue 103 control condition using the frozen ClassicRuntime. Execution completion does not imply semantic Closure.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r002-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-readme-title",
+     "name": "Native classic condition",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Native classic condition",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-readme-title-step-1",
+        "text": "Native classic condition",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r002-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Native classic condition",
+     "italic": "ql-agent-experiments/experiments/native/classic/README.md",
+     "body": "Active issue 103 control condition using the frozen ClassicRuntime. Execution completion does not imply semantic Closure.\n\nBound material — ql-agent-experiments/experiments/native/classic/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 8d844d39393a… (full-depth record 2 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r003-readme",
+   "name": "Native QL condition",
+   "character": "Active issue 103 QL condition using the unchanged frozen ql-core runtime. The local policy supplies task acts and interpretations only.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r003-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-readme-title",
+     "name": "Native QL condition",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.608,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Native QL condition",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-readme-title-step-1",
+        "text": "Native QL condition",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r003-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Native QL condition",
+     "italic": "ql-agent-experiments/experiments/native/ql/README.md",
+     "body": "Active issue 103 QL condition using the unchanged frozen ql-core runtime. The local policy supplies task acts and interpretations only.\n\nBound material — ql-agent-experiments/experiments/native/ql/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 4af74827b79f… (full-depth record 3 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r004-readme",
+   "name": "Native runs",
+   "character": "Issue #103 baseline run evidence is active. The Native smoke records matched Classic and ql-core execution and verifies replay from stored records.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r004-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-readme-title",
+     "name": "Native runs",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.352,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Native runs",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-readme-title-step-1",
+        "text": "Native runs",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r004-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Native runs",
+     "italic": "ql-agent-experiments/experiments/native/runs/README.md",
+     "body": "Issue #103 baseline run evidence is active. The Native smoke records matched Classic and ql-core execution and verifies replay from stored records.\n\nBound material — ql-agent-experiments/experiments/native/runs/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 d53cd517eb9e… (full-depth record 4 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r005-readme",
+   "name": "Native shared host",
+   "character": "Active issue 103 host integration. This layer is QL-free and is reused unchanged by both runtime conditions.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r005-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-readme-title",
+     "name": "Native shared host",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.576,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Native shared host",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-readme-title-step-1",
+        "text": "Native shared host",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r005-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Native shared host",
+     "italic": "ql-agent-experiments/experiments/native/shared/README.md",
+     "body": "Active issue 103 host integration. This layer is QL-free and is reused unchanged by both runtime conditions.\n\nBound material — ql-agent-experiments/experiments/native/shared/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 0379f55f43c6… (full-depth record 5 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r006-readme",
+   "name": "Pi matched runtime experiment — issue 101",
+   "character": "Active baseline over the frozen Foundation. The Pi host boundary is constant while each run selects either the classic or ql-core runtime.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r006-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-readme-title",
+     "name": "Pi matched runtime experiment — issue 101",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pi matched runtime experiment — issue 101",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-readme-title-step-1",
+        "text": "Pi matched runtime experiment — issue 101",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r006-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pi matched runtime experiment — issue 101",
+     "italic": "ql-agent-experiments/experiments/pi/README.md",
+     "body": "Active baseline over the frozen Foundation. The Pi host boundary is constant while each run selects either the classic or ql-core runtime.\n\nBound material — ql-agent-experiments/experiments/pi/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 006c31df91c1… (full-depth record 6 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r007-readme",
+   "name": "Pi classic condition",
+   "character": "Active issue 101 control condition. It selects the frozen Foundation ClassicRuntime against the Pi host and therefore has ordinary execution completion with semantic closure reported as not_applicable.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r007-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-readme-title",
+     "name": "Pi classic condition",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pi classic condition",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-readme-title-step-1",
+        "text": "Pi classic condition",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r007-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pi classic condition",
+     "italic": "ql-agent-experiments/experiments/pi/classic/README.md",
+     "body": "Active issue 101 control condition. It selects the frozen Foundation ClassicRuntime against the Pi host and therefore has ordinary execution completion with semantic closure reported as not_applicable.\n\nBound material — ql-agent-experiments/experiments/pi/classic/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 ac731a63bcab… (full-depth record 7 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r008-readme",
+   "name": "Pi QL condition",
+   "character": "Active issue 101 QL condition. The unchanged frozen QLDirectCoreRuntime owns circuit state, interpreted return, Rij movement, P5 determination, positive closure, and post-closure re-entry. policy.js supplies deterministi",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r008-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-readme-title",
+     "name": "Pi QL condition",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.48,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pi QL condition",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-readme-title-step-1",
+        "text": "Pi QL condition",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r008-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pi QL condition",
+     "italic": "ql-agent-experiments/experiments/pi/ql/README.md",
+     "body": "Active issue 101 QL condition. The unchanged frozen QLDirectCoreRuntime owns circuit state, interpreted return, Rij movement, P5 determination, positive closure, and post-closure re-entry. policy.js supplies deterministic task pol\n\nBound material — ql-agent-experiments/experiments/pi/ql/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 3f692cbb8e07… (full-depth record 8 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r009-readme",
+   "name": "Pi experiment baseline",
+   "character": "Issue: #101",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r009-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-readme-title",
+     "name": "Pi experiment baseline",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pi experiment baseline",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-readme-title-step-1",
+        "text": "Pi experiment baseline",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r009-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pi experiment baseline",
+     "italic": "ql-agent-experiments/experiments/pi/runs/README.md",
+     "body": "Issue: #101\n\nBound material — ql-agent-experiments/experiments/pi/runs/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 a508944c8360… (full-depth record 9 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r010-readme",
+   "name": "Pi shared host",
+   "character": "Active issue 101 host integration. The adapter is QL-free and is used unchanged by both runtime conditions. Raw Pi-style lifecycle events are recorded on the host event channel.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r010-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-readme-title",
+     "name": "Pi shared host",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.448,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pi shared host",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-readme-title-step-1",
+        "text": "Pi shared host",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r010-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pi shared host",
+     "italic": "ql-agent-experiments/experiments/pi/shared/README.md",
+     "body": "Active issue 101 host integration. The adapter is QL-free and is used unchanged by both runtime conditions. Raw Pi-style lifecycle events are recorded on the host event channel.\n\nBound material — ql-agent-experiments/experiments/pi/shared/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 5618d040df3a… (full-depth record 10 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r011-readme",
+   "name": "Pydantic AI experiment",
+   "character": "Issue 102 baseline is active over the frozen runtime foundation.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r011-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-readme-title",
+     "name": "Pydantic AI experiment",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pydantic AI experiment",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-readme-title-step-1",
+        "text": "Pydantic AI experiment",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r011-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pydantic AI experiment",
+     "italic": "ql-agent-experiments/experiments/pydantic/README.md",
+     "body": "Issue 102 baseline is active over the frozen runtime foundation.\n\nBound material — ql-agent-experiments/experiments/pydantic/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 01eb8b75d187… (full-depth record 11 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r012-readme",
+   "name": "Pydantic classic condition",
+   "character": "Active issue 102 control condition using the frozen ClassicRuntime. Execution may complete; semantic closure is not_applicable.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r012-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r012-readme-title",
+     "name": "Pydantic classic condition",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pydantic classic condition",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-readme-title-step-1",
+        "text": "Pydantic classic condition",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r012-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r012-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pydantic classic condition",
+     "italic": "ql-agent-experiments/experiments/pydantic/classic/README.md",
+     "body": "Active issue 102 control condition using the frozen ClassicRuntime. Execution may complete; semantic closure is not_applicable.\n\nBound material — ql-agent-experiments/experiments/pydantic/classic/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 5b09c009ec09… (full-depth record 12 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r013-readme",
+   "name": "Pydantic QL condition",
+   "character": "Active issue 102 QL condition. The unchanged frozen ql-core runtime owns QL state, Rij recurrence, P5 determination, closure and re-entry; the local policy supplies task interpretation only.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r013-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r013-readme-title",
+     "name": "Pydantic QL condition",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pydantic QL condition",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-readme-title-step-1",
+        "text": "Pydantic QL condition",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r013-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r013-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pydantic QL condition",
+     "italic": "ql-agent-experiments/experiments/pydantic/ql/README.md",
+     "body": "Active issue 102 QL condition. The unchanged frozen ql-core runtime owns QL state, Rij recurrence, P5 determination, closure and re-entry; the local policy supplies task interpretation only.\n\nBound material — ql-agent-experiments/experiments/pydantic/ql/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 e2bafa7718c1… (full-depth record 13 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r014-readme",
+   "name": "Pydantic AI experiment",
+   "character": "Issue 102 baseline is active over the frozen runtime foundation.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r014-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r014-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r014-readme-title",
+     "name": "Pydantic AI experiment",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pydantic AI experiment",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r014-readme-title-step-1",
+        "text": "Pydantic AI experiment",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r014-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r014-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r014-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pydantic AI experiment",
+     "italic": "ql-agent-experiments/experiments/pydantic/runs/README.md",
+     "body": "Issue 102 baseline is active over the frozen runtime foundation.\n\nBound material — ql-agent-experiments/experiments/pydantic/runs/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 01eb8b75d187… (full-depth record 14 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r015-readme",
+   "name": "Pydantic shared host",
+   "character": "Active issue 102 QL-free host integration. One adapter is used by both runtime conditions; Pydantic graph events stay on the host channel.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r015-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r015-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r015-readme-title",
+     "name": "Pydantic shared host",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Pydantic shared host",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r015-readme-title-step-1",
+        "text": "Pydantic shared host",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r015-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r015-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r015-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Pydantic shared host",
+     "italic": "ql-agent-experiments/experiments/pydantic/shared/README.md",
+     "body": "Active issue 102 QL-free host integration. One adapter is used by both runtime conditions; Pydantic graph events stay on the host channel.\n\nBound material — ql-agent-experiments/experiments/pydantic/shared/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 74494f0bbee3… (full-depth record 15 of 15; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  }
+ ],
+ "updatedAt": "2026-09-21T00:00:00.000Z"
+}

@@ -1,0 +1,4422 @@
+{
+ "schema": "oi.journey",
+ "version": 1,
+ "savedScenes": {},
+ "id": "sp-factory-fd-inkwell-overview-appdocs",
+ "name": "S3 Factory full depth — Inkwell factory — overview and app docs",
+ "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the Inkwell factory — overview and app docs slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
+ "loop": true,
+ "scenes": [
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-inkwell-overview-appdocs-whole",
+   "name": "the Factory whole — Inkwell factory — overview and app docs",
+   "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-inkwell-overview-appdocs-whole-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-inkwell-overview-appdocs-whole-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-inkwell-overview-appdocs-whole-w1",
+     "name": "the Factory whole",
+     "kind": "formation",
+     "position": {
+      "x": -0.5,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.544,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "the Factory whole",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-inkwell-overview-appdocs-whole-w1-step-1",
+        "text": "the Factory whole",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-inkwell-overview-appdocs-whole-w2",
+     "name": "S3 · full depth",
+     "kind": "formation",
+     "position": {
+      "x": 0.42,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.48,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "S3 · full depth",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-inkwell-overview-appdocs-whole-w2-step-1",
+        "text": "S3 · full depth",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-inkwell-overview-appdocs-whole-page",
+     "kicker": "S3 Software Factory · full depth · whole",
+     "title": "Inkwell factory — overview and app docs",
+     "italic": "whole-first — reference, not duplication",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the Inkwell factory — overview and app docs slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r001-readme",
+   "name": "Factory In A Box",
+   "character": "> A blog app, the software factory that builds it, and the throwaway sandbox that runs both.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r001-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-readme-title",
+     "name": "Factory In A Box",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.512,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Factory In A Box",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-readme-title-step-1",
+        "text": "Factory In A Box",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r001-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r001-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r001-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Factory In A Box",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/README.md",
+     "body": "> A blog app, the software factory that builds it, and the throwaway sandbox that runs both.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 824d18efc0bb… (full-depth record 1 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r002-tree",
+   "name": "TREE",
+   "character": "Every file that matters, and why it exists. Three layers stack here:",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r002-tree-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-tree-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-tree-title",
+     "name": "TREE",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "TREE",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-tree-title-step-1",
+        "text": "TREE",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r002-tree-rec",
+     "name": "TREE",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "TREE",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r002-tree-rec-step-1",
+        "text": "TREE",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r002-tree-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "TREE",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/TREE.md",
+     "body": "Every file that matters, and why it exists. Three layers stack here:\n\nBound material — inkwell-agent-sandboxes-and-software-factory/TREE.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 b06cbcda6ed6… (full-depth record 2 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r003-exedev-sandbox-mounting",
+   "name": "Mounting exe.dev Sandboxes — Research",
+   "character": "> Research only. Nothing here is built. Sources are the live exe.dev CLI (ssh exe.dev help <cmd>),",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r003-exedev-sandbox-mounting-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-exedev-sandbox-mounting-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-exedev-sandbox-mounting-title",
+     "name": "Mounting exe.dev Sandboxes — Research",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Mounting exe.dev Sandboxes — Research",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-exedev-sandbox-mounting-title-step-1",
+        "text": "Mounting exe.dev Sandboxes — Research",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r003-exedev-sandbox-mounting-rec",
+     "name": "exedev_sandbox_mounting",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "exedev_sandbox_mounting",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r003-exedev-sandbox-mounting-rec-step-1",
+        "text": "exedev_sandbox_mounting",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r003-exedev-sandbox-mounting-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Mounting exe.dev Sandboxes — Research",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/ai_docs/exedev_sandbox_mounting.md",
+     "body": "> Research only. Nothing here is built. Sources are the live exe.dev CLI (ssh exe.dev help <cmd>),\n\nBound material — inkwell-agent-sandboxes-and-software-factory/ai_docs/exedev_sandbox_mounting.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 91e8536a502d… (full-depth record 3 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r004-1a53906b-adw-sdlc-workflows",
+   "name": "SSSF Reviewer, Documenter, and Simple SDLC Integration",
+   "character": "This change introduces two new agents (reviewer and documenter), deterministic change capture via git, and three new ADW workflows (adw_build_review, adw_document, adw_simple_sdlc).",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r004-1a53906b-adw-sdlc-workflows-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-1a53906b-adw-sdlc-workflows-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-1a53906b-adw-sdlc-workflows-title",
+     "name": "SSSF Reviewer, Documenter, and Simple SDLC Integration",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "SSSF Reviewer, Documenter, and Simple SDLC Integration",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-1a53906b-adw-sdlc-workflows-title-step-1",
+        "text": "SSSF Reviewer, Documenter, and Simple SDLC Integration",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r004-1a53906b-adw-sdlc-workflows-rec",
+     "name": "1a53906b_adw-sdlc-workflows",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "1a53906b_adw-sdlc-workflows",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r004-1a53906b-adw-sdlc-workflows-rec-step-1",
+        "text": "1a53906b_adw-sdlc-workflows",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r004-1a53906b-adw-sdlc-workflows-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "SSSF Reviewer, Documenter, and Simple SDLC Integration",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/1a53906b_adw-sdlc-workflows.md",
+     "body": "This change introduces two new agents (reviewer and documenter), deterministic change capture via git, and three new ADW workflows (adw_build_review, adw_document, adw_simple_sdlc).\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/1a53906b_adw-sdlc-workflows.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 6e0fbb4551c9… (full-depth record 4 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r005-27ef9462-model-routing-conte",
+   "name": "SSSF model routing and visualizer model metadata",
+   "character": "SSSF now routes the reviewer and documenter agents directly through OpenAI instead of the OpenRouter-qualified model IDs. Both configuration copies were updated:",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r005-27ef9462-model-routing-conte-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-27ef9462-model-routing-conte-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-27ef9462-model-routing-conte-title",
+     "name": "SSSF model routing and visualizer model metadata",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "SSSF model routing and visualizer model metadata",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-27ef9462-model-routing-conte-title-step-1",
+        "text": "SSSF model routing and visualizer model metadata",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r005-27ef9462-model-routing-conte-rec",
+     "name": "27ef9462_model-routing-context",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "27ef9462_model-routing-context",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r005-27ef9462-model-routing-conte-rec-step-1",
+        "text": "27ef9462_model-routing-context",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r005-27ef9462-model-routing-conte-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "SSSF model routing and visualizer model metadata",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/27ef9462_model-routing-context.md",
+     "body": "SSSF now routes the reviewer and documenter agents directly through OpenAI instead of the OpenRouter-qualified model IDs. Both configuration copies were updated:\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/27ef9462_model-routing-context.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 bb15d7409b49… (full-depth record 5 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r006-306a0046-inkwell-stats-total",
+   "name": "Total Words Field in GET /api/stats",
+   "character": "The GET /api/stats endpoint in the Inkwell server (apps/inkwell/server.ts) has been extended to include a total_words field in its JSON response. This field aggregates the word count across all posts stored in the databa",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r006-306a0046-inkwell-stats-total-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-306a0046-inkwell-stats-total-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-306a0046-inkwell-stats-total-title",
+     "name": "Total Words Field in GET /api/stats",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Total Words Field in GET /api/stats",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-306a0046-inkwell-stats-total-title-step-1",
+        "text": "Total Words Field in GET /api/stats",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r006-306a0046-inkwell-stats-total-rec",
+     "name": "306a0046_inkwell-stats-total-words",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "306a0046_inkwell-stats-total-words",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r006-306a0046-inkwell-stats-total-rec-step-1",
+        "text": "306a0046_inkwell-stats-total-words",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r006-306a0046-inkwell-stats-total-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Total Words Field in GET /api/stats",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/306a0046_inkwell-stats-total-words.md",
+     "body": "The GET /api/stats endpoint in the Inkwell server (apps/inkwell/server.ts) has been extended to include a total_words field in its JSON response. This field aggregates the word count across all posts stored in the database (\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/306a0046_inkwell-stats-total-words.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 8a7548e0da09… (full-depth record 6 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r007-306a0046-prevent-overwriting",
+   "name": "Prevent Overwriting Specs and App Docs in Reused Sessions",
+   "character": "Updated prompt engineering templates and runtime prompts for the documenter and planner agents, as well as the SSSF install cookbook documentation. The prompt updates instruct the documenter and planner agents to list ap",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r007-306a0046-prevent-overwriting-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-306a0046-prevent-overwriting-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-306a0046-prevent-overwriting-title",
+     "name": "Prevent Overwriting Specs and App Docs in Reused Sessions",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Prevent Overwriting Specs and App Docs in Reused Sessions",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-306a0046-prevent-overwriting-title-step-1",
+        "text": "Prevent Overwriting Specs and App Docs in Reused Sessions",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r007-306a0046-prevent-overwriting-rec",
+     "name": "306a0046_prevent-overwriting-specs-d",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "306a0046_prevent-overwriting-specs-d",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r007-306a0046-prevent-overwriting-rec-step-1",
+        "text": "306a0046_prevent-overwriting-specs-d",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r007-306a0046-prevent-overwriting-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Prevent Overwriting Specs and App Docs in Reused Sessions",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/306a0046_prevent-overwriting-specs-docs.md",
+     "body": "Updated prompt engineering templates and runtime prompts for the documenter and planner agents, as well as the SSSF install cookbook documentation. The prompt updates instruct the documenter and planner agents to list app_doc\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/306a0046_prevent-overwriting-specs-docs.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 001db3d8ea51… (full-depth record 7 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r008-806adbfc-ui-visual-contrast",
+   "name": "UI Visual Contrast & Accessibility Enhancements",
+   "character": "This change audits and improves visual contrast and focus indicators across the UI to comply with WCAG 2.1 AA standards (minimum 4.5:1 contrast ratio for normal text) while preserving the dark theme aesthetic. It also ad",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r008-806adbfc-ui-visual-contrast-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-806adbfc-ui-visual-contrast-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-806adbfc-ui-visual-contrast-title",
+     "name": "UI Visual Contrast & Accessibility Enhancements",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "UI Visual Contrast & Accessibility Enhancements",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-806adbfc-ui-visual-contrast-title-step-1",
+        "text": "UI Visual Contrast & Accessibility Enhancements",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r008-806adbfc-ui-visual-contrast-rec",
+     "name": "806adbfc_ui-visual-contrast",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "806adbfc_ui-visual-contrast",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r008-806adbfc-ui-visual-contrast-rec-step-1",
+        "text": "806adbfc_ui-visual-contrast",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r008-806adbfc-ui-visual-contrast-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "UI Visual Contrast & Accessibility Enhancements",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/806adbfc_ui-visual-contrast.md",
+     "body": "This change audits and improves visual contrast and focus indicators across the UI to comply with WCAG 2.1 AA standards (minimum 4.5:1 contrast ratio for normal text) while preserving the dark theme aesthetic. It also adds automat\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/806adbfc_ui-visual-contrast.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 a8f7e3ee8774… (full-depth record 8 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r009-889ae961-quiet-room-redesign",
+   "name": "Inkwell \"quiet room\" redesign",
+   "character": "Inkwell was a cluttered room: an always-present sidebar, a footer crowded with buttons and",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r009-889ae961-quiet-room-redesign-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-889ae961-quiet-room-redesign-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-889ae961-quiet-room-redesign-title",
+     "name": "Inkwell \"quiet room\" redesign",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Inkwell \"quiet room\" redesign",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-889ae961-quiet-room-redesign-title-step-1",
+        "text": "Inkwell \"quiet room\" redesign",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r009-889ae961-quiet-room-redesign-rec",
+     "name": "889ae961_quiet-room-redesign",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "889ae961_quiet-room-redesign",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r009-889ae961-quiet-room-redesign-rec-step-1",
+        "text": "889ae961_quiet-room-redesign",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r009-889ae961-quiet-room-redesign-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Inkwell \"quiet room\" redesign",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/889ae961_quiet-room-redesign.md",
+     "body": "Inkwell was a cluttered room: an always-present sidebar, a footer crowded with buttons and\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/889ae961_quiet-room-redesign.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 af6302e49bbc… (full-depth record 9 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r010-c564e391-inkwell-tags-endpoi",
+   "name": "Inkwell `GET /api/tags` Endpoint",
+   "character": "This update adds a GET /api/tags HTTP endpoint to the Inkwell server (apps/inkwell/server.ts), enabling client applications to inspect distinct tags used across all posts along with their frequency counts.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r010-c564e391-inkwell-tags-endpoi-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-c564e391-inkwell-tags-endpoi-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-c564e391-inkwell-tags-endpoi-title",
+     "name": "Inkwell `GET /api/tags` Endpoint",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Inkwell `GET /api/tags` Endpoint",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-c564e391-inkwell-tags-endpoi-title-step-1",
+        "text": "Inkwell `GET /api/tags` Endpoint",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r010-c564e391-inkwell-tags-endpoi-rec",
+     "name": "c564e391_inkwell-tags-endpoint",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "c564e391_inkwell-tags-endpoint",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r010-c564e391-inkwell-tags-endpoi-rec-step-1",
+        "text": "c564e391_inkwell-tags-endpoint",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r010-c564e391-inkwell-tags-endpoi-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Inkwell `GET /api/tags` Endpoint",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/c564e391_inkwell-tags-endpoint.md",
+     "body": "This update adds a GET /api/tags HTTP endpoint to the Inkwell server (apps/inkwell/server.ts), enabling client applications to inspect distinct tags used across all posts along with their frequency counts.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/c564e391_inkwell-tags-endpoint.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 9710e49c990e… (full-depth record 10 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r011-d140d7dd-inkwell-split-view",
+   "name": "Inkwell: three view modes (edit / split / preview) with a live side-by",
+   "character": "Inkwell's editor previously had a binary preview toggle (showPreview(on) flipping a hidden",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r011-d140d7dd-inkwell-split-view-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-d140d7dd-inkwell-split-view-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-d140d7dd-inkwell-split-view-title",
+     "name": "Inkwell: three view modes (edit / split / preview) with a li",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Inkwell: three view modes (edit / split / preview) with a live side-by",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-d140d7dd-inkwell-split-view-title-step-1",
+        "text": "Inkwell: three view modes (edit / split / preview) with a live side-by",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r011-d140d7dd-inkwell-split-view-rec",
+     "name": "d140d7dd_inkwell-split-view-modes",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "d140d7dd_inkwell-split-view-modes",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r011-d140d7dd-inkwell-split-view-rec-step-1",
+        "text": "d140d7dd_inkwell-split-view-modes",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r011-d140d7dd-inkwell-split-view-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Inkwell: three view modes (edit / split / preview) with a live side-by-side mark",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/d140d7dd_inkwell-split-view-modes.md",
+     "body": "Inkwell's editor previously had a binary preview toggle (showPreview(on) flipping a hidden\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/d140d7dd_inkwell-split-view-modes.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 9d7688cbd6fe… (full-depth record 11 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r012-e2688070-inkwell-header-cont",
+   "name": "Inkwell header and list controls",
+   "character": "Inkwell now uses a legible vector brand mark instead of the previous emoji-glyph favicon. The same dark rounded-square / mint pen-nib SVG is rendered inline immediately before the inkwell title in the sidebar header and ",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r012-e2688070-inkwell-header-cont-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-e2688070-inkwell-header-cont-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r012-e2688070-inkwell-header-cont-title",
+     "name": "Inkwell header and list controls",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Inkwell header and list controls",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-e2688070-inkwell-header-cont-title-step-1",
+        "text": "Inkwell header and list controls",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r012-e2688070-inkwell-header-cont-rec",
+     "name": "e2688070_inkwell-header-controls",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "e2688070_inkwell-header-controls",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r012-e2688070-inkwell-header-cont-rec-step-1",
+        "text": "e2688070_inkwell-header-controls",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r012-e2688070-inkwell-header-cont-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Inkwell header and list controls",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/e2688070_inkwell-header-controls.md",
+     "body": "Inkwell now uses a legible vector brand mark instead of the previous emoji-glyph favicon. The same dark rounded-square / mint pen-nib SVG is rendered inline immediately before the inkwell title in the sidebar header and is retai\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/e2688070_inkwell-header-controls.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 e2528e5f2fe8… (full-depth record 12 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r013-f8b47636-post-stats-endpoint",
+   "name": "Single Post Stats Endpoint (`GET /api/posts/:id/stats`)",
+   "character": "Added a new API endpoint GET /api/posts/:id/stats to the Inkwell server (apps/inkwell/server.ts). The endpoint returns reading statistics and post status in JSON format ({ word_count, reading_minutes, status }) for an in",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r013-f8b47636-post-stats-endpoint-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-f8b47636-post-stats-endpoint-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r013-f8b47636-post-stats-endpoint-title",
+     "name": "Single Post Stats Endpoint (`GET /api/posts/:id/stats`)",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "Single Post Stats Endpoint (`GET /api/posts/:id/stats`)",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-f8b47636-post-stats-endpoint-title-step-1",
+        "text": "Single Post Stats Endpoint (`GET /api/posts/:id/stats`)",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r013-f8b47636-post-stats-endpoint-rec",
+     "name": "f8b47636_post-stats-endpoint",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.62,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "f8b47636_post-stats-endpoint",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r013-f8b47636-post-stats-endpoint-rec-step-1",
+        "text": "f8b47636_post-stats-endpoint",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r013-f8b47636-post-stats-endpoint-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "Single Post Stats Endpoint (`GET /api/posts/:id/stats`)",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/app_docs/f8b47636_post-stats-endpoint.md",
+     "body": "Added a new API endpoint GET /api/posts/:id/stats to the Inkwell server (apps/inkwell/server.ts). The endpoint returns reading statistics and post status in JSON format ({ word_count, reading_minutes, status }) for an indivi\n\nBound material — inkwell-agent-sandboxes-and-software-factory/app_docs/f8b47636_post-stats-endpoint.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 b29ef0a601f5… (full-depth record 13 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  },
+  {
+   "toolbelt": [
+    {
+     "id": "speed",
+     "scope": "field",
+     "key": "timeScale"
+    },
+    {
+     "id": "spring",
+     "scope": "field",
+     "key": "recovery"
+    },
+    {
+     "id": "viscosity",
+     "scope": "field",
+     "key": "native_fluid__viscosity"
+    },
+    {
+     "id": "flow",
+     "scope": "field",
+     "key": "turbulence"
+    },
+    {
+     "id": "transition",
+     "scope": "selected",
+     "key": "sequence.transition"
+    },
+    {
+     "id": "blend",
+     "scope": "field",
+     "key": "native_morphProgress"
+    }
+   ],
+   "engine": {
+    "paletteSource": "custom",
+    "grainProfile": true,
+    "backgroundMode": "solid",
+    "resonatorMode": "resonator",
+    "focusOrder": "listed",
+    "dotShape": "circle",
+    "autoFitSizes": true,
+    "mediumEnabled": false,
+    "collisionEnabled": false,
+    "collisionMode": "obstacle",
+    "pairwiseEnabled": false,
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "fontWeight": 900,
+    "resonanceEnabled": true,
+    "morphEnabled": false,
+    "trajectory": "toroidalHopf",
+    "driveShape": "sine",
+    "autoOscillate": true,
+    "relationalEnabled": false,
+    "relationalMode": "orbital",
+    "pointerMode": "repel",
+    "pointerClick": "pulse",
+    "pointerClickStrength": 2.2,
+    "pointerClickRadius": 0.45,
+    "colorMode": "linearGradient",
+    "colorEnabled": true,
+    "mediumPlane": "vertical",
+    "mediumDimension": "2D",
+    "autoSweep": false,
+    "sweepDirection": "ascent"
+   },
+   "id": "fd-r014-readme",
+   "name": "inkwell",
+   "character": "Minimalist blog-writing app — drafts, an editor, one-click publish. Bun + bun:sqlite, zero dependencies.",
+   "duration": 14,
+   "transition": 2,
+   "view": {
+    "mode": "2d",
+    "yaw": 0,
+    "pitch": 0,
+    "zoom": 1,
+    "panX": 0,
+    "panY": 0
+   },
+   "field": {
+    "background": "#14120e",
+    "palette": [
+     "#f0e0cb",
+     "#b0763c"
+    ],
+    "material": "ink",
+    "params": {
+     "count": 46000,
+     "size": 2.8,
+     "sizeBias": 1.6,
+     "opacity": 0.92,
+     "roundness": 0.95,
+     "softness": 0.15,
+     "irregularity": 0.35,
+     "elongation": 0.04,
+     "orientation": 0,
+     "contrast": 0.93,
+     "densityScale": 1,
+     "densityPhase": 0.3,
+     "edgeWeight": 0,
+     "halo": 0.13,
+     "speed": 0.5,
+     "circulation": 1,
+     "turbulence": 0.12,
+     "turbulenceScale": 1.2,
+     "recovery": 1.1,
+     "dispersion": 0.09,
+     "pointerStrength": 0.8,
+     "pointerRadius": 0.23,
+     "pointerFalloff": 2,
+     "depth": 0.12,
+     "grain": 0.035,
+     "snapRigidity": 1,
+     "densityTether": 1,
+     "curlDepth": 0.2,
+     "vortexRadius": 0.4,
+     "gravityX": 0,
+     "gravityY": 0,
+     "gravityZ": 0,
+     "quadraticDrag": 0.2,
+     "thermalJitter": 0,
+     "speedLimit": 3,
+     "zConfinement": 1,
+     "timeScale": 1,
+     "gravitySoftening": 0.1,
+     "gravityFalloff": 2,
+     "swirlRadius": 0.4,
+     "frequency": 220,
+     "dominance": 0,
+     "excitation": 0.6
+    }
+   },
+   "entities": [
+    {
+     "id": "fd-r014-readme-ground",
+     "name": "the carried ground",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.02,
+      "z": 0
+     },
+     "size": {
+      "x": 0.46,
+      "y": 0.46
+     },
+     "rotation": 0,
+     "shape": "disc",
+     "text": "",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.55,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r014-readme-ground-step-1",
+        "text": "",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r014-readme-title",
+     "name": "inkwell",
+     "kind": "formation",
+     "position": {
+      "x": -0.38,
+      "y": 0.4,
+      "z": 0
+     },
+     "size": {
+      "x": 0.224,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "inkwell",
+     "share": 1,
+     "tint": "#f0e0cb",
+     "tintWeight": 0.9,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r014-readme-title-step-1",
+        "text": "inkwell",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    },
+    {
+     "id": "fd-r014-readme-rec",
+     "name": "README",
+     "kind": "formation",
+     "position": {
+      "x": 0,
+      "y": -0.44,
+      "z": 0
+     },
+     "size": {
+      "x": 0.18,
+      "y": 0.14
+     },
+     "rotation": 0,
+     "shape": "text",
+     "text": "README",
+     "share": 1,
+     "tint": "#b0763c",
+     "tintWeight": 0.95,
+     "locked": false,
+     "force": {
+      "kind": "attract",
+      "strength": 0,
+      "radius": 0.45,
+      "spin": 0
+     },
+     "station": null,
+     "sequence": {
+      "enabled": false,
+      "clock": "seconds",
+      "steps": [
+       {
+        "id": "fd-r014-readme-rec-step-1",
+        "text": "README",
+        "shape": "text",
+        "hold": 3,
+        "transition": 1,
+        "position": null
+       }
+      ]
+     }
+    }
+   ],
+   "text": [
+    {
+     "id": "fd-r014-readme-page",
+     "kicker": "S3 Software Factory · full depth",
+     "title": "inkwell",
+     "italic": "inkwell-agent-sandboxes-and-software-factory/apps/inkwell/README.md",
+     "body": "Minimalist blog-writing app — drafts, an editor, one-click publish. Bun + bun:sqlite, zero dependencies.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/apps/inkwell/README.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 8bb420f22cee… (full-depth record 14 of 14; 230 inventoried, 6 wave-bound).",
+     "x": 0.78,
+     "y": 0.5,
+     "width": 300,
+     "size": 17,
+     "align": "left",
+     "visible": true
+    }
+   ],
+   "composition": {
+    "layout": "free",
+    "plane": "XY",
+    "focus": "parallel",
+    "focusDuration": 4,
+    "carryTint": true,
+    "carryStation": false,
+    "frequencyDriver": "manual"
+   },
+   "morph": {
+    "thetaRate": 0.08,
+    "phiRate": 0.13,
+    "thetaOffset": 0,
+    "phiOffset": 0,
+    "law": "theta",
+    "depth": 1,
+    "dwell": 0.3
+   },
+   "automation": []
+  }
+ ],
+ "updatedAt": "2026-09-21T00:00:00.000Z"
+}

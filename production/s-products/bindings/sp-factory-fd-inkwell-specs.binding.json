@@ -1,0 +1,187 @@
+{
+ "artifact": "factory/sp-factory-fd-inkwell-specs.journey.json",
+ "family": "family-factory",
+ "worker": "S3 full-depth fan-out (wave 2, S-seeded products)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-factory"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S3",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products' authored admission is the essay's S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S3",
+     "path": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md",
+     "sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-factory.json (frozen-census-basis, 230 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Factory",
+   "branch": "main",
+   "commit": "f59368de67a4bac32d344099aa827c31a7e6107b",
+   "published_note": "every consumed record hashed from git object storage at published origin/main f59368de67a4bac32d344099aa827c31a7e6107b on 2026-09-21; 227 of 230 census records are byte-identical to the census freeze at fbabaaad (branch techne/telemetry-watch-compare-settings); moved records are bound at current committed bytes with the delta named in the entry"
+  },
+  "family": "Inkwell factory — specs",
+  "records_bound": [
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/306a0046_inkwell-stats-total-words.md",
+    "sha256": "2b46379e82ab9ae15376f5ca72de9a354d17e9fa33d240493464264c2c4f425b",
+    "census_sha256": "2b46379e82ab9ae15376f5ca72de9a354d17e9fa33d240493464264c2c4f425b",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/585c36b3_repo-one-line-summary.md",
+    "sha256": "944889edbf15c2d809212aee2b0a921f3fc7e115bbb07deda38e77d67dc6300c",
+    "census_sha256": "944889edbf15c2d809212aee2b0a921f3fc7e115bbb07deda38e77d67dc6300c",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/806adbfc_ui-visual-contrast.md",
+    "sha256": "4238fa819f40d08cbff9de31e14f6d3dd8af2eaa7202e3da85da78cfe56ac92b",
+    "census_sha256": "4238fa819f40d08cbff9de31e14f6d3dd8af2eaa7202e3da85da78cfe56ac92b",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/889ae961_quiet-room-redesign.md",
+    "sha256": "be459a4969651274b473d23f7304a3403da387dabc075573beb722efadbc866d",
+    "census_sha256": "be459a4969651274b473d23f7304a3403da387dabc075573beb722efadbc866d",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/ad066baa_inkwell-theme-tokens.md",
+    "sha256": "6e7672bd7d0e98ecea55fe8bd8f7814112fbf27862c7048d2e84b19e19647cf8",
+    "census_sha256": "6e7672bd7d0e98ecea55fe8bd8f7814112fbf27862c7048d2e84b19e19647cf8",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/c564e391_inkwell-tags-endpoint.md",
+    "sha256": "f0c41250d641ecb96330d10633670e07df96fe1ee29f9232eed842bbf5c4c0de",
+    "census_sha256": "f0c41250d641ecb96330d10633670e07df96fe1ee29f9232eed842bbf5c4c0de",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/c5f50a47_modelname-helper-tests.md",
+    "sha256": "69a9d3f5d925f3387d7ffe8b33941eaafa8e66e520c9e5093d0d3ad642efa0e5",
+    "census_sha256": "69a9d3f5d925f3387d7ffe8b33941eaafa8e66e520c9e5093d0d3ad642efa0e5",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/d140d7dd_inkwell-split-view-modes.md",
+    "sha256": "594bf863ca9cc84d2db3398b9cad0ad9896b04930c261f6401bfbbf9f935b32a",
+    "census_sha256": "594bf863ca9cc84d2db3398b9cad0ad9896b04930c261f6401bfbbf9f935b32a",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/e2688070_inkwell-header-icon-controls.md",
+    "sha256": "b9d454faf54fc6b841a2396759db2216d0e9ac42107a0228b0259d7fd18d74c7",
+    "census_sha256": "b9d454faf54fc6b841a2396759db2216d0e9ac42107a0228b0259d7fd18d74c7",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/f8b47636_post-stats-endpoint.md",
+    "sha256": "e66cd7167df2cd863d206003491abbc261ea0aad46f8d48b56131d9015c4efe2",
+    "census_sha256": "e66cd7167df2cd863d206003491abbc261ea0aad46f8d48b56131d9015c4efe2",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "inkwell-agent-sandboxes-and-software-factory/specs/scaffold.md",
+    "sha256": "7d3c81edcbe0d18e94d47f653b0c2fda7381bdf2cf0468bac3976967243f3389",
+    "census_sha256": "7d3c81edcbe0d18e94d47f653b0c2fda7381bdf2cf0468bac3976967243f3389",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   }
+  ],
+  "coverage": "11 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-r001-306a0046-inkwell-stats-total",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/306a0046_inkwell-stats-total-words.md",
+   "sha256": "2b46379e82ab9ae15376f5ca72de9a354d17e9fa33d240493464264c2c4f425b",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r002-585c36b3-repo-one-line-summa",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/585c36b3_repo-one-line-summary.md",
+   "sha256": "944889edbf15c2d809212aee2b0a921f3fc7e115bbb07deda38e77d67dc6300c",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r003-806adbfc-ui-visual-contrast",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/806adbfc_ui-visual-contrast.md",
+   "sha256": "4238fa819f40d08cbff9de31e14f6d3dd8af2eaa7202e3da85da78cfe56ac92b",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r004-889ae961-quiet-room-redesign",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/889ae961_quiet-room-redesign.md",
+   "sha256": "be459a4969651274b473d23f7304a3403da387dabc075573beb722efadbc866d",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r005-ad066baa-inkwell-theme-token",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/ad066baa_inkwell-theme-tokens.md",
+   "sha256": "6e7672bd7d0e98ecea55fe8bd8f7814112fbf27862c7048d2e84b19e19647cf8",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r006-c564e391-inkwell-tags-endpoi",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/c564e391_inkwell-tags-endpoint.md",
+   "sha256": "f0c41250d641ecb96330d10633670e07df96fe1ee29f9232eed842bbf5c4c0de",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r007-c5f50a47-modelname-helper-te",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/c5f50a47_modelname-helper-tests.md",
+   "sha256": "69a9d3f5d925f3387d7ffe8b33941eaafa8e66e520c9e5093d0d3ad642efa0e5",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r008-d140d7dd-inkwell-split-view",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/d140d7dd_inkwell-split-view-modes.md",
+   "sha256": "594bf863ca9cc84d2db3398b9cad0ad9896b04930c261f6401bfbbf9f935b32a",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r009-e2688070-inkwell-header-icon",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/e2688070_inkwell-header-icon-controls.md",
+   "sha256": "b9d454faf54fc6b841a2396759db2216d0e9ac42107a0228b0259d7fd18d74c7",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r010-f8b47636-post-stats-endpoint",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/f8b47636_post-stats-endpoint.md",
+   "sha256": "e66cd7167df2cd863d206003491abbc261ea0aad46f8d48b56131d9015c4efe2",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r011-scaffold",
+   "material_source_ref": "EpiLogos/Factory@f59368de:inkwell-agent-sandboxes-and-software-factory/specs/scaffold.md",
+   "sha256": "7d3c81edcbe0d18e94d47f653b0c2fda7381bdf2cf0468bac3976967243f3389",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "factory/sp-factory-fd-inkwell-specs.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base."
+}
