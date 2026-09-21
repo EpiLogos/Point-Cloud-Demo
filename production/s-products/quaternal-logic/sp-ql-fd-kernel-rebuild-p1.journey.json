@@ -1,0 +1,3540 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "sp-ql-fd-kernel-rebuild-p1",
+  "name": "S-seeded products — S5 Quaternal Logic full depth · kernel-rebuild (1)",
+  "description": "Full-depth material journey for the Quaternal Logic product corpus, inventory family “kernel-rebuild” (10 records). Companion to the whole-first corpus-root artifact sp-ql (S5's own #0 → #5→0 movement path — carried by reference, not duplicated here). Every scene binds one authored record from the frozen P1 census inventory (Antykathera-Essay-Work ddbe871c; record hashes re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1). Privacy: every bound record byte-identical to published origin/main 2bcdc78 except where the binding record names a drift (those are bound at current main bytes). Scene texts quote the bound records, never invent claims; tints, formations and layout are declared craft (profiles/s-products-corpus-base, profiles/family-ql-fulldepth).",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-01",
+      "name": "Agent practice and the QL bootstrap bridge",
+      "character": "Publication authorised; H ratification pending (Satya), 2026-09-12. This practice synthesis and its bootstrap procedures are published for review and provisional use against the approved …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-01-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 1/10",
+          "title": "Agent practice and the QL bootstrap bridge",
+          "italic": "docs/kernel-rebuild/AGENT-PRACTICE-AND-BOOTSTRAP.md",
+          "body": "“Publication authorised; H ratification pending (Satya), 2026-09-12. This practice synthesis and its bootstrap procedures are published for review and provisional use against the approved source. They have not yet been H-ratified. Merge, discovery, projection and tests do not ratify the guidance or …”\n\nBound material — docs/kernel-rebuild/AGENT-PRACTICE-AND-BOOTSTRAP.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 45cc972 · sha256 45cc972b18a544e1e5906a39cba40d78…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-01-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-01-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-01-t1",
+          "name": "bridge",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "bridge",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-01-t1-step-1",
+                "text": "bridge",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-01-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "AGENT-PRACTICE-AND-BOOTSTRAP",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-01-rec-step-1",
+                "text": "AGENT-PRACTICE-AND-BOOTSTRAP",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-02",
+      "name": "Paraśakti apertures and the Mahāmāyā clock centre",
+      "character": "Status: adopted post-K7 architecture, 2026-09-11; graph/registry application and new operational acceptance still require execution. Programme: Kernel Rebuild …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-02-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 2/10",
+          "title": "Paraśakti apertures and the Mahāmāyā clock centre",
+          "italic": "docs/kernel-rebuild/APERTURES-AND-CLOCK-CENTRE.md",
+          "body": "“Status: adopted post-K7 architecture, 2026-09-11; graph/registry application and new operational acceptance still require execution. Programme: Kernel Rebuild Wayfinder(../KERNEL-REBUILD-WAYFINDER.md), #135. Full product/UX: Living instrument architecture(LIVING-INSTRUMENT-ARCHITECTURE.md) …”\n\nBound material — docs/kernel-rebuild/APERTURES-AND-CLOCK-CENTRE.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 4ae05cc · sha256 4ae05ccd80d46a0f045388f7db21de33…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-02-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-02-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-02-t1",
+          "name": "para",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "para",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-02-t1-step-1",
+                "text": "para",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-02-t2",
+          "name": "akti",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "akti",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-02-t2-step-1",
+                "text": "akti",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-02-t3",
+          "name": "mah",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "mah",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-02-t3-step-1",
+                "text": "mah",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-02-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "APERTURES-AND-CLOCK-CENTRE",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-02-rec-step-1",
+                "text": "APERTURES-AND-CLOCK-CENTRE",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-03",
+      "name": "AW1 native rich-property operations",
+      "character": "Owner: #94 / existing #166. Source: the complete AW0 projection merged in #172, VAK-OIKONOMIA-KNOWLEDGE-RETURN.md section 5, and the original graph-schema blob …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-03-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 3/10",
+          "title": "AW1 native rich-property operations",
+          "italic": "docs/kernel-rebuild/AW1-PROPERTY-OPERATIONS.md",
+          "body": "“Owner: #94 / existing #166. Source: the complete AW0 projection merged in #172, VAK-OIKONOMIA-KNOWLEDGE-RETURN.md section 5, and the original graph-schema blob c644b8d83997f64807d0fb53198169db68bc95f3 at C-Experiments revision daa660cbc1b8c5da83828698665a753852cb0287. This is an operational Rust …”\n\nBound material — docs/kernel-rebuild/AW1-PROPERTY-OPERATIONS.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main bdda49f · sha256 bdda49fa1297b19764bd337edb459c99…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-03-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-03-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-03-t1",
+          "name": "native",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "native",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-03-t1-step-1",
+                "text": "native",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-03-t2",
+          "name": "rich",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "rich",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-03-t2-step-1",
+                "text": "rich",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-03-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "AW1-PROPERTY-OPERATIONS",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-03-rec-step-1",
+                "text": "AW1-PROPERTY-OPERATIONS",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-04",
+      "name": "CI convergence return",
+      "character": "This change reconciles the Quaternal Logic kernel-rebuild CI additions with the suite CI law already established across O:I, Central and AIKit.",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-04-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 4/10",
+          "title": "CI convergence return",
+          "italic": "docs/kernel-rebuild/CI-CONVERGENCE-RETURN.md",
+          "body": "“This change reconciles the Quaternal Logic kernel-rebuild CI additions with the suite CI law already established across O:I, Central and AIKit.”\n\nBound material — docs/kernel-rebuild/CI-CONVERGENCE-RETURN.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 7d37200 · sha256 7d37200f9b9bf2fd84798fe05d533eb7…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-04-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-04-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-04-t1",
+          "name": "kernel",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "kernel",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-04-t1-step-1",
+                "text": "kernel",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-04-t2",
+          "name": "rebuild",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "rebuild",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-04-t2-step-1",
+                "text": "rebuild",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-04-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "CI-CONVERGENCE-RETURN",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-04-rec-step-1",
+                "text": "CI-CONVERGENCE-RETURN",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-05",
+      "name": "QL / M / Nara projection into the O:I Expression Field",
+      "character": "Standing: owner-approved integration direction, 14 September 2026. This is a consumer/projection contract over the accepted K8/K9/K10/AW work. It does not reopen those implementations …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-05-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 5/10",
+          "title": "QL / M / Nara projection into the O:I Expression Field",
+          "italic": "docs/kernel-rebuild/EXPRESSION-FIELD-PROJECTION.md",
+          "body": "“Standing: owner-approved integration direction, 14 September 2026. This is a consumer/projection contract over the accepted K8/K9/K10/AW work. It does not reopen those implementations, create a new renderer, redefine M/M′ or transfer ownership from O:I, Wiki, Central, AIKit, Actuation or Factory.”\n\nBound material — docs/kernel-rebuild/EXPRESSION-FIELD-PROJECTION.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 9a759bb · sha256 9a759bb5d54175bd24c6518e34e23496…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-05-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-05-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-05-t1",
+          "name": "nara",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "nara",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-05-t1-step-1",
+                "text": "nara",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-05-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "EXPRESSION-FIELD-PROJECTION",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-05-rec-step-1",
+                "text": "EXPRESSION-FIELD-PROJECTION",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-06",
+      "name": "K10 Nara / M4 contract and acceptance map",
+      "character": "Status: implementation contract for EpiLogos/QL-MEF#134, K10.0–K10.4. This document records what the K10 implementation means on the current kernel rebuild. It is not a new product vision …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-06-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 6/10",
+          "title": "K10 Nara / M4 contract and acceptance map",
+          "italic": "docs/kernel-rebuild/K10-NARA-M4-CONTRACT.md",
+          "body": "“Status: implementation contract for EpiLogos/QL-MEF#134, K10.0–K10.4. This document records what the K10 implementation means on the current kernel rebuild. It is not a new product vision and does not supersede the kernel rebuild Wayfinder, the pre-K8 agent-world lock, the living-instrument …”\n\nBound material — docs/kernel-rebuild/K10-NARA-M4-CONTRACT.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 4973c48 · sha256 4973c48b3f7461d5663142da32aa8805…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-06-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-06-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-06-t1",
+          "name": "acceptance",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "acceptance",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-06-t1-step-1",
+                "text": "acceptance",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-06-t2",
+          "name": "map",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "map",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-06-t2-step-1",
+                "text": "map",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-06-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "K10-NARA-M4-CONTRACT",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-06-rec-step-1",
+                "text": "K10-NARA-M4-CONTRACT",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-07",
+      "name": "K4 — automated M1/M2/M3 pre-vertical coverage census",
+      "character": "Status: executed (this revision; rerunnable, see below) Ticket: EpiLogos/QL-MEF#128. Depends on the K0–K3 floor (#143, #144, #145, #146, #147). Consumed by: #129 (K5 / M1), #130 (K6 / M2) …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 7/10",
+          "title": "K4 — automated M1/M2/M3 pre-vertical coverage census",
+          "italic": "docs/kernel-rebuild/K4-M123-CENSUS.md",
+          "body": "“Status: executed (this revision; rerunnable, see below) Ticket: EpiLogos/QL-MEF#128. Depends on the K0–K3 floor (#143, #144, #145, #146, #147). Consumed by: #129 (K5 / M1), #130 (K6 / M2), #131 (K7 / M3).”\n\nBound material — docs/kernel-rebuild/K4-M123-CENSUS.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 166a998 · sha256 166a998efa7015ae0f8824f24b952e0b…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-07-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-t1",
+          "name": "automated",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "automated",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-07-t1-step-1",
+                "text": "automated",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-t2",
+          "name": "pre",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "pre",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-07-t2-step-1",
+                "text": "pre",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-t3",
+          "name": "vertical",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "vertical",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-07-t3-step-1",
+                "text": "vertical",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-t4",
+          "name": "coverage",
+          "kind": "formation",
+          "position": {
+            "x": 0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "coverage",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-07-t4-step-1",
+                "text": "coverage",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-07-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "K4-M123-CENSUS",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-07-rec-step-1",
+                "text": "K4-M123-CENSUS",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-08",
+      "name": "K8 management acknowledgement admission",
+      "character": "Scope: K8.2–K8.3 / #132; A03, A07 and A16. The installed C++ owner remains ql.continuous-field/v1. This is its Rust management boundary, not a new simulation, symbolic table, agent identity …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-08-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 8/10",
+          "title": "K8 management acknowledgement admission",
+          "italic": "docs/kernel-rebuild/K8-ACKNOWLEDGEMENT-CONTRACT.md",
+          "body": "“Scope: K8.2–K8.3 / #132; A03, A07 and A16. The installed C++ owner remains ql.continuous-field/v1. This is its Rust management boundary, not a new simulation, symbolic table, agent identity or numerical clock implementation.”\n\nBound material — docs/kernel-rebuild/K8-ACKNOWLEDGEMENT-CONTRACT.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 39c6ea9 · sha256 39c6ea9b2530ca61fa0730354e92f5ce…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-08-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-08-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-08-t1",
+          "name": "management",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "management",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-08-t1-step-1",
+                "text": "management",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-08-t2",
+          "name": "admission",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "admission",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-08-t2-step-1",
+                "text": "admission",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-08-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "K8-ACKNOWLEDGEMENT-CONTRACT",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-08-rec-step-1",
+                "text": "K8-ACKNOWLEDGEMENT-CONTRACT",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-09",
+      "name": "K8 native PCM presentation and device lifecycle",
+      "character": "This is a K8.3 presentation consumer of the existing ql.continuous-field/v1(K8-CONTINUOUS-CONTRACT.md) packet. The ql.coupled-event/v1(K8-COUPLED-EVENT-CONTRACT.md) owner continues to …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 9/10",
+          "title": "K8 native PCM presentation and device lifecycle",
+          "italic": "docs/kernel-rebuild/K8-AUDIO-OUTPUT-CONTRACT.md",
+          "body": "“This is a K8.3 presentation consumer of the existing ql.continuous-field/v1(K8-CONTINUOUS-CONTRACT.md) packet. The ql.coupled-event/v1(K8-COUPLED-EVENT-CONTRACT.md) owner continues to retain the complete original/current M1, M2 and M3 bases. Neither a PCM block nor an audio receipt replaces that …”\n\nBound material — docs/kernel-rebuild/K8-AUDIO-OUTPUT-CONTRACT.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 9ef3128 · sha256 9ef31288614e985a719479e665c4fb3d…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-09-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-t1",
+          "name": "native",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "native",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-09-t1-step-1",
+                "text": "native",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-t2",
+          "name": "pcm",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "pcm",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-09-t2-step-1",
+                "text": "pcm",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-t3",
+          "name": "presentation",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "presentation",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-09-t3-step-1",
+                "text": "presentation",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-t4",
+          "name": "device",
+          "kind": "formation",
+          "position": {
+            "x": 0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "device",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-09-t4-step-1",
+                "text": "device",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-09-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "K8-AUDIO-OUTPUT-CONTRACT",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-09-rec-step-1",
+                "text": "K8-AUDIO-OUTPUT-CONTRACT",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-kernel-rebuild-p1-10",
+      "name": "K8 continuous modal and coupled-clock owner",
+      "character": "Owner: #132, successor to #165/#168. This contract implements a persistent C++ continuation over the accepted native M2 resonator and C coupled-clock laws. It does not replace the accepted …",
+      "text": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-10-page",
+          "kicker": "S5 Quaternal Logic · kernel-rebuild · 10/10",
+          "title": "K8 continuous modal and coupled-clock owner",
+          "italic": "docs/kernel-rebuild/K8-CONTINUOUS-CONTRACT.md",
+          "body": "“Owner: #132, successor to #165/#168. This contract implements a persistent C++ continuation over the accepted native M2 resonator and C coupled-clock laws. It does not replace the accepted M1–M3 engines, the retained GPU solver or Nara.”\n\nBound material — docs/kernel-rebuild/K8-CONTINUOUS-CONTRACT.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 2f84e41 · sha256 2f84e41b8499492edf5bf65b4dab7b4d…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-10-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-10-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-10-t1",
+          "name": "modal",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "modal",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-10-t1-step-1",
+                "text": "modal",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-10-t2",
+          "name": "coupled",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "coupled",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-10-t2-step-1",
+                "text": "coupled",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-10-t3",
+          "name": "clock",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "clock",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-10-t3-step-1",
+                "text": "clock",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-kernel-rebuild-p1-10-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "K8-CONTINUOUS-CONTRACT",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-kernel-rebuild-p1-10-rec-step-1",
+                "text": "K8-CONTINUOUS-CONTRACT",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-21T00:00:00.000Z"
+}

@@ -1,0 +1,3582 @@
+{
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "sp-ql-fd-fixtures",
+  "name": "S-seeded products — S5 Quaternal Logic full depth · fixtures",
+  "description": "Full-depth material journey for the Quaternal Logic product corpus, inventory family “fixtures” (10 records). Companion to the whole-first corpus-root artifact sp-ql (S5's own #0 → #5→0 movement path — carried by reference, not duplicated here). Every scene binds one authored record from the frozen P1 census inventory (Antykathera-Essay-Work ddbe871c; record hashes re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1). Privacy: every bound record byte-identical to published origin/main 2bcdc78 except where the binding record names a drift (those are bound at current main bytes). Scene texts quote the bound records, never invent claims; tints, formations and layout are declared craft (profiles/s-products-corpus-base, profiles/family-ql-fulldepth).",
+  "loop": true,
+  "scenes": [
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-01",
+      "name": "Foreign portable knowledge",
+      "character": "This document is intentionally not a QL-MEF object.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-01-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 1/10",
+          "title": "Foreign portable knowledge",
+          "italic": "fixtures/qw1/foreign-wiki.md",
+          "body": "“This document is intentionally not a QL-MEF object.”\n\nBound material — fixtures/qw1/foreign-wiki.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 5af0828 · sha256 5af08280d773f8c2137ec987b26c6d6b…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-01-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-01-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-01-t1",
+          "name": "portable",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "portable",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-01-t1-step-1",
+                "text": "portable",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-01-t2",
+          "name": "knowledge",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "knowledge",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-01-t2-step-1",
+                "text": "knowledge",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-01-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "foreign-wiki",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-01-rec-step-1",
+                "text": "foreign-wiki",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-02",
+      "name": "L1 Causal",
+      "character": "QL-MEF's canonical authored knowledge about the L1 lens.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-02-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 2/10",
+          "title": "L1 Causal",
+          "italic": "fixtures/qw1/meta-wiki/mef-l1.md",
+          "body": "“QL-MEF's canonical authored knowledge about the L1 lens.”\n\nBound material — fixtures/qw1/meta-wiki/mef-l1.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 2aaa4fe · sha256 2aaa4feb2820376b5d67785cfe8bd172…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-02-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-02-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-02-t1",
+          "name": "causal",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "causal",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-02-t1-step-1",
+                "text": "causal",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-02-t2",
+          "name": "meta",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "meta",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-02-t2-step-1",
+                "text": "meta",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-02-t3",
+          "name": "wiki",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "wiki",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-02-t3-step-1",
+                "text": "wiki",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-02-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "mef-l1",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-02-rec-step-1",
+                "text": "mef-l1",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-03",
+      "name": "QL Structural Canon",
+      "character": "The QL-MEF authored meta-space for deterministic relation structure.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-03-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 3/10",
+          "title": "QL Structural Canon",
+          "italic": "fixtures/qw1/meta-wiki/ql-structural-space.md",
+          "body": "“The QL-MEF authored meta-space for deterministic relation structure.”\n\nBound material — fixtures/qw1/meta-wiki/ql-structural-space.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 35e3ec4 · sha256 35e3ec45817cf8d4544e03408d6ebbfc…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-03-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-03-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-03-t1",
+          "name": "canon",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "canon",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-03-t1-step-1",
+                "text": "canon",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-03-t2",
+          "name": "meta",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "meta",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-03-t2-step-1",
+                "text": "meta",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-03-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "ql-structural-space",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-03-rec-step-1",
+                "text": "ql-structural-space",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-04",
+      "name": "Relation Family A",
+      "character": "The canonical natural-dyad pair family in the structural contract.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-04-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 4/10",
+          "title": "Relation Family A",
+          "italic": "fixtures/qw1/meta-wiki/relation-family-a.md",
+          "body": "“The canonical natural-dyad pair family in the structural contract.”\n\nBound material — fixtures/qw1/meta-wiki/relation-family-a.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 0a345a5 · sha256 0a345a5a1d8579411002a23c833ae3f6…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-04-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-04-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-04-t1",
+          "name": "meta",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "meta",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-04-t1-step-1",
+                "text": "meta",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-04-t2",
+          "name": "wiki",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "wiki",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-04-t2-step-1",
+                "text": "wiki",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-04-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "relation-family-a",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-04-rec-step-1",
+                "text": "relation-family-a",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-05",
+      "name": "L3 Processual",
+      "character": "QL-MEF's canonical authored knowledge about the Processual lens.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-05-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 5/10",
+          "title": "L3 Processual",
+          "italic": "fixtures/qw4/meta-wiki/mef-l3.md",
+          "body": "“QL-MEF's canonical authored knowledge about the Processual lens.”\n\nBound material — fixtures/qw4/meta-wiki/mef-l3.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main fc6d654 · sha256 fc6d654b87f5751297b9d1c0a5ffe149…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-05-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-05-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-05-t1",
+          "name": "processual",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "processual",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-05-t1-step-1",
+                "text": "processual",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-05-t2",
+          "name": "meta",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "meta",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-05-t2-step-1",
+                "text": "meta",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-05-t3",
+          "name": "wiki",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "wiki",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-05-t3-step-1",
+                "text": "wiki",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-05-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "mef-l3",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-05-rec-step-1",
+                "text": "mef-l3",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-06",
+      "name": "Transition anomaly field",
+      "character": "The Research Canvas treats the four vertices as one A1/D3 structural field, not four independent QL tags.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-06-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 6/10",
+          "title": "Transition anomaly field",
+          "italic": "fixtures/qw4/research-wiki/d3-frame.md",
+          "body": "“The Research Canvas treats the four vertices as one A1/D3 structural field, not four independent QL tags.”\n\nBound material — fixtures/qw4/research-wiki/d3-frame.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 7fc567d · sha256 7fc567d71d369d6408d554cd75d6d2f6…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-06-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-06-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-06-t1",
+          "name": "transition",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "transition",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-06-t1-step-1",
+                "text": "transition",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-06-t2",
+          "name": "anomaly",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "anomaly",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-06-t2-step-1",
+                "text": "anomaly",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-06-t3",
+          "name": "field",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "field",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-06-t3-step-1",
+                "text": "field",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-06-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "d3-frame",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-06-rec-step-1",
+                "text": "d3-frame",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-07",
+      "name": "Repeated transition anomaly",
+      "character": "Five independent observations expose the same tension between process reading and structural field context.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-07-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 7/10",
+          "title": "Repeated transition anomaly",
+          "italic": "fixtures/qw4/research-wiki/evidence-node.md",
+          "body": "“Five independent observations expose the same tension between process reading and structural field context.”\n\nBound material — fixtures/qw4/research-wiki/evidence-node.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main c2e29f6 · sha256 c2e29f64de1fb336a615f9c4684e2be5…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-07-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-07-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-07-t1",
+          "name": "repeated",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "repeated",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-07-t1-step-1",
+                "text": "repeated",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-07-t2",
+          "name": "transition",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "transition",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-07-t2-step-1",
+                "text": "transition",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-07-t3",
+          "name": "anomaly",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "anomaly",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-07-t3-step-1",
+                "text": "anomaly",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-07-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "evidence-node",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-07-rec-step-1",
+                "text": "evidence-node",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-08",
+      "name": "Question Local Field",
+      "character": "The local whole anchored by the research question.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-08-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 8/10",
+          "title": "Question Local Field",
+          "italic": "fixtures/qw4/research-wiki/question-local-space.md",
+          "body": "“The local whole anchored by the research question.”\n\nBound material — fixtures/qw4/research-wiki/question-local-space.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main 62c0fcc · sha256 62c0fcc257e5a78ad831216e431510bc…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-08-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-08-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-08-t1",
+          "name": "field",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "field",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-08-t1-step-1",
+                "text": "field",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-08-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "question-local-space",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-08-rec-step-1",
+                "text": "question-local-space",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-09",
+      "name": "What changes when process evidence contradicts the expected structural …",
+      "character": "The question is simultaneously a member of the wider research space and the anchor of its own local subwiki.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-09-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 9/10",
+          "title": "What changes when process evidence contradicts the expected structural …",
+          "italic": "fixtures/qw4/research-wiki/question-node.md",
+          "body": "“The question is simultaneously a member of the wider research space and the anchor of its own local subwiki.”\n\nBound material — fixtures/qw4/research-wiki/question-node.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main d0ae044 · sha256 d0ae0445dfe7c338ff7d7d648e0828e7…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-09-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-09-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-09-t1",
+          "name": "changes",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "changes",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-09-t1-step-1",
+                "text": "changes",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-09-t2",
+          "name": "process",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "process",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-09-t2-step-1",
+                "text": "process",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-09-t3",
+          "name": "evidence",
+          "kind": "formation",
+          "position": {
+            "x": 0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "evidence",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-09-t3-step-1",
+                "text": "evidence",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-09-t4",
+          "name": "contradicts",
+          "kind": "formation",
+          "position": {
+            "x": 0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "contradicts",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-09-t4-step-1",
+                "text": "contradicts",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-09-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "question-node",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-09-rec-step-1",
+                "text": "question-node",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#14120e",
+        "palette": [
+          "#d2e6e2",
+          "#2e6f6c"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-fixtures-10",
+      "name": "Research Canvas Testbed",
+      "character": "A second independently owned Wiki ontology used only through the open Wiki profile.",
+      "text": [
+        {
+          "id": "sp-s5-fd-fixtures-10-page",
+          "kicker": "S5 Quaternal Logic · fixtures · 10/10",
+          "title": "Research Canvas Testbed",
+          "italic": "fixtures/qw4/research-wiki/research-space.md",
+          "body": "“A second independently owned Wiki ontology used only through the open Wiki profile.”\n\nBound material — fixtures/qw4/research-wiki/research-space.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main b702f87 · sha256 b702f87fb12bdcacc11e8bc714c4f7a5…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
+          "x": 0.78,
+          "y": 0.5,
+          "width": 300,
+          "size": 17,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "sp-s5-fd-fixtures-10-ground",
+          "name": "the carried ground",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.02,
+            "z": 0
+          },
+          "size": {
+            "x": 0.46,
+            "y": 0.46
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-10-ground-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-10-t1",
+          "name": "canvas",
+          "kind": "formation",
+          "position": {
+            "x": -0.75,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "canvas",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-10-t1-step-1",
+                "text": "canvas",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-10-t2",
+          "name": "testbed",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.41,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "testbed",
+          "share": 1,
+          "tint": "#e6dcf2",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-10-t2-step-1",
+                "text": "testbed",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "sp-s5-fd-fixtures-10-rec",
+          "name": "the bound record",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": -0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "research-space",
+          "share": 1,
+          "tint": "#7a5ca8",
+          "tintWeight": 0.95,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "sp-s5-fd-fixtures-10-rec-step-1",
+                "text": "research-space",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-21T00:00:00.000Z"
+}

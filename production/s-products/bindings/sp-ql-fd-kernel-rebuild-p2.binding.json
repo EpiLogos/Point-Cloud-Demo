@@ -1,0 +1,184 @@
+{
+  "artifact": "quaternal-logic/sp-ql-fd-kernel-rebuild-p2.journey.json",
+  "family": "family-ql-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-ql",
+    "family-ql-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S5",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S5",
+          "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
+          "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/Quaternal-Logic",
+      "branch": "session/k-aw-expression-production-2026-09-17",
+      "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
+      "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "docs/kernel-rebuild/K8-COUPLED-EVENT-CONTRACT.md",
+        "sha256": "59376a2341c1a628c150a74427b852b8feba55e618bef59afefbe7b370570fcc",
+        "census_sha256": "59376a2341c1a628c150a74427b852b8feba55e618bef59afefbe7b370570fcc",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/K8-GRAPH-PROMOTION-CONTRACT.md",
+        "sha256": "8147cd84c0934daf7d6b4bed7371a7a946ec397f65867eebdafc089a6d74a783",
+        "census_sha256": "8147cd84c0934daf7d6b4bed7371a7a946ec397f65867eebdafc089a6d74a783",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/K8-MANAGED-INSTRUMENT-CONTRACT.md",
+        "sha256": "a39dd7ba6636b642c52cd3e9510a87e0fb112fdb8876610140a91cb32691da5d",
+        "census_sha256": "a39dd7ba6636b642c52cd3e9510a87e0fb112fdb8876610140a91cb32691da5d",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/K8-NATIVE-RESOURCE-RECEIPT.md",
+        "sha256": "3e0c1f42dec7375ac73c4ab822d6f4e9a234b83d0ec0abb04f335ae59bf24172",
+        "census_sha256": "3e0c1f42dec7375ac73c4ab822d6f4e9a234b83d0ec0abb04f335ae59bf24172",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/K8-SKY-CONTRACT.md",
+        "sha256": "120c1d3a86f5d0171d79af81f88cfc0e640d29dd220b2a1c7dd3d6ec6798ad82",
+        "census_sha256": "120c1d3a86f5d0171d79af81f88cfc0e640d29dd220b2a1c7dd3d6ec6798ad82",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/K8-STRUCTURAL-CONTRACT.md",
+        "sha256": "8942c9a61482918c29066976a4e90c98c2c3637e3e4f75da73842e87fc49af89",
+        "census_sha256": "8942c9a61482918c29066976a4e90c98c2c3637e3e4f75da73842e87fc49af89",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/LENS-IDENTITY-AND-ENCODINGS.md",
+        "sha256": "7d945750b835a4db0862ce74bd5af48b847050388de5ae1db795e938851c93bf",
+        "census_sha256": "7d945750b835a4db0862ce74bd5af48b847050388de5ae1db795e938851c93bf",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/LIVING-INSTRUMENT-ARCHITECTURE.md",
+        "sha256": "8d6ef1194dd451ee75b6d3e29dfc79d6d9f85a63d11f0026aa7549c2e17b34a1",
+        "census_sha256": "8d6ef1194dd451ee75b6d3e29dfc79d6d9f85a63d11f0026aa7549c2e17b34a1",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/M2-PARENT-HANDOFF.md",
+        "sha256": "f6830b5cba4cd0da18ca25c6ecf0bd481cfbf9b5b0403e834addce7e1c38baba",
+        "census_sha256": "f6830b5cba4cd0da18ca25c6ecf0bd481cfbf9b5b0403e834addce7e1c38baba",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/kernel-rebuild/M3-NATIVE-OBSERVATION-PARITY.md",
+        "sha256": "3870e800f71a70f7610d87f449196d83d4c41244ceb9ead31bccef8973f2e901",
+        "census_sha256": "3870e800f71a70f7610d87f449196d83d4c41244ceb9ead31bccef8973f2e901",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "10 of the 148-record inventory at full depth in this journey (family “kernel-rebuild”, part 2); 6 records were bound by wave-1 sp-ql and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/K8-COUPLED-EVENT-CONTRACT.md",
+      "sha256": "59376a2341c1a628c150a74427b852b8feba55e618bef59afefbe7b370570fcc",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/K8-GRAPH-PROMOTION-CONTRACT.md",
+      "sha256": "8147cd84c0934daf7d6b4bed7371a7a946ec397f65867eebdafc089a6d74a783",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/K8-MANAGED-INSTRUMENT-CONTRACT.md",
+      "sha256": "a39dd7ba6636b642c52cd3e9510a87e0fb112fdb8876610140a91cb32691da5d",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/K8-NATIVE-RESOURCE-RECEIPT.md",
+      "sha256": "3e0c1f42dec7375ac73c4ab822d6f4e9a234b83d0ec0abb04f335ae59bf24172",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/K8-SKY-CONTRACT.md",
+      "sha256": "120c1d3a86f5d0171d79af81f88cfc0e640d29dd220b2a1c7dd3d6ec6798ad82",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/K8-STRUCTURAL-CONTRACT.md",
+      "sha256": "8942c9a61482918c29066976a4e90c98c2c3637e3e4f75da73842e87fc49af89",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/LENS-IDENTITY-AND-ENCODINGS.md",
+      "sha256": "7d945750b835a4db0862ce74bd5af48b847050388de5ae1db795e938851c93bf",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-08",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/LIVING-INSTRUMENT-ARCHITECTURE.md",
+      "sha256": "8d6ef1194dd451ee75b6d3e29dfc79d6d9f85a63d11f0026aa7549c2e17b34a1",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-09",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/M2-PARENT-HANDOFF.md",
+      "sha256": "f6830b5cba4cd0da18ca25c6ecf0bd481cfbf9b5b0403e834addce7e1c38baba",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s5-fd-kernel-rebuild-p2-10",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/kernel-rebuild/M3-NATIVE-OBSERVATION-PARITY.md",
+      "sha256": "3870e800f71a70f7610d87f449196d83d4c41244ceb9ead31bccef8973f2e901",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}

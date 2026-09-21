@@ -1,0 +1,198 @@
+{
+  "artifact": "aikit/sp-aikit-fd-periphery.journey.json",
+  "family": "family-aikit-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-aikit",
+    "family-aikit-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S2",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-aikit and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S2",
+          "path": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md",
+          "sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-aikit.json (frozen-census-basis, 104 records; all 104 sha256 re-verified byte-exact from git object storage at EpiLogos/ai-kit@23dea85 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/ai-kit",
+      "branch": "techne/agency-mint",
+      "commit": "23dea8563e0c882237ea29adceb88759d8fc8a6f",
+      "published_note": "bound bytes are published origin/main ace1496a277d69047e4cead073f4f1bd67932f31 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "contrib/bkmr/README.md",
+        "sha256": "dc210916c860c27765e6558a008920aa711a29e3c1c1047ea6ceed64365afaec",
+        "census_sha256": "dc210916c860c27765e6558a008920aa711a29e3c1c1047ea6ceed64365afaec",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "contrib/bkmr/UPGRADE.md",
+        "sha256": "61945990e360e935951f174061671f7c56cf8a0007017af57babfa6741561d4b",
+        "census_sha256": "61945990e360e935951f174061671f7c56cf8a0007017af57babfa6741561d4b",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "contrib/bkmr/capsules/guidance/tools/bkmr/payload/guidance.md",
+        "sha256": "05ff0aece99eb99d56df38edeea29f95adea433774f68eb83cd0ef17a3e9db12",
+        "census_sha256": "05ff0aece99eb99d56df38edeea29f95adea433774f68eb83cd0ef17a3e9db12",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "examples/alias-families/agents/README.md",
+        "sha256": "8a9bc77bc82c6cdf39960bbfc468d42d347735687cfac5ad94fb525aa6e3bbf4",
+        "census_sha256": "8a9bc77bc82c6cdf39960bbfc468d42d347735687cfac5ad94fb525aa6e3bbf4",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "examples/registry/README.md",
+        "sha256": "f5c5a4aeb6f0a6bb00d2be03224fc46e04d70ae4df5d10244d4ebd3aafa57e7f",
+        "census_sha256": "f5c5a4aeb6f0a6bb00d2be03224fc46e04d70ae4df5d10244d4ebd3aafa57e7f",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "examples/registry/capsules/guidance/research/deep-research/payload/guidance.md",
+        "sha256": "fa8ec5001c1b5ba4d84c9f55b015cd90c7edd8f689d3692a304cce5c04e9a2ce",
+        "census_sha256": "fa8ec5001c1b5ba4d84c9f55b015cd90c7edd8f689d3692a304cce5c04e9a2ce",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "examples/registry/capsules/skill/rust/rust-review/payload/SKILL.md",
+        "sha256": "6cd4aec364b93acd0ed685cd1bf5e7a103818f8cea40e8b45c66ab300c4de2f4",
+        "census_sha256": "6cd4aec364b93acd0ed685cd1bf5e7a103818f8cea40e8b45c66ab300c4de2f4",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "examples/registry/capsules/skill/rust/rust-review/payload/references/checklist.md",
+        "sha256": "450a42edc8a5f5e75d42023f8358032a73912680301db5092d9bb00d30dfc663",
+        "census_sha256": "450a42edc8a5f5e75d42023f8358032a73912680301db5092d9bb00d30dfc663",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "examples/registry/capsules/skill/rust/unsafe-audit/payload/SKILL.md",
+        "sha256": "64cf520b71ea0ad7691edd8f4683e04981656868e16708ad738ac5f3d4e5f47f",
+        "census_sha256": "64cf520b71ea0ad7691edd8f4683e04981656868e16708ad738ac5f3d4e5f47f",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/README.md",
+        "sha256": "77d7b2c62b182219ee48df71ba1e6586c803dd5d6f9cc31c79268cd654ec1e5d",
+        "census_sha256": "77d7b2c62b182219ee48df71ba1e6586c803dd5d6f9cc31c79268cd654ec1e5d",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "registry/fixtures/minimal-authored-skill/payload/SKILL.md",
+        "sha256": "d2c3f902c950021d644e4fda1c4e242aade5214221a2d420b86401e3f3eb89f6",
+        "census_sha256": "d2c3f902c950021d644e4fda1c4e242aade5214221a2d420b86401e3f3eb89f6",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "11 of the 104-record inventory at full depth in this journey (family “periphery”); 6 records were bound by wave-1 sp-aikit and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s2-fd-periphery-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:contrib/bkmr/README.md",
+      "sha256": "dc210916c860c27765e6558a008920aa711a29e3c1c1047ea6ceed64365afaec",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:contrib/bkmr/UPGRADE.md",
+      "sha256": "61945990e360e935951f174061671f7c56cf8a0007017af57babfa6741561d4b",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:contrib/bkmr/capsules/guidance/tools/bkmr/payload/guidance.md",
+      "sha256": "05ff0aece99eb99d56df38edeea29f95adea433774f68eb83cd0ef17a3e9db12",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:examples/alias-families/agents/README.md",
+      "sha256": "8a9bc77bc82c6cdf39960bbfc468d42d347735687cfac5ad94fb525aa6e3bbf4",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:examples/registry/README.md",
+      "sha256": "f5c5a4aeb6f0a6bb00d2be03224fc46e04d70ae4df5d10244d4ebd3aafa57e7f",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:examples/registry/capsules/guidance/research/deep-research/payload/guidance.md",
+      "sha256": "fa8ec5001c1b5ba4d84c9f55b015cd90c7edd8f689d3692a304cce5c04e9a2ce",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:examples/registry/capsules/skill/rust/rust-review/payload/SKILL.md",
+      "sha256": "6cd4aec364b93acd0ed685cd1bf5e7a103818f8cea40e8b45c66ab300c4de2f4",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-08",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:examples/registry/capsules/skill/rust/rust-review/payload/references/checklist.md",
+      "sha256": "450a42edc8a5f5e75d42023f8358032a73912680301db5092d9bb00d30dfc663",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-09",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:examples/registry/capsules/skill/rust/unsafe-audit/payload/SKILL.md",
+      "sha256": "64cf520b71ea0ad7691edd8f4683e04981656868e16708ad738ac5f3d4e5f47f",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-10",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/README.md",
+      "sha256": "77d7b2c62b182219ee48df71ba1e6586c803dd5d6f9cc31c79268cd654ec1e5d",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-periphery-11",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:registry/fixtures/minimal-authored-skill/payload/SKILL.md",
+      "sha256": "d2c3f902c950021d644e4fda1c4e242aade5214221a2d420b86401e3f3eb89f6",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}

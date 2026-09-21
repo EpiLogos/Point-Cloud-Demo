@@ -1,0 +1,212 @@
+{
+  "artifact": "aikit/sp-aikit-fd-v2-p1.journey.json",
+  "family": "family-aikit-fulldepth",
+  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+  "date": "2026-09-21",
+  "profile_lineage": [
+    "s-products-corpus-base",
+    "family-aikit",
+    "family-aikit-fulldepth"
+  ],
+  "admission": {
+    "register": "episteme (the Return-of-Zero essay corpus S register)",
+    "record_id": "S2",
+    "record_type": "product",
+    "claim_status": "Argued",
+    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-aikit and is not duplicated by this full-depth journey",
+    "essay_source_revision": {
+      "repo": "EpiLogos/Antykathera-Essay-Work",
+      "branch": "main",
+      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+      "records": [
+        {
+          "record_id": "S2",
+          "path": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md",
+          "sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a"
+        }
+      ]
+    }
+  },
+  "material_inventory": {
+    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-aikit.json (frozen-census-basis, 104 records; all 104 sha256 re-verified byte-exact from git object storage at EpiLogos/ai-kit@23dea85 on 2026-09-21)",
+    "source_revision": {
+      "repo": "EpiLogos/ai-kit",
+      "branch": "techne/agency-mint",
+      "commit": "23dea8563e0c882237ea29adceb88759d8fc8a6f",
+      "published_note": "bound bytes are published origin/main ace1496a277d69047e4cead073f4f1bd67932f31 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+    },
+    "records_bound": [
+      {
+        "path": "docs/v2/03-ACTOR-RUNTIME-AND-PROJECTION.md",
+        "sha256": "c6d8626b7519552a384de243384cce001a8ba59280f5ca9c2ecce560b45c8799",
+        "census_sha256": "c6d8626b7519552a384de243384cce001a8ba59280f5ca9c2ecce560b45c8799",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/04-INTERFACES-TUI-AND-SOFTWARE-DESIGN.md",
+        "sha256": "edbd2847c2b7206f0f37a34e53027c6de5020982abb25746597d143e631b160e",
+        "census_sha256": "edbd2847c2b7206f0f37a34e53027c6de5020982abb25746597d143e631b160e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/05-QL-INTEGRATION-AND-RUNTIME.md",
+        "sha256": "251013b9ee050d8a3c42ecfb6430a7183e651b3018aa37f13a89acae49e171f8",
+        "census_sha256": "251013b9ee050d8a3c42ecfb6430a7183e651b3018aa37f13a89acae49e171f8",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/06-NEIGHBOURS-AND-MIGRATION.md",
+        "sha256": "9341645e38e58a7eae07cf4bf8ae234bce26f605ee71f68faec24ca02eb7c86c",
+        "census_sha256": "9341645e38e58a7eae07cf4bf8ae234bce26f605ee71f68faec24ca02eb7c86c",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/07-DEVELOPMENT-AND-ACCEPTANCE.md",
+        "sha256": "2580f39724e35039094378a3a39b60ad2c043e25bf978b157aa28df0a7cae797",
+        "census_sha256": "2580f39724e35039094378a3a39b60ad2c043e25bf978b157aa28df0a7cae797",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/08-VERIFICATION-RUNS-AND-CLOSURE.md",
+        "sha256": "2ada915e1f411ac5a4402344e46d6490ecc8e1c6627755c607dd2673e3e4e161",
+        "census_sha256": "2ada915e1f411ac5a4402344e46d6490ecc8e1c6627755c607dd2673e3e4e161",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/09-COMPOSABLE-RUNTIME-ENVIRONMENTS.md",
+        "sha256": "0cf6b63abb7573d4f4f0e4a326da8c7489ff9cd34dec3886cafcf050b97a851b",
+        "census_sha256": "0cf6b63abb7573d4f4f0e4a326da8c7489ff9cd34dec3886cafcf050b97a851b",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/10-PERSISTENT-AGENCY-AND-MATERIAL-HOSTING.md",
+        "sha256": "ac80c87a3a0e609d1542a57b3e8307d40e2b83fafe9c2894851b8f12f1142d77",
+        "census_sha256": "ac80c87a3a0e609d1542a57b3e8307d40e2b83fafe9c2894851b8f12f1142d77",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/11-MIGRATION-CLOSURE-LEDGER.md",
+        "sha256": "c9ff05fe04693735bee6112191954c3dcd446b748991bb08fe6b172a2954a0fb",
+        "census_sha256": "c9ff05fe04693735bee6112191954c3dcd446b748991bb08fe6b172a2954a0fb",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/12-PRELOCAL-ACCEPTANCE-EVIDENCE.md",
+        "sha256": "b9675bd9f9a826b157e268d4929c880e715a6eeb459deedb4de4e13ba5c1dc1e",
+        "census_sha256": "b9675bd9f9a826b157e268d4929c880e715a6eeb459deedb4de4e13ba5c1dc1e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/13-COMPOSITION-CONNECTION-TUI-CONVERGENCE-EVIDENCE.md",
+        "sha256": "c98708f6606a03ec35f462db578a0e7a06032eee76b0e4ac8f512dfd3248ab3e",
+        "census_sha256": "c98708f6606a03ec35f462db578a0e7a06032eee76b0e4ac8f512dfd3248ab3e",
+        "status": "identical-to-main"
+      },
+      {
+        "path": "docs/v2/13-WORKING-ENVIRONMENT-PROVIDERS.md",
+        "sha256": "61257117aad1330c90559614ea8b27b16f30f7fbdc450322c00cf672e77acba0",
+        "census_sha256": "61257117aad1330c90559614ea8b27b16f30f7fbdc450322c00cf672e77acba0",
+        "status": "identical-to-main"
+      }
+    ],
+    "coverage": "12 of the 104-record inventory at full depth in this journey (family “v2”, part 1); 6 records were bound by wave-1 sp-aikit and are carried by reference"
+  },
+  "scenes": [
+    {
+      "scene_id": "s2-fd-v2-p1-01",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/03-ACTOR-RUNTIME-AND-PROJECTION.md",
+      "sha256": "c6d8626b7519552a384de243384cce001a8ba59280f5ca9c2ecce560b45c8799",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-02",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/04-INTERFACES-TUI-AND-SOFTWARE-DESIGN.md",
+      "sha256": "edbd2847c2b7206f0f37a34e53027c6de5020982abb25746597d143e631b160e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-03",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/05-QL-INTEGRATION-AND-RUNTIME.md",
+      "sha256": "251013b9ee050d8a3c42ecfb6430a7183e651b3018aa37f13a89acae49e171f8",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-04",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/06-NEIGHBOURS-AND-MIGRATION.md",
+      "sha256": "9341645e38e58a7eae07cf4bf8ae234bce26f605ee71f68faec24ca02eb7c86c",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-05",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/07-DEVELOPMENT-AND-ACCEPTANCE.md",
+      "sha256": "2580f39724e35039094378a3a39b60ad2c043e25bf978b157aa28df0a7cae797",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-06",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/08-VERIFICATION-RUNS-AND-CLOSURE.md",
+      "sha256": "2ada915e1f411ac5a4402344e46d6490ecc8e1c6627755c607dd2673e3e4e161",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-07",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/09-COMPOSABLE-RUNTIME-ENVIRONMENTS.md",
+      "sha256": "0cf6b63abb7573d4f4f0e4a326da8c7489ff9cd34dec3886cafcf050b97a851b",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-08",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/10-PERSISTENT-AGENCY-AND-MATERIAL-HOSTING.md",
+      "sha256": "ac80c87a3a0e609d1542a57b3e8307d40e2b83fafe9c2894851b8f12f1142d77",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-09",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/11-MIGRATION-CLOSURE-LEDGER.md",
+      "sha256": "c9ff05fe04693735bee6112191954c3dcd446b748991bb08fe6b172a2954a0fb",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-10",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/12-PRELOCAL-ACCEPTANCE-EVIDENCE.md",
+      "sha256": "b9675bd9f9a826b157e268d4929c880e715a6eeb459deedb4de4e13ba5c1dc1e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-11",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/13-COMPOSITION-CONNECTION-TUI-CONVERGENCE-EVIDENCE.md",
+      "sha256": "c98708f6606a03ec35f462db578a0e7a06032eee76b0e4ac8f512dfd3248ab3e",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    },
+    {
+      "scene_id": "s2-fd-v2-p1-12",
+      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S2-AIKit.md (whole path: wave-1 sp-aikit; this scene binds material only)",
+      "s_record_sha256": "2618122e4da9ccfd18dca8095a6e3631d5a8b803790557ea4232c8c5273bc95a",
+      "material_source_ref": "EpiLogos/ai-kit@23dea85:docs/v2/13-WORKING-ENVIRONMENT-PROVIDERS.md",
+      "sha256": "61257117aad1330c90559614ea8b27b16f30f7fbdc450322c00cf672e77acba0",
+      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+    }
+  ]
+}
