@@ -1,0 +1,115 @@
+{
+ "artifact": "actuation/sp-actuation-ql-runtime-comparison.journey.json",
+ "family": "family-actuation",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S1 Actuation lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/actuation/sp-actuation.journey.json (wave-1, stages the S1 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-actuation"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S1",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S1",
+     "path": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md",
+     "sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-actuation.json (frozen-census-basis, 157 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Actuation",
+   "branch": "main",
+   "commit": "36bbf93b7896550f11186f6240b8f018208ab3b2",
+   "published_note": "every bound record hashed from EpiLogos/Actuation git object storage at published origin/main 36bbf93b7896550f11186f6240b8f018208ab3b2 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "experiments/ql-runtime/comparison/series1/BENCHMARK-V0.1.md",
+    "sha256": "a4e6097ec32ddb59eb460bf1acb133fb09fa4d1e6c475a4876e63c731368056d"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/DEEPSEEK-HARNESS-MAXIMAL-REFERENCE.md",
+    "sha256": "b9a366f4168aa59f72ee942be9636aec7b2e79c85523b046104104af8e4dd9ef"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/GLM-STIPULATION-AMENDMENT-09-13-2026.md",
+    "sha256": "000eed75240f40a960b4a8c45af9376c910f7f8c84c5c1b6a78c38b29c1b4693"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/README.md",
+    "sha256": "8af4bb55b6537ec728947c6073cfaf51258fe234d4b7a9dd2d1c37256d312fa9"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/STATUS.md",
+    "sha256": "714d51ba598c11262978a7fb151bb368fa1bf98c22c94141b553163dbb582672"
+   }
+  ],
+  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/BENCHMARK-V0.1.md",
+   "sha256": "a4e6097ec32ddb59eb460bf1acb133fb09fa4d1e6c475a4876e63c731368056d",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-comparison-02-deepseek-harness-maximal-reference",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/DEEPSEEK-HARNESS-MAXIMAL-REFERENCE.md",
+   "sha256": "b9a366f4168aa59f72ee942be9636aec7b2e79c85523b046104104af8e4dd9ef",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-comparison-03-glm-stipulation-amendment-09-13-2026",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/GLM-STIPULATION-AMENDMENT-09-13-2026.md",
+   "sha256": "000eed75240f40a960b4a8c45af9376c910f7f8c84c5c1b6a78c38b29c1b4693",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-comparison-04-readme",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/README.md",
+   "sha256": "8af4bb55b6537ec728947c6073cfaf51258fe234d4b7a9dd2d1c37256d312fa9",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-comparison-05-status",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/STATUS.md",
+   "sha256": "714d51ba598c11262978a7fb151bb368fa1bf98c22c94141b553163dbb582672",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "actuation/sp-actuation-ql-runtime-comparison.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"QL runtime — comparison series design and status\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

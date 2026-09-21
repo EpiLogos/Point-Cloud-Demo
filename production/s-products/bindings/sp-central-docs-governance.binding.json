@@ -1,0 +1,163 @@
+{
+ "artifact": "central/sp-central-docs-governance.journey.json",
+ "family": "family-central",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S0 Central lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/central/sp-central.journey.json (wave-1, stages the S0 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-central"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S0",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S0",
+     "path": "submission-package/essay/symbolon/episteme/products/S0-Central.md",
+     "sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-central.json (frozen-census-basis, 61 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Central",
+   "branch": "main",
+   "commit": "36113051d748fded53166d7717083bd76f996fe7",
+   "published_note": "every bound record hashed from EpiLogos/Central git object storage at published origin/main 36113051d748fded53166d7717083bd76f996fe7 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "docs/AGENT-GOVERNANCE-SOURCES.md",
+    "sha256": "4b96e45979cf16f722544d84cf5be1e6f9c478bb5727e814923c8081bbff6486"
+   },
+   {
+    "path": "docs/CONTROL-CONTENT-PROTOCOL.md",
+    "sha256": "038ad9572c0c5af1dc6b5297d0faddc6b0444847296abcbd4f8853496ca2baa8"
+   },
+   {
+    "path": "docs/CONTROL-RETRIEVAL-TREATMENT.md",
+    "sha256": "69fc30bdfc12d37547412152c8ae1f787426e83451b69f6287058a004cfc79f4"
+   },
+   {
+    "path": "docs/PROJECT-CONTEXT-PROTOCOL.md",
+    "sha256": "f732128a9e5f03ba26d9bb66eeebfe2c50198463ecf6c37c4fd23ce813020976"
+   },
+   {
+    "path": "docs/PROJECTCENTRAL-CONTRACT.md",
+    "sha256": "e554accd1af74a3f8105e043057d1aa170196e0a0ffa8487942e2f097d2946d4"
+   },
+   {
+    "path": "docs/PROJECTCENTRAL-FLOW.md",
+    "sha256": "1ad91c42269aaaf018dd18400319c8b12cf1b442ed15471a60f6631ece5dbc92"
+   },
+   {
+    "path": "docs/PROJECTCENTRAL-NOW.md",
+    "sha256": "9c2aa01d1b5a695b3519241c3fdf6e23db28d876de4ff5cdad4b0a87cc9bb65b"
+   },
+   {
+    "path": "docs/README.md",
+    "sha256": "2da1cac57b1401c4f369e6c30b7b30136d88c5476e1da92bfe631698e90bad88"
+   },
+   {
+    "path": "docs/ROOT-RECOGNITION.md",
+    "sha256": "fde576ccda59e6e1563ccbea47d2d024f6b5ca6f4fc7d93fcf3f77b13105cd16"
+   }
+  ],
+  "coverage": "55 of 61 inventoried records bound across wave-1 (6: README.md, docs/PRODUCT-GROUND-CONVENTION.md, docs/SOURCE-RETURN.md, docs/PROJECTCENTRAL-AUTHORED-GROUND.md, docs/PERSONAL-WORLD-PROJECTION.md, docs/RECOVERY-PROTOCOL.md) and this fan-out (55)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s0-docs-governance-01-agent-governance-sources",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/AGENT-GOVERNANCE-SOURCES.md",
+   "sha256": "4b96e45979cf16f722544d84cf5be1e6f9c478bb5727e814923c8081bbff6486",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-02-control-content-protocol",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/CONTROL-CONTENT-PROTOCOL.md",
+   "sha256": "038ad9572c0c5af1dc6b5297d0faddc6b0444847296abcbd4f8853496ca2baa8",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-03-control-retrieval-treatment",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/CONTROL-RETRIEVAL-TREATMENT.md",
+   "sha256": "69fc30bdfc12d37547412152c8ae1f787426e83451b69f6287058a004cfc79f4",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-04-project-context-protocol",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/PROJECT-CONTEXT-PROTOCOL.md",
+   "sha256": "f732128a9e5f03ba26d9bb66eeebfe2c50198463ecf6c37c4fd23ce813020976",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-05-projectcentral-contract",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/PROJECTCENTRAL-CONTRACT.md",
+   "sha256": "e554accd1af74a3f8105e043057d1aa170196e0a0ffa8487942e2f097d2946d4",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-06-projectcentral-flow",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/PROJECTCENTRAL-FLOW.md",
+   "sha256": "1ad91c42269aaaf018dd18400319c8b12cf1b442ed15471a60f6631ece5dbc92",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-07-projectcentral-now",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/PROJECTCENTRAL-NOW.md",
+   "sha256": "9c2aa01d1b5a695b3519241c3fdf6e23db28d876de4ff5cdad4b0a87cc9bb65b",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-08-readme",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/README.md",
+   "sha256": "2da1cac57b1401c4f369e6c30b7b30136d88c5476e1da92bfe631698e90bad88",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-governance-09-root-recognition",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/ROOT-RECOGNITION.md",
+   "sha256": "fde576ccda59e6e1563ccbea47d2d024f6b5ca6f4fc7d93fcf3f77b13105cd16",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "central/sp-central-docs-governance.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Governance protocols and the ProjectCentral contract\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

@@ -1,0 +1,127 @@
+{
+ "artifact": "actuation/sp-actuation-ql-runtime-protocols.journey.json",
+ "family": "family-actuation",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S1 Actuation lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/actuation/sp-actuation.journey.json (wave-1, stages the S1 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-actuation"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S1",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S1",
+     "path": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md",
+     "sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-actuation.json (frozen-census-basis, 157 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Actuation",
+   "branch": "main",
+   "commit": "36bbf93b7896550f11186f6240b8f018208ab3b2",
+   "published_note": "every bound record hashed from EpiLogos/Actuation git object storage at published origin/main 36bbf93b7896550f11186f6240b8f018208ab3b2 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "experiments/ql-runtime/LOOP-CLOSURE-CLARIFICATION.md",
+    "sha256": "397aedbddc1fdd6666ee78a43364e7a399cb016baa49e2f5e85fd02a973614b1"
+   },
+   {
+    "path": "experiments/ql-runtime/ql-agent-development-protocol-08-13-2026.md",
+    "sha256": "a027d54dfcc68aa690a54789fba86f6fde6b888221dac4440f1fb2870f4dc304"
+   },
+   {
+    "path": "experiments/ql-runtime/ql-agent-development-protocol-closure-amendment-08-13-2026.md",
+    "sha256": "395325509d22c697d8a44dd66c4c3c71281f068dc9a5d0c450c33b59d2a93b11"
+   },
+   {
+    "path": "experiments/ql-runtime/ql-agent-spec-08-13-2026.md",
+    "sha256": "c71c243c6662f2e0170dd9692b7f027673d2c26a6e056ff0e310953de64edc77"
+   },
+   {
+    "path": "experiments/ql-runtime/QL-PAIRING-SQUARES-CLARIFICATION-08-14-2026.md",
+    "sha256": "01d207b628eb723b68ee96bb700487d75c712493c8917b052d5e601c4cc46d18"
+   },
+   {
+    "path": "experiments/ql-runtime/TYPING-CORPUS-REVIEW-CLARIFICATION-08-14-2026.md",
+    "sha256": "f57c2b0bb09918386c6fc61f86ff3aaf701ed0da9f12b0930e4c36330ad0cbb6"
+   }
+  ],
+  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s1-ql-runtime-protocols-01-loop-closure-clarification",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/LOOP-CLOSURE-CLARIFICATION.md",
+   "sha256": "397aedbddc1fdd6666ee78a43364e7a399cb016baa49e2f5e85fd02a973614b1",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-protocols-02-ql-agent-development-protocol-08-13-2026",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/ql-agent-development-protocol-08-13-2026.md",
+   "sha256": "a027d54dfcc68aa690a54789fba86f6fde6b888221dac4440f1fb2870f4dc304",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-protocols-03-ql-agent-development-protocol-closure-amendment-08-13-2026",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/ql-agent-development-protocol-closure-amendment-08-13-2026.md",
+   "sha256": "395325509d22c697d8a44dd66c4c3c71281f068dc9a5d0c450c33b59d2a93b11",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-protocols-04-ql-agent-spec-08-13-2026",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/ql-agent-spec-08-13-2026.md",
+   "sha256": "c71c243c6662f2e0170dd9692b7f027673d2c26a6e056ff0e310953de64edc77",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-protocols-05-ql-pairing-squares-clarification-08-14-2026",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/QL-PAIRING-SQUARES-CLARIFICATION-08-14-2026.md",
+   "sha256": "01d207b628eb723b68ee96bb700487d75c712493c8917b052d5e601c4cc46d18",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-protocols-06-typing-corpus-review-clarification-08-14-2026",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/TYPING-CORPUS-REVIEW-CLARIFICATION-08-14-2026.md",
+   "sha256": "f57c2b0bb09918386c6fc61f86ff3aaf701ed0da9f12b0930e4c36330ad0cbb6",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "actuation/sp-actuation-ql-runtime-protocols.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"QL runtime — development protocols, specs and clarifications\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

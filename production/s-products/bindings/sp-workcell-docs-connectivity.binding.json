@@ -1,0 +1,115 @@
+{
+ "artifact": "workcell/sp-workcell-docs-connectivity.journey.json",
+ "family": "family-workcell",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S4 Workcell lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/workcell/sp-workcell.journey.json (wave-1, stages the S4 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-workcell"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S4",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S4",
+     "path": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md",
+     "sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-workcell.json (frozen-census-basis, 30 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Workcell",
+   "branch": "main",
+   "commit": "d911bfd9597f126df6c818cec9641023a06034b1",
+   "published_note": "every bound record hashed from EpiLogos/Workcell git object storage at published origin/main d911bfd9597f126df6c818cec9641023a06034b1 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "docs/CONNECTIVITY-FABRIC.md",
+    "sha256": "1ff4561fdedb012523da25d27e718fbdd65793a06628f9b48fb5839a6c397762"
+   },
+   {
+    "path": "docs/CONTROL-SERVICE-AND-AGENT-HOSTING.md",
+    "sha256": "5d5f11b87c0ec17afe0ebb449ad1444b6099753d880bc49bc8e90bb0d19f5671"
+   },
+   {
+    "path": "docs/FACTORY-INTEROP.md",
+    "sha256": "0cb968e4b3810f067fa475a51cef468a86b5052b47f1fb2b0854b77782062b16"
+   },
+   {
+    "path": "docs/MULTI-WORKCELL-PLACEMENT.md",
+    "sha256": "14800a2d6fa7940f2cf0aff29a28f51b83c620a70e92926fa9793a4aaad37c6b"
+   },
+   {
+    "path": "docs/REMOTE-FILE-SHARING.md",
+    "sha256": "382a9bfcae9948c43a6d1c897db8fd43d1613c1f9ef6aaab23dc04f8f1965eb0"
+   }
+  ],
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s4-docs-connectivity-01-connectivity-fabric",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/CONNECTIVITY-FABRIC.md",
+   "sha256": "1ff4561fdedb012523da25d27e718fbdd65793a06628f9b48fb5839a6c397762",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-connectivity-02-control-service-and-agent-hosting",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/CONTROL-SERVICE-AND-AGENT-HOSTING.md",
+   "sha256": "5d5f11b87c0ec17afe0ebb449ad1444b6099753d880bc49bc8e90bb0d19f5671",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-connectivity-03-factory-interop",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/FACTORY-INTEROP.md",
+   "sha256": "0cb968e4b3810f067fa475a51cef468a86b5052b47f1fb2b0854b77782062b16",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-connectivity-04-multi-workcell-placement",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/MULTI-WORKCELL-PLACEMENT.md",
+   "sha256": "14800a2d6fa7940f2cf0aff29a28f51b83c620a70e92926fa9793a4aaad37c6b",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-connectivity-05-remote-file-sharing",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/REMOTE-FILE-SHARING.md",
+   "sha256": "382a9bfcae9948c43a6d1c897db8fd43d1613c1f9ef6aaab23dc04f8f1965eb0",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "workcell/sp-workcell-docs-connectivity.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Connectivity and placement — fabric, control service, interop, cells\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

@@ -1,0 +1,199 @@
+{
+ "artifact": "actuation/sp-actuation-ql-runtime-reviews-1.journey.json",
+ "family": "family-actuation",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S1 Actuation lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/actuation/sp-actuation.journey.json (wave-1, stages the S1 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-actuation"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S1",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S1",
+     "path": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md",
+     "sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-actuation.json (frozen-census-basis, 157 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Actuation",
+   "branch": "main",
+   "commit": "36bbf93b7896550f11186f6240b8f018208ab3b2",
+   "published_note": "every bound record hashed from EpiLogos/Actuation git object storage at published origin/main 36bbf93b7896550f11186f6240b8f018208ab3b2 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-AGENCY-001.review.md",
+    "sha256": "a5ffff9f690dc07b8d468613873ed774a0616dbeb55d0b1a249b288f83c59e9b"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-CODE-001.review.md",
+    "sha256": "7f12441e8597dfc5f1b81bc28c39ba1eb0a450fd4c19103e8aa551534aa54a0b"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-EPISTEMIC-001.review.md",
+    "sha256": "e72e4e9f8ebb694f4aa98a7b02b3564f763628bfebcc65a52a3565db826960cf"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-RESEARCH-001.review.md",
+    "sha256": "421d2c6ae5d70a669a45977dd0e753bb62e39642bad38dc23b0fbf1c8bba3a7a"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-RESTRAINT-001.review.md",
+    "sha256": "19c2c1ef77e0be6e6f64fb319c8b724b9c6b0f28f870fd89516577040dd687ee"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-SKILL-001.review.md",
+    "sha256": "b9fd0eb10919879bf9dcbb4e05ffaefed7d5705d6c4a08ea82faafa10f1618e6"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-AGENCY-001.review.md",
+    "sha256": "001e1824120b1b9db78df5a5b0c0377dbe992258ef1cf238f4d1db7c9544d87b"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-CODE-001.review.md",
+    "sha256": "6bc38f39d41bab9aeea3586467b845487199f017999e2ae77c910894821a82be"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-EPISTEMIC-001.review.md",
+    "sha256": "394b2ad293176b5b55424f52075c04f408debeb60685638fefa2cb02446fb7eb"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-RESEARCH-001.review.md",
+    "sha256": "3284bcf5b66e341656fd292a70dddf342379bfcd662735f75b58fd6d03149076"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-RESTRAINT-001.review.md",
+    "sha256": "75f976cca73f04dd806b264c51497eb1823057f488c12f0b046ce19e5d77bb08"
+   },
+   {
+    "path": "experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-SKILL-001.review.md",
+    "sha256": "95c04d740700300558d0ca74e9a3fc07812bcdf1a30b0190a6d9ec7267045d2c"
+   }
+  ],
+  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-01-native-s1-agency-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-AGENCY-001.review.md",
+   "sha256": "a5ffff9f690dc07b8d468613873ed774a0616dbeb55d0b1a249b288f83c59e9b",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-02-native-s1-code-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-CODE-001.review.md",
+   "sha256": "7f12441e8597dfc5f1b81bc28c39ba1eb0a450fd4c19103e8aa551534aa54a0b",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-03-native-s1-epistemic-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-EPISTEMIC-001.review.md",
+   "sha256": "e72e4e9f8ebb694f4aa98a7b02b3564f763628bfebcc65a52a3565db826960cf",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-04-native-s1-research-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-RESEARCH-001.review.md",
+   "sha256": "421d2c6ae5d70a669a45977dd0e753bb62e39642bad38dc23b0fbf1c8bba3a7a",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-05-native-s1-restraint-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-RESTRAINT-001.review.md",
+   "sha256": "19c2c1ef77e0be6e6f64fb319c8b724b9c6b0f28f870fd89516577040dd687ee",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-06-native-s1-skill-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/native-S1-SKILL-001.review.md",
+   "sha256": "b9fd0eb10919879bf9dcbb4e05ffaefed7d5705d6c4a08ea82faafa10f1618e6",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-07-staged-s1-agency-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-AGENCY-001.review.md",
+   "sha256": "001e1824120b1b9db78df5a5b0c0377dbe992258ef1cf238f4d1db7c9544d87b",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-08-staged-s1-code-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-CODE-001.review.md",
+   "sha256": "6bc38f39d41bab9aeea3586467b845487199f017999e2ae77c910894821a82be",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-09-staged-s1-epistemic-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-EPISTEMIC-001.review.md",
+   "sha256": "394b2ad293176b5b55424f52075c04f408debeb60685638fefa2cb02446fb7eb",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-10-staged-s1-research-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-RESEARCH-001.review.md",
+   "sha256": "3284bcf5b66e341656fd292a70dddf342379bfcd662735f75b58fd6d03149076",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-11-staged-s1-restraint-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-RESTRAINT-001.review.md",
+   "sha256": "75f976cca73f04dd806b264c51497eb1823057f488c12f0b046ce19e5d77bb08",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s1-ql-runtime-reviews-12-staged-s1-skill-001-review",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S1-Actuation.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "ef4e2b59acb3f15fe0eda502042c421209086131aa1f49758f731c0d1115b2c7",
+   "material_source_ref": "EpiLogos/Actuation@36bbf93b7896:experiments/ql-runtime/comparison/series1/runs/2026-09-13-glm/staged-S1-SKILL-001.review.md",
+   "sha256": "95c04d740700300558d0ca74e9a3fc07812bcdf1a30b0190a6d9ec7267045d2c",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "actuation/sp-actuation-ql-runtime-reviews-1.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"QL runtime — series 1 run reviews (native and staged)\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

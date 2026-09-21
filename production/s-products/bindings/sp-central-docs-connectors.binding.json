@@ -1,0 +1,143 @@
+{
+ "artifact": "central/sp-central-docs-connectors.journey.json",
+ "family": "family-central",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S0 Central lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/central/sp-central.journey.json (wave-1, stages the S0 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-central"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S0",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S0",
+     "path": "submission-package/essay/symbolon/episteme/products/S0-Central.md",
+     "sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-central.json (frozen-census-basis, 61 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Central",
+   "branch": "main",
+   "commit": "36113051d748fded53166d7717083bd76f996fe7",
+   "published_note": "every bound record hashed from EpiLogos/Central git object storage at published origin/main 36113051d748fded53166d7717083bd76f996fe7 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "docs/CAPABILITY-MATRIX-PROTOCOL.md",
+    "sha256": "d214cde2e548a50edd4c3a5316a8bbdeee209e0ab5faa16a00b038a9c2f81552"
+   },
+   {
+    "path": "docs/CAW-NATIVE-CONSUMER-INTERFACES.md",
+    "sha256": "331c8f1c85c85c93d39ed2bb0ec4d52315acadf75d6dd3f321b0483fa6e09721"
+   },
+   {
+    "path": "docs/CONNECTOR-SDK-RUST.md",
+    "sha256": "2d7930a21f4ce38ed1d3b84fefcc61ab267f6ad0059600e2b821cf270de89019",
+    "delta": "changed on published main since census freeze 87341be43801; census sha256 da92493c60c5…; current committed bytes bound"
+   },
+   {
+    "path": "docs/CONNECTOR-SDK-SPEC.md",
+    "sha256": "9ed9b13c06bcaeea7b33a27a70e5fd67f264eae2861a8c957f5409d3d498b35f",
+    "delta": "changed on published main since census freeze 87341be43801; census sha256 d4762a7b6d2b…; current committed bytes bound"
+   },
+   {
+    "path": "docs/integrations/BKMR-FILE-MAP.md",
+    "sha256": "24c8e0f3b16344797ac0c9056f0faf10256cebafc23a7331609807710e384cfc"
+   },
+   {
+    "path": "docs/MACHINE-WORKCELL-RELATION.md",
+    "sha256": "35066c4a51465d01f7b329cea6764caaf08c3d955bbd6dd86354f7f2f5188428"
+   },
+   {
+    "path": "docs/superpowers/plans/2026-09-04-engineering-ground-seed.md",
+    "sha256": "8e52131b5c4ac9082f350e572f59fb6630573946e77c8115b51041896ac52aea"
+   }
+  ],
+  "coverage": "55 of 61 inventoried records bound across wave-1 (6: README.md, docs/PRODUCT-GROUND-CONVENTION.md, docs/SOURCE-RETURN.md, docs/PROJECTCENTRAL-AUTHORED-GROUND.md, docs/PERSONAL-WORLD-PROJECTION.md, docs/RECOVERY-PROTOCOL.md) and this fan-out (55)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s0-docs-connectors-01-capability-matrix-protocol",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/CAPABILITY-MATRIX-PROTOCOL.md",
+   "sha256": "d214cde2e548a50edd4c3a5316a8bbdeee209e0ab5faa16a00b038a9c2f81552",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-connectors-02-caw-native-consumer-interfaces",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/CAW-NATIVE-CONSUMER-INTERFACES.md",
+   "sha256": "331c8f1c85c85c93d39ed2bb0ec4d52315acadf75d6dd3f321b0483fa6e09721",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-connectors-03-connector-sdk-rust",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/CONNECTOR-SDK-RUST.md",
+   "sha256": "2d7930a21f4ce38ed1d3b84fefcc61ab267f6ad0059600e2b821cf270de89019",
+   "delta": "changed on published main since census freeze; current committed bytes bound",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-connectors-04-connector-sdk-spec",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/CONNECTOR-SDK-SPEC.md",
+   "sha256": "9ed9b13c06bcaeea7b33a27a70e5fd67f264eae2861a8c957f5409d3d498b35f",
+   "delta": "changed on published main since census freeze; current committed bytes bound",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-connectors-05-bkmr-file-map",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/integrations/BKMR-FILE-MAP.md",
+   "sha256": "24c8e0f3b16344797ac0c9056f0faf10256cebafc23a7331609807710e384cfc",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-connectors-06-machine-workcell-relation",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/MACHINE-WORKCELL-RELATION.md",
+   "sha256": "35066c4a51465d01f7b329cea6764caaf08c3d955bbd6dd86354f7f2f5188428",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-docs-connectors-07-2026-09-04-engineering-ground-seed",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:docs/superpowers/plans/2026-09-04-engineering-ground-seed.md",
+   "sha256": "8e52131b5c4ac9082f350e572f59fb6630573946e77c8115b51041896ac52aea",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "central/sp-central-docs-connectors.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Connector SDK and integration surfaces\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}
