@@ -1,0 +1,103 @@
+{
+ "artifact": "central/sp-central-root-and-connectors.journey.json",
+ "family": "family-central",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S0 Central lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/central/sp-central.journey.json (wave-1, stages the S0 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-central"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S0",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S0",
+     "path": "submission-package/essay/symbolon/episteme/products/S0-Central.md",
+     "sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-central.json (frozen-census-basis, 61 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Central",
+   "branch": "main",
+   "commit": "36113051d748fded53166d7717083bd76f996fe7",
+   "published_note": "every bound record hashed from EpiLogos/Central git object storage at published origin/main 36113051d748fded53166d7717083bd76f996fe7 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "connectors/git-sync/README.md",
+    "sha256": "a6fa495ecaa2cdbfa07abeebda8ad7116e6c1d1ee3a5013362530e0812d252c3"
+   },
+   {
+    "path": "connectors/template/README.md",
+    "sha256": "34b756fd5baaea5e12276d66645797d0962c7d7dfcebc5fe074c8e9d60c75c19"
+   },
+   {
+    "path": "connectors/ubuntu/README.md",
+    "sha256": "b38c5b187800b9394252ae232cbe3e734d918a32be776e2989f5196e5a3d5202"
+   },
+   {
+    "path": "NEXT-SESSION-PROMPT-2026-09-13.md",
+    "sha256": "bebf630762b9a59eef611e8524142e5dd7fcbdfdaa62ea5f9ec2b033cad7d049"
+   }
+  ],
+  "coverage": "55 of 61 inventoried records bound across wave-1 (6: README.md, docs/PRODUCT-GROUND-CONVENTION.md, docs/SOURCE-RETURN.md, docs/PROJECTCENTRAL-AUTHORED-GROUND.md, docs/PERSONAL-WORLD-PROJECTION.md, docs/RECOVERY-PROTOCOL.md) and this fan-out (55)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s0-root-and-connectors-01-readme",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:connectors/git-sync/README.md",
+   "sha256": "a6fa495ecaa2cdbfa07abeebda8ad7116e6c1d1ee3a5013362530e0812d252c3",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-root-and-connectors-02-readme",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:connectors/template/README.md",
+   "sha256": "34b756fd5baaea5e12276d66645797d0962c7d7dfcebc5fe074c8e9d60c75c19",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-root-and-connectors-03-readme",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:connectors/ubuntu/README.md",
+   "sha256": "b38c5b187800b9394252ae232cbe3e734d918a32be776e2989f5196e5a3d5202",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-root-and-connectors-04-next-session-prompt-2026-09-13",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:NEXT-SESSION-PROMPT-2026-09-13.md",
+   "sha256": "bebf630762b9a59eef611e8524142e5dd7fcbdfdaa62ea5f9ec2b033cad7d049",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "central/sp-central-root-and-connectors.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Root handoff and connector SDK faces\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

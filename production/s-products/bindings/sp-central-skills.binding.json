@@ -1,0 +1,165 @@
+{
+ "artifact": "central/sp-central-skills.journey.json",
+ "family": "family-central",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S0 Central lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/central/sp-central.journey.json (wave-1, stages the S0 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-central"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S0",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S0",
+     "path": "submission-package/essay/symbolon/episteme/products/S0-Central.md",
+     "sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-central.json (frozen-census-basis, 61 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Central",
+   "branch": "main",
+   "commit": "36113051d748fded53166d7717083bd76f996fe7",
+   "published_note": "every bound record hashed from EpiLogos/Central git object storage at published origin/main 36113051d748fded53166d7717083bd76f996fe7 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "skills/capability-matrices/SKILL.md",
+    "sha256": "e10f619ee454820149cf40907852f9f90621aba9afb5c0c14492fc553b3bbd7d"
+   },
+   {
+    "path": "skills/connector-authoring/SKILL.md",
+    "sha256": "4c5062af5059799233f48970471fe44ba70e7b1fa436cf3f39f2c4cf52469881",
+    "delta": "changed on published main since census freeze 87341be43801; census sha256 74dcb8ea3c65…; current committed bytes bound"
+   },
+   {
+    "path": "skills/connector-hardening/SKILL.md",
+    "sha256": "a24d6d6855dc5b93dc036449275a3ac41e132d0bcb974932cab0fb9723112dc9"
+   },
+   {
+    "path": "skills/control-maintenance/fixtures/product-ground-pressure.md",
+    "sha256": "7dc6b23acbf69031cd2f45d3ba7ccc34e0b8bd6b212e894220e85a1a4e2ebb6e"
+   },
+   {
+    "path": "skills/control-maintenance/SKILL.md",
+    "sha256": "fec003b322224ef82ac2c1aadecfe980133ad3e221d2d1ec7c1bd80ea334d101"
+   },
+   {
+    "path": "skills/docs-methodology/SKILL.md",
+    "sha256": "6b6774f8e93ad21c361b11c09bf56c05a543c20d85276b27cfd659bf76d717f0"
+   },
+   {
+    "path": "skills/documentation-standing/SKILL.md",
+    "sha256": "f5d5510ab20d5dbc71841f3fc0114572c3bcb57a65914757dee3f4c2ae7f70c6"
+   },
+   {
+    "path": "skills/machine-declaration/SKILL.md",
+    "sha256": "f7ca4cbff459fb84601ca39652ea326239a6106a8dc9f5aead228e07baa9a559"
+   },
+   {
+    "path": "skills/projectcentral-ontology/SKILL.md",
+    "sha256": "5324f860b19420737442689d03e01ff9648d9b68bbbaa72b62c8158920c2cd89"
+   }
+  ],
+  "coverage": "55 of 61 inventoried records bound across wave-1 (6: README.md, docs/PRODUCT-GROUND-CONVENTION.md, docs/SOURCE-RETURN.md, docs/PROJECTCENTRAL-AUTHORED-GROUND.md, docs/PERSONAL-WORLD-PROJECTION.md, docs/RECOVERY-PROTOCOL.md) and this fan-out (55)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s0-skills-01-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/capability-matrices/SKILL.md",
+   "sha256": "e10f619ee454820149cf40907852f9f90621aba9afb5c0c14492fc553b3bbd7d",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-02-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/connector-authoring/SKILL.md",
+   "sha256": "4c5062af5059799233f48970471fe44ba70e7b1fa436cf3f39f2c4cf52469881",
+   "delta": "changed on published main since census freeze; current committed bytes bound",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-03-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/connector-hardening/SKILL.md",
+   "sha256": "a24d6d6855dc5b93dc036449275a3ac41e132d0bcb974932cab0fb9723112dc9",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-04-product-ground-pressure",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/control-maintenance/fixtures/product-ground-pressure.md",
+   "sha256": "7dc6b23acbf69031cd2f45d3ba7ccc34e0b8bd6b212e894220e85a1a4e2ebb6e",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-05-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/control-maintenance/SKILL.md",
+   "sha256": "fec003b322224ef82ac2c1aadecfe980133ad3e221d2d1ec7c1bd80ea334d101",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-06-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/docs-methodology/SKILL.md",
+   "sha256": "6b6774f8e93ad21c361b11c09bf56c05a543c20d85276b27cfd659bf76d717f0",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-07-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/documentation-standing/SKILL.md",
+   "sha256": "f5d5510ab20d5dbc71841f3fc0114572c3bcb57a65914757dee3f4c2ae7f70c6",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-08-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/machine-declaration/SKILL.md",
+   "sha256": "f7ca4cbff459fb84601ca39652ea326239a6106a8dc9f5aead228e07baa9a559",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s0-skills-09-skill",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S0-Central.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "8cfac85fee243e0c7f68c362602fb930d7c935db6672d8d41b091b321100f063",
+   "material_source_ref": "EpiLogos/Central@36113051d748:skills/projectcentral-ontology/SKILL.md",
+   "sha256": "5324f860b19420737442689d03e01ff9648d9b68bbbaa72b62c8158920c2cd89",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "central/sp-central-skills.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Skills — connector authoring, control maintenance, docs methodology\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

@@ -1,0 +1,131 @@
+{
+ "artifact": "workcell/sp-workcell-docs-platform.journey.json",
+ "family": "family-workcell",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S4 Workcell lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/workcell/sp-workcell.journey.json (wave-1, stages the S4 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-workcell"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S4",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S4",
+     "path": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md",
+     "sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-workcell.json (frozen-census-basis, 30 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Workcell",
+   "branch": "main",
+   "commit": "d911bfd9597f126df6c818cec9641023a06034b1",
+   "published_note": "every bound record hashed from EpiLogos/Workcell git object storage at published origin/main d911bfd9597f126df6c818cec9641023a06034b1 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "docs/DEPLOYMENT-PROFILES.md",
+    "sha256": "4ef82fbd778172b5c0bb46ec70b7b0640449bbb2ab0cebdcfe12bae439eeae35",
+    "delta": "changed on published main since census freeze 5ddf156d3617; census sha256 a3edfcea886b…; current committed bytes bound"
+   },
+   {
+    "path": "docs/DEVELOPMENT-WORLDS.md",
+    "sha256": "0e063de13bcd9bc2fca718e8ee95ccb9ac6eef6254447fc9a46753a385df48f1"
+   },
+   {
+    "path": "docs/MODEL-SERVING-CONFORMANCE.md",
+    "sha256": "e92f5e3eddb3566e906a81af8f8b7442b122c1cadbd01c0de64a906f14f83db0",
+    "delta": "changed on published main since census freeze 5ddf156d3617; census sha256 71e27839ed39…; current committed bytes bound"
+   },
+   {
+    "path": "docs/PLACE-CENSUS.md",
+    "sha256": "394bd69552cbedb2e3176d7a7bbe05e00a60fddce59cff404c89fe94a35f9c4b"
+   },
+   {
+    "path": "docs/RESOURCE-USAGE.md",
+    "sha256": "2b3da7c48ce511defa2ff6abda8fa6dc8f1d5ae7966f3506e4ee954b317ce9d0"
+   },
+   {
+    "path": "docs/WAYFINDER.md",
+    "sha256": "fe9464679cef701e9af211b0bbdb6478d3bb4d80dfd76dec8d464175a91591bc"
+   }
+  ],
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s4-docs-platform-01-deployment-profiles",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/DEPLOYMENT-PROFILES.md",
+   "sha256": "4ef82fbd778172b5c0bb46ec70b7b0640449bbb2ab0cebdcfe12bae439eeae35",
+   "delta": "changed on published main since census freeze; current committed bytes bound",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-platform-02-development-worlds",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/DEVELOPMENT-WORLDS.md",
+   "sha256": "0e063de13bcd9bc2fca718e8ee95ccb9ac6eef6254447fc9a46753a385df48f1",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-platform-03-model-serving-conformance",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/MODEL-SERVING-CONFORMANCE.md",
+   "sha256": "e92f5e3eddb3566e906a81af8f8b7442b122c1cadbd01c0de64a906f14f83db0",
+   "delta": "changed on published main since census freeze; current committed bytes bound",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-platform-04-place-census",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/PLACE-CENSUS.md",
+   "sha256": "394bd69552cbedb2e3176d7a7bbe05e00a60fddce59cff404c89fe94a35f9c4b",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-platform-05-resource-usage",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/RESOURCE-USAGE.md",
+   "sha256": "2b3da7c48ce511defa2ff6abda8fa6dc8f1d5ae7966f3506e4ee954b317ce9d0",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-platform-06-wayfinder",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/WAYFINDER.md",
+   "sha256": "fe9464679cef701e9af211b0bbdb6478d3bb4d80dfd76dec8d464175a91591bc",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "workcell/sp-workcell-docs-platform.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Platform understanding — deployment, worlds, model serving, wayfinder\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}

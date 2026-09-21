@@ -1,0 +1,91 @@
+{
+ "artifact": "workcell/sp-workcell-docs-operations.journey.json",
+ "family": "family-workcell",
+ "worker": "full-depth fan-out wave 2 (S-seeded) — S4 Workcell lane",
+ "date": "2026-09-21",
+ "whole_first_root": "production/s-products/workcell/sp-workcell.journey.json (wave-1, stages the S4 movement path; not duplicated here)",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-workcell"
+ ],
+ "admission": {
+  "register": "episteme (the essay corpus S register)",
+  "record_id": "S4",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "admission boundary unchanged from wave-1: the S register (T25 census, register episteme); this fan-out binds candidate material records under that coordinate",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S4",
+     "path": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md",
+     "sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-workcell.json (frozen-census-basis, 30 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Workcell",
+   "branch": "main",
+   "commit": "d911bfd9597f126df6c818cec9641023a06034b1",
+   "published_note": "every bound record hashed from EpiLogos/Workcell git object storage at published origin/main d911bfd9597f126df6c818cec9641023a06034b1 and compared against the census receipt 2026-09-21; no working tree read, no dirty content bound"
+  },
+  "records_bound": [
+   {
+    "path": "docs/CAW-LOCAL-PROOF-PROCEDURE.md",
+    "sha256": "b924bb6971b5eb715c868aefc23e9255496c87e751d3f7105eb2f560b6f3a29e"
+   },
+   {
+    "path": "docs/CAW-MATERIAL-OPERATIONS.md",
+    "sha256": "f913400edb965b523d9e24d4c4c6bba3ac48237e816f78b6d19d4f7723465a22"
+   },
+   {
+    "path": "docs/SESSION-SECRET-PROJECTION-PROMPT.md",
+    "sha256": "0f43ce573d656832e29707b90fdaae65d20c0bfde60b31a156684ae03142632c"
+   }
+  ],
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-s4-docs-operations-01-caw-local-proof-procedure",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/CAW-LOCAL-PROOF-PROCEDURE.md",
+   "sha256": "b924bb6971b5eb715c868aefc23e9255496c87e751d3f7105eb2f560b6f3a29e",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-operations-02-caw-material-operations",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/CAW-MATERIAL-OPERATIONS.md",
+   "sha256": "f913400edb965b523d9e24d4c4c6bba3ac48237e816f78b6d19d4f7723465a22",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  },
+  {
+   "scene_id": "fd-s4-docs-operations-03-session-secret-projection-prompt",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S4-Workcell.md (admission; the wave-1 root journey stages its movement path)",
+   "s_record_sha256": "add7ce79a43ab76a76fbdc5ce31c188d430fb5524fdbb7a1e48d1de57037ff7f",
+   "material_source_ref": "EpiLogos/Workcell@d911bfd9597f:docs/SESSION-SECRET-PROJECTION-PROMPT.md",
+   "sha256": "0f43ce573d656832e29707b90fdaae65d20c0bfde60b31a156684ae03142632c",
+   "staged": "the record’s own first-heading terms as a glyph row over the product ground disc; margin page quotes the bound path and heading"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "workcell/sp-workcell-docs-operations.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth fan-out: family \"Material operations — CAW procedures and secret projection\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+}
