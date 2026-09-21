@@ -1,0 +1,163 @@
+{
+ "artifact": "factory/sp-factory-fd-seed-docs.journey.json",
+ "family": "family-factory",
+ "worker": "S3 full-depth fan-out (wave 2, S-seeded products)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-factory"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S3",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products' authored admission is the essay's S register: S (product-field, members S0..S5) and S0..S5 admitted in the frozen 288-record T25 census",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S3",
+     "path": "submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md",
+     "sha256": "a0846487951eeb094dec27f7791235de207efbfefd1b137123bb337c038b9f2d"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-factory.json (frozen-census-basis, 230 records)",
+  "source_revision": {
+   "repo": "EpiLogos/Factory",
+   "branch": "main",
+   "commit": "f59368de67a4bac32d344099aa827c31a7e6107b",
+   "published_note": "every consumed record hashed from git object storage at published origin/main f59368de67a4bac32d344099aa827c31a7e6107b on 2026-09-21; 227 of 230 census records are byte-identical to the census freeze at fbabaaad (branch techne/telemetry-watch-compare-settings); moved records are bound at current committed bytes with the delta named in the entry"
+  },
+  "family": "seed documents",
+  "records_bound": [
+   {
+    "path": "seed-docs/QL-SOFTWARE-FACTORY-ARCHITECTURE-SPEC.md",
+    "sha256": "19df9c24ee0554413fe61123570b37e1b6a4cd87727d07ef872a1355de13a463",
+    "census_sha256": "19df9c24ee0554413fe61123570b37e1b6a4cd87727d07ef872a1355de13a463",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/QL-SOFTWARE-FACTORY-CONSTITUTIONAL-INDEX.md",
+    "sha256": "8e5c627a375899a3797e9f4d349f0b913ecd6c985bdbace66edba9d4312b46fc",
+    "census_sha256": "8e5c627a375899a3797e9f4d349f0b913ecd6c985bdbace66edba9d4312b46fc",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/QL-SOFTWARE-FACTORY-DEEP-QL-INTEGRATION-FOUNDATIONS.md",
+    "sha256": "b2de0c173decdf1e50ae54da53365192adbec003dd7ec9e8ad049f8b5e3d2fb1",
+    "census_sha256": "b2de0c173decdf1e50ae54da53365192adbec003dd7ec9e8ad049f8b5e3d2fb1",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/QL-SOFTWARE-FACTORY-PRIMITIVE-RELATIONS.md",
+    "sha256": "171fc11e1fecc1ce20e9bcbef036fbce2aaa606208ab2ba6636707908358b773",
+    "census_sha256": "171fc11e1fecc1ce20e9bcbef036fbce2aaa606208ab2ba6636707908358b773",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md",
+    "sha256": "d3705ef26d2ab2f7a347df5d4a69913462f3cefb12f9cf8a9a6c2b6a39443d55",
+    "census_sha256": "d3705ef26d2ab2f7a347df5d4a69913462f3cefb12f9cf8a9a6c2b6a39443d55",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/QL-SOFTWARE-FACTORY-WORKCELL-MODULE-SPEC.md",
+    "sha256": "58aa147b9ec7cd5d6f303e66ffd32519721a3e9c667d82b0ed3acbac30ba73ab",
+    "census_sha256": "58aa147b9ec7cd5d6f303e66ffd32519721a3e9c667d82b0ed3acbac30ba73ab",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/wayfinder-maps/QL-SOFTWARE-FACTORY-WAYFINDER-SEMANTIC-CORE(3).md",
+    "sha256": "128dd95ecbf5cc4d4d486fce3401496a4f62136feb1900464d9c62500ae9ddd4",
+    "census_sha256": "128dd95ecbf5cc4d4d486fce3401496a4f62136feb1900464d9c62500ae9ddd4",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/wayfinder-maps/WAYFINDER-MAP-AGENTIC-EXECUTION-BODY-REGENERATED.md",
+    "sha256": "8be6c8466a55e4a8347eed6eee41800bb65b1a8b31d496150a206e68bad492a1",
+    "census_sha256": "8be6c8466a55e4a8347eed6eee41800bb65b1a8b31d496150a206e68bad492a1",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   },
+   {
+    "path": "seed-docs/wayfinder-maps/old/QL-SOFTWARE-FACTORY-WAYFINDER-SEMANTIC-CORE.md",
+    "sha256": "03c65b6dd59875b01299d3b3e36b96e97011cbde9bad35cad3355221f53ad4ab",
+    "census_sha256": "03c65b6dd59875b01299d3b3e36b96e97011cbde9bad35cad3355221f53ad4ab",
+    "delta": "byte-identical to census sha256 at fbabaaad"
+   }
+  ],
+  "coverage": "9 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)"
+ },
+ "pointcloud_revision": "96135fca",
+ "scenes": [
+  {
+   "scene_id": "fd-r001-ql-software-factory-architec",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/QL-SOFTWARE-FACTORY-ARCHITECTURE-SPEC.md",
+   "sha256": "19df9c24ee0554413fe61123570b37e1b6a4cd87727d07ef872a1355de13a463",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r002-ql-software-factory-constitu",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/QL-SOFTWARE-FACTORY-CONSTITUTIONAL-INDEX.md",
+   "sha256": "8e5c627a375899a3797e9f4d349f0b913ecd6c985bdbace66edba9d4312b46fc",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r003-ql-software-factory-deep-ql",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/QL-SOFTWARE-FACTORY-DEEP-QL-INTEGRATION-FOUNDATIONS.md",
+   "sha256": "b2de0c173decdf1e50ae54da53365192adbec003dd7ec9e8ad049f8b5e3d2fb1",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r004-ql-software-factory-primitiv",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/QL-SOFTWARE-FACTORY-PRIMITIVE-RELATIONS.md",
+   "sha256": "171fc11e1fecc1ce20e9bcbef036fbce2aaa606208ab2ba6636707908358b773",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r005-ql-software-factory-root-bui",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md",
+   "sha256": "d3705ef26d2ab2f7a347df5d4a69913462f3cefb12f9cf8a9a6c2b6a39443d55",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r006-ql-software-factory-workcell",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/QL-SOFTWARE-FACTORY-WORKCELL-MODULE-SPEC.md",
+   "sha256": "58aa147b9ec7cd5d6f303e66ffd32519721a3e9c667d82b0ed3acbac30ba73ab",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r007-ql-software-factory-wayfinde",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/wayfinder-maps/QL-SOFTWARE-FACTORY-WAYFINDER-SEMANTIC-CORE(3).md",
+   "sha256": "128dd95ecbf5cc4d4d486fce3401496a4f62136feb1900464d9c62500ae9ddd4",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r008-wayfinder-map-agentic-execut",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/wayfinder-maps/WAYFINDER-MAP-AGENTIC-EXECUTION-BODY-REGENERATED.md",
+   "sha256": "8be6c8466a55e4a8347eed6eee41800bb65b1a8b31d496150a206e68bad492a1",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  },
+  {
+   "scene_id": "fd-r009-ql-software-factory-wayfinde",
+   "material_source_ref": "EpiLogos/Factory@f59368de:seed-docs/wayfinder-maps/old/QL-SOFTWARE-FACTORY-WAYFINDER-SEMANTIC-CORE.md",
+   "sha256": "03c65b6dd59875b01299d3b3e36b96e97011cbde9bad35cad3355221f53ad4ab",
+   "staged": "the record's own committed title and opening line as margin text and glyph row over the ground disc"
+  }
+ ],
+ "assets": [
+  {
+   "kind": "glyph",
+   "ref": "authored in-scene text glyphs and formations",
+   "provenance": "authored"
+  }
+ ],
+ "capture": "factory/sp-factory-fd-seed-docs.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
+ "status": "captured",
+ "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base."
+}
