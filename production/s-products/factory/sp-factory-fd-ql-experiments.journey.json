@@ -61,27 +61,29 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
     "mediumDimension": "2D",
     "autoSweep": false,
-    "sweepDirection": "ascent"
+    "sweepDirection": "ascent",
+    "depthPerspective": true,
+    "depthTintColor": "#161210"
    },
    "id": "fd-ql-experiments-whole",
    "name": "the Factory whole — QL agent experiments — experiment records",
    "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1,
+    "mode": "3d",
+    "yaw": -0.42,
+    "pitch": 0.15,
+    "zoom": 0.92,
     "panX": 0,
     "panY": 0
    },
@@ -107,14 +109,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
+     "speed": 0.48,
+     "circulation": 0.8,
      "turbulence": 0.12,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -133,7 +135,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -146,7 +148,7 @@
      "position": {
       "x": 0,
       "y": -0.02,
-      "z": 0
+      "z": -0.5
      },
      "size": {
       "x": 0.46,
@@ -188,7 +190,7 @@
      "position": {
       "x": -0.5,
       "y": 0.4,
-      "z": 0
+      "z": 0.0
      },
      "size": {
       "x": 0.544,
@@ -230,7 +232,7 @@
      "position": {
       "x": 0.42,
       "y": 0.4,
-      "z": 0
+      "z": 0.5
      },
      "size": {
       "x": 0.48,
@@ -272,17 +274,17 @@
      "kicker": "S3 Software Factory · full depth · whole",
      "title": "QL agent experiments — experiment records",
      "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the QL agent experiments — experiment records slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
      "x": 0.78,
      "y": 0.5,
      "width": 300,
-     "size": 17,
+     "size": 21,
      "align": "left",
      "visible": true
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -355,10 +357,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -369,13 +371,13 @@
    "id": "fd-r001-readme",
    "name": "Native experiment",
    "character": "Issue 103 baseline is active over the frozen runtime foundation.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0203,
     "panX": 0,
     "panY": 0
    },
@@ -401,14 +403,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4552,
+     "circulation": 0.613,
+     "turbulence": 0.1033,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0826,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -427,7 +429,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -503,16 +505,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r001-readme-title-step-1",
+        "id": "fd-r001-readme-title-enrichstep-1",
         "text": "Native experiment",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-readme-title-enrichstep-3",
+        "text": "Native experiment",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -576,7 +639,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -649,10 +712,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.16,
+    "pointerClickRadius": 0.24,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -663,13 +726,13 @@
    "id": "fd-r002-readme",
    "name": "Native classic condition",
    "character": "Active issue 103 control condition using the frozen ClassicRuntime. Execution completion does not imply semantic Closure.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0005,
     "panX": 0,
     "panY": 0
    },
@@ -695,14 +758,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.3604,
+     "circulation": 0.226,
+     "turbulence": 0.0665,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0452,
+     "pointerStrength": 0.18,
+     "pointerRadius": 0.2,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -721,7 +784,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 193.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -797,16 +860,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r002-readme-title-step-1",
+        "id": "fd-r002-readme-title-enrichstep-1",
         "text": "Native classic condition",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-readme-title-enrichstep-3",
+        "text": "Native classic condition",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -870,7 +994,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -943,10 +1067,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -958,12 +1082,12 @@
    "name": "Native QL condition",
    "character": "Active issue 103 QL condition using the unchanged frozen ql-core runtime. The local policy supplies task acts and interpretations only.",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9708,
     "panX": 0,
     "panY": 0
    },
@@ -989,14 +1113,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6156,
+     "circulation": 1.339,
+     "turbulence": 0.1698,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1078,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1015,7 +1139,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1091,16 +1215,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r003-readme-title-step-1",
+        "id": "fd-r003-readme-title-enrichstep-1",
         "text": "Native QL condition",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r003-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r003-readme-title-enrichstep-3",
+        "text": "Native QL condition",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1164,7 +1349,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1237,10 +1422,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1252,12 +1437,12 @@
    "name": "Native runs",
    "character": "Issue #103 baseline run evidence is active. The Native smoke records matched Classic and ql-core execution and verifies replay from stored records.",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.001,
     "panX": 0,
     "panY": 0
    },
@@ -1283,14 +1468,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5708,
+     "circulation": 0.952,
+     "turbulence": 0.153,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1304,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1309,7 +1494,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1385,16 +1570,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r004-readme-title-step-1",
+        "id": "fd-r004-readme-title-enrichstep-1",
         "text": "Native runs",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r004-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r004-readme-title-enrichstep-3",
+        "text": "Native runs",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1458,7 +1704,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1475,7 +1721,24 @@
     "depth": 1,
     "dwell": 0.3
    },
-   "automation": []
+   "automation": [
+    {
+     "id": "fd-r004-readme-enrich-lfo",
+     "target": "field.params.dispersion",
+     "type": "lfo",
+     "wave": "sine",
+     "blend": "add",
+     "min": 0.03,
+     "max": 0.12,
+     "rate": 0.09,
+     "phase": 0,
+     "duration": 0,
+     "delay": 0,
+     "loop": "loop",
+     "firedAt": null,
+     "enabled": true
+    }
+   ]
   },
   {
    "toolbelt": [
@@ -1533,8 +1796,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1545,13 +1808,13 @@
    "id": "fd-r005-readme",
    "name": "Native shared host",
    "character": "Active issue 103 host integration. This layer is QL-free and is reused unchanged by both runtime conditions.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0013,
     "panX": 0,
     "panY": 0
    },
@@ -1577,14 +1840,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.426,
+     "circulation": 0.365,
+     "turbulence": 0.0963,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.063,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1603,7 +1866,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1679,16 +1942,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r005-readme-title-step-1",
+        "id": "fd-r005-readme-title-enrichstep-1",
         "text": "Native shared host",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r005-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r005-readme-title-enrichstep-3",
+        "text": "Native shared host",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1752,7 +2076,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1825,10 +2149,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1839,13 +2163,13 @@
    "id": "fd-r006-readme",
    "name": "Pi matched runtime experiment — issue 101",
    "character": "Active baseline over the frozen Foundation. The Pi host boundary is constant while each run selects either the classic or ql-core runtime.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0816,
     "panX": 0,
     "panY": 0
    },
@@ -1871,14 +2195,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5112,
+     "circulation": 0.878,
+     "turbulence": 0.1395,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1156,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1897,7 +2221,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2046,7 +2370,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2119,10 +2443,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.16,
+    "pointerClickRadius": 0.24,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2133,13 +2457,13 @@
    "id": "fd-r007-readme",
    "name": "Pi classic condition",
    "character": "Active issue 101 control condition. It selects the frozen Foundation ClassicRuntime against the Pi host and therefore has ordinary execution completion with semantic closure reported as not_applicable.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0018,
     "panX": 0,
     "panY": 0
    },
@@ -2165,14 +2489,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.3864,
+     "circulation": 0.291,
+     "turbulence": 0.0827,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0582,
+     "pointerStrength": 0.18,
+     "pointerRadius": 0.2,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2191,7 +2515,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 193.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2340,7 +2664,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2413,10 +2737,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2428,12 +2752,12 @@
    "name": "Pi QL condition",
    "character": "Active issue 101 QL condition. The unchanged frozen QLDirectCoreRuntime owns circuit state, interpreted return, Rij movement, P5 determination, positive closure, and post-closure re-entry. policy.js supplies deterministi",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9721,
     "panX": 0,
     "panY": 0
    },
@@ -2459,14 +2783,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6416,
+     "circulation": 1.404,
+     "turbulence": 0.186,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1208,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2485,7 +2809,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2561,16 +2885,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r008-readme-title-step-1",
+        "id": "fd-r008-readme-title-enrichstep-1",
         "text": "Pi QL condition",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r008-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r008-readme-title-enrichstep-3",
+        "text": "Pi QL condition",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -2634,7 +3019,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2707,10 +3092,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2721,13 +3106,13 @@
    "id": "fd-r009-readme",
    "name": "Pi experiment baseline",
    "character": "Issue: #101",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0223,
     "panX": 0,
     "panY": 0
    },
@@ -2753,14 +3138,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4968,
+     "circulation": 0.717,
+     "turbulence": 0.1293,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1034,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2779,7 +3164,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2928,7 +3313,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3003,8 +3388,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3015,13 +3400,13 @@
    "id": "fd-r010-readme",
    "name": "Pi shared host",
    "character": "Active issue 101 host integration. The adapter is QL-free and is used unchanged by both runtime conditions. Raw Pi-style lifecycle events are recorded on the host event channel.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0026,
     "panX": 0,
     "panY": 0
    },
@@ -3047,14 +3432,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.452,
+     "circulation": 0.43,
+     "turbulence": 0.1125,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.076,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3073,7 +3458,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3222,7 +3607,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3295,10 +3680,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3309,13 +3694,13 @@
    "id": "fd-r011-readme",
    "name": "Pydantic AI experiment",
    "character": "Issue 102 baseline is active over the frozen runtime foundation.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0229,
     "panX": 0,
     "panY": 0
    },
@@ -3341,14 +3726,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5072,
+     "circulation": 0.743,
+     "turbulence": 0.1358,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1086,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3367,7 +3752,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3516,7 +3901,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3589,10 +3974,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.16,
+    "pointerClickRadius": 0.24,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3603,13 +3988,13 @@
    "id": "fd-r012-readme",
    "name": "Pydantic classic condition",
    "character": "Active issue 102 control condition using the frozen ClassicRuntime. Execution may complete; semantic closure is not_applicable.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0031,
     "panX": 0,
     "panY": 0
    },
@@ -3635,14 +4020,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4124,
+     "circulation": 0.356,
+     "turbulence": 0.099,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0712,
+     "pointerStrength": 0.18,
+     "pointerRadius": 0.2,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3661,7 +4046,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 193.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3810,7 +4195,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3883,10 +4268,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3898,12 +4283,12 @@
    "name": "Pydantic QL condition",
    "character": "Active issue 102 QL condition. The unchanged frozen ql-core runtime owns QL state, Rij recurrence, P5 determination, closure and re-entry; the local policy supplies task interpretation only.",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9734,
     "panX": 0,
     "panY": 0
    },
@@ -3929,14 +4314,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6676,
+     "circulation": 1.469,
+     "turbulence": 0.2022,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1338,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3955,7 +4340,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -4031,16 +4416,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r013-readme-title-step-1",
+        "id": "fd-r013-readme-title-enrichstep-1",
         "text": "Pydantic QL condition",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r013-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r013-readme-title-enrichstep-3",
+        "text": "Pydantic QL condition",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -4104,7 +4550,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -4177,10 +4623,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -4191,13 +4637,13 @@
    "id": "fd-r014-readme",
    "name": "Pydantic AI experiment",
    "character": "Issue 102 baseline is active over the frozen runtime foundation.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0236,
     "panX": 0,
     "panY": 0
    },
@@ -4223,14 +4669,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5228,
+     "circulation": 0.782,
+     "turbulence": 0.1455,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1164,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -4249,7 +4695,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -4398,7 +4844,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -4473,8 +4919,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -4485,13 +4931,13 @@
    "id": "fd-r015-readme",
    "name": "Pydantic shared host",
    "character": "Active issue 102 QL-free host integration. One adapter is used by both runtime conditions; Pydantic graph events stay on the host channel.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0039,
     "panX": 0,
     "panY": 0
    },
@@ -4517,14 +4963,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.478,
+     "circulation": 0.495,
+     "turbulence": 0.1288,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.089,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -4543,7 +4989,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -4692,7 +5138,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
