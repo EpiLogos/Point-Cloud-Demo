@@ -61,27 +61,29 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
     "mediumDimension": "2D",
     "autoSweep": false,
-    "sweepDirection": "ascent"
+    "sweepDirection": "ascent",
+    "depthPerspective": true,
+    "depthTintColor": "#161210"
    },
    "id": "fd-docs-program-research-whole",
    "name": "the Factory whole — programme, pstack reduction, research",
    "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1,
+    "mode": "3d",
+    "yaw": -0.42,
+    "pitch": 0.15,
+    "zoom": 0.92,
     "panX": 0,
     "panY": 0
    },
@@ -107,14 +109,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
+     "speed": 0.48,
+     "circulation": 0.8,
      "turbulence": 0.12,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -133,7 +135,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -146,7 +148,7 @@
      "position": {
       "x": 0,
       "y": -0.02,
-      "z": 0
+      "z": -0.5
      },
      "size": {
       "x": 0.46,
@@ -188,7 +190,7 @@
      "position": {
       "x": -0.5,
       "y": 0.4,
-      "z": 0
+      "z": 0.0
      },
      "size": {
       "x": 0.544,
@@ -230,7 +232,7 @@
      "position": {
       "x": 0.42,
       "y": 0.4,
-      "z": 0
+      "z": 0.5
      },
      "size": {
       "x": 0.48,
@@ -272,17 +274,17 @@
      "kicker": "S3 Software Factory · full depth · whole",
      "title": "programme, pstack reduction, research",
      "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the programme, pstack reduction, research slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
      "x": 0.78,
      "y": 0.5,
      "width": 300,
-     "size": 17,
+     "size": 21,
      "align": "left",
      "visible": true
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -357,8 +359,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -369,13 +371,13 @@
    "id": "fd-r001-bounded-agency-foundation",
    "name": "Bounded agency foundation",
    "character": "Standing: implementation account and remaining design obligations, 2026-09-06. The experience-governance statement remains a human-ground proposal. This document does not adopt it or turn an acceptance fixture into a pro",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0003,
     "panX": 0,
     "panY": 0
    },
@@ -401,14 +403,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4052,
+     "circulation": 0.313,
+     "turbulence": 0.0833,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0526,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -427,7 +429,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -503,16 +505,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r001-bounded-agency-foundation-title-step-1",
+        "id": "fd-r001-bounded-agency-foundation-title-enrichstep-1",
         "text": "Bounded agency foundation",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-bounded-agency-foundation-title-enrichstep-2",
+        "text": "BOUNDED-AGENCY-FOUNDATION",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-bounded-agency-foundation-title-enrichstep-3",
+        "text": "Bounded agency foundation",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -576,7 +639,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -649,10 +712,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -664,12 +727,12 @@
    "name": "Coordinated Software Factory Build Execution Programme",
    "character": "Status: planning / execution-map draft — no broad implementation authorised.",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9705,
     "panX": 0,
     "panY": 0
    },
@@ -695,14 +758,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6104,
+     "circulation": 1.326,
+     "turbulence": 0.1665,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1052,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -721,7 +784,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -797,16 +860,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r002-coordinated-build-execution-title-step-1",
+        "id": "fd-r002-coordinated-build-execution-title-enrichstep-1",
         "text": "Coordinated Software Factory Build Execution Programme",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-coordinated-build-execution-title-enrichstep-2",
+        "text": "COORDINATED-BUILD-EXECUTION-PROGRAMM",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-coordinated-build-execution-title-enrichstep-3",
+        "text": "Coordinated Software Factory Build Execution Programme",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -870,7 +994,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -943,10 +1067,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -958,12 +1082,12 @@
    "name": "Root Build Programme Amendment — Execution Intelligence",
    "character": "Status: CURRENT DESIGN — executable programme amendment",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9708,
     "panX": 0,
     "panY": 0
    },
@@ -989,14 +1113,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6156,
+     "circulation": 1.339,
+     "turbulence": 0.1698,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1078,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1015,7 +1139,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1164,7 +1288,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1237,10 +1361,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1251,13 +1375,13 @@
    "id": "fd-r004-ql-software-factory-root-bui",
    "name": "QL Software Factory — Root Build Program",
    "character": "File: QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md",
-   "duration": 14,
-   "transition": 2,
+   "duration": 15,
+   "transition": 1.8,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.001,
     "panX": 0,
     "panY": 0
    },
@@ -1283,14 +1407,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5208,
+     "circulation": 0.752,
+     "turbulence": 0.123,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1004,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1309,7 +1433,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 220.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1385,16 +1509,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r004-ql-software-factory-root-bui-title-step-1",
-        "text": "QL Software Factory — Root Build Program",
+        "id": "fd-r004-ql-software-factory-root-bui-title-enrichstep-1",
+        "text": "QL Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r004-ql-software-factory-root-bui-title-enrichstep-2",
+        "text": "Root Build Program",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1458,7 +1620,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1531,10 +1693,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1546,12 +1708,12 @@
    "name": "Workcell Repository Handoff",
    "character": "Date: 2026-08-14",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0013,
     "panX": 0,
     "panY": 0
    },
@@ -1577,14 +1739,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.576,
+     "circulation": 0.965,
+     "turbulence": 0.1562,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.133,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1603,7 +1765,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1752,7 +1914,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1827,8 +1989,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1839,13 +2001,13 @@
    "id": "fd-r006-core-semantic-review",
    "name": "Core semantic review",
    "character": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99. Ten core sources and 141 outgoing edges received manual overrides. Each edge retains its exact source line and excerpt in core-semantic-review.json.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0016,
     "panX": 0,
     "panY": 0
    },
@@ -1871,14 +2033,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4312,
+     "circulation": 0.378,
+     "turbulence": 0.0995,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0656,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1897,7 +2059,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2046,7 +2208,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2063,7 +2225,24 @@
     "depth": 1,
     "dwell": 0.3
    },
-   "automation": []
+   "automation": [
+    {
+     "id": "fd-r006-core-semantic-review-enrich-lfo",
+     "target": "field.params.dispersion",
+     "type": "lfo",
+     "wave": "sine",
+     "blend": "add",
+     "min": 0.03,
+     "max": 0.12,
+     "rate": 0.09,
+     "phase": 0,
+     "duration": 0,
+     "delay": 0,
+     "loop": "loop",
+     "firedAt": null,
+     "enabled": true
+    }
+   ]
   },
   {
    "toolbelt": [
@@ -2121,8 +2300,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2133,13 +2312,13 @@
    "id": "fd-r007-edge-accounting",
    "name": "Source-edge accounting",
    "character": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99; 572 exact source-line candidate relations, with 442 operative relations and 16 explicit nonrelations. Every edge retains source, line, excerpt and relation. manua",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0018,
     "panX": 0,
     "panY": 0
    },
@@ -2165,14 +2344,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4364,
+     "circulation": 0.391,
+     "turbulence": 0.1028,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0682,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2191,7 +2370,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2267,16 +2446,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r007-edge-accounting-title-step-1",
+        "id": "fd-r007-edge-accounting-title-enrichstep-1",
         "text": "Source-edge accounting",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r007-edge-accounting-title-enrichstep-2",
+        "text": "edge-accounting",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r007-edge-accounting-title-enrichstep-3",
+        "text": "Source-edge accounting",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -2340,7 +2580,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2415,8 +2655,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2427,13 +2667,13 @@
    "id": "fd-r008-source-accounting",
    "name": "Individual source accounting",
    "character": "Pinned revision 93b00b89ef425a9c1bac0d0b317dfc49c930ac99. Every source has an individual account. Status is per-source: manual core review is curated semantic review; static-accounted is source-specific reduction to a na",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0021,
     "panX": 0,
     "panY": 0
    },
@@ -2459,14 +2699,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4416,
+     "circulation": 0.404,
+     "turbulence": 0.106,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0708,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2485,7 +2725,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2634,7 +2874,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2707,10 +2947,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2722,12 +2962,12 @@
    "name": "Curated support-prompt map",
    "character": "Every one of the 32 support prompts has a distinct caller, operation, input/output and standing. Support prompts are never independently invoked.",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0023,
     "panX": 0,
     "panY": 0
    },
@@ -2753,14 +2993,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5968,
+     "circulation": 1.017,
+     "turbulence": 0.1693,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1434,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2779,7 +3019,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2928,7 +3168,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3001,10 +3241,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3016,12 +3256,12 @@
    "name": "QL Software Factory — Graph Engineering Principles",
    "character": "Status: cross-cutting principles companion — extracted 2026-08-12, generalised, and re-expressed in Factory terms.",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9726,
     "panX": 0,
     "panY": 0
    },
@@ -3047,14 +3287,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.652,
+     "circulation": 1.43,
+     "turbulence": 0.1925,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.126,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3073,7 +3313,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3149,16 +3389,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r010-raw-extraction-title-step-1",
-        "text": "QL Software Factory — Graph Engineering Principles",
+        "id": "fd-r010-raw-extraction-title-enrichstep-1",
+        "text": "QL Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r010-raw-extraction-title-enrichstep-2",
+        "text": "Graph Engineering Principles",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -3222,7 +3500,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3295,10 +3573,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3309,13 +3587,13 @@
    "id": "fd-r011-readme",
    "name": "Graph Engineering Research",
    "character": "Status: RESEARCH / COMPARATIVE CLAIM-SET.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0229,
     "panX": 0,
     "panY": 0
    },
@@ -3341,14 +3619,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5072,
+     "circulation": 0.743,
+     "turbulence": 0.1358,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1086,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3367,7 +3645,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3516,7 +3794,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
