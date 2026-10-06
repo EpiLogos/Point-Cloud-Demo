@@ -60,7 +60,10 @@
     "sha256": "d466e11554cfc0a350c20fe31fdbf0938bd6e8fb3915a98305929eebc8ea3a72"
    }
   ],
-  "coverage": "6 of 230 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+  "coverage": "6 of 230 inventoried records bound (wave-1 slice; full-depth fan-out pending)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at EpiLogos/Factory@f59368de; essay record S3 read in full at fc59a719 (submission-package/essay/section-rooms/arguments/products/S3-Software-Factory.md)"
+  }
  },
  "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
  "scenes": [
@@ -122,5 +125,45 @@
  ],
  "capture": "factory/sp-factory.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Whole-first: the S3 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S3 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+ "notes": "Whole-first: the S3 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S3 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out.\n\nEnrichment 2026-10-06. Per-scene moves — #0 s3-m0-becoming: quiet emergence; one formation walks intention→form→resistance→gathering back (the record's own sentence), resistance tinted copper; 17s. #1 s3-m1-desire-actuality: gather (attract/implode — desire enters); the Processual lens walks its own six terms to satisfaction; dispersion LFO (desire breathes). #2 s3-m2-material-grammar: turn (vortex); the elements precipitate in the record's order, Salt arriving largest and brightest; 3D here — z is the material grammar's depth: Aether the open field nearest, Salt the precipitated form deepest; 16s. #3 s3-m3-gate-recognition: hold (guard repel — the Gate decides under a declared condition); candidate→Gate→Recognition walks the distinction the record calls load-bearing; 13s. #4 s3-m4-labour-power: turn; layout ring (labour's circuit); commission→implementation→review→use→consequence walks the ring. #5->0 s3-m5-changed-field: settle — circulation reversed, speed lowest; Project Canon→returned Ground→changed condition; the slowest speed LFO (the field becomes capable of another movement); 13s.\n\n3D: s3-m2 only; no other scene stages fake space. Pointer profiles: stillness (0.06) → gather → vortex → guard → vortex → settle — emergence, desire's intake, the grammar's composition, the Gate's boundary, labour's reallocation, the changed field at rest. Automation: dispersion LFO #1, slow speed sine #5->0. Durations 17/14/16/13/14/13; transitions 2.4/1.6/2.0/1.6/2.0/1.2.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de; essay record S3 read in full at fc59a719 (submission-package/essay/section-rooms/arguments/products/S3-Software-Factory.md)\n\nEnrichment 2026-10-06. Per-scene moves — #0 s3-m0-becoming: quiet emergence; one formation walks intention→form→resistance→gathering back (the record's own sentence), resistance tinted copper; 17s. #1 s3-m1-desire-actuality: gather (attract/implode — desire enters); the Processual lens walks its own six terms to satisfaction; dispersion LFO (desire breathes). #2 s3-m2-material-grammar: turn (vortex); the elements precipitate in the record's order, Salt arriving largest and brightest; 3D here — z is the material grammar's depth: Aether the open field nearest, Salt the precipitated form deepest; 16s. #3 s3-m3-gate-recognition: hold (guard repel — the Gate decides under a declared condition); candidate→Gate→Recognition walks the distinction the record calls load-bearing; 13s. #4 s3-m4-labour-power: turn; layout ring (labour's circuit); commission→implementation→review→use→consequence walks the ring. #5->0 s3-m5-changed-field: settle — circulation reversed, speed lowest; Project Canon→returned Ground→changed condition; the slowest speed LFO (the field becomes capable of another movement); 13s.\n\n3D: s3-m2 only; no other scene stages fake space. Pointer profiles: stillness (0.06) → gather → vortex → guard → vortex → settle — emergence, desire's intake, the grammar's composition, the Gate's boundary, labour's reallocation, the changed field at rest. Automation: dispersion LFO #1, slow speed sine #5->0. Durations 17/14/16/13/14/13; transitions 2.4/1.6/2.0/1.6/2.0/1.2.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de; essay record S3 read in full at fc59a719 (submission-package/essay/section-rooms/arguments/products/S3-Software-Factory.md)",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "intention": "#0: 'Something is wanted' — the wanting that opens transformation",
+  "form": "#0: 'a form is attempted' — the projected possibility",
+  "resistance": "#0: 'actuality resists or confirms it' — the encounter's answer",
+  "gathering back": "#0: 'what happened is gathered back into the conditions of what can happen next'",
+  "desire": "#1: 'Concrescent desire is the lure or pressure by which something wants to become'",
+  "occasion": "#1: 'Actual occasion is the concrete event in which that possibility is attempted'",
+  "ingression": "#1: 'Ingression is the entry of possible form into actuality'",
+  "forms": "#1: eternal objects — 'the available forms, patterns and determinations through which the occasion can take shape'",
+  "community": "#1: 'Community integration asks whether the resulting form can enter the wider world'",
+  "satisfaction": "#1: 'Satisfaction/Perishing names both completion and passage' — the occasion becomes inherited condition",
+  "Aether": "#2: 'the open field of possibility in which the work can begin'",
+  "Earth": "#2: 'resistance, material, inherited body and constraint'",
+  "Water": "#2: 'flow, adaptation and mixture'",
+  "Air": "#2: 'mediates, communicates, abstracts and relates'",
+  "Fire": "#2: 'transforms through energetic difference, conflict, testing and irreversible passage'",
+  "Salt": "#2: 'precipitates the attained form: the result that can now persist, circulate and become material for another becoming'",
+  "Gate": "#3: 'A Gate decides whether a candidate satisfies a declared condition'",
+  "Recognition": "#3: 'Recognition asks what the encounter means for the conditions themselves' — it can revise the commission",
+  "candidate": "#3: the artifact under judgment — 'A candidate becomes meaningful through the commission and sources from which it arose'",
+  "commission": "#3/#4: the commission the candidate arose from; in #4 the first site of labour",
+  "implementation": "#4: the site where labour implements — one of the gathered sites of entrusted power",
+  "review": "#4: the review of the work — where dissent can form",
+  "use": "#4: the use that bears the design",
+  "consequence": "#4: 'If a user bears the consequence of a design while having no route by which that consequence can alter the design, development has become one-way inscription'",
+  "Project Canon": "#5->0: the project's inherited ground — one form the changed field takes",
+  "returned Ground": "#5->0: the return — 'The field does not circle back unchanged'",
+  "changed condition": "#5->0: 'a new condition of further becoming' — the product of development",
+  "README": "the bound material record's address stamp — the Factory README bound at movement #0",
+  "PRAXIS-PRIMITIVES": "the bound record's address stamp — the praxis primitives bound at movement #1",
+  "QL-SOFTWARE-FACTORY-PRIMITIVE-RELATIONS": "the bound record's address stamp — Primitive Relations and Experienced Ontology, the material-grammar seed bound at movement #2",
+  "RUN-CLOSURE-VERIFICATION-ALIGNMENT": "the bound record's address stamp — the run closure/verification record bound at movement #3",
+  "FACTORY-SELF-HOSTING-COMMISSION": "the bound record's address stamp — the self-hosting commission bound at movement #4",
+  "PROJECT-DEVELOPMENT-ORIENTATION-AND-RETURN": "the bound record's address stamp — the project development orientation-and-return record bound at movement #5->0"
+ }
 }
