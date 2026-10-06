@@ -1,128 +1,165 @@
 {
-  "artifact": "quaternal-logic/sp-ql-fd-periphery.journey.json",
-  "family": "family-ql-fulldepth",
-  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
-  "date": "2026-09-21",
-  "profile_lineage": [
-    "s-products-corpus-base",
-    "family-ql",
-    "family-ql-fulldepth"
+ "artifact": "quaternal-logic/sp-ql-fd-periphery.journey.json",
+ "family": "family-ql-fulldepth",
+ "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-ql",
+  "family-ql-fulldepth"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S5",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S5",
+     "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
+     "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
+  "source_revision": {
+   "repo": "EpiLogos/Quaternal-Logic",
+   "branch": "session/k-aw-expression-production-2026-09-17",
+   "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
+   "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+  },
+  "records_bound": [
+   {
+    "path": "adapters/techne/surfaces/README.md",
+    "sha256": "0aad5f0a18709591b8acc9326459d551f3c2fefd05d8cb329d3e428dee9ed4c7",
+    "census_sha256": "0aad5f0a18709591b8acc9326459d551f3c2fefd05d8cb329d3e428dee9ed4c7",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "c/registry/promotions/sources/25d07a69482fa0cd1655a0ab207085f751572608.md",
+    "sha256": "4ae05ccd80d46a0f045388f7db21de337bd2fe1e8cc89aa42beeee7cdc8f8889",
+    "census_sha256": "4ae05ccd80d46a0f045388f7db21de337bd2fe1e8cc89aa42beeee7cdc8f8889",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "crates/ql-mef/AGENTS.md",
+    "sha256": "cc95063e5f869cc61c68f0f89199b85ca89615f6b8403158d1f43cf5414dd721",
+    "census_sha256": "cc95063e5f869cc61c68f0f89199b85ca89615f6b8403158d1f43cf5414dd721",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "cypher/CYPHER-LOG.md",
+    "sha256": "5e6d3ecb5329ce30f9334dd0355b3bd587040437be74ce73c221719e7dc81ec3",
+    "census_sha256": "5e6d3ecb5329ce30f9334dd0355b3bd587040437be74ce73c221719e7dc81ec3",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "data/epi-bimba-map/anuttara-language-map.md",
+    "sha256": "4c0e10999f4e3f31af0eb280a490061bec4a39ca77a854b7b1875af9c76f8cb5",
+    "census_sha256": "4c0e10999f4e3f31af0eb280a490061bec4a39ca77a854b7b1875af9c76f8cb5",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "vendor/epi-kernel/reference/README.md",
+    "sha256": "1554cf688a442f8fa74a9c77291444306f678d5e8a6a58ee5316e18603b1ffe5",
+    "census_sha256": "1554cf688a442f8fa74a9c77291444306f678d5e8a6a58ee5316e18603b1ffe5",
+    "status": "identical-to-main"
+   }
   ],
-  "admission": {
-    "register": "episteme (the Return-of-Zero essay corpus S register)",
-    "record_id": "S5",
-    "record_type": "product",
-    "claim_status": "Argued",
-    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
-    "essay_source_revision": {
-      "repo": "EpiLogos/Antykathera-Essay-Work",
-      "branch": "main",
-      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
-      "records": [
-        {
-          "record_id": "S5",
-          "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
-          "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
-        }
-      ]
-    }
+  "coverage": "6 of the 148-record inventory at full depth in this journey (family “periphery”); 6 records were bound by wave-1 sp-ql and are carried by reference",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719"
+  }
+ },
+ "scenes": [
+  {
+   "scene_id": "s5-fd-periphery-01",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:adapters/techne/surfaces/README.md",
+   "sha256": "0aad5f0a18709591b8acc9326459d551f3c2fefd05d8cb329d3e428dee9ed4c7",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
   },
-  "material_inventory": {
-    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
-    "source_revision": {
-      "repo": "EpiLogos/Quaternal-Logic",
-      "branch": "session/k-aw-expression-production-2026-09-17",
-      "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
-      "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
-    },
-    "records_bound": [
-      {
-        "path": "adapters/techne/surfaces/README.md",
-        "sha256": "0aad5f0a18709591b8acc9326459d551f3c2fefd05d8cb329d3e428dee9ed4c7",
-        "census_sha256": "0aad5f0a18709591b8acc9326459d551f3c2fefd05d8cb329d3e428dee9ed4c7",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "c/registry/promotions/sources/25d07a69482fa0cd1655a0ab207085f751572608.md",
-        "sha256": "4ae05ccd80d46a0f045388f7db21de337bd2fe1e8cc89aa42beeee7cdc8f8889",
-        "census_sha256": "4ae05ccd80d46a0f045388f7db21de337bd2fe1e8cc89aa42beeee7cdc8f8889",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "crates/ql-mef/AGENTS.md",
-        "sha256": "cc95063e5f869cc61c68f0f89199b85ca89615f6b8403158d1f43cf5414dd721",
-        "census_sha256": "cc95063e5f869cc61c68f0f89199b85ca89615f6b8403158d1f43cf5414dd721",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "cypher/CYPHER-LOG.md",
-        "sha256": "5e6d3ecb5329ce30f9334dd0355b3bd587040437be74ce73c221719e7dc81ec3",
-        "census_sha256": "5e6d3ecb5329ce30f9334dd0355b3bd587040437be74ce73c221719e7dc81ec3",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "data/epi-bimba-map/anuttara-language-map.md",
-        "sha256": "4c0e10999f4e3f31af0eb280a490061bec4a39ca77a854b7b1875af9c76f8cb5",
-        "census_sha256": "4c0e10999f4e3f31af0eb280a490061bec4a39ca77a854b7b1875af9c76f8cb5",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "vendor/epi-kernel/reference/README.md",
-        "sha256": "1554cf688a442f8fa74a9c77291444306f678d5e8a6a58ee5316e18603b1ffe5",
-        "census_sha256": "1554cf688a442f8fa74a9c77291444306f678d5e8a6a58ee5316e18603b1ffe5",
-        "status": "identical-to-main"
-      }
-    ],
-    "coverage": "6 of the 148-record inventory at full depth in this journey (family “periphery”); 6 records were bound by wave-1 sp-ql and are carried by reference"
+  {
+   "scene_id": "s5-fd-periphery-02",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:c/registry/promotions/sources/25d07a69482fa0cd1655a0ab207085f751572608.md",
+   "sha256": "4ae05ccd80d46a0f045388f7db21de337bd2fe1e8cc89aa42beeee7cdc8f8889",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
   },
-  "scenes": [
-    {
-      "scene_id": "s5-fd-periphery-01",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:adapters/techne/surfaces/README.md",
-      "sha256": "0aad5f0a18709591b8acc9326459d551f3c2fefd05d8cb329d3e428dee9ed4c7",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-periphery-02",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:c/registry/promotions/sources/25d07a69482fa0cd1655a0ab207085f751572608.md",
-      "sha256": "4ae05ccd80d46a0f045388f7db21de337bd2fe1e8cc89aa42beeee7cdc8f8889",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-periphery-03",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:crates/ql-mef/AGENTS.md",
-      "sha256": "cc95063e5f869cc61c68f0f89199b85ca89615f6b8403158d1f43cf5414dd721",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-periphery-04",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:cypher/CYPHER-LOG.md",
-      "sha256": "5e6d3ecb5329ce30f9334dd0355b3bd587040437be74ce73c221719e7dc81ec3",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-periphery-05",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:data/epi-bimba-map/anuttara-language-map.md",
-      "sha256": "4c0e10999f4e3f31af0eb280a490061bec4a39ca77a854b7b1875af9c76f8cb5",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-periphery-06",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:vendor/epi-kernel/reference/README.md",
-      "sha256": "1554cf688a442f8fa74a9c77291444306f678d5e8a6a58ee5316e18603b1ffe5",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    }
-  ]
+  {
+   "scene_id": "s5-fd-periphery-03",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:crates/ql-mef/AGENTS.md",
+   "sha256": "cc95063e5f869cc61c68f0f89199b85ca89615f6b8403158d1f43cf5414dd721",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  },
+  {
+   "scene_id": "s5-fd-periphery-04",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:cypher/CYPHER-LOG.md",
+   "sha256": "5e6d3ecb5329ce30f9334dd0355b3bd587040437be74ce73c221719e7dc81ec3",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  },
+  {
+   "scene_id": "s5-fd-periphery-05",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:data/epi-bimba-map/anuttara-language-map.md",
+   "sha256": "4c0e10999f4e3f31af0eb280a490061bec4a39ca77a854b7b1875af9c76f8cb5",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  },
+  {
+   "scene_id": "s5-fd-periphery-06",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:vendor/epi-kernel/reference/README.md",
+   "sha256": "1554cf688a442f8fa74a9c77291444306f678d5e8a6a58ee5316e18603b1ffe5",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  }
+ ],
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "techn": "Technē — the L5 instrument register (name truncated at glyph width)",
+  "instrument": "the instrument surfaces",
+  "surfaces": "the surfaces under refinement",
+  "refinement": "the refinement home's work",
+  "apertures": "Paraśakti's apertures",
+  "bimba": "Bimba — the source pole the Cypher log records",
+  "granular": "the log's own grain — per-update",
+  "symbolic": "the Anuttara language map's mode",
+  "frozen": "the reference's standing — frozen",
+  "reference": "the Epi C reference kernel",
+  "the Factory whole": "the member's staging of the QL whole — the S5 product field at full depth",
+  "S3 · full depth": "the whole scene's depth stamp — QL carried at full depth (the member's 3D lamination)",
+  "README": "the bound record's address stamp — the scene id derives from the bound path",
+  "CYPHER-LOG": "the bound record's address stamp — the scene id derives from the bound path",
+  "para": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "25d07a69482fa0cd1655a0ab207085f751572608": "the bound record's address stamp — the scene id derives from the bound path",
+  "akti": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "mah": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "working": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "mef": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "lens": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "identity": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "AGENTS": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "anuttara-language-map": "the bound record's address stamp — the scene id derives from the bound path",
+  "epi": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)",
+  "kernel": "the record's own heading words — walked and re-formed through the pair (QL's relational grammar)"
+ },
+ "notes": "Moves: the periphery shelf — the instrument surfaces refinement home marks, the apertures-and-clock-centre promotion turns (the pinned promotion — 3D scene: z is the aperture's depth, and the promotion hash stamp shows its frozen address), lens identity work holds, the Bimba Cypher log gathers (granular database updates — the log accumulates), the Anuttara symbolic language map emerges, and the frozen Epi C reference holds (frozen — nothing moves).\n\n3D: the whole scene carries the member's depth — z is the recognition fold: the two sides of the member's relation nearest, their reconciling fold deepest (laminated; depthPerspective on) — QL relates without merging, so depth holds the difference the fold retains. Pointers follow the arc's meaning (guard=locks and contracts hold, gather=relations gathered, vortex=the fold/refraction turns, rupture=the differentiating cut, settle=recognition at rest). Automation: one dispersion LFO per member — relation breathes. Sequences walk each record's own heading words or its address and re-form them — QL's pairs are its native grammar.\n\nrecords read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719\n\nMoves: the periphery shelf — the instrument surfaces refinement home marks, the apertures-and-clock-centre promotion turns (the pinned promotion — 3D scene: z is the aperture's depth, and the promotion hash stamp shows its frozen address), lens identity work holds, the Bimba Cypher log gathers (granular database updates — the log accumulates), the Anuttara symbolic language map emerges, and the frozen Epi C reference holds (frozen — nothing moves).\n\n3D: the whole scene carries the member's depth — z is the recognition fold: the two sides of the member's relation nearest, their reconciling fold deepest (laminated; depthPerspective on) — QL relates without merging, so depth holds the difference the fold retains. Pointers follow the arc's meaning (guard=locks and contracts hold, gather=relations gathered, vortex=the fold/refraction turns, rupture=the differentiating cut, settle=recognition at rest). Automation: one dispersion LFO per member — relation breathes. Sequences walk each record's own heading words or its address and re-form them — QL's pairs are its native grammar.\n\nrecords read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719\n\nMoves: the periphery shelf — the instrument surfaces refinement home marks, the apertures-and-clock-centre promotion turns (the pinned promotion — 3D scene: z is the aperture's depth, and the promotion hash stamp shows its frozen address), lens identity work holds, the Bimba Cypher log gathers (granular database updates — the log accumulates), the Anuttara symbolic language map emerges, and the frozen Epi C reference holds (frozen — nothing moves).\n\n3D: the whole scene carries the member's depth — z is the recognition fold: the two sides of the member's relation nearest, their reconciling fold deepest (laminated; depthPerspective on) — QL relates without merging, so depth holds the difference the fold retains. Pointers follow the arc's meaning (guard=locks and contracts hold, gather=relations gathered, vortex=the fold/refraction turns, rupture=the differentiating cut, settle=recognition at rest). Automation: one dispersion LFO per member — relation breathes. Sequences walk each record's own heading words or its address and re-form them — QL's pairs are its native grammar.\n\nrecords read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719"
 }
