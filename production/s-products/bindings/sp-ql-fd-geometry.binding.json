@@ -1,114 +1,139 @@
 {
-  "artifact": "quaternal-logic/sp-ql-fd-geometry.journey.json",
-  "family": "family-ql-fulldepth",
-  "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
-  "date": "2026-09-21",
-  "profile_lineage": [
-    "s-products-corpus-base",
-    "family-ql",
-    "family-ql-fulldepth"
+ "artifact": "quaternal-logic/sp-ql-fd-geometry.journey.json",
+ "family": "family-ql-fulldepth",
+ "worker": "full-depth production fan-out (wave 2 — S2 AIKit + S5 Quaternal Logic)",
+ "date": "2026-09-21",
+ "profile_lineage": [
+  "s-products-corpus-base",
+  "family-ql",
+  "family-ql-fulldepth"
+ ],
+ "admission": {
+  "register": "episteme (the Return-of-Zero essay corpus S register)",
+  "record_id": "S5",
+  "record_type": "product",
+  "claim_status": "Argued",
+  "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
+  "essay_source_revision": {
+   "repo": "EpiLogos/Antykathera-Essay-Work",
+   "branch": "main",
+   "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
+   "records": [
+    {
+     "record_id": "S5",
+     "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
+     "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
+    }
+   ]
+  }
+ },
+ "material_inventory": {
+  "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
+  "source_revision": {
+   "repo": "EpiLogos/Quaternal-Logic",
+   "branch": "session/k-aw-expression-production-2026-09-17",
+   "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
+   "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
+  },
+  "records_bound": [
+   {
+    "path": "docs/geometry/CANONICAL-CONSTELLATION-RESOLUTION.md",
+    "sha256": "e3d2b8c6e2b36475dcd2c71ca65a009a209bf45e4e6ea32f156574210f97a6b5",
+    "census_sha256": "e3d2b8c6e2b36475dcd2c71ca65a009a209bf45e4e6ea32f156574210f97a6b5",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "docs/geometry/FOLD-AND-RULING-GRAMMAR.md",
+    "sha256": "be05db80cb5f57b55cd82637962cfd741933f994660fff2cbf07e22f05efa673",
+    "census_sha256": "be05db80cb5f57b55cd82637962cfd741933f994660fff2cbf07e22f05efa673",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "docs/geometry/FOURTH-SPANDA-EQUATION.md",
+    "sha256": "63d731c5518d000ae0da982c21c2dd10fab7fc0385e6f8ffc172953aad764ee7",
+    "census_sha256": "63d731c5518d000ae0da982c21c2dd10fab7fc0385e6f8ffc172953aad764ee7",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "docs/geometry/GEOMETRY-CONSTELLATION-WAYFINDER.md",
+    "sha256": "eec1a69421e653a5d093d141ecf32be68cfad6d846fdacfa5fbe2bd90bfdeded",
+    "census_sha256": "eec1a69421e653a5d093d141ecf32be68cfad6d846fdacfa5fbe2bd90bfdeded",
+    "status": "identical-to-main"
+   },
+   {
+    "path": "docs/geometry/ORIGAMI-FOLD-GRAMMAR-RECOVERED.md",
+    "sha256": "567746627986b9f7e4b912ab55ed8bfca5d5415e6a7723e315bb46bc747fee6c",
+    "census_sha256": "567746627986b9f7e4b912ab55ed8bfca5d5415e6a7723e315bb46bc747fee6c",
+    "status": "identical-to-main"
+   }
   ],
-  "admission": {
-    "register": "episteme (the Return-of-Zero essay corpus S register)",
-    "record_id": "S5",
-    "record_type": "product",
-    "claim_status": "Argued",
-    "note": "the products’ authored admission is the essay’s S register; the whole-first movement path for this product is staged by wave-1 artifact sp-ql and is not duplicated by this full-depth journey",
-    "essay_source_revision": {
-      "repo": "EpiLogos/Antykathera-Essay-Work",
-      "branch": "main",
-      "commit": "7d96ada21db135d87a53d3d4bdd1821aa3f45257",
-      "records": [
-        {
-          "record_id": "S5",
-          "path": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md",
-          "sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0"
-        }
-      ]
-    }
+  "coverage": "5 of the 148-record inventory at full depth in this journey (family “geometry”); 6 records were bound by wave-1 sp-ql and are carried by reference",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719"
+  }
+ },
+ "scenes": [
+  {
+   "scene_id": "s5-fd-geometry-01",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/CANONICAL-CONSTELLATION-RESOLUTION.md",
+   "sha256": "e3d2b8c6e2b36475dcd2c71ca65a009a209bf45e4e6ea32f156574210f97a6b5",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
   },
-  "material_inventory": {
-    "census_receipt": "Antykathera-Essay-Work working/expression-corpus/P1-census-quaternal-logic.json (frozen-census-basis, 148 records; all 148 sha256 re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1 on 2026-09-21)",
-    "source_revision": {
-      "repo": "EpiLogos/Quaternal-Logic",
-      "branch": "session/k-aw-expression-production-2026-09-17",
-      "commit": "81d1af154339422c1087770121a9feafc6d7fbc8",
-      "published_note": "bound bytes are published origin/main 2bcdc78c2f97ce13312bf96011bd18bea7b73ea5 bytes for every record in this journey (re-hashed from git object storage and compared 2026-09-21); records that drifted on main since the census freeze are bound at current main bytes with the delta named in records_bound"
-    },
-    "records_bound": [
-      {
-        "path": "docs/geometry/CANONICAL-CONSTELLATION-RESOLUTION.md",
-        "sha256": "e3d2b8c6e2b36475dcd2c71ca65a009a209bf45e4e6ea32f156574210f97a6b5",
-        "census_sha256": "e3d2b8c6e2b36475dcd2c71ca65a009a209bf45e4e6ea32f156574210f97a6b5",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "docs/geometry/FOLD-AND-RULING-GRAMMAR.md",
-        "sha256": "be05db80cb5f57b55cd82637962cfd741933f994660fff2cbf07e22f05efa673",
-        "census_sha256": "be05db80cb5f57b55cd82637962cfd741933f994660fff2cbf07e22f05efa673",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "docs/geometry/FOURTH-SPANDA-EQUATION.md",
-        "sha256": "63d731c5518d000ae0da982c21c2dd10fab7fc0385e6f8ffc172953aad764ee7",
-        "census_sha256": "63d731c5518d000ae0da982c21c2dd10fab7fc0385e6f8ffc172953aad764ee7",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "docs/geometry/GEOMETRY-CONSTELLATION-WAYFINDER.md",
-        "sha256": "eec1a69421e653a5d093d141ecf32be68cfad6d846fdacfa5fbe2bd90bfdeded",
-        "census_sha256": "eec1a69421e653a5d093d141ecf32be68cfad6d846fdacfa5fbe2bd90bfdeded",
-        "status": "identical-to-main"
-      },
-      {
-        "path": "docs/geometry/ORIGAMI-FOLD-GRAMMAR-RECOVERED.md",
-        "sha256": "567746627986b9f7e4b912ab55ed8bfca5d5415e6a7723e315bb46bc747fee6c",
-        "census_sha256": "567746627986b9f7e4b912ab55ed8bfca5d5415e6a7723e315bb46bc747fee6c",
-        "status": "identical-to-main"
-      }
-    ],
-    "coverage": "5 of the 148-record inventory at full depth in this journey (family “geometry”); 6 records were bound by wave-1 sp-ql and are carried by reference"
+  {
+   "scene_id": "s5-fd-geometry-02",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/FOLD-AND-RULING-GRAMMAR.md",
+   "sha256": "be05db80cb5f57b55cd82637962cfd741933f994660fff2cbf07e22f05efa673",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
   },
-  "scenes": [
-    {
-      "scene_id": "s5-fd-geometry-01",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/CANONICAL-CONSTELLATION-RESOLUTION.md",
-      "sha256": "e3d2b8c6e2b36475dcd2c71ca65a009a209bf45e4e6ea32f156574210f97a6b5",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-geometry-02",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/FOLD-AND-RULING-GRAMMAR.md",
-      "sha256": "be05db80cb5f57b55cd82637962cfd741933f994660fff2cbf07e22f05efa673",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-geometry-03",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/FOURTH-SPANDA-EQUATION.md",
-      "sha256": "63d731c5518d000ae0da982c21c2dd10fab7fc0385e6f8ffc172953aad764ee7",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-geometry-04",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/GEOMETRY-CONSTELLATION-WAYFINDER.md",
-      "sha256": "eec1a69421e653a5d093d141ecf32be68cfad6d846fdacfa5fbe2bd90bfdeded",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    },
-    {
-      "scene_id": "s5-fd-geometry-05",
-      "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
-      "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
-      "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/ORIGAMI-FOLD-GRAMMAR-RECOVERED.md",
-      "sha256": "567746627986b9f7e4b912ab55ed8bfca5d5415e6a7723e315bb46bc747fee6c",
-      "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
-    }
-  ]
+  {
+   "scene_id": "s5-fd-geometry-03",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/FOURTH-SPANDA-EQUATION.md",
+   "sha256": "63d731c5518d000ae0da982c21c2dd10fab7fc0385e6f8ffc172953aad764ee7",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  },
+  {
+   "scene_id": "s5-fd-geometry-04",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/GEOMETRY-CONSTELLATION-WAYFINDER.md",
+   "sha256": "eec1a69421e653a5d093d141ecf32be68cfad6d846fdacfa5fbe2bd90bfdeded",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  },
+  {
+   "scene_id": "s5-fd-geometry-05",
+   "essay_source_ref": "submission-package/essay/symbolon/episteme/products/S5-Quaternal-Logic.md (whole path: wave-1 sp-ql; this scene binds material only)",
+   "s_record_sha256": "36a4828c5771769cce062b4490f4a760427082d937817f1a904621a92e1bc5e0",
+   "material_source_ref": "EpiLogos/Quaternal-Logic@81d1af1:docs/geometry/ORIGAMI-FOLD-GRAMMAR-RECOVERED.md",
+   "sha256": "567746627986b9f7e4b912ab55ed8bfca5d5415e6a7723e315bb46bc747fee6c",
+   "staged": "the record's own heading terms as a glyph row over the ground disc; one glyph names the record"
+  }
+ ],
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "geometry": "the constellation resolution's lens — L5.3 Geometry",
+  "vibration": "spanda — the vibration the fold carries",
+  "geometric": "the foundation's own adjective",
+  "conditions": "the conditions equation — eq0, the fourth Spanda equation",
+  "completion": "the wayfinder's end — the constellation completed",
+  "mah": "Mahāmāyā — the form grammar's subject (name truncated at glyph width)",
+  "form": "the form grammar's own noun",
+  "the Factory whole": "the member's staging of the QL whole — the S5 product field at full depth",
+  "S3 · full depth": "the whole scene's depth stamp — QL carried at full depth (the member's 3D lamination)",
+  "CANONICAL-CONSTELLATION-RESOLUTION": "the bound record's address stamp — the scene id derives from the bound path",
+  "FOLD-AND-RULING-GRAMMAR": "the bound record's address stamp — the scene id derives from the bound path",
+  "FOURTH-SPANDA-EQUATION": "the bound record's address stamp — the scene id derives from the bound path",
+  "GEOMETRY-CONSTELLATION-WAYFINDER": "the bound record's address stamp — the scene id derives from the bound path",
+  "ORIGAMI-FOLD-GRAMMAR-RECOVERED": "the bound record's address stamp — the scene id derives from the bound path"
+ },
+ "notes": "Moves: the geometry shelf — the canonical constellation resolution holds, the fold/ruling/vibration record turns (fold and vibration are motion — vortex, and the member's 3D scene: z is the fold itself, the ruling deepest), the fourth Spanda equation marks (the conditions equation — brightest, equated), the completion wayfinder walks, and the origami fold grammar turns (Mahāmāyā's form grammar — the 22.5° aperture re-forming the fibre).\n\n3D: the whole scene carries the member's depth — z is the recognition fold: the two sides of the member's relation nearest, their reconciling fold deepest (laminated; depthPerspective on) — QL relates without merging, so depth holds the difference the fold retains. Pointers follow the arc's meaning (guard=locks and contracts hold, gather=relations gathered, vortex=the fold/refraction turns, rupture=the differentiating cut, settle=recognition at rest). Automation: one dispersion LFO per member — relation breathes. Sequences walk each record's own heading words or its address and re-form them — QL's pairs are its native grammar.\n\nrecords read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719\n\nMoves: the geometry shelf — the canonical constellation resolution holds, the fold/ruling/vibration record turns (fold and vibration are motion — vortex, and the member's 3D scene: z is the fold itself, the ruling deepest), the fourth Spanda equation marks (the conditions equation — brightest, equated), the completion wayfinder walks, and the origami fold grammar turns (Mahāmāyā's form grammar — the 22.5° aperture re-forming the fibre).\n\n3D: the whole scene carries the member's depth — z is the recognition fold: the two sides of the member's relation nearest, their reconciling fold deepest (laminated; depthPerspective on) — QL relates without merging, so depth holds the difference the fold retains. Pointers follow the arc's meaning (guard=locks and contracts hold, gather=relations gathered, vortex=the fold/refraction turns, rupture=the differentiating cut, settle=recognition at rest). Automation: one dispersion LFO per member — relation breathes. Sequences walk each record's own heading words or its address and re-form them — QL's pairs are its native grammar.\n\nrecords read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719\n\nMoves: the geometry shelf — the canonical constellation resolution holds, the fold/ruling/vibration record turns (fold and vibration are motion — vortex, and the member's 3D scene: z is the fold itself, the ruling deepest), the fourth Spanda equation marks (the conditions equation — brightest, equated), the completion wayfinder walks, and the origami fold grammar turns (Mahāmāyā's form grammar — the 22.5° aperture re-forming the fibre).\n\n3D: the whole scene carries the member's depth — z is the recognition fold: the two sides of the member's relation nearest, their reconciling fold deepest (laminated; depthPerspective on) — QL relates without merging, so depth holds the difference the fold retains. Pointers follow the arc's meaning (guard=locks and contracts hold, gather=relations gathered, vortex=the fold/refraction turns, rupture=the differentiating cut, settle=recognition at rest). Automation: one dispersion LFO per member — relation breathes. Sequences walk each record's own heading words or its address and re-form them — QL's pairs are its native grammar.\n\nrecords read 2026-10-06 at Quaternal-Logic@81d1af1 (openings; titles are the records' own headings); essay record S5 read at fc59a719"
 }
