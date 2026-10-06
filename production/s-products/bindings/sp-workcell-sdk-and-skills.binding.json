@@ -49,7 +49,10 @@
     "sha256": "141ea79aaadd4ca7f92c4d1495235935cb29d4fd1df41950e066525247e3bf29"
    }
   ],
-  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -87,5 +90,20 @@
  ],
  "capture": "workcell/sp-workcell-sdk-and-skills.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"SDK and skills — provider authoring, workcell operation\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"SDK and skills — provider authoring, workcell operation\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nMoves: the SDK README holds ('deliberately thin supported façade' — the thinness is the guard), provider authoring gathers (a new provider brought into the place; 3D: z is the provider's placement), and the operation skill settles — operating the placed room without churn.\n\n3D: the member's depth is situated placement in a room — z is the Workcell's own here-ness: the workstation face nearest, the placed world deepest (laminated; depthPerspective on). Pointers: guard=placed bounds hold, gather=material gathered, vortex=lifecycle turns, rupture=the demand cuts in, settle=the room at rest. Automation: one LFO per member — the placed world breathes. Sequences walk each record's own heading words — placement is the Workcell's native grammar.\n\nrecords read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "SDK": "epilogos-workcell-sdk — the thin façade over core and control",
+  "authoring": "the provider-authoring skill's act",
+  "operation": "the operation skill's office — the room run without churn",
+  "unused": "the member's staging of the Factory whole — the S3 product field at full depth, under which each bound record sits",
+  "README": "the bound record's address stamp — the scene id derives from the bound path",
+  "SKILL": "the bound record's address stamp — the scene id derives from the bound path",
+  "Workcell": "the record's own heading words — the bound record's terms for its own act",
+  "provider": "the record's own heading words — the bound record's terms for its own act"
+ }
 }
