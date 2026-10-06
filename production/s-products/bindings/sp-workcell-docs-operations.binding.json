@@ -49,7 +49,10 @@
     "sha256": "0f43ce573d656832e29707b90fdaae65d20c0bfde60b31a156684ae03142632c"
    }
   ],
-  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -87,5 +90,27 @@
  ],
  "capture": "workcell/sp-workcell-docs-operations.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"Material operations — CAW procedures and secret projection\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"Material operations — CAW procedures and secret projection\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nMoves: the installed-world procedure holds (proof is a fixed procedure), the material operations gather (the material API receiving work), and the secret-projection session prompt ruptures (repel — a secret's origin and projection is a boundary record; 3D here: z is the projection's depth — origin nearest, cross-machine placement deepest).\n\n3D: the member's depth is situated placement in a room — z is the Workcell's own here-ness: the workstation face nearest, the placed world deepest (laminated; depthPerspective on). Pointers: guard=placed bounds hold, gather=material gathered, vortex=lifecycle turns, rupture=the demand cuts in, settle=the room at rest. Automation: one LFO per member — the placed world breathes. Sequences walk each record's own heading words — placement is the Workcell's native grammar.\n\nrecords read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Installed-world": "the installed world the procedure proves",
+  "second-placement": "the second placement the procedure performs",
+  "procedure": "the record's own kind — a procedure",
+  "Continuous": "continuous work — the CAW material API's frame",
+  "work": "the work the material operations receive",
+  "material": "the material the operations act on",
+  "operations": "the material API's operations (#72)",
+  "Session": "the session the prompt opens",
+  "prompt": "the record's kind — a paste-as-opening prompt",
+  "secret": "the secret whose origin the record bounds",
+  "unused": "the member's staging of the Factory whole — the S3 product field at full depth, under which each bound record sits",
+  "CAW-LOCAL-PROOF-PROCEDURE": "the bound record's address stamp — the scene id derives from the bound path",
+  "CAW-MATERIAL-OPERATIONS": "the bound record's address stamp — the scene id derives from the bound path",
+  "SESSION-SECRET-PROJECTION-PR": "the bound record's address stamp — the scene id derives from the bound path",
+  "Workcell": "the record's own heading words — the bound record's terms for its own act"
+ }
 }
