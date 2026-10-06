@@ -61,27 +61,29 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
     "mediumDimension": "2D",
     "autoSweep": false,
-    "sweepDirection": "ascent"
+    "sweepDirection": "ascent",
+    "depthPerspective": true,
+    "depthTintColor": "#161210"
    },
    "id": "fd-ql-core-whole",
    "name": "the Factory whole — QL agent experiments — core and foundation",
    "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1,
+    "mode": "3d",
+    "yaw": -0.42,
+    "pitch": 0.15,
+    "zoom": 0.92,
     "panX": 0,
     "panY": 0
    },
@@ -107,14 +109,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
+     "speed": 0.48,
+     "circulation": 0.8,
      "turbulence": 0.12,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -133,7 +135,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -146,7 +148,7 @@
      "position": {
       "x": 0,
       "y": -0.02,
-      "z": 0
+      "z": -0.5
      },
      "size": {
       "x": 0.46,
@@ -188,7 +190,7 @@
      "position": {
       "x": -0.5,
       "y": 0.4,
-      "z": 0
+      "z": 0.0
      },
      "size": {
       "x": 0.544,
@@ -230,7 +232,7 @@
      "position": {
       "x": 0.42,
       "y": 0.4,
-      "z": 0
+      "z": 0.5
      },
      "size": {
       "x": 0.48,
@@ -272,17 +274,17 @@
      "kicker": "S3 Software Factory · full depth · whole",
      "title": "QL agent experiments — core and foundation",
      "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the QL agent experiments — core and foundation slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
      "x": 0.78,
      "y": 0.5,
      "width": 300,
-     "size": 17,
+     "size": 21,
      "align": "left",
      "visible": true
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -355,10 +357,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -370,12 +372,12 @@
    "name": "Loop and Closure Clarification",
    "character": "Status: normative clarification for the QL agent specification and development protocol.",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9703,
     "panX": 0,
     "panY": 0
    },
@@ -401,14 +403,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6052,
+     "circulation": 1.313,
+     "turbulence": 0.1633,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1026,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -427,7 +429,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -503,16 +505,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r001-loop-closure-clarification-title-step-1",
+        "id": "fd-r001-loop-closure-clarification-title-enrichstep-1",
         "text": "Loop and Closure Clarification",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-loop-closure-clarification-title-enrichstep-2",
+        "text": "LOOP-CLOSURE-CLARIFICATION",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-loop-closure-clarification-title-enrichstep-3",
+        "text": "Loop and Closure Clarification",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -576,7 +639,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -593,7 +656,24 @@
     "depth": 1,
     "dwell": 0.3
    },
-   "automation": []
+   "automation": [
+    {
+     "id": "fd-r001-loop-closure-clarification-enrich-lfo",
+     "target": "field.params.dispersion",
+     "type": "lfo",
+     "wave": "sine",
+     "blend": "add",
+     "min": 0.03,
+     "max": 0.12,
+     "rate": 0.09,
+     "phase": 0,
+     "duration": 0,
+     "delay": 0,
+     "loop": "loop",
+     "firedAt": null,
+     "enabled": true
+    }
+   ]
   },
   {
    "toolbelt": [
@@ -649,10 +729,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.16,
+    "pointerClickRadius": 0.24,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -663,13 +743,13 @@
    "id": "fd-r002-status",
    "name": "STATUS",
    "character": "Reserved by #95. Activation follows Foundation Freeze.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0005,
     "panX": 0,
     "panY": 0
    },
@@ -695,14 +775,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.3604,
+     "circulation": 0.226,
+     "turbulence": 0.0665,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0452,
+     "pointerStrength": 0.18,
+     "pointerRadius": 0.2,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -721,7 +801,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 193.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -797,16 +877,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r002-status-title-step-1",
+        "id": "fd-r002-status-title-enrichstep-1",
         "text": "STATUS",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.28,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-status-title-enrichstep-2",
+        "text": "STATUS",
+        "shape": "ring",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.22,
+          "y": 0.22
+         },
+         "rotation": 0,
+         "tint": "#c8724a",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-status-title-enrichstep-3",
+        "text": "STATUS",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -870,7 +1011,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -943,10 +1084,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -957,13 +1098,13 @@
    "id": "fd-r003-readme",
    "name": "Deep QL workbench — reserved",
    "character": "This directory is part of the #95 programme workspace only. No Deep QL implementation begins on ql/runtime-foundation.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0208,
     "panX": 0,
     "panY": 0
    },
@@ -989,14 +1130,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4656,
+     "circulation": 0.639,
+     "turbulence": 0.1098,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0878,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1015,7 +1156,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1091,16 +1232,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r003-readme-title-step-1",
-        "text": "Deep QL workbench — reserved",
+        "id": "fd-r003-readme-title-enrichstep-1",
+        "text": "Deep QL workbench",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r003-readme-title-enrichstep-2",
+        "text": "reserved",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1164,7 +1343,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1238,9 +1417,9 @@
     "relationalEnabled": false,
     "relationalMode": "orbital",
     "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClick": "shove",
+    "pointerClickStrength": 2.6,
+    "pointerClickRadius": 0.52,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1251,13 +1430,13 @@
    "id": "fd-r004-foundation-blocker",
    "name": "Foundation Freeze blocker — resolved",
    "character": "The historical publication and CI blocker is resolved. This file is retained only as a record of that superseded condition.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 10,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.051,
     "panX": 0,
     "panY": 0
    },
@@ -1283,14 +1462,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.7208,
+     "circulation": 0.452,
+     "turbulence": 0.253,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1904,
+     "pointerStrength": 1.3,
+     "pointerRadius": 0.34,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1309,7 +1488,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 275.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1385,16 +1564,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r004-foundation-blocker-title-step-1",
-        "text": "Foundation Freeze blocker — resolved",
+        "id": "fd-r004-foundation-blocker-title-enrichstep-1",
+        "text": "Foundation Freeze blocker",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r004-foundation-blocker-title-enrichstep-2",
+        "text": "resolved",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1458,7 +1675,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1533,8 +1750,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1545,13 +1762,13 @@
    "id": "fd-r005-readme",
    "name": "QL Agent Runtime Foundation",
    "character": "This directory is the portable Foundation Freeze surface for issues #95–#100.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0013,
     "panX": 0,
     "panY": 0
    },
@@ -1577,14 +1794,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.426,
+     "circulation": 0.365,
+     "turbulence": 0.0963,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.063,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1603,7 +1820,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1752,7 +1969,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1825,10 +2042,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.16,
+    "pointerClickRadius": 0.24,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1839,13 +2056,13 @@
    "id": "fd-r006-readme",
    "name": "Classic runtime",
    "character": "This directory owns the deliberately small non-QL control condition for #96. It uses the shared RuntimeHost boundary and ordinary model/capability/follow-up recurrence. It must not acquire QL position, residue, determina",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0016,
     "panX": 0,
     "panY": 0
    },
@@ -1871,14 +2088,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.3812,
+     "circulation": 0.278,
+     "turbulence": 0.0795,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0556,
+     "pointerStrength": 0.18,
+     "pointerRadius": 0.2,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1897,7 +2114,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 193.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2046,7 +2263,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2119,10 +2336,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2134,12 +2351,12 @@
    "name": "Foundation fixtures",
    "character": "This directory owns the deterministic #99 Foundation Freeze fixture gate. The target subset is QLF-001/002/003/004/005, QLF-006..010, QLF-011/012/013/014, QLF-017, QLF-018, and QLN-001/002/003/004/006/007. The runner use",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0018,
     "panX": 0,
     "panY": 0
    },
@@ -2165,14 +2382,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5864,
+     "circulation": 0.991,
+     "turbulence": 0.1628,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1382,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2191,7 +2408,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2340,7 +2557,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2413,10 +2630,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2428,12 +2645,12 @@
    "name": "Foundation optics",
    "character": "This directory owns the #98 shared run manifest and observation surface: stable run identity, held-variable manifests, separate raw host events and runtime-semantic events, replay without a live session, and matched clas",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0021,
     "panX": 0,
     "panY": 0
    },
@@ -2459,14 +2676,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5916,
+     "circulation": 1.004,
+     "turbulence": 0.166,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1408,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2485,7 +2702,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2634,7 +2851,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2707,10 +2924,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2722,12 +2939,12 @@
    "name": "Direct Core QL runtime",
    "character": "This directory owns the #97 Direct Core recurrence semantics behind the shared LoopRuntime seam.",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9723,
     "panX": 0,
     "panY": 0
    },
@@ -2753,14 +2970,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6468,
+     "circulation": 1.417,
+     "turbulence": 0.1893,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1234,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2779,7 +2996,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2855,16 +3072,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r009-readme-title-step-1",
+        "id": "fd-r009-readme-title-enrichstep-1",
         "text": "Direct Core QL runtime",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r009-readme-title-enrichstep-2",
+        "text": "README",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r009-readme-title-enrichstep-3",
+        "text": "Direct Core QL runtime",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -2928,7 +3206,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3003,8 +3281,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3015,13 +3293,13 @@
    "id": "fd-r010-readme",
    "name": "Runtime contract",
    "character": "The shared contract standardises only the seam required to replace recurrence beneath one host.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0026,
     "panX": 0,
     "panY": 0
    },
@@ -3047,14 +3325,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.452,
+     "circulation": 0.43,
+     "turbulence": 0.1125,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.076,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3073,7 +3351,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3222,7 +3500,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3295,10 +3573,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3309,13 +3587,13 @@
    "id": "fd-r011-ql-agent-development-protoco",
    "name": "`ql-agent-development-protocol`",
    "character": "Date: 2026-08-13",
-   "duration": 14,
-   "transition": 2,
+   "duration": 15,
+   "transition": 1.8,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0029,
     "panX": 0,
     "panY": 0
    },
@@ -3341,14 +3619,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5572,
+     "circulation": 0.843,
+     "turbulence": 0.1457,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1186,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3367,7 +3645,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 220.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3516,7 +3794,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3591,8 +3869,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3603,13 +3881,13 @@
    "id": "fd-r012-ql-agent-development-protoco",
    "name": "QL Agent Development Protocol — Closure Amendment",
    "character": "Date: 2026-08-13",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0031,
     "panX": 0,
     "panY": 0
    },
@@ -3635,14 +3913,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4624,
+     "circulation": 0.456,
+     "turbulence": 0.119,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0812,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3661,7 +3939,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3810,7 +4088,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3885,8 +4163,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3897,13 +4175,13 @@
    "id": "fd-r013-ql-agent-spec-08-13-2026",
    "name": "**`ql-agent-spec`**",
    "character": "Specification version: 0.1.0-experimental",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0034,
     "panX": 0,
     "panY": 0
    },
@@ -3929,14 +4207,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4676,
+     "circulation": 0.469,
+     "turbulence": 0.1222,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0838,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3955,7 +4233,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -4031,16 +4309,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r013-ql-agent-spec-08-13-2026-title-step-1",
+        "id": "fd-r013-ql-agent-spec-08-13-2026-title-enrichstep-1",
         "text": "**`ql-agent-spec`**",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r013-ql-agent-spec-08-13-2026-title-enrichstep-2",
+        "text": "ql-agent-spec-08-13-2026",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r013-ql-agent-spec-08-13-2026-title-enrichstep-3",
+        "text": "**`ql-agent-spec`**",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -4104,7 +4443,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
