@@ -61,27 +61,29 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
     "mediumDimension": "2D",
     "autoSweep": false,
-    "sweepDirection": "ascent"
+    "sweepDirection": "ascent",
+    "depthPerspective": true,
+    "depthTintColor": "#161210"
    },
    "id": "fd-seed-docs-whole",
    "name": "the Factory whole — seed documents",
    "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1,
+    "mode": "3d",
+    "yaw": -0.42,
+    "pitch": 0.15,
+    "zoom": 0.92,
     "panX": 0,
     "panY": 0
    },
@@ -107,14 +109,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
+     "speed": 0.48,
+     "circulation": 0.8,
      "turbulence": 0.12,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -133,7 +135,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -146,7 +148,7 @@
      "position": {
       "x": 0,
       "y": -0.02,
-      "z": 0
+      "z": -0.5
      },
      "size": {
       "x": 0.46,
@@ -188,7 +190,7 @@
      "position": {
       "x": -0.5,
       "y": 0.4,
-      "z": 0
+      "z": 0.0
      },
      "size": {
       "x": 0.544,
@@ -230,7 +232,7 @@
      "position": {
       "x": 0.42,
       "y": 0.4,
-      "z": 0
+      "z": 0.5
      },
      "size": {
       "x": 0.48,
@@ -272,17 +274,17 @@
      "kicker": "S3 Software Factory · full depth · whole",
      "title": "seed documents",
      "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the seed documents slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
      "x": 0.78,
      "y": 0.5,
      "width": 300,
-     "size": 17,
+     "size": 21,
      "align": "left",
      "visible": true
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -357,8 +359,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -369,13 +371,13 @@
    "id": "fd-r001-ql-software-factory-architec",
    "name": "QL Software Factory — Constitutional Architecture Specification",
    "character": "Status: Product/architecture ratification draft",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0003,
     "panX": 0,
     "panY": 0
    },
@@ -401,14 +403,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4052,
+     "circulation": 0.313,
+     "turbulence": 0.0833,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0526,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -427,7 +429,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -503,16 +505,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r001-ql-software-factory-architec-title-step-1",
-        "text": "QL Software Factory — Constitutional Architecture Specification",
+        "id": "fd-r001-ql-software-factory-architec-title-enrichstep-1",
+        "text": "QL Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-ql-software-factory-architec-title-enrichstep-2",
+        "text": "Constitutional Architecture Specification",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -576,7 +616,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -651,8 +691,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -663,13 +703,13 @@
    "id": "fd-r002-ql-software-factory-constitu",
    "name": "QL Software Factory — Constitutional Index, Developmental Control Body",
    "character": "Status: Suite-level governing document",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0005,
     "panX": 0,
     "panY": 0
    },
@@ -695,14 +735,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4104,
+     "circulation": 0.326,
+     "turbulence": 0.0865,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0552,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -721,7 +761,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -797,16 +837,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r002-ql-software-factory-constitu-title-step-1",
-        "text": "QL Software Factory — Constitutional Index, Developmental Control Body",
+        "id": "fd-r002-ql-software-factory-constitu-title-enrichstep-1",
+        "text": "QL Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-ql-software-factory-constitu-title-enrichstep-2",
+        "text": "Constitutional Index, Developmental Control Body",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -870,7 +948,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -943,10 +1021,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -958,12 +1036,12 @@
    "name": "QL Software Factory — Deep QL Integration & Agent-Native Foundations",
    "character": "Status: Penultimate architectural framing document",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9708,
     "panX": 0,
     "panY": 0
    },
@@ -989,14 +1067,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6156,
+     "circulation": 1.339,
+     "turbulence": 0.1698,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1078,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1015,7 +1093,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1091,16 +1169,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r003-ql-software-factory-deep-ql-title-step-1",
-        "text": "QL Software Factory — Deep QL Integration & Agent-Native Foundations",
+        "id": "fd-r003-ql-software-factory-deep-ql-title-enrichstep-1",
+        "text": "QL Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r003-ql-software-factory-deep-ql-title-enrichstep-2",
+        "text": "Deep QL Integration & Agent-Native Foundations",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1164,7 +1280,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1237,10 +1353,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1252,12 +1368,12 @@
    "name": "QL Software Factory — Primitive Relations and Experienced Ontology",
    "character": "Status: Vision/architecture ratification draft",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.971,
     "panX": 0,
     "panY": 0
    },
@@ -1283,14 +1399,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6208,
+     "circulation": 1.352,
+     "turbulence": 0.173,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1104,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1309,7 +1425,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1385,16 +1501,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r004-ql-software-factory-primitiv-title-step-1",
-        "text": "QL Software Factory — Primitive Relations and Experienced Ontology",
+        "id": "fd-r004-ql-software-factory-primitiv-title-enrichstep-1",
+        "text": "QL Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r004-ql-software-factory-primitiv-title-enrichstep-2",
+        "text": "Primitive Relations and Experienced Ontology",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1458,7 +1612,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1475,7 +1629,24 @@
     "depth": 1,
     "dwell": 0.3
    },
-   "automation": []
+   "automation": [
+    {
+     "id": "fd-r004-ql-software-factory-primitiv-enrich-lfo",
+     "target": "field.params.dispersion",
+     "type": "lfo",
+     "wave": "sine",
+     "blend": "add",
+     "min": 0.03,
+     "max": 0.12,
+     "rate": 0.09,
+     "phase": 0,
+     "duration": 0,
+     "delay": 0,
+     "loop": "loop",
+     "firedAt": null,
+     "enabled": true
+    }
+   ]
   },
   {
    "toolbelt": [
@@ -1531,10 +1702,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1545,13 +1716,13 @@
    "id": "fd-r005-ql-software-factory-root-bui",
    "name": "QL Software Factory — Root Build Program",
    "character": "File: QL-SOFTWARE-FACTORY-ROOT-BUILD-PROGRAM.md",
-   "duration": 14,
-   "transition": 2,
+   "duration": 15,
+   "transition": 1.8,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0013,
     "panX": 0,
     "panY": 0
    },
@@ -1577,14 +1748,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.526,
+     "circulation": 0.765,
+     "turbulence": 0.1263,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.103,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1603,7 +1774,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 220.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1752,7 +1923,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1825,10 +1996,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1840,12 +2011,12 @@
    "name": "QL Software Factory — Workcell Runtime Module Specification",
    "character": "> Status: companion infrastructure specification to the Constitutional Architecture and Primitive Relations documents",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0016,
     "panX": 0,
     "panY": 0
    },
@@ -1871,14 +2042,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5812,
+     "circulation": 0.978,
+     "turbulence": 0.1595,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1356,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1897,7 +2068,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2046,7 +2217,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2119,10 +2290,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2133,13 +2304,13 @@
    "id": "fd-r007-ql-software-factory-wayfinde",
    "name": "QL Software Factory — Wayfinder Map 1",
    "character": "Status: regenerated harmonised repo-design map for combined threads A · C · G · J",
-   "duration": 14,
-   "transition": 2,
+   "duration": 15,
+   "transition": 1.8,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0018,
     "panX": 0,
     "panY": 0
    },
@@ -2165,14 +2336,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5364,
+     "circulation": 0.791,
+     "turbulence": 0.1328,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1082,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2191,7 +2362,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 220.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2340,7 +2511,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2413,10 +2584,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2428,12 +2599,12 @@
    "name": "WAYFINDER MAP — Agentic Execution Body",
    "character": "Territories: E · F · H · I",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0021,
     "panX": 0,
     "panY": 0
    },
@@ -2459,14 +2630,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5916,
+     "circulation": 1.004,
+     "turbulence": 0.166,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1408,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2485,7 +2656,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2561,16 +2732,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r008-wayfinder-map-agentic-execut-title-step-1",
-        "text": "WAYFINDER MAP — Agentic Execution Body",
+        "id": "fd-r008-wayfinder-map-agentic-execut-title-enrichstep-1",
+        "text": "WAYFINDER MAP",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r008-wayfinder-map-agentic-execut-title-enrichstep-2",
+        "text": "Agentic Execution Body",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -2634,7 +2843,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2707,10 +2916,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2721,13 +2930,13 @@
    "id": "fd-r009-ql-software-factory-wayfinde",
    "name": "QL Software Factory — Wayfinder Map 1",
    "character": "Status: definitive repo-design map for combined threads A · C · G · J",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0223,
     "panX": 0,
     "panY": 0
    },
@@ -2753,14 +2962,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4968,
+     "circulation": 0.717,
+     "turbulence": 0.1293,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1034,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2779,7 +2988,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2928,7 +3137,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
