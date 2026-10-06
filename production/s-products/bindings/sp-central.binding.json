@@ -60,7 +60,10 @@
     "sha256": "cb94beaabbdde49c2dc0f98aea3c38d3d61ceb56a3f686b1bee4ac78350ae3fe"
    }
   ],
-  "coverage": "6 of 61 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+  "coverage": "6 of 61 inventoried records bound (wave-1 slice; full-depth fan-out pending)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at EpiLogos/Central@36113051d; essay record S0 read at fc59a719"
+  }
  },
  "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
  "scenes": [
@@ -122,5 +125,49 @@
  ],
  "capture": "central/sp-central.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Whole-first: the S0 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S0 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+ "notes": "Whole-first: the S0 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S0 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out.\n\nMoves — #0 s0-m0-ground: quiet emergence; commitments→histories→promises→inheritances→interpretations walks what a Life carries (3D here — z is continuity's layers: the living surface nearest, the carried inheritances deepest). #1 s0-m1-sayable-ground: gather (attraction keeps the field); Why→What→How→Whom/When→Where/Why-for→Why-so/Not walks the sayable dimensions. #2 s0-m2-disclosure-return: turn (disclosure unveils — vortex); Arche→Apokalypsis→Dynamis→Sophia→Parousia→Epi-Logos walks the Logos pair. #3 s0-m3-authorship: hold (authorship without enclosure — guard; P0→P5 walk the authored offices). #4 s0-m4-carried-world: gather — Bimba→Pratibimba walks the order of dependence, causal effectiveness brightening. #5->0 s0-m5-revisable-continuity: settle — correction→governing source→revised commission→changed categories walks the return; slow speed LFO.\n\n3D: the member's depth is continuity layers — z is Central's own depth relation: the living surface nearest, the carried ground deepest (laminated; depthPerspective on). Pointers: guard=sources hold their standing, gather=continuity gathers the field (Central holds by attraction), vortex=correction turns the ground, rupture=recovery from loss, settle=continuity at rest. Automation: one LFO per member — the carried ground breathes. Sequences walk each record's own heading words.\n\nrecords read 2026-10-06 at EpiLogos/Central@36113051d; essay record S0 read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "commitments": "#0: what the Life has bound itself to",
+  "histories": "#0: the carried histories",
+  "promises": "#0: the carried promises",
+  "inheritances": "#0: what the Life has inherited",
+  "interpretations": "#0: the carried readings of what happened",
+  "Why": "#1: the first sayable dimension — ground becomes intelligible through it",
+  "What": "#1: the sayable's second dimension",
+  "How": "#1: the sayable's third dimension",
+  "Whom/When": "#1: the addressed and the timed (record's own slash form)",
+  "Where/Why-for": "#1: the placed and purposed (record's own slash form)",
+  "Why-so/Not": "#1: the warranted and refused (record's own slash form)",
+  "Arche": "#2: the origin the ground lives from",
+  "Apokalypsis": "#2: disclosure — the ground unveiled",
+  "Dynamis": "#2: the power the disclosure releases",
+  "Sophia": "#2: the wisdom the return gathers",
+  "Parousia": "#2: the presence the return brings",
+  "Epi-Logos": "#2: the account-bearing word the ground lives by",
+  "P0 identities": "#3: identity and ground — the first authored office",
+  "P1 ground": "#3: carried sources, declarations, flows",
+  "P2 authority": "#3: authorship, governance, accepted action",
+  "P3 development": "#3: proposal, revision, adoption, migration",
+  "P4 work": "#3: the work the authorship directs",
+  "P5 provenance": "#3: provenance — the return's addressability",
+  "Bimba": "#4: the articulated image",
+  "Pratibimba": "#4: what images the image — the reflection",
+  "order of dependence": "#4: the dependence preserved between image and source",
+  "causal effectiveness": "#4: 'a reflection can become causally effective' — the map guiding the next act",
+  "correction": "#5->0: the correction a later act inherits",
+  "governing source": "#5->0: the source that must be reached, not a note beside it",
+  "revised commission": "#5->0: the commission the return revises",
+  "changed categories": "#5->0: the categories the return changes",
+  "README": "the bound record's address stamp — the Central README bound at movement #0",
+  "PRODUCT-GROUND-CONVENTION": "the bound record's address stamp — the product ground convention",
+  "SOURCE-RETURN": "the bound record's address stamp — the source-return record",
+  "PROJECTCENTRAL-AUTHORED-GROUND": "the bound record's address stamp — the ProjectCentral authored-ground contract",
+  "PERSONAL-WORLD-PROJECTION": "the bound record's address stamp — the personal world projection record",
+  "RECOVERY-PROTOCOL": "the bound record's address stamp — the recovery protocol"
+ }
 }

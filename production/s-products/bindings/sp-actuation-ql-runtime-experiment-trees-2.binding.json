@@ -49,7 +49,10 @@
     "sha256": "74494f0bbee348c60717ff3e2faba0d10bb110fe12054fd35de02e22b51d255b"
    }
   ],
-  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)"
+  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)",
+  "enrichment_source_read": {
+   "note": "pinned records re-read 2026-10-06 at EpiLogos/Actuation@36bbf93b7896550f11186f6240b8f018208ab3b2; essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -87,5 +90,17 @@
  ],
  "capture": "actuation/sp-actuation-ql-runtime-experiment-trees-2.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"QL runtime — native, Pi and Pydantic experiment trees\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"QL runtime — native, Pi and Pydantic experiment trees\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nEnrichment 2026-10-06. Moves: 01 emerges (the Pydantic baseline active), 02 marks (the pinned upstream revision read — Pydantic→experiment→README walks the record), 03 holds (the shared host's QL-free boundary). 3D on 03: z is adapter depth — host graph events nearest, the QL-free runtime deepest.\n\nPointers: emerge (stillness .06) → gather → guard. Dispersion LFO on 01 (the baseline breathes).\n\npinned records re-read 2026-10-06 at EpiLogos/Actuation@36bbf93b7896550f11186f6240b8f018208ab3b2; essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Pydantic": "the Pydantic AI host experiment (issue 102) — graph state stays host-side",
+  "README": "the bound record's address stamp — a README of the experiment tree",
+  "experiment": "the matched runtime experiment itself — host boundary constant, runtime selected per run",
+  "host": "the shared host integration — QL-free, reused unchanged by both conditions",
+  "shared": "the shared adapter layer — deliberately free of QL logic"
+ }
 }

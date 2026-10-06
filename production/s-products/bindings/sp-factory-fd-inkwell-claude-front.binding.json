@@ -103,7 +103,10 @@
     "delta": "byte-identical to census sha256 at fbabaaad"
    }
   ],
-  "coverage": "11 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)"
+  "coverage": "11 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -183,5 +186,39 @@
  ],
  "capture": "factory/sp-factory-fd-inkwell-claude-front.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base."
+ "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base.\n\nMoves: the Inkwell front runs install→prime→operate — install gathers (toolchain and deps brought in), prime emerges (context primed before the run), herdr holds (the workspace loop's law), the cookbooks turn and hold (live config reload turns — a loop re-reading its config; network checks disabled hold — a boundary), the command reference holds (the lookup table), the sandbox skill and browser cookbook mark (visual validation on the local machine), fleet ruptures (repel/shove — 'exe.dev VMs cannot be paused and bill continuously until vm kill': the cost trap is the event), the quickstart walks (every command group once) and the CLI README settles.\n\n3D: the whole scene carries the member's depth — z is the Factory's own transformation depth: intention and commission nearest, the re-formed result deepest (laminated; depthPerspective on). Pointers follow the arc's meaning (guard=canon holds its edges, gather=material intake, vortex=the run turns, rupture=gate refusal/cutover, settle=acceptance quiet). Automation: a dispersion LFO on one scene per member — the run breathes. Durations/transitions step 10–16s / 1.2–2.2 with the arc.\n\nSequences are the Factory's native grammar: the title formation walks its own heading segments and re-forms at its address stamp.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719\n\nMoves: the Inkwell front runs install→prime→operate — install gathers (toolchain and deps brought in), prime emerges (context primed before the run), herdr holds (the workspace loop's law), the cookbooks turn and hold (live config reload turns — a loop re-reading its config; network checks disabled hold — a boundary), the command reference holds (the lookup table), the sandbox skill and browser cookbook mark (visual validation on the local machine), fleet ruptures (repel/shove — 'exe.dev VMs cannot be paused and bill continuously until vm kill': the cost trap is the event), the quickstart walks (every command group once) and the CLI README settles.\n\n3D: the whole scene carries the member's depth — z is the Factory's own transformation depth: intention and commission nearest, the re-formed result deepest (laminated; depthPerspective on). Pointers follow the arc's meaning (guard=canon holds its edges, gather=material intake, vortex=the run turns, rupture=gate refusal/cutover, settle=acceptance quiet). Automation: a dispersion LFO on one scene per member — the run breathes. Durations/transitions step 10–16s / 1.2–2.2 with the arc.\n\nSequences are the Factory's native grammar: the title formation walks its own heading segments and re-forms at its address stamp.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "the Factory whole": "the member's staging of the Factory whole — Inkwell factory, commands and herd",
+  "Install Factory In A Box": "the install command — toolchain, deps, .env and the sbx preflight",
+  "Purpose": "the prime command's own heading — priming context for Inkwell, the factory that builds it, and the sandbox that runs both",
+  "herdr": "the herdr skill — the workspace loop the panes run in",
+  "Cookbook: Live Config Reload Loop": "reload config without restarting the loop — the recipe's own subject",
+  "Cookbook: Setup — Disable Herdr's Background Network Checks": "the setup recipe — a boundary set on background calls",
+  "herdr Command Reference (validated against 0.7.1)": "the complete CLI surface — 'the lookup table' beside the skill's teaching",
+  "Agent Sandboxes (exe.dev)": "the sandbox skill — persistent VMs the factory's runs live in",
+  "Browser Automation Cookbook (exe.dev)": "visual validation via Playwright's isolated Chromium — run locally, not in the VM",
+  "Fleet Operations — download-all / restore": "the fleet recipes — VMs bill until killed; download and restore are the care",
+  "Example 01 — Quickstart end-to-end": "the 5-minute walkthrough exercising every command group once",
+  "exedev CLI": "the streamlined CLI for exe.dev persistent VMs, mirroring the sbx CLI's shape",
+  "S3 · full depth": "the whole scene's depth stamp — the Factory carried at full depth (the member's 3D lamination)",
+  "SKILL": "the bound record's address stamp — the scene id derives from the bound path",
+  "01_quickstart": "the bound record's address stamp — the scene id derives from the bound path",
+  "README": "the bound record's address stamp — the scene id derives from the bound path",
+  "install": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "prime": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "live-config-reload": "the bound record's address stamp — the scene id derives from the bound path",
+  "setup-disable-network-checks": "the bound record's address stamp — the scene id derives from the bound path",
+  "command-reference": "the bound record's address stamp — the scene id derives from the bound path",
+  "browser": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "Fleet Operations": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "download-all / restore": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "fleet": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "Example 01": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "Quickstart end-to-end": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)"
+ }
 }

@@ -60,7 +60,10 @@
     "sha256": "db60f6a0706d732ec993db8d91df89038c776d53ae45da7cbe6d9596506839c1"
    }
   ],
-  "coverage": "6 of 30 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+  "coverage": "6 of 30 inventoried records bound (wave-1 slice; full-depth fan-out pending)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at EpiLogos/Workcell@5ddf156d3 / @d911bfd95; essay record S4 read at fc59a719"
+  }
  },
  "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
  "scenes": [
@@ -122,5 +125,47 @@
  ],
  "capture": "workcell/sp-workcell.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Whole-first: the S4 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S4 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+ "notes": "Whole-first: the S4 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S4 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out.\n\nMoves — #0 s4-m0-somewhere: quiet emergence of the somewhere (host, filesystem, network, runtime, room as the placed furniture; 3D here — z is room placement: the room's surfaces nearest, the placed runtime deepest). #1 s4-m1-thrown-world: gather (thrownness lands); the Phenomenological lens walks Being→Thrownness→Being-there→Temporality→Care→Releasement in the record's order. #2 s4-m2-aperture: turn (the aperture of encounter); Introversion→…→Extroversion walks the six modes. #3 s4-m3-demand-offer: rupture (repel/shove — the execution demand cuts into the world); ExecutionDemand→BindingGraph→MaterialisationPlan→RealisedWorld walks the offer. #4 s4-m4-availability: gather (reachability, permission, exposure, alterity — available, not owned). #5->0 s4-m5-evidence-returns: settle — observed state→recovery→retention→reinterpretation walks the return; slowest LFO.\n\n3D: the member's depth is situated placement in a room — z is the Workcell's own here-ness: the workstation face nearest, the placed world deepest (laminated; depthPerspective on). Pointers: guard=placed bounds hold, gather=material gathered, vortex=lifecycle turns, rupture=the demand cuts in, settle=the room at rest. Automation: one LFO per member — the placed world breathes. Sequences walk each record's own heading words — placement is the Workcell's native grammar.\n\nrecords read 2026-10-06 at EpiLogos/Workcell@5ddf156d3 / @d911bfd95; essay record S4 read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "host": "#0: the material host — where the Life's somewhere is grounded",
+  "filesystem": "#0: the placed filesystem — the room's shelves",
+  "network": "#0: the placed network — how the room reaches",
+  "runtime": "#0: the placed runtime — what can execute here",
+  "room": "#0: the room itself — situated existence's first fact",
+  "Being": "#1: the phenomenological lens's first term — being as the fact of the placed world",
+  "Thrownness": "#1: thrown into a world not wholly chosen — the placed conditions",
+  "Being-there": "#1: Da-sein — being-there in the concrete here",
+  "Temporality": "#1: the placed world's time",
+  "Care": "#1: care — the world's involvement",
+  "Releasement": "#1: Gelassenheit — released handling of the placed world",
+  "Introversion": "#2: the aperture turned inward",
+  "Sensation": "#2: the material sense of the placed world",
+  "Feeling": "#2: the placed world's valuation",
+  "Thinking": "#2: the placed world's distinction",
+  "Intuition": "#2: the placed world's possibility",
+  "Extroversion": "#2: the aperture turned outward",
+  "ExecutionDemand": "#3: the material execution demand — the cut into the world",
+  "BindingGraph": "#3: the bindings that tie demand to capability",
+  "MaterialisationPlan": "#3: the plan by which the world is materialised",
+  "RealisedWorld": "#3: the realised world — the offer answered",
+  "reachability": "#4: the host can be reached — availability's first mode",
+  "permission": "#4: availability is not unrestricted access — permission bounds it",
+  "exposure": "#4: what the placement exposes",
+  "alterity": "#4: the other's difference retained in availability",
+  "observed state": "#5->0: the material evidence observed",
+  "recovery": "#5->0: the lifecycle's recovery",
+  "retention": "#5->0: what the return retains",
+  "reinterpretation": "#5->0: the evidence re-read into meaning",
+  "README": "the bound record's address stamp — the Workcell README bound at movement #0",
+  "ARCHITECTURE": "the bound record's address stamp — docs/ARCHITECTURE.md ('what executable world can this Workcell materialise here?')",
+  "VISUAL-PRODUCT-UNDERSTANDING": "the bound record's address stamp — the Workcell's canonical product-understanding surface",
+  "CANDIDATE-MATERIALISATION": "the bound record's address stamp — docs/CANDIDATE-MATERIALISATION.md",
+  "CROSS-CELL-CONNECTIONS": "the bound record's address stamp — docs/CROSS-CELL-CONNECTIONS.md ('durable, revocable, expirable, permissioned')",
+  "LIFECYCLE-RECONCILIATION": "the bound record's address stamp — docs/LIFECYCLE-RECONCILIATION.md"
+ }
 }

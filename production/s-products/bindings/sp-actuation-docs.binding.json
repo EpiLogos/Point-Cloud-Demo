@@ -65,7 +65,10 @@
     "sha256": "1c69be477e4442b6d0d8dddb566ceab972acdfbf9b668a71c50a3096904e006b"
    }
   ],
-  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)"
+  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)",
+  "enrichment_source_read": {
+   "note": "pinned records re-read 2026-10-06 at EpiLogos/Actuation@0ac23bfe95d99387bf77cd101b702e4c0a219d96 (docs tranche) and @36bbf93b7896550f11186f6240b8f018208ab3b2 (repo records); essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -135,5 +138,40 @@
  ],
  "capture": "actuation/sp-actuation-docs.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"Core documentation — harness capability, placement, activity, QL migration\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"Core documentation — harness capability, placement, activity, QL migration\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nEnrichment 2026-10-06. Per-scene moves: 01-activity gathers (attract/implode — the portable reading gathers the native relation); a formation walks the doc's own relation Agency→Agent→Actuation→Stream→Activity. 02-harness-capability and 03-harness-reference hold (guard repel — contracts hold their edges). 04-ql-runtime-migration turns (vortex — the programme changes ownership boundary); the seam walks Agent→Runtime→migration. 05-system-placement emerges (the vertical composition disclosed); 06-visual-product-understanding marks (brighter gather — difference returns). 07-world-bound-root-agency settles; the constitutional relation walks World-bound→Agency→positional→Root.\n\n3D: 05-system-placement; z is the doc's own vertical composition (Human authorship → O:I → Central → Root Agency → …) staged as depth layers; depthPerspective on. Pointer: the arc runs gather → guard → guard → vortex → stillness(emerge) → gather → settle(attract .16) — contracts guard, migration turns, the constitutional relation settles. Automation: circulation LFO on 01-activity (the stream keeps moving through surfaces).\n\npinned records re-read 2026-10-06 at EpiLogos/Actuation@0ac23bfe95d99387bf77cd101b702e4c0a219d96 (docs tranche) and @36bbf93b7896550f11186f6240b8f018208ab3b2 (repo records); essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Semantic": "the record's own heading word — activity read at the semantic level, portable before raw traces (ACTIVITY.md: 'portable semantic reading of acting')",
+  "Activity": "the bound doc's subject: 'actuation.activity/v1 is the portable semantic reading of acting'",
+  "ACTIVITY": "the bound record's address stamp — docs/ACTIVITY.md",
+  "Harness": "the harness the descriptors describe — the body through which an actuation is exposed",
+  "capability": "the descriptor's content: what a harness is for products dispatching into it (HARNESS-CAPABILITY.md)",
+  "descriptors": "the doc's own noun — 'Harness capability descriptors' declare lifecycle events, channels and seams",
+  "HARNESS-CAPABILITY": "the bound record's address stamp — docs/HARNESS-CAPABILITY.md",
+  "Reference": "the maximal reference harness principle — a deliberately demanding composition used to expose missing scope (HARNESS-REFERENCE.md)",
+  "Principle": "the doc's own noun — the reference-harness policy stated as principle",
+  "HARNESS-REFERENCE": "the bound record's address stamp — docs/HARNESS-REFERENCE.md",
+  "Agent": "enduring semantic identity (the constitution's imported foundation; the migration doc's own seam line 'AGENT HOST / HARNESS')",
+  "Runtime": "the QL Agent Runtime whose migration the record plans — ownership moving from Factory to Actuation",
+  "migration": "the record's own act: the programme moving to its correct ownership boundary (QL-RUNTIME-MIGRATION.md §1)",
+  "QL-RUNTIME-MIGRATION": "the bound record's address stamp — docs/QL-RUNTIME-MIGRATION.md",
+  "EpiLogos": "the system whose vertical composition the placement doc diagrams",
+  "system": "the doc's placement subject — 'Actuation in the EpiLogos system'",
+  "SYSTEM-PLACEMENT": "the bound record's address stamp — docs/SYSTEM-PLACEMENT.md",
+  "Visual": "the canonical product-understanding surface's own adjective (VISUAL-PRODUCT-UNDERSTANDING.md)",
+  "Product": "the product understanding the doc renders",
+  "Understanding": "the doc's purpose: why Actuation exists — 'purposeful agency is incomplete if determination only travels downward'",
+  "VISUAL-PRODUCT-UNDERSTANDING": "the bound record's address stamp — docs/VISUAL-PRODUCT-UNDERSTANDING.md",
+  "World-bound": "the constitutional relation's first term — Agency bound to an operative world and scope",
+  "Agency": "the situated capacity of the Agent to act (WORLD-BOUND-ROOT-AGENCY.md §Constitutional relation)",
+  "positional": "root agency as position, not class — 'isRootAgency(binding, scope)'",
+  "Root": "the positional root agency the doc defines against the enclosing Objective Internality",
+  "WORLD-BOUND-ROOT-AGENCY": "the bound record's address stamp — docs/WORLD-BOUND-ROOT-AGENCY.md",
+  "Actuation": "the product itself — the developmental and reference home for agency semantics",
+  "Stream": "the ActuationStream step of the doc's native relation (Agency/Agent → realised Actuation → Stream → Activity)"
+ }
 }

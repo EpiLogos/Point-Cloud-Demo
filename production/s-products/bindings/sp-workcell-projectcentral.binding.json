@@ -53,7 +53,10 @@
     "sha256": "e5935c4097f810e8b743aad9c8aed70c12ad97b2e5bb634306d7d9a10619bdb0"
    }
   ],
-  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -99,5 +102,25 @@
  ],
  "capture": "workcell/sp-workcell-projectcentral.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"ProjectCentral ground — repo covenant, capability matrix, telos\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"ProjectCentral ground — repo covenant, capability matrix, telos\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nMoves: repo content holds (what the work should be like), repo structure gathers (where things go — drift-warning LFO), the capability matrix holds (source-recovered candidate), and the Telos README emerges — 'open intent', the placed room's why.\n\n3D: the member's depth is situated placement in a room — z is the Workcell's own here-ness: the workstation face nearest, the placed world deepest (laminated; depthPerspective on). Pointers: guard=placed bounds hold, gather=material gathered, vortex=lifecycle turns, rupture=the demand cuts in, settle=the room at rest. Automation: one LFO per member — the placed world breathes. Sequences walk each record's own heading words — placement is the Workcell's native grammar.\n\nrecords read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Repo": "the repository the governance records address",
+  "content": "'what should this be like' — consulted when something is made",
+  "structure": "'where does this go' — consulted when something is added",
+  "capability": "the matrix's powers under relation",
+  "matrix": "the capability matrix — source-recovered candidate",
+  "Telos": "the open intent — the room's why",
+  "open": "the intent's standing — open, not closed",
+  "intent": "the intent itself",
+  "README": "the bound record's address stamp — the scene id derives from the bound path",
+  "repo-content": "the bound record's address stamp (truncated at glyph width) — the scene id derives from the bound path",
+  "repo-structure": "the bound record's address stamp (truncated at glyph width) — the scene id derives from the bound path",
+  "Workcell": "the record's own heading words — the bound record's terms for its own act",
+  "capability-matrix": "the bound record's address stamp (truncated at glyph width) — the scene id derives from the bound path"
+ }
 }

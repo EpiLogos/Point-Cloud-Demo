@@ -60,7 +60,10 @@
     "sha256": "61658a13900e72448e970317fbec3abf2fc38749022ff046612ea2fd55642871"
    }
   ],
-  "coverage": "6 of 157 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+  "coverage": "6 of 157 inventoried records bound (wave-1 slice; full-depth fan-out pending)",
+  "enrichment_source_read": {
+   "note": "pinned records re-read 2026-10-06 at EpiLogos/Actuation@0ac23bfe95d99387bf77cd101b702e4c0a219d96 (docs tranche) and @36bbf93b7896550f11186f6240b8f018208ab3b2 (repo records); essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)"
+  }
  },
  "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
  "scenes": [
@@ -122,5 +125,48 @@
  ],
  "capture": "actuation/sp-actuation.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Whole-first: the S1 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S1 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+ "notes": "Whole-first: the S1 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S1 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out.\n\nEnrichment 2026-10-06 (wave 3, lane s-products). Per-scene moves — #0 s1-m0-articulation: quiet emergence (speed .45, turbulence .10, circulation .6, stillness pointer .06), one formation walks the five event verbs to 'acts' with brightening tint; layout line (the record's own term row). #1 s1-m1-freedom-event: gather (attract/implode pointer — freedom gathering into a committed movement), gravity draws the causes row together; a formation walks Svātantrya→Material→Efficient→Formal→Final→Will in the record's listing order, Will arriving larger. #2 s1-m2-act-knowledge: turn (vortex pointer — challenges turn the inquiry); the Scientific sequence itself walks the row left-to-right, Challenges tinted copper, an LFO breathes dispersion (traces breathe). #3 s1-m3-judgment-world: hold (guard pointer — the judgment field keeps its conditions distinct); relational orbital mode; the distribution→selection pair stages the mark's determination (spread dim field → small bright mark). #4 s1-m4-constitution-return: gather; layout ring (the Actuation circuit g⊳C⟲ΔW); the realised loop's own six terms walk the ring positions. #5->0 s1-m5-returned-judgment: settle — circulation reversed (-0.5), speed lowest, stillness pointer; the retained model-depth row dims back toward the implicate; the slowest LFO breathes speed.\n\n3D: s1-m3-judgment-world is the 3D scene; z is J-Space's own distance dimension — near/salient possibilities nearest the viewer, excluded and far conditions deepest (the record: 'Distances, attractors, contradictions, permissions, source authority and reachable actions'); depthPerspective on with a warm depth tint. No other scene stages fake space.\n\nPointer profiles, by meaning: stillness (0.06 attract) for #0 and #5->0 (articulation begins and returns in quiet); attract/implode for #1 and #4 (gathering and return); vortex for #2 (the inquiry turns on challenges); guard repel for #3 (the field holds its edges). Automation lanes: dispersion LFO on #2 (the trace layer breathes), slow speed sine on #5->0 (the return breathes).\n\npinned records re-read 2026-10-06 at EpiLogos/Actuation@0ac23bfe95d99387bf77cd101b702e4c0a219d96 (docs tranche) and @36bbf93b7896550f11186f6240b8f018208ab3b2 (repo records); essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "perceives": "the first of the record's five event verbs (#0): 'A life perceives, differentiates, imagines, speaks and acts' — the event-substance of the internality",
+  "differentiates": "the second event verb (#0): discrimination through which the world takes on a particular form",
+  "imagines": "the third event verb (#0): the formation of possibilities before speech",
+  "speaks": "the fourth event verb (#0): the act entering language",
+  "acts": "the fifth event verb (#0) and the sequence's terminus: the committed movement the four causes gather (#1)",
+  "Svātantrya": "#1's originating freedom — 'the originating freedom through which articulation is possible'",
+  "Material": "#1's first cause: 'that upon which the present determination works'",
+  "Efficient": "#1's second cause: 'the activity effecting the change'",
+  "Formal": "#1's third cause: 'the organisation by which this becomes this act rather than another'",
+  "Final": "#1's fourth cause: 'its end or containing purpose'",
+  "Will": "#1's gathering cause: 'gathers the determination into a committed movement and returns its consequence to the possibility of further articulation'",
+  "Prompts": "#2's Scientific sequence, step 1: 'A Prompt occasions a directed act'",
+  "Traces": "#2, step 2: 'Traces retain what actually happened and under which conditions'",
+  "Challenges": "#2, step 3: 'Challenges bring contrary evidence, resistance and excluded alternatives into the inquiry'",
+  "Patterns": "#2, step 4: 'Patterns disclose relations across those traces and differences'",
+  "Discovery": "#2, step 5: 'Discovery changes what the inquiry knows or can do'",
+  "Insight": "#2, step 6: 'Insight integrates that change into the understanding from which another act begins'",
+  "distribution": "#3: 'A distribution and its selected index retain different information' — the field of alternatives",
+  "selection": "#3: the selected mark — softmax's distribution resolved to an index, the apoha analogue",
+  "J-Space": "#3's proposed representation of active judgments, affordances, uncertainties and tools — 'a bounded articulation of world-for-agency'",
+  "preference": "#3: preference defined relationally by RLHF/DPO/Bradley–Terry whose finished score can conceal its comparison conditions",
+  "evaluator": "#3: the evaluator whose ground is the hidden zero — 'a measure behaving as though it were the condition of measurement itself'",
+  "Agent/Agency": "#4/#5->0: 'Agent is enduring semantic identity; Agency is the situated determination' (constitution §3)",
+  "WorldBinding": "#5->0: 'a world-binding composes a particular instance' — which world and scope the Agency inhabits",
+  "authority": "#5->0: 'authority and delegation give its judgment a reach'",
+  "determination": "#5->0: the governing determination that differentiates the bounded composition (relation §2)",
+  "execution": "#5->0: 'execution makes them actual'",
+  "attribution": "#5->0: 'attribution and recognition let their consequences enter the next world-condition'",
+  "mathematics": "#3: 'Mathematics already moves as meaning' — the inspectable technical process of the act",
+  "exclusion": "#3: apoha — 'a positive mark takes form through a field of alternatives whose exclusion remains constitutive'",
+  "ACTUATION-CONSTITUTION": "the bound record's own address — docs/ACTUATION-CONSTITUTION.md, the product's constitution of the act",
+  "ACTUATION-STREAM": "the bound record's own address — docs/ACTUATION-STREAM.md, the ordered attributable material through which a situated Actuation unfolds",
+  "EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH": "the bound record's own address — the research specification bound at movement #2",
+  "MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION": "the bound record's own address — the research/product-direction record bound at movement #3",
+  "ACTUATION-RELATION": "the bound record's own address — docs/ACTUATION-RELATION.md, the one-to-many composition relation bound at movement #4",
+  "REALISED-ACTUATION-LOOP": "the bound record's own address — the acting-loop contract bound at movement #5->0"
+ }
 }

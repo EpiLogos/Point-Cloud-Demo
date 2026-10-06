@@ -60,7 +60,10 @@
     "sha256": "15d0d3912b3cdb128d1141182500aac438fdb6e85c1d5f17866aba1f1c633303"
    }
   ],
-  "coverage": "6 of 104 inventoried records bound (wave-1 slice; full-depth fan-out pending)"
+  "coverage": "6 of 104 inventoried records bound (wave-1 slice; full-depth fan-out pending)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at EpiLogos/ai-kit pinned commits; essay record S2 read in full at fc59a719 (submission-package/essay/section-rooms/arguments/products/S2-AIKit.md)"
+  }
  },
  "pointcloud_revision": "dcc332e3c01568dddc4e6535879f2c5260caccd0",
  "scenes": [
@@ -122,5 +125,47 @@
  ],
  "capture": "aikit/sp-aikit.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Whole-first: the S2 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S2 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out."
+ "notes": "Whole-first: the S2 record’s own movement path (#0 → #5→0) staged in order; every scene binds the S2 record (essay path + sha256 above) by its exact movement heading (verified present in the bound bytes at freeze time) plus one material record from the frozen inventory. Scene ids derive from the S record’s movement headings. Presentation mappings (tint, ground, term row, layout) are declared craft. Not corpus-complete: full per-product depth (all inventoried records as scenes) is the following fan-out.\n\nEnrichment 2026-10-06. Per-scene moves — #0 s2-m0-horizon: quiet emergence; knows→expresses→reaches→brings to bear walks outward to the horizon's edge; 3D here — z is the horizon's reach: what is known nearest, what can actually be brought to bear deepest (the record's own 'may exist yet be unavailable here'); 17s. #1 s2-m1-capacity-absence: hold (guard — the tetralemma holds absence in the field); IS→SILENCE walks the corners, SILENCE dimming to the quietest tint; 16s. #2 s2-m2-powers-temporal: turn (vortex — the seasons turn); Spirit→Spring→Summer→Autumn→Winter→Aufhebung walks the year, Aufhebung returning bright; dispersion LFO. #3 s2-m3-possession-disclosure: hold; P0→P5 walks the offices (possession distinguished from disclosure). #4 s2-m4-trust-power: gather (potency entrusted; attract/implode); permission→selection→refusal→fitness, refusal tinted copper. #5->0 s2-m5-horizon-returns: settle — returned fitness→tightened scope→retired option→reopened exclusion; slowest speed LFO; 13s.\n\nPointers: stillness → guard → vortex → guard → gather → settle. Layout line throughout (the records' term rows). Automation: dispersion LFO #2 (the seasons breathe), slow speed sine #5->0.\n\nrecords read 2026-10-06 at EpiLogos/ai-kit pinned commits; essay record S2 read in full at fc59a719 (submission-package/essay/section-rooms/arguments/products/S2-AIKit.md)\n\nEnrichment 2026-10-06. Per-scene moves — #0 s2-m0-horizon: quiet emergence; knows→expresses→reaches→brings to bear walks outward to the horizon's edge; 3D here — z is the horizon's reach: what is known nearest, what can actually be brought to bear deepest (the record's own 'may exist yet be unavailable here'); 17s. #1 s2-m1-capacity-absence: hold (guard — the tetralemma holds absence in the field); IS→SILENCE walks the corners, SILENCE dimming to the quietest tint; 16s. #2 s2-m2-powers-temporal: turn (vortex — the seasons turn); Spirit→Spring→Summer→Autumn→Winter→Aufhebung walks the year, Aufhebung returning bright; dispersion LFO. #3 s2-m3-possession-disclosure: hold; P0→P5 walks the offices (possession distinguished from disclosure). #4 s2-m4-trust-power: gather (potency entrusted; attract/implode); permission→selection→refusal→fitness, refusal tinted copper. #5->0 s2-m5-horizon-returns: settle — returned fitness→tightened scope→retired option→reopened exclusion; slowest speed LFO; 13s.\n\nPointers: stillness → guard → vortex → guard → gather → settle. Layout line throughout (the records' term rows). Automation: dispersion LFO #2 (the seasons breathe), slow speed sine #5->0.\n\nrecords read 2026-10-06 at EpiLogos/ai-kit pinned commits; essay record S2 read in full at fc59a719 (submission-package/essay/section-rooms/arguments/products/S2-AIKit.md)",
+ "glyph_rationales": {
+  "knows": "#0: what the Life can know — the horizon's first reach",
+  "expresses": "#0: what it can express",
+  "reaches": "#0: what it can reach",
+  "brings to bear": "#0: what it can actually bring to bear — 'A capacity may exist yet be unavailable here'",
+  "01-PRODUCT-AND-OWNERSHIP": "the bound record's address stamp — the product-and-ownership record bound at movement #0",
+  "IS": "#1: the tetralemma's first corner — capacity present",
+  "IS-NOT": "#1: the second corner — capacity absent ('available yet irrelevant')",
+  "BOTH": "#1: the third corner — present and absent held together",
+  "NEITHER": "#1: the fourth corner — beyond the presence/absence pair",
+  "SILENCE": "#1: the tetralemma's completion — capacity includes silence ('permitted yet unselected')",
+  "15-MODEL-ROSTER-CAPABILITY-FIT": "the bound record's address stamp — the model-roster capability-fit record bound at movement #1",
+  "Spirit": "#2: the power before its season",
+  "Spring": "#2: powers arise",
+  "Summer": "#2: powers mature",
+  "Autumn": "#2: powers recede",
+  "Winter": "#2: powers lie dormant",
+  "Aufhebung": "#2: 'Life/Aufhebung' — the return that lifts what receded back into the horizon",
+  "0003-user-baselines-and-skill-usage-overlays": "the bound record's address stamp — the baselines/overlays ADR bound at movement #2",
+  "P0 identity": "#3: the first office — identity, held without possession",
+  "P1 context": "#3: the context disclosed, not owned",
+  "P2 capability": "#3: the capability gathered as potency",
+  "P3 resolution": "#3: the resolution that generates",
+  "P4 composition": "#3: the composition that situates",
+  "P5 fitness": "#3: the fitness the use returns",
+  "02-RESOLUTION-AND-CONTEXT-COGNITION": "the bound record's address stamp — the resolution-and-context record bound at movement #3",
+  "permission": "#4: whose permission governs the capability's availability",
+  "selection": "#4: 'to rank one method as relevant is to shape what will likely happen next'",
+  "refusal": "#4: 'relevant yet forbidden' — the refusal is part of the field",
+  "fitness": "#4: the fitness the entrustment answers",
+  "HARNESS-ADMISSION-AND-ADAPTER-SDK": "the bound record's address stamp — the harness-admission/adapter-SDK record bound at movement #4",
+  "returned fitness": "#5->0: 'the most important event in a capability system is not activation but returned fitness'",
+  "tightened scope": "#5->0: the horizon tightened by what happened",
+  "retired option": "#5->0: the option the return retires",
+  "reopened exclusion": "#5->0: the exclusion the return reopens",
+  "21-PROJECT-REFLECTION-AND-LOCAL-ARTICULATION": "the bound record's address stamp — the project-reflection record bound at movement #5->0"
+ },
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ }
 }

@@ -45,7 +45,10 @@
     "sha256": "df55f387108b9f0a85ce19b28ab210eb578eaf91b7ffd67b835e4bfd2b7bae21"
    }
   ],
-  "coverage": "55 of 61 inventoried records bound across wave-1 (6: README.md, docs/PRODUCT-GROUND-CONVENTION.md, docs/SOURCE-RETURN.md, docs/PROJECTCENTRAL-AUTHORED-GROUND.md, docs/PERSONAL-WORLD-PROJECTION.md, docs/RECOVERY-PROTOCOL.md) and this fan-out (55)"
+  "coverage": "55 of 61 inventoried records bound across wave-1 (6: README.md, docs/PRODUCT-GROUND-CONVENTION.md, docs/SOURCE-RETURN.md, docs/PROJECTCENTRAL-AUTHORED-GROUND.md, docs/PERSONAL-WORLD-PROJECTION.md, docs/RECOVERY-PROTOCOL.md) and this fan-out (55)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -75,5 +78,18 @@
  ],
  "capture": "central/sp-central-surfaces.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"Surfaces — Raycast and Shortcuts\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"Surfaces — Raycast and Shortcuts\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nMoves: the two surfaces — the Raycast surface marks (the ground surfaced at a keystroke), macOS Shortcuts gathers (the ground gathered into the system's own gestures). Deliberate quiet: two surface records, no churn; 3D on the first — z is the surface's depth: the keystroke nearest, the ground beneath deepest.\n\n3D: the member's depth is continuity layers — z is Central's own depth relation: the living surface nearest, the carried ground deepest (laminated; depthPerspective on). Pointers: guard=sources hold their standing, gather=continuity gathers the field (Central holds by attraction), vortex=correction turns the ground, rupture=recovery from loss, settle=continuity at rest. Automation: one LFO per member — the carried ground breathes. Sequences walk each record's own heading words.\n\nrecords read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719\n\nDeclared floor miss: pointer profiles — the member binds two records (two scenes, one profile each): at most two distinct profiles expressible without adding bound sources. Not faked. Enrichment 2026-10-06, lane s-products.",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Central": "the ground the surfaces bring forward",
+  "Raycast": "the launcher the surface rides",
+  "Surface": "the surfaced projection of the ground",
+  "macOS": "the system the shortcuts ride",
+  "Shortcuts": "the shortcuts the ground is gathered into",
+  "README": "the bound record's address stamp — the scene id derives from the bound path"
+ }
 }

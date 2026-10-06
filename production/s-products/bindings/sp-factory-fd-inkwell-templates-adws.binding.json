@@ -97,7 +97,10 @@
     "delta": "byte-identical to census sha256 at fbabaaad"
    }
   ],
-  "coverage": "10 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)"
+  "coverage": "10 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -171,5 +174,26 @@
  ],
  "capture": "factory/sp-factory-fd-inkwell-templates-adws.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base."
+ "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base.\n\nMoves: the prompt templates alternate agent-holds and task-moves — each system text holds its office (builder, documenter, planner, reviewer, scout), each task moves the work (build marks, document emerges, plan turns, review gathers, scout walks). The alternation is the chain; the sequence walks carry it.\n\n3D: the whole scene carries the member's depth — z is the Factory's own transformation depth: intention and commission nearest, the re-formed result deepest (laminated; depthPerspective on). Pointers follow the arc's meaning (guard=canon holds its edges, gather=material intake, vortex=the run turns, rupture=gate refusal/cutover, settle=acceptance quiet). Automation: a dispersion LFO on one scene per member — the run breathes. Durations/transitions step 10–16s / 1.2–2.2 with the arc.\n\nSequences are the Factory's native grammar: the title formation walks its own heading segments and re-forms at its address stamp.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719\n\nMoves: the prompt templates alternate agent-holds and task-moves — each system text holds its office (builder, documenter, planner, reviewer, scout), each task moves the work (build marks, document emerges, plan turns, review gathers, scout walks). The alternation is the chain; the sequence walks carry it.\n\n3D: the whole scene carries the member's depth — z is the Factory's own transformation depth: intention and commission nearest, the re-formed result deepest (laminated; depthPerspective on). Pointers follow the arc's meaning (guard=canon holds its edges, gather=material intake, vortex=the run turns, rupture=gate refusal/cutover, settle=acceptance quiet). Automation: a dispersion LFO on one scene per member — the run breathes. Durations/transitions step 10–16s / 1.2–2.2 with the arc.\n\nSequences are the Factory's native grammar: the title formation walks its own heading segments and re-forms at its address stamp.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "the Factory whole": "the member's staging of the Factory whole — ADW prompt templates",
+  "Builder Agent": "the builder's system template (adws/adw_data copy)",
+  "Build Task": "the builder's task template — the work order",
+  "Documenter Agent": "the documenter's system template",
+  "Document Task": "the documenter's task template",
+  "Planner Agent": "the planner's system template",
+  "Plan Task": "the planner's task template",
+  "Reviewer Agent": "the reviewer's system template",
+  "Review Task": "the reviewer's task template",
+  "Scout Agent": "the scout's system template",
+  "Scout Task": "the scout's task template",
+  "S3 · full depth": "the whole scene's depth stamp — the Factory carried at full depth (the member's 3D lamination)",
+  "system": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
+  "user": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)"
+ }
 }

@@ -45,7 +45,10 @@
     "sha256": "5423efb31096954d4eb33288aa34f3084dbf2101587e3d6a361ca9aaeea9454b"
    }
   ],
-  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)"
+  "coverage": "128 of 157 inventoried records bound across wave-1 (6: docs/ACTUATION-CONSTITUTION.md, docs/ACTUATION-STREAM.md, docs/EPISTEMIC-CULTIVATION-AND-MODEL-INTERIOR-RESEARCH.md, docs/MODEL-BEARING-AGENCY-RESEARCH-AND-MATERIALISATION.md, docs/ACTUATION-RELATION.md, docs/REALISED-ACTUATION-LOOP.md) and this fan-out (128)",
+  "enrichment_source_read": {
+   "note": "pinned records re-read 2026-10-06 at EpiLogos/Actuation@36bbf93b7896550f11186f6240b8f018208ab3b2; essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -75,5 +78,18 @@
  ],
  "capture": "actuation/sp-actuation-ql-runtime-reviews-2.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"QL runtime — series 1 run reviews (native and staged)\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"QL runtime — series 1 run reviews (native and staged)\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nEnrichment 2026-10-06. Moves: review-fixed settles with review→review-fixed walking the correction (dim → bright, 1.4s transition); review holds the earlier runner revision. 3D on review-fixed: z is the request/return chronology the fixed record gives room. A minimal dispersion LFO on review-fixed.\n\nDeclared floor miss: pointer profiles — the floor asks ≥3 distinct pointer profiles per journey; this member binds exactly two records (two scenes), and a scene carries exactly one pointer profile, so at most two profiles are expressible without adding scenes (which would add sources — enrichment does not re-bind). Both scenes use honest quiet profiles; the third profile was not faked.\n\npinned records re-read 2026-10-06 at EpiLogos/Actuation@36bbf93b7896550f11186f6240b8f018208ab3b2; essay record S1 read at fc59a719 (submission-package/essay/section-rooms/arguments/products/S1-Actuation.md)",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Series": "the review's benchmark series — Series 1 v0.1",
+  "PASS": "the review header's pass band — 'PASS B: unmasked QL human review'",
+  "unmasked": "the review's condition — unmasked, conditions visible to the reviewer",
+  "human": "the determination — 'Determination: pending-human-review'; the first judgement is human inspection",
+  "review": "the earlier smoke-restraint record — the runner revision the fix superseded",
+  "review-fixed": "the corrected record — 'review-fixed', the runner revision after the fix"
+ }
 }

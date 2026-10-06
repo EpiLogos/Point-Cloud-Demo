@@ -57,7 +57,10 @@
     "sha256": "382a9bfcae9948c43a6d1c897db8fd43d1613c1f9ef6aaab23dc04f8f1965eb0"
    }
   ],
-  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -111,5 +114,33 @@
  ],
  "capture": "workcell/sp-workcell-docs-connectivity.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"Connectivity and placement — fabric, control service, interop, cells\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"Connectivity and placement — fabric, control service, interop, cells\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nMoves: the fabric holds (the connectivity programme's standing), the control-service boundary holds (agent-hosting separation kept), Factory interop gathers (the neighbouring product received), multi-workcell placement turns (placement across cells — 3D: z is placement across the room of rooms), remote file sharing gathers (the tailnet reaching the Mac Finder).\n\n3D: the member's depth is situated placement in a room — z is the Workcell's own here-ness: the workstation face nearest, the placed world deepest (laminated; depthPerspective on). Pointers: guard=placed bounds hold, gather=material gathered, vortex=lifecycle turns, rupture=the demand cuts in, settle=the room at rest. Automation: one LFO per member — the placed world breathes. Sequences walk each record's own heading words — placement is the Workcell's native grammar.\n\nrecords read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Workcell": "the product — the technological materialisation place",
+  "connectivity": "the fabric programme's subject (#26 / W23)",
+  "fabric": "the connectivity fabric itself",
+  "Control": "the control service's name",
+  "Service": "the service boundary held from agent hosting",
+  "agent-hosting": "the hosting boundary the determination separates",
+  "Factory": "the neighbouring product — the interop's first side",
+  "interop": "the interop the record wires",
+  "Multi-Workcell": "placement across more than one cell",
+  "placement": "the Workcell's native verb — where things are put",
+  "remote": "the remote availability of a placed world",
+  "availability": "what the far cell can reach",
+  "Remote": "the file-sharing record's reach",
+  "file": "the files shared across the tailnet",
+  "sharing": "the sharing gated to permission",
+  "over": "the medium named in the record's heading — over the tailnet",
+  "CONNECTIVITY-FABRIC": "the bound record's address stamp — the scene id derives from the bound path",
+  "CONTROL-SERVICE-AND-AGENT-HO": "the bound record's address stamp — the scene id derives from the bound path",
+  "FACTORY-INTEROP": "the bound record's address stamp — the scene id derives from the bound path",
+  "MULTI-WORKCELL-PLACEMENT": "the bound record's address stamp — the scene id derives from the bound path",
+  "REMOTE-FILE-SHARING": "the bound record's address stamp — the scene id derives from the bound path"
+ }
 }
