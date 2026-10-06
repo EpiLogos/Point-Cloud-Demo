@@ -63,7 +63,10 @@
     "sha256": "fe9464679cef701e9af211b0bbdb6478d3bb4d80dfd76dec8d464175a91591bc"
    }
   ],
-  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)"
+  "coverage": "24 of 30 inventoried records bound across wave-1 (6: README.md, docs/ARCHITECTURE.md, docs/VISUAL-PRODUCT-UNDERSTANDING.md, docs/CANDIDATE-MATERIALISATION.md, docs/CROSS-CELL-CONNECTIONS.md, docs/LIFECYCLE-RECONCILIATION.md) and this fan-out (24)",
+  "enrichment_source_read": {
+   "note": "records read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719"
+  }
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -127,5 +130,38 @@
  ],
  "capture": "workcell/sp-workcell-docs-platform.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth fan-out: family \"Platform understanding — deployment, worlds, model serving, wayfinder\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes."
+ "notes": "Full-depth fan-out: family \"Platform understanding — deployment, worlds, model serving, wayfinder\". Scene ids derive from the bound record paths; glyph terms are the bound records' own heading words. Presentation mappings are declared craft. Not corpus-complete claims beyond the frozen inventory: see the product receipt fulldepth-receipt-2026-09-21.md for exclusions and census-delta notes.\n\nMoves: deployment profiles hold (reference specimens pinned), the development worlds emerge (Development Field S5 — the placed worlds where development lives), model-serving conformance holds, the place census turns (the pid table reconciled; request/release is the census's own pair — walked), bounded resource observations gather, and the Wayfinder walks (issue #1 as the executable source of the graph).\n\n3D: the member's depth is situated placement in a room — z is the Workcell's own here-ness: the workstation face nearest, the placed world deepest (laminated; depthPerspective on). Pointers: guard=placed bounds hold, gather=material gathered, vortex=lifecycle turns, rupture=the demand cuts in, settle=the room at rest. Automation: one LFO per member — the placed world breathes. Sequences walk each record's own heading words — placement is the Workcell's native grammar.\n\nrecords read 2026-10-06 at the pinned product commits (openings; titles are the records' own headings); essay record read at fc59a719",
+ "enrichment": {
+  "date": "2026-10-06",
+  "actor": "zcode:enrich-sproducts-l3",
+  "lane": "s-products"
+ },
+ "glyph_rationales": {
+  "Deployment": "the deployment profiles' act",
+  "profiles": "the profiles held as reference specimens",
+  "reference": "the specimens' standing — reference",
+  "specimens": "the profile specimens",
+  "Material": "the worlds' kind — material, not notional",
+  "Development": "the development the worlds host (Field S5)",
+  "Worlds": "the placed worlds themselves",
+  "Model-serving": "the materialisation under conformance",
+  "materialisation": "the Workcell's own verb — making executable",
+  "conformance": "the conformance the record witnesses",
+  "place": "the census's unit — the place",
+  "census": "the harness-instance census (the pid table)",
+  "request": "the census's first verb — place request",
+  "release": "the census's second verb — place release",
+  "Bounded": "the observations' bound — bounded, not total",
+  "resource-usage": "the material resource condition observed",
+  "observations": "the record's own kind — observations",
+  "Wayfinder": "issue #1 — the executable source of the development graph",
+  "unused": "the member's staging of the Factory whole — the S3 product field at full depth, under which each bound record sits",
+  "DEPLOYMENT-PROFILES": "the bound record's address stamp — the scene id derives from the bound path",
+  "DEVELOPMENT-WORLDS": "the bound record's address stamp — the scene id derives from the bound path",
+  "MODEL-SERVING-CONFORMANCE": "the bound record's address stamp — the scene id derives from the bound path",
+  "PLACE-CENSUS": "the bound record's address stamp — the scene id derives from the bound path",
+  "RESOURCE-USAGE": "the bound record's address stamp — the scene id derives from the bound path",
+  "Workcell": "the record's own heading words — the bound record's terms for its own act",
+  "WAYFINDER": "the bound record's kind stamp — the record's own file name"
+ }
 }
