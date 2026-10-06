@@ -61,27 +61,29 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
     "mediumDimension": "2D",
     "autoSweep": false,
-    "sweepDirection": "ascent"
+    "sweepDirection": "ascent",
+    "depthPerspective": true,
+    "depthTintColor": "#161210"
    },
    "id": "fd-inkwell-specs-whole",
    "name": "the Factory whole — Inkwell factory — specs",
    "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1,
+    "mode": "3d",
+    "yaw": -0.42,
+    "pitch": 0.15,
+    "zoom": 0.92,
     "panX": 0,
     "panY": 0
    },
@@ -107,14 +109,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
+     "speed": 0.48,
+     "circulation": 0.8,
      "turbulence": 0.12,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -133,7 +135,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -146,7 +148,7 @@
      "position": {
       "x": 0,
       "y": -0.02,
-      "z": 0
+      "z": -0.5
      },
      "size": {
       "x": 0.46,
@@ -188,7 +190,7 @@
      "position": {
       "x": -0.5,
       "y": 0.4,
-      "z": 0
+      "z": 0.0
      },
      "size": {
       "x": 0.544,
@@ -230,7 +232,7 @@
      "position": {
       "x": 0.42,
       "y": 0.4,
-      "z": 0
+      "z": 0.5
      },
      "size": {
       "x": 0.48,
@@ -272,17 +274,17 @@
      "kicker": "S3 Software Factory · full depth · whole",
      "title": "Inkwell factory — specs",
      "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.\n\nWhole-first reference — the S3 record's own movement path (#0 → #5→0) is staged in the wave-1 artifact sp-factory (six scenes; essay record S3 at Antykathera-Essay-Work 7d96ada2, submission-package/essay/symbolon/episteme/products/S3-Software-Factory.md, sha256 a0846487951e…). This artifact binds the Inkwell factory — specs slice of the frozen P1 census (230 records; 6 bound in wave-1) Scene texts quote the bound records' own committed bytes; presentation mappings are declared craft.",
+     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
      "x": 0.78,
      "y": 0.5,
      "width": 300,
-     "size": 17,
+     "size": 21,
      "align": "left",
      "visible": true
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -355,10 +357,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -370,12 +372,12 @@
    "name": "Implementation Plan - Extend GET /api/stats with total_words",
    "character": "Extend the GET /api/stats endpoint in Inkwell (apps/inkwell/server.ts) to return a total_words field containing the sum of word counts across all posts in the database, calculated using the existing wordCount logic. Add ",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0003,
     "panX": 0,
     "panY": 0
    },
@@ -401,14 +403,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5552,
+     "circulation": 0.913,
+     "turbulence": 0.1433,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1226,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -427,7 +429,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -503,16 +505,77 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r001-306a0046-inkwell-stats-total-title-step-1",
+        "id": "fd-r001-306a0046-inkwell-stats-total-title-enrichstep-1",
         "text": "Implementation Plan - Extend GET /api/stats with total_words",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.3,
+          "y": 0.12
+         },
+         "rotation": 0,
+         "tint": "#8a8378",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-306a0046-inkwell-stats-total-title-enrichstep-2",
+        "text": "306a0046_inkwell-stats-total-words",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.24,
+          "y": 0.11
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r001-306a0046-inkwell-stats-total-title-enrichstep-3",
+        "text": "Implementation Plan - Extend GET /api/stats with total_words",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.34,
+          "y": 0.14
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -576,7 +639,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -649,10 +712,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.06,
+    "pointerClickRadius": 0.2,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -663,13 +726,13 @@
    "id": "fd-r002-585c36b3-repo-one-line-summa",
    "name": "Plan: One-Sentence Repo Summary",
    "character": "Reply with a one-sentence summary of what this repository is. Do not use any tools.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 16,
+   "transition": 2.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0205,
     "panX": 0,
     "panY": 0
    },
@@ -695,14 +758,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4604,
+     "circulation": 0.626,
+     "turbulence": 0.1065,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0852,
+     "pointerStrength": 0.06,
+     "pointerRadius": 0.18,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -721,7 +784,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 209.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -797,16 +860,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r002-585c36b3-repo-one-line-summa-title-step-1",
-        "text": "Plan: One-Sentence Repo Summary",
+        "id": "fd-r002-585c36b3-repo-one-line-summa-title-enrichstep-1",
+        "text": "Plan",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r002-585c36b3-repo-one-line-summa-title-enrichstep-2",
+        "text": "One-Sentence Repo Summary",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -870,7 +971,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -943,10 +1044,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -957,13 +1058,13 @@
    "id": "fd-r003-806adbfc-ui-visual-contrast",
    "name": "Implementation Plan - UI Visual Contrast & Accessibility Enhancements",
    "character": "Audit and improve foreground/background visual contrast across application UI text, placeholders, controls, borders, and interactive states to ensure readability and compliance with WCAG 2.1 AA standards (minimum 4.5:1 c",
-   "duration": 14,
-   "transition": 2,
+   "duration": 13,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0808,
     "panX": 0,
     "panY": 0
    },
@@ -989,14 +1090,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4956,
+     "circulation": 0.839,
+     "turbulence": 0.1298,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1078,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1015,7 +1116,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 231.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1164,7 +1265,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1237,10 +1338,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "attract",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.16,
+    "pointerClickRadius": 0.24,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1251,13 +1352,13 @@
    "id": "fd-r004-889ae961-quiet-room-redesign",
    "name": "Plan: Inkwell quiet-room redesign",
    "character": "Turn Inkwell into a quiet room: the default state is the writing state — one beautiful column of",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.2,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.001,
     "panX": 0,
     "panY": 0
    },
@@ -1283,14 +1384,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.3708,
+     "circulation": 0.252,
+     "turbulence": 0.073,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0504,
+     "pointerStrength": 0.18,
+     "pointerRadius": 0.2,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1309,7 +1410,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 193.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1458,7 +1559,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1531,10 +1632,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1546,12 +1647,12 @@
    "name": "Plan: Themeable design tokens + light mode for inkwell",
    "character": "Add a light theme alongside the default dark theme in apps/inkwell, built on named",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9713,
     "panX": 0,
     "panY": 0
    },
@@ -1577,14 +1678,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.626,
+     "circulation": 1.365,
+     "turbulence": 0.1763,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.113,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1603,7 +1704,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -1679,16 +1780,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r005-ad066baa-inkwell-theme-token-title-step-1",
-        "text": "Plan: Themeable design tokens + light mode for inkwell",
+        "id": "fd-r005-ad066baa-inkwell-theme-token-title-enrichstep-1",
+        "text": "Plan",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r005-ad066baa-inkwell-theme-token-title-enrichstep-2",
+        "text": "Themeable design tokens + light mode for inkwell",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -1752,7 +1891,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -1825,10 +1964,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -1840,12 +1979,12 @@
    "name": "Plan: Add GET /api/tags Endpoint to Inkwell Server",
    "character": "Implement a new GET /api/tags endpoint in apps/inkwell/server.ts that returns a JSON object { tags: [{ tag: string, count: number }] }. The tags are aggregated across all posts in the database:",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0016,
     "panX": 0,
     "panY": 0
    },
@@ -1871,14 +2010,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.5812,
+     "circulation": 0.978,
+     "turbulence": 0.1595,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1356,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -1897,7 +2036,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2046,7 +2185,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2121,8 +2260,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2133,13 +2272,13 @@
    "id": "fd-r007-c5f50a47-modelname-helper-te",
    "name": "Plan: Unit tests for the visualizer `modelName` helper",
    "character": "Add focused unit tests for modelName() in",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0018,
     "panX": 0,
     "panY": 0
    },
@@ -2165,14 +2304,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4364,
+     "circulation": 0.391,
+     "turbulence": 0.1028,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0682,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2191,7 +2330,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2340,7 +2479,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2413,10 +2552,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
+    "pointerMode": "vortex",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 1.2,
+    "pointerClickRadius": 0.36,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2428,12 +2567,12 @@
    "name": "Plan: Inkwell side-by-side markdown view + three view modes (edit / sp",
    "character": "Give the Inkwell editor three view modes — edit, split, preview — driven by one",
    "duration": 14,
-   "transition": 2,
+   "transition": 2.0,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 0.9721,
     "panX": 0,
     "panY": 0
    },
@@ -2459,14 +2598,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.6416,
+     "circulation": 1.404,
+     "turbulence": 0.186,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.1208,
+     "pointerStrength": 1.05,
+     "pointerRadius": 0.28,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2485,7 +2624,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 253.0,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2561,16 +2700,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r008-d140d7dd-inkwell-split-view-title-step-1",
-        "text": "Plan: Inkwell side-by-side markdown view + three view modes (edit / sp",
+        "id": "fd-r008-d140d7dd-inkwell-split-view-title-enrichstep-1",
+        "text": "Plan",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r008-d140d7dd-inkwell-split-view-title-enrichstep-2",
+        "text": "Inkwell side-by-side markdown view + three view modes (edit / sp",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -2634,7 +2811,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -2709,8 +2886,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -2721,13 +2898,13 @@
    "id": "fd-r009-e2688070-inkwell-header-icon",
    "name": "Plan: Inkwell header icon + New button relocation",
    "character": "1. Improve the Inkwell application icon so it is clearly legible (today the only icon is the favicon — an emoji glyph ✎ inside a data-URI SVG in index.html, which renders inconsistently across platforms).",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0023,
     "panX": 0,
     "panY": 0
    },
@@ -2753,14 +2930,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4468,
+     "circulation": 0.417,
+     "turbulence": 0.1092,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0734,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -2779,7 +2956,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -2928,7 +3105,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3001,10 +3178,10 @@
     "autoOscillate": true,
     "relationalEnabled": false,
     "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerMode": "attract",
+    "pointerClick": "implode",
+    "pointerClickStrength": 1.55,
+    "pointerClickRadius": 0.42,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3016,12 +3193,12 @@
    "name": "Implementation Plan - Single Post Stats Endpoint (`GET /api/posts/:id/",
    "character": "Add a GET /api/posts/:id/stats endpoint to apps/inkwell/server.ts returning { word_count, reading_minutes, status } for a single post, returning 404 { error: 'not found' } for unknown IDs, and add automated test coverage",
    "duration": 14,
-   "transition": 2,
+   "transition": 1.6,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0026,
     "panX": 0,
     "panY": 0
    },
@@ -3047,14 +3224,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.602,
+     "circulation": 1.03,
+     "turbulence": 0.1725,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.146,
+     "pointerStrength": 0.95,
+     "pointerRadius": 0.3,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3073,7 +3250,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 237.6,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3222,7 +3399,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3297,8 +3474,8 @@
     "relationalMode": "orbital",
     "pointerMode": "repel",
     "pointerClick": "pulse",
-    "pointerClickStrength": 2.2,
-    "pointerClickRadius": 0.45,
+    "pointerClickStrength": 0.85,
+    "pointerClickRadius": 0.3,
     "colorMode": "linearGradient",
     "colorEnabled": true,
     "mediumPlane": "vertical",
@@ -3309,13 +3486,13 @@
    "id": "fd-r011-scaffold",
    "name": "Super Simple Software Factory — Scaffold",
    "character": "A reusable software factory: agents plus code, packaged as a skill, deployed into any codebase.",
-   "duration": 14,
-   "transition": 2,
+   "duration": 12,
+   "transition": 1.4,
    "view": {
     "mode": "2d",
     "yaw": 0,
     "pitch": 0,
-    "zoom": 1,
+    "zoom": 1.0029,
     "panX": 0,
     "panY": 0
    },
@@ -3341,14 +3518,14 @@
      "densityPhase": 0.3,
      "edgeWeight": 0,
      "halo": 0.13,
-     "speed": 0.5,
-     "circulation": 1,
-     "turbulence": 0.12,
+     "speed": 0.4572,
+     "circulation": 0.443,
+     "turbulence": 0.1157,
      "turbulenceScale": 1.2,
      "recovery": 1.1,
-     "dispersion": 0.09,
-     "pointerStrength": 0.8,
-     "pointerRadius": 0.23,
+     "dispersion": 0.0786,
+     "pointerStrength": 0.85,
+     "pointerRadius": 0.24,
      "pointerFalloff": 2,
      "depth": 0.12,
      "grain": 0.035,
@@ -3367,7 +3544,7 @@
      "gravitySoftening": 0.1,
      "gravityFalloff": 2,
      "swirlRadius": 0.4,
-     "frequency": 220,
+     "frequency": 202.4,
      "dominance": 0,
      "excitation": 0.6
     }
@@ -3443,16 +3620,54 @@
      },
      "station": null,
      "sequence": {
-      "enabled": false,
+      "enabled": true,
       "clock": "seconds",
       "steps": [
        {
-        "id": "fd-r011-scaffold-title-step-1",
-        "text": "Super Simple Software Factory — Scaffold",
+        "id": "fd-r011-scaffold-title-enrichstep-1",
+        "text": "Super Simple Software Factory",
         "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#c8b4a0",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
+       },
+       {
+        "id": "fd-r011-scaffold-title-enrichstep-2",
+        "text": "Scaffold",
+        "shape": "text",
+        "hold": 2.0,
+        "transition": 0.8,
+        "position": null,
+        "objectState": {
+         "size": {
+          "x": 0.325,
+          "y": 0.13
+         },
+         "rotation": 0,
+         "tint": "#f2ded2",
+         "tintWeight": 0.9,
+         "force": {
+          "kind": "attract",
+          "strength": 0,
+          "radius": 0.45,
+          "spin": 0
+         }
+        }
        }
       ]
      }
@@ -3516,7 +3731,7 @@
     }
    ],
    "composition": {
-    "layout": "free",
+    "layout": "line",
     "plane": "XY",
     "focus": "parallel",
     "focusDuration": 4,
@@ -3533,7 +3748,24 @@
     "depth": 1,
     "dwell": 0.3
    },
-   "automation": []
+   "automation": [
+    {
+     "id": "fd-r011-scaffold-enrich-lfo",
+     "target": "field.params.dispersion",
+     "type": "lfo",
+     "wave": "sine",
+     "blend": "add",
+     "min": 0.03,
+     "max": 0.12,
+     "rate": 0.09,
+     "phase": 0,
+     "duration": 0,
+     "delay": 0,
+     "loop": "loop",
+     "firedAt": null,
+     "enabled": true
+    }
+   ]
   }
  ],
  "updatedAt": "2026-09-21T00:00:00.000Z"
