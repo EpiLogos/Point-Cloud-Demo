@@ -96,17 +96,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -117,7 +117,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -408,6 +408,342 @@
         "autoSweep": false,
         "sweepDirection": "ascent"
       },
+      "id": "fd-s4-docs-connectivity-01-connectivity-fabric-held",
+      "name": "Workcell connectivity fabric — held",
+      "character": "How cells connect: connectivity fabric, control service and agent hosting, factory interop, multi-workcell placement, remote file sharing.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#101410",
+        "palette": [
+          "#dce8dc",
+          "#5ba86b"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
+          "orientation": 0,
+          "contrast": 0.94,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.117,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.029750000000000002,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f0-held",
+          "name": "the lane",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#5ba86b",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f0-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f1-held",
+          "name": "the seat",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#dce8dc",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f1-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f2-held",
+          "name": "the co-worker",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#8aa892",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f2-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f3-held",
+          "name": "the co-worker",
+          "kind": "formation",
+          "position": {
+            "x": 0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#8aa892",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s4-docs-connectivity-01-connectivity-fabric-f3-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-s4-docs-connectivity-01-connectivity-fabric-page-held",
+          "kicker": "",
+          "title": "Workcell connectivity fabric",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
       "id": "fd-s4-docs-connectivity-02-control-service-and-agent-hosting",
       "name": "Workcell Control Service and agent-hosting boundary",
       "character": "How cells connect: connectivity fabric, control service and agent hosting, factory interop, multi-workcell placement, remote file sharing.",
@@ -432,17 +768,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -453,7 +789,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -726,17 +1062,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -747,7 +1083,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -1063,9 +1399,9 @@
         "fontFamily": "system-ui, -apple-system, sans-serif",
         "fontWeight": 900,
         "resonanceEnabled": true,
-        "morphEnabled": false,
+        "morphEnabled": true,
         "trajectory": "toroidalHopf",
-        "driveShape": "sine",
+        "driveShape": "smooth",
         "autoOscillate": true,
         "relationalEnabled": false,
         "relationalMode": "orbital",
@@ -1078,7 +1414,9 @@
         "mediumPlane": "vertical",
         "mediumDimension": "2D",
         "autoSweep": false,
-        "sweepDirection": "ascent"
+        "sweepDirection": "ascent",
+        "depthPerspective": true,
+        "vortex3d": 0.18
       },
       "id": "fd-s4-docs-connectivity-04-multi-workcell-placement",
       "name": "Multi-Workcell placement and remote availability",
@@ -1086,10 +1424,10 @@
       "duration": 14,
       "transition": 2,
       "view": {
-        "mode": "2d",
-        "yaw": 0,
-        "pitch": 0,
-        "zoom": 1,
+        "mode": "3d",
+        "yaw": -0.28,
+        "pitch": 0.2,
+        "zoom": 0.9,
         "panX": 0,
         "panY": 0
       },
@@ -1104,17 +1442,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.88,
+          "roundness": 0.97,
+          "softness": 0.2,
+          "irregularity": 0.42,
+          "elongation": 0.08,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.9,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.20800000000000002,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -1124,11 +1462,11 @@
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
-          "depth": 0.12,
-          "grain": 0.035,
+          "depth": 0.75,
+          "grain": 0.043750000000000004,
           "snapRigidity": 1,
           "densityTether": 1,
-          "curlDepth": 0.2,
+          "curlDepth": 0.36000000000000004,
           "vortexRadius": 0.4,
           "gravityX": 0,
           "gravityY": 0,
@@ -1136,7 +1474,7 @@
           "quadraticDrag": 0.2,
           "thermalJitter": 0,
           "speedLimit": 3,
-          "zConfinement": 1,
+          "zConfinement": 0.7,
           "timeScale": 1,
           "gravitySoftening": 0.1,
           "gravityFalloff": 2,
@@ -1154,7 +1492,7 @@
           "position": {
             "x": 0,
             "y": 0.22,
-            "z": 0
+            "z": 0.32
           },
           "size": {
             "x": 0.52,
@@ -1196,7 +1534,7 @@
           "position": {
             "x": 0,
             "y": 0.22,
-            "z": 0
+            "z": 0.14
           },
           "size": {
             "x": 0.14,
@@ -1238,7 +1576,7 @@
           "position": {
             "x": -0.37,
             "y": 0.04,
-            "z": 0
+            "z": -0.03999999999999998
           },
           "size": {
             "x": 0.07,
@@ -1280,7 +1618,7 @@
           "position": {
             "x": 0.37,
             "y": 0.04,
-            "z": 0
+            "z": -0.22000000000000003
           },
           "size": {
             "x": 0.07,
@@ -1322,7 +1660,7 @@
           "position": {
             "x": 0,
             "y": 0.48,
-            "z": 0
+            "z": -0.39999999999999997
           },
           "size": {
             "x": 0.07,
@@ -1383,12 +1721,12 @@
         "frequencyDriver": "manual"
       },
       "morph": {
-        "thetaRate": 0.08,
-        "phiRate": 0.13,
+        "thetaRate": 0.1,
+        "phiRate": 0.12,
         "thetaOffset": 0,
         "phiOffset": 0,
-        "law": "theta",
-        "depth": 1,
+        "law": "sum",
+        "depth": 1.3,
         "dwell": 0.3
       },
       "automation": []
@@ -1477,33 +1815,33 @@
           "#eee6d0",
           "#b89a4a"
         ],
-        "material": "ink",
+        "material": "print",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,

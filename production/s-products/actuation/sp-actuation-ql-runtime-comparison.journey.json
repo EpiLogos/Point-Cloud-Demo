@@ -96,17 +96,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -117,7 +117,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -492,8 +492,8 @@
         "autoSweep": false,
         "sweepDirection": "ascent"
       },
-      "id": "fd-s1-ql-runtime-comparison-02-deepseek-harness-maximal-reference",
-      "name": "Series 1 v0.1 — DeepSeek Harness maximal-reference host",
+      "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-held",
+      "name": "Series 1 Benchmark v0.1 — matched human-review experiment — held",
       "character": "The comparison programme’s own documents: status, benchmark definition, the DeepSeek maximal reference, the GLM stipulation amendment, the series README.",
       "duration": 14,
       "transition": 2,
@@ -516,17 +516,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -537,7 +537,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -560,13 +560,435 @@
       },
       "entities": [
         {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f0-held",
+          "name": "the bearing",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f0-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f1-held",
+          "name": "the joint",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d9c8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f1-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f2-held",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969524,
+            "y": 0.44627416997969516,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f2-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f3-held",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969518,
+            "y": 0.44627416997969527,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f3-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f4-held",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969527,
+            "y": -0.006274169979695182,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f4-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f5-held",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969516,
+            "y": -0.0062741699796952655,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-f5-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-s1-ql-runtime-comparison-01-benchmark-v0-1-page-held",
+          "kicker": "",
+          "title": "Series 1 Benchmark v0.1 — matched human-review experiment",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": true,
+        "trajectory": "vortexSpiral",
+        "driveShape": "pulse",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "depthPerspective": true,
+        "vortex3d": 0.35
+      },
+      "id": "fd-s1-ql-runtime-comparison-02-deepseek-harness-maximal-reference",
+      "name": "Series 1 v0.1 — DeepSeek Harness maximal-reference host",
+      "character": "The comparison programme’s own documents: status, benchmark definition, the DeepSeek maximal reference, the GLM stipulation amendment, the series README.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "3d",
+        "yaw": -0.28,
+        "pitch": 0.2,
+        "zoom": 0.9,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#17100b",
+        "palette": [
+          "#f2d9c8",
+          "#d57b3a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.88,
+          "roundness": 0.97,
+          "softness": 0.2,
+          "irregularity": 0.42,
+          "elongation": 0.08,
+          "orientation": 0,
+          "contrast": 0.9,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.20800000000000002,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.9,
+          "grain": 0.043750000000000004,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.36000000000000004,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 0.72,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
           "id": "fd-s1-ql-runtime-comparison-02-deepseek-harness-maximal-reference-f0",
           "name": "the driver",
           "kind": "formation",
           "position": {
             "x": -0.5,
             "y": 0.34,
-            "z": 0
+            "z": 0.38
           },
           "size": {
             "x": 0.09,
@@ -608,7 +1030,7 @@
           "position": {
             "x": -0.22,
             "y": 0.27,
-            "z": 0
+            "z": -0.38
           },
           "size": {
             "x": 0.3,
@@ -650,7 +1072,7 @@
           "position": {
             "x": 0.05,
             "y": 0.2,
-            "z": 0
+            "z": 0.38
           },
           "size": {
             "x": 0.09,
@@ -692,7 +1114,7 @@
           "position": {
             "x": 0.33,
             "y": 0.14,
-            "z": 0
+            "z": -0.38
           },
           "size": {
             "x": 0.3,
@@ -734,7 +1156,7 @@
           "position": {
             "x": 0.6,
             "y": 0.07,
-            "z": 0
+            "z": 0.38
           },
           "size": {
             "x": 0.09,
@@ -776,7 +1198,7 @@
           "position": {
             "x": 0.05,
             "y": 0.2,
-            "z": 0
+            "z": -0.38
           },
           "size": {
             "x": 0.22,
@@ -837,12 +1259,12 @@
         "frequencyDriver": "manual"
       },
       "morph": {
-        "thetaRate": 0.08,
-        "phiRate": 0.13,
+        "thetaRate": 0.14,
+        "phiRate": 0.09,
         "thetaOffset": 0,
         "phiOffset": 0,
-        "law": "theta",
-        "depth": 1,
+        "law": "product",
+        "depth": 1.3,
         "dwell": 0.3
       },
       "automation": []
@@ -931,33 +1353,33 @@
           "#f0dcc8",
           "#c2542e"
         ],
-        "material": "ink",
+        "material": "round",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -1309,33 +1731,33 @@
           "#f0dcc8",
           "#c2542e"
         ],
-        "material": "ink",
+        "material": "round",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -1687,33 +2109,33 @@
           "#d8e2ee",
           "#4a7ba6"
         ],
-        "material": "ink",
+        "material": "round",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
