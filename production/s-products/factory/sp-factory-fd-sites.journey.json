@@ -96,17 +96,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -117,7 +117,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -408,9 +408,9 @@
         "autoSweep": false,
         "sweepDirection": "ascent"
       },
-      "id": "fd-r001-dex-factory-skill",
-      "name": "dex-factory-skill",
-      "character": "FREE",
+      "id": "fd-sites-whole-held",
+      "name": "the Factory whole — site captures — held",
+      "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
       "duration": 14,
       "transition": 2,
       "view": {
@@ -432,17 +432,17 @@
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.9,
+          "roundness": 0.96,
+          "softness": 0.12,
+          "irregularity": 0.3,
+          "elongation": 0.03,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.94,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
+          "halo": 0.117,
           "speed": 0.5,
           "circulation": 1,
           "turbulence": 0.12,
@@ -453,7 +453,7 @@
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.029750000000000002,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -476,13 +476,351 @@
       },
       "entities": [
         {
+          "id": "fd-sites-whole-f0-held",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-sites-whole-f0-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-sites-whole-f1-held",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-sites-whole-f1-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-sites-whole-f2-held",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-sites-whole-f2-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-sites-whole-f3-held",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-sites-whole-f3-step-1-held",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-sites-whole-page-held",
+          "kicker": "",
+          "title": "the Factory whole — site captures",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": true,
+        "trajectory": "vortexSpiral",
+        "driveShape": "triangle",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent",
+        "depthPerspective": true,
+        "vortex3d": 0.3
+      },
+      "id": "fd-r001-dex-factory-skill",
+      "name": "dex-factory-skill",
+      "character": "FREE",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "3d",
+        "yaw": -0.28,
+        "pitch": 0.2,
+        "zoom": 0.9,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.88,
+          "roundness": 0.97,
+          "softness": 0.2,
+          "irregularity": 0.42,
+          "elongation": 0.08,
+          "orientation": 0,
+          "contrast": 0.9,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.20800000000000002,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 1,
+          "grain": 0.043750000000000004,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.36000000000000004,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 0.75,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
           "id": "fd-r001-dex-factory-skill-f0",
           "name": "the die",
           "kind": "formation",
           "position": {
             "x": 0,
             "y": 0.22,
-            "z": 0
+            "z": -0.45
           },
           "size": {
             "x": 0.56,
@@ -524,7 +862,7 @@
           "position": {
             "x": 0,
             "y": 0.22,
-            "z": 0
+            "z": -0.32857142857142857
           },
           "size": {
             "x": 0.12,
@@ -566,7 +904,7 @@
           "position": {
             "x": 1.7145055188062947e-17,
             "y": -0.060000000000000026,
-            "z": 0
+            "z": -0.20714285714285716
           },
           "size": {
             "x": 0.07,
@@ -608,7 +946,7 @@
           "position": {
             "x": 0.24248711305964282,
             "y": 0.07999999999999999,
-            "z": 0
+            "z": -0.08571428571428574
           },
           "size": {
             "x": 0.07,
@@ -650,7 +988,7 @@
           "position": {
             "x": 0.24248711305964285,
             "y": 0.36,
-            "z": 0
+            "z": 0.0357142857142857
           },
           "size": {
             "x": 0.07,
@@ -692,7 +1030,7 @@
           "position": {
             "x": 1.7145055188062947e-17,
             "y": 0.5,
-            "z": 0
+            "z": 0.15714285714285708
           },
           "size": {
             "x": 0.07,
@@ -734,7 +1072,7 @@
           "position": {
             "x": -0.2424871130596428,
             "y": 0.3600000000000001,
-            "z": 0
+            "z": 0.2785714285714285
           },
           "size": {
             "x": 0.07,
@@ -776,7 +1114,7 @@
           "position": {
             "x": -0.24248711305964282,
             "y": 0.07999999999999996,
-            "z": 0
+            "z": 0.39999999999999997
           },
           "size": {
             "x": 0.07,
@@ -837,12 +1175,12 @@
         "frequencyDriver": "manual"
       },
       "morph": {
-        "thetaRate": 0.08,
-        "phiRate": 0.13,
+        "thetaRate": 0.1,
+        "phiRate": 0.18,
         "thetaOffset": 0,
         "phiOffset": 0,
-        "law": "theta",
-        "depth": 1,
+        "law": "beat",
+        "depth": 1.3,
         "dwell": 0.3
       },
       "automation": []
@@ -931,33 +1269,33 @@
           "#f2d0b0",
           "#e05a1e"
         ],
-        "material": "ink",
+        "material": "round",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -1309,33 +1647,33 @@
           "#f2d0b0",
           "#e05a1e"
         ],
-        "material": "ink",
+        "material": "round",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
@@ -1603,33 +1941,33 @@
           "#d8e4ee",
           "#4a78a0"
         ],
-        "material": "ink",
+        "material": "round",
         "params": {
           "count": 46000,
           "size": 2.8,
           "sizeBias": 1.6,
-          "opacity": 0.92,
-          "roundness": 0.95,
-          "softness": 0.15,
-          "irregularity": 0.35,
-          "elongation": 0.04,
+          "opacity": 0.85,
+          "roundness": 0.9,
+          "softness": 0.27,
+          "irregularity": 0.48,
+          "elongation": 0.13,
           "orientation": 0,
-          "contrast": 0.93,
+          "contrast": 0.87,
           "densityScale": 1,
           "densityPhase": 0.3,
           "edgeWeight": 0,
-          "halo": 0.13,
-          "speed": 0.5,
+          "halo": 0.156,
+          "speed": 0.6,
           "circulation": 1,
-          "turbulence": 0.12,
+          "turbulence": 0.204,
           "turbulenceScale": 1.2,
           "recovery": 1.1,
-          "dispersion": 0.09,
+          "dispersion": 0.135,
           "pointerStrength": 0.8,
           "pointerRadius": 0.23,
           "pointerFalloff": 2,
           "depth": 0.12,
-          "grain": 0.035,
+          "grain": 0.05600000000000001,
           "snapRigidity": 1,
           "densityTether": 1,
           "curlDepth": 0.2,
