@@ -1,3570 +1,4044 @@
 {
- "schema": "oi.journey",
- "version": 1,
- "savedScenes": {},
- "id": "sp-factory-fd-inkwell-templates-adws",
- "name": "S3 Factory full depth — Inkwell factory — prompt templates and ADW data",
- "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the Inkwell factory — prompt templates and ADW data slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
- "loop": true,
- "scenes": [
-  {
-   "toolbelt": [
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "sp-factory-fd-inkwell-templates-adws",
+  "name": "S3 Factory full depth — Inkwell factory — prompt templates and ADW data",
+  "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the Inkwell factory — prompt templates and ADW data slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
+  "loop": true,
+  "scenes": [
     {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent",
-    "depthPerspective": true,
-    "depthTintColor": "#161210"
-   },
-   "id": "fd-inkwell-templates-adws-whole",
-   "name": "the Factory whole — Inkwell factory — prompt templates and ADW data",
-   "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 13,
-   "transition": 1.6,
-   "view": {
-    "mode": "3d",
-    "yaw": -0.42,
-    "pitch": 0.15,
-    "zoom": 0.92,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.48,
-     "circulation": 0.8,
-     "turbulence": 0.12,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 231.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-inkwell-templates-adws-whole-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": -0.5
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-inkwell-templates-adws-whole-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-inkwell-templates-adws-whole-w1",
-     "name": "the Factory whole",
-     "kind": "formation",
-     "position": {
-      "x": -0.5,
-      "y": 0.4,
-      "z": 0.0
-     },
-     "size": {
-      "x": 0.544,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "the Factory whole",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-inkwell-templates-adws-whole-w1-step-1",
-        "text": "the Factory whole",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-inkwell-templates-adws-whole-w2",
-     "name": "S3 · full depth",
-     "kind": "formation",
-     "position": {
-      "x": 0.42,
-      "y": 0.4,
-      "z": 0.5
-     },
-     "size": {
-      "x": 0.48,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "S3 · full depth",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-inkwell-templates-adws-whole-w2-step-1",
-        "text": "S3 · full depth",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-inkwell-templates-adws-whole-page",
-     "kicker": "S3 Software Factory · full depth · whole",
-     "title": "Inkwell factory — prompt templates and ADW data",
-     "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 21,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r001-system",
-   "name": "Builder Agent",
-   "character": "Implement the plan (or request) exactly; report every file you changed.",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0003,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4052,
-     "circulation": 0.313,
-     "turbulence": 0.0833,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0526,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r001-system-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r001-system-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r001-system-title",
-     "name": "Builder Agent",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.416,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Builder Agent",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r001-system-title-enrichstep-1",
-        "text": "Builder Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "fd-r001-system-title-enrichstep-2",
-        "text": "system",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-inkwell-templates-adws-whole",
+      "name": "the Factory whole — Inkwell factory — prompt templates and ADW data",
+      "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       },
-       {
-        "id": "fd-r001-system-title-enrichstep-3",
-        "text": "Builder Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-inkwell-templates-adws-whole-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-inkwell-templates-adws-whole-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-inkwell-templates-adws-whole-f1",
+          "name": "the gate",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.36,
+            "y": 0.3
+          },
+          "rotation": 90,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-inkwell-templates-adws-whole-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-inkwell-templates-adws-whole-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-inkwell-templates-adws-whole-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-inkwell-templates-adws-whole-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-inkwell-templates-adws-whole-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-inkwell-templates-adws-whole-f4",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.3,
+            "y": 0.48,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-inkwell-templates-adws-whole-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-inkwell-templates-adws-whole-g0",
+          "name": "Builder",
+          "kind": "formation",
+          "position": {
+            "x": -0.46,
+            "y": 0.58,
+            "z": 0
+          },
+          "size": {
+            "x": 0.18,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Builder",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-inkwell-templates-adws-whole-g1-step-1",
+                "text": "Builder",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r001-system-rec",
-     "name": "system",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "system",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r001-system-rec-step-1",
-        "text": "system",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r001-system-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Builder Agent",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/builder/system.md",
-     "body": "Implement the plan (or request) exactly; report every file you changed.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/builder/system.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 4fca4de88e59… (full-depth record 1 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r002-user",
-   "name": "Build Task",
-   "character": "{{prompt}}",
-   "duration": 13,
-   "transition": 1.6,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0805,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4904,
-     "circulation": 0.826,
-     "turbulence": 0.1265,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1052,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 231.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r002-user-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r002-user-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r002-user-title",
-     "name": "Build Task",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.32,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Build Task",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r002-user-title-enrichstep-1",
-        "text": "Build Task",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "text": [
+        {
+          "id": "fd-inkwell-templates-adws-whole-page",
+          "kicker": "",
+          "title": "the Factory whole — Inkwell factory — prompt",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       },
-       {
-        "id": "fd-r002-user-title-enrichstep-2",
-        "text": "user",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "fd-r002-user-title-enrichstep-3",
-        "text": "Build Task",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r001-system",
+      "name": "Builder Agent",
+      "character": "Implement the plan (or request) exactly; report every file you changed.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r002-user-rec",
-     "name": "user",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "user",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r002-user-rec-step-1",
-        "text": "user",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r002-user-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Build Task",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/builder/user.md",
-     "body": "{{prompt}}\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/builder/user.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 08c2fc3f54ab… (full-depth record 2 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r003-system",
-   "name": "Documenter Agent",
-   "character": "Write up the change that was just made, from the diff, for the engineer who arrives next.",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0008,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4156,
-     "circulation": 0.339,
-     "turbulence": 0.0897,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0578,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r003-system-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r003-system-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r003-system-title",
-     "name": "Documenter Agent",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.512,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Documenter Agent",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r003-system-title-enrichstep-1",
-        "text": "Documenter Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-r001-system-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.4,
+            "y": 0.4
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r001-system-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r001-system-f1",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.26,
+            "y": 0.26
+          },
+          "rotation": 45,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r001-system-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r001-system-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.12,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r001-system-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       },
-       {
-        "id": "fd-r003-system-title-enrichstep-2",
-        "text": "system",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "text": [
+        {
+          "id": "fd-r001-system-page",
+          "kicker": "",
+          "title": "Builder Agent",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       },
-       {
-        "id": "fd-r003-system-title-enrichstep-3",
-        "text": "Documenter Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r003-system-rec",
-     "name": "system",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "system",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r003-system-rec-step-1",
-        "text": "system",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r003-system-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Documenter Agent",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/documenter/system.md",
-     "body": "Write up the change that was just made, from the diff, for the engineer who arrives next.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/documenter/system.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 f47511f20803… (full-depth record 3 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.06,
-    "pointerClickRadius": 0.2,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r004-user",
-   "name": "Document Task",
-   "character": "{{prompt}}",
-   "duration": 16,
-   "transition": 2.2,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.021,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4708,
-     "circulation": 0.652,
-     "turbulence": 0.113,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0904,
-     "pointerStrength": 0.06,
-     "pointerRadius": 0.18,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 209.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r004-user-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r004-user-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r004-user-title",
-     "name": "Document Task",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.416,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Document Task",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r004-user-title-step-1",
-        "text": "Document Task",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r004-user-rec",
-     "name": "user",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "user",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r004-user-rec-step-1",
-        "text": "user",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r004-user-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Document Task",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/documenter/user.md",
-     "body": "{{prompt}}\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/documenter/user.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 c18b6766262a… (full-depth record 4 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r005-system",
-   "name": "Planner Agent",
-   "character": "Turn a request into a plan the builder can implement without asking questions.",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0013,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.426,
-     "circulation": 0.365,
-     "turbulence": 0.0963,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.063,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r005-system-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r005-system-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r005-system-title",
-     "name": "Planner Agent",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.416,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Planner Agent",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r005-system-title-enrichstep-1",
-        "text": "Planner Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r002-user",
+      "name": "Build Task",
+      "character": "{{prompt}}",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       },
-       {
-        "id": "fd-r005-system-title-enrichstep-2",
-        "text": "system",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-r002-user-f0",
+          "name": "the floor",
+          "kind": "formation",
+          "position": {
+            "x": -0.3,
+            "y": 0.14,
+            "z": 0
+          },
+          "size": {
+            "x": 0.55,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r002-user-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r002-user-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.32,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.14,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r002-user-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r002-user-f2",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r002-user-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       },
-       {
-        "id": "fd-r005-system-title-enrichstep-3",
-        "text": "Planner Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "text": [
+        {
+          "id": "fd-r002-user-page",
+          "kicker": "",
+          "title": "Build Task",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       }
-      ]
-     }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     },
     {
-     "id": "fd-r005-system-rec",
-     "name": "system",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "system",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r005-system-rec-step-1",
-        "text": "system",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r005-system-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Planner Agent",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/planner/system.md",
-     "body": "Turn a request into a plan the builder can implement without asking questions.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/planner/system.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 28cdc24d59f2… (full-depth record 5 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "vortex",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 1.2,
-    "pointerClickRadius": 0.36,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r006-user",
-   "name": "Plan Task",
-   "character": "{{prompt}}",
-   "duration": 14,
-   "transition": 2.0,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 0.9716,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.6312,
-     "circulation": 1.378,
-     "turbulence": 0.1795,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1156,
-     "pointerStrength": 1.05,
-     "pointerRadius": 0.28,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 253.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r006-user-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r006-user-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r006-user-title",
-     "name": "Plan Task",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.288,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Plan Task",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r006-user-title-step-1",
-        "text": "Plan Task",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r006-user-rec",
-     "name": "user",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "user",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r006-user-rec-step-1",
-        "text": "user",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r006-user-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Plan Task",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/planner/user.md",
-     "body": "{{prompt}}\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/planner/user.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 c924faf5b8d0… (full-depth record 6 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r007-system",
-   "name": "Reviewer Agent",
-   "character": "Confirm that what was built is what was asked for. This is not testing.",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0018,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4364,
-     "circulation": 0.391,
-     "turbulence": 0.1028,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0682,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r007-system-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r007-system-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r007-system-title",
-     "name": "Reviewer Agent",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.448,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Reviewer Agent",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r007-system-title-step-1",
-        "text": "Reviewer Agent",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r007-system-rec",
-     "name": "system",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "system",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r007-system-rec-step-1",
-        "text": "system",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r007-system-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Reviewer Agent",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/reviewer/system.md",
-     "body": "Confirm that what was built is what was asked for. This is not testing.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/reviewer/system.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 a3a82a59244d… (full-depth record 7 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [
-    {
-     "id": "fd-r007-system-enrich-lfo",
-     "target": "field.params.dispersion",
-     "type": "lfo",
-     "wave": "sine",
-     "blend": "add",
-     "min": 0.03,
-     "max": 0.12,
-     "rate": 0.09,
-     "phase": 0,
-     "duration": 0,
-     "delay": 0,
-     "loop": "loop",
-     "firedAt": null,
-     "enabled": true
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r008-user",
-   "name": "Review Task",
-   "character": "{{prompt}}",
-   "duration": 14,
-   "transition": 1.6,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0021,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.5916,
-     "circulation": 1.004,
-     "turbulence": 0.166,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1408,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 237.6,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r008-user-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r008-user-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r008-user-title",
-     "name": "Review Task",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.352,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Review Task",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r008-user-title-step-1",
-        "text": "Review Task",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r008-user-rec",
-     "name": "user",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "user",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r008-user-rec-step-1",
-        "text": "user",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r008-user-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Review Task",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/reviewer/user.md",
-     "body": "{{prompt}}\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/reviewer/user.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 65d89b1ab7b5… (full-depth record 8 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r009-system",
-   "name": "Scout Agent",
-   "character": "Find and report where things live. Change nothing.",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0023,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4468,
-     "circulation": 0.417,
-     "turbulence": 0.1092,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0734,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r009-system-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r009-system-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r009-system-title",
-     "name": "Scout Agent",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.352,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Scout Agent",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r009-system-title-enrichstep-1",
-        "text": "Scout Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "fd-r009-system-title-enrichstep-2",
-        "text": "system",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r003-system",
+      "name": "Documenter Agent",
+      "character": "Write up the change that was just made, from the diff, for the engineer who arrives next.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#241206",
+        "palette": [
+          "#f2d0b0",
+          "#e05a1e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       },
-       {
-        "id": "fd-r009-system-title-enrichstep-3",
-        "text": "Scout Agent",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-r003-system-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-system-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-system-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-system-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-system-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969524,
+            "y": 0.44627416997969516,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-system-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-system-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969518,
+            "y": 0.44627416997969527,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-system-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-system-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969527,
+            "y": -0.006274169979695182,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-system-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-system-f5",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969516,
+            "y": -0.0062741699796952655,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-system-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       }
-      ]
-     }
+      ],
+      "text": [
+        {
+          "id": "fd-r003-system-page",
+          "kicker": "",
+          "title": "Documenter Agent",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     },
     {
-     "id": "fd-r009-system-rec",
-     "name": "system",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "system",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r009-system-rec-step-1",
-        "text": "system",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r004-user",
+      "name": "Document Task",
+      "character": "{{prompt}}",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#241206",
+        "palette": [
+          "#f2d0b0",
+          "#e05a1e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r004-user-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": -0.52,
+            "y": 0.34,
+            "z": 0
+          },
+          "size": {
+            "x": 0.2,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-user-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-user-f1",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.26,
+            "y": 0.28,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-user-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-user-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-user-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-user-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.26,
+            "y": 0.16,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-user-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-user-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.1,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-user-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r004-user-page",
+          "kicker": "",
+          "title": "Document Task",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r005-system",
+      "name": "Planner Agent",
+      "character": "Turn a request into a plan the builder can implement without asking questions.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#241206",
+        "palette": [
+          "#f2d0b0",
+          "#e05a1e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r005-system-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-system-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r005-system-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-system-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r005-system-f2",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-system-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r005-system-f3",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-system-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r005-system-page",
+          "kicker": "",
+          "title": "Planner Agent",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r006-user",
+      "name": "Plan Task",
+      "character": "{{prompt}}",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e141c",
+        "palette": [
+          "#d8e4ee",
+          "#4a78a0"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r006-user-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.56,
+            "y": 0.56
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d8e4ee",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 1.7145055188062947e-17,
+            "y": -0.060000000000000026,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f3",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.24248711305964282,
+            "y": 0.07999999999999999,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.24248711305964285,
+            "y": 0.36,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f5",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 1.7145055188062947e-17,
+            "y": 0.5,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f6",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.2424871130596428,
+            "y": 0.3600000000000001,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f6-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-user-f7",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": -0.24248711305964282,
+            "y": 0.07999999999999996,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-user-f7-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r006-user-page",
+          "kicker": "",
+          "title": "Plan Task",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r007-system",
+      "name": "Reviewer Agent",
+      "character": "Confirm that what was built is what was asked for. This is not testing.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e141c",
+        "palette": [
+          "#d8e4ee",
+          "#4a78a0"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r007-system-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-system-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-system-f1",
+          "name": "the gate",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.36,
+            "y": 0.3
+          },
+          "rotation": 90,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-system-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-system-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d8e4ee",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-system-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-system-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-system-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-system-f4",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.3,
+            "y": 0.48,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-system-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r007-system-page",
+          "kicker": "",
+          "title": "Reviewer Agent",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r008-user",
+      "name": "Review Task",
+      "character": "{{prompt}}",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e141c",
+        "palette": [
+          "#d8e4ee",
+          "#4a78a0"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r008-user-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.4,
+            "y": 0.4
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r008-user-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r008-user-f1",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.26,
+            "y": 0.26
+          },
+          "rotation": 45,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r008-user-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r008-user-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.12,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d8e4ee",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r008-user-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r008-user-page",
+          "kicker": "",
+          "title": "Review Task",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r009-system",
+      "name": "Scout Agent",
+      "character": "Find and report where things live. Change nothing.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#1d1206",
+        "palette": [
+          "#f0e2c4",
+          "#c2923a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r009-system-f0",
+          "name": "the floor",
+          "kind": "formation",
+          "position": {
+            "x": -0.3,
+            "y": 0.14,
+            "z": 0
+          },
+          "size": {
+            "x": 0.55,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#c2923a",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r009-system-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r009-system-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.32,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.14,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f0e2c4",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r009-system-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r009-system-f2",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r009-system-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r009-system-page",
+          "kicker": "",
+          "title": "Scout Agent",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r010-user",
+      "name": "Scout Task",
+      "character": "{{prompt}}",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#1d1206",
+        "palette": [
+          "#f0e2c4",
+          "#c2923a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r010-user-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#c2923a",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r010-user-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r010-user-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f0e2c4",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r010-user-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r010-user-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969524,
+            "y": 0.44627416997969516,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#c2923a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r010-user-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r010-user-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969518,
+            "y": 0.44627416997969527,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#c2923a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r010-user-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r010-user-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969527,
+            "y": -0.006274169979695182,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#c2923a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r010-user-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r010-user-f5",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969516,
+            "y": -0.0062741699796952655,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#c2923a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r010-user-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r010-user-page",
+          "kicker": "",
+          "title": "Scout Task",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     }
-   ],
-   "text": [
-    {
-     "id": "fd-r009-system-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Scout Agent",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/scout/system.md",
-     "body": "Find and report where things live. Change nothing.\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/scout/system.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 0cf1e151d6b6… (full-depth record 9 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.06,
-    "pointerClickRadius": 0.2,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r010-user",
-   "name": "Scout Task",
-   "character": "{{prompt}}",
-   "duration": 15,
-   "transition": 1.8,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0026,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.552,
-     "circulation": 0.83,
-     "turbulence": 0.1425,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.116,
-     "pointerStrength": 0.06,
-     "pointerRadius": 0.18,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 220.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r010-user-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r010-user-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r010-user-title",
-     "name": "Scout Task",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.32,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Scout Task",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r010-user-title-step-1",
-        "text": "Scout Task",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r010-user-rec",
-     "name": "user",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "user",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r010-user-rec-step-1",
-        "text": "user",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r010-user-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Scout Task",
-     "italic": "inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/scout/user.md",
-     "body": "{{prompt}}\n\nBound material — inkwell-agent-sandboxes-and-software-factory/adws/adw_data/prompt_engineering/scout/user.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 54d7114b9ee0… (full-depth record 10 of 10; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  }
- ],
- "updatedAt": "2026-09-21T00:00:00.000Z"
+  ],
+  "updatedAt": "2026-09-21T00:00:00.000Z"
 }

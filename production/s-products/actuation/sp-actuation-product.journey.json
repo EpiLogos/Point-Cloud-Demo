@@ -1,1253 +1,1650 @@
 {
- "schema": "oi.journey",
- "version": 1,
- "savedScenes": {},
- "id": "sp-actuation-product",
- "name": "S-seeded products — S1 Actuation · full-depth · Product face — README, gateway, QL relational system prompt",
- "description": "Full-depth fan-out artifact for the Actuation product corpus, family: Product face — README, gateway, QL relational system prompt. Companion to the wave-1 whole-first corpus-root journey production/s-products/actuation/sp-actuation.journey.json — the S1 record's own movement path (#0 → #5→0) — which this artifact extends with the remaining inventoried records. Every scene binds one material record from working/expression-corpus/P1-census-actuation.json (frozen-census-basis, 157 records), re-hashed from EpiLogos/Actuation git object storage at published origin/main 36bbf93b7896550f11186f6240b8f018208ab3b2 on 2026-09-21: each bound record is byte-identical to published main; records changed since the census freeze bind their current committed bytes with the delta noted in the binding record. Scene texts compress and quote the records' own headings, never invent claims; tints, formations and layout are declared craft (profiles/family-actuation). Admission: the essay's S register (T25 census, register episteme). Wave-2 fan-out — not a rival admission, not corpus rewrite.",
- "loop": true,
- "scenes": [
-  {
-   "toolbelt": [
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "sp-actuation-product",
+  "name": "S-seeded products — S1 Actuation · full-depth · Product face — README, gateway, QL relational system prompt",
+  "description": "Full-depth fan-out artifact for the Actuation product corpus, family: Product face — README, gateway, QL relational system prompt. Companion to the wave-1 whole-first corpus-root journey production/s-products/actuation/sp-actuation.journey.json — the S1 record's own movement path (#0 → #5→0) — which this artifact extends with the remaining inventoried records. Every scene binds one material record from working/expression-corpus/P1-census-actuation.json (frozen-census-basis, 157 records), re-hashed from EpiLogos/Actuation git object storage at published origin/main 36bbf93b7896550f11186f6240b8f018208ab3b2 on 2026-09-21: each bound record is byte-identical to published main; records changed since the census freeze bind their current committed bytes with the delta noted in the binding record. Scene texts compress and quote the records' own headings, never invent claims; tints, formations and layout are declared craft (profiles/family-actuation). Admission: the essay's S register (T25 census, register episteme). Wave-2 fan-out — not a rival admission, not corpus rewrite.",
+  "loop": true,
+  "scenes": [
     {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-s1-product-01-readme",
-   "name": "actuation-gateway",
-   "character": "The product’s own face: the root README, the actuation gateway crate README, and the QL relational system prompt carried in the research crate.",
-   "duration": 14,
-   "transition": 1.6,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f2ded2",
-     "#c8724a"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.55,
-     "circulation": 0.9,
-     "turbulence": 0.14,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.12,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 237.6,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-s1-product-01-readme-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#c8724a",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-01-readme-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-01-readme-t1",
-     "name": "crates",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.3625,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "crates",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-01-readme-t1-step-1",
-        "text": "crates",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-01-readme-t2",
-     "name": "actuation",
-     "kind": "formation",
-     "position": {
-      "x": -0.25,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.3625,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "actuation",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-01-readme-t2-step-1",
-        "text": "actuation",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-01-readme-t3",
-     "name": "gateway",
-     "kind": "formation",
-     "position": {
-      "x": 0.25,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.3625,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "gateway",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-01-readme-t3-enrichstep-1",
-        "text": "Agency",
-        "shape": "text",
-        "hold": 2.2,
-        "transition": 0.9,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3625,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
-        }
-       },
-       {
-        "id": "fd-s1-product-01-readme-t3-enrichstep-2",
-        "text": "AgentSession",
-        "shape": "text",
-        "hold": 2.2,
-        "transition": 0.9,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3625,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
-        }
-       },
-       {
-        "id": "fd-s1-product-01-readme-t3-enrichstep-3",
-        "text": "ActuationStream",
-        "shape": "text",
-        "hold": 2.2,
-        "transition": 0.9,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3625,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
-        }
-       },
-       {
-        "id": "fd-s1-product-01-readme-t3-enrichstep-4",
-        "text": "gateway",
-        "shape": "text",
-        "hold": 2.2,
-        "transition": 0.9,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3625,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
-        }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-01-readme-t4",
-     "name": "readme",
-     "kind": "formation",
-     "position": {
-      "x": 0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.3625,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "readme",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-01-readme-t4-step-1",
-        "text": "readme",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-01-readme-rec",
-     "name": "README",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "README",
-     "share": 1,
-     "tint": "#c8724a",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-01-readme-rec-step-1",
-        "text": "README",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-s1-product-01-readme-page",
-     "kicker": "S1 Actuation · full-depth · product",
-     "title": "actuation-gateway",
-     "italic": "Product face — README, gateway, QL relational system prompt",
-     "body": "Bound material — crates/actuation-gateway/README.md: actuation-gateway.\n\nEpiLogos/Actuation @ published origin/main 36bbf93b7896; sha256 64082f65…, re-hashed from git object storage 2026-09-21. Full-depth fan-out: 50 of 128 remaining inventoried records bound this pass (wave-1 bound 6; 157 inventoried).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [
-    {
-     "id": "fd-s1-product-01-readme-enrich-lfo",
-     "target": "field.params.pointerStrength",
-     "type": "lfo",
-     "wave": "sine",
-     "blend": "add",
-     "min": 0.5,
-     "max": 1.2,
-     "rate": 0.09,
-     "phase": 0,
-     "duration": 0,
-     "delay": 0,
-     "loop": "loop",
-     "firedAt": null,
-     "enabled": true
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.16,
-    "pointerClickRadius": 0.24,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent",
-    "depthPerspective": true,
-    "depthTintColor": "#141110"
-   },
-   "id": "fd-s1-product-02-ql-relational-system-prompt",
-   "name": "Relational Logos",
-   "character": "The product’s own face: the root README, the actuation gateway crate README, and the QL relational system prompt carried in the research crate.",
-   "duration": 16,
-   "transition": 2.4,
-   "view": {
-    "mode": "3d",
-    "yaw": 0.45,
-    "pitch": 0.1,
-    "zoom": 0.95,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f2ded2",
-     "#c8724a"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.3552,
-     "circulation": 0.213,
-     "turbulence": 0.0633,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0426,
-     "pointerStrength": 0.18,
-     "pointerRadius": 0.2,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 193.6,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-s1-product-02-ql-relational-system-prompt-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": -0.55
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#c8724a",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-02-ql-relational-system-prompt-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-02-ql-relational-system-prompt-t1",
-     "name": "Relational",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": -0.1833
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Relational",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-02-ql-relational-system-prompt-t1-step-1",
-        "text": "Relational",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-02-ql-relational-system-prompt-t2",
-     "name": "Logos",
-     "kind": "formation",
-     "position": {
-      "x": 0.75,
-      "y": 0.42,
-      "z": 0.1833
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Logos",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-02-ql-relational-system-prompt-t2-enrichstep-1",
-        "text": "Relational",
-        "shape": "text",
-        "hold": 3.2,
-        "transition": 1.6,
-        "position": {
-         "x": -0.35,
-         "y": 0.1,
-         "z": 0
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
         },
-        "objectState": {
-         "size": {
-          "x": 0.41,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
-        }
-       },
-       {
-        "id": "fd-s1-product-02-ql-relational-system-prompt-t2-enrichstep-2",
-        "text": "Logos",
-        "shape": "text",
-        "hold": 3.2,
-        "transition": 1.6,
-        "position": {
-         "x": 0.35,
-         "y": 0.1,
-         "z": 0
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
         },
-        "objectState": {
-         "size": {
-          "x": 0.41,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       }
-      ]
-     }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-s1-product-01-readme",
+      "name": "actuation-gateway",
+      "character": "The product’s own face: the root README, the actuation gateway crate README, and the QL relational system prompt carried in the research crate.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#17100b",
+        "palette": [
+          "#f2d9c8",
+          "#d57b3a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-s1-product-01-readme-f0",
+          "name": "the bearing",
+          "kind": "formation",
+          "position": {
+            "x": -0.25,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.32,
+            "y": 0.32
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-01-readme-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-01-readme-f1",
+          "name": "the stock",
+          "kind": "formation",
+          "position": {
+            "x": 0.28,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.32,
+            "y": 0.32
+          },
+          "rotation": 18,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-01-readme-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-01-readme-f2",
+          "name": "the joint",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.09,
+            "y": 0.09
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d9c8",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-01-readme-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-01-readme-f3",
+          "name": "the link",
+          "kind": "formation",
+          "position": {
+            "x": -0.56,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8886b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-01-readme-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-01-readme-f4",
+          "name": "the link",
+          "kind": "formation",
+          "position": {
+            "x": 0.58,
+            "y": 0.05,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8886b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-01-readme-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-s1-product-01-readme-page",
+          "kicker": "",
+          "title": "actuation-gateway",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     },
     {
-     "id": "fd-s1-product-02-ql-relational-system-prompt-rec",
-     "name": "ql-relational-system-prompt",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0.55
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "ql-relational-system-prompt",
-     "share": 1,
-     "tint": "#c8724a",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-02-ql-relational-system-prompt-rec-step-1",
-        "text": "ql-relational-system-prompt",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-s1-product-02-ql-relational-system-prompt",
+      "name": "Relational Logos",
+      "character": "The product’s own face: the root README, the actuation gateway crate README, and the QL relational system prompt carried in the research crate.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#17100b",
+        "palette": [
+          "#f2d9c8",
+          "#d57b3a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-f0",
+          "name": "the bearing",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-f1",
+          "name": "the joint",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d9c8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-f2",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969524,
+            "y": 0.44627416997969516,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-f3",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969518,
+            "y": 0.44627416997969527,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-f4",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969527,
+            "y": -0.006274169979695182,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-f5",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969516,
+            "y": -0.0062741699796952655,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d57b3a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-g0",
+          "name": "relational",
+          "kind": "formation",
+          "position": {
+            "x": -0.46,
+            "y": 0.58,
+            "z": 0
+          },
+          "size": {
+            "x": 0.18,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "relational",
+          "share": 1,
+          "tint": "#f2d9c8",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-02-ql-relational-system-prompt-g1-step-1",
+                "text": "relational",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-s1-product-02-ql-relational-system-prompt-page",
+          "kicker": "",
+          "title": "Relational Logos",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-s1-product-03-readme",
+      "name": "Actuation",
+      "character": "The product’s own face: the root README, the actuation gateway crate README, and the QL relational system prompt carried in the research crate.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#201014",
+        "palette": [
+          "#f0dcc8",
+          "#c2542e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-s1-product-03-readme-f0",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": -0.5,
+            "y": 0.34,
+            "z": 0
+          },
+          "size": {
+            "x": 0.09,
+            "y": 0.09
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f0dcc8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-03-readme-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-03-readme-f1",
+          "name": "the stock",
+          "kind": "formation",
+          "position": {
+            "x": -0.22,
+            "y": 0.27,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.07
+          },
+          "rotation": -20,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#c2542e",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-03-readme-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-03-readme-f2",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.09,
+            "y": 0.09
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#c2542e",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-03-readme-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-03-readme-f3",
+          "name": "the stock",
+          "kind": "formation",
+          "position": {
+            "x": 0.33,
+            "y": 0.14,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.07
+          },
+          "rotation": -20,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#c2542e",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-03-readme-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-03-readme-f4",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.6,
+            "y": 0.07,
+            "z": 0
+          },
+          "size": {
+            "x": 0.09,
+            "y": 0.09
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f0dcc8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-03-readme-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-03-readme-f5",
+          "name": "the bearing",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.22,
+            "y": 0.22
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#a8886b",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-03-readme-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-s1-product-03-readme-page",
+          "kicker": "",
+          "title": "Actuation",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-s1-product-04-confluence",
+      "name": "Gateway and prompt confluence",
+      "character": "The gateway's README face and the QL relational system prompt are one product's two doors: the crate that actuates and the prompt that orients it, bound as one Actuation.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0f1620",
+        "palette": [
+          "#d8e2ee",
+          "#4a7ba6"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-s1-product-04-confluence-f0",
+          "name": "the bearing",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.52,
+            "y": 0.52
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#4a7ba6",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-04-confluence-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-04-confluence-f1",
+          "name": "the joint",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.14,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d8e2ee",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-04-confluence-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-04-confluence-f2",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": -0.37,
+            "y": 0.04,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a7ba6",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-04-confluence-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-04-confluence-f3",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0.37,
+            "y": 0.04,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a7ba6",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-04-confluence-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-s1-product-04-confluence-f4",
+          "name": "the driver",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.48,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a7ba6",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-s1-product-04-confluence-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-s1-product-04-confluence-page",
+          "kicker": "",
+          "title": "Gateway and prompt confluence",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     }
-   ],
-   "text": [
-    {
-     "id": "fd-s1-product-02-ql-relational-system-prompt-page",
-     "kicker": "S1 Actuation · full-depth · product",
-     "title": "Relational Logos",
-     "italic": "Product face — README, gateway, QL relational system prompt",
-     "body": "Bound material — crates/actuation-research/src/ql-relational-system-prompt.md: Relational Logos.\n\nEpiLogos/Actuation @ published origin/main 36bbf93b7896; sha256 92f41259…, re-hashed from git object storage 2026-09-21. Full-depth fan-out: 51 of 128 remaining inventoried records bound this pass (wave-1 bound 6; 157 inventoried).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 24,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-s1-product-03-readme",
-   "name": "Actuation",
-   "character": "The product’s own face: the root README, the actuation gateway crate README, and the QL relational system prompt carried in the research crate.",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0005,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f2ded2",
-     "#c8724a"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4104,
-     "circulation": 0.326,
-     "turbulence": 0.0865,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0552,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-s1-product-03-readme-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#c8724a",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-03-readme-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-03-readme-t1",
-     "name": "readme",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "readme",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-03-readme-t1-step-1",
-        "text": "readme",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-03-readme-t2",
-     "name": "md",
-     "kind": "formation",
-     "position": {
-      "x": 0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "md",
-     "share": 1,
-     "tint": "#f2ded2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-03-readme-t2-step-1",
-        "text": "md",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-s1-product-03-readme-rec",
-     "name": "README",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "README",
-     "share": 1,
-     "tint": "#c8724a",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-s1-product-03-readme-rec-step-1",
-        "text": "README",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-s1-product-03-readme-page",
-     "kicker": "S1 Actuation · full-depth · product",
-     "title": "Actuation",
-     "italic": "Product face — README, gateway, QL relational system prompt",
-     "body": "Bound material — README.md: Actuation.\n\nEpiLogos/Actuation @ published origin/main 36bbf93b7896; sha256 cd2ba083…, re-hashed from git object storage 2026-09-21. Full-depth fan-out: 52 of 128 remaining inventoried records bound this pass (wave-1 bound 6; 157 inventoried). Census note: changed on published main since the census freeze at 0ac23bfe95d9; the current committed bytes are bound.",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 16,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  }
- ],
- "updatedAt": "2026-09-21T00:00:00.000Z"
+  ],
+  "updatedAt": "2026-09-21T00:00:00.000Z"
 }

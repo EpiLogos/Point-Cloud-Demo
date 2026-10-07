@@ -1,1768 +1,2070 @@
 {
- "schema": "oi.journey",
- "version": 1,
- "savedScenes": {},
- "id": "sp-ql-fd-geometry",
- "name": "S-seeded products — S5 Quaternal Logic full depth · geometry",
- "description": "Full-depth material journey for the Quaternal Logic product corpus, inventory family “geometry” (5 records). Companion to the whole-first corpus-root artifact sp-ql (S5's own #0 → #5→0 movement path — carried by reference, not duplicated here). Every scene binds one authored record from the frozen P1 census inventory (Antykathera-Essay-Work ddbe871c; record hashes re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1). Privacy: every bound record byte-identical to published origin/main 2bcdc78 except where the binding record names a drift (those are bound at current main bytes). Scene texts quote the bound records, never invent claims; tints, formations and layout are declared craft (profiles/s-products-corpus-base, profiles/family-ql-fulldepth).",
- "loop": true,
- "scenes": [
-  {
-   "toolbelt": [
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "sp-ql-fd-geometry",
+  "name": "S-seeded products — S5 Quaternal Logic full depth · geometry",
+  "description": "Full-depth material journey for the Quaternal Logic product corpus, inventory family “geometry” (5 records). Companion to the whole-first corpus-root artifact sp-ql (S5's own #0 → #5→0 movement path — carried by reference, not duplicated here). Every scene binds one authored record from the frozen P1 census inventory (Antykathera-Essay-Work ddbe871c; record hashes re-verified byte-exact from git object storage at EpiLogos/Quaternal-Logic@81d1af1). Privacy: every bound record byte-identical to published origin/main 2bcdc78 except where the binding record names a drift (those are bound at current main bytes). Scene texts quote the bound records, never invent claims; tints, formations and layout are declared craft (profiles/s-products-corpus-base, profiles/family-ql-fulldepth).",
+  "loop": true,
+  "scenes": [
     {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#d2e6e2",
-     "#2e6f6c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4,
-     "circulation": 0.3,
-     "turbulence": 0.08,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.05,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [],
-   "id": "s5-fd-geometry-01",
-   "name": "Canonical constellation resolution — L5.3 Geometry",
-   "character": "Status: canonical architecture and executable Geometry contract extension, 2026-09-16; source-grounded closeout clarified 2026-09-17 Programme: #204, with implementation tranches #205–#207 …",
-   "text": [
-    {
-     "id": "sp-s5-fd-geometry-01-page",
-     "kicker": "S5 Quaternal Logic · geometry · 1/5",
-     "title": "Canonical constellation resolution — L5.3 Geometry",
-     "italic": "docs/geometry/CANONICAL-CONSTELLATION-RESOLUTION.md",
-     "body": "“Status: canonical architecture and executable Geometry contract extension, 2026-09-16; source-grounded closeout clarified 2026-09-17 Programme: #204, with implementation tranches #205–#207 and runtime Wiki completion #222/#223. Owner: the existing QL Kernel / L5.3 Geometry office. This document …”\n\nBound material — docs/geometry/CANONICAL-CONSTELLATION-RESOLUTION.md EpiLogos/Quaternal-Logic · byte-identical to published origin/main e3d2b8c · sha256 e3d2b8c6e2b36475dcd2c71ca65a009a… Corpus root: S5 Quaternal Logic — whole path …",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 21,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "entities": [
-    {
-     "id": "sp-s5-fd-geometry-01-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-01-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-01-t1",
-     "name": "geometry",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "geometry",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-01-t1-step-1",
-        "text": "geometry",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-01-rec",
-     "name": "the bound record",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "CANONICAL-CONSTELLATION-RESOLUTION",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-01-rec-step-1",
-        "text": "CANONICAL-CONSTELLATION-RESOLUTION",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "vortex",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 1.2,
-    "pointerClickRadius": 0.36,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent",
-    "depthPerspective": true,
-    "depthTintColor": "#161210"
-   },
-   "duration": 14,
-   "transition": 2.0,
-   "view": {
-    "mode": "3d",
-    "yaw": -0.42,
-    "pitch": 0.15,
-    "zoom": 0.92,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#d2e6e2",
-     "#2e6f6c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.6052,
-     "circulation": 1.313,
-     "turbulence": 0.1633,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1026,
-     "pointerStrength": 1.05,
-     "pointerRadius": 0.28,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 253.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [
-    {
-     "id": "s5-fd-geometry-02-enrich-lfo",
-     "target": "field.params.dispersion",
-     "type": "lfo",
-     "wave": "sine",
-     "blend": "add",
-     "min": 0.03,
-     "max": 0.12,
-     "rate": 0.09,
-     "phase": 0,
-     "duration": 0,
-     "delay": 0,
-     "loop": "loop",
-     "firedAt": null,
-     "enabled": true
-    }
-   ],
-   "id": "s5-fd-geometry-02",
-   "name": "The fold, the ruling, and the vibration — geometric foundation of the QL/MEF …",
-   "character": "Status: research foundational note, session-derived 2026-09-06. Inputs: three contemplative layers (tetractys/music/elements; Timaeus solids and the withheld pentagon; hermetic vibration / …",
-   "text": [
-    {
-     "id": "sp-s5-fd-geometry-02-page",
-     "kicker": "S5 Quaternal Logic · geometry · 2/5",
-     "title": "The fold, the ruling, and the vibration — geometric foundation of the QL/MEF …",
-     "italic": "docs/geometry/FOLD-AND-RULING-GRAMMAR.md",
-     "body": "“Status: research foundational note, session-derived 2026-09-06. Inputs: three contemplative layers (tetractys/music/elements; Timaeus solids and the withheld pentagon; hermetic vibration / torus / hyperboloid), the recovered origami fold-grammar paper …”\n\nBound material — docs/geometry/FOLD-AND-RULING-GRAMMAR.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main be05db8 · sha256 be05db80cb5f57b55cd82637962cfd74…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "entities": [
-    {
-     "id": "sp-s5-fd-geometry-02-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": -0.5
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-02-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-02-t1",
-     "name": "vibration",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": -0.1667
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "vibration",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-02-t1-enrichstep-1",
-        "text": "vibration",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.28,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "sp-s5-fd-geometry-02-t1-enrichstep-2",
-        "text": "vibration",
-        "shape": "ring",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.22,
-          "y": 0.22
-         },
-         "rotation": 0,
-         "tint": "#c8724a",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e0e1c",
+        "palette": [
+          "#f2e3c0",
+          "#c9a84a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       },
-       {
-        "id": "sp-s5-fd-geometry-02-t1-enrichstep-3",
-        "text": "vibration",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-geometry-01",
+      "name": "Canonical constellation resolution — L5.3 Geometry",
+      "character": "Status: canonical architecture and executable Geometry contract extension, 2026-09-16; source-grounded closeout clarified 2026-09-17 Programme: #204, with implementation tranches #205–#207 …",
+      "text": [
+        {
+          "id": "s5-fd-geometry-01-page",
+          "kicker": "",
+          "title": "Canonical constellation resolution — L5.3 Geometry",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-02-t2",
-     "name": "geometric",
-     "kind": "formation",
-     "position": {
-      "x": -0.25,
-      "y": 0.42,
-      "z": 0.1667
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "geometric",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-02-t2-step-1",
-        "text": "geometric",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-02-rec",
-     "name": "the bound record",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0.5
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "FOLD-AND-RULING-GRAMMAR",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-02-rec-step-1",
-        "text": "FOLD-AND-RULING-GRAMMAR",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "duration": 13,
-   "transition": 1.6,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0805,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#d2e6e2",
-     "#2e6f6c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4904,
-     "circulation": 0.826,
-     "turbulence": 0.1265,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1052,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 231.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [],
-   "id": "s5-fd-geometry-03",
-   "name": "The Fourth Spanda Equation — the conditions equation (eq0)",
-   "character": "Status: authored theory, 2026-09-07 (owner-directed session; offered for the warrant grades of the corpus — Derived where arithmetic, Argued where grounded in cited canon, Offered where …",
-   "text": [
-    {
-     "id": "sp-s5-fd-geometry-03-page",
-     "kicker": "S5 Quaternal Logic · geometry · 3/5",
-     "title": "The Fourth Spanda Equation — the conditions equation (eq0)",
-     "italic": "docs/geometry/FOURTH-SPANDA-EQUATION.md",
-     "body": "“Status: authored theory, 2026-09-07 (owner-directed session; offered for the warrant grades of the corpus — Derived where arithmetic, Argued where grounded in cited canon, Offered where interpretive). Seating: M0-4.(0/1/2/3) — the N# Spanda Base — with its fold-back spanning the chain and its …”\n\nBound material — docs/geometry/FOURTH-SPANDA-EQUATION.md EpiLogos/Quaternal-Logic · byte-identical to published origin/main 63d731c · sha256 63d731c5518d000ae0da982c21c2dd10… Corpus root: S5 Quaternal Logic — whole path …",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "entities": [
-    {
-     "id": "sp-s5-fd-geometry-03-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-03-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-03-t1",
-     "name": "conditions",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "conditions",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-03-t1-enrichstep-1",
-        "text": "conditions",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.28,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "entities": [
+        {
+          "id": "s5-fd-geometry-01-f0",
+          "name": "the field of relation",
+          "kind": "formation",
+          "position": {
+            "x": -0.3,
+            "y": 0.14,
+            "z": 0
+          },
+          "size": {
+            "x": 0.55,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#c9a84a",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-01-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-01-f1",
+          "name": "the source",
+          "kind": "formation",
+          "position": {
+            "x": 0.32,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.14,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2e3c0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-01-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-01-f2",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-01-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       },
-       {
-        "id": "sp-s5-fd-geometry-03-t1-enrichstep-2",
-        "text": "conditions",
-        "shape": "ring",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.22,
-          "y": 0.22
-         },
-         "rotation": 0,
-         "tint": "#c8724a",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "sp-s5-fd-geometry-03-t1-enrichstep-3",
-        "text": "conditions",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e0e1c",
+        "palette": [
+          "#f2e3c0",
+          "#c9a84a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-03-rec",
-     "name": "the bound record",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "FOURTH-SPANDA-EQUATION",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-03-rec-step-1",
-        "text": "FOURTH-SPANDA-EQUATION",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.06,
-    "pointerClickRadius": 0.2,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "duration": 15,
-   "transition": 1.8,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0008,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#d2e6e2",
-     "#2e6f6c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.5156,
-     "circulation": 0.739,
-     "turbulence": 0.1197,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0978,
-     "pointerStrength": 0.06,
-     "pointerRadius": 0.18,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 220.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [],
-   "id": "s5-fd-geometry-04",
-   "name": "Geometry constellation completion Wayfinder",
-   "character": "Status: #204–#207 and #222 landed; canonical Geometry plus Vāk/Wiki runtime propagation complete; source-grounded handoff closed 2026-09-17 Landed via: #208 and #223 Canonical spec …",
-   "text": [
-    {
-     "id": "sp-s5-fd-geometry-04-page",
-     "kicker": "S5 Quaternal Logic · geometry · 4/5",
-     "title": "Geometry constellation completion Wayfinder",
-     "italic": "docs/geometry/GEOMETRY-CONSTELLATION-WAYFINDER.md",
-     "body": "“Status: #204–#207 and #222 landed; canonical Geometry plus Vāk/Wiki runtime propagation complete; source-grounded handoff closed 2026-09-17 Landed via: #208 and #223 Canonical spec: CANONICAL-CONSTELLATION-RESOLUTION.md(CANONICAL-CONSTELLATION-RESOLUTION.md)”\n\nBound material — docs/geometry/GEOMETRY-CONSTELLATION-WAYFINDER.md\nEpiLogos/Quaternal-Logic · byte-identical to published origin/main eec1a69 · sha256 eec1a69421e653a5d093d141ecf32be6…\nCorpus root: S5 Quaternal Logic — whole path in wave-1 artifact sp-ql; this journey binds the inventory family at full depth.",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "entities": [
-    {
-     "id": "sp-s5-fd-geometry-04-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-04-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-04-t1",
-     "name": "completion",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "completion",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-04-t1-step-1",
-        "text": "completion",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-04-rec",
-     "name": "the bound record",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "GEOMETRY-CONSTELLATION-WAYFINDER",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-04-rec-step-1",
-        "text": "GEOMETRY-CONSTELLATION-WAYFINDER",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "vortex",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 1.2,
-    "pointerClickRadius": 0.36,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "duration": 14,
-   "transition": 2.0,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 0.971,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#d2e6e2",
-     "#2e6f6c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.6208,
-     "circulation": 1.352,
-     "turbulence": 0.173,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1104,
-     "pointerStrength": 1.05,
-     "pointerRadius": 0.28,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 253.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [],
-   "id": "s5-fd-geometry-05",
-   "name": "Origami as Mahāmāyā form grammar — the elemental fibre, the 22.5° fold …",
-   "character": "Status: superseded — canonical material located 2026-09-06. Provenance: the origami work is not lost. Its real location is EpiLogos/QL-MEF (this repository), branch research/origami-work …",
-   "text": [
-    {
-     "id": "sp-s5-fd-geometry-05-page",
-     "kicker": "S5 Quaternal Logic · geometry · 5/5",
-     "title": "Origami as Mahāmāyā form grammar — the elemental fibre, the 22.5° fold …",
-     "italic": "docs/geometry/ORIGAMI-FOLD-GRAMMAR-RECOVERED.md",
-     "body": "“Status: superseded — canonical material located 2026-09-06. Provenance: the origami work is not lost. Its real location is EpiLogos/QL-MEF (this repository), branch research/origami-work, commit f8e7283 (\"docs(origami): copy integrated physical-pole object\"), scoped under docs/origami work/ — nine …”\n\nBound material — docs/geometry/ORIGAMI-FOLD-GRAMMAR-RECOVERED.md EpiLogos/Quaternal-Logic · byte-identical to published origin/main 5677466 · sha256 567746627986b9f7e4b912ab55ed8bfc… Corpus root: S5 Quaternal Logic — whole path …",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "entities": [
-    {
-     "id": "sp-s5-fd-geometry-05-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-05-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-05-t1",
-     "name": "mah",
-     "kind": "formation",
-     "position": {
-      "x": -0.75,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "mah",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-05-t1-step-1",
-        "text": "mah",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "sp-s5-fd-geometry-05-t2",
-     "name": "form",
-     "kind": "formation",
-     "position": {
-      "x": -0.25,
-      "y": 0.42,
-      "z": 0
-     },
-     "size": {
-      "x": 0.41,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "form",
-     "share": 1,
-     "tint": "#e6dcf2",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-05-t2-enrichstep-1",
-        "text": "form",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.28,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-geometry-02",
+      "name": "The fold, the ruling, and the vibration — geometric foundation of the QL/MEF …",
+      "character": "Status: research foundational note, session-derived 2026-09-06. Inputs: three contemplative layers (tetractys/music/elements; Timaeus solids and the withheld pentagon; hermetic vibration / …",
+      "text": [
+        {
+          "id": "s5-fd-geometry-02-page",
+          "kicker": "",
+          "title": "The fold, the ruling, and the vibration ",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       },
-       {
-        "id": "sp-s5-fd-geometry-05-t2-enrichstep-2",
-        "text": "form",
-        "shape": "ring",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.22,
-          "y": 0.22
-         },
-         "rotation": 0,
-         "tint": "#c8724a",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "entities": [
+        {
+          "id": "s5-fd-geometry-02-f0",
+          "name": "the vessel",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.5,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-02-f1",
+          "name": "the relation",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.34,
+            "y": 0.34
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#c9a84a",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-02-f2",
+          "name": "the source",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2e3c0",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-02-f3",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": 0.45,
+            "y": 0.44,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-02-f4",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": -0.45,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-02-g0",
+          "name": "fold",
+          "kind": "formation",
+          "position": {
+            "x": -0.46,
+            "y": 0.58,
+            "z": 0
+          },
+          "size": {
+            "x": 0.18,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "fold",
+          "share": 1,
+          "tint": "#f2e3c0",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-g1-step-1",
+                "text": "fold",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-02-g1",
+          "name": "vibration",
+          "kind": "formation",
+          "position": {
+            "x": 0.46,
+            "y": 0.58,
+            "z": 0
+          },
+          "size": {
+            "x": 0.18,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "vibration",
+          "share": 1,
+          "tint": "#f2e3c0",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-02-g2-step-1",
+                "text": "vibration",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       },
-       {
-        "id": "sp-s5-fd-geometry-05-t2-enrichstep-3",
-        "text": "form",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
-        }
-       }
       ]
-     }
     },
     {
-     "id": "sp-s5-fd-geometry-05-rec",
-     "name": "the bound record",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.5,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "ORIGAMI-FOLD-GRAMMAR-RECOVERED",
-     "share": 1,
-     "tint": "#7a5ca8",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "sp-s5-fd-geometry-05-rec-step-1",
-        "text": "ORIGAMI-FOLD-GRAMMAR-RECOVERED",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#1a140a",
+        "palette": [
+          "#f2ecd8",
+          "#a8863a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-geometry-03",
+      "name": "The Fourth Spanda Equation — the conditions equation (eq0)",
+      "character": "Status: authored theory, 2026-09-07 (owner-directed session; offered for the warrant grades of the corpus — Derived where arithmetic, Argued where grounded in cited canon, Offered where …",
+      "text": [
+        {
+          "id": "s5-fd-geometry-03-page",
+          "kicker": "",
+          "title": "The Fourth Spanda Equation — the conditions equation",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "s5-fd-geometry-03-f0",
+          "name": "the relation",
+          "kind": "formation",
+          "position": {
+            "x": -0.52,
+            "y": 0.34,
+            "z": 0
+          },
+          "size": {
+            "x": 0.2,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-03-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-03-f1",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": -0.26,
+            "y": 0.28,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-03-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-03-f2",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-03-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-03-f3",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": 0.26,
+            "y": 0.16,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-03-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-03-f4",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.1,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2ecd8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-03-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-03-g2",
+          "name": "Spanda",
+          "kind": "formation",
+          "position": {
+            "x": -0.46,
+            "y": 0.58,
+            "z": 0
+          },
+          "size": {
+            "x": 0.18,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "Spanda",
+          "share": 1,
+          "tint": "#f2ecd8",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-03-g3-step-1",
+                "text": "Spanda",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
       ]
-     }
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#1a140a",
+        "palette": [
+          "#f2ecd8",
+          "#a8863a"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-geometry-04",
+      "name": "Geometry constellation completion Wayfinder",
+      "character": "Status: #204–#207 and #222 landed; canonical Geometry plus Vāk/Wiki runtime propagation complete; source-grounded handoff closed 2026-09-17 Landed via: #208 and #223 Canonical spec …",
+      "text": [
+        {
+          "id": "s5-fd-geometry-04-page",
+          "kicker": "",
+          "title": "Geometry constellation completion Wayfinder",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "s5-fd-geometry-04-f0",
+          "name": "the relation",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.56,
+            "y": 0.56
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f1",
+          "name": "the source",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2ecd8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f2",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": 1.7145055188062947e-17,
+            "y": -0.060000000000000026,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f3",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": 0.24248711305964282,
+            "y": 0.07999999999999999,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f4",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": 0.24248711305964285,
+            "y": 0.36,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f5",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": 1.7145055188062947e-17,
+            "y": 0.5,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f6",
+          "name": "the kin",
+          "kind": "formation",
+          "position": {
+            "x": -0.2424871130596428,
+            "y": 0.3600000000000001,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8863a",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f6-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-04-f7",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": -0.24248711305964282,
+            "y": 0.07999999999999996,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-04-f7-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#101018",
+        "palette": [
+          "#dcd8f0",
+          "#7b6bc2"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": [],
+      "id": "s5-fd-geometry-05",
+      "name": "Origami as Mahāmāyā form grammar — the elemental fibre, the 22.5° fold …",
+      "character": "Status: superseded — canonical material located 2026-09-06. Provenance: the origami work is not lost. Its real location is EpiLogos/QL-MEF (this repository), branch research/origami-work …",
+      "text": [
+        {
+          "id": "s5-fd-geometry-05-page",
+          "kicker": "",
+          "title": "Origami as Mahāmāyā form grammar — the elemental",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "entities": [
+        {
+          "id": "s5-fd-geometry-05-f0",
+          "name": "the relation",
+          "kind": "formation",
+          "position": {
+            "x": -0.2,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.4,
+            "y": 0.4
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#7b6bc2",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-05-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-05-f1",
+          "name": "the relation",
+          "kind": "formation",
+          "position": {
+            "x": 0.2,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.4,
+            "y": 0.4
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#7b6bc2",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-05-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-05-f2",
+          "name": "the source",
+          "kind": "formation",
+          "position": {
+            "x": -0.2,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#dcd8f0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-05-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-05-f3",
+          "name": "the source",
+          "kind": "formation",
+          "position": {
+            "x": 0.2,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#dcd8f0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-05-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5-fd-geometry-05-f4",
+          "name": "the trace",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.52,
+            "z": 0
+          },
+          "size": {
+            "x": 0.05,
+            "y": 0.05
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#b8a888",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "s5-fd-geometry-05-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ]
     }
-   ]
-  }
- ],
- "updatedAt": "2026-09-21T00:00:00.000Z"
+  ],
+  "updatedAt": "2026-09-21T00:00:00.000Z"
 }
