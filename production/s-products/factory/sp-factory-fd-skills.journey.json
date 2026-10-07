@@ -1,2627 +1,3036 @@
 {
- "schema": "oi.journey",
- "version": 1,
- "savedScenes": {},
- "id": "sp-factory-fd-skills",
- "name": "S3 Factory full depth — factory skills",
- "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the factory skills slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
- "loop": true,
- "scenes": [
-  {
-   "toolbelt": [
+  "schema": "oi.journey",
+  "version": 1,
+  "savedScenes": {},
+  "id": "sp-factory-fd-skills",
+  "name": "S3 Factory full depth — factory skills",
+  "description": "Full-depth wave-2 corpus artifact for the Software Factory product corpus, S-seeded (essay record S3, L3 Processual / L2′ Alchemical-Elemental, movement 40 of §5). Whole-first: opens by referencing the Factory whole staged in the wave-1 artifact sp-factory, then binds the factory skills slice of the frozen P1-census-factory inventory (230 records; 6 bound in wave-1) one record per scene — every bound record byte-identical to EpiLogos/Factory origin/main f59368de (re-hashed from git object storage 2026-09-21; records that moved on main since the census freeze are bound at current committed bytes with the delta named). Scene texts compress and quote the records, never invent claims; tints, formations and layout are declared craft.",
+  "loop": true,
+  "scenes": [
     {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent",
-    "depthPerspective": true,
-    "depthTintColor": "#161210"
-   },
-   "id": "fd-skills-whole",
-   "name": "the Factory whole — factory skills",
-   "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
-   "duration": 13,
-   "transition": 1.6,
-   "view": {
-    "mode": "3d",
-    "yaw": -0.42,
-    "pitch": 0.15,
-    "zoom": 0.92,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.48,
-     "circulation": 0.8,
-     "turbulence": 0.12,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 231.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-skills-whole-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": -0.5
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-skills-whole-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-skills-whole-w1",
-     "name": "the Factory whole",
-     "kind": "formation",
-     "position": {
-      "x": -0.5,
-      "y": 0.4,
-      "z": 0.0
-     },
-     "size": {
-      "x": 0.544,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "the Factory whole",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-skills-whole-w1-step-1",
-        "text": "the Factory whole",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-skills-whole-w2",
-     "name": "S3 · full depth",
-     "kind": "formation",
-     "position": {
-      "x": 0.42,
-      "y": 0.4,
-      "z": 0.5
-     },
-     "size": {
-      "x": 0.48,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "S3 · full depth",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-skills-whole-w2-step-1",
-        "text": "S3 · full depth",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-skills-whole-page",
-     "kicker": "S3 Software Factory · full depth · whole",
-     "title": "factory skills",
-     "italic": "whole-first — reference, not duplication",
-     "body": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission.",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 21,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r001-skill",
-   "name": "Bounded developmental work",
-   "character": "Native owner: Software Factory. This METHOD-classified Skill composes",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0003,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4052,
-     "circulation": 0.313,
-     "turbulence": 0.0833,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0526,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r001-skill-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r001-skill-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r001-skill-title",
-     "name": "Bounded developmental work",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.62,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Bounded developmental work",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r001-skill-title-enrichstep-1",
-        "text": "Bounded developmental work",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "fd-r001-skill-title-enrichstep-2",
-        "text": "SKILL",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-skills-whole",
+      "name": "the Factory whole — factory skills",
+      "character": "Software Factory is transformation: intention, action, encounter and learning become changed form; Gate decides the candidate, Recognition can change the commission. Whole-first: every full-depth artifact opens by referencing that whole before binding its slice of the inventoried material.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       },
-       {
-        "id": "fd-r001-skill-title-enrichstep-3",
-        "text": "Bounded developmental work",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-skills-whole-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-skills-whole-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-skills-whole-f1",
+          "name": "the gate",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.36,
+            "y": 0.3
+          },
+          "rotation": 90,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-skills-whole-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-skills-whole-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-skills-whole-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-skills-whole-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-skills-whole-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-skills-whole-f4",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.3,
+            "y": 0.48,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-skills-whole-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r001-skill-rec",
-     "name": "SKILL",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "SKILL",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r001-skill-rec-step-1",
-        "text": "SKILL",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r001-skill-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Bounded developmental work",
-     "italic": "skills/factory-bounded-work/SKILL.md",
-     "body": "Native owner: Software Factory. This METHOD-classified Skill composes\n\nBound material — skills/factory-bounded-work/SKILL.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 08d3a1808bf2… (full-depth record 1 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "vortex",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 1.2,
-    "pointerClickRadius": 0.36,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r002-change",
-   "name": "Develop a verifiable change",
-   "character": "Read the relevant owner ground and implementation before choosing the form. State observable acceptance at the commission's grain. Record materially different alternatives and the reason for the chosen form when a real d",
-   "duration": 14,
-   "transition": 2.0,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 0.9705,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.6104,
-     "circulation": 1.326,
-     "turbulence": 0.1665,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1052,
-     "pointerStrength": 1.05,
-     "pointerRadius": 0.28,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 253.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r002-change-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r002-change-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r002-change-title",
-     "name": "Develop a verifiable change",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.62,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Develop a verifiable change",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r002-change-title-enrichstep-1",
-        "text": "Develop a verifiable change",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "text": [
+        {
+          "id": "fd-skills-whole-page",
+          "kicker": "",
+          "title": "the Factory whole — factory skills",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       },
-       {
-        "id": "fd-r002-change-title-enrichstep-2",
-        "text": "change",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       },
-       {
-        "id": "fd-r002-change-title-enrichstep-3",
-        "text": "Develop a verifiable change",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r001-skill",
+      "name": "Bounded developmental work",
+      "character": "Native owner: Software Factory. This METHOD-classified Skill composes",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r002-change-rec",
-     "name": "change",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "change",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r002-change-rec-step-1",
-        "text": "change",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r002-change-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Develop a verifiable change",
-     "italic": "skills/factory-bounded-work/references/change.md",
-     "body": "Read the relevant owner ground and implementation before choosing the form. State observable acceptance at the commission's grain. Record materially different alternatives and the reason for the chosen form when a real design choi\n\nBound material — skills/factory-bounded-work/references/change.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 9a4b1701d949… (full-depth record 2 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.85,
-    "pointerClickRadius": 0.3,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r003-coordination",
-   "name": "Factory bounded coordination law",
-   "character": "Contract: factory.bounded-coordination/v1",
-   "duration": 12,
-   "transition": 1.4,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0008,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.4156,
-     "circulation": 0.339,
-     "turbulence": 0.0897,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0578,
-     "pointerStrength": 0.85,
-     "pointerRadius": 0.24,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 202.4,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r003-coordination-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r003-coordination-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r003-coordination-title",
-     "name": "Factory bounded coordination law",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.62,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Factory bounded coordination law",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r003-coordination-title-step-1",
-        "text": "Factory bounded coordination law",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r003-coordination-rec",
-     "name": "coordination",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.36,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "coordination",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r003-coordination-rec-step-1",
-        "text": "coordination",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r003-coordination-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Factory bounded coordination law",
-     "italic": "skills/factory-bounded-work/references/coordination.md",
-     "body": "Contract: factory.bounded-coordination/v1\n\nBound material — skills/factory-bounded-work/references/coordination.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 bed1d5d2e2c4… (full-depth record 3 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "repel",
-    "pointerClick": "shove",
-    "pointerClickStrength": 2.6,
-    "pointerClickRadius": 0.52,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r004-repair",
-   "name": "Investigate and repair from evidence",
-   "character": "Recover a concrete failing condition and the matching runtime surface. Drive available inspection yourself. When the target cannot be reached, report the specific access or instrumentation limit and retain investigation ",
-   "duration": 10,
-   "transition": 1.2,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.051,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.7208,
-     "circulation": 0.452,
-     "turbulence": 0.253,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1904,
-     "pointerStrength": 1.3,
-     "pointerRadius": 0.34,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 275.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r004-repair-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r004-repair-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r004-repair-title",
-     "name": "Investigate and repair from evidence",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.62,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Investigate and repair from evidence",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r004-repair-title-enrichstep-1",
-        "text": "Investigate and repair from evidence",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-r001-skill-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.4,
+            "y": 0.4
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r001-skill-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r001-skill-f1",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.26,
+            "y": 0.26
+          },
+          "rotation": 45,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r001-skill-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r001-skill-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.12,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r001-skill-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       },
-       {
-        "id": "fd-r004-repair-title-enrichstep-2",
-        "text": "repair",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "text": [
+        {
+          "id": "fd-r001-skill-page",
+          "kicker": "",
+          "title": "Bounded developmental work",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       },
-       {
-        "id": "fd-r004-repair-title-enrichstep-3",
-        "text": "Investigate and repair from evidence",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
         }
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r004-repair-rec",
-     "name": "repair",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "repair",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r004-repair-rec-step-1",
-        "text": "repair",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r004-repair-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Investigate and repair from evidence",
-     "italic": "skills/factory-bounded-work/references/repair.md",
-     "body": "Recover a concrete failing condition and the matching runtime surface. Drive available inspection yourself. When the target cannot be reached, report the specific access or instrumentation limit and retain investigation standing; \n\nBound material — skills/factory-bounded-work/references/repair.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 bffd4aafe424… (full-depth record 4 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": [
-    {
-     "id": "fd-r004-repair-enrich-lfo",
-     "target": "field.params.dispersion",
-     "type": "lfo",
-     "wave": "sine",
-     "blend": "add",
-     "min": 0.03,
-     "max": 0.12,
-     "rate": 0.09,
-     "phase": 0,
-     "duration": 0,
-     "delay": 0,
-     "loop": "loop",
-     "firedAt": null,
-     "enabled": true
-    }
-   ]
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r005-skill",
-   "name": "Factory development and self-improvement",
-   "character": "Use this Skill when developmental pressure should become a bounded Factory Run, including proposals to improve a native product or its authoritative Skill source.",
-   "duration": 14,
-   "transition": 1.6,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0013,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.576,
-     "circulation": 0.965,
-     "turbulence": 0.1562,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.133,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 237.6,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r005-skill-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r005-skill-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r005-skill-title",
-     "name": "Factory development and self-improvement",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.62,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Factory development and self-improvement",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r005-skill-title-step-1",
-        "text": "Factory development and self-improvement",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r005-skill-rec",
-     "name": "SKILL",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "SKILL",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r005-skill-rec-step-1",
-        "text": "SKILL",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r005-skill-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Factory development and self-improvement",
-     "italic": "skills/factory-development/SKILL.md",
-     "body": "Use this Skill when developmental pressure should become a bounded Factory Run, including proposals to improve a native product or its authoritative Skill source.\n\nBound material — skills/factory-development/SKILL.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 f2fb02732542… (full-depth record 5 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "pulse",
-    "pointerClickStrength": 0.16,
-    "pointerClickRadius": 0.24,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r006-skill",
-   "name": "Factory operation",
-   "character": "Use this Skill when an authorised human or Agent needs to orient in Factory developmental state, inspect a Run, gather evidence, request a native Factory Action, or explain why a Run is blocked or not promotable.",
-   "duration": 12,
-   "transition": 1.2,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0016,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.3812,
-     "circulation": 0.278,
-     "turbulence": 0.0795,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.0556,
-     "pointerStrength": 0.18,
-     "pointerRadius": 0.2,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 193.6,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r006-skill-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r006-skill-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r006-skill-title",
-     "name": "Factory operation",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.544,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "Factory operation",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": true,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r006-skill-title-enrichstep-1",
-        "text": "Factory operation",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.3,
-          "y": 0.12
-         },
-         "rotation": 0,
-         "tint": "#8a8378",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r002-change",
+      "name": "Develop a verifiable change",
+      "character": "Read the relevant owner ground and implementation before choosing the form. State observable acceptance at the commission's grain. Record materially different alternatives and the reason for the chosen form when a real d",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#12100e",
+        "palette": [
+          "#f5e8d8",
+          "#e07830"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
         }
-       },
-       {
-        "id": "fd-r006-skill-title-enrichstep-2",
-        "text": "SKILL",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.24,
-          "y": 0.11
-         },
-         "rotation": 0,
-         "tint": "#c8b4a0",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      },
+      "entities": [
+        {
+          "id": "fd-r002-change-f0",
+          "name": "the floor",
+          "kind": "formation",
+          "position": {
+            "x": -0.3,
+            "y": 0.14,
+            "z": 0
+          },
+          "size": {
+            "x": 0.55,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#e07830",
+          "tintWeight": 0.65,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r002-change-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r002-change-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.32,
+            "y": 0.3,
+            "z": 0
+          },
+          "size": {
+            "x": 0.14,
+            "y": 0.14
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f5e8d8",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r002-change-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r002-change-f2",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.42,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r002-change-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
         }
-       },
-       {
-        "id": "fd-r006-skill-title-enrichstep-3",
-        "text": "Factory operation",
-        "shape": "text",
-        "hold": 2.0,
-        "transition": 0.8,
-        "position": null,
-        "objectState": {
-         "size": {
-          "x": 0.34,
-          "y": 0.14
-         },
-         "rotation": 0,
-         "tint": "#f2ded2",
-         "tintWeight": 0.9,
-         "force": {
-          "kind": "attract",
-          "strength": 0,
-          "radius": 0.45,
-          "spin": 0
-         }
+      ],
+      "text": [
+        {
+          "id": "fd-r002-change-page",
+          "kicker": "",
+          "title": "Develop a verifiable change",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
         }
-       }
-      ]
-     }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     },
     {
-     "id": "fd-r006-skill-rec",
-     "name": "SKILL",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "SKILL",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r006-skill-rec-step-1",
-        "text": "SKILL",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r003-coordination",
+      "name": "Factory bounded coordination law",
+      "character": "Contract: factory.bounded-coordination/v1",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#241206",
+        "palette": [
+          "#f2d0b0",
+          "#e05a1e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r003-coordination-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-coordination-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.1,
+            "y": 0.1
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-coordination-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969524,
+            "y": 0.44627416997969516,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-coordination-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969518,
+            "y": 0.44627416997969527,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-coordination-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.22627416997969527,
+            "y": -0.006274169979695182,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-coordination-f5",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.22627416997969516,
+            "y": -0.0062741699796952655,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r003-coordination-g0",
+          "name": "evidence",
+          "kind": "formation",
+          "position": {
+            "x": -0.46,
+            "y": 0.58,
+            "z": 0
+          },
+          "size": {
+            "x": 0.18,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "text",
+          "text": "evidence",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r003-coordination-g1-step-1",
+                "text": "evidence",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r003-coordination-page",
+          "kicker": "",
+          "title": "Factory bounded coordination law",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r004-repair",
+      "name": "Investigate and repair from evidence",
+      "character": "Recover a concrete failing condition and the matching runtime surface. Drive available inspection yourself. When the target cannot be reached, report the specific access or instrumentation limit and retain investigation ",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#241206",
+        "palette": [
+          "#f2d0b0",
+          "#e05a1e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r004-repair-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": -0.52,
+            "y": 0.34,
+            "z": 0
+          },
+          "size": {
+            "x": 0.2,
+            "y": 0.2
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-repair-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-repair-f1",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.26,
+            "y": 0.28,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-repair-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-repair-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-repair-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-repair-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.26,
+            "y": 0.16,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-repair-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r004-repair-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.1,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r004-repair-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r004-repair-page",
+          "kicker": "",
+          "title": "Investigate and repair from evidence",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r005-skill",
+      "name": "Factory development and self-improvement",
+      "character": "Use this Skill when developmental pressure should become a bounded Factory Run, including proposals to improve a native product or its authoritative Skill source.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#241206",
+        "palette": [
+          "#f2d0b0",
+          "#e05a1e"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r005-skill-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#e05a1e",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-skill-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r005-skill-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#f2d0b0",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-skill-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r005-skill-f2",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-skill-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r005-skill-f3",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.42,
+            "y": 0.06,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r005-skill-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r005-skill-page",
+          "kicker": "",
+          "title": "Factory development and self-improvement",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r006-skill",
+      "name": "Factory operation",
+      "character": "Use this Skill when an authorised human or Agent needs to orient in Factory developmental state, inspect a Run, gather evidence, request a native Factory Action, or explain why a Run is blocked or not promotable.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e141c",
+        "palette": [
+          "#d8e4ee",
+          "#4a78a0"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r006-skill-f0",
+          "name": "the die",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.56,
+            "y": 0.56
+          },
+          "rotation": 0,
+          "shape": "ring",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.55,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f1",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0,
+            "y": 0.22,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d8e4ee",
+          "tintWeight": 0.85,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f2",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 1.7145055188062947e-17,
+            "y": -0.060000000000000026,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f3",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.24248711305964282,
+            "y": 0.07999999999999999,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f4",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": 0.24248711305964285,
+            "y": 0.36,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f5",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 1.7145055188062947e-17,
+            "y": 0.5,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f5-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f6",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.2424871130596428,
+            "y": 0.3600000000000001,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f6-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r006-skill-f7",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": -0.24248711305964282,
+            "y": 0.07999999999999996,
+            "z": 0
+          },
+          "size": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r006-skill-f7-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r006-skill-page",
+          "kicker": "",
+          "title": "Factory operation",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
+    },
+    {
+      "toolbelt": [
+        {
+          "id": "speed",
+          "scope": "field",
+          "key": "timeScale"
+        },
+        {
+          "id": "spring",
+          "scope": "field",
+          "key": "recovery"
+        },
+        {
+          "id": "viscosity",
+          "scope": "field",
+          "key": "native_fluid__viscosity"
+        },
+        {
+          "id": "flow",
+          "scope": "field",
+          "key": "turbulence"
+        },
+        {
+          "id": "transition",
+          "scope": "selected",
+          "key": "sequence.transition"
+        },
+        {
+          "id": "blend",
+          "scope": "field",
+          "key": "native_morphProgress"
+        }
+      ],
+      "engine": {
+        "paletteSource": "custom",
+        "grainProfile": true,
+        "backgroundMode": "solid",
+        "resonatorMode": "resonator",
+        "focusOrder": "listed",
+        "dotShape": "circle",
+        "autoFitSizes": true,
+        "mediumEnabled": false,
+        "collisionEnabled": false,
+        "collisionMode": "obstacle",
+        "pairwiseEnabled": false,
+        "fontFamily": "system-ui, -apple-system, sans-serif",
+        "fontWeight": 900,
+        "resonanceEnabled": true,
+        "morphEnabled": false,
+        "trajectory": "toroidalHopf",
+        "driveShape": "sine",
+        "autoOscillate": true,
+        "relationalEnabled": false,
+        "relationalMode": "orbital",
+        "pointerMode": "repel",
+        "pointerClick": "pulse",
+        "pointerClickStrength": 2.2,
+        "pointerClickRadius": 0.45,
+        "colorMode": "linearGradient",
+        "colorEnabled": true,
+        "mediumPlane": "vertical",
+        "mediumDimension": "2D",
+        "autoSweep": false,
+        "sweepDirection": "ascent"
+      },
+      "id": "fd-r007-skill",
+      "name": "QL HTML Account",
+      "character": "Create HTML that lets a reader understand, inspect, navigate, and use a body of information.",
+      "duration": 14,
+      "transition": 2,
+      "view": {
+        "mode": "2d",
+        "yaw": 0,
+        "pitch": 0,
+        "zoom": 1,
+        "panX": 0,
+        "panY": 0
+      },
+      "field": {
+        "background": "#0e141c",
+        "palette": [
+          "#d8e4ee",
+          "#4a78a0"
+        ],
+        "material": "ink",
+        "params": {
+          "count": 46000,
+          "size": 2.8,
+          "sizeBias": 1.6,
+          "opacity": 0.92,
+          "roundness": 0.95,
+          "softness": 0.15,
+          "irregularity": 0.35,
+          "elongation": 0.04,
+          "orientation": 0,
+          "contrast": 0.93,
+          "densityScale": 1,
+          "densityPhase": 0.3,
+          "edgeWeight": 0,
+          "halo": 0.13,
+          "speed": 0.5,
+          "circulation": 1,
+          "turbulence": 0.12,
+          "turbulenceScale": 1.2,
+          "recovery": 1.1,
+          "dispersion": 0.09,
+          "pointerStrength": 0.8,
+          "pointerRadius": 0.23,
+          "pointerFalloff": 2,
+          "depth": 0.12,
+          "grain": 0.035,
+          "snapRigidity": 1,
+          "densityTether": 1,
+          "curlDepth": 0.2,
+          "vortexRadius": 0.4,
+          "gravityX": 0,
+          "gravityY": 0,
+          "gravityZ": 0,
+          "quadraticDrag": 0.2,
+          "thermalJitter": 0,
+          "speedLimit": 3,
+          "zConfinement": 1,
+          "timeScale": 1,
+          "gravitySoftening": 0.1,
+          "gravityFalloff": 2,
+          "swirlRadius": 0.4,
+          "frequency": 220,
+          "dominance": 0,
+          "excitation": 0.6
+        }
+      },
+      "entities": [
+        {
+          "id": "fd-r007-skill-f0",
+          "name": "the raw stock",
+          "kind": "formation",
+          "position": {
+            "x": -0.42,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0,
+          "shape": "square",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.6,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-skill-f0-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-skill-f1",
+          "name": "the gate",
+          "kind": "formation",
+          "position": {
+            "x": 0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.36,
+            "y": 0.3
+          },
+          "rotation": 90,
+          "shape": "triangle",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-skill-f1-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-skill-f2",
+          "name": "the wrought form",
+          "kind": "formation",
+          "position": {
+            "x": 0.52,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.12,
+            "y": 0.12
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#d8e4ee",
+          "tintWeight": 0.9,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-skill-f2-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-skill-f3",
+          "name": "the billet",
+          "kind": "formation",
+          "position": {
+            "x": -0.05,
+            "y": 0.24,
+            "z": 0
+          },
+          "size": {
+            "x": 0.08,
+            "y": 0.08
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#4a78a0",
+          "tintWeight": 0.8,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-skill-f3-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "fd-r007-skill-f4",
+          "name": "the spark",
+          "kind": "formation",
+          "position": {
+            "x": 0.3,
+            "y": 0.48,
+            "z": 0
+          },
+          "size": {
+            "x": 0.06,
+            "y": 0.06
+          },
+          "rotation": 0,
+          "shape": "disc",
+          "text": "",
+          "share": 1,
+          "tint": "#a8927b",
+          "tintWeight": 0.7,
+          "locked": false,
+          "force": {
+            "kind": "attract",
+            "strength": 0,
+            "radius": 0.45,
+            "spin": 0
+          },
+          "station": null,
+          "sequence": {
+            "enabled": false,
+            "clock": "seconds",
+            "steps": [
+              {
+                "id": "fd-r007-skill-f4-step-1",
+                "text": "",
+                "shape": "text",
+                "hold": 3,
+                "transition": 1,
+                "position": null
+              }
+            ]
+          }
+        }
+      ],
+      "text": [
+        {
+          "id": "fd-r007-skill-page",
+          "kicker": "",
+          "title": "QL HTML Account",
+          "italic": "",
+          "body": "",
+          "x": 0.62,
+          "y": 0.76,
+          "width": 430,
+          "size": 20,
+          "align": "left",
+          "visible": true
+        }
+      ],
+      "composition": {
+        "layout": "free",
+        "plane": "XY",
+        "focus": "parallel",
+        "focusDuration": 4,
+        "carryTint": true,
+        "carryStation": false,
+        "frequencyDriver": "manual"
+      },
+      "morph": {
+        "thetaRate": 0.08,
+        "phiRate": 0.13,
+        "thetaOffset": 0,
+        "phiOffset": 0,
+        "law": "theta",
+        "depth": 1,
+        "dwell": 0.3
+      },
+      "automation": []
     }
-   ],
-   "text": [
-    {
-     "id": "fd-r006-skill-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "Factory operation",
-     "italic": "skills/factory-operation/SKILL.md",
-     "body": "Use this Skill when an authorised human or Agent needs to orient in Factory developmental state, inspect a Run, gather evidence, request a native Factory Action, or explain why a Run is blocked or not promotable.\n\nBound material — skills/factory-operation/SKILL.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 c839012a5d72… (full-depth record 6 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  },
-  {
-   "toolbelt": [
-    {
-     "id": "speed",
-     "scope": "field",
-     "key": "timeScale"
-    },
-    {
-     "id": "spring",
-     "scope": "field",
-     "key": "recovery"
-    },
-    {
-     "id": "viscosity",
-     "scope": "field",
-     "key": "native_fluid__viscosity"
-    },
-    {
-     "id": "flow",
-     "scope": "field",
-     "key": "turbulence"
-    },
-    {
-     "id": "transition",
-     "scope": "selected",
-     "key": "sequence.transition"
-    },
-    {
-     "id": "blend",
-     "scope": "field",
-     "key": "native_morphProgress"
-    }
-   ],
-   "engine": {
-    "paletteSource": "custom",
-    "grainProfile": true,
-    "backgroundMode": "solid",
-    "resonatorMode": "resonator",
-    "focusOrder": "listed",
-    "dotShape": "circle",
-    "autoFitSizes": true,
-    "mediumEnabled": false,
-    "collisionEnabled": false,
-    "collisionMode": "obstacle",
-    "pairwiseEnabled": false,
-    "fontFamily": "system-ui, -apple-system, sans-serif",
-    "fontWeight": 900,
-    "resonanceEnabled": true,
-    "morphEnabled": false,
-    "trajectory": "toroidalHopf",
-    "driveShape": "sine",
-    "autoOscillate": true,
-    "relationalEnabled": false,
-    "relationalMode": "orbital",
-    "pointerMode": "attract",
-    "pointerClick": "implode",
-    "pointerClickStrength": 1.55,
-    "pointerClickRadius": 0.42,
-    "colorMode": "linearGradient",
-    "colorEnabled": true,
-    "mediumPlane": "vertical",
-    "mediumDimension": "2D",
-    "autoSweep": false,
-    "sweepDirection": "ascent"
-   },
-   "id": "fd-r007-skill",
-   "name": "QL HTML Account",
-   "character": "Create HTML that lets a reader understand, inspect, navigate, and use a body of information.",
-   "duration": 13,
-   "transition": 1.6,
-   "view": {
-    "mode": "2d",
-    "yaw": 0,
-    "pitch": 0,
-    "zoom": 1.0818,
-    "panX": 0,
-    "panY": 0
-   },
-   "field": {
-    "background": "#14120e",
-    "palette": [
-     "#f0e0cb",
-     "#b0763c"
-    ],
-    "material": "ink",
-    "params": {
-     "count": 46000,
-     "size": 2.8,
-     "sizeBias": 1.6,
-     "opacity": 0.92,
-     "roundness": 0.95,
-     "softness": 0.15,
-     "irregularity": 0.35,
-     "elongation": 0.04,
-     "orientation": 0,
-     "contrast": 0.93,
-     "densityScale": 1,
-     "densityPhase": 0.3,
-     "edgeWeight": 0,
-     "halo": 0.13,
-     "speed": 0.5164,
-     "circulation": 0.891,
-     "turbulence": 0.1427,
-     "turbulenceScale": 1.2,
-     "recovery": 1.1,
-     "dispersion": 0.1182,
-     "pointerStrength": 0.95,
-     "pointerRadius": 0.3,
-     "pointerFalloff": 2,
-     "depth": 0.12,
-     "grain": 0.035,
-     "snapRigidity": 1,
-     "densityTether": 1,
-     "curlDepth": 0.2,
-     "vortexRadius": 0.4,
-     "gravityX": 0,
-     "gravityY": 0,
-     "gravityZ": 0,
-     "quadraticDrag": 0.2,
-     "thermalJitter": 0,
-     "speedLimit": 3,
-     "zConfinement": 1,
-     "timeScale": 1,
-     "gravitySoftening": 0.1,
-     "gravityFalloff": 2,
-     "swirlRadius": 0.4,
-     "frequency": 231.0,
-     "dominance": 0,
-     "excitation": 0.6
-    }
-   },
-   "entities": [
-    {
-     "id": "fd-r007-skill-ground",
-     "name": "the carried ground",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.02,
-      "z": 0
-     },
-     "size": {
-      "x": 0.46,
-      "y": 0.46
-     },
-     "rotation": 0,
-     "shape": "disc",
-     "text": "",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.55,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r007-skill-ground-step-1",
-        "text": "",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r007-skill-title",
-     "name": "QL HTML Account",
-     "kind": "formation",
-     "position": {
-      "x": -0.38,
-      "y": 0.4,
-      "z": 0
-     },
-     "size": {
-      "x": 0.48,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "QL HTML Account",
-     "share": 1,
-     "tint": "#f0e0cb",
-     "tintWeight": 0.9,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r007-skill-title-step-1",
-        "text": "QL HTML Account",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    },
-    {
-     "id": "fd-r007-skill-rec",
-     "name": "SKILL",
-     "kind": "formation",
-     "position": {
-      "x": 0,
-      "y": -0.44,
-      "z": 0
-     },
-     "size": {
-      "x": 0.18,
-      "y": 0.14
-     },
-     "rotation": 0,
-     "shape": "text",
-     "text": "SKILL",
-     "share": 1,
-     "tint": "#b0763c",
-     "tintWeight": 0.95,
-     "locked": false,
-     "force": {
-      "kind": "attract",
-      "strength": 0,
-      "radius": 0.45,
-      "spin": 0
-     },
-     "station": null,
-     "sequence": {
-      "enabled": false,
-      "clock": "seconds",
-      "steps": [
-       {
-        "id": "fd-r007-skill-rec-step-1",
-        "text": "SKILL",
-        "shape": "text",
-        "hold": 3,
-        "transition": 1,
-        "position": null
-       }
-      ]
-     }
-    }
-   ],
-   "text": [
-    {
-     "id": "fd-r007-skill-page",
-     "kicker": "S3 Software Factory · full depth",
-     "title": "QL HTML Account",
-     "italic": "skills/ql-html-account/SKILL.md",
-     "body": "Create HTML that lets a reader understand, inspect, navigate, and use a body of information.\n\nBound material — skills/ql-html-account/SKILL.md: committed bytes at EpiLogos/Factory origin/main f59368de, sha256 a16bcc69d301… (full-depth record 7 of 7; 230 inventoried, 6 wave-bound).",
-     "x": 0.78,
-     "y": 0.5,
-     "width": 300,
-     "size": 17,
-     "align": "left",
-     "visible": true
-    }
-   ],
-   "composition": {
-    "layout": "line",
-    "plane": "XY",
-    "focus": "parallel",
-    "focusDuration": 4,
-    "carryTint": true,
-    "carryStation": false,
-    "frequencyDriver": "manual"
-   },
-   "morph": {
-    "thetaRate": 0.08,
-    "phiRate": 0.13,
-    "thetaOffset": 0,
-    "phiOffset": 0,
-    "law": "theta",
-    "depth": 1,
-    "dwell": 0.3
-   },
-   "automation": []
-  }
- ],
- "updatedAt": "2026-09-21T00:00:00.000Z"
+  ],
+  "updatedAt": "2026-09-21T00:00:00.000Z"
 }

@@ -121,10 +121,7 @@
     "delta": "byte-identical to census sha256 at fbabaaad"
    }
   ],
-  "coverage": "14 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)",
-  "enrichment_source_read": {
-   "note": "records read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719"
-  }
+  "coverage": "14 of 224 full-depth records bound in this artifact (wave-1 slice 6 of 230)"
  },
  "pointcloud_revision": "96135fca",
  "scenes": [
@@ -222,44 +219,28 @@
  ],
  "capture": "factory/sp-factory-fd-inkwell-overview-appdocs.cover.png (real renderer, SwiftShader; first scene — per-scene capture is the catalogued shared defect #2)",
  "status": "captured",
- "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base.\n\nMoves: the app-docs shelf reads as the app's own changed surface — the README emerges (a blog app, the factory that builds it, the sandbox that runs both), the TREE holds ('every file that matters, and why'), the mounting research settles (research only, nothing built), the SDLC integration and model routing turn and gather (workflows re-formed, rosters gathered), the app-doc records gather (stats endpoints) or hold (overwriting prevented — a guard), the UI contrast record marks (the visual surface, brightest), the quiet-room redesign settles (the app's own ideal: 'a quiet room where writing happens' — the member's quietest scene), tags gather, the split-view turns (three view modes re-forming), header controls hold, the app README emerges.\n\n3D: the whole scene carries the member's depth — z is the Factory's own transformation depth: intention and commission nearest, the re-formed result deepest (laminated; depthPerspective on). Pointers follow the arc's meaning (guard=canon holds its edges, gather=material intake, vortex=the run turns, rupture=gate refusal/cutover, settle=acceptance quiet). Automation: a dispersion LFO on one scene per member — the run breathes. Durations/transitions step 10–16s / 1.2–2.2 with the arc.\n\nSequences are the Factory's native grammar: the title formation walks its own heading segments and re-forms at its address stamp.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719\n\nMoves: the app-docs shelf reads as the app's own changed surface — the README emerges (a blog app, the factory that builds it, the sandbox that runs both), the TREE holds ('every file that matters, and why'), the mounting research settles (research only, nothing built), the SDLC integration and model routing turn and gather (workflows re-formed, rosters gathered), the app-doc records gather (stats endpoints) or hold (overwriting prevented — a guard), the UI contrast record marks (the visual surface, brightest), the quiet-room redesign settles (the app's own ideal: 'a quiet room where writing happens' — the member's quietest scene), tags gather, the split-view turns (three view modes re-forming), header controls hold, the app README emerges.\n\n3D: the whole scene carries the member's depth — z is the Factory's own transformation depth: intention and commission nearest, the re-formed result deepest (laminated; depthPerspective on). Pointers follow the arc's meaning (guard=canon holds its edges, gather=material intake, vortex=the run turns, rupture=gate refusal/cutover, settle=acceptance quiet). Automation: a dispersion LFO on one scene per member — the run breathes. Durations/transitions step 10–16s / 1.2–2.2 with the arc.\n\nSequences are the Factory's native grammar: the title formation walks its own heading segments and re-forms at its address stamp.\n\nrecords read 2026-10-06 at EpiLogos/Factory@f59368de (openings; titles are the records' own headings); essay record S3 read at fc59a719",
- "enrichment": {
-  "date": "2026-10-06",
-  "actor": "zcode:enrich-sproducts-l3",
-  "lane": "s-products"
- },
+ "notes": "Full-depth wave: one scene per inventoried record, whole-first opening references the wave-1 S3 whole without duplicating it. Scene texts quote the bound record's committed title and first prose line; nothing is invented. 3 of the family's records moved on origin/main since the census freeze; each is flagged in records_bound. Presented under the family-factory tint pair per s-products-corpus-base.\n2026-10-07 craft rework (expression lane 6): every scene redrawn to the craft law — 100% non-text formations, 5 colour movements across 5 grounds, 10/14 adjacent pairs held still, stage text stripped to the scene's own name (86 words/journey), no metadata on the stage; register: Software Factory — transformation. Identity fields (journey id/description, scene id/name/character) unchanged.",
  "glyph_rationales": {
-  "the Factory whole": "the member's staging of the Factory whole — overview and app docs",
-  "Factory In A Box": "'A blog app, the software factory that builds it, and the throwaway sandbox that runs both'",
-  "TREE": "'Every file that matters, and why it exists' — three layers stacked",
-  "Mounting exe.dev Sandboxes — Research": "research only — sources are the live exe.dev CLI",
-  "SSSF Reviewer, Documenter, and Simple SDLC Integration": "the SDLC integration record — reviewer and documenter in the chain",
-  "SSSF model routing and visualizer model metadata": "the model-routing record — rosters and metadata",
-  "Total Words Field in GET /api/stats": "the stats extension — total words across posts",
-  "Prevent Overwriting Specs and App Docs in Reused Sessions": "the guard record — reused sessions must not overwrite specs",
-  "UI Visual Contrast & Accessibility Enhancements": "the visual surface record — contrast and accessibility",
-  "Inkwell \"quiet room\" redesign": "'the app is a quiet room where writing happens' — everything else leaves the room until called",
-  "Inkwell `GET /api/tags` Endpoint": "the tags endpoint — distinct tags with frequency counts",
-  "Inkwell: three view modes (edit / split / preview) with a live side-by": "the split-view record — edit, split, preview with live preview",
-  "Inkwell header and list controls": "the header controls record",
-  "Single Post Stats Endpoint (`GET /api/posts/:id/stats`)": "per-post stats — word count, reading minutes, status",
-  "inkwell": "the app itself — minimalist blog-writing, Bun + bun:sqlite, zero dependencies",
-  "S3 · full depth": "the whole scene's depth stamp — the Factory carried at full depth (the member's 3D lamination)",
-  "README": "the bound record's address stamp — the scene id derives from the bound path",
-  "exedev_sandbox_mounting": "the bound record's address stamp — the scene id derives from the bound path",
-  "Mounting exe.dev Sandboxes": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
-  "Research": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
-  "1a53906b_adw-sdlc-workflows": "the bound record's address stamp — the scene id derives from the bound path",
-  "27ef9462_model-routing-context": "the bound record's address stamp — the scene id derives from the bound path",
-  "306a0046_inkwell-stats-total-words": "the bound record's address stamp — the scene id derives from the bound path",
-  "306a0046_prevent-overwriting-specs-d": "the bound record's address stamp — the scene id derives from the bound path",
-  "806adbfc_ui-visual-contrast": "the bound record's address stamp — the scene id derives from the bound path",
-  "889ae961_quiet-room-redesign": "the bound record's address stamp — the scene id derives from the bound path",
-  "c564e391_inkwell-tags-endpoint": "the bound record's address stamp — the scene id derives from the bound path",
-  "Inkwell": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
-  "three view modes (edit / split / preview) with a live side-by": "the record's own heading words — walked and re-formed through the run (the Factory's transformation grammar)",
-  "d140d7dd_inkwell-split-view-modes": "the bound record's address stamp — the scene id derives from the bound path",
-  "e2688070_inkwell-header-controls": "the bound record's address stamp — the scene id derives from the bound path",
-  "f8b47636_post-stats-endpoint": "the bound record's address stamp — the scene id derives from the bound path"
+  "0": "the first station of the record's own movement path: ground before any move.",
+  "1": "the record's own first move, marked in notation as its path numbers itself.",
+  "2": "the second station of the record's own movement path.",
+  "3": "the third station of the record's own movement path.",
+  "4": "the fourth station of the record's own movement path.",
+  "5": "the fifth station of the record's own movement path.",
+  "6": "the sixth station of the record's own movement path.",
+  "7": "the seventh station of the record's own movement path.",
+  "8": "the eighth station of the record's own movement path.",
+  "the wrought form": "the wrought form — what the work produces: raw stock transformed into a shaped, working whole.",
+  "the die": "the die — the form that shapes by containing; transformation constrained into exactness.",
+  "the billet": "the billet — a unit of raw material entering the line, waiting to become.",
+  "the spark": "the spark — the heat of the pass — the moment of transformation itself.",
+  "the raw stock": "the raw stock — the unformed block as it arrives; transformation's before.",
+  "the gate": "the gate — the die mouth the stock passes through; one state to the next.",
+  "the floor": "the floor — the factory floor the whole line stands on.",
+  "5→0": "the path's own completion sign: the last move returns into the first.",
+  "→": "the move itself: one term passing into the next, continuity drawn as an arrow of motion.",
+  "∴": "therefore: the record's claim standing after its own reasons.",
+  "×": "the crossing: one encounter meeting another without either dissolving.",
+  "Ω": "the closing term: the path arrived at its end, which is its ground."
  }
 }
